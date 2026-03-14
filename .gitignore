@@ -1,0 +1,152 @@
+# ============================================================
+# EXKNOTS .gitignore
+# Project: HTML/JS (Three.js CDN), OpenSCAD, Markdown
+# ============================================================
+
+# ---- OS artifacts ----
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+[Dd]esktop.ini
+*.swp
+*.swo
+*~
+.Spotlight-V100
+.Trashes
+.fseventsd
+.AppleDouble
+.LSOverride
+Icon?
+
+# ---- Editor / IDE ----
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+*.code-workspace
+*.iml
+.vim/
+tags
+TAGS
+
+# ---- Claude Code ----
+.claude/
+
+# ---- Node / JS dependencies ----
+# Three.js is loaded via CDN importmap — no local node_modules.
+# If someone runs npm install by accident, exclude it.
+node_modules/
+.npm
+.pnpm-store/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+.yarn/
+
+# ---- 3D printing generated outputs ----
+# STL, G-code, and slicer project files are generated from .scad sources.
+# Commit the .scad source, not the derived artifacts.
+*.stl
+*.STL
+*.gcode
+*.gco
+*.3mf
+*.amf
+*.obj
+*.ply
+
+# ---- OpenSCAD intermediates ----
+*.csg
+*.dxf
+*.off
+*.echo
+*.png.scad
+
+# ---- Slicer project files ----
+*.3mf
+*.factory
+*.fff
+*.gx
+*.makerbot
+*.x3g
+PrusaSlicer/
+Cura/
+OrcaSlicer/
+
+# ---- Build / cache ----
+dist/
+build/
+out/
+.cache/
+.parcel-cache/
+*.tsbuildinfo
+
+# ---- Environment / secrets ----
+.env
+.env.*
+*.pem
+*.key
+*.cert
+credentials.*
+secrets.*
+
+# ---- Logs ----
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ---- Python (if http.server leaves artifacts) ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+*.egg
+
+# ---- Git submodules / subrepos ----
+# Prevent accidental inclusion of nested repos.
+# If a subdirectory contains its own .git, it should be
+# registered as a submodule, not committed as files.
+# This rule does not affect the top-level .git directory.
+**/.git/
+!/.git/
+.gitmodules
+
+# ---- Large binary assets ----
+# Keep the repo lean. Reference external hosting for large files.
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.iso
+*.dmg
+*.exe
+*.msi
+*.deb
+*.rpm
+*.bin
+
+# ---- Images (allow SVG, block rasters unless intentional) ----
+# SVGs are source diagrams. Raster screenshots should not be committed.
+# Remove these lines if you intentionally add reference images.
+# *.png
+# *.jpg
+# *.jpeg
+# *.gif
+# *.bmp
+# *.tiff
+
+# ---- Temporary / test files ----
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig
+*.rej

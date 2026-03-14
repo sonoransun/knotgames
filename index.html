@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EXKNOTS - Topological Puzzle Visualizations</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h1>EXKNOTS</h1>
+        <p class="subtitle">Topological Puzzles</p>
+      </div>
+      <ul id="puzzle-list">
+        <!-- populated by app.js -->
+      </ul>
+    </nav>
+
+    <button id="sidebar-toggle" aria-label="Toggle sidebar">&#9776;</button>
+
+    <main id="content">
+      <div id="welcome" class="section">
+        <h2>Topological Hand Dexterity Puzzles</h2>
+        <p>Select a puzzle from the sidebar to explore its 2D diagram, interactive 3D model, and animated solution.</p>
+      </div>
+
+      <div id="puzzle-view" class="section" style="display:none;">
+        <header id="puzzle-header">
+          <h2 id="puzzle-name"></h2>
+          <div class="puzzle-meta">
+            <span id="puzzle-difficulty" class="badge"></span>
+            <span id="puzzle-type" class="badge badge-outline"></span>
+            <span id="puzzle-principle" class="principle"></span>
+          </div>
+          <p id="puzzle-description"></p>
+        </header>
+
+        <div id="viz-layout">
+          <div class="viz-panel" id="svg-panel">
+            <h3>2D Diagram</h3>
+            <div id="svg-container"></div>
+          </div>
+
+          <div class="viz-panel" id="model-panel">
+            <h3>3D Model <span class="hint">(drag to rotate, scroll to zoom)</span></h3>
+            <div id="canvas-container">
+              <canvas id="three-canvas"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="viz-panel" id="animation-panel">
+          <h3>Animated Solution</h3>
+          <div id="anim-container">
+            <canvas id="anim-canvas"></canvas>
+            <div id="step-label"></div>
+          </div>
+          <div id="anim-controls">
+            <button id="btn-step-back" title="Previous step">&#9664;&#9664;</button>
+            <button id="btn-play" title="Play/Pause">&#9654;</button>
+            <button id="btn-step-fwd" title="Next step">&#9654;&#9654;</button>
+            <input type="range" id="scrubber" min="0" max="1000" value="0" step="1">
+            <span id="step-counter">Step 0/0</span>
+            <select id="speed-select">
+              <option value="0.5">0.5x</option>
+              <option value="1" selected>1x</option>
+              <option value="2">2x</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
