@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250">
+  <title>Ouroboros Chain - Solved</title>
+  <desc>Six posts on a wooden base with cord loops still hanging from them, but the shuttle bar is now completely separate below, free from all loops.</desc>
+
+  <rect width="500" height="250" fill="#fafafa"/>
+
+  <!-- Wooden base -->
+  <rect x="30" y="140" width="440" height="18" rx="3" fill="#c9a96e" stroke="#333" stroke-width="2"/>
+
+  <!-- Posts -->
+  <line x1="75" y1="45" x2="75" y2="140" stroke="#333" stroke-width="2"/>
+  <line x1="150" y1="45" x2="150" y2="140" stroke="#333" stroke-width="2"/>
+  <line x1="225" y1="45" x2="225" y2="140" stroke="#333" stroke-width="2"/>
+  <line x1="300" y1="45" x2="300" y2="140" stroke="#333" stroke-width="2"/>
+  <line x1="375" y1="45" x2="375" y2="140" stroke="#333" stroke-width="2"/>
+  <line x1="450" y1="45" x2="450" y2="140" stroke="#333" stroke-width="2"/>
+
+  <!-- Post caps -->
+  <circle cx="75" cy="43" r="4" fill="#333"/>
+  <circle cx="150" cy="43" r="4" fill="#333"/>
+  <circle cx="225" cy="43" r="4" fill="#333"/>
+  <circle cx="300" cy="43" r="4" fill="#333"/>
+  <circle cx="375" cy="43" r="4" fill="#333"/>
+  <circle cx="450" cy="43" r="4" fill="#333"/>
+
+  <!-- Post labels -->
+  <text x="75" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">1</text>
+  <text x="150" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">2</text>
+  <text x="225" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">3</text>
+  <text x="300" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">4</text>
+  <text x="375" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">5</text>
+  <text x="450" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">6</text>
+
+  <!-- Loops still hanging from posts (relaxed, no shuttle bar through them) -->
+  <ellipse cx="75" cy="90" rx="20" ry="35" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <ellipse cx="150" cy="90" rx="20" ry="35" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <ellipse cx="225" cy="90" rx="20" ry="35" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <ellipse cx="300" cy="90" rx="20" ry="35" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <ellipse cx="375" cy="90" rx="20" ry="35" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <ellipse cx="450" cy="90" rx="20" ry="35" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Chain links between adjacent loops -->
+  <path d="M 95,85 Q 112,75 130,85" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+  <path d="M 170,85 Q 187,75 205,85" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+  <path d="M 245,85 Q 262,75 280,85" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+  <path d="M 320,85 Q 337,75 355,85" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+  <path d="M 395,85 Q 412,75 430,85" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- Shuttle bar: separate, below the base, completely free -->
+  <line x1="100" y1="195" x2="400" y2="195" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="100" cy="195" r="4" fill="#333"/>
+  <circle cx="400" cy="195" r="4" fill="#333"/>
+
+  <!-- Annotation arrow showing separation -->
+  <path d="M 250,165 L 250,185" fill="none" stroke="#999" stroke-width="1" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#999"/>
+    </marker>
+  </defs>
+
+  <!-- Labels -->
+  <text x="250" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">freed</text>
+
+  <text x="250" y="220" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#999">shuttle bar removed, completely free</text>
+
+  <!-- Legend -->
+  <line x1="30" y1="240" x2="60" y2="240" stroke="#333" stroke-width="3"/>
+  <text x="65" y="243" font-family="system-ui, sans-serif" font-size="10" fill="#666">shuttle bar (rigid)</text>
+
+  <line x1="200" y1="240" x2="230" y2="240" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="235" y="243" font-family="system-ui, sans-serif" font-size="10" fill="#666">cord loops (flexible)</text>
+</svg>

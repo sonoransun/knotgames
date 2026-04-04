@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250">
+  <title>Ouroboros Chain - Setup</title>
+  <desc>Six posts in a row on a wooden base, each with a cord loop hanging from it. The loops are chained: loop 2 passes through loop 1, loop 3 through loop 2, and so on. A horizontal shuttle bar runs through all 6 loops.</desc>
+
+  <rect width="500" height="250" fill="#fafafa"/>
+
+  <!-- Wooden base -->
+  <rect x="30" y="170" width="440" height="18" rx="3" fill="#c9a96e" stroke="#333" stroke-width="2"/>
+
+  <!-- Posts -->
+  <line x1="75" y1="60" x2="75" y2="170" stroke="#333" stroke-width="2"/>
+  <line x1="150" y1="60" x2="150" y2="170" stroke="#333" stroke-width="2"/>
+  <line x1="225" y1="60" x2="225" y2="170" stroke="#333" stroke-width="2"/>
+  <line x1="300" y1="60" x2="300" y2="170" stroke="#333" stroke-width="2"/>
+  <line x1="375" y1="60" x2="375" y2="170" stroke="#333" stroke-width="2"/>
+  <line x1="450" y1="60" x2="450" y2="170" stroke="#333" stroke-width="2"/>
+
+  <!-- Post caps -->
+  <circle cx="75" cy="58" r="4" fill="#333"/>
+  <circle cx="150" cy="58" r="4" fill="#333"/>
+  <circle cx="225" cy="58" r="4" fill="#333"/>
+  <circle cx="300" cy="58" r="4" fill="#333"/>
+  <circle cx="375" cy="58" r="4" fill="#333"/>
+  <circle cx="450" cy="58" r="4" fill="#333"/>
+
+  <!-- Post labels -->
+  <text x="75" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">1</text>
+  <text x="150" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">2</text>
+  <text x="225" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">3</text>
+  <text x="300" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">4</text>
+  <text x="375" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">5</text>
+  <text x="450" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">6</text>
+
+  <!-- Chained loops hanging from posts (dashed, flexible cord) -->
+  <!-- Loop 1: hangs from post 1, oval shape -->
+  <ellipse cx="75" cy="110" rx="22" ry="40" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Loop 2: hangs from post 2, passes through loop 1 -->
+  <ellipse cx="150" cy="110" rx="22" ry="40" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Loop 3: hangs from post 3, passes through loop 2 -->
+  <ellipse cx="225" cy="110" rx="22" ry="40" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Loop 4: hangs from post 4, passes through loop 3 -->
+  <ellipse cx="300" cy="110" rx="22" ry="40" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Loop 5: hangs from post 5, passes through loop 4 -->
+  <ellipse cx="375" cy="110" rx="22" ry="40" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Loop 6: hangs from post 6, passes through loop 5 -->
+  <ellipse cx="450" cy="110" rx="22" ry="40" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Chain links between adjacent loops (small linking arcs to show chaining) -->
+  <path d="M 97,105 Q 112,95 128,105" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+  <path d="M 172,105 Q 187,95 203,105" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+  <path d="M 247,105 Q 262,95 278,105" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+  <path d="M 322,105 Q 337,95 353,105" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+  <path d="M 397,105 Q 412,95 428,105" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- Shuttle bar: solid horizontal line through all loops -->
+  <line x1="45" y1="120" x2="480" y2="120" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+  <!-- Shuttle bar end caps -->
+  <circle cx="45" cy="120" r="4" fill="#333"/>
+  <circle cx="480" cy="120" r="4" fill="#333"/>
+
+  <!-- Annotations -->
+  <text x="250" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#999">Posts: 1  2  3  4  5  6</text>
+
+  <text x="250" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">loops hang from posts</text>
+
+  <text x="250" y="215" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">shuttle bar through all loops</text>
+
+  <!-- Legend -->
+  <line x1="30" y1="237" x2="60" y2="237" stroke="#333" stroke-width="3"/>
+  <text x="65" y="240" font-family="system-ui, sans-serif" font-size="10" fill="#666">shuttle bar (rigid)</text>
+
+  <line x1="200" y1="237" x2="230" y2="237" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="235" y="240" font-family="system-ui, sans-serif" font-size="10" fill="#666">cord loops (flexible)</text>
+</svg>

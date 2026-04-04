@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350">
+  <title>The Gatekeeper - Setup</title>
+  <desc>A U-shaped bar with a cord threaded through a ring, wrapping around the bar's curve. The ring sits on the cord between the vertical arms of the U-bar.</desc>
+
+  <rect width="300" height="350" fill="#fafafa"/>
+
+  <!-- U-bar: two vertical arms connected by a curve at bottom -->
+  <path d="M 100,40 L 100,220 Q 100,270 150,270 Q 200,270 200,220 L 200,40"
+        fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Tip labels -->
+  <text x="100" y="30" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="12" fill="#666" font-weight="bold">L</text>
+  <text x="200" y="30" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="12" fill="#666" font-weight="bold">R</text>
+
+  <!-- Cord: dashed path from L tip, down through ring, around curve, back up through ring, to R tip -->
+  <!-- Segment 1: L tip down to ring (top pass) -->
+  <path d="M 100,40 L 118,130"
+        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Segment 2: Through ring, down to wrap around curve -->
+  <path d="M 132,130 Q 140,180 150,230 Q 155,255 150,260 Q 140,268 130,255 Q 120,240 135,200"
+        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Segment 3: Back up through ring to R tip -->
+  <path d="M 135,200 Q 145,170 168,130"
+        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <path d="M 182,130 L 200,40"
+        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Ring -->
+  <circle cx="150" cy="130" r="20" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="150" y="100" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#999">RING</text>
+
+  <!-- Legend -->
+  <line x1="30" y1="315" x2="70" y2="315" stroke="#333" stroke-width="2"/>
+  <text x="78" y="319" font-family="system-ui, sans-serif" font-size="10" fill="#666">rigid U-bar</text>
+
+  <line x1="30" y1="335" x2="70" y2="335" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="78" y="339" font-family="system-ui, sans-serif" font-size="10" fill="#666">flexible cord</text>
+</svg>

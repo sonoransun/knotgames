@@ -22,22 +22,7 @@ The cord ends are fixed to the two tips of the U-bar via small drilled holes (1.
 
 ## Setup
 
-```
-    L ==== R        (tips of U-bar, cord attached at L and R)
-    |      |
-    |  /~~~+~~~\    (cord path, passing through ring)
-    | / R  |    \
-    |/ I   |     \
-    | N    |      |
-    | G    |      |
-    |\     |     /
-    | \    |    /
-    |  \~~~+~~~/    (cord wraps around U-bar curve)
-    |      |
-    \======/        (U-bar curve)
-
-    === rigid U-bar     ~~~ flexible cord
-```
+![Setup: U-bar with cord threaded through ring, wrapping around the curve](../diagrams/puzzles/01-the-gatekeeper/setup.svg)
 
 1. Cord runs from the left tip of the U-bar downward
 2. Passes through the ring from above
@@ -49,17 +34,7 @@ The ring hangs on the cord, apparently locked by the wrap around the U-bar's cur
 
 ### Solved State
 
-```
-    L ---- R        (tips of U-bar, cord attached at L and R)
-    |      |
-    |      |
-    |      |        cord hangs straight between tips
-    |      |        no wraps, no complexity
-    |      |
-    \------/        (U-bar curve)
-
-      (O)           Ring is free, separate from assembly
-```
+![Solved: cord hangs straight between tips, ring is free](../diagrams/puzzles/01-the-gatekeeper/solved.svg)
 
 ## Objective
 
@@ -80,16 +55,7 @@ A closed loop around a bar is topologically linked (linking number ≠ 0) and ca
 1. Create slack by pushing the cord's wrapped section toward one tip of the U-bar
 2. Slide the ring along the cord toward the slack
 
-```
-Checkpoint (after step 2):
-    L ---- R
-    |      |
-    |  (O) |        Ring has been slid to the drape point
-    |  /---+        Cord bunched with slack
-    | /    |
-    |/     |
-    \------/
-```
+![Checkpoint: ring slid to drape point, cord bunched with slack](../diagrams/puzzles/01-the-gatekeeper/checkpoint.svg)
 
 3. Pass the ring over the drape point where the cord crosses the U-bar curve
 4. The ring slides free off the cord

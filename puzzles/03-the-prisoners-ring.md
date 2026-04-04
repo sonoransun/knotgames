@@ -23,19 +23,7 @@ The frame has two rectangular windows (top and bottom), created by the crossbar.
 
 ## Setup
 
-```
-    +==============+
-    |  top window  |
-    | cord enters  |
-    | front→back   |
-    +--------------+  <-- crossbar (cord drapes over this)
-    | bottom window|
-    | cord exits   |
-    | back→front   |
-    +==============+
-
-         [RING]       <-- ring on cord, hanging in front
-```
+![Setup: rectangular frame with crossbar, cord threading through both windows, ring hanging below](../diagrams/puzzles/03-the-prisoners-ring/setup.svg)
 
 1. Cord loop goes through the **top window** from front to back
 2. Drapes over the **crossbar** from back to front
@@ -62,15 +50,7 @@ A linking number of zero means the curves are **not linked** — they can be sep
 
 To compute the linking number, orient the cord loop (pick a direction of travel) and orient the crossbar (pick left-to-right). At each crossing, determine the sign:
 
-```
-    Crossing 1 (top window):        Crossing 2 (bottom window):
-
-    cord →  /                        cord →  \
-           / ← crossbar                       \ ← crossbar
-          ↗                                    ↘
-
-    Right-hand rule: +1              Right-hand rule: -1
-```
+![Crossing signs: +1 at top window, −1 at bottom window, linking number = 0](../diagrams/puzzles/03-the-prisoners-ring/crossing-signs.svg)
 
 **Linking number** = (+1) + (-1) = **0**
 
@@ -86,18 +66,7 @@ A linking number of zero is necessary (though not always sufficient) for separat
 2. Create slack in the cord by bunching it toward the frame
 3. **This is the key move:** Gather the cord slack on one side (say, the left). Pull a **bight** (a U-shaped fold in the cord, created by doubling it back on itself without pulling the ends through) of cord from below the crossbar, lift it UP and OVER the LEFT end of the crossbar. The bight must clear the end of the crossbar — pass it from the bottom window side, over the tip, and into the top window side. The 400mm cord provides ample slack for this.
 
-```
-Key move detail (left end of crossbar):
-
-    +======= crossbar ========+
-    |                          |
-    |   bight lifts            |
-    |   ↑ over end             |
-    ~~~~↑                      |
-    ~~~~↑  ← cord bight        |
-    |                          |
-    +==========================+
-```
+![Key move: bight of cord lifts up and over the end of the crossbar](../diagrams/puzzles/03-the-prisoners-ring/key-move.svg)
 
 4. The cord lifts free from the crossbar entirely
 5. The cord now hangs as a simple loop through one window (or draped over the frame)

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 350">
+  <title>Borromean Rings</title>
+  <desc>Classic Borromean rings: three interlocked rings (A red, B blue, C gold) arranged in a triangular pattern. The crossing convention is cyclic: A over B, B over C, C over A. Removing any single ring causes the other two to separate.</desc>
+
+  <rect width="400" height="350" fill="#fafafa"/>
+
+  <text x="200" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Borromean Rings</text>
+
+  <!--
+    Three elliptical rings in a triangular arrangement:
+    Ring A (red #c44): top, slightly tilted
+    Ring B (blue #44c): bottom-left
+    Ring C (gold #ca4): bottom-right
+    Crossing rule: A over B, B over C, C over A
+  -->
+
+  <!-- Ring centers and geometry:
+    A center: (200, 110), horizontal ellipse, rx=70 ry=40
+    B center: (155, 175), tilted ~60deg, rx=70 ry=40
+    C center: (245, 175), tilted ~-60deg, rx=70 ry=40
+  -->
+
+  <!-- Step 1: Draw all three rings as complete ellipses -->
+  <!-- Ring C (gold) - bottom-right -->
+  <ellipse cx="245" cy="175" rx="70" ry="35" fill="none" stroke="#ca4" stroke-width="2" transform="rotate(-30, 245, 175)"/>
+
+  <!-- Ring B (blue) - bottom-left -->
+  <ellipse cx="155" cy="175" rx="70" ry="35" fill="none" stroke="#44c" stroke-width="2" transform="rotate(30, 155, 175)"/>
+
+  <!-- Ring A (red) - top -->
+  <ellipse cx="200" cy="120" rx="70" ry="35" fill="none" stroke="#c44" stroke-width="2"/>
+
+  <!-- Step 2: White gaps for under-crossings, then redraw over-crossings -->
+
+  <!-- Crossing 1: A over B (top-left area, ~170,140) -->
+  <!-- Gap on B where A passes over -->
+  <line x1="172" y1="138" x2="180" y2="145" stroke="#fafafa" stroke-width="9" stroke-linecap="round"/>
+  <!-- Redraw A over this gap -->
+  <path d="M 165,137 C 170,138 178,140 185,140" fill="none" stroke="#c44" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Crossing 2: A over B (lower area, ~155,152) -->
+  <!-- This is the second intersection of A and B -->
+  <line x1="150" y1="148" x2="158" y2="156" stroke="#fafafa" stroke-width="9" stroke-linecap="round"/>
+  <!-- Redraw A over -->
+  <path d="M 142,147 C 148,150 155,152 162,153" fill="none" stroke="#c44" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Crossing 3: B over C (bottom area, ~200,195) -->
+  <!-- Gap on C where B passes over -->
+  <line x1="193" y1="193" x2="200" y2="200" stroke="#fafafa" stroke-width="9" stroke-linecap="round"/>
+  <!-- Redraw B over this gap -->
+  <path d="M 186,190 C 192,194 198,198 205,200" fill="none" stroke="#44c" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Crossing 4: B over C (upper intersection, ~195,167) -->
+  <line x1="192" y1="162" x2="200" y2="170" stroke="#fafafa" stroke-width="9" stroke-linecap="round"/>
+  <!-- Redraw B over -->
+  <path d="M 185,158 C 190,162 196,166 203,170" fill="none" stroke="#44c" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Crossing 5: C over A (top-right area, ~230,140) -->
+  <!-- Gap on A where C passes over -->
+  <line x1="224" y1="138" x2="232" y2="145" stroke="#fafafa" stroke-width="9" stroke-linecap="round"/>
+  <!-- Redraw C over this gap -->
+  <path d="M 218,135 C 224,138 230,142 236,147" fill="none" stroke="#ca4" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Crossing 6: C over A (second intersection, ~245,152) -->
+  <line x1="240" y1="147" x2="248" y2="155" stroke="#fafafa" stroke-width="9" stroke-linecap="round"/>
+  <!-- Redraw C over -->
+  <path d="M 234,143 C 240,148 246,152 253,155" fill="none" stroke="#ca4" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Ring labels -->
+  <text x="200" y="93" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#c44" font-weight="bold">A</text>
+  <text x="110" y="182" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#44c" font-weight="bold">B</text>
+  <text x="290" y="182" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#ca4" font-weight="bold">C</text>
+
+  <!-- Annotation text -->
+  <text x="200" y="260" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">A over B, B over C, C over A</text>
+  <text x="200" y="278" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">Remove any one: the other two separate</text>
+</svg>

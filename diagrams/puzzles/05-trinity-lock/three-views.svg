@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250">
+  <title>Trinity Lock -- Three Orthogonal Views</title>
+  <desc>Front, top, and side views of the Borromean configuration showing how three ovals interlock with cyclic over-under crossings.</desc>
+
+  <rect width="600" height="250" fill="#fafafa"/>
+
+  <!-- ============================================================ -->
+  <!-- FRONT VIEW (left third, centered at x=100)                   -->
+  <!-- Red oval appears as a rectangle/frame (front-facing).        -->
+  <!-- Blue oval crosses horizontally through it.                   -->
+  <!-- Yellow oval mostly hidden behind the frame.                  -->
+  <!-- ============================================================ -->
+  <g id="front-view">
+    <!-- Red frame (front-facing oval seen head-on = rectangle) -->
+    <rect x="55" y="45" width="90" height="130" rx="6" ry="6"
+          fill="none" stroke="#c44" stroke-width="2"/>
+
+    <!-- Blue oval crossing horizontally through the red frame -->
+    <!-- Under segment: enters left side of frame -->
+    <line x1="20" y1="110" x2="53" y2="110"
+          stroke="#44c" stroke-width="2"/>
+    <!-- White gap where Blue goes under Red left edge -->
+    <line x1="52" y1="110" x2="58" y2="110"
+          stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <!-- Red left edge redrawn over the gap -->
+    <line x1="55" y1="103" x2="55" y2="117"
+          stroke="#c44" stroke-width="2"/>
+    <!-- Blue inside the frame -->
+    <line x1="57" y1="110" x2="143" y2="110"
+          stroke="#44c" stroke-width="2"/>
+    <!-- Blue exits right: Red over Blue at right edge -->
+    <line x1="142" y1="110" x2="148" y2="110"
+          stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <line x1="145" y1="103" x2="145" y2="117"
+          stroke="#c44" stroke-width="2"/>
+    <!-- Blue continues right -->
+    <line x1="147" y1="110" x2="180" y2="110"
+          stroke="#44c" stroke-width="2"/>
+
+    <!-- Yellow oval hint: small arc visible at bottom, going under Blue -->
+    <path d="M80,170 Q100,190 120,170"
+          fill="none" stroke="#ca4" stroke-width="2"/>
+    <!-- Yellow goes under the red frame bottom edge: white gap -->
+    <line x1="78" y1="173" x2="86" y2="173"
+          stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <line x1="72" y1="175" x2="90" y2="175"
+          stroke="#c44" stroke-width="0.8" opacity="0.5"/>
+
+    <!-- Label -->
+    <text x="100" y="210" text-anchor="middle"
+          font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">
+      Front view
+    </text>
+    <text x="100" y="226" text-anchor="middle"
+          font-family="system-ui, sans-serif" font-size="10" fill="#999">
+      Red OVER Blue
+    </text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- TOP VIEW (center third, centered at x=300)                   -->
+  <!-- Looking down: Blue vertical, Red horizontal, Yellow angled.  -->
+  <!-- ============================================================ -->
+  <g id="top-view">
+    <!-- Red oval: horizontal -->
+    <ellipse cx="300" cy="110" rx="80" ry="30"
+             fill="none" stroke="#c44" stroke-width="2"/>
+
+    <!-- Blue oval: vertical -->
+    <ellipse cx="300" cy="110" rx="30" ry="80"
+             fill="none" stroke="#44c" stroke-width="2"/>
+
+    <!-- Crossing: Red over Blue at top intersection (~300,42) -->
+    <!-- White gap on Blue (under) -->
+    <line x1="296" y1="34" x2="304" y2="34"
+          stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <!-- Red over -->
+    <line x1="284" y1="34" x2="316" y2="34"
+          stroke="#c44" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Crossing: Blue over Yellow at right intersection -->
+    <!-- Yellow oval: angled -->
+    <ellipse cx="300" cy="110" rx="75" ry="28"
+             transform="rotate(-50,300,110)"
+             fill="none" stroke="#ca4" stroke-width="2"/>
+
+    <!-- Blue over Yellow at bottom (~300,188) -->
+    <line x1="296" y1="184" x2="304" y2="188"
+          stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <line x1="292" y1="186" x2="308" y2="186"
+          stroke="#44c" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Yellow over Red at left (~235,108) -->
+    <line x1="230" y1="104" x2="240" y2="116"
+          stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <line x1="228" y1="112" x2="242" y2="106"
+          stroke="#ca4" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Label -->
+    <text x="300" y="210" text-anchor="middle"
+          font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">
+      Top view
+    </text>
+    <text x="300" y="226" text-anchor="middle"
+          font-family="system-ui, sans-serif" font-size="10" fill="#999">
+      Blue OVER Yellow
+    </text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- SIDE VIEW (right third, centered at x=500)                   -->
+  <!-- Looking from the side: Yellow appears as frame, Red crosses. -->
+  <!-- ============================================================ -->
+  <g id="side-view">
+    <!-- Yellow frame (side-facing oval seen edge-on = rectangle) -->
+    <rect x="458" y="45" width="84" height="130" rx="6" ry="6"
+          fill="none" stroke="#ca4" stroke-width="2"/>
+
+    <!-- Red oval crossing vertically through yellow frame -->
+    <!-- Red enters top -->
+    <line x1="500" y1="15" x2="500" y2="43"
+          stroke="#c44" stroke-width="2"/>
+    <!-- White gap at top edge: C (Yellow) over A (Red) -->
+    <line x1="500" y1="42" x2="500" y2="48"
+          stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <!-- Yellow top edge redrawn -->
+    <line x1="493" y1="45" x2="507" y2="45"
+          stroke="#ca4" stroke-width="2"/>
+    <!-- Red inside frame -->
+    <line x1="500" y1="47" x2="500" y2="173"
+          stroke="#c44" stroke-width="2"/>
+    <!-- White gap at bottom edge -->
+    <line x1="500" y1="172" x2="500" y2="178"
+          stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <!-- Yellow bottom edge redrawn -->
+    <line x1="493" y1="175" x2="507" y2="175"
+          stroke="#ca4" stroke-width="2"/>
+    <!-- Red continues below -->
+    <line x1="500" y1="177" x2="500" y2="195"
+          stroke="#c44" stroke-width="2"/>
+
+    <!-- Blue hint: small arc at left side -->
+    <path d="M448,90 Q438,110 448,130"
+          fill="none" stroke="#44c" stroke-width="2"/>
+
+    <!-- Label -->
+    <text x="500" y="210" text-anchor="middle"
+          font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">
+      Side view
+    </text>
+    <text x="500" y="226" text-anchor="middle"
+          font-family="system-ui, sans-serif" font-size="10" fill="#999">
+      Yellow OVER Red
+    </text>
+  </g>
+
+  <!-- Main title -->
+  <text x="300" y="18" text-anchor="middle"
+        font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">
+    Borromean Configuration -- Three Orthogonal Views
+  </text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 300">
+  <title>Shepherd's Yoke - Setup</title>
+  <desc>A rectangular paddle with a circular hole in the center. A cord loop passes through the hole and hangs below the paddle.</desc>
+
+  <rect width="350" height="300" fill="#fafafa"/>
+
+  <!-- Paddle body -->
+  <rect x="75" y="60" width="200" height="100" rx="4" ry="4"
+        fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Hole in center -->
+  <circle cx="175" cy="110" r="12" fill="#fafafa" stroke="#333" stroke-width="2"/>
+
+  <!-- Labels: paddle edges -->
+  <text x="175" y="50" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666">paddle (top edge)</text>
+  <text x="175" y="180" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666">paddle (bottom edge)</text>
+  <text x="65" y="115" text-anchor="end" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666">short edge</text>
+  <text x="285" y="115" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666">short edge</text>
+
+  <!-- Hole label -->
+  <line x1="190" y1="100" x2="220" y2="82" stroke="#999" stroke-width="1"/>
+  <text x="222" y="80" font-family="system-ui, sans-serif"
+        font-size="10" fill="#999">hole (20mm)</text>
+
+  <!-- Cord loop: dashed closed path through the hole, hanging below -->
+  <!-- Cord enters hole from top, emerges bottom, loops below, comes back -->
+  <path d="M 170,98 L 170,60 Q 170,45 160,45 Q 140,45 140,60 L 140,160
+           Q 140,250 175,250 Q 210,250 210,160
+           L 210,60 Q 210,45 190,45 Q 180,45 180,60 L 180,98"
+        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Cord loop label -->
+  <text x="175" y="270" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#999">cord loop</text>
+</svg>

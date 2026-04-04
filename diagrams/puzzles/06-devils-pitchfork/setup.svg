@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 300">
+  <title>Devil's Pitchfork -- Setup</title>
+  <desc>A three-pronged fork with ball-stops. Left and right prongs are 100mm, center prong is 80mm (shorter). A ring sits on the left prong with a cord attached to the center prong base.</desc>
+
+  <rect width="350" height="300" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="175" y="20" text-anchor="middle"
+        font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">
+    Devil's Pitchfork -- Setup
+  </text>
+
+  <!--
+    Layout:
+      Base bar at y=250
+      Left prong at x=100, top at y=80  (170px tall ~ 100mm)
+      Center prong at x=175, top at y=114 (136px tall ~ 80mm)
+      Right prong at x=250, top at y=80  (170px tall ~ 100mm)
+      Ball-stops: filled circles at prong tops
+      Ring on left prong at ~y=160
+      Cord (dashed) from ring down to center prong base
+  -->
+
+  <!-- Base horizontal bar -->
+  <line x1="80" y1="250" x2="270" y2="250"
+        stroke="#333" stroke-width="2"/>
+
+  <!-- Left prong (100mm) -->
+  <line x1="100" y1="250" x2="100" y2="80"
+        stroke="#333" stroke-width="2"/>
+  <!-- Left ball-stop -->
+  <circle cx="100" cy="74" r="6" fill="#333"/>
+
+  <!-- Center prong (80mm, shorter) -->
+  <line x1="175" y1="250" x2="175" y2="114"
+        stroke="#333" stroke-width="2"/>
+  <!-- Center ball-stop (slightly smaller) -->
+  <circle cx="175" cy="108" r="5" fill="#333"/>
+
+  <!-- Right prong (100mm) -->
+  <line x1="250" y1="250" x2="250" y2="80"
+        stroke="#333" stroke-width="2"/>
+  <!-- Right ball-stop -->
+  <circle cx="250" cy="74" r="6" fill="#333"/>
+
+  <!-- Ring on the left prong -->
+  <circle cx="100" cy="170" r="12"
+          fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Cord (dashed) from ring down to center prong base -->
+  <path d="M112,170 Q140,220 175,250"
+        fill="none" stroke="#333" stroke-width="2"
+        stroke-dasharray="5,3"/>
+
+  <!-- === LABELS === -->
+
+  <!-- Ball-stop symbol explanation -->
+  <text x="200" y="106" font-family="system-ui, sans-serif" font-size="10" fill="#666">
+    o
+  </text>
+  <line x1="181" y1="108" x2="196" y2="106"
+        stroke="#999" stroke-width="0.5"/>
+
+  <text x="14" y="286" font-family="system-ui, sans-serif" font-size="10" fill="#666">
+    O = 8mm ball-stop
+  </text>
+
+  <!-- Left prong height label -->
+  <line x1="72" y1="80" x2="72" y2="250"
+        stroke="#999" stroke-width="0.5"/>
+  <line x1="68" y1="80" x2="76" y2="80"
+        stroke="#999" stroke-width="0.5"/>
+  <line x1="68" y1="250" x2="76" y2="250"
+        stroke="#999" stroke-width="0.5"/>
+  <text x="62" y="170" text-anchor="middle"
+        font-family="system-ui, sans-serif" font-size="10" fill="#666"
+        transform="rotate(-90,62,170)">
+    Left: 100mm
+  </text>
+
+  <!-- Center prong height label -->
+  <text x="175" y="270" text-anchor="middle"
+        font-family="system-ui, sans-serif" font-size="10" fill="#666">
+    Center: 80mm
+  </text>
+
+  <!-- Right prong height label -->
+  <line x1="278" y1="80" x2="278" y2="250"
+        stroke="#999" stroke-width="0.5"/>
+  <line x1="274" y1="80" x2="282" y2="80"
+        stroke="#999" stroke-width="0.5"/>
+  <line x1="274" y1="250" x2="282" y2="250"
+        stroke="#999" stroke-width="0.5"/>
+  <text x="288" y="170" text-anchor="middle"
+        font-family="system-ui, sans-serif" font-size="10" fill="#666"
+        transform="rotate(90,288,170)">
+    Right: 100mm
+  </text>
+
+  <!-- Ring label -->
+  <line x1="113" y1="166" x2="135" y2="150"
+        stroke="#999" stroke-width="0.5"/>
+  <text x="137" y="148" font-family="system-ui, sans-serif" font-size="10" fill="#666">
+    RING on left prong
+  </text>
+
+  <!-- Cord attachment label -->
+  <line x1="175" y1="250" x2="210" y2="240"
+        stroke="#999" stroke-width="0.5"/>
+  <!-- Arrowhead -->
+  <polygon points="175,250 181,248 179,254" fill="#999"/>
+  <text x="212" y="238" font-family="system-ui, sans-serif" font-size="10" fill="#666">
+    cord attached here
+  </text>
+</svg>

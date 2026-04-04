@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350">
+  <title>Reidemeister Moves</title>
+  <desc>The three Reidemeister moves that generate all equivalences between knot diagrams. Type I adds/removes a twist, Type II slides one strand over another, and Type III slides a strand past a crossing.</desc>
+
+  <rect width="500" height="350" fill="#fafafa"/>
+
+  <!-- ===== TYPE I: twist/untwist ===== -->
+  <text x="250" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Type I (twist/untwist): Add or remove a twist</text>
+
+  <!-- Left: strand with a loop/twist -->
+  <g transform="translate(120, 35)">
+    <!-- Strand going up, looping, coming back down -->
+    <path d="M 0,70 C 0,40 0,20 20,15 C 40,10 45,25 35,40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <!-- White gap at crossing (under strand) -->
+    <line x1="15" y1="38" x2="22" y2="45" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <!-- Over strand continuing down -->
+    <path d="M 35,40 C 25,55 15,55 10,45" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 10,45 C 5,35 0,40 0,70" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <!-- Redraw the over strand at crossing -->
+    <path d="M 0,70 C 0,40 0,20 20,15" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Arrow -->
+  <g transform="translate(210, 70)">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#999" stroke-width="1.5"/>
+    <polygon points="30,-4 38,0 30,4" fill="#999"/>
+    <line x1="70" y1="0" x2="100" y2="0" stroke="#999" stroke-width="1.5"/>
+    <polygon points="62,-4 70,0 62,4" fill="#999" transform="rotate(180, 66, 0)"/>
+  </g>
+
+  <!-- Right: simple straight strand -->
+  <g transform="translate(330, 35)">
+    <line x1="0" y1="0" x2="0" y2="70" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- ===== TYPE II: poke/unpoke ===== -->
+  <text x="250" y="142" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Type II (poke/unpoke): Slide one strand over another</text>
+
+  <!-- Left: two parallel strands (no crossing) -->
+  <g transform="translate(95, 155)">
+    <line x1="0" y1="0" x2="60" y2="0" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="25" x2="60" y2="25" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Arrow (bidirectional) -->
+  <g transform="translate(210, 168)">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#999" stroke-width="1.5"/>
+    <polygon points="30,-4 38,0 30,4" fill="#999"/>
+    <line x1="70" y1="0" x2="100" y2="0" stroke="#999" stroke-width="1.5"/>
+    <polygon points="62,-4 70,0 62,4" fill="#999" transform="rotate(180, 66, 0)"/>
+  </g>
+
+  <!-- Right: two strands crossing each other twice -->
+  <g transform="translate(325, 155)">
+    <!-- Top strand goes: straight, dips under, comes back -->
+    <!-- Bottom strand goes: straight, arcs over, comes back -->
+    <!-- Strand A (top) -->
+    <path d="M 0,0 C 15,0 20,10 25,15" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <!-- White gap at crossing 1 (strand A goes under) -->
+    <line x1="23" y1="13" x2="28" y2="18" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <path d="M 25,15 C 30,20 35,25 35,12" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 35,12 C 35,0 45,0 60,0" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Strand B (bottom) - the over strand at crossing 1 -->
+    <path d="M 0,25 C 15,25 20,18 25,12" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 25,12 C 30,6 35,5 35,15" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- White gap at crossing 2 (strand B goes under) -->
+    <line x1="33" y1="13" x2="38" y2="8" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <!-- Redraw over strand at crossing 2 -->
+    <path d="M 35,12 C 35,0 45,0 60,0" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+
+    <path d="M 35,15 C 35,25 45,25 60,25" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- ===== TYPE III: slide ===== -->
+  <text x="250" y="255" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Type III (slide): Slide a strand past a crossing</text>
+
+  <!-- Left: strand crossing over a crossing point (strand goes left of crossing) -->
+  <g transform="translate(80, 268)">
+    <!-- Two strands form an X crossing -->
+    <line x1="0" y1="0" x2="55" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <!-- White gap for under strand -->
+    <line x1="26" y1="26" x2="30" y2="30" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <line x1="55" y1="0" x2="0" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <!-- Third strand passing to the left of the crossing -->
+    <path d="M 5,55 C 10,30 15,15 40,5" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <!-- White gaps where third strand crosses -->
+    <line x1="13" y1="30" x2="17" y2="25" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <!-- Redraw over segments of the X -->
+    <line x1="10" y1="45" x2="22" y2="33" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="15" y2="15" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Arrow (bidirectional) -->
+  <g transform="translate(210, 293)">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#999" stroke-width="1.5"/>
+    <polygon points="30,-4 38,0 30,4" fill="#999"/>
+    <line x1="70" y1="0" x2="100" y2="0" stroke="#999" stroke-width="1.5"/>
+    <polygon points="62,-4 70,0 62,4" fill="#999" transform="rotate(180, 66, 0)"/>
+  </g>
+
+  <!-- Right: strand has slid to the other side of the crossing -->
+  <g transform="translate(335, 268)">
+    <!-- Same X crossing -->
+    <line x1="0" y1="0" x2="55" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <!-- White gap for under strand -->
+    <line x1="26" y1="26" x2="30" y2="30" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <line x1="55" y1="0" x2="0" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <!-- Third strand now on the right side -->
+    <path d="M 15,5 C 40,15 48,30 50,55" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <!-- White gaps where third strand crosses -->
+    <line x1="40" y1="25" x2="44" y2="30" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <!-- Redraw over segments of the X -->
+    <line x1="33" y1="22" x2="45" y2="10" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <line x1="40" y1="40" x2="55" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

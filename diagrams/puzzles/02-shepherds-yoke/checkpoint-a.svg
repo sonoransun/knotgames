@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 300">
+  <title>Shepherd's Yoke - Checkpoint A</title>
+  <desc>The paddle with a bight of cord pushed through the hole, emerging on the back side and extending below.</desc>
+
+  <rect width="350" height="300" fill="#fafafa"/>
+
+  <!-- Paddle body -->
+  <rect x="75" y="60" width="200" height="100" rx="4" ry="4"
+        fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Hole in center -->
+  <circle cx="175" cy="110" r="12" fill="#fafafa" stroke="#333" stroke-width="2"/>
+
+  <!-- Cord: two strands running over top of paddle to hole -->
+  <path d="M 165,98 L 165,40 Q 165,25 155,25 Q 140,25 140,40 L 140,160
+           Q 140,200 150,200"
+        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <path d="M 185,98 L 185,40 Q 185,25 195,25 Q 210,25 210,40 L 210,160
+           Q 210,200 200,200"
+        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Bight emerging on back side (below hole, shown as dashed U-shape below paddle) -->
+  <path d="M 165,122 Q 165,160 150,180 Q 140,195 155,210
+           Q 175,230 195,210 Q 210,195 200,180 Q 185,160 185,122"
+        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Back-side shading hint (light gray fill behind bight) -->
+  <rect x="130" y="160" width="90" height="80" rx="3" ry="3"
+        fill="none" stroke="#999" stroke-width="0.5" stroke-dasharray="2,2"/>
+
+  <!-- Annotation: bight -->
+  <line x1="210" y1="200" x2="240" y2="210" stroke="#999" stroke-width="1"/>
+  <text x="243" y="214" font-family="system-ui, sans-serif"
+        font-size="10" fill="#999">bight emerges</text>
+  <text x="243" y="226" font-family="system-ui, sans-serif"
+        font-size="10" fill="#999">on back side</text>
+
+  <!-- Cord bottom connection -->
+  <path d="M 150,200 Q 175,220 200,200"
+        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+</svg>

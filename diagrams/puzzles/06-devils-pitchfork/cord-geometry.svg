@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 280">
+  <title>Devil's Pitchfork -- Cord Geometry (Before and After)</title>
+  <desc>Side-by-side comparison showing how looping the cord over the center prong's ball-stop changes the effective reach of the ring, enabling it to reach the right prong.</desc>
+
+  <rect width="550" height="280" fill="#fafafa"/>
+
+  <!-- Divider line -->
+  <line x1="275" y1="30" x2="275" y2="260"
+        stroke="#999" stroke-width="0.5" stroke-dasharray="4,4"/>
+
+  <!-- ============================================================ -->
+  <!-- LEFT PANEL: BEFORE (cord straight)                           -->
+  <!-- Centered at x=137                                            -->
+  <!-- ============================================================ -->
+  <g id="before">
+    <!-- Panel title -->
+    <text x="137" y="22" text-anchor="middle"
+          font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">
+      BEFORE (cord straight)
+    </text>
+
+    <!-- Base bar -->
+    <line x1="42" y1="230" x2="232" y2="230"
+          stroke="#333" stroke-width="2"/>
+
+    <!-- Left prong (100mm) -->
+    <line x1="72" y1="230" x2="72" y2="70"
+          stroke="#333" stroke-width="2"/>
+    <circle cx="72" cy="64" r="5" fill="#333"/>
+
+    <!-- Center prong (80mm, shorter) -->
+    <line x1="137" y1="230" x2="137" y2="102"
+          stroke="#333" stroke-width="2"/>
+    <circle cx="137" cy="96" r="4.5" fill="#333"/>
+
+    <!-- Right prong (100mm) -->
+    <line x1="202" y1="230" x2="202" y2="70"
+          stroke="#333" stroke-width="2"/>
+    <circle cx="202" cy="64" r="5" fill="#333"/>
+
+    <!-- Ring on left prong -->
+    <circle cx="72" cy="155" r="10"
+            fill="none" stroke="#333" stroke-width="2"/>
+
+    <!-- Cord: straight from ring down to center prong base -->
+    <path d="M82,158 Q110,200 137,230"
+          fill="none" stroke="#333" stroke-width="2"
+          stroke-dasharray="5,3"/>
+
+    <!-- Arrow showing ring "can't reach" right side -->
+    <!-- Dashed arc from ring area toward right, with X at end -->
+    <path d="M84,150 L155,140"
+          fill="none" stroke="#c44" stroke-width="1.5"
+          stroke-dasharray="3,3"/>
+    <!-- X mark -->
+    <line x1="152" y1="136" x2="160" y2="144" stroke="#c44" stroke-width="2"/>
+    <line x1="160" y1="136" x2="152" y2="144" stroke="#c44" stroke-width="2"/>
+    <text x="164" y="144" font-family="system-ui, sans-serif" font-size="9" fill="#c44">
+      can't reach
+    </text>
+
+    <!-- Height labels -->
+    <text x="72" y="248" text-anchor="middle"
+          font-family="system-ui, sans-serif" font-size="9" fill="#666">100</text>
+    <text x="137" y="248" text-anchor="middle"
+          font-family="system-ui, sans-serif" font-size="9" fill="#666">80</text>
+    <text x="202" y="248" text-anchor="middle"
+          font-family="system-ui, sans-serif" font-size="9" fill="#666">100</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- RIGHT PANEL: AFTER (cord looped)                             -->
+  <!-- Centered at x=412                                            -->
+  <!-- ============================================================ -->
+  <g id="after">
+    <!-- Panel title -->
+    <text x="412" y="22" text-anchor="middle"
+          font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">
+      AFTER (cord looped)
+    </text>
+
+    <!-- Base bar -->
+    <line x1="317" y1="230" x2="507" y2="230"
+          stroke="#333" stroke-width="2"/>
+
+    <!-- Left prong (100mm) -->
+    <line x1="347" y1="230" x2="347" y2="70"
+          stroke="#333" stroke-width="2"/>
+    <circle cx="347" cy="64" r="5" fill="#333"/>
+
+    <!-- Center prong (80mm, shorter) -->
+    <line x1="412" y1="230" x2="412" y2="102"
+          stroke="#333" stroke-width="2"/>
+    <circle cx="412" cy="96" r="4.5" fill="#333"/>
+
+    <!-- Right prong (100mm) -->
+    <line x1="477" y1="230" x2="477" y2="70"
+          stroke="#333" stroke-width="2"/>
+    <circle cx="477" cy="64" r="5" fill="#333"/>
+
+    <!-- Ring on left prong -->
+    <circle cx="347" cy="155" r="10"
+            fill="none" stroke="#333" stroke-width="2"/>
+
+    <!-- Cord: from ring UP to center prong, OVER the ball-stop, then back down -->
+    <!-- Segment 1: ring to just below center ball-stop -->
+    <path d="M357,150 Q385,120 408,100"
+          fill="none" stroke="#333" stroke-width="2"
+          stroke-dasharray="5,3"/>
+
+    <!-- White gap on center prong where cord passes over ball-stop -->
+    <line x1="408" y1="92" x2="416" y2="92"
+          stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- Segment 2: loop over the ball-stop -->
+    <path d="M408,100 Q412,78 416,100"
+          fill="none" stroke="#333" stroke-width="2"
+          stroke-dasharray="5,3"/>
+
+    <!-- Redraw ball-stop under the cord loop (cord is OVER it) -->
+    <!-- Ball-stop already drawn, cord goes over: we just show the arc -->
+
+    <!-- Segment 3: back down to base area -->
+    <path d="M416,100 Q430,180 412,230"
+          fill="none" stroke="#333" stroke-width="2"
+          stroke-dasharray="5,3"/>
+
+    <!-- Arrow showing ring "can reach" right side -->
+    <path d="M358,150 Q410,130 470,140"
+          fill="none" stroke="#4a4" stroke-width="1.5"/>
+    <!-- Arrowhead -->
+    <polygon points="470,140 463,135 463,145" fill="#4a4"/>
+    <text x="472" y="138" font-family="system-ui, sans-serif" font-size="9" fill="#4a4">
+      can reach!
+    </text>
+
+    <!-- Label: "cord loops over center" with pointer -->
+    <line x1="412" y1="82" x2="448" y2="55"
+          stroke="#999" stroke-width="0.5"/>
+    <text x="450" y="52" font-family="system-ui, sans-serif" font-size="9" fill="#666">
+      cord loops
+    </text>
+    <text x="450" y="63" font-family="system-ui, sans-serif" font-size="9" fill="#666">
+      over center
+    </text>
+
+    <!-- Height labels -->
+    <text x="347" y="248" text-anchor="middle"
+          font-family="system-ui, sans-serif" font-size="9" fill="#666">100</text>
+    <text x="412" y="248" text-anchor="middle"
+          font-family="system-ui, sans-serif" font-size="9" fill="#666">80</text>
+    <text x="477" y="248" text-anchor="middle"
+          font-family="system-ui, sans-serif" font-size="9" fill="#666">100</text>
+  </g>
+
+  <!-- Bottom annotation -->
+  <text x="275" y="272" text-anchor="middle"
+        font-family="system-ui, sans-serif" font-size="10" fill="#999">
+    Looping the cord over the shorter center prong gains enough slack to move the ring
+  </text>
+</svg>

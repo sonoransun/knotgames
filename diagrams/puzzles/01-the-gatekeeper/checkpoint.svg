@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <title>The Gatekeeper - Checkpoint</title>
+  <desc>Intermediate state: the U-bar with the cord partially bunched near one tip. The ring has been slid to the drape point, with slack bunched up on one side.</desc>
+
+  <rect width="300" height="300" fill="#fafafa"/>
+
+  <!-- U-bar -->
+  <path d="M 100,40 L 100,190 Q 100,240 150,240 Q 200,240 200,190 L 200,40"
+        fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Tip labels -->
+  <text x="100" y="30" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="12" fill="#666" font-weight="bold">L</text>
+  <text x="200" y="30" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="12" fill="#666" font-weight="bold">R</text>
+
+  <!-- Cord: bunched/slack on the left side near L tip -->
+  <!-- From L tip down with bunched loops -->
+  <path d="M 100,40 Q 95,55 105,65 Q 115,75 95,85 Q 80,95 100,105"
+        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Ring slid to drape point near L arm -->
+  <circle cx="110" cy="120" r="16" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Cord continues from ring down around curve and up to R -->
+  <path d="M 110,136 Q 120,180 150,230 Q 155,238 160,230 Q 180,170 200,40"
+        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Annotation: slack -->
+  <path d="M 70,70 L 88,70" fill="none" stroke="#999" stroke-width="1"/>
+  <text x="58" y="74" text-anchor="end" font-family="system-ui, sans-serif"
+        font-size="10" fill="#999">slack</text>
+
+  <!-- Annotation: ring position -->
+  <line x1="135" y1="115" x2="155" y2="115" stroke="#999" stroke-width="1"/>
+  <text x="158" y="119" font-family="system-ui, sans-serif"
+        font-size="10" fill="#999">ring at drape point</text>
+</svg>

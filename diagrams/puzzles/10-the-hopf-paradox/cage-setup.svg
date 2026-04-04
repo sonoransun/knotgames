@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 350">
+  <title>The Hopf Paradox - Cage Setup</title>
+  <desc>Front view of the wire cage: two hoops at 90 degrees (equatorial as horizontal ellipse, polar as vertical circle) intersecting at north and south poles. A ring sits inside around the equatorial hoop, with a dashed cord from the ring through a window to an external handle.</desc>
+
+  <rect width="350" height="350" fill="#fafafa"/>
+
+  <!-- Title area -->
+  <text x="175" y="18" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">The Hopf Paradox - Cage Front View</text>
+
+  <!-- Polar hoop: vertical circle (front view shows as a full circle) -->
+  <circle cx="175" cy="175" r="100" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Equatorial hoop: horizontal, seen from front as an ellipse -->
+  <ellipse cx="175" cy="175" rx="100" ry="30" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- North pole (top intersection) -->
+  <circle cx="175" cy="75" r="5" fill="#333"/>
+  <text x="175" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666" font-weight="bold">N (pole, weld)</text>
+
+  <!-- South pole (bottom intersection) -->
+  <circle cx="175" cy="275" r="5" fill="#333"/>
+  <text x="175" y="298" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666" font-weight="bold">S (pole, weld)</text>
+
+  <!-- Hoop labels -->
+  <!-- Equatorial label: on the right side of the ellipse -->
+  <text x="288" y="170" text-anchor="start" font-family="system-ui, sans-serif" font-size="10" fill="#999">equatorial</text>
+  <text x="288" y="182" text-anchor="start" font-family="system-ui, sans-serif" font-size="10" fill="#999">hoop</text>
+  <line x1="275" y1="175" x2="286" y2="175" stroke="#999" stroke-width="1" marker-end="url(#cArr)"/>
+
+  <!-- Polar label: on the upper-right of the circle -->
+  <text x="268" y="102" text-anchor="start" font-family="system-ui, sans-serif" font-size="10" fill="#999">polar</text>
+  <text x="268" y="114" text-anchor="start" font-family="system-ui, sans-serif" font-size="10" fill="#999">hoop</text>
+  <line x1="250" y1="107" x2="265" y2="107" stroke="#999" stroke-width="1" marker-end="url(#cArr)"/>
+
+  <!-- Quadrant window labels -->
+  <!-- NW: upper-left region -->
+  <text x="125" y="130" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999" font-weight="bold">NW</text>
+  <!-- NE: upper-right region -->
+  <text x="225" y="130" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999" font-weight="bold">NE</text>
+  <!-- SW: lower-left region -->
+  <text x="125" y="230" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999" font-weight="bold">SW</text>
+  <!-- SE: lower-right region -->
+  <text x="225" y="230" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999" font-weight="bold">SE</text>
+
+  <!-- Ring inside cage, sitting around the equatorial hoop -->
+  <ellipse cx="175" cy="175" rx="35" ry="14" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="175" y="163" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#666">Ring inside cage</text>
+
+  <!-- Cord from ring through NE window to external handle (dashed) -->
+  <path d="M 210,172 Q 240,150 260,120 L 310,50"
+        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Handle at end of cord -->
+  <rect x="300" y="35" width="30" height="16" rx="4" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="315" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#333">handle</text>
+
+  <!-- Cord label -->
+  <text x="280" y="78" text-anchor="start" font-family="system-ui, sans-serif" font-size="9" fill="#999">cord to handle</text>
+
+  <!-- Window annotation -->
+  <text x="175" y="320" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">4 quadrant windows: NW, NE, SE, SW</text>
+
+  <!-- Legend -->
+  <line x1="20" y1="340" x2="50" y2="340" stroke="#333" stroke-width="2"/>
+  <text x="55" y="343" font-family="system-ui, sans-serif" font-size="9" fill="#666">rigid hoops</text>
+
+  <line x1="150" y1="340" x2="180" y2="340" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="185" y="343" font-family="system-ui, sans-serif" font-size="9" fill="#666">flexible cord</text>
+
+  <defs>
+    <marker id="cArr" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <path d="M 0,0 L 6,2.5 L 0,5 Z" fill="#999"/>
+    </marker>
+  </defs>
+</svg>

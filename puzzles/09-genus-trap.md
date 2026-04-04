@@ -28,27 +28,7 @@ Tunnel A runs horizontally left-to-right at 25mm height. Tunnel B runs horizonta
 
 ## Setup
 
-```
-                FRONT
-            ____________
-           |            |
-    LEFT   |   [B]--+   |  RIGHT        View: looking down (top)
-           |        |   |
-           |   +--[A]   |               A = Tunnel A (left↔right, lower)
-           |____________|               B = Tunnel B (front↔back, higher)
-                BACK
-                                        Tunnels cross but don't intersect
-
-    Cord path (side view schematic):
-
-    Ball ~~~ [enters A from LEFT] ~~~ [exits A RIGHT] ~~~
-         ~~~ loops around outside ~~~
-         ~~~ [enters B from FRONT] ~~~ [exits B BACK] ~~~
-         ~~~ loops around outside ~~~
-         ~~~ [enters A from RIGHT] ~~~ [exits A LEFT] ~~~ Ball
-
-    Rings are on the cord between the tunnel exits, on the outside of the block.
-```
+![Top view of acrylic block with two crossing tunnels (A and B) and cord path schematic](../diagrams/puzzles/09-genus-trap/block-top-view.svg)
 
 ### Cord path in detail
 
@@ -82,19 +62,7 @@ A **handlebody** is a solid body with tunnel-handles drilled through it. The **g
 - **Genus 1:** A solid donut (torus). One tunnel. A loop going through the tunnel cannot be shrunk.
 - **Genus 2:** A solid body with two tunnels. Two independent families of non-shrinkable loops.
 
-```
-Genus 0 (ball):     Genus 1 (donut):     Genus 2 (two tunnels):
-
-    ____                ____                 ____
-   /    \              / __ \               / __ \
-  |      |            | |  | |             | |  | |
-  |      |            | |__| |             | |__| |
-   \____/              \____/              |  __  |
-                                           | |  | |
-  No tunnels           One tunnel          | |__| |
-                                            \____/
-                                           Two tunnels
-```
+![Genus 0 (no tunnels), genus 1 (one tunnel), genus 2 (two tunnels)](../diagrams/puzzles/09-genus-trap/genus-comparison.svg)
 
 The acrylic block in this puzzle — with Tunnel A (left↔right) and Tunnel B (front↔back) — is topologically a genus-2 handlebody. Each tunnel contributes one 'handle' to the topology.
 
@@ -121,13 +89,12 @@ The fundamental group of a genus-2 handlebody is the **free group on two generat
 
 The cord path in this puzzle traces the word **aba⁻¹**:
 
-```
-Step 1: Through Tunnel A left→right     = a
-Step 2: Through Tunnel B front→back      = b
-Step 3: Through Tunnel A right→left      = a⁻¹ (reverse of a)
-                                           ─────
-Full word:                                 aba⁻¹
-```
+| Step | Path | Generator |
+|------|------|-----------|
+| 1 | Through Tunnel A left→right | **a** |
+| 2 | Through Tunnel B front→back | **b** |
+| 3 | Through Tunnel A right→left | **a⁻¹** (reverse of a) |
+| | **Full word:** | **aba⁻¹** |
 
 Can this simplify to the identity (trivial loop)? Let's check:
 - **aba⁻¹**: The 'a' and 'a⁻¹' CANNOT cancel because **b** is between them. In a free group, only adjacent inverse pairs cancel. The b blocks the cancellation like a wall between them.
@@ -138,25 +105,7 @@ Can this simplify to the identity (trivial loop)? Let's check:
 
 ### Cord Path with Generators Labeled
 
-```
-                    BLOCK (top view)
-               ___________________________
-              |                           |
-    Ball ~~~→ |  ═══ Tunnel A (a) ═══    | ~~~→ continues
-    (left     |           ╳              |      outside
-     side)    |  ═══ Tunnel B (b) ═══    |      the block
-              |___________________________|
-
-    Full cord path:
-
-    Ball──→[A left→right]──→outside──→Ring 1──→[B front→back]──→
-          \___ = a ___/                       \___ = b ___/
-
-    ──→outside──→Ring 2──→[A right→left]──→Ball
-                          \___ = a⁻¹ ___/
-
-    Word in fundamental group: a · b · a⁻¹
-```
+![Cord path through tunnels with generator labels: a (Tunnel A L→R), b (Tunnel B F→B), a⁻¹ (Tunnel A R→L). Word: a·b·a⁻¹](../diagrams/puzzles/09-genus-trap/cord-path-generators.svg)
 
 What you feel in your hands: the cord is tight. There's very little slack to work with, and every inch must be managed carefully. When you pull a bight out of Tunnel B, you feel the cord resisting — it has to come from somewhere, and that somewhere is the external sections where the rings sit. The moment the bight clears the tunnel and you reroute it through Tunnel A instead, the tension changes. The region between the tunnels where the rings hang goes slack. That slack IS the algebraic cancellation — the word has simplified, and the rings can slide free.
 
@@ -191,20 +140,7 @@ This takes approximately 6-8 sequential manipulations of the cord, each requirin
 
 ## Solved State
 
-```
-                BLOCK (unchanged)
-           ___________________________
-          |                           |
-Ball ~~~~ |  ═══ Tunnel A ═══════    | ~~~~ Ball
-          |           ╳              |
-          |  ═══ Tunnel B ═══════    |
-          |___________________________|
-
-    (O) Ring 1        (O) Ring 2
-
-    Both rings free, separate from the assembly.
-    Cord remains threaded through the block (path has changed).
-```
+![Solved: both rings free, cord remains threaded through the block](../diagrams/puzzles/09-genus-trap/solved.svg)
 
 ## Common Mistakes
 

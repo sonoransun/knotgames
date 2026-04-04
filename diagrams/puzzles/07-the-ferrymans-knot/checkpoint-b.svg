@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350">
+  <title>Puzzle 7: Checkpoint B — 1 Wrap Remains</title>
+  <desc>After removing the second wrap: the post has only 1 wrap of cord around it with one crossing.</desc>
+
+  <rect width="250" height="350" fill="#fafafa"/>
+
+  <!-- Base block -->
+  <rect x="65" y="280" width="120" height="40" rx="3" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Post -->
+  <rect x="115" y="70" width="20" height="210" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Ball finial -->
+  <circle cx="125" cy="55" r="15" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Ring on post (below wrap) -->
+  <circle cx="125" cy="220" r="8" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Hook at base -->
+  <path d="M125,280 L125,290 Q125,305 115,305 Q105,305 105,295" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Cord from ring upward -->
+  <line x1="133" y1="220" x2="140" y2="190" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Single wrap (one crossing) -->
+  <!-- Under-strand gap -->
+  <path d="M110,170 Q95,155 110,140" fill="none" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+  <!-- Over-strand -->
+  <path d="M140,190 Q155,170 140,150" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Under-strand -->
+  <path d="M110,170 Q95,155 110,140" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Cord from wrap upward -->
+  <path d="M140,150 Q142,140 140,130" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="140" y1="130" x2="140" y2="110" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- === Label === -->
+  <text x="125" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">1 wrap remains</text>
+
+  <!-- Annotation -->
+  <line x1="160" y1="165" x2="185" y2="165" stroke="#999" stroke-width="1"/>
+  <text x="188" y="169" font-family="system-ui, sans-serif" font-size="10" fill="#999">1 crossing</text>
+</svg>

@@ -36,17 +36,7 @@ holes pass through it, whether a loop can be shrunk to a point.
 The standard joke is that a topologist cannot tell the difference between a
 coffee cup and a donut. Here is why that joke is precise:
 
-```
-    Coffee cup                    Donut (torus)
-
-      _____                         _______
-     /     \                       /       \
-    |  __   |  <-- handle         |  (   )  |
-    | |  |  |      is the         |   \_/   |
-    | |__|  |      single          \_______/
-    |       |      hole
-     \_____/
-```
+![Coffee cup and donut are topologically equivalent — both have exactly one hole (genus 1)](../diagrams/theory/topology-primer/coffee-cup-donut.svg)
 
 Both objects have exactly one hole — one passage through which you could
 thread a string. The cup's hole is the handle; the donut's hole is the
@@ -100,16 +90,7 @@ distinct endpoints. A piece of string with two loose ends is an open curve.
 This distinction is the single most important idea in the EXKNOTS series.
 Whether a cord forms a loop or an arc changes what is topologically possible.
 
-```
-    Closed curve (loop):          Open curve (arc):
-
-        .----.                    o----------o
-       /      \                    endpoint   endpoint
-      |        |
-       \      /
-        '----'
-      no endpoints                two endpoints
-```
+![Closed curve (loop) has no endpoints; open curve (arc) has two endpoints](../diagrams/theory/topology-primer/closed-vs-open-curve.svg)
 
 ### Why endpoints change everything
 
@@ -118,15 +99,7 @@ broken. But an open arc draped over the same post can always be slid off one
 end. The arc's free endpoints provide escape routes that a loop does not
 have.
 
-```
-    Loop around post (trapped):       Arc over post (free):
-
-         ___                               ___
-        |   |                             |   |
-    ----+   +----                    o~~~~+   +~~~~o
-        |   |       <- cannot           |   |       <- slide right
-        |___|          remove           |___|          off the end
-```
+![A loop around a post is trapped; an arc over a post can slide off](../diagrams/theory/topology-primer/loop-vs-arc-on-post.svg)
 
 ### Which puzzles use this
 
@@ -182,27 +155,7 @@ all crossing signs, divided by 2.
 Consider Puzzle 3, The Prisoner's Ring. A cord loop drapes over a crossbar,
 creating two visible crossings:
 
-```
-    Crossing 1: cord passes over crossbar       sign = +1
-    (entering from top window)
-
-           cord
-            \
-    =========\========  crossbar
-              \
-               \
-
-    Crossing 2: cord passes over crossbar       sign = -1
-    (exiting through bottom window, opposite direction)
-
-               /
-              /
-    =========/========  crossbar
-            /
-           cord
-
-    Linking number = (+1 + -1) / 2 = 0 / 2 = 0
-```
+![Crossing signs: +1 and −1 cancel, giving linking number 0](../diagrams/theory/topology-primer/crossing-signs.svg)
 
 The two crossings cancel perfectly. Despite the visual impression that the
 cord "wraps around" the crossbar, the linking number is zero. The cord and
@@ -266,18 +219,7 @@ hole you can stick your finger through.
 - Genus 1: a torus, i.e., a donut (one hole, one handle)
 - Genus 2: a two-holed torus (two holes, two handles)
 
-```
-    Genus 0 (sphere):      Genus 1 (torus):      Genus 2 (two-holed):
-
-       ____                   ________              ___________
-      /    \                 /        \            /           \
-     |      |               |  (    )  |          |  (  ) (  )  |
-     |      |               |   \__/   |          |   \/   \/   |
-      \____/                 \________/            \___________/
-
-    no holes                one hole               two holes
-    no handles              one handle             two handles
-```
+![Genus 0 (sphere, no holes), genus 1 (torus, one hole), genus 2 (two holes)](../diagrams/theory/topology-primer/genus-surfaces.svg)
 
 Think of "handles" literally: a coffee mug has one handle, so it has genus
 1. A pot with two handles on its sides has genus 2.
@@ -347,20 +289,7 @@ short edges together.
 The edge count tells the story. Compare an ordinary band (cylinder) with a
 Mobius band:
 
-```
-    Ordinary band (0 twists):          Mobius band (1 half-twist):
-
-    +============================+     +============================+
-    |  edge 1 (top)              |     |  edge 1 ----------->       |
-    |                            |     |           (the single      |
-    |                            |     |            continuous      |
-    |  edge 2 (bottom)          |     |            edge wraps      |
-    +============================+     |            around twice)   |
-                                       |  <--------- edge 1 cont.  |
-    2 edges, 2 sides                   +============================+
-
-                                       1 edge, 1 side
-```
+![Ordinary band has 2 edges and 2 sides; Möbius band has 1 edge and 1 side](../diagrams/theory/topology-primer/ordinary-vs-mobius-band.svg)
 
 The ordinary band has two separate edges (top and bottom) and two sides
 (inner and outer). A cord wedged between the two edges is trapped — it
@@ -375,20 +304,7 @@ until it escapes.
 
 ### Strip diagram: how the twist changes the boundary
 
-```
-    Step 1: Start with a strip
-
-    A +-----------------------+ B
-      |                       |
-    D +-----------------------+ C
-
-    Step 2a: Join without twist          Step 2b: Join with half-twist
-    (glue A-to-B, D-to-C)               (glue A-to-C, D-to-B)
-
-    Result: cylinder                     Result: Mobius band
-    Edges: 2 (top loop, bottom loop)     Edge: 1 (single loop, wraps twice)
-    Sides: 2 (inside, outside)           Side: 1 (only one surface)
-```
+![Strip construction: joining without twist makes a cylinder (2 edges); joining with half-twist makes a Möbius band (1 edge)](../diagrams/theory/topology-primer/strip-twist-joining.svg)
 
 ### Which puzzle uses this
 
@@ -554,31 +470,7 @@ interactions.
 
 ### Classic Borromean rings diagram
 
-```
-          .---.
-         /     \
-        /       \
-       |    A    |
-        \   / \ /
-         \ /   X
-          X   / \
-         / \ /   \
-        /   X     |
-       |   / \  B |
-        \ /   \  /
-         |     \/
-         |   .---.
-          \ /     \
-           X       |
-          / \  C  /
-         /   \   /
-        |     '-'
-         \
-          '-----'
-
-    A over B, B over C, C over A
-    Remove any one: the other two separate
-```
+![Borromean rings: A over B, B over C, C over A — remove any one and the other two separate](../diagrams/theory/topology-primer/borromean-rings.svg)
 
 In the diagram, the three rings are interlocked in a cyclic over-under
 pattern:
@@ -666,16 +558,20 @@ connected to a cord that constrains its movement. Barriers in the
 configuration space (ball-stops, cord length limits) create holes and walls
 that the state-path must navigate around.
 
-```
-    Physical space:               Configuration space:
-
-    O  <-- ball-stop              .  goal (ring on right prong)
-    |                             |
-    |                             |     <- path must wind through
-    |  ring can slide             |        non-trivial topology
-    |  up and down                |
-    |                             .  start (ring on left prong)
-    +-- base
+```mermaid
+flowchart LR
+    subgraph Physical["Physical Space"]
+        direction TB
+        BS["O ball-stop"] --- Post["| post"] --- Base["+ base"]
+        Post -.- Note1["ring slides\nup and down"]
+    end
+    subgraph Config["Configuration Space"]
+        direction TB
+        Goal(("goal\n(ring on right prong)"))
+        Path["path must wind through\nnon-trivial topology"]
+        Start(("start\n(ring on left prong)"))
+        Goal ~~~ Path ~~~ Start
+    end
 ```
 
 ### Non-trivial topology of the state space
@@ -734,22 +630,18 @@ differ by exactly one bit. The standard binary sequence 000, 001, 010, 011,
 (e.g., 011 to 100 changes all three bits). A Gray code avoids this: each
 step flips exactly one bit.
 
-```
-    Standard binary:     Gray code:
+| Step | Standard Binary | Bits Changed | Gray Code | Bits Changed |
+|------|----------------|-------------|-----------|-------------|
+| 0 | 000 | — | 000 | — |
+| 1 | 001 | 1 | 001 | 1 |
+| 2 | 010 | **2** | 011 | 1 |
+| 3 | 011 | 1 | 010 | 1 |
+| 4 | 100 | **3** | 110 | 1 |
+| 5 | 101 | 1 | 111 | 1 |
+| 6 | 110 | **2** | 101 | 1 |
+| 7 | 111 | 1 | 100 | 1 |
 
-    000                  000
-    001                  001
-    010                  011
-    011                  010
-    100                  110
-    101                  111
-    110                  101
-    111                  100
-
-    Some consecutive      Every consecutive
-    pairs differ by       pair differs by
-    multiple bits         exactly one bit
-```
+Standard binary: some consecutive pairs differ by **multiple** bits. Gray code: every consecutive pair differs by **exactly one** bit.
 
 ### Why the sequence is optimal
 
@@ -849,18 +741,7 @@ separation impossible.
   like ordinary 3D space, but globally it wraps around and closes on
   itself, just as S^2 (a 2D surface) closes on itself in 3D.
 
-```
-    S^1 (circle):        S^2 (sphere):         S^3 (3-sphere):
-
-        .---.               ____                Cannot draw in 3D!
-       /     \             /    \               But: imagine every
-      |       |           |      |              point in a solid ball,
-       \     /            |      |              with antipodal surface
-        '---'              \____/               points identified.
-
-    lives in 2D          lives in 3D            lives in 4D
-    1-dimensional        2-dimensional          3-dimensional
-```
+![S1 (circle) lives in 2D; S2 (sphere) lives in 3D; S3 (3-sphere) lives in 4D and cannot be drawn](../diagrams/theory/topology-primer/spheres-s1-s2-s3.svg)
 
 ### The Hopf map
 
@@ -901,20 +782,7 @@ the same direction (720 degrees total). Remarkably, you can now untwist the
 belt by passing it around one end — the double twist is equivalent to no
 twist at all.
 
-```
-    360-degree twist:               720-degree twist:
-
-    FIXED END                       FIXED END
-       |                               |
-       |  \                            |  \  \
-       |   |  <- twist                 |   |  |  <- double twist
-       |  /                            |  /  /
-       |                               |
-    FREE END                        FREE END
-
-    Cannot untwist                  CAN untwist!
-    (keeping ends fixed)            (by looping around)
-```
+![360° twist cannot be undone; 720° twist can be undone by looping around (the belt trick)](../diagrams/theory/topology-primer/belt-trick-360-720.svg)
 
 This is the same mathematics as the Hopf fibration: the space of 3D
 rotations has a "double cover" structure (SU(2) / SO(3)), which means a
@@ -977,17 +845,7 @@ continuously deformed into the other without cutting.
 
 ### Knots vs. links
 
-```
-    Knot (1 component):           Link (2 components):
-
-        .---.                        .---.   .---.
-       / \ / \                      / \ / \ / \ / \
-      |   X   |                    |   X   |   X   |
-       \ / \ /                      \ / \ / \ / \ /
-        '---'                        '---'   '---'
-
-    one closed curve               two closed curves
-```
+![A knot is one closed curve; a link is two or more closed curves](../diagrams/theory/topology-primer/knots-vs-links.svg)
 
 ### The unknot
 
@@ -995,19 +853,7 @@ The **unknot** is the simplest knot: a closed curve with no crossings — a
 plain circle. Any knot that can be deformed into the unknot is called
 "trivially knotted" or just "unknotted."
 
-```
-    Unknot:            Trefoil (simplest non-trivial knot):
-
-      .----.              .---.
-     /      \            / \ / \
-    |        |          |   X   |
-     \      /            \ / \ /
-      '----'              |   X
-                           \ / \
-    0 crossings             '---'
-
-                          3 crossings (minimum)
-```
+![Unknot has 0 crossings; trefoil knot has 3 crossings (minimum)](../diagrams/theory/topology-primer/unknot-vs-trefoil.svg)
 
 ### Crossing number
 
@@ -1020,28 +866,7 @@ crossing number 3. The figure-eight knot has crossing number 4.
 Any deformation of a knot in 3D can be represented by a sequence of three
 local diagram changes called **Reidemeister moves**:
 
-```
-    Type I (twist/untwist):
-
-      |          |
-      \  --->    |        Add or remove a twist
-      /          |
-      |          |
-
-
-    Type II (poke/unpoke):
-
-     | |         | |
-     | |  --->    X       Slide one strand over another
-     | |         | |
-
-
-    Type III (slide):
-
-      \  |        |  /
-       X |  --->  | X     Slide a strand past a crossing
-      /  |        |  \
-```
+![Reidemeister moves: Type I (twist/untwist), Type II (poke/unpoke), Type III (slide past crossing)](../diagrams/theory/topology-primer/reidemeister-moves.svg)
 
 If two knot diagrams represent the same knot, there is a finite sequence of
 Reidemeister moves transforming one diagram into the other. These three

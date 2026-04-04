@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220">
+  <title>Spheres: S1, S2, and S3</title>
+  <desc>Three sphere dimensions shown side by side. S1 is a circle living in 2D. S2 is a sphere surface living in 3D, shown with latitude and longitude arcs. S3 is a 3-sphere living in 4D, which cannot be drawn in 3D, shown with abstract nested structure and a question mark.</desc>
+
+  <rect width="600" height="220" fill="#fafafa"/>
+
+  <!-- ===== S1: Circle ===== -->
+  <g transform="translate(100, 85)">
+    <!-- Title -->
+    <text x="0" y="-75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">S&#xB9; (circle)</text>
+
+    <!-- Circle -->
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#333" stroke-width="2"/>
+
+    <!-- Labels -->
+    <text x="0" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">lives in 2D</text>
+    <text x="0" y="86" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">1-dimensional</text>
+  </g>
+
+  <!-- ===== S2: Sphere ===== -->
+  <g transform="translate(300, 85)">
+    <!-- Title -->
+    <text x="0" y="-75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">S&#xB2; (sphere)</text>
+
+    <!-- Outer circle -->
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#333" stroke-width="2"/>
+
+    <!-- Horizontal equator ellipse -->
+    <ellipse cx="0" cy="0" rx="50" ry="15" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="5,3"/>
+
+    <!-- Vertical meridian ellipse -->
+    <ellipse cx="0" cy="0" rx="15" ry="50" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="5,3"/>
+
+    <!-- Labels -->
+    <text x="0" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">lives in 3D</text>
+    <text x="0" y="86" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">2-dimensional</text>
+  </g>
+
+  <!-- ===== S3: 3-sphere ===== -->
+  <g transform="translate(500, 85)">
+    <!-- Title -->
+    <text x="0" y="-75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">S&#xB3; (3-sphere)</text>
+
+    <!-- Outer circle -->
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#333" stroke-width="2"/>
+
+    <!-- Abstract nested circles suggesting higher-dimensional structure -->
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="5,3" opacity="0.6"/>
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="5,3" opacity="0.4"/>
+
+    <!-- Crossing arcs to suggest complexity -->
+    <path d="M -35,0 Q 0,-30 35,0" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+    <path d="M -35,0 Q 0,30 35,0" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+    <path d="M 0,-35 Q -30,0 0,35" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+    <path d="M 0,-35 Q 30,0 0,35" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+
+    <!-- Question mark -->
+    <text x="0" y="6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#999" font-weight="bold">?</text>
+
+    <!-- Labels -->
+    <text x="0" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">lives in 4D</text>
+    <text x="0" y="86" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">3-dimensional</text>
+    <text x="0" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999" font-style="italic">Cannot draw in 3D!</text>
+  </g>
+</svg>

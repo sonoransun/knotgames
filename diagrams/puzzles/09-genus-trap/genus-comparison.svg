@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 200">
+  <title>Genus Trap - Genus Comparison</title>
+  <desc>Three shapes side by side comparing genus 0 (ball, no tunnels), genus 1 (donut, one tunnel), and genus 2 (double torus, two tunnels).</desc>
+
+  <rect width="550" height="200" fill="#fafafa"/>
+
+  <!-- Section title -->
+  <text x="275" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">Genus Comparison for Puzzle Context</text>
+
+  <!-- Genus 0: Ball / Sphere -->
+  <ellipse cx="95" cy="95" rx="55" ry="42" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Subtle shading arc -->
+  <path d="M 60,80 Q 95,65 130,80" fill="none" stroke="#999" stroke-width="1"/>
+  <text x="95" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">Genus 0</text>
+  <text x="95" y="170" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">No tunnels</text>
+
+  <!-- Genus 1: Torus / Donut -->
+  <ellipse cx="275" cy="95" rx="65" ry="42" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Hole in the middle -->
+  <ellipse cx="275" cy="95" rx="22" ry="12" fill="#fafafa" stroke="#333" stroke-width="2"/>
+  <!-- Top surface curvature hint -->
+  <path d="M 230,78 Q 275,62 320,78" fill="none" stroke="#999" stroke-width="1"/>
+  <text x="275" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">Genus 1</text>
+  <text x="275" y="170" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">One tunnel</text>
+
+  <!-- Genus 2: Double torus / Two tunnels -->
+  <!-- Outer shape: wider to accommodate two holes -->
+  <ellipse cx="455" cy="95" rx="75" ry="42" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Two holes -->
+  <ellipse cx="430" cy="95" rx="18" ry="10" fill="#fafafa" stroke="#333" stroke-width="2"/>
+  <ellipse cx="480" cy="95" rx="18" ry="10" fill="#fafafa" stroke="#333" stroke-width="2"/>
+  <!-- Top surface curvature hint -->
+  <path d="M 400,78 Q 455,60 510,78" fill="none" stroke="#999" stroke-width="1"/>
+  <!-- Saddle between holes -->
+  <path d="M 450,85 Q 455,92 460,85" fill="none" stroke="#999" stroke-width="1"/>
+  <text x="455" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">Genus 2</text>
+  <text x="455" y="170" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">Two tunnels</text>
+
+  <!-- Arrows between shapes -->
+  <path d="M 155,95 L 200,95" fill="none" stroke="#999" stroke-width="1" marker-end="url(#garr)"/>
+  <text x="178" y="88" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">+1 hole</text>
+
+  <path d="M 345,95 L 375,95" fill="none" stroke="#999" stroke-width="1" marker-end="url(#garr)"/>
+  <text x="360" y="88" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">+1 hole</text>
+
+  <!-- Fundamental group labels -->
+  <text x="95" y="188" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999" font-style="italic">&#x3C0;&#x2081; = {e}</text>
+  <text x="275" y="188" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999" font-style="italic">&#x3C0;&#x2081; = &#x2124;</text>
+  <text x="455" y="188" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999" font-style="italic">&#x3C0;&#x2081; = F&#x2082;</text>
+
+  <defs>
+    <marker id="garr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#999"/>
+    </marker>
+  </defs>
+</svg>

@@ -27,43 +27,13 @@ The ring is around the post (trapped by the finial, which is wider than the ring
 
 ## Setup
 
-```
-         ___
-        ( O )      <-- 30mm ball finial
-         | |
-     ~~~/   \~~~   <-- cord wraps with 3 crossings
-    ~~/       \~~       (trefoil-like pattern)
-   ~/    POST   \~
-    \           /
-     \_________/
-         |
-       [RING]      <-- ring around post, below wraps
-         |
-       (cord)
-         |
-       [HOOK]      <-- hook in base
-    ___________
-   |   BASE    |
-```
+![Setup: post with ball finial, cord wrapping 3 times (trefoil-like), ring and hook](../diagrams/puzzles/07-the-ferrymans-knot/setup.svg)
 
 The cord runs from the hook in the base upward, wraps around the post three times with specific over-under crossings that resemble a trefoil knot, and terminates at the ring on the post. The ring can slide up and down the post but cannot be removed (finial prevents it).
 
 ## Solved State
 
-```
-         ___
-        ( O )      <-- 30mm ball finial
-         |
-         |          cord hangs freely alongside post
-         |          no wraps around post
-       [RING]      <-- ring still on post (trapped by finial)
-         |
-       ~~cord~~
-         |
-       [HOOK]      <-- hook still in base
-    ___________
-   |   BASE    |
-```
+![Solved: cord hangs freely alongside post, no wraps](../diagrams/puzzles/07-the-ferrymans-knot/solved.svg)
 
 ## Objective
 
@@ -89,21 +59,7 @@ In knot theory, **Reidemeister moves** are the three elementary operations that 
 
 Each wrap removal in this puzzle is a **Type I Reidemeister move** — removing a simple twist. In knot theory, Type I moves don't change the knot type. Since the cord started as an unknot (it's an open arc with endpoints on the hook and ring), each twist removal brings it closer to the visually obvious unknot (a straight cord hanging from hook to ring).
 
-```
-Type I move (twist removal):
-
-  Before:        After:
-    |               |
-    \               |
-     \              |
-      )   →         |
-     /              |
-    /               |
-    |               |
-
-  One crossing     Zero crossings
-  removed          (simpler diagram)
-```
+![Type I Reidemeister move: removing a twist reduces one crossing to zero](../diagrams/puzzles/07-the-ferrymans-knot/type-i-move.svg)
 
 The key insight: on a closed curve, these three crossings form a trefoil (non-trivial knot). On an open arc with a fixed axis, the same three crossings are three independent twists, each removable by a Type I move. The fixed axis (the post) turns what would be a genuine knot into a sequence of removable twists.
 
@@ -124,63 +80,15 @@ What you feel in your hands: each wrap feels like its own little puzzle. You sli
    - Pull through and down the other side
    - The wrap is eliminated
 
-```
-Checkpoint (a) — After removing wrap 1:
-
-         ___
-        ( O )      <-- finial
-         | |
-     ~~~/   \~~~   <-- 2 wraps remain
-    ~~/       \~~
-         |
-       [RING]
-         |
-       (cord)
-         |
-       [HOOK]
-
-Two crossings remain. The cord is visibly simpler.
-```
+![Checkpoint (a): after removing wrap 1, 2 wraps remain](../diagrams/puzzles/07-the-ferrymans-knot/checkpoint-a.svg)
 
 4. **Repeat for the second wrap.** Slide the ring down again for slack. Lift the now-outermost wrap over the finial.
 
-```
-Checkpoint (b) — After removing wrap 2:
-
-         ___
-        ( O )      <-- finial
-         | |
-     ~~~/   \~~~   <-- 1 wrap remains
-         |
-       [RING]
-         |
-       (cord)
-         |
-       [HOOK]
-
-One crossing remains. Almost there.
-```
+![Checkpoint (b): after removing wrap 2, 1 wrap remains](../diagrams/puzzles/07-the-ferrymans-knot/checkpoint-b.svg)
 
 5. **Repeat for the third wrap.** Same process.
 
-```
-Checkpoint (c) — After removing wrap 3 (SOLVED):
-
-         ___
-        ( O )      <-- finial
-         |
-         |          <-- cord hangs straight
-         |              no wraps, no crossings
-       [RING]
-         |
-       (cord)
-         |
-       [HOOK]
-    ___________
-   |   BASE    |
-
-The cord hangs freely from hook to ring alongside the post.
-```
+![Checkpoint (c) — SOLVED: all wraps removed, cord hangs straight](../diagrams/puzzles/07-the-ferrymans-knot/checkpoint-c.svg)
 
 6. The cord now hangs freely from hook to ring, draping alongside the post without wrapping it.
 

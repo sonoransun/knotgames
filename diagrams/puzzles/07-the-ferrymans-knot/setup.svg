@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 400">
+  <title>Puzzle 7: The Ferryman's Knot — Setup</title>
+  <desc>A wooden post with ball finial on a base. A cord wraps around the post in a trefoil-like pattern with 3 crossings. One end attaches to a ring on the post, the other to a hook in the base.</desc>
+
+  <rect width="250" height="400" fill="#fafafa"/>
+
+  <!-- Base block -->
+  <rect x="65" y="330" width="120" height="40" rx="3" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Post -->
+  <rect x="115" y="100" width="20" height="230" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Ball finial -->
+  <circle cx="125" cy="85" r="15" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Ring on post (small circle, below wraps) -->
+  <circle cx="125" cy="290" r="8" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Hook at base -->
+  <path d="M125,330 L125,340 Q125,355 115,355 Q105,355 105,345" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- === Cord wrapping with 3 crossings (trefoil-like) === -->
+
+  <!-- Cord from ring upward to first wrap -->
+  <line x1="133" y1="290" x2="140" y2="260" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Wrap 1 (bottom crossing) -->
+  <!-- Under-strand gap -->
+  <path d="M110,240 Q95,225 110,210" fill="none" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+  <!-- Over-strand -->
+  <path d="M140,260 Q155,240 140,220" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Under-strand -->
+  <path d="M110,240 Q95,225 110,210" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Connecting arc behind post -->
+  <path d="M140,220 Q145,215 140,210" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3" opacity="0.4"/>
+
+  <!-- Wrap 2 (middle crossing) -->
+  <!-- Under-strand gap -->
+  <path d="M140,200 Q155,185 140,170" fill="none" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+  <!-- Over-strand -->
+  <path d="M110,210 Q95,190 110,170" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Under-strand -->
+  <path d="M140,200 Q155,185 140,170" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Connecting arc behind post -->
+  <path d="M110,170 Q105,165 110,160" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3" opacity="0.4"/>
+
+  <!-- Wrap 3 (top crossing) -->
+  <!-- Under-strand gap -->
+  <path d="M110,160 Q95,145 110,130" fill="none" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+  <!-- Over-strand -->
+  <path d="M140,170 Q155,150 140,130" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Under-strand -->
+  <path d="M110,160 Q95,145 110,130" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Cord from top wrap to hook (runs down behind post, shown faded) -->
+  <path d="M140,130 Q145,120 140,115" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="140" y1="115" x2="140" y2="110" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- === Labels === -->
+
+  <!-- Ball finial label -->
+  <line x1="142" y1="78" x2="175" y2="55" stroke="#999" stroke-width="1"/>
+  <text x="178" y="58" font-family="system-ui, sans-serif" font-size="10" fill="#666">30mm ball finial</text>
+
+  <!-- Cord crossings label -->
+  <line x1="160" y1="190" x2="185" y2="190" stroke="#999" stroke-width="1"/>
+  <text x="155" y="178" font-family="system-ui, sans-serif" font-size="10" fill="#666">cord wraps with</text>
+  <text x="155" y="192" font-family="system-ui, sans-serif" font-size="10" fill="#666">3 crossings</text>
+
+  <!-- Ring label -->
+  <line x1="117" y1="290" x2="55" y2="290" stroke="#999" stroke-width="1"/>
+  <text x="30" y="294" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">RING</text>
+
+  <!-- Hook label -->
+  <line x1="100" y1="348" x2="55" y2="355" stroke="#999" stroke-width="1"/>
+  <text x="22" y="359" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">HOOK</text>
+
+  <!-- Base label -->
+  <text x="125" y="385" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">BASE</text>
+</svg>

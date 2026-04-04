@@ -393,35 +393,36 @@ The following table gives estimated times for two solver profiles: a **novice** 
 
 ## Summary: The Complete Concept Map
 
-```
-Puzzle 1: Unknot recognition
-    |
-    v
-Puzzle 2: Genus, model inversion
-    |
-    v
-Puzzle 3: Linking number, algebraic cancellation ----+
-    |                                                 |
-    v                                                 |
-Puzzle 4: Non-orientability, boundary structure       |
-    |                                                 |
-    v                                                 |
-Puzzle 5: Collective properties (Borromean)           |
-    |                                                 |
-    v                                                 |
-Puzzle 6: Configuration space topology  <-- assumes 3,4
-    |                                                 |
-    v                                                 |
-Puzzle 7: Open arc vs closed knot  <-- assumes 1,4    |
-    |                                                 |
-    v                                                 |
-Puzzle 8: Irreducible sequential complexity  <-- assumes 6,7
-    |                                                 |
-    v                                                 |
-Puzzle 9: Fundamental group, word cancellation  <-- assumes 2,3,6,8
-    |
-    v
-Puzzle 10: Hopf fibration, coupled rotation  <-- assumes 1,6,7,8,9
+```mermaid
+flowchart TD
+    P1["1: Unknot recognition"]
+    P2["2: Genus, model inversion"]
+    P3["3: Linking number, algebraic cancellation"]
+    P4["4: Non-orientability, boundary structure"]
+    P5["5: Collective properties (Borromean)"]
+    P6["6: Configuration space topology"]
+    P7["7: Open arc vs closed knot"]
+    P8["8: Irreducible sequential complexity"]
+    P9["9: Fundamental group, word cancellation"]
+    P10["10: Hopf fibration, coupled rotation"]
+
+    P1 --> P2 --> P3 --> P4 --> P5 --> P6 --> P7 --> P8 --> P9 --> P10
+
+    P3 -.->|assumes 3,4| P6
+    P4 -.-> P6
+    P1 -.->|assumes 1,4| P7
+    P4 -.-> P7
+    P6 -.->|assumes 6,7| P8
+    P7 -.-> P8
+    P2 -.->|assumes 2,3,6,8| P9
+    P3 -.-> P9
+    P6 -.-> P9
+    P8 -.-> P9
+    P1 -.->|assumes 1,6,7,8,9| P10
+    P6 -.-> P10
+    P7 -.-> P10
+    P8 -.-> P10
+    P9 -.-> P10
 ```
 
 Each arrow represents a direct conceptual dependency. The solver who works through the series in order arrives at each puzzle with exactly the preparation they need — and none of the preparation they do not.

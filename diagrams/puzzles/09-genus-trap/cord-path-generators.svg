@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 200">
+  <title>Genus Trap - Cord Path Generators</title>
+  <desc>Schematic of the cord path through the genus-2 block, with algebraic generator labels showing the word a, b, a-inverse in the fundamental group.</desc>
+
+  <rect width="550" height="200" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="275" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">Cord Path with Fundamental Group Generators</text>
+
+  <!-- Flow diagram: Ball -> [A L->R] -> outside -> Ring 1 -> [B F->B] -> outside -> Ring 2 -> [A R->L] -> Ball -->
+
+  <!-- Ball (start) -->
+  <circle cx="30" cy="80" r="14" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="30" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#333">Ball</text>
+
+  <!-- Arrow to tunnel A -->
+  <line x1="44" y1="80" x2="68" y2="80" stroke="#999" stroke-width="1" marker-end="url(#cpArr)"/>
+
+  <!-- Tunnel A passage (left to right) -->
+  <rect x="70" y="62" width="80" height="36" rx="5" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="110" y="76" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#333">[A]</text>
+  <text x="110" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">left &#x2192; right</text>
+
+  <!-- Arrow to outside -->
+  <line x1="150" y1="80" x2="168" y2="80" stroke="#999" stroke-width="1" marker-end="url(#cpArr)"/>
+
+  <!-- Outside + Ring 1 -->
+  <text x="184" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">outside</text>
+  <circle cx="184" cy="87" r="7" fill="none" stroke="#333" stroke-width="1.5"/>
+  <text x="184" y="108" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">Ring 1</text>
+
+  <!-- Arrow to tunnel B -->
+  <line x1="191" y1="80" x2="218" y2="80" stroke="#999" stroke-width="1" marker-end="url(#cpArr)"/>
+
+  <!-- Tunnel B passage (front to back) -->
+  <rect x="220" y="62" width="80" height="36" rx="5" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="260" y="76" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#333">[B]</text>
+  <text x="260" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">front &#x2192; back</text>
+
+  <!-- Arrow to outside -->
+  <line x1="300" y1="80" x2="318" y2="80" stroke="#999" stroke-width="1" marker-end="url(#cpArr)"/>
+
+  <!-- Outside + Ring 2 -->
+  <text x="334" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">outside</text>
+  <circle cx="334" cy="87" r="7" fill="none" stroke="#333" stroke-width="1.5"/>
+  <text x="334" y="108" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">Ring 2</text>
+
+  <!-- Arrow to tunnel A reverse -->
+  <line x1="341" y1="80" x2="368" y2="80" stroke="#999" stroke-width="1" marker-end="url(#cpArr)"/>
+
+  <!-- Tunnel A passage (right to left) -->
+  <rect x="370" y="62" width="80" height="36" rx="5" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="410" y="76" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#333">[A]</text>
+  <text x="410" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">right &#x2192; left</text>
+
+  <!-- Arrow to Ball (end) -->
+  <line x1="450" y1="80" x2="496" y2="80" stroke="#999" stroke-width="1" marker-end="url(#cpArr)"/>
+
+  <!-- Ball (end) -->
+  <circle cx="510" cy="80" r="14" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="510" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#333">Ball</text>
+
+  <!-- Generator labels below each tunnel segment -->
+  <!-- Bracket under A (first pass) -->
+  <line x1="75" y1="105" x2="145" y2="105" stroke="#999" stroke-width="1"/>
+  <line x1="75" y1="100" x2="75" y2="105" stroke="#999" stroke-width="1"/>
+  <line x1="145" y1="100" x2="145" y2="105" stroke="#999" stroke-width="1"/>
+  <text x="110" y="122" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#333" font-weight="bold" font-style="italic">a</text>
+
+  <!-- Bracket under B -->
+  <line x1="225" y1="105" x2="295" y2="105" stroke="#999" stroke-width="1"/>
+  <line x1="225" y1="100" x2="225" y2="105" stroke="#999" stroke-width="1"/>
+  <line x1="295" y1="100" x2="295" y2="105" stroke="#999" stroke-width="1"/>
+  <text x="260" y="122" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#333" font-weight="bold" font-style="italic">b</text>
+
+  <!-- Bracket under A (reverse pass) -->
+  <line x1="375" y1="105" x2="445" y2="105" stroke="#999" stroke-width="1"/>
+  <line x1="375" y1="100" x2="375" y2="105" stroke="#999" stroke-width="1"/>
+  <line x1="445" y1="100" x2="445" y2="105" stroke="#999" stroke-width="1"/>
+  <text x="410" y="122" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#333" font-weight="bold" font-style="italic">a&#x207B;&#xB9;</text>
+
+  <!-- Dividing line -->
+  <line x1="40" y1="140" x2="510" y2="140" stroke="#999" stroke-width="0.5" stroke-dasharray="3,3"/>
+
+  <!-- Summary: word in fundamental group -->
+  <text x="275" y="162" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666">Word in fundamental group:</text>
+  <text x="275" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#333" font-weight="bold" font-style="italic">a &#xB7; b &#xB7; a&#x207B;&#xB9;</text>
+
+  <defs>
+    <marker id="cpArr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#999"/>
+    </marker>
+  </defs>
+</svg>

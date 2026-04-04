@@ -26,20 +26,7 @@ The cord loop connects the ring to the base of the center prong via a small hole
 
 ## Setup
 
-```
-    O         o         O         O = 8mm ball-stop (tall prongs)
-    |         |         |         o = 8mm ball-stop (short prong)
-    |         |         |
-    |         |         |         Left: 100mm
-    |         |         |         Center: 80mm
-    |   [RING]|         |         Right: 100mm
-    |    on   |         |
-    |   left  |         |
-    |  prong  |         |
-    +---------+---------+         Base (U-shaped)
-              ^
-              cord attached here
-```
+![Setup: three-pronged fork with ring on left prong, cord to center prong base](../diagrams/puzzles/06-devils-pitchfork/setup.svg)
 
 The ring is on the left prong, resting against the ball-stop. The cord runs from the ring down to the base of the center prong. The cord is too short to allow the ring to be lifted over any ball-stop.
 
@@ -63,15 +50,16 @@ Before looping the cord over the center prong, the configuration space is 'disco
 
 After looping the cord over the shorter center prong, the configuration space changes. The cord now acts like a pulley, redirecting the constraint so the ring can reach the right channel. Think of it as unlocking a door: the cord loop over the center prong is the key turn, and the ring transfer is walking through the door.
 
-```
-Configuration space (schematic):
-
-BEFORE (cord straight):         AFTER (cord looped over center):
-
-  [Left]  |wall|  [Right]        [Left] ──door── [Right]
-   ring   |    |   ring            ring     →      ring
-   here   |    |   can't           here    can     here
-          |    |   reach                   reach
+```mermaid
+flowchart LR
+    subgraph Before["BEFORE (cord straight)"]
+        direction LR
+        L1["Left\nring here"] ---|"wall\n(blocked)"| R1["Right\nring can't reach"]
+    end
+    subgraph After["AFTER (cord looped over center)"]
+        direction LR
+        L2["Left\nring here"] -->|"door\n(open)"| R2["Right\nring can reach"]
+    end
 ```
 
 *For the general theory of configuration spaces, see [Topology Primer: Configuration Spaces](../theory/topology-primer.md#configuration-spaces).*
@@ -90,22 +78,7 @@ BEFORE (cord straight):         AFTER (cord looped over center):
 
 ### Cord Geometry Change
 
-```
-BEFORE (cord straight):          AFTER (cord looped):
-
-    O         o         O            O         o         O
-    |         |         |            |        /|\        |
-    |         |         |            |       / | \       |
-    |         |         |            |      /  |  \      |
-    |   RING  |         |            |  RING/  |   \     |
-    |    ↓    |         |            |   ↓  cord loops   |
-    |  can't  |         |            |  can    over      |
-    |  reach→ |         |            |  reach→ center →→ |
-    +---------+---------+            +---------+---------+
-              |                                |
-         cord goes                        cord goes
-         straight down                    up, over, down
-```
+![Before: cord straight, ring can't reach right. After: cord looped over center prong, ring can reach right](../diagrams/puzzles/06-devils-pitchfork/cord-geometry.svg)
 
 ### Phase 2: Transfer the ring
 

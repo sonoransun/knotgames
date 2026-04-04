@@ -22,21 +22,7 @@ Six cord loops hang from posts on a wooden base, each threaded onto a shuttle ba
 
 ## Setup
 
-```
-    Posts:    1    2    3    4    5    6
-              |    |    |    |    |    |
-              O    O    O    O    O    O    <-- loops hang from posts
-              |    |    |    |    |    |
-    ==========[====+====+====+====+===]========  <-- shuttle bar
-              |    |    |    |    |    |          through all loops
-
-    Each loop also threads through its left neighbor:
-    Loop 2 passes through Loop 1
-    Loop 3 passes through Loop 2
-    Loop 4 passes through Loop 3
-    Loop 5 passes through Loop 4
-    Loop 6 passes through Loop 5
-```
+![Setup: 6 posts with chained loops, shuttle bar through all loops](../diagrams/puzzles/08-ouroboros-chain/setup.svg)
 
 Each cord loop:
 1. Hangs from its post (permanently — the post was inserted through the loop before being glued into the base)
@@ -47,17 +33,7 @@ The shuttle bar rests in notches on the front face of the base. It cannot be lif
 
 ## Solved State
 
-```
-    Posts:    1    2    3    4    5    6
-              |    |    |    |    |    |
-              O    O    O    O    O    O    <-- loops hang from posts
-              |    |    |    |    |    |
-
-    [==========================================]  <-- shuttle bar
-
-    Removed from base notches, completely free of all loops.
-    The loops remain hanging from their posts, chained together.
-```
+![Solved: shuttle bar removed, completely free of all loops](../diagrams/puzzles/08-ouroboros-chain/solved.svg)
 
 ## Objective
 
@@ -84,14 +60,16 @@ For n = 6: (2^6 - 1) / 3 = **63/3 = 21** ... but each "move" involves lifting a 
 
 A **Gray code** is a binary counting system where consecutive numbers differ by exactly one bit. Compare with normal binary:
 
-```
-Normal binary:   000  001  010  011  100  101  110  111
-Gray code:       000  001  011  010  110  111  101  100
-                  ↕    ↕    ↕    ↕    ↕    ↕    ↕    ↕
-Step changes:    ---   1    1    1    1    1    1    1
-(bits flipped)         ↑    ↑    ↑    ↑    ↑    ↑    ↑
-                      bit1 bit2 bit1 bit3 bit1 bit2 bit1
-```
+| Step | Normal Binary | Gray Code | Bit Flipped |
+|------|--------------|-----------|-------------|
+| 0 | 000 | 000 | — |
+| 1 | 001 | 001 | bit 1 |
+| 2 | 010 | 011 | bit 2 |
+| 3 | 011 | 010 | bit 1 |
+| 4 | 100 | 110 | bit 3 |
+| 5 | 101 | 111 | bit 1 |
+| 6 | 110 | 101 | bit 2 |
+| 7 | 111 | 100 | bit 1 |
 
 In normal binary, going from 011 to 100 requires flipping ALL THREE bits simultaneously. In Gray code, only one bit changes at a time. This maps perfectly to the puzzle's physical constraint: you can only add or remove ONE loop per move.
 
@@ -99,41 +77,25 @@ The puzzle state `111111` (all loops on) must reach `000000` (all loops off) by 
 
 ### State Table (First 15 Moves)
 
-```
-Move  Action          State    Binary
-────  ──────────────  ───────  ────────
- 0    (start)         111111   all ON
- 1    Remove Loop 6   111110
- 2    Remove Loop 5   111100
- 3    Replace Loop 6  111101
- 4    Remove Loop 4   111001
- 5    Remove Loop 6   111000
- 6    Remove Loop 5   111010   ← wait, that's wrong...
-```
-
-Actually, the correct sequence following the constraint rules:
-
-```
-Move  Action          State     Notes
-────  ──────────────  ────────  ─────────────────────────
- 0    (start)         111111    All loops ON shuttle bar
- 1    Remove Loop 6   111110    Rule 1: rightmost always free
- 2    Remove Loop 5   111100    Rule 2: Loop 6 OFF, so 5 free
- 3    Replace Loop 6  111101    Need Loop 6 ON to free Loop 4
- 4    Remove Loop 4   111001    Rule 2: Loop 5 ON, 6 OFF → free
- 5    Remove Loop 6   111000    Rule 1: rightmost always free
- 6    Remove Loop 5   110100    Preparing to remove Loop 3
- 7    Replace Loop 6  110101
- 8    Remove Loop 3   110001
- 9    Remove Loop 6   110000
-10    Replace Loop 5  110010    Rebuilding right side for Loop 2
-11    Replace Loop 6  110011
-12    Remove Loop 4   110111    ← Careful: backward steps!
-13    Remove Loop 6   110110
-14    Remove Loop 5   110100
-15    Replace Loop 6  110101
-...   (continues)     ...       42 moves total to reach 000000
-```
+| Move | Action | State | Notes |
+|------|--------|-------|-------|
+| 0 | (start) | 111111 | All loops ON shuttle bar |
+| 1 | Remove Loop 6 | 111110 | Rule 1: rightmost always free |
+| 2 | Remove Loop 5 | 111100 | Rule 2: Loop 6 OFF, so 5 free |
+| 3 | Replace Loop 6 | 111101 | Need Loop 6 ON to free Loop 4 |
+| 4 | Remove Loop 4 | 111001 | Rule 2: Loop 5 ON, 6 OFF → free |
+| 5 | Remove Loop 6 | 111000 | Rule 1: rightmost always free |
+| 6 | Remove Loop 5 | 110100 | Preparing to remove Loop 3 |
+| 7 | Replace Loop 6 | 110101 | |
+| 8 | Remove Loop 3 | 110001 | |
+| 9 | Remove Loop 6 | 110000 | |
+| 10 | Replace Loop 5 | 110010 | Rebuilding right side for Loop 2 |
+| 11 | Replace Loop 6 | 110011 | |
+| 12 | Remove Loop 4 | 110111 | **Backward steps!** |
+| 13 | Remove Loop 6 | 110110 | |
+| 14 | Remove Loop 5 | 110100 | |
+| 15 | Replace Loop 6 | 110101 | |
+| ... | (continues) | ... | 42 moves total to reach 000000 |
 
 **Note:** This table illustrates the key frustration: moves 10-12 involve REPLACING loops that were already removed. This is not a mistake — it's the necessary setup for removing Loop 2. Trust the algorithm.
 
@@ -153,17 +115,17 @@ This is why 6 loops require 42 moves. Each added loop roughly doubles the soluti
 
 The solution follows a recursive algorithm. Here is the pattern for the first several moves:
 
-```
-Move 1:  Remove Loop 6               State: 111110
-Move 2:  Remove Loop 5               State: 111100
-Move 3:  Replace Loop 6              State: 111101
-Move 4:  Remove Loop 4               State: 111001
-Move 5:  Remove Loop 6               State: 111000
-Move 6:  Remove Loop 3               State: 110000
-Move 7:  Replace Loop 6              State: 110001
-Move 8:  Replace Loop 5              State: 110011
-...
-```
+| Move | Action | State |
+|------|--------|-------|
+| 1 | Remove Loop 6 | 111110 |
+| 2 | Remove Loop 5 | 111100 |
+| 3 | Replace Loop 6 | 111101 |
+| 4 | Remove Loop 4 | 111001 |
+| 5 | Remove Loop 6 | 111000 |
+| 6 | Remove Loop 3 | 110000 |
+| 7 | Replace Loop 6 | 110001 |
+| 8 | Replace Loop 5 | 110011 |
+| ... | (continues recursively) | ... |
 
 The recursive pattern:
 - To remove loop k, first ensure loop k+1 is ON and everything right of k+1 is OFF

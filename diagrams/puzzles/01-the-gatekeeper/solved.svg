@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <title>The Gatekeeper - Solved</title>
+  <desc>The U-bar with the cord hanging straight between the L and R tips. The ring is separate below, free from the assembly.</desc>
+
+  <rect width="300" height="300" fill="#fafafa"/>
+
+  <!-- U-bar -->
+  <path d="M 100,40 L 100,180 Q 100,230 150,230 Q 200,230 200,180 L 200,40"
+        fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Tip labels -->
+  <text x="100" y="30" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="12" fill="#666" font-weight="bold">L</text>
+  <text x="200" y="30" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="12" fill="#666" font-weight="bold">R</text>
+
+  <!-- Cord: simple dashed line from L to R with a gentle drape -->
+  <path d="M 100,40 Q 150,80 200,40"
+        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Ring: separate, below the assembly -->
+  <circle cx="150" cy="270" r="18" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="150" y="275" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666">Ring</text>
+
+  <!-- Annotation arrow and label -->
+  <line x1="150" y1="240" x2="150" y2="255" stroke="#999" stroke-width="1"
+        marker-end="url(#arrowGray)"/>
+  <defs>
+    <marker id="arrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#999"/>
+    </marker>
+  </defs>
+  <text x="150" y="236" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#999">free</text>
+</svg>

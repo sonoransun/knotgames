@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 250">
+  <title>Mobius Snare - Solved</title>
+  <desc>The Mobius band unchanged, with the ring and cord completely separated below it.</desc>
+
+  <rect width="350" height="250" fill="#fafafa"/>
+
+  <!-- Mobius band: identical to setup, unchanged -->
+  <!-- Back portion of band -->
+  <path d="M 90,55 C 90,25 260,25 260,55"
+        stroke="#333" stroke-width="2" fill="none"/>
+  <path d="M 100,60 C 100,35 250,35 250,60"
+        stroke="#333" stroke-width="1" fill="none" opacity="0.4"/>
+
+  <!-- Left side -->
+  <path d="M 90,55 L 90,95"
+        stroke="#333" stroke-width="2" fill="none"/>
+  <path d="M 100,60 L 100,90"
+        stroke="#333" stroke-width="1" fill="none" opacity="0.4"/>
+
+  <!-- Right side with half-twist -->
+  <path d="M 260,55 C 260,70 250,75 250,95"
+        stroke="#333" stroke-width="2" fill="none"/>
+  <path d="M 250,60 C 250,70 260,75 260,95"
+        stroke="#333" stroke-width="2" fill="none"/>
+  <line x1="254" y1="71" x2="256" y2="75"
+        stroke="#fafafa" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Bottom portion of band (front) -->
+  <path d="M 90,95 C 90,125 260,125 260,95"
+        stroke="#333" stroke-width="2" fill="none"/>
+  <path d="M 100,90 C 100,120 250,120 250,95"
+        stroke="#333" stroke-width="2" fill="none"/>
+
+  <!-- Label for band -->
+  <text x="175" y="15" text-anchor="middle"
+        font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">MOBIUS BAND (unchanged)</text>
+
+  <!-- Separation gap -->
+  <line x1="100" y1="145" x2="250" y2="145"
+        stroke="#999" stroke-width="0.5" stroke-dasharray="2,4"/>
+
+  <!-- Ring: free, below -->
+  <circle cx="140" cy="195" r="18" fill="none" stroke="#333" stroke-width="2.5"/>
+
+  <!-- Cord: free loop, separate from ring -->
+  <ellipse cx="220" cy="195" rx="30" ry="14" fill="none"
+           stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Label -->
+  <text x="175" y="240" text-anchor="middle"
+        font-family="system-ui, sans-serif" font-size="12" fill="#666">Ring and cord free</text>
+</svg>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200">
+  <title>Genus 0, 1, and 2 surfaces</title>
+  <desc>Three surfaces illustrating genus: a sphere (genus 0) with no holes, a torus (genus 1) with one hole, and a double torus (genus 2) with two holes.</desc>
+
+  <rect x="0" y="0" width="600" height="200" fill="#fafafa" rx="8"/>
+
+  <!-- Dividers -->
+  <line x1="200" y1="15" x2="200" y2="185" stroke="#ddd" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="400" y1="15" x2="400" y2="185" stroke="#ddd" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- LEFT: Genus 0 (sphere) -->
+  <text x="100" y="24" font-size="12" font-family="system-ui, sans-serif" fill="#333" text-anchor="middle" font-weight="bold">Genus 0 (sphere)</text>
+
+  <!-- Sphere: a circle with a slight highlight arc -->
+  <circle cx="100" cy="95" r="45" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Equator hint for 3D feel -->
+  <ellipse cx="100" cy="95" rx="45" ry="12" fill="none" stroke="#333" stroke-width="1" opacity="0.25"/>
+
+  <!-- Highlight arc -->
+  <path d="M 78 72 Q 82 65, 90 62" fill="none" stroke="#333" stroke-width="1" opacity="0.2"/>
+
+  <text x="100" y="160" font-size="10" font-family="system-ui, sans-serif" fill="#666" text-anchor="middle">no holes, no handles</text>
+
+  <!-- CENTER: Genus 1 (torus) -->
+  <text x="300" y="24" font-size="12" font-family="system-ui, sans-serif" fill="#333" text-anchor="middle" font-weight="bold">Genus 1 (torus)</text>
+
+  <!-- Outer torus ellipse -->
+  <ellipse cx="300" cy="92" rx="65" ry="40" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Inner hole -->
+  <ellipse cx="300" cy="92" rx="22" ry="10" fill="#fafafa" stroke="#333" stroke-width="2"/>
+
+  <!-- Top surface hint -->
+  <path d="M 245 75 Q 270 60, 300 58 Q 330 60, 355 75"
+        fill="none" stroke="#333" stroke-width="1" opacity="0.25"/>
+
+  <text x="300" y="160" font-size="10" font-family="system-ui, sans-serif" fill="#666" text-anchor="middle">one hole, one handle</text>
+
+  <!-- RIGHT: Genus 2 (two-holed torus) -->
+  <text x="500" y="24" font-size="12" font-family="system-ui, sans-serif" fill="#333" text-anchor="middle" font-weight="bold">Genus 2 (two-holed)</text>
+
+  <!-- Outer double-torus shape: two merged lobes -->
+  <path d="M 435 92
+           Q 435 55, 468 50
+           Q 500 47, 500 65
+           Q 500 47, 532 50
+           Q 565 55, 565 92
+           Q 565 130, 532 135
+           Q 500 138, 500 120
+           Q 500 138, 468 135
+           Q 435 130, 435 92 Z"
+        fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Left hole -->
+  <ellipse cx="468" cy="92" rx="14" ry="8" fill="#fafafa" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Right hole -->
+  <ellipse cx="532" cy="92" rx="14" ry="8" fill="#fafafa" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Top surface hints -->
+  <path d="M 445 78 Q 456 68, 468 66 Q 480 68, 490 75"
+        fill="none" stroke="#333" stroke-width="1" opacity="0.25"/>
+  <path d="M 510 75 Q 520 68, 532 66 Q 544 68, 555 78"
+        fill="none" stroke="#333" stroke-width="1" opacity="0.25"/>
+
+  <text x="500" y="160" font-size="10" font-family="system-ui, sans-serif" fill="#666" text-anchor="middle">two holes, two handles</text>
+</svg>

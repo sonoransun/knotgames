@@ -26,27 +26,7 @@ The two hoops are welded together at their two intersection points (north and so
 
 ## Setup
 
-```
-            N (pole, weld)
-           /|\
-          / | \
-         /  |  \
-        /   |   \
-    ---+----+----+---     <-- equatorial hoop (horizontal)
-        \   |   /
-         \  |  /
-          \ | /
-           \|/
-            S (pole, weld)
-
-        ^--- polar hoop (vertical)
-
-    4 quadrant windows: NE, NW, SE, SW
-
-    Ring is INSIDE the cage, sitting around the equatorial hoop.
-    Cord runs from ring, through 2 adjacent windows (with ball between),
-    to external handle.
-```
+![Cage setup: two orthogonal hoops intersecting at N and S poles, ring inside, cord through window to handle](../diagrams/puzzles/10-the-hopf-paradox/cage-setup.svg)
 
 ### Detailed cord path
 

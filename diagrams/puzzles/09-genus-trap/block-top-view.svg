@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 350">
+  <title>Genus Trap - Block Top View</title>
+  <desc>Top-down view of an acrylic block with two tunnels (A horizontal, B vertical) that cross without intersecting. Below, a schematic of the cord path through the tunnels.</desc>
+
+  <rect width="400" height="350" fill="#fafafa"/>
+
+  <!-- Acrylic block (top-down rectangle) -->
+  <rect x="80" y="30" width="240" height="160" rx="4" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Edge labels -->
+  <text x="200" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666" font-weight="bold">FRONT</text>
+  <text x="200" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666" font-weight="bold">BACK</text>
+  <text x="70" y="114" text-anchor="end" font-family="system-ui, sans-serif" font-size="10" fill="#666" font-weight="bold">LEFT</text>
+  <text x="330" y="114" text-anchor="start" font-family="system-ui, sans-serif" font-size="10" fill="#666" font-weight="bold">RIGHT</text>
+
+  <!-- Tunnel A: horizontal, at a lower vertical position -->
+  <line x1="80" y1="130" x2="320" y2="130" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Tunnel A entry/exit markers -->
+  <circle cx="80" cy="130" r="4" fill="#333"/>
+  <circle cx="320" cy="130" r="4" fill="#333"/>
+  <text x="90" y="145" font-family="system-ui, sans-serif" font-size="10" fill="#999">[A]</text>
+
+  <!-- Tunnel B: vertical, at a higher horizontal position -->
+  <line x1="200" y1="30" x2="200" y2="190" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Tunnel B entry/exit markers -->
+  <circle cx="200" cy="30" r="4" fill="#333"/>
+  <circle cx="200" cy="190" r="4" fill="#333"/>
+  <text x="210" y="55" font-family="system-ui, sans-serif" font-size="10" fill="#999">[B]</text>
+
+  <!-- Crossing indicator -->
+  <circle cx="200" cy="130" r="8" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="230" y="118" font-family="system-ui, sans-serif" font-size="9" fill="#999">Tunnels cross</text>
+  <text x="230" y="128" font-family="system-ui, sans-serif" font-size="9" fill="#999">but don't intersect</text>
+
+  <!-- Cord path schematic below the block -->
+  <text x="200" y="230" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666" font-weight="bold">Cord Path Schematic:</text>
+
+  <!-- Flow diagram using arrows -->
+  <!-- Ball start -->
+  <circle cx="30" cy="258" r="8" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="30" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#333">Ball</text>
+
+  <!-- Arrow to A LEFT entry -->
+  <line x1="38" y1="258" x2="55" y2="258" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- A left-to-right -->
+  <rect x="57" y="248" width="42" height="20" rx="3" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="78" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#333">A L&#x2192;R</text>
+
+  <!-- Arrow to outside loop -->
+  <line x1="99" y1="258" x2="112" y2="258" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- Outside arc 1 -->
+  <text x="124" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#999">loop</text>
+
+  <!-- Arrow to B -->
+  <line x1="136" y1="258" x2="148" y2="258" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- B front-to-back -->
+  <rect x="150" y="248" width="48" height="20" rx="3" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="174" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#333">B F&#x2192;B</text>
+
+  <!-- Arrow to outside loop -->
+  <line x1="198" y1="258" x2="212" y2="258" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- Outside arc 2 -->
+  <text x="224" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#999">loop</text>
+
+  <!-- Arrow to A reverse -->
+  <line x1="236" y1="258" x2="250" y2="258" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- A right-to-left -->
+  <rect x="252" y="248" width="42" height="20" rx="3" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="273" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#333">A R&#x2192;L</text>
+
+  <!-- Arrow to Ball -->
+  <line x1="294" y1="258" x2="340" y2="258" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- Ball end -->
+  <circle cx="352" cy="258" r="8" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="352" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#333">Ball</text>
+
+  <!-- Generator labels below -->
+  <text x="78" y="285" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999" font-style="italic">a</text>
+  <text x="174" y="285" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999" font-style="italic">b</text>
+  <text x="273" y="285" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999" font-style="italic">a&#x207B;&#xB9;</text>
+
+  <!-- Summary -->
+  <text x="200" y="315" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">Ball &#x2192; enters A from LEFT &#x2192; exits A RIGHT &#x2192; loops outside</text>
+  <text x="200" y="330" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">&#x2192; enters B from FRONT &#x2192; exits B BACK &#x2192; loops outside &#x2192; enters A from RIGHT &#x2192; exits A LEFT &#x2192; Ball</text>
+
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#999"/>
+    </marker>
+  </defs>
+</svg>

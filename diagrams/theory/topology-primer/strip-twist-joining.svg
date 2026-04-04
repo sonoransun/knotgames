@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 300">
+  <title>Strip Twist and Joining Construction</title>
+  <desc>Step-by-step construction showing how a strip is joined either without a twist to form a cylinder (2 edges, 2 sides) or with a half-twist to form a Mobius band (1 edge, 1 side).</desc>
+
+  <rect width="550" height="300" fill="#fafafa"/>
+
+  <!-- ===== STEP 1: Starting strip ===== -->
+  <g transform="translate(175, 15)">
+    <text x="100" y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Step 1: Start with a strip</text>
+
+    <!-- Strip rectangle -->
+    <rect x="0" y="12" width="200" height="60" fill="none" stroke="#333" stroke-width="2" rx="2"/>
+
+    <!-- Corner labels -->
+    <text x="-8" y="24" font-family="system-ui, sans-serif" font-size="11" fill="#666" font-weight="bold">A</text>
+    <text x="206" y="24" font-family="system-ui, sans-serif" font-size="11" fill="#666" font-weight="bold">B</text>
+    <text x="-8" y="72" font-family="system-ui, sans-serif" font-size="11" fill="#666" font-weight="bold">D</text>
+    <text x="206" y="72" font-family="system-ui, sans-serif" font-size="11" fill="#666" font-weight="bold">C</text>
+  </g>
+
+  <!-- ===== Arrow down to left ===== -->
+  <g transform="translate(155, 95)">
+    <line x1="0" y1="0" x2="-30" y2="40" stroke="#999" stroke-width="1.5"/>
+    <polygon points="-30,40 -22,34 -28,30" fill="#999"/>
+  </g>
+
+  <!-- ===== Arrow down to right ===== -->
+  <g transform="translate(395, 95)">
+    <line x1="0" y1="0" x2="30" y2="40" stroke="#999" stroke-width="1.5"/>
+    <polygon points="30,40 22,34 28,30" fill="#999"/>
+  </g>
+
+  <!-- ===== STEP 2a: Join without twist (LEFT) ===== -->
+  <g transform="translate(15, 140)">
+    <text x="110" y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Step 2a: Join without twist</text>
+
+    <!-- Cylinder representation: rectangle with curved joining edges -->
+    <rect x="20" y="14" width="180" height="55" fill="none" stroke="#333" stroke-width="2" rx="2"/>
+
+    <!-- Corner labels showing identification -->
+    <text x="12" y="26" font-family="system-ui, sans-serif" font-size="10" fill="#666">A</text>
+    <text x="206" y="26" font-family="system-ui, sans-serif" font-size="10" fill="#666">B</text>
+    <text x="12" y="68" font-family="system-ui, sans-serif" font-size="10" fill="#666">D</text>
+    <text x="206" y="68" font-family="system-ui, sans-serif" font-size="10" fill="#666">C</text>
+
+    <!-- Join arrows: A->B, D->C (straight across, no twist) -->
+    <path d="M 204,22 Q 230,42 204,62" fill="none" stroke="#999" stroke-width="1.5"/>
+    <polygon points="204,22 208,30 200,28" fill="#999"/>
+    <polygon points="204,62 208,54 200,56" fill="#999"/>
+    <text x="234" y="38" font-family="system-ui, sans-serif" font-size="9" fill="#999">A&#x2192;B</text>
+    <text x="234" y="52" font-family="system-ui, sans-serif" font-size="9" fill="#999">D&#x2192;C</text>
+
+    <!-- Result text -->
+    <text x="110" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#999">Result: cylinder</text>
+    <text x="110" y="106" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#999">2 edges, 2 sides</text>
+  </g>
+
+  <!-- ===== STEP 2b: Join with half-twist (RIGHT) ===== -->
+  <g transform="translate(295, 140)">
+    <text x="120" y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Step 2b: Join with half-twist</text>
+
+    <!-- Strip rectangle -->
+    <rect x="20" y="14" width="180" height="55" fill="none" stroke="#333" stroke-width="2" rx="2"/>
+
+    <!-- Corner labels -->
+    <text x="12" y="26" font-family="system-ui, sans-serif" font-size="10" fill="#666">A</text>
+    <text x="206" y="26" font-family="system-ui, sans-serif" font-size="10" fill="#666">B</text>
+    <text x="12" y="68" font-family="system-ui, sans-serif" font-size="10" fill="#666">D</text>
+    <text x="206" y="68" font-family="system-ui, sans-serif" font-size="10" fill="#666">C</text>
+
+    <!-- Twist join arrows: A->C, D->B (crossed, showing the twist) -->
+    <path d="M 204,22 Q 236,42 204,62" fill="none" stroke="#999" stroke-width="1.5"/>
+    <!-- Cross in the middle to show twist -->
+    <line x1="210" y1="22" x2="210" y2="62" stroke="#fafafa" stroke-width="6" stroke-linecap="round"/>
+    <line x1="204" y1="22" x2="220" y2="62" stroke="#999" stroke-width="1.2"/>
+    <line x1="204" y1="62" x2="220" y2="22" stroke="#999" stroke-width="1.2"/>
+    <polygon points="220,62 214,58 216,64" fill="#999"/>
+    <polygon points="220,22 214,26 216,20" fill="#999"/>
+    <text x="226" y="38" font-family="system-ui, sans-serif" font-size="9" fill="#999">A&#x2192;C</text>
+    <text x="226" y="52" font-family="system-ui, sans-serif" font-size="9" fill="#999">D&#x2192;B</text>
+
+    <!-- Result text -->
+    <text x="120" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#999">Result: M&#246;bius band</text>
+    <text x="120" y="106" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#999">1 edge, 1 side</text>
+  </g>
+</svg>

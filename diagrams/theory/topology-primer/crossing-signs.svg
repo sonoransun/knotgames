@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250">
+  <title>Crossing Sign Convention</title>
+  <desc>Diagram showing positive and negative crossing signs used in linking number calculation. The left crossing (sign = +1) has the cord going upper-left to lower-right over the crossbar. The right crossing (sign = −1) has the cord going upper-right to lower-left over the crossbar.</desc>
+
+  <rect width="500" height="250" fill="#fafafa"/>
+
+  <!-- ===== LEFT CROSSING: sign = +1 ===== -->
+  <g transform="translate(125, 100)">
+    <!-- Title -->
+    <text x="0" y="-70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">sign = +1</text>
+
+    <!-- Crossbar (under strand): draw gap first, then the two segments -->
+    <!-- Gap at crossing point: white fat stroke -->
+    <line x1="-60" y1="0" x2="60" y2="0" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <!-- Crossbar left segment -->
+    <line x1="-60" y1="0" x2="-8" y2="0" stroke="#333" stroke-width="2"/>
+    <!-- Crossbar right segment -->
+    <line x1="8" y1="0" x2="60" y2="0" stroke="#333" stroke-width="2"/>
+
+    <!-- Cord (over strand): diagonal upper-left to lower-right -->
+    <line x1="-50" y1="-50" x2="50" y2="50" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+    <!-- Arrowhead on cord -->
+    <polygon points="50,50 40,38 46,44" fill="#333"/>
+
+    <!-- Labels -->
+    <text x="-55" y="-38" font-family="system-ui, sans-serif" font-size="10" fill="#666" transform="rotate(-45, -55, -38)">cord</text>
+    <text x="30" y="-12" font-family="system-ui, sans-serif" font-size="10" fill="#666">crossbar</text>
+  </g>
+
+  <!-- ===== RIGHT CROSSING: sign = −1 ===== -->
+  <g transform="translate(375, 100)">
+    <!-- Title -->
+    <text x="0" y="-70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">sign = &#x2212;1</text>
+
+    <!-- Crossbar (under strand): draw gap first, then the two segments -->
+    <line x1="-60" y1="0" x2="60" y2="0" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <!-- Crossbar left segment -->
+    <line x1="-60" y1="0" x2="-8" y2="0" stroke="#333" stroke-width="2"/>
+    <!-- Crossbar right segment -->
+    <line x1="8" y1="0" x2="60" y2="0" stroke="#333" stroke-width="2"/>
+
+    <!-- Cord (over strand): diagonal upper-right to lower-left -->
+    <line x1="50" y1="-50" x2="-50" y2="50" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+    <!-- Arrowhead on cord -->
+    <polygon points="-50,50 -40,38 -46,44" fill="#333"/>
+
+    <!-- Labels -->
+    <text x="30" y="-38" font-family="system-ui, sans-serif" font-size="10" fill="#666" transform="rotate(45, 30, -38)">cord</text>
+    <text x="30" y="-12" font-family="system-ui, sans-serif" font-size="10" fill="#666">crossbar</text>
+  </g>
+
+  <!-- ===== FORMULA ===== -->
+  <text x="250" y="210" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#999">Linking number = (+1 + &#x2212;1) / 2 = 0</text>
+</svg>

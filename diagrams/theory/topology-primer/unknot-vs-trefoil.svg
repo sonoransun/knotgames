@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 220">
+  <title>Unknot vs Trefoil Knot</title>
+  <desc>Side-by-side comparison of the unknot (simple circle, 0 crossings) and the trefoil knot (simplest non-trivial knot, 3 crossings). Crossings use the white-gap convention to show over/under strand relationships.</desc>
+
+  <rect width="500" height="220" fill="#fafafa"/>
+
+  <!-- LEFT: Unknot -->
+  <text x="125" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Unknot</text>
+  <circle cx="125" cy="105" r="55" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="125" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">0 crossings</text>
+
+  <!-- RIGHT: Trefoil -->
+  <text x="370" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Trefoil (simplest non-trivial knot)</text>
+
+  <!-- Trefoil knot constructed from three lobes -->
+  <!-- The trefoil is drawn as a single continuous path with 3 crossings. -->
+  <!-- We use the convention: draw the "over" strand fully, then white gap, then under strand. -->
+
+  <!-- Define the trefoil as three arcs that form a clover shape -->
+  <!-- Center at (370, 105), lobes extending ~55px -->
+
+  <!-- Over strands (drawn first, complete) -->
+  <!-- Crossing 1 (top): right-to-left strand goes over -->
+  <!-- Crossing 2 (bottom-left): top-to-bottom strand goes over -->
+  <!-- Crossing 3 (bottom-right): left-to-right strand goes over -->
+
+  <!-- Full trefoil path - three lobes -->
+  <!-- Lobe 1: top, curving up-right -->
+  <!-- Lobe 2: bottom-right, curving down-right -->
+  <!-- Lobe 3: bottom-left, curving down-left -->
+
+  <!-- Draw the complete trefoil outline first -->
+  <defs>
+    <clipPath id="trefoil-clip">
+      <rect x="280" y="35" width="180" height="140"/>
+    </clipPath>
+  </defs>
+
+  <!-- Three overlapping circles to form the trefoil shape -->
+  <!-- Top lobe -->
+  <path d="M 370,70 C 340,40 310,55 330,85" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 330,85 C 340,100 345,108 350,115" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Bottom-left lobe -->
+  <path d="M 350,115 C 335,135 310,145 310,120" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 310,120 C 310,100 325,90 345,80" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- White gap at crossing 1 (top area, near 345,80 to 370,70): under strand gets gap -->
+  <line x1="341" y1="83" x2="349" y2="77" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- Bottom-right lobe -->
+  <path d="M 345,80 C 365,70 380,65 395,80" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 395,80 C 410,100 410,120 390,115" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- White gap at crossing 2 (bottom-right area): under strand gets gap -->
+  <line x1="387" y1="118" x2="393" y2="112" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+
+  <path d="M 390,115 C 375,112 360,118 350,115" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Closing arc back to top -->
+  <path d="M 370,70 C 385,55 400,65 395,80" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- White gap at crossing 3 (bottom-left area): under strand gets gap -->
+  <line x1="348" y1="118" x2="354" y2="112" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- Redraw the over-strand segments at the crossings -->
+  <path d="M 330,85 C 340,100 345,108 350,115" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 345,80 C 365,70 380,65 395,80" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 310,120 C 310,100 325,90 345,80" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+
+  <text x="370" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">3 crossings (minimum)</text>
+</svg>

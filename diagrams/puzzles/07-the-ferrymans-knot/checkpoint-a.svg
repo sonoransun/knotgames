@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350">
+  <title>Puzzle 7: Checkpoint A — 2 Wraps Remain</title>
+  <desc>After removing the first wrap: the post still has 2 wraps of cord around it with visible crossings.</desc>
+
+  <rect width="250" height="350" fill="#fafafa"/>
+
+  <!-- Base block -->
+  <rect x="65" y="280" width="120" height="40" rx="3" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Post -->
+  <rect x="115" y="70" width="20" height="210" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Ball finial -->
+  <circle cx="125" cy="55" r="15" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Ring on post (below wraps) -->
+  <circle cx="125" cy="240" r="8" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Hook at base -->
+  <path d="M125,280 L125,290 Q125,305 115,305 Q105,305 105,295" fill="none" stroke="#333" stroke-width="2"/>
+
+  <!-- Cord from ring upward -->
+  <line x1="133" y1="240" x2="140" y2="215" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Wrap 1 (bottom crossing, 2 remain) -->
+  <!-- Under-strand gap -->
+  <path d="M110,195 Q95,180 110,165" fill="none" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+  <!-- Over-strand -->
+  <path d="M140,215 Q155,195 140,175" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Under-strand -->
+  <path d="M110,195 Q95,180 110,165" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Connecting arc behind post -->
+  <path d="M140,175 Q145,170 140,165" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3" opacity="0.4"/>
+
+  <!-- Wrap 2 (top crossing) -->
+  <!-- Under-strand gap -->
+  <path d="M140,155 Q155,140 140,125" fill="none" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+  <!-- Over-strand -->
+  <path d="M110,165 Q95,145 110,125" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Under-strand -->
+  <path d="M140,155 Q155,140 140,125" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Cord from top wrap upward -->
+  <path d="M110,125 Q108,115 110,105" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- === Label === -->
+  <text x="125" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">2 wraps remain</text>
+
+  <!-- Annotation -->
+  <line x1="160" y1="170" x2="185" y2="170" stroke="#999" stroke-width="1"/>
+  <text x="188" y="174" font-family="system-ui, sans-serif" font-size="10" fill="#999">2 crossings</text>
+</svg>

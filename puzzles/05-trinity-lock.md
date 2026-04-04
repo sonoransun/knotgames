@@ -28,16 +28,7 @@ The inner dimensions are approximately 72mm x 32mm. Two overlapping 4mm rods occ
 
 The solver receives three separate, unlinked ovals and a **target diagram** showing the Borromean configuration:
 
-```
-        A (Red)
-       / \
-      /   \
-     /  B  \        B (Blue) passes through A
-    |  / \  |
-    | /   \ |
-    |/ C   \|       C (Yellow) passes through B
-    +-------+       A passes through C
-```
+![Target: Borromean configuration — A over B, B over C, C over A](../diagrams/puzzles/05-trinity-lock/target.svg)
 
 **Over-under pattern:** A goes over B, B goes over C, C goes over A. No two are linked — only the three-way interaction creates the lock.
 
@@ -97,20 +88,7 @@ Repeat the test for each oval: remove Blue (Red and Yellow should separate) and 
 
 ### Borromean Configuration — Three Views
 
-```
-Front view:              Top view:              Side view:
-
-    ╔══Red══╗               Blue                  Blue
-    ║       ║             ┌──┼──┐               ┌──┼──┐
-  ──╫─Blue──╫──         ──╪══╪══╪── Red       ──╪══Red═╪──
-    ║       ║             └──┼──┘               └──┼──┘
-    ╚═══════╝              Yellow                 Yellow
-
-In each view, crossings show which oval passes over/under:
-- Red OVER Blue (Red's rod is above Blue's where they cross)
-- Blue OVER Yellow (Blue's rod is above Yellow's where they cross)
-- Yellow OVER Red (Yellow's rod is above Red's where they cross)
-```
+![Three orthogonal views of the Borromean configuration showing over/under crossings](../diagrams/puzzles/05-trinity-lock/three-views.svg)
 
 ## Why It's Tricky
 

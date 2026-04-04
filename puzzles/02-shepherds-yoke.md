@@ -22,17 +22,7 @@ The paddle perimeter is approximately 460mm. The loop circumference (200mm) is l
 
 ## Setup
 
-```
-    +-------------------+
-    |                   |
-    |                   |
-    |     (  O  )       |    <-- 20mm hole in center
-    |     / loop \      |
-    |    |        |     |
-    +----+--------+-----+
-         |  loop  |
-         \________/          <-- loop hangs below
-```
+![Setup: cord loop threaded through hole in paddle, hanging below](../diagrams/puzzles/02-shepherds-yoke/setup.svg)
 
 The cord loop passes through the hole. One side hangs in front, one side behind. The loop is clearly too short to go around the paddle.
 
@@ -57,47 +47,17 @@ The hole in the paddle makes it topologically equivalent to a torus (donut) rath
 1. Gather all the cord slack on one side of the paddle (front)
 2. Push a **bight** (a U-shaped fold of the cord, without pulling the ends through) of cord back through the hole from front to back
 
-```
-Checkpoint (a) — bight pushed through hole:
-
-    +-------------------+
-    |                   |
-    |     (  O  )       |    <-- hole
-    |      bight        |
-    |    emerges on     |
-    +---back side-------+
-         |      |
-         | bight |           <-- bight of cord now on back side
-         |______|
-```
+![Checkpoint (a): bight of cord pushed through hole, emerging on back side](../diagrams/puzzles/02-shepherds-yoke/checkpoint-a.svg)
 
 3. On the back side, you now have a loop of cord emerging from the hole
 4. Stretch this bight over the **short edge** (80mm) of the paddle
 
-```
-Checkpoint (b) — bight stretched over short edge:
-
-    +---------+=========+    <-- bight stretching over the 80mm edge
-    |         |  bight  |
-    |  (  O  )|  going  |
-    |         |  over   |
-    +---------+=========+
-```
+![Checkpoint (b): bight stretching over the 80mm short edge](../diagrams/puzzles/02-shepherds-yoke/checkpoint-b.svg)
 
 5. Pull the bight all the way over the edge and to the front
 6. The cord loop is now around the paddle's body, not through the hole
 
-```
-Checkpoint (c) — cord loop now around body:
-
-    +-------------------+
-    |                   |
-    |     (  O  )       |    <-- hole is now empty
-    |                   |
-    +-------------------+
-    |~~ cord loop ~~~~~~|    <-- loop is around the paddle body
-    |~~~~~~~~~~~~~~~~~~~|
-```
+![Checkpoint (c): hole is empty, cord loop now around the paddle body](../diagrams/puzzles/02-shepherds-yoke/checkpoint-c.svg)
 
 7. Slide it off any edge — it's free
 

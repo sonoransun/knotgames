@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 220">
+  <title>Ordinary Band vs Mobius Band</title>
+  <desc>Side-by-side comparison of an ordinary band with zero twists (2 edges, 2 sides, cord cannot escape) and a Mobius band with one half-twist (1 edge, 1 side, cord can escape).</desc>
+
+  <rect width="550" height="220" fill="#fafafa"/>
+
+  <!-- ===== LEFT: Ordinary band (0 twists) ===== -->
+  <g transform="translate(30, 20)">
+    <!-- Title -->
+    <text x="110" y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Ordinary band (0 twists)</text>
+
+    <!-- Band rectangle -->
+    <rect x="10" y="20" width="200" height="80" fill="none" stroke="#333" stroke-width="2" rx="2"/>
+
+    <!-- Edge labels -->
+    <text x="110" y="16" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">edge 1 (top)</text>
+    <text x="110" y="114" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">edge 2 (bottom)</text>
+
+    <!-- Join arrows on left side: A to A, D to D (straight join) -->
+    <line x1="6" y1="30" x2="6" y2="90" stroke="#999" stroke-width="1"/>
+    <polygon points="6,30 3,36 9,36" fill="#999"/>
+    <polygon points="6,90 3,84 9,84" fill="#999"/>
+
+    <!-- Join arrows on right side -->
+    <line x1="214" y1="30" x2="214" y2="90" stroke="#999" stroke-width="1"/>
+    <polygon points="214,30 211,36 217,36" fill="#999"/>
+    <polygon points="214,90 211,84 217,84" fill="#999"/>
+
+    <!-- Description -->
+    <text x="110" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#999">2 edges, 2 sides</text>
+    <text x="110" y="158" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#333" font-weight="bold">Cord cannot escape</text>
+  </g>
+
+  <!-- ===== RIGHT: Mobius band (1 half-twist) ===== -->
+  <g transform="translate(300, 20)">
+    <!-- Title -->
+    <text x="110" y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">M&#246;bius band (1 half-twist)</text>
+
+    <!-- Band rectangle body -->
+    <rect x="10" y="20" width="200" height="80" fill="none" stroke="#333" stroke-width="2" rx="2"/>
+
+    <!-- Twist indicator on right edge: arrows showing A->D, B->C identification -->
+    <!-- Right edge: arrow going DOWN (top corner to bottom corner, reversed) -->
+    <line x1="220" y1="30" x2="220" y2="90" stroke="#333" stroke-width="2"/>
+    <!-- Arrow pointing down at bottom -->
+    <polygon points="220,90 217,82 223,82" fill="#333"/>
+    <!-- Arrow pointing up at top -->
+    <polygon points="220,30 217,38 223,38" fill="#333"/>
+
+    <!-- Left edge: arrow also showing direction -->
+    <line x1="0" y1="30" x2="0" y2="90" stroke="#333" stroke-width="2"/>
+    <polygon points="0,30 -3,38 3,38" fill="#333"/>
+    <polygon points="0,90 -3,82 3,82" fill="#333"/>
+
+    <!-- Corner labels for identification -->
+    <text x="16" y="32" font-family="system-ui, sans-serif" font-size="9" fill="#666">A</text>
+    <text x="198" y="32" font-family="system-ui, sans-serif" font-size="9" fill="#666">B</text>
+    <text x="16" y="96" font-family="system-ui, sans-serif" font-size="9" fill="#666">D</text>
+    <text x="198" y="96" font-family="system-ui, sans-serif" font-size="9" fill="#666">C</text>
+
+    <!-- Twist arrows: A joins to C, D joins to B -->
+    <path d="M 216,28 Q 240,60 216,92" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="244" y="50" font-family="system-ui, sans-serif" font-size="9" fill="#999">A&#x2192;C</text>
+    <text x="244" y="70" font-family="system-ui, sans-serif" font-size="9" fill="#999">D&#x2192;B</text>
+
+    <!-- Single continuous edge indicator: a colored path tracing the one edge -->
+    <path d="M 10,20 L 210,20" fill="none" stroke="#333" stroke-width="2.5" opacity="0.4"/>
+    <path d="M 10,100 L 210,100" fill="none" stroke="#333" stroke-width="2.5" opacity="0.4"/>
+    <text x="110" y="16" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">&#x2190; one continuous edge &#x2192;</text>
+
+    <!-- Description -->
+    <text x="110" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#999">1 edge, 1 side</text>
+    <text x="110" y="158" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#333" font-weight="bold">Cord can escape</text>
+  </g>
+</svg>

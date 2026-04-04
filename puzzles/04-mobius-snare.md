@@ -23,39 +23,13 @@ The cord forms a closed loop that hangs from the ring. The total cord-plus-ring 
 
 ## Setup
 
-```
-        ___________________
-       /                   \
-      /    MOBIUS BAND       \
-     /   (with half-twist     \
-    |     at the join)         |
-    |                          |
-    |   ~~cord passes~~        |
-    |   ~~around band~~        |
-     \                        /
-      \______________________/
-              |  |
-              | cord |
-              [RING]
-```
+![Setup: Möbius band with cord passing around it, ring hanging below](../diagrams/puzzles/04-mobius-snare/setup.svg)
 
 The cord loop is threaded around the Mobius band — it passes through the interior of the band loop (inside the leather strip's circumference) at one point. The ring dangles below, weighted by gravity.
 
 ## Solved State
 
-```
-    ___________________
-   /                   \
-  /    MOBIUS BAND       \
- /   (unchanged)          \
-|                          |
-|                          |
- \                        /
-  \______________________/
-
-  (O)~~~cord~~~(O)           <-- ring and cord completely free
-                              from the Mobius band
-```
+![Solved: Möbius band unchanged, ring and cord completely free](../diagrams/puzzles/04-mobius-snare/solved.svg)
 
 ## Objective
 
@@ -77,19 +51,7 @@ On a Mobius band, there is only **one boundary curve**. The cord can follow this
 
 **Edge-tracing exercise:** Place your finger on the edge of the Mobius band at any point. Trace along the edge without lifting your finger. You will visit the *entire* boundary — both what looks like the 'top edge' and what looks like the 'bottom edge' — before returning to your starting point. This proves it is a single continuous edge.
 
-```
-Normal band (0 twists):          Mobius band (half-twist):
-
-  Edge A ─────────────────        Edge A ─────────┐
-  |                      |        |                 ↓ (twist)
-  |    cord is trapped   |        |    cord can     |
-  |    between edges     |        |    follow edge  |
-  |                      |        |    all the way  |
-  Edge B ─────────────────        └────────── Edge A
-                                  (same edge!)
-  2 boundary components           1 boundary component
-  Cord cannot escape              Cord can escape
-```
+![Normal band has 2 edges (cord trapped); Möbius band has 1 edge (cord can escape)](../diagrams/puzzles/04-mobius-snare/normal-vs-mobius.svg)
 
 **Physical Intuition:** What you feel in your hands: as you slide the cord along the band toward the twist, you feel it transition smoothly from what looks like the 'inside face' to the 'outside face' without ever leaving the surface. At the twist, the cord just... keeps going. There's no barrier, no edge to cross. The twist that looks like a complication is actually an open door.
 
@@ -101,12 +63,10 @@ Normal band (0 twists):          Mobius band (half-twist):
 2. Slide the cord along the band's surface toward the half-twist
 3. At the twist, feed the cord through: pass it along the surface, following the twist to what *appears* to be the "other side" of the leather — but is actually the same side
 
-```
-Checkpoint (after step 3):
+**Checkpoint (after step 3):**
 The cord has followed the twist and is now on what appears to be
 the "other face" of the leather. But it's the same face — the
 Mobius property in action. Continue sliding in the same direction.
-```
 
 4. Continue working the cord along the band, now on the "opposite face" (same face, topologically)
 5. The cord eventually reaches the point where it can slide off the band's single edge
