@@ -220,10 +220,26 @@ export function createSVGDiagram(container) {
   svg.label(s, 420, baseY, cx + 30, baseY, 'Cord to base');
 
   // Key insight
-  svg.rect(s, 20, 360, 460, 30, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 20, 360, 460, 30, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
   svg.text(s, 250, 380, 'Key: Loop cord over the shorter center prong, then transfer ring to right', {
     fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
   });
+
+  // Inject pulse animation for the callout
+  let styleEl = s.querySelector('style[data-anim]');
+  if (!styleEl) {
+    styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('data-anim', '1');
+    s.insertBefore(styleEl, s.firstChild);
+  }
+  styleEl.textContent += `
+    @keyframes calloutPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
+  `;
+  calloutRect.classList.add('callout-box');
 }
 
 export function dispose() {}

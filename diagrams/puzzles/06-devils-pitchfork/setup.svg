@@ -10,46 +10,35 @@
     Devil's Pitchfork -- Setup
   </text>
 
-  <!--
-    Layout:
-      Base bar at y=250
-      Left prong at x=100, top at y=80  (170px tall ~ 100mm)
-      Center prong at x=175, top at y=114 (136px tall ~ 80mm)
-      Right prong at x=250, top at y=80  (170px tall ~ 100mm)
-      Ball-stops: filled circles at prong tops
-      Ring on left prong at ~y=160
-      Cord (dashed) from ring down to center prong base
-  -->
-
-  <!-- Base horizontal bar -->
+  <!-- Base horizontal bar (steel) -->
   <line x1="80" y1="250" x2="270" y2="250"
-        stroke="#333" stroke-width="2"/>
+        stroke="#888" stroke-width="2"/>
 
-  <!-- Left prong (100mm) -->
+  <!-- Left prong (100mm, steel) -->
   <line x1="100" y1="250" x2="100" y2="80"
-        stroke="#333" stroke-width="2"/>
-  <!-- Left ball-stop -->
-  <circle cx="100" cy="74" r="6" fill="#333"/>
+        stroke="#888" stroke-width="2"/>
+  <!-- Left ball-stop (steel) -->
+  <circle cx="100" cy="74" r="6" fill="#888"/>
 
-  <!-- Center prong (80mm, shorter) -->
+  <!-- Center prong (80mm, shorter, steel) -->
   <line x1="175" y1="250" x2="175" y2="114"
-        stroke="#333" stroke-width="2"/>
-  <!-- Center ball-stop (slightly smaller) -->
-  <circle cx="175" cy="108" r="5" fill="#333"/>
+        stroke="#888" stroke-width="2"/>
+  <!-- Center ball-stop (steel, slightly smaller) -->
+  <circle cx="175" cy="108" r="5" fill="#888"/>
 
-  <!-- Right prong (100mm) -->
+  <!-- Right prong (100mm, steel) -->
   <line x1="250" y1="250" x2="250" y2="80"
-        stroke="#333" stroke-width="2"/>
-  <!-- Right ball-stop -->
-  <circle cx="250" cy="74" r="6" fill="#333"/>
+        stroke="#888" stroke-width="2"/>
+  <!-- Right ball-stop (steel) -->
+  <circle cx="250" cy="74" r="6" fill="#888"/>
 
-  <!-- Ring on the left prong -->
+  <!-- Ring on the left prong (brass) -->
   <circle cx="100" cy="170" r="12"
-          fill="none" stroke="#333" stroke-width="2"/>
+          fill="none" stroke="#cc8800" stroke-width="2"/>
 
-  <!-- Cord (dashed) from ring down to center prong base -->
+  <!-- Cord (dashed, blue) from ring down to center prong base -->
   <path d="M112,170 Q140,220 175,250"
-        fill="none" stroke="#333" stroke-width="2"
+        fill="none" stroke="#2255aa" stroke-width="2"
         stroke-dasharray="5,3"/>
 
   <!-- === LABELS === -->

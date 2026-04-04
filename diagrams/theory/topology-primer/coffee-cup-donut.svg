@@ -1,55 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 220">
-  <title>Coffee cup and donut topological equivalence</title>
-  <desc>A coffee cup and a donut (torus) are topologically equivalent because both have exactly one hole (genus 1).</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250">
+  <title>Coffee cup to donut morph sequence</title>
+  <desc>A five-step morph sequence showing a coffee cup continuously deforming into a donut (torus), demonstrating their topological equivalence as genus-1 surfaces.</desc>
 
-  <defs>
-    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <path d="M0,0 L8,3 L0,6 Z" fill="#999"/>
-    </marker>
-  </defs>
+  <style>
+    @keyframes highlight {
+      0%, 12% { stroke: #2255aa; stroke-width: 3; }
+      20%, 100% { stroke: #333; stroke-width: 2; }
+    }
+    .shape1 { animation: highlight 7.5s ease infinite; }
+    .shape2 { animation: highlight 7.5s ease 1.5s infinite; }
+    .shape3 { animation: highlight 7.5s ease 3.0s infinite; }
+    .shape4 { animation: highlight 7.5s ease 4.5s infinite; }
+    .shape5 { animation: highlight 7.5s ease 6.0s infinite; }
+  </style>
 
-  <rect x="0" y="0" width="550" height="220" fill="#fafafa" rx="8"/>
+  <rect x="0" y="0" width="600" height="250" fill="#fafafa" rx="8"/>
 
-  <!-- LEFT: Coffee cup -->
-  <text x="145" y="24" font-size="12" font-family="system-ui, sans-serif" fill="#333" text-anchor="middle" font-weight="bold">Coffee cup</text>
-
-  <!-- Cup body -->
-  <path d="M 90 55 L 85 140 Q 85 155, 100 155 L 190 155 Q 205 155, 205 140 L 200 55 Z"
-        fill="none" stroke="#333" stroke-width="2" stroke-linejoin="round"/>
-
-  <!-- Cup rim (slight ellipse at top) -->
-  <ellipse cx="145" cy="55" rx="55" ry="6" fill="none" stroke="#333" stroke-width="2"/>
-
-  <!-- Handle -->
-  <path d="M 200 70 Q 240 70, 240 100 Q 240 130, 200 130"
-        fill="none" stroke="#333" stroke-width="2"/>
-
+  <!-- ================ SHAPE 1: Coffee cup ================ -->
+  <g class="shape1">
+    <!-- Cup body -->
+    <path d="M 30 60 L 26 140 Q 26 155, 40 155 L 80 155 Q 94 155, 94 140 L 90 60 Z"
+          fill="none" stroke="#333" stroke-width="2" stroke-linejoin="round"/>
+    <!-- Cup rim ellipse -->
+    <ellipse cx="60" cy="60" rx="30" ry="5" fill="none" stroke="#333" stroke-width="2"/>
+    <!-- Handle -->
+    <path d="M 94 75 Q 120 75, 120 100 Q 120 125, 94 125"
+          fill="none" stroke="#333" stroke-width="2"/>
+  </g>
+  <!-- Label -->
+  <text x="60" y="178" font-size="10" font-family="system-ui, sans-serif" fill="#333" text-anchor="middle">Coffee cup</text>
   <!-- Handle hole annotation -->
-  <line x1="255" y1="100" x2="238" y2="100" stroke="#aaa" stroke-width="0.5" stroke-dasharray="3,2"/>
-  <text x="258" y="96" font-size="10" font-family="system-ui, sans-serif" fill="#666" text-anchor="start">handle =</text>
-  <text x="258" y="108" font-size="10" font-family="system-ui, sans-serif" fill="#666" text-anchor="start">the single hole</text>
+  <line x1="122" y1="100" x2="132" y2="88" stroke="#aaa" stroke-width="0.5" stroke-dasharray="3,2"/>
+  <text x="134" y="85" font-size="8" font-family="system-ui, sans-serif" fill="#666" text-anchor="start">the single hole</text>
 
-  <!-- CENTER: Equivalence symbol -->
-  <text x="330" y="105" font-size="22" font-family="system-ui, sans-serif" fill="#333" text-anchor="middle" font-weight="bold">&#x2245;</text>
+  <!-- Arrow 1→2 -->
+  <text x="120" y="112" font-size="14" font-family="system-ui, sans-serif" fill="#999" text-anchor="middle">&#x2192;</text>
 
-  <!-- RIGHT: Donut (torus) -->
-  <text x="440" y="24" font-size="12" font-family="system-ui, sans-serif" fill="#333" text-anchor="middle" font-weight="bold">Donut (torus)</text>
+  <!-- ================ SHAPE 2: Squat blob with prominent handle hole ================ -->
+  <g class="shape2">
+    <!-- Outer shape: squat rounded rectangle blob -->
+    <path d="M 155 78 Q 155 62, 175 62 L 210 62 Q 230 62, 230 78
+             L 230 120 Q 230 138, 210 138 L 175 138 Q 155 138, 155 120 Z"
+          fill="none" stroke="#333" stroke-width="2"/>
+    <!-- Inner hole (the handle hole, now more prominent) -->
+    <ellipse cx="205" cy="100" rx="14" ry="18" fill="#fafafa" stroke="#333" stroke-width="2"/>
+  </g>
+  <!-- Arrow 2→3 -->
+  <text x="244" y="112" font-size="14" font-family="system-ui, sans-serif" fill="#999" text-anchor="middle">&#x2192;</text>
 
-  <!-- Outer torus shape -->
-  <ellipse cx="440" cy="105" rx="70" ry="45" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- ================ SHAPE 3: Fat ring / thick torus-like blob ================ -->
+  <g class="shape3">
+    <!-- Outer shape: wide ring blob -->
+    <path d="M 265 72 Q 265 55, 295 55 L 315 55 Q 345 55, 345 72
+             L 345 128 Q 345 145, 315 145 L 295 145 Q 265 145, 265 128 Z"
+          fill="none" stroke="#333" stroke-width="2"/>
+    <!-- Inner hole (larger, more centered) -->
+    <ellipse cx="305" cy="100" rx="18" ry="22" fill="#fafafa" stroke="#333" stroke-width="2"/>
+  </g>
+  <!-- Arrow 3→4 -->
+  <text x="362" y="112" font-size="14" font-family="system-ui, sans-serif" fill="#999" text-anchor="middle">&#x2192;</text>
 
-  <!-- Inner hole of torus (the hole through the middle) -->
-  <ellipse cx="440" cy="105" rx="25" ry="12" fill="#fafafa" stroke="#333" stroke-width="2"/>
+  <!-- ================ SHAPE 4: Near-torus, slightly asymmetric ================ -->
+  <g class="shape4">
+    <!-- Outer ellipse, slightly taller than final torus -->
+    <ellipse cx="420" cy="100" rx="42" ry="38" fill="none" stroke="#333" stroke-width="2"/>
+    <!-- Inner hole (approaching torus proportions, slightly off-center vertically) -->
+    <ellipse cx="420" cy="102" rx="18" ry="14" fill="#fafafa" stroke="#333" stroke-width="2"/>
+  </g>
+  <!-- Arrow 4→5 -->
+  <text x="476" y="112" font-size="14" font-family="system-ui, sans-serif" fill="#999" text-anchor="middle">&#x2192;</text>
 
-  <!-- Top surface shading hint -->
-  <path d="M 380 85 Q 410 70, 440 68 Q 470 70, 500 85"
-        fill="none" stroke="#333" stroke-width="1" opacity="0.3"/>
+  <!-- ================ SHAPE 5: Donut (torus) ================ -->
+  <g class="shape5">
+    <!-- Outer torus ellipse -->
+    <ellipse cx="540" cy="100" rx="45" ry="35" fill="none" stroke="#333" stroke-width="2"/>
+    <!-- Inner torus hole -->
+    <ellipse cx="540" cy="100" rx="18" ry="10" fill="#fafafa" stroke="#333" stroke-width="2"/>
+    <!-- Top surface shading hint -->
+    <path d="M 502 82 Q 520 70, 540 68 Q 560 70, 578 82"
+          fill="none" stroke="#333" stroke-width="1" opacity="0.3"/>
+  </g>
+  <!-- Label -->
+  <text x="540" y="178" font-size="10" font-family="system-ui, sans-serif" fill="#333" text-anchor="middle">Donut (torus)</text>
+  <!-- Torus hole annotation -->
+  <line x1="540" y1="115" x2="540" y2="148" stroke="#aaa" stroke-width="0.5" stroke-dasharray="3,2"/>
+  <text x="540" y="158" font-size="8" font-family="system-ui, sans-serif" fill="#666" text-anchor="middle">same hole</text>
 
-  <!-- Hole annotation -->
-  <line x1="440" y1="125" x2="440" y2="148" stroke="#aaa" stroke-width="0.5" stroke-dasharray="3,2"/>
-  <text x="440" y="160" font-size="10" font-family="system-ui, sans-serif" fill="#666" text-anchor="middle">hole through the middle</text>
+  <!-- Topological equivalence symbol between first and last -->
+  <text x="300" y="195" font-size="14" font-family="system-ui, sans-serif" fill="#555" text-anchor="middle">&#x2245;</text>
 
-  <!-- Bottom shared label -->
-  <text x="275" y="200" font-size="12" font-family="system-ui, sans-serif" fill="#333" text-anchor="middle">Both have exactly one hole (genus 1)</text>
+  <!-- Bottom explanation -->
+  <text x="300" y="225" font-size="11" font-family="system-ui, sans-serif" fill="#333" text-anchor="middle">Both have exactly one hole (genus 1) &#x2014; continuous deformation preserves topology</text>
 </svg>

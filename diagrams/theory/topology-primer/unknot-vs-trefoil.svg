@@ -1,73 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 220">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 240">
   <title>Unknot vs Trefoil Knot</title>
-  <desc>Side-by-side comparison of the unknot (simple circle, 0 crossings) and the trefoil knot (simplest non-trivial knot, 3 crossings). Crossings use the white-gap convention to show over/under strand relationships.</desc>
+  <desc>Side-by-side comparison of the unknot (simple circle, 0 crossings) and the trefoil knot (simplest non-trivial knot, 3 crossings). The trefoil has three-fold rotational symmetry with three crossings shown using the white-gap convention for over/under strand relationships.</desc>
 
-  <rect width="500" height="220" fill="#fafafa"/>
+  <!-- Background -->
+  <rect width="500" height="240" fill="#fafafa" rx="8"/>
 
-  <!-- LEFT: Unknot -->
-  <text x="125" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Unknot</text>
-  <circle cx="125" cy="105" r="55" fill="none" stroke="#333" stroke-width="2"/>
-  <text x="125" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">0 crossings</text>
+  <!-- Center divider -->
+  <line x1="250" y1="20" x2="250" y2="220" stroke="#ddd" stroke-width="1" stroke-dasharray="4,4"/>
 
-  <!-- RIGHT: Trefoil -->
-  <text x="370" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Trefoil (simplest non-trivial knot)</text>
+  <!-- ================================================ -->
+  <!-- LEFT: Unknot                                     -->
+  <!-- ================================================ -->
+  <circle cx="130" cy="115" r="45" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
 
-  <!-- Trefoil knot constructed from three lobes -->
-  <!-- The trefoil is drawn as a single continuous path with 3 crossings. -->
-  <!-- We use the convention: draw the "over" strand fully, then white gap, then under strand. -->
+  <!-- Unknot labels -->
+  <text x="130" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Unknot</text>
+  <text x="130" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">(0 crossings)</text>
 
-  <!-- Define the trefoil as three arcs that form a clover shape -->
-  <!-- Center at (370, 105), lobes extending ~55px -->
+  <!-- ================================================ -->
+  <!-- RIGHT: Trefoil knot                              -->
+  <!-- ================================================ -->
+  <!-- Center: (370, 115)                               -->
+  <!-- Three petals with 120-degree rotational symmetry -->
+  <!--                                                  -->
+  <!-- Petal centers:                                    -->
+  <!--   Top:          (370, 70)                         -->
+  <!--   Bottom-left:  (331, 137)                        -->
+  <!--   Bottom-right: (409, 137)                        -->
+  <!--                                                  -->
+  <!-- The trefoil is built from 6 half-petal arcs that  -->
+  <!-- weave alternately over and under at 3 crossings.  -->
+  <!--                                                  -->
+  <!-- Crossing locations (between petals):              -->
+  <!--   C1: between top & bottom-right, ~(393, 98)     -->
+  <!--   C2: between bottom-right & bottom-left, (370, 148) -->
+  <!--   C3: between bottom-left & top, ~(347, 98)      -->
+  <!--                                                  -->
+  <!-- Convention: each petal goes OVER the next one     -->
+  <!-- clockwise (top over bottom-right, bottom-right    -->
+  <!-- over bottom-left, bottom-left over top).          -->
+  <!-- ================================================ -->
 
-  <!-- Over strands (drawn first, complete) -->
-  <!-- Crossing 1 (top): right-to-left strand goes over -->
-  <!-- Crossing 2 (bottom-left): top-to-bottom strand goes over -->
-  <!-- Crossing 3 (bottom-right): left-to-right strand goes over -->
+  <!--
+    We define the trefoil with 6 arc segments (2 per petal).
+    Each petal goes from one crossing point, arcs outward through
+    its petal tip, and arrives at the next crossing point.
 
-  <!-- Full trefoil path - three lobes -->
-  <!-- Lobe 1: top, curving up-right -->
-  <!-- Lobe 2: bottom-right, curving down-right -->
-  <!-- Lobe 3: bottom-left, curving down-left -->
+    Crossing points (on the knot path):
+      C1 ~ (393, 98)   — between top petal and bottom-right petal
+      C2 ~ (370, 148)  — between bottom-right petal and bottom-left petal
+      C3 ~ (347, 98)   — between bottom-left petal and top petal
 
-  <!-- Draw the complete trefoil outline first -->
-  <defs>
-    <clipPath id="trefoil-clip">
-      <rect x="280" y="35" width="180" height="140"/>
-    </clipPath>
-  </defs>
+    Petal arcs (each petal split into "outgoing" and "incoming" halves):
 
-  <!-- Three overlapping circles to form the trefoil shape -->
-  <!-- Top lobe -->
-  <path d="M 370,70 C 340,40 310,55 330,85" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <path d="M 330,85 C 340,100 345,108 350,115" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    TOP PETAL: C3 -> petal tip (370, 55) -> C1
+      outgoing: C3(347,98) => tip area => (370,55)
+      incoming: (370,55) => tip area => C1(393,98)
 
-  <!-- Bottom-left lobe -->
-  <path d="M 350,115 C 335,135 310,145 310,120" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <path d="M 310,120 C 310,100 325,90 345,80" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    BOTTOM-RIGHT PETAL: C1 -> petal tip (418, 145) -> C2
+      outgoing: C1(393,98) => tip area => (418,145)
+      incoming: (418,145) => tip area => C2(370,148)
 
-  <!-- White gap at crossing 1 (top area, near 345,80 to 370,70): under strand gets gap -->
-  <line x1="341" y1="83" x2="349" y2="77" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    BOTTOM-LEFT PETAL: C2 -> petal tip (322, 145) -> C3
+      outgoing: C2(370,148) => tip area => (322,145)
+      incoming: (322,145) => tip area => C3(347,98)
+  -->
 
-  <!-- Bottom-right lobe -->
-  <path d="M 345,80 C 365,70 380,65 395,80" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <path d="M 395,80 C 410,100 410,120 390,115" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <!-- Layer 1: Draw all 6 arc segments as the base layer -->
 
-  <!-- White gap at crossing 2 (bottom-right area): under strand gets gap -->
-  <line x1="387" y1="118" x2="393" y2="112" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+  <!-- Top petal: C3 -> C1 (going through the top) -->
+  <path d="M 347,98 C 337,78 345,55 370,55 C 395,55 403,78 393,98"
+        fill="none" stroke="#2255aa" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
 
-  <path d="M 390,115 C 375,112 360,118 350,115" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <!-- Bottom-right petal: C1 -> C2 (going through lower-right) -->
+  <path d="M 393,98 C 410,112 425,138 418,150 C 411,162 390,158 370,148"
+        fill="none" stroke="#2255aa" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- Closing arc back to top -->
-  <path d="M 370,70 C 385,55 400,65 395,80" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <!-- Bottom-left petal: C2 -> C3 (going through lower-left) -->
+  <path d="M 370,148 C 350,158 329,162 322,150 C 315,138 330,112 347,98"
+        fill="none" stroke="#2255aa" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- White gap at crossing 3 (bottom-left area): under strand gets gap -->
-  <line x1="348" y1="118" x2="354" y2="112" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+  <!-- Layer 2: White gaps on the UNDER strands at each crossing -->
+  <!-- At C1 (~393,98): top petal arrives going down-right, bottom-right petal departs going down-right.
+       Convention: top petal goes OVER bottom-right petal's outgoing half.
+       So the UNDER strand at C1 is the bottom-right petal's outgoing segment. -->
+  <!-- Gap on bottom-right petal outgoing at C1 -->
+  <path d="M 389,93 C 393,98 397,104 400,108"
+        fill="none" stroke="#fafafa" stroke-width="7"
+        stroke-linecap="round"/>
 
-  <!-- Redraw the over-strand segments at the crossings -->
-  <path d="M 330,85 C 340,100 345,108 350,115" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <path d="M 345,80 C 365,70 380,65 395,80" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <path d="M 310,120 C 310,100 325,90 345,80" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <!-- At C2 (~370,148): bottom-right petal arrives going left, bottom-left petal departs going left.
+       Convention: bottom-right petal goes OVER bottom-left petal.
+       So the UNDER strand at C2 is the bottom-left petal's outgoing segment. -->
+  <!-- Gap on bottom-left petal outgoing at C2 -->
+  <path d="M 374,152 C 370,150 365,148 360,147"
+        fill="none" stroke="#fafafa" stroke-width="7"
+        stroke-linecap="round"/>
 
-  <text x="370" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">3 crossings (minimum)</text>
+  <!-- At C3 (~347,98): bottom-left petal arrives going up, top petal departs going up.
+       Convention: bottom-left petal goes OVER top petal.
+       So the UNDER strand at C3 is the top petal's outgoing segment. -->
+  <!-- Gap on top petal outgoing at C3 -->
+  <path d="M 343,104 C 345,100 347,96 351,93"
+        fill="none" stroke="#fafafa" stroke-width="7"
+        stroke-linecap="round"/>
+
+  <!-- Layer 3: Redraw the OVER strands on top of the gaps -->
+
+  <!-- Over-strand at C1: top petal's incoming half passes over -->
+  <path d="M 385,68 C 395,78 397,92 393,98 C 389,104 383,108 380,110"
+        fill="none" stroke="#2255aa" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Over-strand at C2: bottom-right petal's incoming half passes over -->
+  <path d="M 422,144 C 416,155 396,158 370,148 C 362,144 358,142 355,140"
+        fill="none" stroke="#2255aa" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Over-strand at C3: bottom-left petal's incoming half passes over -->
+  <path d="M 328,148 C 322,140 320,118 347,98 C 353,94 358,90 362,87"
+        fill="none" stroke="#2255aa" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Trefoil labels -->
+  <text x="370" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Trefoil knot</text>
+  <text x="370" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">(3 crossings)</text>
 </svg>

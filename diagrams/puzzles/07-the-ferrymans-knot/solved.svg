@@ -4,27 +4,31 @@
 
   <rect width="250" height="350" fill="#fafafa"/>
 
-  <!-- Base block -->
-  <rect x="65" y="280" width="120" height="40" rx="3" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Green "Solved" indicator (upper-right) -->
+  <circle cx="222" cy="25" r="16" fill="#2a9d2a" opacity="0.12" stroke="#2a9d2a" stroke-width="1.5"/>
+  <path d="M214,25 L220,31 L232,19" fill="none" stroke="#2a9d2a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- Post -->
-  <rect x="115" y="70" width="20" height="210" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Base block (dark wood) -->
+  <rect x="65" y="280" width="120" height="40" rx="3" fill="#8b6914" stroke="#6b4f10" stroke-width="2"/>
 
-  <!-- Ball finial -->
-  <circle cx="125" cy="55" r="15" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Post (wood) -->
+  <rect x="115" y="70" width="20" height="210" fill="#c4956a" stroke="#a07050" stroke-width="2"/>
 
-  <!-- Ring on post (trapped by finial) -->
-  <circle cx="125" cy="110" r="8" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Ball finial (wood) -->
+  <circle cx="125" cy="55" r="15" fill="#c4956a" stroke="#a07050" stroke-width="2"/>
 
-  <!-- Hook at base -->
-  <path d="M125,280 L125,290 Q125,305 115,305 Q105,305 105,295" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Ring on post (brass, trapped by finial) -->
+  <circle cx="125" cy="110" r="8" fill="none" stroke="#cc8800" stroke-width="2.5"/>
 
-  <!-- Cord hanging freely (dashed vertical line alongside post) -->
-  <line x1="150" y1="110" x2="150" y2="275" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Hook at base (steel) -->
+  <path d="M125,280 L125,290 Q125,305 115,305 Q105,305 105,295" fill="none" stroke="#888" stroke-width="2.5"/>
+
+  <!-- Cord hanging freely (alongside post) -->
+  <line x1="150" y1="110" x2="150" y2="275" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
   <!-- Cord connects to ring -->
-  <line x1="133" y1="110" x2="150" y2="110" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="133" y1="110" x2="150" y2="110" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
   <!-- Cord connects to hook area -->
-  <path d="M150,275 Q150,285 140,290 Q130,295 125,290" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <path d="M150,275 Q150,285 140,290 Q130,295 125,290" fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
 
   <!-- === Labels === -->
 
@@ -37,5 +41,5 @@
   <text x="183" y="159" font-family="system-ui, sans-serif" font-size="10" fill="#666">no wraps</text>
 
   <!-- Title label -->
-  <text x="125" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">SOLVED</text>
+  <text x="125" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#2a9d2a" font-weight="bold">SOLVED</text>
 </svg>

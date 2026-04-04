@@ -258,15 +258,21 @@ export function createSVGDiagram(container) {
   // Base
   svg.rect(s, 200, 320, 100, 20, { fill: '#8b6914', stroke: '#6b4f12', strokeWidth: 1.5 });
 
-  // Cord wraps (simplified front view — three X crossings)
-  const wrapColors = ['#2255aa'];
+  // Cord wraps (simplified front view — three X crossings, animated)
   for (let i = 0; i < 3; i++) {
     const y = 120 + i * 60;
-    // Front strand
-    svg.line(s, 220, y, 280, y + 40, { stroke: '#2255aa', strokeWidth: 2.5 });
+    const delay = i * 0.6;
+    // Front strand (animated)
+    svg.animatedPath(s, `M 220 ${y} L 280 ${y + 40}`, {
+      stroke: '#2255aa', strokeWidth: 2.5, fill: 'none',
+      animDuration: 0.5, animDelay: delay,
+    });
     // Back strand (with gap for crossing)
     svg.crossingGap(s, 250, y + 20, Math.PI / 4, 14);
-    svg.line(s, 280, y, 220, y + 40, { stroke: '#2255aa', strokeWidth: 2.5 });
+    svg.animatedPath(s, `M 280 ${y} L 220 ${y + 40}`, {
+      stroke: '#2255aa', strokeWidth: 2.5, fill: 'none',
+      animDuration: 0.5, animDelay: delay + 0.25,
+    });
   }
 
   // Cord to hook
@@ -285,13 +291,29 @@ export function createSVGDiagram(container) {
   svg.label(s, 360, 320, 320, 315, 'Hook in base');
 
   // Key insight
-  svg.rect(s, 20, 355, 460, 35, { fill: '#fee8e8', stroke: '#d44', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 20, 355, 460, 35, { fill: '#fee8e8', stroke: '#d44', strokeWidth: 1, rx: 4 });
   svg.text(s, 250, 370, 'Seems impossible! But this is an OPEN ARC, not a closed trefoil.', {
     fontSize: 10, anchor: 'middle', fill: '#a33', fontWeight: 'bold',
   });
   svg.text(s, 250, 383, 'Each wrap can be lifted over the finial one at a time.', {
     fontSize: 10, anchor: 'middle', fill: '#a33',
   });
+
+  // Inject pulse animation for the callout
+  let styleEl = s.querySelector('style[data-anim]');
+  if (!styleEl) {
+    styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('data-anim', '1');
+    s.insertBefore(styleEl, s.firstChild);
+  }
+  styleEl.textContent += `
+    @keyframes calloutPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
+  `;
+  calloutRect.classList.add('callout-box');
 }
 
 export function dispose() {}

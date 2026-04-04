@@ -10,23 +10,23 @@
   <!-- === LEFT: Before (strand with loop/twist) === -->
 
   <!-- Strand coming from top -->
-  <line x1="100" y1="45" x2="100" y2="80" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="100" y1="45" x2="100" y2="80" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
 
   <!-- Loop/twist creating one crossing -->
   <!-- Under-strand gap -->
-  <path d="M100,105 Q70,95 80,115" fill="none" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+  <path d="M100,105 Q70,95 80,115" fill="none" stroke="#fafafa" stroke-width="10" stroke-linecap="round"/>
 
-  <!-- Over-strand (goes from top-strand, loops right, crosses over, continues down) -->
-  <path d="M100,80 Q130,90 120,110 Q110,130 100,120" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Over-strand (goes from top-strand, loops right, crosses over, continues down) — highlighted as moving strand -->
+  <path d="M100,80 Q130,90 120,110 Q110,130 100,120" fill="none" stroke="#2255aa" stroke-width="3" stroke-dasharray="5,3"/>
 
-  <!-- Under-strand (continues through the crossing) -->
-  <path d="M100,105 Q70,95 80,115 Q90,135 100,120" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Under-strand (continues through the crossing, faded) -->
+  <path d="M100,105 Q70,95 80,115 Q90,135 100,120" fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.7"/>
 
   <!-- Strand continuing downward -->
-  <line x1="100" y1="120" x2="100" y2="160" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="100" y1="120" x2="100" y2="160" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
 
   <!-- Crossing indicator -->
-  <circle cx="95" cy="108" r="4" fill="none" stroke="#999" stroke-width="1"/>
+  <circle cx="95" cy="108" r="4" fill="none" stroke="#cc8800" stroke-width="1.5"/>
 
   <!-- Label "One crossing" -->
   <text x="100" y="182" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">One crossing</text>
@@ -42,7 +42,7 @@
   <!-- === RIGHT: After (straight strand) === -->
 
   <!-- Simple straight vertical strand -->
-  <line x1="300" y1="45" x2="300" y2="160" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="300" y1="45" x2="300" y2="160" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
 
   <!-- Label "Zero crossings" -->
   <text x="300" y="182" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">Zero crossings</text>

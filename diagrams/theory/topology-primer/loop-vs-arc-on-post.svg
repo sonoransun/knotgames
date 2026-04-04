@@ -1,69 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240">
   <title>Loop vs arc on a post</title>
-  <desc>A closed loop is trapped around a post and cannot be removed, while an open arc draped over a post can slide right off the end.</desc>
+  <desc>A closed loop is topologically linked to a post and cannot be removed, while an open arc draped over a post can always slide off the end.</desc>
 
   <defs>
-    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <path d="M0,0 L8,3 L0,6 Z" fill="#999"/>
+    <!-- Post gradient for cylindrical 3D look -->
+    <linearGradient id="postGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#aaa"/>
+      <stop offset="40%" stop-color="#999"/>
+      <stop offset="100%" stop-color="#666"/>
+    </linearGradient>
+
+    <!-- Upward arrow marker -->
+    <marker id="arrowUp" markerWidth="8" markerHeight="8" refX="4" refY="8" orient="auto">
+      <path d="M0,8 L4,0 L8,8" fill="none" stroke="#2255aa" stroke-width="1.2"/>
     </marker>
   </defs>
 
-  <rect x="0" y="0" width="500" height="200" fill="#fafafa" rx="8"/>
+  <style>
+    @keyframes slideOff {
+      0%, 10% { transform: translateY(0); opacity: 1; }
+      45%, 55% { transform: translateY(-30px); opacity: 0.3; }
+      90%, 100% { transform: translateY(0); opacity: 1; }
+    }
+    .arc-animate {
+      animation: slideOff 5s ease-in-out infinite;
+    }
+  </style>
 
-  <!-- Divider -->
-  <line x1="250" y1="15" x2="250" y2="185" stroke="#ddd" stroke-width="1" stroke-dasharray="4,4"/>
+  <!-- Background -->
+  <rect x="0" y="0" width="520" height="240" fill="#fafafa" rx="8"/>
 
-  <!-- LEFT: Loop around post (trapped) -->
-  <text x="125" y="22" font-size="12" font-family="system-ui, sans-serif" fill="#333" text-anchor="middle" font-weight="bold">Loop around post (trapped)</text>
+  <!-- Dashed vertical divider -->
+  <line x1="260" y1="18" x2="260" y2="210" stroke="#ddd" stroke-width="1" stroke-dasharray="4,4"/>
 
-  <!-- Post -->
-  <rect x="110" y="45" width="30" height="70" fill="#ddd" stroke="#333" stroke-width="2" rx="2"/>
+  <!-- ============================================ -->
+  <!-- LEFT PANEL: Closed loop (trapped)            -->
+  <!-- ============================================ -->
 
-  <!-- Cord loop: behind post (left side) -->
-  <path d="M 80 80 Q 60 50, 80 40 Q 100 30, 125 35"
-        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
-  <!-- Cord loop: behind post (right side, hidden by post) -->
-  <!-- Cord loop: front of post (right side) -->
-  <path d="M 125 35 L 125 35" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
-  <path d="M 140 35 Q 165 30, 175 50 Q 185 75, 170 95 Q 155 115, 125 120"
-        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
-  <!-- Cord loop: front of post (left side) -->
-  <path d="M 125 120 Q 95 115, 80 100 Q 68 88, 80 80"
-        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
-
-  <!-- Crossing indicators: cord passes behind the post -->
-  <line x1="110" y1="35" x2="110" y2="35" stroke="#fafafa" stroke-width="6"/>
-
-  <!-- "cannot remove" label -->
-  <text x="125" y="155" font-size="10" font-family="system-ui, sans-serif" fill="#999" text-anchor="middle">cannot remove</text>
-
-  <!-- X marks to indicate trapped -->
-  <text x="70" y="80" font-size="14" font-family="system-ui, sans-serif" fill="#c44">&#x2717;</text>
-  <text x="175" y="80" font-size="14" font-family="system-ui, sans-serif" fill="#c44">&#x2717;</text>
-
-  <!-- RIGHT: Arc over post (free) -->
-  <text x="375" y="22" font-size="12" font-family="system-ui, sans-serif" fill="#333" text-anchor="middle" font-weight="bold">Arc over post (free)</text>
+  <!-- Title -->
+  <text x="135" y="26" font-size="12" font-family="system-ui, sans-serif" fill="#333" text-anchor="middle" font-weight="bold">Closed loop (trapped)</text>
 
   <!-- Post -->
-  <rect x="360" y="45" width="30" height="70" fill="#ddd" stroke="#333" stroke-width="2" rx="2"/>
+  <rect x="127" y="50" width="16" height="100" fill="url(#postGrad)" rx="4"/>
 
-  <!-- Cord arc draped over post -->
-  <path d="M 315 110 Q 330 60, 355 42 Q 375 30, 395 42 Q 420 60, 435 110"
-        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3" stroke-linecap="round"/>
+  <!-- Loop: back portion (behind post) - low opacity -->
+  <path d="M 127 85 Q 125 55, 135 48 Q 143 43, 143 48"
+        fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
 
-  <!-- Endpoint dots -->
-  <circle cx="315" cy="110" r="4" fill="#333" stroke="none"/>
-  <circle cx="435" cy="110" r="4" fill="#333" stroke="none"/>
+  <!-- Loop: front portion (in front of post) - full opacity -->
+  <!-- Right side coming down -->
+  <path d="M 143 48 Q 165 42, 175 60 Q 185 82, 170 105 Q 155 125, 135 128"
+        fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Bottom and left side going back up -->
+  <path d="M 135 128 Q 110 125, 95 105 Q 82 85, 95 65 Q 105 50, 127 85"
+        fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
 
-  <!-- Endpoint labels -->
-  <text x="307" y="107" font-size="10" font-family="system-ui, sans-serif" fill="#666" text-anchor="end">o</text>
-  <text x="443" y="107" font-size="10" font-family="system-ui, sans-serif" fill="#666" text-anchor="start">o</text>
+  <!-- Red X -->
+  <text x="135" y="168" font-size="18" font-family="system-ui, sans-serif" fill="#c44" text-anchor="middle" font-weight="bold">&#x2717;</text>
 
-  <!-- "slide right off the end" label with arrow -->
-  <text x="375" y="148" font-size="10" font-family="system-ui, sans-serif" fill="#999" text-anchor="middle">slide right off the end</text>
-  <line x1="433" y1="145" x2="460" y2="145" stroke="#999" stroke-width="1" marker-end="url(#arrowhead)"/>
+  <!-- Label -->
+  <text x="135" y="185" font-size="11" font-family="system-ui, sans-serif" fill="#c44" text-anchor="middle">Loop cannot escape</text>
 
-  <!-- Lifting arrow on the arc -->
-  <path d="M 435 108 Q 450 90, 465 85" fill="none" stroke="#999" stroke-width="0.75" marker-end="url(#arrowhead)"/>
+  <!-- ============================================ -->
+  <!-- RIGHT PANEL: Open arc (free)                 -->
+  <!-- ============================================ -->
+
+  <!-- Title -->
+  <text x="385" y="26" font-size="12" font-family="system-ui, sans-serif" fill="#333" text-anchor="middle" font-weight="bold">Open arc (free)</text>
+
+  <!-- Post -->
+  <rect x="377" y="50" width="16" height="100" fill="url(#postGrad)" rx="4"/>
+
+  <!-- Ghost arc (showing where arc slides to) - dashed, very faint -->
+  <g opacity="0.2">
+    <path d="M 330 100 Q 340 50, 365 42"
+          fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4,3"/>
+    <path d="M 405 42 Q 430 50, 440 100"
+          fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4,3"/>
+    <circle cx="330" cy="100" r="4" fill="#2255aa"/>
+    <circle cx="440" cy="100" r="4" fill="#2255aa"/>
+  </g>
+
+  <!-- Dashed upward arrow indicating sliding off -->
+  <line x1="385" y1="105" x2="385" y2="58" stroke="#2255aa" stroke-width="1.2" stroke-dasharray="3,3" marker-end="url(#arrowUp)"/>
+
+  <!-- Animated arc group -->
+  <g class="arc-animate">
+    <!-- Arc: front left portion (full opacity) -->
+    <path d="M 330 130 Q 340 75, 365 60 Q 375 54, 377 58"
+          fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Arc: behind post (low opacity) -->
+    <path d="M 377 58 Q 383 52, 393 58"
+          fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+
+    <!-- Arc: front right portion (full opacity) -->
+    <path d="M 393 58 Q 395 54, 405 60 Q 430 75, 440 130"
+          fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Endpoint dots -->
+    <circle cx="330" cy="130" r="4" fill="#2255aa"/>
+    <circle cx="440" cy="130" r="4" fill="#2255aa"/>
+  </g>
+
+  <!-- Green checkmark -->
+  <text x="385" y="168" font-size="18" font-family="system-ui, sans-serif" fill="#2a2" text-anchor="middle" font-weight="bold">&#x2713;</text>
+
+  <!-- Label -->
+  <text x="385" y="185" font-size="11" font-family="system-ui, sans-serif" fill="#2a2" text-anchor="middle">Arc can slide off</text>
+
+  <!-- ============================================ -->
+  <!-- Bottom annotation                            -->
+  <!-- ============================================ -->
+  <text x="260" y="222" font-size="10" font-family="system-ui, sans-serif" fill="#888" text-anchor="middle">A closed loop is topologically linked to the post; an open arc can always slide off.</text>
 </svg>

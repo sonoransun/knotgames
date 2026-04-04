@@ -1,119 +1,331 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 450">
   <title>Reidemeister Moves</title>
-  <desc>The three Reidemeister moves that generate all equivalences between knot diagrams. Type I adds/removes a twist, Type II slides one strand over another, and Type III slides a strand past a crossing.</desc>
+  <desc>The three Reidemeister moves that generate all equivalences between knot diagrams. Type I adds or removes a twist, Type II pokes or unpokes one strand past another creating two crossings, and Type III slides a strand past a crossing. Each move is color-coded and animated.</desc>
 
-  <rect width="500" height="350" fill="#fafafa"/>
+  <style>
+    /* ---- Type I fade animation ---- */
+    @keyframes fadeLoop {
+      0%   { opacity: 1; }
+      20%  { opacity: 0; }
+      50%  { opacity: 0; }
+      70%  { opacity: 1; }
+      100% { opacity: 1; }
+    }
+    @keyframes fadeLoopInv {
+      0%   { opacity: 0; }
+      20%  { opacity: 1; }
+      50%  { opacity: 1; }
+      70%  { opacity: 0; }
+      100% { opacity: 0; }
+    }
+    .r1-loop   { animation: fadeLoop    5s ease-in-out infinite; }
+    .r1-straight { animation: fadeLoopInv 5s ease-in-out infinite; }
 
-  <!-- ===== TYPE I: twist/untwist ===== -->
-  <text x="250" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Type I (twist/untwist): Add or remove a twist</text>
+    /* ---- Type II fade animation ---- */
+    @keyframes fadeParallel {
+      0%   { opacity: 1; }
+      20%  { opacity: 0; }
+      50%  { opacity: 0; }
+      70%  { opacity: 1; }
+      100% { opacity: 1; }
+    }
+    @keyframes fadeParallelInv {
+      0%   { opacity: 0; }
+      20%  { opacity: 1; }
+      50%  { opacity: 1; }
+      70%  { opacity: 0; }
+      100% { opacity: 0; }
+    }
+    .r2-parallel { animation: fadeParallel    5s ease-in-out infinite; }
+    .r2-crossed  { animation: fadeParallelInv 5s ease-in-out infinite; }
 
-  <!-- Left: strand with a loop/twist -->
-  <g transform="translate(120, 35)">
-    <!-- Strand going up, looping, coming back down -->
-    <path d="M 0,70 C 0,40 0,20 20,15 C 40,10 45,25 35,40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <!-- White gap at crossing (under strand) -->
-    <line x1="15" y1="38" x2="22" y2="45" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
-    <!-- Over strand continuing down -->
-    <path d="M 35,40 C 25,55 15,55 10,45" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <path d="M 10,45 C 5,35 0,40 0,70" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <!-- Redraw the over strand at crossing -->
-    <path d="M 0,70 C 0,40 0,20 20,15" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    /* ---- Type III gold strand slide animation ---- */
+    @keyframes slideGoldLeft {
+      0%   { opacity: 1; }
+      20%  { opacity: 0; }
+      50%  { opacity: 0; }
+      70%  { opacity: 1; }
+      100% { opacity: 1; }
+    }
+    @keyframes slideGoldRight {
+      0%   { opacity: 0; }
+      20%  { opacity: 1; }
+      50%  { opacity: 1; }
+      70%  { opacity: 0; }
+      100% { opacity: 0; }
+    }
+    .r3-gold-left  { animation: slideGoldLeft  5s ease-in-out infinite; }
+    .r3-gold-right { animation: slideGoldRight 5s ease-in-out infinite; }
+  </style>
+
+  <!-- Background -->
+  <rect width="520" height="450" fill="#fafafa"/>
+
+  <!-- ================================================================ -->
+  <!-- TYPE I: twist / untwist                                          -->
+  <!-- ================================================================ -->
+  <text x="260" y="24" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="12" fill="#333" font-weight="bold">
+    Type I (twist / untwist)
+  </text>
+
+  <!-- Left: strand with a loop twist -->
+  <g transform="translate(130, 40)">
+    <title>Twisted strand with one crossing</title>
+    <!-- Under-strand portion (bottom to crossing area) -->
+    <path d="M 40,90 C 40,60 40,50 40,40"
+          fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- The loop arcing right and back -->
+    <path d="M 40,40 C 40,15 70,5 70,30"
+          fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 70,30 C 70,50 55,55 48,47"
+          fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- White gap at crossing (under-strand passes behind) -->
+    <line x1="43" y1="38" x2="49" y2="44" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+    <!-- Over-strand at crossing: the rising portion that goes over -->
+    <path d="M 40,90 C 40,60 40,45 40,35"
+          fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Strand continuing up from the loop top -->
+    <path d="M 40,35 C 40,15 40,5 40,0"
+          fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
   </g>
 
-  <!-- Arrow -->
-  <g transform="translate(210, 70)">
+  <!-- Bidirectional arrow -->
+  <g transform="translate(220, 80)">
+    <title>Bidirectional equivalence arrow</title>
     <line x1="0" y1="0" x2="30" y2="0" stroke="#999" stroke-width="1.5"/>
     <polygon points="30,-4 38,0 30,4" fill="#999"/>
-    <line x1="70" y1="0" x2="100" y2="0" stroke="#999" stroke-width="1.5"/>
-    <polygon points="62,-4 70,0 62,4" fill="#999" transform="rotate(180, 66, 0)"/>
+    <line x1="42" y1="0" x2="72" y2="0" stroke="#999" stroke-width="1.5"/>
+    <polygon points="42,-4 34,0 42,4" fill="#999"/>
   </g>
 
   <!-- Right: simple straight strand -->
-  <g transform="translate(330, 35)">
-    <line x1="0" y1="0" x2="0" y2="70" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <g transform="translate(340, 40)">
+    <title>Simple straight strand (no twist)</title>
+    <line x1="40" y1="0" x2="40" y2="90" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
   </g>
 
-  <!-- ===== TYPE II: poke/unpoke ===== -->
-  <text x="250" y="142" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Type II (poke/unpoke): Slide one strand over another</text>
-
-  <!-- Left: two parallel strands (no crossing) -->
-  <g transform="translate(95, 155)">
-    <line x1="0" y1="0" x2="60" y2="0" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <line x1="0" y1="25" x2="60" y2="25" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <!-- Animated overlay: centered between the two -->
+  <g transform="translate(255, 40)">
+    <!-- Looped state -->
+    <g class="r1-loop">
+      <path d="M 0,90 C 0,60 0,50 0,40"
+            fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 0,40 C 0,15 30,5 30,30"
+            fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 30,30 C 30,50 15,55 8,47"
+            fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="3" y1="38" x2="9" y2="44" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+      <path d="M 0,90 C 0,60 0,45 0,35"
+            fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 0,35 C 0,15 0,5 0,0"
+            fill="none" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <!-- Straight state (fades in when loop fades out) -->
+    <g class="r1-straight">
+      <line x1="0" y1="0" x2="0" y2="90" stroke="#2255aa" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
   </g>
 
-  <!-- Arrow (bidirectional) -->
-  <g transform="translate(210, 168)">
+  <!-- ================================================================ -->
+  <!-- TYPE II: poke / unpoke                                           -->
+  <!-- ================================================================ -->
+  <text x="260" y="168" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="12" fill="#333" font-weight="bold">
+    Type II (poke / unpoke)
+  </text>
+
+  <!-- Left: two parallel horizontal strands (no crossing) -->
+  <g transform="translate(110, 185)">
+    <title>Two parallel strands, no crossings</title>
+    <!-- Red strand (top) -->
+    <line x1="0" y1="15" x2="80" y2="15" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Blue strand (bottom) -->
+    <line x1="0" y1="55" x2="80" y2="55" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Bidirectional arrow -->
+  <g transform="translate(220, 220)">
+    <title>Bidirectional equivalence arrow</title>
     <line x1="0" y1="0" x2="30" y2="0" stroke="#999" stroke-width="1.5"/>
     <polygon points="30,-4 38,0 30,4" fill="#999"/>
-    <line x1="70" y1="0" x2="100" y2="0" stroke="#999" stroke-width="1.5"/>
-    <polygon points="62,-4 70,0 62,4" fill="#999" transform="rotate(180, 66, 0)"/>
+    <line x1="42" y1="0" x2="72" y2="0" stroke="#999" stroke-width="1.5"/>
+    <polygon points="42,-4 34,0 42,4" fill="#999"/>
   </g>
 
-  <!-- Right: two strands crossing each other twice -->
-  <g transform="translate(325, 155)">
-    <!-- Top strand goes: straight, dips under, comes back -->
-    <!-- Bottom strand goes: straight, arcs over, comes back -->
-    <!-- Strand A (top) -->
-    <path d="M 0,0 C 15,0 20,10 25,15" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <!-- White gap at crossing 1 (strand A goes under) -->
-    <line x1="23" y1="13" x2="28" y2="18" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
-    <path d="M 25,15 C 30,20 35,25 35,12" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <path d="M 35,12 C 35,0 45,0 60,0" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <!-- Right: two strands crossing twice -->
+  <g transform="translate(320, 185)">
+    <title>Two strands forming two crossings</title>
+    <!-- Blue under-strand: goes straight across (mostly under) -->
+    <path d="M 0,55 C 15,55 20,45 30,35"
+          fill="none" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- White gap at crossing 1 (blue goes under) -->
+    <line x1="27" y1="38" x2="33" y2="32" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
 
-    <!-- Strand B (bottom) - the over strand at crossing 1 -->
-    <path d="M 0,25 C 15,25 20,18 25,12" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <path d="M 25,12 C 30,6 35,5 35,15" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <!-- Red over-strand at crossing 1: dips down from top -->
+    <path d="M 0,15 C 15,15 22,25 30,35"
+          fill="none" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
 
-    <!-- White gap at crossing 2 (strand B goes under) -->
-    <line x1="33" y1="13" x2="38" y2="8" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
-    <!-- Redraw over strand at crossing 2 -->
-    <path d="M 35,12 C 35,0 45,0 60,0" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <!-- Red strand continues to crossing 2, now going under -->
+    <path d="M 30,35 C 38,45 45,50 50,35"
+          fill="none" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- White gap at crossing 2 (red goes under) -->
+    <line x1="47" y1="38" x2="53" y2="32" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
 
-    <path d="M 35,15 C 35,25 45,25 60,25" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    <!-- Blue over-strand at crossing 2 -->
+    <path d="M 30,35 C 38,25 45,20 50,35"
+          fill="none" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Strands exit to the right -->
+    <path d="M 50,35 C 55,20 65,15 80,15"
+          fill="none" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 50,35 C 55,48 65,55 80,55"
+          fill="none" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
   </g>
 
-  <!-- ===== TYPE III: slide ===== -->
-  <text x="250" y="255" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Type III (slide): Slide a strand past a crossing</text>
-
-  <!-- Left: strand crossing over a crossing point (strand goes left of crossing) -->
-  <g transform="translate(80, 268)">
-    <!-- Two strands form an X crossing -->
-    <line x1="0" y1="0" x2="55" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <!-- White gap for under strand -->
-    <line x1="26" y1="26" x2="30" y2="30" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
-    <line x1="55" y1="0" x2="0" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <!-- Third strand passing to the left of the crossing -->
-    <path d="M 5,55 C 10,30 15,15 40,5" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <!-- White gaps where third strand crosses -->
-    <line x1="13" y1="30" x2="17" y2="25" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
-    <!-- Redraw over segments of the X -->
-    <line x1="10" y1="45" x2="22" y2="33" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <line x1="0" y1="0" x2="15" y2="15" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <!-- Animated overlay for Type II -->
+  <g transform="translate(245, 185)">
+    <g class="r2-parallel">
+      <line x1="0" y1="15" x2="40" y2="15" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="0" y1="55" x2="40" y2="55" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <g class="r2-crossed">
+      <!-- Blue under at crossing 1 -->
+      <path d="M 0,55 C 5,55 8,48 15,35" fill="none" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="12" y1="38" x2="18" y2="32" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+      <!-- Red over at crossing 1 -->
+      <path d="M 0,15 C 5,15 10,25 15,35" fill="none" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Red under at crossing 2 -->
+      <path d="M 15,35 C 20,45 25,48 27,35" fill="none" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="24" y1="38" x2="30" y2="32" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+      <!-- Blue over at crossing 2 -->
+      <path d="M 15,35 C 20,25 25,22 27,35" fill="none" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Exit -->
+      <path d="M 27,35 C 30,20 35,15 40,15" fill="none" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 27,35 C 30,48 35,55 40,55" fill="none" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
   </g>
 
-  <!-- Arrow (bidirectional) -->
-  <g transform="translate(210, 293)">
+  <!-- ================================================================ -->
+  <!-- TYPE III: slide                                                  -->
+  <!-- ================================================================ -->
+  <text x="260" y="310" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="12" fill="#333" font-weight="bold">
+    Type III (slide)
+  </text>
+
+  <!-- Left: X crossing with gold strand C passing to LEFT of crossing -->
+  <g transform="translate(100, 325)">
+    <title>Red-over-blue X crossing with gold strand passing to the left</title>
+
+    <!-- Blue under-strand of the X: upper-right to lower-left -->
+    <path d="M 80,0 L 0,80" fill="none" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- White gap at X center for blue (blue goes under red) -->
+    <line x1="37" y1="37" x2="43" y2="43" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- Red over-strand of the X: upper-left to lower-right -->
+    <path d="M 0,0 L 80,80" fill="none" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Gold strand C passing to the LEFT of the crossing point -->
+    <!-- It goes from lower-left area upward, crossing both X strands -->
+    <!-- First draw gold behind the red strand (gold goes under red) -->
+    <path d="M 10,85 C 15,55 18,35 25,15"
+          fill="none" stroke="#ccaa44" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- White gap where gold crosses under the blue strand -->
+    <line x1="17" y1="43" x2="22" y2="35" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+    <!-- Redraw blue over gold at that intersection -->
+    <path d="M 55,25 L 25,55" fill="none" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- White gap where gold crosses under the red strand -->
+    <line x1="14" y1="55" x2="20" y2="47" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+    <!-- Redraw red over gold at that intersection -->
+    <path d="M 10,70 L 25,55" fill="none" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Gold strand top portion (above all crossings) -->
+    <path d="M 25,15 C 30,2 35,0 40,0"
+          fill="none" stroke="#ccaa44" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Bidirectional arrow -->
+  <g transform="translate(220, 365)">
+    <title>Bidirectional equivalence arrow</title>
     <line x1="0" y1="0" x2="30" y2="0" stroke="#999" stroke-width="1.5"/>
     <polygon points="30,-4 38,0 30,4" fill="#999"/>
-    <line x1="70" y1="0" x2="100" y2="0" stroke="#999" stroke-width="1.5"/>
-    <polygon points="62,-4 70,0 62,4" fill="#999" transform="rotate(180, 66, 0)"/>
+    <line x1="42" y1="0" x2="72" y2="0" stroke="#999" stroke-width="1.5"/>
+    <polygon points="42,-4 34,0 42,4" fill="#999"/>
   </g>
 
-  <!-- Right: strand has slid to the other side of the crossing -->
-  <g transform="translate(335, 268)">
-    <!-- Same X crossing -->
-    <line x1="0" y1="0" x2="55" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <!-- White gap for under strand -->
-    <line x1="26" y1="26" x2="30" y2="30" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
-    <line x1="55" y1="0" x2="0" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <!-- Third strand now on the right side -->
-    <path d="M 15,5 C 40,15 48,30 50,55" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <!-- White gaps where third strand crosses -->
-    <line x1="40" y1="25" x2="44" y2="30" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
-    <!-- Redraw over segments of the X -->
-    <line x1="33" y1="22" x2="45" y2="10" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-    <line x1="40" y1="40" x2="55" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <!-- Right: X crossing with gold strand C passing to RIGHT of crossing -->
+  <g transform="translate(330, 325)">
+    <title>Red-over-blue X crossing with gold strand passing to the right</title>
+
+    <!-- Blue under-strand of the X: upper-right to lower-left -->
+    <path d="M 80,0 L 0,80" fill="none" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- White gap at X center for blue (blue goes under red) -->
+    <line x1="37" y1="37" x2="43" y2="43" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- Red over-strand of the X: upper-left to lower-right -->
+    <path d="M 0,0 L 80,80" fill="none" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Gold strand C passing to the RIGHT of the crossing point -->
+    <path d="M 40,85 C 50,65 58,45 70,15"
+          fill="none" stroke="#ccaa44" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- White gap where gold crosses under the red strand -->
+    <line x1="55" y1="38" x2="61" y2="30" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+    <!-- Redraw red over gold -->
+    <path d="M 50,50 L 65,35" fill="none" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- White gap where gold crosses under the blue strand -->
+    <line x1="62" y1="28" x2="67" y2="21" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+    <!-- Redraw blue over gold -->
+    <path d="M 55,25 L 70,10" fill="none" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Gold strand top portion -->
+    <path d="M 70,15 C 73,5 75,0 78,0"
+          fill="none" stroke="#ccaa44" stroke-width="2.5" stroke-linecap="round"/>
   </g>
+
+  <!-- Animated overlay for Type III: shows gold strand sliding -->
+  <g transform="translate(230, 325)">
+    <!-- Static X crossing (always visible) -->
+    <!-- Blue under-strand -->
+    <path d="M 50,0 L 0,50" fill="none" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="23" y1="23" x2="27" y2="27" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+    <!-- Red over-strand -->
+    <path d="M 0,0 L 50,50" fill="none" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Gold strand LEFT position (fades out) -->
+    <g class="r3-gold-left">
+      <path d="M 5,55 C 8,38 12,22 18,8"
+            fill="none" stroke="#ccaa44" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Gap: gold under blue -->
+      <line x1="11" y1="28" x2="15" y2="22" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+      <path d="M 32,18 L 18,32" fill="none" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Gap: gold under red -->
+      <line x1="9" y1="35" x2="13" y2="29" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+      <path d="M 7,43 L 16,34" fill="none" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 18,8 C 20,2 22,0 25,0"
+            fill="none" stroke="#ccaa44" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Gold strand RIGHT position (fades in) -->
+    <g class="r3-gold-right">
+      <path d="M 28,55 C 34,40 40,25 46,10"
+            fill="none" stroke="#ccaa44" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Gap: gold under red -->
+      <line x1="37" y1="28" x2="41" y2="22" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+      <path d="M 32,33 L 43,22" fill="none" stroke="#cc4444" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Gap: gold under blue -->
+      <line x1="42" y1="18" x2="46" y2="12" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+      <path d="M 36,12 L 46,2" fill="none" stroke="#4444cc" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 46,10 C 47,5 48,2 50,0"
+            fill="none" stroke="#ccaa44" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+  </g>
+
 </svg>

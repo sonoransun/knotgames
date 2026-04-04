@@ -6,34 +6,44 @@
 
   <!-- Mobius band: belt-like loop with half-twist -->
   <!-- Back portion of band (drawn first, behind) -->
+  <!-- Outer edge (red edge) -->
   <path d="M 90,80 C 90,50 260,50 260,80"
-        stroke="#333" stroke-width="2" fill="none"/>
-  <!-- Inner edge of back -->
+        stroke="#c44" stroke-width="2" fill="none"/>
+  <!-- Inner edge of back (blue edge) -->
   <path d="M 100,85 C 100,60 250,60 250,85"
-        stroke="#333" stroke-width="1" fill="none" opacity="0.4"/>
+        stroke="#44c" stroke-width="1" fill="none" opacity="0.4"/>
 
   <!-- Left side of band coming down -->
+  <!-- Outer edge (red) -->
   <path d="M 90,80 L 90,120"
-        stroke="#333" stroke-width="2" fill="none"/>
+        stroke="#c44" stroke-width="2" fill="none"/>
+  <!-- Inner edge (blue) -->
   <path d="M 100,85 L 100,115"
-        stroke="#333" stroke-width="1" fill="none" opacity="0.4"/>
+        stroke="#44c" stroke-width="1" fill="none" opacity="0.4"/>
 
   <!-- Right side of band coming down - with half-twist -->
   <!-- The twist: outer edge crosses to inner position and vice versa -->
+  <!-- Red edge crosses to inner -->
   <path d="M 260,80 C 260,95 250,100 250,120"
-        stroke="#333" stroke-width="2" fill="none"/>
+        stroke="#c44" stroke-width="2" fill="none"/>
+  <!-- Blue edge crosses to outer -->
   <path d="M 250,85 C 250,95 260,100 260,120"
-        stroke="#333" stroke-width="2" fill="none"/>
+        stroke="#44c" stroke-width="2" fill="none"/>
 
-  <!-- Twist cross point: white gap on under-strand -->
-  <line x1="254" y1="96" x2="256" y2="100"
-        stroke="#fafafa" stroke-width="6" stroke-linecap="round"/>
+  <!-- Twist cross point: white gap on under-strand (10px gap) -->
+  <line x1="253" y1="94" x2="257" y2="102"
+        stroke="#fafafa" stroke-width="10" stroke-linecap="round"/>
+  <!-- Redraw over-strand after gap -->
+  <path d="M 260,80 C 260,95 250,100 250,120"
+        stroke="#c44" stroke-width="2" fill="none"/>
 
   <!-- Bottom portion of band (front, drawn on top) -->
+  <!-- Outer edge becomes blue (due to twist) -->
   <path d="M 90,120 C 90,150 260,150 260,120"
-        stroke="#333" stroke-width="2" fill="none"/>
+        stroke="#44c" stroke-width="2" fill="none"/>
+  <!-- Inner edge becomes red (due to twist) -->
   <path d="M 100,115 C 100,145 250,145 250,120"
-        stroke="#333" stroke-width="2" fill="none"/>
+        stroke="#c44" stroke-width="2" fill="none"/>
 
   <!-- Half-twist annotation -->
   <line x1="265" y1="100" x2="300" y2="90"
@@ -41,17 +51,17 @@
   <text x="302" y="88" font-family="system-ui, sans-serif" font-size="10" fill="#666">half-twist</text>
   <text x="302" y="100" font-family="system-ui, sans-serif" font-size="10" fill="#666">at join</text>
 
-  <!-- Cord (dashed) passing around the band -->
+  <!-- Cord (dashed, blue) passing around the band -->
   <!-- Left cord strand going down from band -->
   <path d="M 140,135 L 140,195"
-        stroke="#333" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+        stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
   <!-- Cord wraps around back of band (shown as arc above band) -->
   <path d="M 140,135 C 140,125 145,70 175,65 C 205,60 210,125 210,135"
-        stroke="#333" stroke-width="2" stroke-dasharray="5,3" fill="none"
+        stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3" fill="none"
         opacity="0.4"/>
   <!-- Right cord strand going down from band -->
   <path d="M 210,135 L 210,195"
-        stroke="#333" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+        stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
 
   <!-- Cord label -->
   <line x1="215" y1="165" x2="240" y2="160"
@@ -60,12 +70,12 @@
 
   <!-- Cord connects to ring -->
   <path d="M 140,195 C 140,215 175,225 175,225"
-        stroke="#333" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+        stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
   <path d="M 210,195 C 210,215 175,225 175,225"
-        stroke="#333" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+        stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
 
-  <!-- Ring -->
-  <circle cx="175" cy="220" r="18" fill="none" stroke="#333" stroke-width="2.5"/>
+  <!-- Ring (brass) -->
+  <circle cx="175" cy="220" r="18" fill="none" stroke="#cc8800" stroke-width="2.5"/>
 
   <!-- Labels -->
   <text x="175" y="35" text-anchor="middle"

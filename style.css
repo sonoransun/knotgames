@@ -373,3 +373,28 @@ html, body {
     padding-top: 56px;
   }
 }
+
+/* Error messages (graceful degradation) */
+.error-msg {
+  color: #c33;
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Debug overlay */
+#debug-overlay {
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.82);
+  color: #0f0;
+  font: 11px/1.4 'SF Mono', 'Consolas', 'Menlo', monospace;
+  padding: 8px 12px;
+  border-radius: 6px;
+  z-index: 9999;
+  pointer-events: none;
+  white-space: pre;
+  max-width: 280px;
+}

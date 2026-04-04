@@ -6,16 +6,16 @@
 
   <!-- Paddle body -->
   <rect x="75" y="50" width="200" height="100" rx="4" ry="4"
-        fill="none" stroke="#333" stroke-width="2"/>
+        fill="none" stroke="#c4956a" stroke-width="2"/>
 
   <!-- Hole in center - empty -->
-  <circle cx="175" cy="100" r="12" fill="#fafafa" stroke="#333" stroke-width="2"/>
+  <circle cx="175" cy="100" r="12" fill="#fafafa" stroke="#c4956a" stroke-width="2"/>
 
   <!-- Cord loop: now around the entire paddle body, not through the hole -->
   <path d="M 65,50 Q 40,50 35,65 L 35,135 Q 35,160 55,165
            L 285,165 Q 310,165 315,145 L 315,60 Q 315,40 295,40
            L 55,40 Q 40,40 35,50"
-        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"
         stroke-linejoin="round"/>
 
   <!-- "Hole is now empty" annotation -->
@@ -39,5 +39,12 @@
 
   <!-- Cord drape below showing it's a complete loop -->
   <path d="M 35,150 Q 35,210 175,220 Q 315,210 315,150"
-        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Step badge: Step 3 of 3 -->
+  <circle cx="322" cy="24" r="14" fill="white" stroke="#4a90d9" stroke-width="2"/>
+  <text x="322" y="21" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="7" fill="#4a90d9" font-weight="bold">Step</text>
+  <text x="322" y="31" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8" fill="#4a90d9" font-weight="bold">3 / 3</text>
 </svg>

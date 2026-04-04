@@ -1,65 +1,88 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 240">
   <title>Spheres: S1, S2, and S3</title>
-  <desc>Three sphere dimensions shown side by side. S1 is a circle living in 2D. S2 is a sphere surface living in 3D, shown with latitude and longitude arcs. S3 is a 3-sphere living in 4D, which cannot be drawn in 3D, shown with abstract nested structure and a question mark.</desc>
+  <desc>Three sphere dimensions shown side by side. S1 is a circle (1-dimensional, living in 2D), drawn in red. S2 is a sphere surface (2-dimensional, living in 3D), drawn in blue with equator and meridian great circles. S3 is a 3-sphere (3-dimensional, living in 4D), drawn in gold with tilted ellipses hinting at Hopf fibration structure.</desc>
 
-  <rect width="600" height="220" fill="#fafafa"/>
+  <!-- Background -->
+  <rect width="620" height="240" fill="#fafafa" rx="8"/>
 
-  <!-- ===== S1: Circle ===== -->
-  <g transform="translate(100, 85)">
-    <!-- Title -->
-    <text x="0" y="-75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">S&#xB9; (circle)</text>
+  <!-- ===== S1: Circle in 2D ===== -->
+  <g transform="translate(103, 105)">
+    <!-- Circle with light fill -->
+    <circle cx="0" cy="0" r="52" fill="#c44" fill-opacity="0.05" stroke="#c44" stroke-width="2.5"/>
 
-    <!-- Circle -->
-    <circle cx="0" cy="0" r="50" fill="none" stroke="#333" stroke-width="2"/>
+    <!-- Label: S superscript 1 -->
+    <text x="0" y="-68" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" fill="#333" font-weight="bold">S<tspan baseline-shift="super" font-size="10">1</tspan></text>
 
-    <!-- Labels -->
-    <text x="0" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">lives in 2D</text>
-    <text x="0" y="86" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">1-dimensional</text>
+    <!-- Sublabels -->
+    <text x="0" y="74" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#555">Circle</text>
+    <text x="0" y="89" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="#999">1-dimensional, lives in 2D</text>
   </g>
 
-  <!-- ===== S2: Sphere ===== -->
-  <g transform="translate(300, 85)">
-    <!-- Title -->
-    <text x="0" y="-75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">S&#xB2; (sphere)</text>
-
-    <!-- Outer circle -->
-    <circle cx="0" cy="0" r="50" fill="none" stroke="#333" stroke-width="2"/>
-
-    <!-- Horizontal equator ellipse -->
-    <ellipse cx="0" cy="0" rx="50" ry="15" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="5,3"/>
-
-    <!-- Vertical meridian ellipse -->
-    <ellipse cx="0" cy="0" rx="15" ry="50" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="5,3"/>
-
-    <!-- Labels -->
-    <text x="0" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">lives in 3D</text>
-    <text x="0" y="86" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">2-dimensional</text>
+  <!-- ===== Arrow: S1 -> S2 ===== -->
+  <g transform="translate(178, 105)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#bbb" stroke-width="1.2" marker-end="url(#arrowhead)"/>
+    <text x="25" y="-8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#aaa">+1 dim</text>
   </g>
 
-  <!-- ===== S3: 3-sphere ===== -->
-  <g transform="translate(500, 85)">
-    <!-- Title -->
-    <text x="0" y="-75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">S&#xB3; (3-sphere)</text>
+  <!-- ===== S2: Sphere surface in 3D ===== -->
+  <g transform="translate(310, 105)">
+    <!-- Main circle with light fill -->
+    <circle cx="0" cy="0" r="52" fill="#44c" fill-opacity="0.05" stroke="#44c" stroke-width="2.5"/>
 
-    <!-- Outer circle -->
-    <circle cx="0" cy="0" r="50" fill="none" stroke="#333" stroke-width="2"/>
+    <!-- Equator (horizontal great circle as ellipse) -->
+    <ellipse cx="0" cy="0" rx="52" ry="16" fill="none" stroke="#44c" stroke-width="1.2" stroke-dasharray="5,3" opacity="0.5"/>
 
-    <!-- Abstract nested circles suggesting higher-dimensional structure -->
-    <circle cx="0" cy="0" r="35" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="5,3" opacity="0.6"/>
-    <circle cx="0" cy="0" r="20" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="5,3" opacity="0.4"/>
+    <!-- Meridian (vertical great circle as ellipse) -->
+    <ellipse cx="0" cy="0" rx="16" ry="52" fill="none" stroke="#44c" stroke-width="1.2" stroke-dasharray="5,3" opacity="0.5"/>
 
-    <!-- Crossing arcs to suggest complexity -->
-    <path d="M -35,0 Q 0,-30 35,0" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
-    <path d="M -35,0 Q 0,30 35,0" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
-    <path d="M 0,-35 Q -30,0 0,35" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
-    <path d="M 0,-35 Q 30,0 0,35" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+    <!-- Label: S superscript 2 -->
+    <text x="0" y="-68" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" fill="#333" font-weight="bold">S<tspan baseline-shift="super" font-size="10">2</tspan></text>
+
+    <!-- Sublabels -->
+    <text x="0" y="74" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#555">Sphere surface</text>
+    <text x="0" y="89" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="#999">2-dimensional, lives in 3D</text>
+  </g>
+
+  <!-- ===== Arrow: S2 -> S3 ===== -->
+  <g transform="translate(385, 105)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#bbb" stroke-width="1.2" marker-end="url(#arrowhead)"/>
+    <text x="25" y="-8" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="#aaa">+1 dim</text>
+  </g>
+
+  <!-- ===== S3: 3-sphere in 4D (Hopf fibration hint) ===== -->
+  <g transform="translate(517, 105)">
+    <!-- Main outer circle with light fill -->
+    <circle cx="0" cy="0" r="52" fill="#ca4" fill-opacity="0.05" stroke="#ca4" stroke-width="2.5"/>
+
+    <!-- Hopf fiber ellipses at various tilts -->
+    <!-- 0 degrees (horizontal) -->
+    <ellipse cx="0" cy="0" rx="48" ry="14" fill="none" stroke="#ca4" stroke-width="1" opacity="0.4" stroke-dasharray="4,3"/>
+
+    <!-- 45 degrees -->
+    <ellipse cx="0" cy="0" rx="48" ry="14" fill="none" stroke="#ca4" stroke-width="1" opacity="0.35" stroke-dasharray="4,3" transform="rotate(45)"/>
+
+    <!-- 90 degrees (vertical) -->
+    <ellipse cx="0" cy="0" rx="48" ry="14" fill="none" stroke="#ca4" stroke-width="1" opacity="0.4" stroke-dasharray="4,3" transform="rotate(90)"/>
+
+    <!-- 135 degrees -->
+    <ellipse cx="0" cy="0" rx="48" ry="14" fill="none" stroke="#ca4" stroke-width="1" opacity="0.35" stroke-dasharray="4,3" transform="rotate(135)"/>
 
     <!-- Question mark -->
-    <text x="0" y="6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#999" font-weight="bold">?</text>
+    <text x="30" y="-34" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#b90" font-weight="bold">?</text>
 
-    <!-- Labels -->
-    <text x="0" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">lives in 4D</text>
-    <text x="0" y="86" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">3-dimensional</text>
-    <text x="0" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999" font-style="italic">Cannot draw in 3D!</text>
+    <!-- Label: S superscript 3 -->
+    <text x="0" y="-68" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" fill="#333" font-weight="bold">S<tspan baseline-shift="super" font-size="10">3</tspan></text>
+
+    <!-- Sublabels -->
+    <text x="0" y="74" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#555">3-sphere</text>
+    <text x="0" y="89" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="#999">3-dimensional, lives in 4D</text>
+    <text x="0" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#b0a070" font-style="italic">Cannot truly draw — hint via Hopf fibers</text>
   </g>
+
+  <!-- ===== Arrowhead marker definition ===== -->
+  <defs>
+    <marker id="arrowhead" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#bbb"/>
+    </marker>
+  </defs>
 </svg>

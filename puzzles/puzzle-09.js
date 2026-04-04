@@ -280,20 +280,25 @@ export function createSVGDiagram(container) {
   svg.text(s, tbX + 18, tbY + 4, 'Tunnel B', { fontSize: 9, fill: '#553344' });
   svg.text(s, tbX + 18, tbY + 14, '(h=35mm, perpendicular)', { fontSize: 8, fill: '#888' });
 
-  // Cord path representation
-  svg.path(s, `M ${bx - 30} ${taY} L ${bx} ${taY}`, { stroke: '#2255aa', strokeWidth: 2.5 });
+  // Cord path representation (animated segments)
+  svg.animatedPath(s, `M ${bx - 30} ${taY} L ${bx} ${taY}`, {
+    stroke: '#2255aa', strokeWidth: 2.5, fill: 'none',
+    animDuration: 0.6, animDelay: 0,
+  });
   svg.text(s, bx - 35, taY - 8, 'a', { fontSize: 14, fill: '#2255aa', fontWeight: 'bold' });
 
-  svg.path(s, `M ${bx + bw} ${taY} Q ${bx + bw + 25} ${taY - 20} ${tbX + 30} ${tbY}`, {
-    stroke: '#2255aa', strokeWidth: 2, dashArray: '4,3',
+  svg.animatedPath(s, `M ${bx + bw} ${taY} Q ${bx + bw + 25} ${taY - 20} ${tbX + 30} ${tbY}`, {
+    stroke: '#2255aa', strokeWidth: 2, fill: 'none', dashArray: '4,3',
+    animDuration: 0.8, animDelay: 0.6,
   });
 
   // Through tunnel B
   svg.circle(s, tbX, tbY, 4, { fill: '#2255aa', stroke: 'none' });
   svg.text(s, tbX - 20, tbY - 15, 'b', { fontSize: 14, fill: '#2255aa', fontWeight: 'bold' });
 
-  svg.path(s, `M ${tbX - 30} ${tbY} Q ${bx - 20} ${tbY + 20} ${bx} ${taY}`, {
-    stroke: '#2255aa', strokeWidth: 2, dashArray: '4,3',
+  svg.animatedPath(s, `M ${tbX - 30} ${tbY} Q ${bx - 20} ${tbY + 20} ${bx} ${taY}`, {
+    stroke: '#2255aa', strokeWidth: 2, fill: 'none', dashArray: '4,3',
+    animDuration: 0.8, animDelay: 1.4,
   });
 
   svg.text(s, bx + bw + 30, taY - 8, 'a\u207B\u00B9', { fontSize: 14, fill: '#2255aa', fontWeight: 'bold' });
@@ -316,10 +321,26 @@ export function createSVGDiagram(container) {
   });
 
   // Key insight
-  svg.rect(s, 50, 315, 400, 30, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 50, 315, 400, 30, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
   svg.text(s, 250, 335, 'Key: Two non-intersecting tunnels create genus-2 topology', {
     fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
   });
+
+  // Inject pulse animation for the callout
+  let styleEl = s.querySelector('style[data-anim]');
+  if (!styleEl) {
+    styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('data-anim', '1');
+    s.insertBefore(styleEl, s.firstChild);
+  }
+  styleEl.textContent += `
+    @keyframes calloutPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
+  `;
+  calloutRect.classList.add('callout-box');
 }
 
 export function dispose() {}

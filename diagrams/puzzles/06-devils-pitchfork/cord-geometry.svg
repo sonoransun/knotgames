@@ -19,32 +19,32 @@
       BEFORE (cord straight)
     </text>
 
-    <!-- Base bar -->
+    <!-- Base bar (steel) -->
     <line x1="42" y1="230" x2="232" y2="230"
-          stroke="#333" stroke-width="2"/>
+          stroke="#888" stroke-width="2"/>
 
-    <!-- Left prong (100mm) -->
+    <!-- Left prong (100mm, steel) -->
     <line x1="72" y1="230" x2="72" y2="70"
-          stroke="#333" stroke-width="2"/>
-    <circle cx="72" cy="64" r="5" fill="#333"/>
+          stroke="#888" stroke-width="2"/>
+    <circle cx="72" cy="64" r="5" fill="#888"/>
 
-    <!-- Center prong (80mm, shorter) -->
+    <!-- Center prong (80mm, shorter, steel) -->
     <line x1="137" y1="230" x2="137" y2="102"
-          stroke="#333" stroke-width="2"/>
-    <circle cx="137" cy="96" r="4.5" fill="#333"/>
+          stroke="#888" stroke-width="2"/>
+    <circle cx="137" cy="96" r="4.5" fill="#888"/>
 
-    <!-- Right prong (100mm) -->
+    <!-- Right prong (100mm, steel) -->
     <line x1="202" y1="230" x2="202" y2="70"
-          stroke="#333" stroke-width="2"/>
-    <circle cx="202" cy="64" r="5" fill="#333"/>
+          stroke="#888" stroke-width="2"/>
+    <circle cx="202" cy="64" r="5" fill="#888"/>
 
-    <!-- Ring on left prong -->
+    <!-- Ring on left prong (brass) -->
     <circle cx="72" cy="155" r="10"
-            fill="none" stroke="#333" stroke-width="2"/>
+            fill="none" stroke="#cc8800" stroke-width="2"/>
 
-    <!-- Cord: straight from ring down to center prong base -->
+    <!-- Cord: straight from ring down to center prong base (blue) -->
     <path d="M82,158 Q110,200 137,230"
-          fill="none" stroke="#333" stroke-width="2"
+          fill="none" stroke="#2255aa" stroke-width="2"
           stroke-dasharray="5,3"/>
 
     <!-- Arrow showing ring "can't reach" right side -->
@@ -79,51 +79,48 @@
       AFTER (cord looped)
     </text>
 
-    <!-- Base bar -->
+    <!-- Base bar (steel) -->
     <line x1="317" y1="230" x2="507" y2="230"
-          stroke="#333" stroke-width="2"/>
+          stroke="#888" stroke-width="2"/>
 
-    <!-- Left prong (100mm) -->
+    <!-- Left prong (100mm, steel) -->
     <line x1="347" y1="230" x2="347" y2="70"
-          stroke="#333" stroke-width="2"/>
-    <circle cx="347" cy="64" r="5" fill="#333"/>
+          stroke="#888" stroke-width="2"/>
+    <circle cx="347" cy="64" r="5" fill="#888"/>
 
-    <!-- Center prong (80mm, shorter) -->
+    <!-- Center prong (80mm, shorter, steel) -->
     <line x1="412" y1="230" x2="412" y2="102"
-          stroke="#333" stroke-width="2"/>
-    <circle cx="412" cy="96" r="4.5" fill="#333"/>
+          stroke="#888" stroke-width="2"/>
+    <circle cx="412" cy="96" r="4.5" fill="#888"/>
 
-    <!-- Right prong (100mm) -->
+    <!-- Right prong (100mm, steel) -->
     <line x1="477" y1="230" x2="477" y2="70"
-          stroke="#333" stroke-width="2"/>
-    <circle cx="477" cy="64" r="5" fill="#333"/>
+          stroke="#888" stroke-width="2"/>
+    <circle cx="477" cy="64" r="5" fill="#888"/>
 
-    <!-- Ring on left prong -->
+    <!-- Ring on left prong (brass) -->
     <circle cx="347" cy="155" r="10"
-            fill="none" stroke="#333" stroke-width="2"/>
+            fill="none" stroke="#cc8800" stroke-width="2"/>
 
-    <!-- Cord: from ring UP to center prong, OVER the ball-stop, then back down -->
+    <!-- Cord: from ring UP to center prong, OVER the ball-stop, then back down (blue) -->
     <!-- Segment 1: ring to just below center ball-stop -->
     <path d="M357,150 Q385,120 408,100"
-          fill="none" stroke="#333" stroke-width="2"
+          fill="none" stroke="#2255aa" stroke-width="2"
           stroke-dasharray="5,3"/>
 
-    <!-- White gap on center prong where cord passes over ball-stop -->
-    <line x1="408" y1="92" x2="416" y2="92"
-          stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+    <!-- White gap on center prong where cord passes over ball-stop (10px) -->
+    <line x1="406" y1="90" x2="418" y2="90"
+          stroke="#fafafa" stroke-width="10" stroke-linecap="round"/>
 
     <!-- Segment 2: loop over the ball-stop -->
     <path d="M408,100 Q412,78 416,100"
-          fill="none" stroke="#333" stroke-width="2"
+          fill="none" stroke="#2255aa" stroke-width="2"
           stroke-dasharray="5,3"/>
 
-    <!-- Redraw ball-stop under the cord loop (cord is OVER it) -->
-    <!-- Ball-stop already drawn, cord goes over: we just show the arc -->
-
-    <!-- Segment 3: back down to base area -->
+    <!-- Segment 3: back down to base area (behind the post, opacity 0.5) -->
     <path d="M416,100 Q430,180 412,230"
-          fill="none" stroke="#333" stroke-width="2"
-          stroke-dasharray="5,3"/>
+          fill="none" stroke="#2255aa" stroke-width="2"
+          stroke-dasharray="5,3" opacity="0.5"/>
 
     <!-- Arrow showing ring "can reach" right side -->
     <path d="M358,150 Q410,130 470,140"

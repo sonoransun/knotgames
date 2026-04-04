@@ -2,11 +2,22 @@
   <title>The Gatekeeper - Solved</title>
   <desc>The U-bar with the cord hanging straight between the L and R tips. The ring is separate below, free from the assembly.</desc>
 
+  <defs>
+    <!-- Directional arrow marker for cord -->
+    <marker id="cordArrow" markerWidth="6" markerHeight="4" refX="3" refY="2"
+            orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 6,2 L 0,4 Z" fill="#2255aa"/>
+    </marker>
+    <marker id="arrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#999"/>
+    </marker>
+  </defs>
+
   <rect width="300" height="300" fill="#fafafa"/>
 
   <!-- U-bar -->
   <path d="M 100,40 L 100,180 Q 100,230 150,230 Q 200,230 200,180 L 200,40"
-        fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+        fill="none" stroke="#888" stroke-width="2" stroke-linecap="round"/>
 
   <!-- Tip labels -->
   <text x="100" y="30" text-anchor="middle" font-family="system-ui, sans-serif"
@@ -16,21 +27,26 @@
 
   <!-- Cord: simple dashed line from L to R with a gentle drape -->
   <path d="M 100,40 Q 150,80 200,40"
-        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Arrow along cord -->
+  <path d="M 125,58 L 145,66"
+        fill="none" stroke="#2255aa" stroke-width="2" marker-end="url(#cordArrow)"/>
 
   <!-- Ring: separate, below the assembly -->
-  <circle cx="150" cy="270" r="18" fill="none" stroke="#333" stroke-width="2"/>
+  <circle cx="150" cy="270" r="18" fill="none" stroke="#cc8800" stroke-width="2"/>
   <text x="150" y="275" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="10" fill="#666">Ring</text>
 
   <!-- Annotation arrow and label -->
   <line x1="150" y1="240" x2="150" y2="255" stroke="#999" stroke-width="1"
         marker-end="url(#arrowGray)"/>
-  <defs>
-    <marker id="arrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#999"/>
-    </marker>
-  </defs>
   <text x="150" y="236" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="10" fill="#999">free</text>
+
+  <!-- Solved badge with green checkmark -->
+  <circle cx="268" cy="24" r="14" fill="white" stroke="#27ae60" stroke-width="2"/>
+  <path d="M 260,24 L 265,29 L 276,18" fill="none" stroke="#27ae60" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="268" y="46" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8" fill="#27ae60" font-weight="bold">Solved</text>
 </svg>

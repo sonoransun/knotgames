@@ -190,7 +190,8 @@ export function createSVGDiagram(container) {
   }
 
   // Properties box
-  svg.rect(s, 30, 290, 440, 75, { fill: '#f5f5f5', stroke: '#ddd', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 30, 290, 440, 75, { fill: '#f5f5f5', stroke: '#ddd', strokeWidth: 1, rx: 4 });
+  calloutRect.classList.add('callout-box');
   svg.text(s, 250, 310, 'Borromean Properties:', {
     fontSize: 12, anchor: 'middle', fontWeight: 'bold', fill: '#333',
   });
@@ -203,6 +204,21 @@ export function createSVGDiagram(container) {
   svg.text(s, 250, 358, 'Remove any one ring and the other two separate immediately', {
     fontSize: 10, anchor: 'middle', fill: '#666',
   });
+
+  // Inject pulse animation for the callout
+  let styleEl = s.querySelector('style[data-anim]');
+  if (!styleEl) {
+    styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('data-anim', '1');
+    s.insertBefore(styleEl, s.firstChild);
+  }
+  styleEl.textContent += `
+    @keyframes calloutPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
+  `;
 }
 
 export function dispose() {}

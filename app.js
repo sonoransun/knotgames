@@ -1,5 +1,8 @@
 import { createScene } from './lib/scene.js';
 import { AnimationController } from './lib/animation.js';
+import * as logger from './lib/logger.js';
+import * as debug from './lib/debug.js';
+import { validatePuzzleModule } from './lib/validate.js';
 
 // Puzzle metadata registry
 const puzzleRegistry = [
@@ -14,6 +17,30 @@ const puzzleRegistry = [
   { id: 9,  module: './puzzles/puzzle-09.js', name: 'Genus Trap',         difficulty: 'expert' },
   { id: 10, module: './puzzles/puzzle-10.js', name: 'The Hopf Paradox',   difficulty: 'expert' },
 ];
+
+// Debug mode initialization
+const webglSupported = checkWebGLSupport();
+
+if (debug.isDebugMode()) {
+  logger.enableDebugLogging();
+  debug.createDebugOverlay();
+  logger.puzzle.info('Debug mode enabled');
+}
+
+if (!webglSupported) {
+  logger.scene.warn('WebGL not supported — 3D views will be unavailable');
+}
+
+logger.puzzle.info('EXKNOTS initialized, registry has', puzzleRegistry.length, 'puzzles');
+
+function checkWebGLSupport() {
+  try {
+    const c = document.createElement('canvas');
+    return !!(c.getContext('webgl2') || c.getContext('webgl'));
+  } catch {
+    return false;
+  }
+}
 
 let currentPuzzle = null;
 let modelScene = null;
@@ -100,6 +127,17 @@ speedSelect.addEventListener('change', () => {
 
 // Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
+  // Ctrl+Shift+D: toggle debug overlay
+  if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.code === 'KeyD') {
+    e.preventDefault();
+    debug.toggleDebugOverlay();
+    if (debug.isActive()) {
+      logger.enableDebugLogging();
+      logger.puzzle.info('Debug overlay toggled ON');
+    }
+    return;
+  }
+
   if (!animController) return;
   if (e.code === 'Space') {
     e.preventDefault();
@@ -145,17 +183,25 @@ async function loadPuzzle(id) {
   const entry = puzzleRegistry.find(e => e.id === id);
   if (!entry) return;
 
+  logger.puzzle.info('Loading puzzle', id, entry.name);
+
   // Dynamic import
   let puzzleModule;
   try {
     puzzleModule = await import(entry.module);
   } catch (err) {
-    console.warn(`Puzzle ${id} not yet implemented:`, err.message);
+    logger.puzzle.warn('Puzzle not yet implemented:', id, err.message);
     welcome.style.display = '';
     puzzleView.style.display = 'none';
     welcome.querySelector('h2').textContent = `Puzzle ${id}: Coming Soon`;
     welcome.querySelector('p').textContent = `${entry.name} visualization is not yet implemented.`;
     return;
+  }
+
+  // Validate module structure
+  const validationErrors = validatePuzzleModule(puzzleModule, id);
+  if (validationErrors.length > 0) {
+    logger.puzzle.warn('Puzzle', id, 'validation issues:', validationErrors.join('; '));
   }
 
   currentPuzzle = puzzleModule;
@@ -174,26 +220,34 @@ async function loadPuzzle(id) {
   puzzleDescription.textContent = meta.description || '';
 
   // Initialize 3D model scene
-  if (!modelScene) {
-    modelScene = createScene(modelCanvas);
+  if (webglSupported) {
+    try {
+      if (!modelScene) {
+        modelScene = createScene(modelCanvas);
+        logger.scene.info('Model scene created');
+      } else {
+        clearPuzzleObjects(modelScene.scene);
+      }
+
+      if (puzzleModule.create3DScene) {
+        const group = puzzleModule.create3DScene(modelScene.scene);
+        if (group) modelScene.scene.add(group);
+      }
+
+      if (meta.cameraPosition) {
+        modelScene.setCameraPosition(...meta.cameraPosition);
+      } else {
+        modelScene.setCameraPosition(0, 80, 250);
+      }
+
+      modelScene.start();
+    } catch (err) {
+      logger.scene.error('Failed to create 3D model scene:', err);
+      modelCanvas.parentElement.innerHTML = '<p class="error-msg">3D rendering failed. See SVG diagram above.</p>';
+    }
   } else {
-    clearPuzzleObjects(modelScene.scene);
+    modelCanvas.parentElement.innerHTML = '<p class="error-msg">WebGL not supported. 3D view unavailable.</p>';
   }
-
-  // Create 3D model
-  if (puzzleModule.create3DScene) {
-    const group = puzzleModule.create3DScene(modelScene.scene);
-    if (group) modelScene.scene.add(group);
-  }
-
-  // Set camera position if specified
-  if (meta.cameraPosition) {
-    modelScene.setCameraPosition(...meta.cameraPosition);
-  } else {
-    modelScene.setCameraPosition(0, 80, 250);
-  }
-
-  modelScene.start();
 
   // Create SVG diagram
   if (puzzleModule.createSVGDiagram) {
@@ -201,58 +255,87 @@ async function loadPuzzle(id) {
   }
 
   // Initialize animation scene
-  if (!animScene) {
-    animScene = createScene(animCanvas);
-  } else {
-    clearPuzzleObjects(animScene.scene);
-  }
-
-  // Create animation scene objects
-  let animGroup = null;
   let animObjects = null;
-  if (puzzleModule.createAnimScene) {
-    const result = puzzleModule.createAnimScene(animScene.scene);
-    animGroup = result.group;
-    animObjects = result.objects;
-    if (animGroup) animScene.scene.add(animGroup);
-  } else if (puzzleModule.create3DScene) {
-    // Fallback: clone the static scene for animation
-    const group = puzzleModule.create3DScene(animScene.scene);
-    if (group) animScene.scene.add(group);
-  }
+  if (webglSupported) {
+    try {
+      if (!animScene) {
+        animScene = createScene(animCanvas);
+        logger.scene.info('Animation scene created');
+      } else {
+        clearPuzzleObjects(animScene.scene);
+      }
 
-  if (meta.cameraPosition) {
-    animScene.setCameraPosition(...meta.cameraPosition);
+      let animGroup = null;
+      if (puzzleModule.createAnimScene) {
+        const result = puzzleModule.createAnimScene(animScene.scene);
+        animGroup = result.group;
+        animObjects = result.objects;
+        if (animGroup) animScene.scene.add(animGroup);
+      } else if (puzzleModule.create3DScene) {
+        const group = puzzleModule.create3DScene(animScene.scene);
+        if (group) animScene.scene.add(group);
+      }
+
+      if (meta.cameraPosition) {
+        animScene.setCameraPosition(...meta.cameraPosition);
+      } else {
+        animScene.setCameraPosition(0, 80, 250);
+      }
+    } catch (err) {
+      logger.scene.error('Failed to create animation scene:', err);
+      animCanvas.parentElement.innerHTML = '<p class="error-msg">Animation rendering failed.</p>';
+    }
   } else {
-    animScene.setCameraPosition(0, 80, 250);
+    animCanvas.parentElement.innerHTML = '<p class="error-msg">WebGL not supported. Animation unavailable.</p>';
   }
 
   // Setup animation controller
   if (puzzleModule.animationSteps && puzzleModule.animationSteps.length > 0) {
-    animController = new AnimationController(
-      puzzleModule.animationSteps,
-      (state) => {
-        // Update step label
-        stepLabel.textContent = state.step.label;
-        stepCounter.textContent = `Step ${state.stepIndex + 1}/${puzzleModule.animationSteps.length}`;
-        scrubber.value = Math.round(state.totalProgress * 1000);
-        btnPlay.textContent = animController.playing ? '\u23F8' : '\u25B6';
+    try {
+      animController = new AnimationController(
+        puzzleModule.animationSteps,
+        (state) => {
+          stepLabel.textContent = state.step.label;
+          stepCounter.textContent = `Step ${state.stepIndex + 1}/${puzzleModule.animationSteps.length}`;
+          scrubber.value = Math.round(state.totalProgress * 1000);
+          btnPlay.textContent = animController.playing ? '\u23F8' : '\u25B6';
 
-        // Call puzzle's update function
-        if (puzzleModule.updateAnimation && animObjects) {
-          puzzleModule.updateAnimation(animObjects, state);
+          if (puzzleModule.updateAnimation && animObjects) {
+            puzzleModule.updateAnimation(animObjects, state);
+          }
         }
-      }
-    );
+      );
 
-    stepCounter.textContent = `Step 0/${puzzleModule.animationSteps.length}`;
+      logger.anim.info('Animation controller created,', puzzleModule.animationSteps.length, 'steps');
+      stepCounter.textContent = `Step 0/${puzzleModule.animationSteps.length}`;
+    } catch (err) {
+      logger.anim.error('Failed to create animation controller:', err);
+    }
   }
 
-  animScene.setOnFrame(() => {
-    if (animController) animController.update();
-  });
+  if (animScene) {
+    animScene.setOnFrame(() => {
+      if (animController) animController.update();
+      // Update debug overlay each frame
+      if (debug.isActive()) {
+        debug.updateDebugOverlay({
+          renderer: modelScene?.renderer,
+          puzzleName: meta.name,
+          animation: animController ? {
+            playing: animController.playing,
+            step: animController.getCurrentStepIndex() + 1,
+            totalSteps: puzzleModule.animationSteps?.length || 0,
+            progress: animController.getProgress(),
+            speed: animController.speed,
+          } : null,
+        });
+      }
+    });
 
-  animScene.start();
+    animScene.start();
+  }
+
+  logger.puzzle.info('Puzzle loaded:', meta.name);
 }
 
 function clearPuzzleObjects(scene) {

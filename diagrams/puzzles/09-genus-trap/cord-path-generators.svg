@@ -9,75 +9,75 @@
 
   <!-- Flow diagram: Ball -> [A L->R] -> outside -> Ring 1 -> [B F->B] -> outside -> Ring 2 -> [A R->L] -> Ball -->
 
-  <!-- Ball (start) -->
-  <circle cx="30" cy="80" r="14" fill="none" stroke="#333" stroke-width="2"/>
-  <text x="30" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#333">Ball</text>
+  <!-- Ball (start, blue cord) -->
+  <circle cx="30" cy="80" r="14" fill="none" stroke="#2255aa" stroke-width="2"/>
+  <text x="30" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#2255aa">Ball</text>
 
   <!-- Arrow to tunnel A -->
   <line x1="44" y1="80" x2="68" y2="80" stroke="#999" stroke-width="1" marker-end="url(#cpArr)"/>
 
-  <!-- Tunnel A passage (left to right) -->
-  <rect x="70" y="62" width="80" height="36" rx="5" fill="none" stroke="#333" stroke-width="2"/>
-  <text x="110" y="76" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#333">[A]</text>
+  <!-- Tunnel A passage (left to right, red-tinted) -->
+  <rect x="70" y="62" width="80" height="36" rx="5" fill="#c44" fill-opacity="0.08" stroke="#c44" stroke-width="2"/>
+  <text x="110" y="76" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#c44" font-weight="bold">[A]</text>
   <text x="110" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">left &#x2192; right</text>
 
   <!-- Arrow to outside -->
   <line x1="150" y1="80" x2="168" y2="80" stroke="#999" stroke-width="1" marker-end="url(#cpArr)"/>
 
-  <!-- Outside + Ring 1 -->
+  <!-- Outside + Ring 1 (brass) -->
   <text x="184" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">outside</text>
-  <circle cx="184" cy="87" r="7" fill="none" stroke="#333" stroke-width="1.5"/>
-  <text x="184" y="108" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">Ring 1</text>
+  <circle cx="184" cy="87" r="7" fill="none" stroke="#cc8800" stroke-width="1.5"/>
+  <text x="184" y="108" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#cc8800">Ring 1</text>
 
   <!-- Arrow to tunnel B -->
   <line x1="191" y1="80" x2="218" y2="80" stroke="#999" stroke-width="1" marker-end="url(#cpArr)"/>
 
-  <!-- Tunnel B passage (front to back) -->
-  <rect x="220" y="62" width="80" height="36" rx="5" fill="none" stroke="#333" stroke-width="2"/>
-  <text x="260" y="76" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#333">[B]</text>
+  <!-- Tunnel B passage (front to back, blue-tinted) -->
+  <rect x="220" y="62" width="80" height="36" rx="5" fill="#44c" fill-opacity="0.08" stroke="#44c" stroke-width="2"/>
+  <text x="260" y="76" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#44c" font-weight="bold">[B]</text>
   <text x="260" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">front &#x2192; back</text>
 
   <!-- Arrow to outside -->
   <line x1="300" y1="80" x2="318" y2="80" stroke="#999" stroke-width="1" marker-end="url(#cpArr)"/>
 
-  <!-- Outside + Ring 2 -->
+  <!-- Outside + Ring 2 (brass) -->
   <text x="334" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">outside</text>
-  <circle cx="334" cy="87" r="7" fill="none" stroke="#333" stroke-width="1.5"/>
-  <text x="334" y="108" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">Ring 2</text>
+  <circle cx="334" cy="87" r="7" fill="none" stroke="#cc8800" stroke-width="1.5"/>
+  <text x="334" y="108" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#cc8800">Ring 2</text>
 
   <!-- Arrow to tunnel A reverse -->
   <line x1="341" y1="80" x2="368" y2="80" stroke="#999" stroke-width="1" marker-end="url(#cpArr)"/>
 
-  <!-- Tunnel A passage (right to left) -->
-  <rect x="370" y="62" width="80" height="36" rx="5" fill="none" stroke="#333" stroke-width="2"/>
-  <text x="410" y="76" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#333">[A]</text>
+  <!-- Tunnel A passage (right to left, red-tinted, lighter for inverse) -->
+  <rect x="370" y="62" width="80" height="36" rx="5" fill="#c44" fill-opacity="0.05" stroke="#c44" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="410" y="76" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#c44">[A]</text>
   <text x="410" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">right &#x2192; left</text>
 
   <!-- Arrow to Ball (end) -->
   <line x1="450" y1="80" x2="496" y2="80" stroke="#999" stroke-width="1" marker-end="url(#cpArr)"/>
 
-  <!-- Ball (end) -->
-  <circle cx="510" cy="80" r="14" fill="none" stroke="#333" stroke-width="2"/>
-  <text x="510" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#333">Ball</text>
+  <!-- Ball (end, blue cord) -->
+  <circle cx="510" cy="80" r="14" fill="none" stroke="#2255aa" stroke-width="2"/>
+  <text x="510" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#2255aa">Ball</text>
 
-  <!-- Generator labels below each tunnel segment -->
+  <!-- Generator labels below each tunnel segment (color-coded) -->
   <!-- Bracket under A (first pass) -->
-  <line x1="75" y1="105" x2="145" y2="105" stroke="#999" stroke-width="1"/>
-  <line x1="75" y1="100" x2="75" y2="105" stroke="#999" stroke-width="1"/>
-  <line x1="145" y1="100" x2="145" y2="105" stroke="#999" stroke-width="1"/>
-  <text x="110" y="122" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#333" font-weight="bold" font-style="italic">a</text>
+  <line x1="75" y1="105" x2="145" y2="105" stroke="#c44" stroke-width="1"/>
+  <line x1="75" y1="100" x2="75" y2="105" stroke="#c44" stroke-width="1"/>
+  <line x1="145" y1="100" x2="145" y2="105" stroke="#c44" stroke-width="1"/>
+  <text x="110" y="122" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#c44" font-weight="bold" font-style="italic">a</text>
 
   <!-- Bracket under B -->
-  <line x1="225" y1="105" x2="295" y2="105" stroke="#999" stroke-width="1"/>
-  <line x1="225" y1="100" x2="225" y2="105" stroke="#999" stroke-width="1"/>
-  <line x1="295" y1="100" x2="295" y2="105" stroke="#999" stroke-width="1"/>
-  <text x="260" y="122" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#333" font-weight="bold" font-style="italic">b</text>
+  <line x1="225" y1="105" x2="295" y2="105" stroke="#44c" stroke-width="1"/>
+  <line x1="225" y1="100" x2="225" y2="105" stroke="#44c" stroke-width="1"/>
+  <line x1="295" y1="100" x2="295" y2="105" stroke="#44c" stroke-width="1"/>
+  <text x="260" y="122" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#44c" font-weight="bold" font-style="italic">b</text>
 
-  <!-- Bracket under A (reverse pass) -->
-  <line x1="375" y1="105" x2="445" y2="105" stroke="#999" stroke-width="1"/>
-  <line x1="375" y1="100" x2="375" y2="105" stroke="#999" stroke-width="1"/>
-  <line x1="445" y1="100" x2="445" y2="105" stroke="#999" stroke-width="1"/>
-  <text x="410" y="122" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#333" font-weight="bold" font-style="italic">a&#x207B;&#xB9;</text>
+  <!-- Bracket under A (reverse pass, lighter red) -->
+  <line x1="375" y1="105" x2="445" y2="105" stroke="#c44" stroke-width="1" opacity="0.6"/>
+  <line x1="375" y1="100" x2="375" y2="105" stroke="#c44" stroke-width="1" opacity="0.6"/>
+  <line x1="445" y1="100" x2="445" y2="105" stroke="#c44" stroke-width="1" opacity="0.6"/>
+  <text x="410" y="122" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#c44" font-weight="bold" font-style="italic" opacity="0.7">a&#x207B;&#xB9;</text>
 
   <!-- Dividing line -->
   <line x1="40" y1="140" x2="510" y2="140" stroke="#999" stroke-width="0.5" stroke-dasharray="3,3"/>

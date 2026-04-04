@@ -8,21 +8,21 @@
   <text x="112" y="22" text-anchor="middle"
         font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Crossing 1 (top window)</text>
 
-  <!-- Crossbar (horizontal) -->
+  <!-- Crossbar (horizontal) - steel gray -->
   <line x1="42" y1="90" x2="182" y2="90"
-        stroke="#333" stroke-width="2"/>
+        stroke="#888" stroke-width="2"/>
   <text x="185" y="94" font-family="system-ui, sans-serif" font-size="10" fill="#666">crossbar</text>
 
   <!-- Cord diagonal going from bottom-left to top-right (over crossbar) -->
-  <!-- Under-strand gap: crossbar is under the cord -->
-  <line x1="108" y1="86" x2="116" y2="94"
-        stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+  <!-- Under-strand gap: crossbar is under the cord (10px gap) -->
+  <line x1="105" y1="85" x2="119" y2="95"
+        stroke="#fafafa" stroke-width="10" stroke-linecap="round"/>
   <!-- Cord over -->
   <line x1="80" y1="130" x2="145" y2="50"
-        stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+        stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
 
   <!-- Arrow on cord (direction: upward-right) -->
-  <polygon points="140,56 145,50 137,55" fill="#333"/>
+  <polygon points="140,56 145,50 137,55" fill="#2255aa"/>
 
   <!-- +1 label -->
   <text x="112" y="155" text-anchor="middle"
@@ -32,21 +32,21 @@
   <text x="338" y="22" text-anchor="middle"
         font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">Crossing 2 (bottom window)</text>
 
-  <!-- Crossbar (horizontal) -->
+  <!-- Crossbar (horizontal) - steel gray -->
   <line x1="268" y1="90" x2="408" y2="90"
-        stroke="#333" stroke-width="2"/>
+        stroke="#888" stroke-width="2"/>
   <text x="411" y="94" font-family="system-ui, sans-serif" font-size="10" fill="#666">crossbar</text>
 
   <!-- Cord diagonal going from top-left to bottom-right (over crossbar, opposite direction) -->
-  <!-- Under-strand gap -->
-  <line x1="334" y1="86" x2="342" y2="94"
-        stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+  <!-- Under-strand gap (10px gap) -->
+  <line x1="331" y1="85" x2="345" y2="95"
+        stroke="#fafafa" stroke-width="10" stroke-linecap="round"/>
   <!-- Cord over -->
   <line x1="305" y1="50" x2="370" y2="130"
-        stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+        stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
 
   <!-- Arrow on cord (direction: downward-right) -->
-  <polygon points="365,124 370,130 363,125" fill="#333"/>
+  <polygon points="365,124 370,130 363,125" fill="#2255aa"/>
 
   <!-- -1 label -->
   <text x="338" y="155" text-anchor="middle"

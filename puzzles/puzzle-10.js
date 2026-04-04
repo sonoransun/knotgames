@@ -246,7 +246,7 @@ export function createSVGDiagram(container) {
   svg.text(s, cx + 60, cy + R + 48, 'Handle', { fontSize: 9, fill: '#666', anchor: 'middle' });
 
   // Hopf move diagram
-  svg.rect(s, 30, 320, 440, 60, { fill: '#f5f0ff', stroke: '#9c27b0', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 30, 320, 440, 60, { fill: '#f5f0ff', stroke: '#9c27b0', strokeWidth: 1, rx: 4 });
   svg.text(s, 250, 338, 'The Hopf Move (at the pole junction):', {
     fontSize: 11, anchor: 'middle', fontWeight: 'bold', fill: '#6a1b9a',
   });
@@ -256,6 +256,22 @@ export function createSVGDiagram(container) {
   svg.text(s, 250, 370, 'Cannot be decomposed into sequential single-axis moves!', {
     fontSize: 10, anchor: 'middle', fill: '#7b1fa2', fontStyle: 'italic',
   });
+
+  // Inject pulse animation for the callout
+  let styleEl = s.querySelector('style[data-anim]');
+  if (!styleEl) {
+    styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('data-anim', '1');
+    s.insertBefore(styleEl, s.firstChild);
+  }
+  styleEl.textContent += `
+    @keyframes calloutPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
+  `;
+  calloutRect.classList.add('callout-box');
 }
 
 export function dispose() {}

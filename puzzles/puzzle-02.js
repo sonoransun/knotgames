@@ -227,23 +227,27 @@ export function createSVGDiagram(container) {
     strokeWidth: 1.5,
   });
 
-  // Cord loop (front side)
-  svg.path(s, `M ${holeX - 8} ${holeY + 5} Q ${holeX - 50} ${holeY + 60} ${holeX} ${holeY + 75} Q ${holeX + 50} ${holeY + 60} ${holeX + 8} ${holeY + 5}`, {
+  // Cord loop (front side) — animated cord threading
+  svg.animatedPath(s, `M ${holeX - 8} ${holeY + 5} Q ${holeX - 50} ${holeY + 60} ${holeX} ${holeY + 75} Q ${holeX + 50} ${holeY + 60} ${holeX + 8} ${holeY + 5}`, {
     stroke: '#2255aa',
     strokeWidth: 3,
     fill: 'none',
+    animDelay: 0,
+    animDuration: 0.8,
   });
 
   // Cord through hole indicators
   svg.circle(s, holeX - 5, holeY + 2, 3, { fill: '#2255aa', stroke: 'none' });
   svg.circle(s, holeX + 5, holeY + 2, 3, { fill: '#2255aa', stroke: 'none' });
 
-  // Cord (back side, dashed)
-  svg.path(s, `M ${holeX - 8} ${holeY - 5} Q ${holeX - 40} ${holeY + 50} ${holeX} ${holeY + 65} Q ${holeX + 40} ${holeY + 50} ${holeX + 8} ${holeY - 5}`, {
+  // Cord (back side, dashed) — animated cord threading
+  svg.animatedPath(s, `M ${holeX - 8} ${holeY - 5} Q ${holeX - 40} ${holeY + 50} ${holeX} ${holeY + 65} Q ${holeX + 40} ${holeY + 50} ${holeX + 8} ${holeY - 5}`, {
     stroke: '#2255aa',
     strokeWidth: 2,
     fill: 'none',
     dashArray: '6,4',
+    animDelay: 0.8,
+    animDuration: 0.8,
   });
 
   // Labels
@@ -274,10 +278,26 @@ export function createSVGDiagram(container) {
   svg.path(s, 'M 85 300 Q 95 310 105 300', { stroke: '#2255aa', strokeWidth: 2, fill: 'none' });
 
   // Key insight
-  svg.rect(s, 20, 340, 460, 30, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 20, 340, 460, 30, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  calloutRect.classList.add('callout-box');
   svg.text(s, 250, 360, 'Key: The paddle (80mm edge) fits through the loop (100mm half-circumference)', {
     fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
   });
+
+  // Inject pulse animation for the callout
+  let styleEl = s.querySelector('style[data-anim]');
+  if (!styleEl) {
+    styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('data-anim', '1');
+    s.insertBefore(styleEl, s.firstChild);
+  }
+  styleEl.textContent += `
+    @keyframes calloutPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
+  `;
 }
 
 export function dispose() {}

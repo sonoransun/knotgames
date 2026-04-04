@@ -186,7 +186,7 @@ export function updateAnimation(objects, state) {
 }
 
 export function createSVGDiagram(container) {
-  const s = svg.createSVG(container, 500, 350);
+  const s = svg.createSVG(container, 500, 390);
 
   svg.text(s, 250, 25, 'Ouroboros Chain — Top View', {
     fontSize: 14, anchor: 'middle', fontWeight: 'bold',
@@ -246,6 +246,28 @@ export function createSVGDiagram(container) {
     svg.text(s, 120, 275 + i * 14, row[0], { fontSize: 9, fill: '#666' });
     svg.text(s, 180, 275 + i * 14, row[1], { fontSize: 9, fill: '#333', fontFamily: 'monospace' });
   });
+
+  // Key insight
+  const calloutRect = svg.rect(s, 50, 340, 400, 30, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  svg.text(s, 250, 360, 'Key: Removal order follows a binary Gray code — no shortcuts exist', {
+    fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
+  });
+
+  // Inject pulse animation for the callout
+  let styleEl = s.querySelector('style[data-anim]');
+  if (!styleEl) {
+    styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('data-anim', '1');
+    s.insertBefore(styleEl, s.firstChild);
+  }
+  styleEl.textContent += `
+    @keyframes calloutPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
+  `;
+  calloutRect.classList.add('callout-box');
 }
 
 export function dispose() {}

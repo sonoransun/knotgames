@@ -4,8 +4,10 @@
 
   <rect width="400" height="350" fill="#fafafa"/>
 
-  <!-- Acrylic block (top-down rectangle) -->
-  <rect x="80" y="30" width="240" height="160" rx="4" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Acrylic block (top-down rectangle with light blue fill) -->
+  <rect x="80" y="30" width="240" height="160" rx="4" fill="#e8f0ff" fill-opacity="0.08" stroke="#333" stroke-width="2"/>
+  <!-- Light acrylic body fill -->
+  <rect x="80" y="30" width="240" height="160" rx="4" fill="#aaccee" fill-opacity="0.08" stroke="none"/>
 
   <!-- Edge labels -->
   <text x="200" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666" font-weight="bold">FRONT</text>
@@ -13,19 +15,19 @@
   <text x="70" y="114" text-anchor="end" font-family="system-ui, sans-serif" font-size="10" fill="#666" font-weight="bold">LEFT</text>
   <text x="330" y="114" text-anchor="start" font-family="system-ui, sans-serif" font-size="10" fill="#666" font-weight="bold">RIGHT</text>
 
-  <!-- Tunnel A: horizontal, at a lower vertical position -->
-  <line x1="80" y1="130" x2="320" y2="130" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Tunnel A: horizontal, at a lower vertical position (red, dashed) -->
+  <line x1="80" y1="130" x2="320" y2="130" stroke="#c44" stroke-width="2" stroke-dasharray="5,3"/>
   <!-- Tunnel A entry/exit markers -->
-  <circle cx="80" cy="130" r="4" fill="#333"/>
-  <circle cx="320" cy="130" r="4" fill="#333"/>
-  <text x="90" y="145" font-family="system-ui, sans-serif" font-size="10" fill="#999">[A]</text>
+  <circle cx="80" cy="130" r="4" fill="#c44"/>
+  <circle cx="320" cy="130" r="4" fill="#c44"/>
+  <text x="90" y="145" font-family="system-ui, sans-serif" font-size="10" fill="#c44" font-weight="bold">[A]</text>
 
-  <!-- Tunnel B: vertical, at a higher horizontal position -->
-  <line x1="200" y1="30" x2="200" y2="190" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Tunnel B: vertical, at a higher horizontal position (blue, dashed) -->
+  <line x1="200" y1="30" x2="200" y2="190" stroke="#44c" stroke-width="2" stroke-dasharray="5,3"/>
   <!-- Tunnel B entry/exit markers -->
-  <circle cx="200" cy="30" r="4" fill="#333"/>
-  <circle cx="200" cy="190" r="4" fill="#333"/>
-  <text x="210" y="55" font-family="system-ui, sans-serif" font-size="10" fill="#999">[B]</text>
+  <circle cx="200" cy="30" r="4" fill="#44c"/>
+  <circle cx="200" cy="190" r="4" fill="#44c"/>
+  <text x="210" y="55" font-family="system-ui, sans-serif" font-size="10" fill="#44c" font-weight="bold">[B]</text>
 
   <!-- Crossing indicator -->
   <circle cx="200" cy="130" r="8" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
@@ -37,15 +39,15 @@
 
   <!-- Flow diagram using arrows -->
   <!-- Ball start -->
-  <circle cx="30" cy="258" r="8" fill="none" stroke="#333" stroke-width="2"/>
-  <text x="30" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#333">Ball</text>
+  <circle cx="30" cy="258" r="8" fill="none" stroke="#2255aa" stroke-width="2"/>
+  <text x="30" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#2255aa">Ball</text>
 
   <!-- Arrow to A LEFT entry -->
   <line x1="38" y1="258" x2="55" y2="258" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
 
-  <!-- A left-to-right -->
-  <rect x="57" y="248" width="42" height="20" rx="3" fill="none" stroke="#333" stroke-width="1"/>
-  <text x="78" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#333">A L&#x2192;R</text>
+  <!-- A left-to-right (red-tinted box) -->
+  <rect x="57" y="248" width="42" height="20" rx="3" fill="#c44" fill-opacity="0.08" stroke="#c44" stroke-width="1"/>
+  <text x="78" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#c44">A L&#x2192;R</text>
 
   <!-- Arrow to outside loop -->
   <line x1="99" y1="258" x2="112" y2="258" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
@@ -56,9 +58,9 @@
   <!-- Arrow to B -->
   <line x1="136" y1="258" x2="148" y2="258" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
 
-  <!-- B front-to-back -->
-  <rect x="150" y="248" width="48" height="20" rx="3" fill="none" stroke="#333" stroke-width="1"/>
-  <text x="174" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#333">B F&#x2192;B</text>
+  <!-- B front-to-back (blue-tinted box) -->
+  <rect x="150" y="248" width="48" height="20" rx="3" fill="#44c" fill-opacity="0.08" stroke="#44c" stroke-width="1"/>
+  <text x="174" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#44c">B F&#x2192;B</text>
 
   <!-- Arrow to outside loop -->
   <line x1="198" y1="258" x2="212" y2="258" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
@@ -69,21 +71,21 @@
   <!-- Arrow to A reverse -->
   <line x1="236" y1="258" x2="250" y2="258" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
 
-  <!-- A right-to-left -->
-  <rect x="252" y="248" width="42" height="20" rx="3" fill="none" stroke="#333" stroke-width="1"/>
-  <text x="273" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#333">A R&#x2192;L</text>
+  <!-- A right-to-left (red-tinted box, lighter for inverse) -->
+  <rect x="252" y="248" width="42" height="20" rx="3" fill="#c44" fill-opacity="0.05" stroke="#c44" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="273" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#c44">A R&#x2192;L</text>
 
   <!-- Arrow to Ball -->
   <line x1="294" y1="258" x2="340" y2="258" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
 
   <!-- Ball end -->
-  <circle cx="352" cy="258" r="8" fill="none" stroke="#333" stroke-width="2"/>
-  <text x="352" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#333">Ball</text>
+  <circle cx="352" cy="258" r="8" fill="none" stroke="#2255aa" stroke-width="2"/>
+  <text x="352" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#2255aa">Ball</text>
 
-  <!-- Generator labels below -->
-  <text x="78" y="285" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999" font-style="italic">a</text>
-  <text x="174" y="285" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999" font-style="italic">b</text>
-  <text x="273" y="285" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999" font-style="italic">a&#x207B;&#xB9;</text>
+  <!-- Generator labels below (color-coded) -->
+  <text x="78" y="285" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#c44" font-weight="bold" font-style="italic">a</text>
+  <text x="174" y="285" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#44c" font-weight="bold" font-style="italic">b</text>
+  <text x="273" y="285" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#c44" font-style="italic">a&#x207B;&#xB9;</text>
 
   <!-- Summary -->
   <text x="200" y="315" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">Ball &#x2192; enters A from LEFT &#x2192; exits A RIGHT &#x2192; loops outside</text>

@@ -4,57 +4,57 @@
 
   <rect width="250" height="400" fill="#fafafa"/>
 
-  <!-- Base block -->
-  <rect x="65" y="330" width="120" height="40" rx="3" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Base block (dark wood) -->
+  <rect x="65" y="330" width="120" height="40" rx="3" fill="#8b6914" stroke="#6b4f10" stroke-width="2"/>
 
-  <!-- Post -->
-  <rect x="115" y="100" width="20" height="230" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Post (wood) -->
+  <rect x="115" y="100" width="20" height="230" fill="#c4956a" stroke="#a07050" stroke-width="2"/>
 
-  <!-- Ball finial -->
-  <circle cx="125" cy="85" r="15" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Ball finial (wood) -->
+  <circle cx="125" cy="85" r="15" fill="#c4956a" stroke="#a07050" stroke-width="2"/>
 
-  <!-- Ring on post (small circle, below wraps) -->
-  <circle cx="125" cy="290" r="8" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Ring on post (brass) -->
+  <circle cx="125" cy="290" r="8" fill="none" stroke="#cc8800" stroke-width="2.5"/>
 
-  <!-- Hook at base -->
-  <path d="M125,330 L125,340 Q125,355 115,355 Q105,355 105,345" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Hook at base (steel) -->
+  <path d="M125,330 L125,340 Q125,355 115,355 Q105,355 105,345" fill="none" stroke="#888" stroke-width="2.5"/>
 
   <!-- === Cord wrapping with 3 crossings (trefoil-like) === -->
 
   <!-- Cord from ring upward to first wrap -->
-  <line x1="133" y1="290" x2="140" y2="260" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="133" y1="290" x2="140" y2="260" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
 
   <!-- Wrap 1 (bottom crossing) -->
   <!-- Under-strand gap -->
-  <path d="M110,240 Q95,225 110,210" fill="none" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
-  <!-- Over-strand -->
-  <path d="M140,260 Q155,240 140,220" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
-  <!-- Under-strand -->
-  <path d="M110,240 Q95,225 110,210" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <path d="M110,240 Q95,225 110,210" fill="none" stroke="#fafafa" stroke-width="10" stroke-linecap="round"/>
+  <!-- Over-strand (front, full opacity) -->
+  <path d="M140,260 Q155,240 140,220" fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <!-- Under-strand (behind crossing, slightly faded) -->
+  <path d="M110,240 Q95,225 110,210" fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.7"/>
   <!-- Connecting arc behind post -->
-  <path d="M140,220 Q145,215 140,210" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3" opacity="0.4"/>
+  <path d="M140,220 Q145,215 140,210" fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.4"/>
 
   <!-- Wrap 2 (middle crossing) -->
   <!-- Under-strand gap -->
-  <path d="M140,200 Q155,185 140,170" fill="none" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
-  <!-- Over-strand -->
-  <path d="M110,210 Q95,190 110,170" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
-  <!-- Under-strand -->
-  <path d="M140,200 Q155,185 140,170" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <path d="M140,200 Q155,185 140,170" fill="none" stroke="#fafafa" stroke-width="10" stroke-linecap="round"/>
+  <!-- Over-strand (front, full opacity) -->
+  <path d="M110,210 Q95,190 110,170" fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <!-- Under-strand (behind crossing, slightly faded) -->
+  <path d="M140,200 Q155,185 140,170" fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.7"/>
   <!-- Connecting arc behind post -->
-  <path d="M110,170 Q105,165 110,160" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3" opacity="0.4"/>
+  <path d="M110,170 Q105,165 110,160" fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.4"/>
 
   <!-- Wrap 3 (top crossing) -->
   <!-- Under-strand gap -->
-  <path d="M110,160 Q95,145 110,130" fill="none" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
-  <!-- Over-strand -->
-  <path d="M140,170 Q155,150 140,130" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
-  <!-- Under-strand -->
-  <path d="M110,160 Q95,145 110,130" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <path d="M110,160 Q95,145 110,130" fill="none" stroke="#fafafa" stroke-width="10" stroke-linecap="round"/>
+  <!-- Over-strand (front, full opacity) -->
+  <path d="M140,170 Q155,150 140,130" fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <!-- Under-strand (behind crossing, slightly faded) -->
+  <path d="M110,160 Q95,145 110,130" fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.7"/>
 
   <!-- Cord from top wrap to hook (runs down behind post, shown faded) -->
-  <path d="M140,130 Q145,120 140,115" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
-  <line x1="140" y1="115" x2="140" y2="110" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <path d="M140,130 Q145,120 140,115" fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.4"/>
+  <line x1="140" y1="115" x2="140" y2="110" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.4"/>
 
   <!-- === Labels === -->
 

@@ -4,13 +4,20 @@
 
   <rect width="350" height="250" fill="#fafafa"/>
 
+  <defs>
+    <marker id="arrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3"
+            orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#999"/>
+    </marker>
+  </defs>
+
   <!-- Frame: outer rectangle -->
   <rect x="75" y="40" width="200" height="150" rx="3" ry="3"
-        fill="none" stroke="#333" stroke-width="2"/>
+        fill="none" stroke="#888" stroke-width="2"/>
 
   <!-- Crossbar -->
   <line x1="75" y1="115" x2="275" y2="115"
-        stroke="#333" stroke-width="2"/>
+        stroke="#888" stroke-width="2"/>
 
   <!-- Crossbar label -->
   <line x1="280" y1="115" x2="310" y2="105"
@@ -19,42 +26,34 @@
 
   <!-- Cord: right strand hanging down normally -->
   <path d="M 195,230 L 195,130"
-        stroke="#333" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
-  <!-- Right strand crossing over crossbar -->
-  <line x1="191" y1="111" x2="199" y2="119"
-        stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+        stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+  <!-- Right strand crossing over crossbar (10px gap) -->
+  <line x1="190" y1="110" x2="200" y2="120"
+        stroke="#fafafa" stroke-width="10" stroke-linecap="round"/>
   <path d="M 195,130 L 195,100 L 195,60"
-        stroke="#333" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+        stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
 
-  <!-- Cord: left strand - the bight being lifted -->
+  <!-- Cord: left strand (stationary portion below) -->
   <path d="M 155,230 L 155,130"
-        stroke="#333" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+        stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
 
-  <!-- Bight of cord lifting up and over the left end of crossbar -->
-  <!-- The bight curves up from the left cord, arcs over the left end of crossbar -->
+  <!-- Bight of cord lifting up and over the left end of crossbar (highlighted in gold) -->
   <path d="M 155,130 C 155,100 120,80 90,70 C 60,60 50,80 55,115 C 58,135 65,140 75,140"
-        stroke="#333" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+        stroke="#ccaa44" stroke-width="2.5" stroke-dasharray="5,3" fill="none"/>
 
-  <!-- White gap where bight passes over the crossbar end -->
-  <line x1="72" y1="111" x2="80" y2="119"
-        stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
+  <!-- White gap where bight passes over the crossbar end (10px gap) -->
+  <line x1="70" y1="110" x2="80" y2="120"
+        stroke="#fafafa" stroke-width="10" stroke-linecap="round"/>
 
-  <!-- Bight continues after going over -->
+  <!-- Bight continues after going over (behind hardware, reduced opacity) -->
   <path d="M 75,140 C 90,140 110,135 130,130"
-        stroke="#333" stroke-width="2" stroke-dasharray="5,3" fill="none"
-        opacity="0.5"/>
+        stroke="#ccaa44" stroke-width="2.5" stroke-dasharray="5,3" fill="none"
+        opacity="0.4"/>
 
   <!-- Arrow showing upward lift motion -->
   <path d="M 105,130 C 95,100 80,85 70,75"
         stroke="#999" stroke-width="1.5" fill="none"
         marker-end="url(#arrowGray)"/>
-
-  <defs>
-    <marker id="arrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3"
-            orient="auto" markerUnits="strokeWidth">
-      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#999"/>
-    </marker>
-  </defs>
 
   <!-- Second arrow arc showing the over-the-end motion -->
   <path d="M 68,72 C 55,68 45,85 50,105"
@@ -67,7 +66,14 @@
 
   <!-- Cord bottom connection -->
   <path d="M 155,230 C 155,238 175,244 175,244"
-        stroke="#333" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+        stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
   <path d="M 195,230 C 195,238 175,244 175,244"
-        stroke="#333" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+        stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+
+  <!-- Step annotation in upper-right -->
+  <circle cx="320" cy="24" r="14" fill="white" stroke="#4a90d9" stroke-width="2"/>
+  <text x="320" y="21" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="7" fill="#4a90d9" font-weight="bold">Key</text>
+  <text x="320" y="31" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8" fill="#4a90d9" font-weight="bold">Move</text>
 </svg>

@@ -4,35 +4,47 @@
 
   <rect width="250" height="350" fill="#fafafa"/>
 
-  <!-- Base block -->
-  <rect x="65" y="280" width="120" height="40" rx="3" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Step badge (upper-right) -->
+  <circle cx="225" cy="25" r="16" fill="#2255aa" opacity="0.12" stroke="#2255aa" stroke-width="1.5"/>
+  <text x="225" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#2255aa" font-weight="bold">Step</text>
+  <text x="225" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#2255aa" font-weight="bold">2 of 3</text>
 
-  <!-- Post -->
-  <rect x="115" y="70" width="20" height="210" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Base block (dark wood) -->
+  <rect x="65" y="280" width="120" height="40" rx="3" fill="#8b6914" stroke="#6b4f10" stroke-width="2"/>
 
-  <!-- Ball finial -->
-  <circle cx="125" cy="55" r="15" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Post (wood) -->
+  <rect x="115" y="70" width="20" height="210" fill="#c4956a" stroke="#a07050" stroke-width="2"/>
 
-  <!-- Ring on post (below wrap) -->
-  <circle cx="125" cy="220" r="8" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Ball finial (wood) -->
+  <circle cx="125" cy="55" r="15" fill="#c4956a" stroke="#a07050" stroke-width="2"/>
 
-  <!-- Hook at base -->
-  <path d="M125,280 L125,290 Q125,305 115,305 Q105,305 105,295" fill="none" stroke="#333" stroke-width="2"/>
+  <!-- Ring on post (brass, below wrap) -->
+  <circle cx="125" cy="220" r="8" fill="none" stroke="#cc8800" stroke-width="2.5"/>
+
+  <!-- Hook at base (steel) -->
+  <path d="M125,280 L125,290 Q125,305 115,305 Q105,305 105,295" fill="none" stroke="#888" stroke-width="2.5"/>
+
+  <!-- Ghost outline of removed wraps (light gray) -->
+  <path d="M140,130 Q155,115 140,100" fill="none" stroke="#ddd" stroke-width="2" stroke-dasharray="4,4"/>
+  <path d="M110,125 Q95,110 110,95" fill="none" stroke="#ddd" stroke-width="2" stroke-dasharray="4,4"/>
+  <path d="M140,155 Q155,140 140,125" fill="none" stroke="#ddd" stroke-width="2" stroke-dasharray="4,4"/>
+  <path d="M110,150 Q95,135 110,120" fill="none" stroke="#ddd" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="172" y="125" font-family="system-ui, sans-serif" font-size="8" fill="#ccc" font-style="italic">removed</text>
 
   <!-- Cord from ring upward -->
-  <line x1="133" y1="220" x2="140" y2="190" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="133" y1="220" x2="140" y2="190" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
 
   <!-- Single wrap (one crossing) -->
   <!-- Under-strand gap -->
-  <path d="M110,170 Q95,155 110,140" fill="none" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
-  <!-- Over-strand -->
-  <path d="M140,190 Q155,170 140,150" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
-  <!-- Under-strand -->
-  <path d="M110,170 Q95,155 110,140" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <path d="M110,170 Q95,155 110,140" fill="none" stroke="#fafafa" stroke-width="10" stroke-linecap="round"/>
+  <!-- Over-strand (front, full opacity) -->
+  <path d="M140,190 Q155,170 140,150" fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <!-- Under-strand (behind crossing) -->
+  <path d="M110,170 Q95,155 110,140" fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.7"/>
 
   <!-- Cord from wrap upward -->
-  <path d="M140,150 Q142,140 140,130" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
-  <line x1="140" y1="130" x2="140" y2="110" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+  <path d="M140,150 Q142,140 140,130" fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <line x1="140" y1="130" x2="140" y2="110" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
 
   <!-- === Label === -->
   <text x="125" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">1 wrap remains</text>

@@ -272,30 +272,36 @@ export function createSVGDiagram(container) {
   svg.circle(s, barLeft, barTop, 5, { fill: '#2255aa', stroke: '#1a4488', strokeWidth: 1 });
   svg.circle(s, barRight, barTop, 5, { fill: '#2255aa', stroke: '#1a4488', strokeWidth: 1 });
 
-  // Cord path (simplified 2D representation)
+  // Cord path (simplified 2D representation) — animated cord threading
   // Left section: from left tip down to ring
-  svg.path(s, `M ${barLeft} ${barTop} L ${barLeft + 5} 120 L 225 160`, {
+  svg.animatedPath(s, `M ${barLeft} ${barTop} L ${barLeft + 5} 120 L 225 160`, {
     stroke: '#2255aa',
     strokeWidth: 2.5,
     fill: 'none',
     strokeLinecap: 'round',
+    animDelay: 0,
+    animDuration: 0.8,
   });
 
   // Cord wrapping around the curve (visual illusion of encirclement)
   // Down from ring through the U, wrapping
-  svg.path(s, `M 225 160 L 220 200 Q 210 260 230 280 Q 250 295 270 280 Q 290 260 280 200 L 275 160`, {
+  svg.animatedPath(s, `M 225 160 L 220 200 Q 210 260 230 280 Q 250 295 270 280 Q 290 260 280 200 L 275 160`, {
     stroke: '#2255aa',
     strokeWidth: 2.5,
     fill: 'none',
     strokeLinecap: 'round',
+    animDelay: 0.8,
+    animDuration: 0.8,
   });
 
   // Cord: back up through ring to right tip
-  svg.path(s, `M 275 160 L ${barRight - 5} 120 L ${barRight} ${barTop}`, {
+  svg.animatedPath(s, `M 275 160 L ${barRight - 5} 120 L ${barRight} ${barTop}`, {
     stroke: '#2255aa',
     strokeWidth: 2.5,
     fill: 'none',
     strokeLinecap: 'round',
+    animDelay: 1.6,
+    animDuration: 0.8,
   });
 
   // Ring (centered on cord at hang point)
@@ -318,17 +324,33 @@ export function createSVGDiagram(container) {
   svg.dimensionArrow(s, 170, barTop, 170, bendCenterY, '120mm');
 
   // Key insight callout
-  svg.rect(s, 20, 355, 460, 35, {
+  const calloutRect = svg.rect(s, 20, 355, 460, 35, {
     fill: '#e8f0fe',
     stroke: '#4a90d9',
     strokeWidth: 1,
     rx: 4,
   });
+  calloutRect.classList.add('callout-box');
   svg.text(s, 250, 377, 'Key: The cord is an arc (open), not a closed loop — the wrap is an illusion', {
     fontSize: 11,
     anchor: 'middle',
     fill: '#2a5a8a',
   });
+
+  // Inject pulse animation for the callout
+  let styleEl = s.querySelector('style[data-anim]');
+  if (!styleEl) {
+    styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('data-anim', '1');
+    s.insertBefore(styleEl, s.firstChild);
+  }
+  styleEl.textContent += `
+    @keyframes calloutPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
+  `;
 }
 
 export function dispose() {

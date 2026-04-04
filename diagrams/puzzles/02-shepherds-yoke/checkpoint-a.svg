@@ -6,23 +6,23 @@
 
   <!-- Paddle body -->
   <rect x="75" y="60" width="200" height="100" rx="4" ry="4"
-        fill="none" stroke="#333" stroke-width="2"/>
+        fill="none" stroke="#c4956a" stroke-width="2"/>
 
   <!-- Hole in center -->
-  <circle cx="175" cy="110" r="12" fill="#fafafa" stroke="#333" stroke-width="2"/>
+  <circle cx="175" cy="110" r="12" fill="#fafafa" stroke="#c4956a" stroke-width="2"/>
 
-  <!-- Cord: two strands running over top of paddle to hole -->
+  <!-- Cord: two strands running over top of paddle to hole (stationary cord) -->
   <path d="M 165,98 L 165,40 Q 165,25 155,25 Q 140,25 140,40 L 140,160
            Q 140,200 150,200"
-        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
   <path d="M 185,98 L 185,40 Q 185,25 195,25 Q 210,25 210,40 L 210,160
            Q 210,200 200,200"
-        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
 
-  <!-- Bight emerging on back side (below hole, shown as dashed U-shape below paddle) -->
+  <!-- Bight emerging on back side (moving bight in lighter blue) -->
   <path d="M 165,122 Q 165,160 150,180 Q 140,195 155,210
            Q 175,230 195,210 Q 210,195 200,180 Q 185,160 185,122"
-        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+        fill="none" stroke="#5588cc" stroke-width="2" stroke-dasharray="5,3"/>
 
   <!-- Back-side shading hint (light gray fill behind bight) -->
   <rect x="130" y="160" width="90" height="80" rx="3" ry="3"
@@ -37,5 +37,12 @@
 
   <!-- Cord bottom connection -->
   <path d="M 150,200 Q 175,220 200,200"
-        fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Step badge: Step 1 of 3 -->
+  <circle cx="322" cy="24" r="14" fill="white" stroke="#4a90d9" stroke-width="2"/>
+  <text x="322" y="21" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="7" fill="#4a90d9" font-weight="bold">Step</text>
+  <text x="322" y="31" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8" fill="#4a90d9" font-weight="bold">1 / 3</text>
 </svg>

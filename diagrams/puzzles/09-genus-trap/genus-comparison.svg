@@ -2,55 +2,119 @@
   <title>Genus Trap - Genus Comparison</title>
   <desc>Three shapes side by side comparing genus 0 (ball, no tunnels), genus 1 (donut, one tunnel), and genus 2 (double torus, two tunnels).</desc>
 
+  <defs>
+    <!-- Sphere gradient: top-left highlight to bottom-right shadow -->
+    <linearGradient id="sphereGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8e8e8"/>
+      <stop offset="100%" stop-color="#c8c8c8"/>
+    </linearGradient>
+
+    <!-- Torus gradient: left highlight to right shadow -->
+    <linearGradient id="torusGrad" x1="0%" y1="20%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#e8e8e8"/>
+      <stop offset="100%" stop-color="#c0c0c0"/>
+    </linearGradient>
+
+    <!-- Double torus gradient -->
+    <linearGradient id="dtorusGrad" x1="0%" y1="20%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#e8e8e8"/>
+      <stop offset="100%" stop-color="#c0c0c0"/>
+    </linearGradient>
+
+    <!-- Neck shadow gradient for double torus junction -->
+    <linearGradient id="neckShadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#999" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#888" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#999" stop-opacity="0.35"/>
+    </linearGradient>
+
+    <marker id="garr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#bbb"/>
+    </marker>
+  </defs>
+
   <rect width="550" height="200" fill="#fafafa"/>
 
   <!-- Section title -->
   <text x="275" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">Genus Comparison for Puzzle Context</text>
 
   <!-- Genus 0: Ball / Sphere -->
-  <ellipse cx="95" cy="95" rx="55" ry="42" fill="none" stroke="#333" stroke-width="2"/>
-  <!-- Subtle shading arc -->
-  <path d="M 60,80 Q 95,65 130,80" fill="none" stroke="#999" stroke-width="1"/>
-  <text x="95" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">Genus 0</text>
-  <text x="95" y="170" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">No tunnels</text>
+  <g transform="translate(95, 90)">
+    <!-- Sphere body with gradient -->
+    <circle cx="0" cy="0" r="45" fill="url(#sphereGrad)" stroke="#333" stroke-width="2"/>
+    <!-- Dashed equator ellipse for 3D depth -->
+    <ellipse cx="0" cy="0" rx="45" ry="12" fill="none" stroke="#555" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"/>
+    <!-- Highlight arc for specular hint -->
+    <path d="M -20 -26 Q -14 -36, -4 -38" fill="none" stroke="#fff" stroke-width="2" opacity="0.6"/>
+
+    <text x="0" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">Genus 0</text>
+    <text x="0" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">No tunnels</text>
+    <text x="0" y="98" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999" font-style="italic">&#x3C0;&#x2081; = {e}</text>
+  </g>
+
+  <!-- Arrow: Genus 0 -> Genus 1 -->
+  <line x1="148" y1="90" x2="188" y2="90" stroke="#bbb" stroke-width="1.5" marker-end="url(#garr)"/>
+  <text x="168" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">+1 hole</text>
 
   <!-- Genus 1: Torus / Donut -->
-  <ellipse cx="275" cy="95" rx="65" ry="42" fill="none" stroke="#333" stroke-width="2"/>
-  <!-- Hole in the middle -->
-  <ellipse cx="275" cy="95" rx="22" ry="12" fill="#fafafa" stroke="#333" stroke-width="2"/>
-  <!-- Top surface curvature hint -->
-  <path d="M 230,78 Q 275,62 320,78" fill="none" stroke="#999" stroke-width="1"/>
-  <text x="275" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">Genus 1</text>
-  <text x="275" y="170" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">One tunnel</text>
+  <g transform="translate(275, 87)">
+    <!-- Outer torus body with gradient -->
+    <ellipse cx="0" cy="0" rx="60" ry="38" fill="url(#torusGrad)" stroke="#333" stroke-width="2"/>
+    <!-- Dashed equator curve on upper surface -->
+    <path d="M -50 -12 Q -25 -28, 0 -30 Q 25 -28, 50 -12"
+          fill="none" stroke="#555" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"/>
+    <!-- Surface hint path (bottom curvature) -->
+    <path d="M -48 15 Q -25 30, 0 32 Q 25 30, 48 15"
+          fill="none" stroke="#555" stroke-width="1" opacity="0.4"/>
+    <!-- Inner hole -->
+    <ellipse cx="0" cy="0" rx="20" ry="10" fill="#fafafa" stroke="#333" stroke-width="2"/>
+
+    <text x="0" y="58" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">Genus 1</text>
+    <text x="0" y="73" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">One tunnel</text>
+    <text x="0" y="91" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999" font-style="italic">&#x3C0;&#x2081; = &#x2124;</text>
+  </g>
+
+  <!-- Arrow: Genus 1 -> Genus 2 -->
+  <line x1="342" y1="87" x2="372" y2="87" stroke="#bbb" stroke-width="1.5" marker-end="url(#garr)"/>
+  <text x="357" y="79" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">+1 hole</text>
 
   <!-- Genus 2: Double torus / Two tunnels -->
-  <!-- Outer shape: wider to accommodate two holes -->
-  <ellipse cx="455" cy="95" rx="75" ry="42" fill="none" stroke="#333" stroke-width="2"/>
-  <!-- Two holes -->
-  <ellipse cx="430" cy="95" rx="18" ry="10" fill="#fafafa" stroke="#333" stroke-width="2"/>
-  <ellipse cx="480" cy="95" rx="18" ry="10" fill="#fafafa" stroke="#333" stroke-width="2"/>
-  <!-- Top surface curvature hint -->
-  <path d="M 400,78 Q 455,60 510,78" fill="none" stroke="#999" stroke-width="1"/>
-  <!-- Saddle between holes -->
-  <path d="M 450,85 Q 455,92 460,85" fill="none" stroke="#999" stroke-width="1"/>
-  <text x="455" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">Genus 2</text>
-  <text x="455" y="170" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">Two tunnels</text>
+  <g transform="translate(455, 87)">
+    <!-- Double torus outer shape: figure-8 with pronounced pinch -->
+    <path d="M -65 0
+             Q -65 -38, -38 -44
+             Q -16 -48, -5 -26
+             Q 0 -16, 0 -12
+             Q 0 -16, 5 -26
+             Q 16 -48, 38 -44
+             Q 65 -38, 65 0
+             Q 65 38, 38 44
+             Q 16 48, 5 26
+             Q 0 16, 0 12
+             Q 0 16, -5 26
+             Q -16 48, -38 44
+             Q -65 38, -65 0 Z"
+          fill="url(#dtorusGrad)" stroke="#333" stroke-width="2"/>
 
-  <!-- Arrows between shapes -->
-  <path d="M 155,95 L 200,95" fill="none" stroke="#999" stroke-width="1" marker-end="url(#garr)"/>
-  <text x="178" y="88" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">+1 hole</text>
+    <!-- Neck junction shadow for 3D depth -->
+    <rect x="-4" y="-12" width="8" height="24" fill="url(#neckShadow)" rx="3" opacity="0.6"/>
 
-  <path d="M 345,95 L 375,95" fill="none" stroke="#999" stroke-width="1" marker-end="url(#garr)"/>
-  <text x="360" y="88" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999">+1 hole</text>
+    <!-- Left hole -->
+    <ellipse cx="-30" cy="0" rx="14" ry="7" fill="#fafafa" stroke="#333" stroke-width="1.5"/>
 
-  <!-- Fundamental group labels -->
-  <text x="95" y="188" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999" font-style="italic">&#x3C0;&#x2081; = {e}</text>
-  <text x="275" y="188" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999" font-style="italic">&#x3C0;&#x2081; = &#x2124;</text>
-  <text x="455" y="188" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999" font-style="italic">&#x3C0;&#x2081; = F&#x2082;</text>
+    <!-- Right hole -->
+    <ellipse cx="30" cy="0" rx="14" ry="7" fill="#fafafa" stroke="#333" stroke-width="1.5"/>
 
-  <defs>
-    <marker id="garr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#999"/>
-    </marker>
-  </defs>
+    <!-- Dashed equator curve on left lobe -->
+    <path d="M -54 -12 Q -42 -24, -30 -26 Q -18 -24, -6 -14"
+          fill="none" stroke="#555" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"/>
+
+    <!-- Dashed equator curve on right lobe -->
+    <path d="M 6 -14 Q 18 -24, 30 -26 Q 42 -24, 54 -12"
+          fill="none" stroke="#555" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"/>
+
+    <text x="0" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#666" font-weight="bold">Genus 2</text>
+    <text x="0" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">Two tunnels</text>
+    <text x="0" y="98" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#999" font-style="italic">&#x3C0;&#x2081; = F&#x2082;</text>
+  </g>
 </svg>

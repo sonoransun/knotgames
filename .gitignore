@@ -3,6 +3,10 @@
 # Project: HTML/JS (Three.js CDN), OpenSCAD, Markdown
 # ============================================================
 
+# ---- Local scripts & config (not for upstream) ----
+up.sh
+CLAUDE.md
+
 # ---- OS artifacts ----
 .DS_Store
 ._*
@@ -32,9 +36,14 @@ Icon?
 .vim/
 tags
 TAGS
+.editorconfig
 
-# ---- Claude Code ----
+# ---- Claude Code / AI tooling ----
 .claude/
+.cursorrules
+.cursor/
+.aider*
+.copilot/
 
 # ---- Node / JS dependencies ----
 # Three.js is loaded via CDN importmap — no local node_modules.
@@ -47,6 +56,15 @@ yarn.lock
 pnpm-lock.yaml
 bun.lockb
 .yarn/
+.npmrc
+.yarnrc
+.yarnrc.yml
+
+# ---- Other dependency / vendoring directories ----
+vendor/
+bower_components/
+jspm_packages/
+web_modules/
 
 # ---- 3D printing generated outputs ----
 # STL, G-code, and slicer project files are generated from .scad sources.
@@ -55,7 +73,6 @@ bun.lockb
 *.STL
 *.gcode
 *.gco
-*.3mf
 *.amf
 *.obj
 *.ply
@@ -89,11 +106,13 @@ out/
 # ---- Environment / secrets ----
 .env
 .env.*
+!.env.example
 *.pem
 *.key
 *.cert
 credentials.*
 secrets.*
+*.secret
 
 # ---- Logs ----
 *.log
@@ -107,15 +126,15 @@ __pycache__/
 *.egg-info/
 .eggs/
 *.egg
+.venv/
+venv/
 
 # ---- Git submodules / subrepos ----
-# Prevent accidental inclusion of nested repos.
-# If a subdirectory contains its own .git, it should be
-# registered as a submodule, not committed as files.
-# This rule does not affect the top-level .git directory.
-**/.git/
-!/.git/
+# Prevent accidental inclusion of nested repos or submodule config.
+# git won't track .git dirs by default, but these rules guard against
+# tools that flatten subrepos into tracked files.
 .gitmodules
+.gitsubmodules
 
 # ---- Large binary assets ----
 # Keep the repo lean. Reference external hosting for large files.
@@ -132,6 +151,7 @@ __pycache__/
 *.deb
 *.rpm
 *.bin
+*.wasm
 
 # ---- Images (allow SVG, block rasters unless intentional) ----
 # SVGs are source diagrams. Raster screenshots should not be committed.
@@ -150,3 +170,4 @@ temp/
 *.bak
 *.orig
 *.rej
+*.patch

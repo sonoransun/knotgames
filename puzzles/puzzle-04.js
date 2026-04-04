@@ -266,13 +266,29 @@ export function createSVGDiagram(container) {
   svg.label(s, 380, 200, 300, 195, 'Cord loop');
 
   // Key insight
-  svg.rect(s, 20, 330, 460, 40, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 20, 330, 460, 40, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  calloutRect.classList.add('callout-box');
   svg.text(s, 250, 348, 'Key: Mobius band has ONE edge (not two).', {
     fontSize: 11, anchor: 'middle', fill: '#2a5a8a', fontWeight: 'bold',
   });
   svg.text(s, 250, 362, 'The twist enables escape — cord follows the single edge and slips off.', {
     fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
   });
+
+  // Inject pulse animation for the callout
+  let styleEl = s.querySelector('style[data-anim]');
+  if (!styleEl) {
+    styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('data-anim', '1');
+    s.insertBefore(styleEl, s.firstChild);
+  }
+  styleEl.textContent += `
+    @keyframes calloutPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
+  `;
 }
 
 export function dispose() {}

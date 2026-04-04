@@ -1,99 +1,292 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 280">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 340">
   <title>Belt Trick: 360 vs 720 Degree Twist</title>
-  <desc>Illustration of the Dirac belt trick. A 360-degree twist in a belt cannot be undone while keeping the ends fixed, but a 720-degree twist can be undone by looping the belt around. This demonstrates a fundamental property of SO(3) and spinor behavior.</desc>
+  <desc>Illustration of the Dirac belt trick showing that a 360-degree twist cannot be untwisted without detaching an end, but a 720-degree twist can be untwisted by looping one end around. The left (red) and right (blue) belt edges make twist topology visible. This demonstrates that SO(3) has fundamental group Z/2.</desc>
 
-  <rect width="500" height="280" fill="#fafafa"/>
+  <style>
+    text { font-family: system-ui, sans-serif; }
 
-  <!-- ===== LEFT: 360 degree twist ===== -->
-  <text x="130" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">360° twist</text>
+    /* Animation frames for section 3: show one at a time */
+    @keyframes frame1 { 0%,18%   { opacity:1 } 20%,100%  { opacity:0 } }
+    @keyframes frame2 { 0%,18%   { opacity:0 } 20%,38%   { opacity:1 } 40%,100%  { opacity:0 } }
+    @keyframes frame3 { 0%,38%   { opacity:0 } 40%,58%   { opacity:1 } 60%,100%  { opacity:0 } }
+    @keyframes frame4 { 0%,58%   { opacity:0 } 60%,78%   { opacity:1 } 80%,100%  { opacity:0 } }
+    @keyframes frame5 { 0%,78%   { opacity:0 } 80%,100%  { opacity:1 } }
 
-  <!-- Fixed end (top) -->
-  <rect x="90" y="40" width="80" height="6" rx="2" fill="#999" stroke="#333" stroke-width="1"/>
-  <text x="130" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">fixed end</text>
+    .anim-f1 { animation: frame1 8s infinite; }
+    .anim-f2 { animation: frame2 8s infinite; }
+    .anim-f3 { animation: frame3 8s infinite; }
+    .anim-f4 { animation: frame4 8s infinite; }
+    .anim-f5 { animation: frame5 8s infinite; }
+  </style>
 
-  <!-- Belt edges: two lines that cross once (360 twist) -->
-  <!-- Left edge of belt -->
-  <path d="M 100,46 C 100,70 100,85 140,105" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <!-- White gap on the under strand at the crossing -->
-  <line x1="118" y1="92" x2="124" y2="98" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
-  <!-- Right edge of belt -->
-  <path d="M 160,46 C 160,70 160,85 120,105" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <!-- Redraw over strand through the crossing -->
-  <path d="M 100,46 C 100,70 100,85 140,105" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <defs>
+    <!-- Gradient for belt surface fill -->
+    <linearGradient id="beltGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c44"/>
+      <stop offset="100%" stop-color="#44c"/>
+    </linearGradient>
+  </defs>
 
-  <!-- Belt continues below crossing -->
-  <path d="M 140,105 C 155,115 160,130 160,150" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <path d="M 120,105 C 105,115 100,130 100,150" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <!-- Background -->
+  <rect width="650" height="340" fill="#fafafa" rx="8"/>
 
-  <!-- Belt surface shading (light fill between edges) -->
-  <path d="M 100,46 C 100,70 100,85 140,105 C 155,115 160,130 160,150 L 100,150 C 100,130 105,115 120,105 C 160,85 160,70 160,46 Z" fill="#333" fill-opacity="0.05" stroke="none"/>
+  <!-- ================================================================ -->
+  <!-- SECTION 1: 360-degree twist (x=30..190)                         -->
+  <!-- ================================================================ -->
+  <text x="110" y="22" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">360° twist</text>
 
-  <!-- Free end (bottom) -->
-  <rect x="90" y="150" width="80" height="6" rx="2" fill="#999" stroke="#333" stroke-width="1"/>
-  <text x="130" y="172" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">free end</text>
+  <!-- Fixed anchor bar (top) -->
+  <rect x="70" y="38" width="80" height="6" rx="2" fill="#999" stroke="#555" stroke-width="0.8"/>
+  <text x="110" y="36" text-anchor="middle" font-size="9" fill="#888">fixed</text>
+
+  <!-- Belt surface (light fill between edges) -->
+  <path d="M 85,44 C 85,68 85,82 110,100 C 125,110 135,126 135,160
+           L 85,160 C 85,126 95,110 110,100
+           C 135,82 135,68 135,44 Z"
+        fill="url(#beltGrad)" fill-opacity="0.12" stroke="none"/>
+
+  <!-- Right (blue) edge - draw first (goes under at crossing) -->
+  <path d="M 135,44 C 135,68 135,82 110,100" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- White gap for undercrossing -->
+  <line x1="106" y1="80" x2="116" y2="92" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+  <!-- Right edge continues below crossing -->
+  <path d="M 110,100 C 95,110 85,126 85,160" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Left (red) edge - draw second (goes over at crossing) -->
+  <path d="M 85,44 C 85,68 85,82 110,100" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Red edge continues below crossing - now on RIGHT side (swapped!) -->
+  <path d="M 110,100 C 125,110 135,126 135,160" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Free end bar (bottom) -->
+  <rect x="70" y="160" width="80" height="6" rx="2" fill="#999" stroke="#555" stroke-width="0.8"/>
+  <text x="110" y="180" text-anchor="middle" font-size="9" fill="#888">free end</text>
+
+  <!-- Edge labels at top -->
+  <circle cx="85" cy="44" r="3" fill="#c44"/>
+  <circle cx="135" cy="44" r="3" fill="#44c"/>
+  <!-- Edge labels at bottom showing swap -->
+  <circle cx="85" cy="160" r="3" fill="#44c"/>
+  <circle cx="135" cy="160" r="3" fill="#c44"/>
+
+  <!-- Red X mark -->
+  <g transform="translate(110,210)">
+    <line x1="-10" y1="-10" x2="10" y2="10" stroke="#c44" stroke-width="3" stroke-linecap="round"/>
+    <line x1="10" y1="-10" x2="-10" y2="10" stroke="#c44" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <text x="110" y="236" text-anchor="middle" font-size="10" fill="#c44" font-weight="bold">Cannot untwist</text>
+  <text x="110" y="250" text-anchor="middle" font-size="9" fill="#999">(edges swap sides)</text>
+
+  <!-- ================================================================ -->
+  <!-- SECTION 2: 720-degree twist (x=210..390)                        -->
+  <!-- ================================================================ -->
+  <text x="300" y="22" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">720° twist</text>
+
+  <!-- Fixed anchor bar (top) -->
+  <rect x="260" y="38" width="80" height="6" rx="2" fill="#999" stroke="#555" stroke-width="0.8"/>
+  <text x="300" y="36" text-anchor="middle" font-size="9" fill="#888">fixed</text>
+
+  <!-- Belt surface -->
+  <path d="M 275,44 C 275,58 275,66 300,78 C 318,86 325,92 325,100
+           C 325,108 318,114 300,122 C 318,130 325,138 325,160
+           L 275,160 C 275,138 282,130 300,122
+           C 282,114 275,108 275,100
+           C 275,92 282,86 300,78
+           C 325,66 325,58 325,44 Z"
+        fill="url(#beltGrad)" fill-opacity="0.12" stroke="none"/>
+
+  <!-- First crossing: right (blue) goes under -->
+  <path d="M 325,44 C 325,58 325,66 300,78" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="296" y1="60" x2="306" y2="72" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+  <!-- Left (red) edge over first crossing -->
+  <path d="M 275,44 C 275,58 275,66 300,78" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Middle segment: edges are swapped (red on right, blue on left) -->
+  <path d="M 300,78 C 318,86 325,92 325,100" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 300,78 C 282,86 275,92 275,100" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Second crossing: blue (now on left) goes under -->
+  <path d="M 275,100 C 275,108 275,114 300,122" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="296" y1="110" x2="306" y2="118" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+  <!-- Red (now on right) goes over second crossing -->
+  <path d="M 325,100 C 325,108 325,114 300,122" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Below second crossing: edges back to original sides (red=left, blue=right) -->
+  <path d="M 300,122 C 282,130 275,138 275,160" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 300,122 C 318,130 325,138 325,160" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Free end bar (bottom) -->
+  <rect x="260" y="160" width="80" height="6" rx="2" fill="#999" stroke="#555" stroke-width="0.8"/>
+  <text x="300" y="180" text-anchor="middle" font-size="9" fill="#888">free end</text>
+
+  <!-- Edge labels at top -->
+  <circle cx="275" cy="44" r="3" fill="#c44"/>
+  <circle cx="325" cy="44" r="3" fill="#44c"/>
+  <!-- Edge labels at bottom: same sides (returned!) -->
+  <circle cx="275" cy="160" r="3" fill="#c44"/>
+  <circle cx="325" cy="160" r="3" fill="#44c"/>
 
   <!-- Label -->
-  <text x="130" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#c44" font-weight="bold">Cannot untwist</text>
-  <text x="130" y="215" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">(keeping ends fixed)</text>
+  <text x="300" y="200" text-anchor="middle" font-size="10" fill="#555" font-weight="bold">Two full twists</text>
+  <text x="300" y="216" text-anchor="middle" font-size="9" fill="#999">(edges return to</text>
+  <text x="300" y="228" text-anchor="middle" font-size="9" fill="#999">original sides)</text>
 
-  <!-- X mark -->
-  <g transform="translate(130, 240)">
-    <line x1="-8" y1="-8" x2="8" y2="8" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="8" y1="-8" x2="-8" y2="8" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- ================================================================ -->
+  <!-- SECTION 3: 720-degree untwisting animation (x=410..630)          -->
+  <!-- ================================================================ -->
+  <text x="520" y="22" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">720° untwisting</text>
+
+  <!-- Small looping arrow hint -->
+  <path d="M 574,16 C 584,10 592,16 588,24" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="2,1.5" stroke-linecap="round"/>
+  <polygon points="588,24 585,19 591,20" fill="#999"/>
+
+  <!-- Fixed anchor bar (always visible) -->
+  <rect x="480" y="38" width="80" height="6" rx="2" fill="#999" stroke="#555" stroke-width="0.8"/>
+  <text x="520" y="36" text-anchor="middle" font-size="9" fill="#888">fixed</text>
+
+  <!-- Frame 1: 720° twisted (same as section 2) -->
+  <g class="anim-f1">
+    <!-- Surface -->
+    <path d="M 495,44 C 495,58 495,66 520,78 C 538,86 545,92 545,100
+             C 545,108 538,114 520,122 C 538,130 545,138 545,160
+             L 495,160 C 495,138 502,130 520,122
+             C 502,114 495,108 495,100
+             C 495,92 502,86 520,78
+             C 545,66 545,58 545,44 Z"
+          fill="url(#beltGrad)" fill-opacity="0.12" stroke="none"/>
+    <!-- First crossing -->
+    <path d="M 545,44 C 545,58 545,66 520,78" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="516" y1="60" x2="526" y2="72" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 495,44 C 495,58 495,66 520,78" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Middle -->
+    <path d="M 520,78 C 538,86 545,92 545,100" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 520,78 C 502,86 495,92 495,100" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Second crossing -->
+    <path d="M 495,100 C 495,108 495,114 520,122" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="516" y1="110" x2="526" y2="118" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 545,100 C 545,108 545,114 520,122" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Below -->
+    <path d="M 520,122 C 502,130 495,138 495,160" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 520,122 C 538,130 545,138 545,160" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Free end bar -->
+    <rect x="480" y="160" width="80" height="6" rx="2" fill="#999" stroke="#555" stroke-width="0.8"/>
+    <text x="520" y="180" text-anchor="middle" font-size="9" fill="#888">free end</text>
   </g>
 
-  <!-- ===== RIGHT: 720 degree twist ===== -->
-  <text x="370" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#333" font-weight="bold">720° twist</text>
-
-  <!-- Fixed end (top) -->
-  <rect x="330" y="40" width="80" height="6" rx="2" fill="#999" stroke="#333" stroke-width="1"/>
-  <text x="370" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">fixed end</text>
-
-  <!-- Belt edges: two lines that cross twice (720 twist) -->
-  <!-- First crossing -->
-  <!-- Left edge -->
-  <path d="M 340,46 C 340,58 340,65 370,78" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <!-- White gap at first crossing (under strand) -->
-  <line x1="354" y1="69" x2="360" y2="74" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
-  <!-- Right edge -->
-  <path d="M 400,46 C 400,58 400,65 370,78" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <!-- Redraw over strand -->
-  <path d="M 340,46 C 340,58 340,65 370,78" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-
-  <!-- Middle segment between crossings -->
-  <path d="M 370,78 C 390,88 400,92 400,100" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <path d="M 370,78 C 350,88 340,92 340,100" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-
-  <!-- Second crossing -->
-  <path d="M 400,100 C 400,108 400,115 370,128" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <!-- White gap at second crossing -->
-  <line x1="354" y1="119" x2="360" y2="124" stroke="#fafafa" stroke-width="8" stroke-linecap="round"/>
-  <path d="M 340,100 C 340,108 340,115 370,128" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <!-- Redraw over strand at second crossing -->
-  <path d="M 400,100 C 400,108 400,115 370,128" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-
-  <!-- Belt continues below -->
-  <path d="M 370,128 C 390,138 400,142 400,150" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <path d="M 370,128 C 350,138 340,142 340,150" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-
-  <!-- Belt surface shading -->
-  <path d="M 340,46 C 340,58 340,65 370,78 C 390,88 400,92 400,100 C 400,108 400,115 370,128 C 390,138 400,142 400,150 L 340,150 C 340,142 350,138 370,128 C 340,115 340,108 340,100 C 340,92 350,88 370,78 C 400,65 400,58 400,46 Z" fill="#333" fill-opacity="0.05" stroke="none"/>
-
-  <!-- Free end (bottom) -->
-  <rect x="330" y="150" width="80" height="6" rx="2" fill="#999" stroke="#333" stroke-width="1"/>
-  <text x="370" y="172" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#666">free end</text>
-
-  <!-- Label -->
-  <text x="370" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#4a4" font-weight="bold">CAN untwist!</text>
-  <text x="370" y="215" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#999">(by looping around)</text>
-
-  <!-- Check mark -->
-  <g transform="translate(370, 240)">
-    <polyline points="-8,0 -3,7 8,-8" fill="none" stroke="#4a4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Frame 2: bottom end swings out to the right -->
+  <g class="anim-f2" opacity="0">
+    <!-- Surface -->
+    <path d="M 495,44 C 495,58 495,66 520,78 C 538,86 545,92 545,100
+             C 545,108 538,114 520,122 C 538,130 560,145 570,155
+             L 525,170 C 515,155 502,130 520,122
+             C 502,114 495,108 495,100
+             C 495,92 502,86 520,78
+             C 545,66 545,58 545,44 Z"
+          fill="url(#beltGrad)" fill-opacity="0.10" stroke="none"/>
+    <!-- First crossing -->
+    <path d="M 545,44 C 545,58 545,66 520,78" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="516" y1="60" x2="526" y2="72" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 495,44 C 495,58 495,66 520,78" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Middle -->
+    <path d="M 520,78 C 538,86 545,92 545,100" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 520,78 C 502,86 495,92 495,100" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Second crossing -->
+    <path d="M 495,100 C 495,108 495,114 520,122" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="516" y1="110" x2="526" y2="118" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 545,100 C 545,108 545,114 520,122" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Below: free end swings right -->
+    <path d="M 520,122 C 502,130 500,140 525,170" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 520,122 C 538,130 560,145 570,155" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Free end bar (rotated, swinging out) -->
+    <rect x="518" y="155" width="58" height="6" rx="2" fill="#999" stroke="#555" stroke-width="0.8" transform="rotate(15,547,158)"/>
+    <!-- Arrow showing motion -->
+    <path d="M 565,140 C 578,135 582,148 575,155" fill="none" stroke="#4a4" stroke-width="1.2" stroke-dasharray="3,2" stroke-linecap="round"/>
+    <polygon points="575,155 572,149 578,150" fill="#4a4"/>
   </g>
 
-  <!-- Dashed curved arrow suggesting the looping motion -->
-  <path d="M 415,100 C 435,90 440,110 425,120" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2" stroke-linecap="round"/>
-  <polygon points="425,120 422,114 428,115" fill="#999"/>
+  <!-- Frame 3: free end passes behind/around the belt -->
+  <g class="anim-f3" opacity="0">
+    <!-- Surface -->
+    <path d="M 495,44 C 495,58 495,66 520,78 C 538,86 545,92 545,100
+             C 545,108 538,118 530,125 C 548,140 570,132 575,115
+             L 540,100 C 530,108 520,118 530,125
+             C 518,118 510,108 510,100
+             C 502,92 502,86 520,78
+             C 545,66 545,58 545,44 Z"
+          fill="url(#beltGrad)" fill-opacity="0.08" stroke="none"/>
+    <!-- First crossing remains -->
+    <path d="M 545,44 C 545,58 545,66 520,78" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="516" y1="60" x2="526" y2="72" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 495,44 C 495,58 495,66 520,78" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Middle into curve -->
+    <path d="M 520,78 C 538,86 545,92 545,100" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 520,78 C 502,86 495,92 495,100" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Belt loops around to the right and behind -->
+    <path d="M 545,100 C 548,110 555,120 575,115 C 590,110 585,90 570,88" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- White gap where it goes behind the belt -->
+    <line x1="558" y1="92" x2="565" y2="86" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 495,100 C 498,110 505,120 520,128 C 535,136 555,145 560,160" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Reconnect from behind -->
+    <path d="M 570,88 C 558,86 545,92 530,110 C 518,124 510,142 510,160" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Free end bar -->
+    <rect x="500" y="160" width="68" height="6" rx="2" fill="#999" stroke="#555" stroke-width="0.8"/>
+    <!-- Arrow -->
+    <path d="M 590,98 C 598,88 595,78 585,80" fill="none" stroke="#4a4" stroke-width="1.2" stroke-dasharray="3,2" stroke-linecap="round"/>
+    <polygon points="585,80 589,85 583,84" fill="#4a4"/>
+  </g>
+
+  <!-- Frame 4: loop completes, one twist removed -->
+  <g class="anim-f4" opacity="0">
+    <!-- Surface for single-twist belt -->
+    <path d="M 495,44 C 495,68 495,82 520,100 C 535,110 545,126 545,160
+             L 495,160 C 495,126 505,110 520,100
+             C 545,82 545,68 545,44 Z"
+          fill="url(#beltGrad)" fill-opacity="0.10" stroke="none"/>
+    <!-- Single crossing (one twist left, being removed) -->
+    <path d="M 545,44 C 545,68 545,82 520,100" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="516" y1="70" x2="526" y2="82" stroke="#fafafa" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 495,44 C 495,68 495,82 520,100" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Below crossing -->
+    <path d="M 520,100 C 535,110 545,126 545,160" fill="none" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 520,100 C 505,110 495,126 495,160" fill="none" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Fading ghost of second loop -->
+    <path d="M 555,100 C 565,95 570,105 560,115" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2" opacity="0.5" stroke-linecap="round"/>
+    <!-- Free end bar -->
+    <rect x="480" y="160" width="80" height="6" rx="2" fill="#999" stroke="#555" stroke-width="0.8"/>
+    <text x="520" y="180" text-anchor="middle" font-size="9" fill="#888">almost flat...</text>
+  </g>
+
+  <!-- Frame 5: belt is flat, untwisted -->
+  <g class="anim-f5" opacity="0">
+    <!-- Flat belt surface -->
+    <path d="M 495,44 L 495,160 L 545,160 L 545,44 Z"
+          fill="url(#beltGrad)" fill-opacity="0.12" stroke="none"/>
+    <!-- Left (red) edge: straight -->
+    <line x1="495" y1="44" x2="495" y2="160" stroke="#c44" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Right (blue) edge: straight -->
+    <line x1="545" y1="44" x2="545" y2="160" stroke="#44c" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Edge dots -->
+    <circle cx="495" cy="44" r="3" fill="#c44"/>
+    <circle cx="545" cy="44" r="3" fill="#44c"/>
+    <circle cx="495" cy="160" r="3" fill="#c44"/>
+    <circle cx="545" cy="160" r="3" fill="#44c"/>
+    <!-- Free end bar -->
+    <rect x="480" y="160" width="80" height="6" rx="2" fill="#999" stroke="#555" stroke-width="0.8"/>
+    <text x="520" y="180" text-anchor="middle" font-size="9" fill="#888">flat!</text>
+    <!-- Green checkmark -->
+    <g transform="translate(520,210)">
+      <polyline points="-12,0 -4,10 12,-12" fill="none" stroke="#4a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text x="520" y="240" text-anchor="middle" font-size="10" fill="#4a4" font-weight="bold">Untwisted!</text>
+  </g>
+
+  <!-- ================================================================ -->
+  <!-- Bottom caption                                                    -->
+  <!-- ================================================================ -->
+  <text x="325" y="290" text-anchor="middle" font-size="11" fill="#555">
+    The belt trick: 360° stays twisted, 720° can be undone by looping
+  </text>
+  <text x="325" y="308" text-anchor="middle" font-size="9.5" fill="#999">
+    Demonstrates that the fundamental group of SO(3) is Z/2
+  </text>
 </svg>
