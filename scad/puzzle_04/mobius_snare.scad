@@ -25,6 +25,12 @@ p4_ring_od = 40;
 p4_texture_depth = 0.3;   // Grid texture depth on one face
 p4_texture_spacing = 5;   // Grid line spacing
 
+// Constraint assertions
+assert(p4_band_length > p4_ring_od * 3.2 + p4_overlap,
+       "Band length must accommodate ring circumference plus overlap");
+assert(p4_overlap > p4_rivet_spacing,
+       "Overlap must be wider than rivet hole spacing");
+
 // Part selector
 part = "assembly";
 

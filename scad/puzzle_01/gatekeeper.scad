@@ -27,6 +27,13 @@ p1_bar_height = 120;
 p1_bend_radius = 20;
 p1_ring_od = 50;
 
+// Constraint assertions
+assert(p1_ring_od - ring_wire_d * 2 > cord_d,
+       str("Ring ID (", p1_ring_od - ring_wire_d * 2, "mm) must exceed cord diameter (",
+           cord_d, "mm) for ring to slide along cord"));
+assert(cord_hole_d < rod_d + 2,
+       "Cord hole diameter must fit within rod cross-section");
+
 // Part selector: "assembly" | "u_bar" | "ring"
 part = "assembly";
 

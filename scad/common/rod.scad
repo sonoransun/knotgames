@@ -11,36 +11,9 @@ module straight_rod(from, to, d=rod_d) {
 
 // U-shaped bar: two vertical arms connected by a semicircular bend
 // Origin at center of the U opening (top center)
+// Deprecated: delegates to u_bar_poly() which uses a correct hull-chain approach
 module u_bar(width, height, bend_r, d=rod_d) {
-    hw = width / 2;
-    arm_h = height - bend_r;
-
-    // Left arm
-    straight_rod([-hw, 0, 0], [-hw, -arm_h, 0], d);
-
-    // Right arm
-    straight_rod([hw, 0, 0], [hw, -arm_h, 0], d);
-
-    // Semicircular bend at bottom
-    translate([0, -arm_h, 0])
-    rotate([90, 0, 0])
-    rotate_extrude(angle=180, $fn=$fn)
-    translate([hw - bend_r + bend_r, 0, 0])  // This needs fix
-    circle(d=d, $fn=16);
-
-    // Better approach: use hull chain for the bend
-    for (i = [0:12]) {
-        a1 = 180 + (180 * i / 12);
-        a2 = 180 + (180 * (i + 1) / 12);
-        hull() {
-            translate([cos(a1) * (hw - bend_r) + 0,
-                       -arm_h + sin(a1) * bend_r - bend_r, 0])
-                sphere(d=d, $fn=16);
-            translate([cos(a2) * (hw - bend_r) + 0,
-                       -arm_h + sin(a2) * bend_r - bend_r, 0])
-                sphere(d=d, $fn=16);
-        }
-    }
+    u_bar_poly(width, height, bend_r, d);
 }
 
 // Simplified U-bar using polyline with hull pairs

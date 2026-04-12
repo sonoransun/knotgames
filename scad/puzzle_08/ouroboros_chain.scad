@@ -36,6 +36,14 @@ p8_post_positions = [
         [(i - (p8_num_posts - 1) / 2) * p8_post_spacing, 0]
 ];
 
+// Constraint assertions
+p8_total_span = p8_post_spacing * (p8_num_posts - 1);
+assert(p8_total_span < p8_base_w - p8_post_d * 2,
+       str("Post span (", p8_total_span, "mm) exceeds base width minus margins"));
+assert(p8_bar_length >= p8_total_span,
+       "Shuttle bar must span all posts");
+assert(p8_base_w <= 250, "Base width exceeds common 250mm print bed");
+
 // Part selector
 part = "assembly";
 

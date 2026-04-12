@@ -106,3 +106,11 @@ module bridge_check(part_name, span) {
         echo(str("BRIDGE [", part_name, "]: ", span,
                  "mm — TOO LONG (add supports or redesign)"));
 }
+
+// Like bridge_check but fails the build if span exceeds bridge_max_possible
+module bridge_assert(part_name, span) {
+    assert(span <= bridge_max_possible,
+           str("BRIDGE FAIL [", part_name, "]: ", span,
+               "mm exceeds maximum possible (", bridge_max_possible, "mm)"));
+    bridge_check(part_name, span);
+}

@@ -5,7 +5,8 @@
   "description": "Topological puzzles — interactive educational web app",
   "scripts": {
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "validate:scad": "bash scripts/validate-scad.sh"
   },
   "devDependencies": {
     "jsdom": "^26.0.0",

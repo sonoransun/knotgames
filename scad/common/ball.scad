@@ -12,7 +12,8 @@ module flat_bottom_sphere(d, flat_h=layer_h) {
     r = d / 2;
     intersection() {
         sphere(d=d, $fn=$fn);
-        translate([0, 0, r - flat_h])
+        // Keep everything above Z = -r + flat_h (flattens the bottom)
+        translate([0, 0, -r + flat_h])
             cylinder(r=r + 1, h=d, $fn=$fn);
     }
 }

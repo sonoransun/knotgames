@@ -38,10 +38,10 @@ p9_block_h = 60;          // Height (Z axis)
 p9_block_d = 80;          // Depth (front-back, Y axis)
 p9_tunnel_d = 15;
 p9_tunnel_a_z = 25;       // Tunnel A height (lower)
-p9_tunnel_b_z = 35;       // Tunnel B height (higher)
+p9_tunnel_b_z = 42;       // Tunnel B height (higher, must be >= tunnel_a_z + tunnel_d)
 p9_ring_od = 40;
 p9_ball_d = 30;
-p9_liner_wall = 1;        // Tunnel liner wall thickness
+p9_liner_wall = 1.2;      // Tunnel liner wall thickness (>= wall_min)
 p9_align_pin_d = 3;
 p9_align_pin_h = 10;
 
@@ -50,6 +50,9 @@ assert(p9_ball_d > p9_tunnel_d, "Ball must be larger than tunnel");
 assert(p9_ring_od > p9_tunnel_d, "Ring must be larger than tunnel");
 assert(p9_tunnel_b_z - p9_tunnel_a_z >= p9_tunnel_d,
        "Tunnels must not intersect (vertical separation >= tunnel diameter)");
+assert(p9_liner_wall >= wall_min,
+       str("Liner wall (", p9_liner_wall, "mm) below minimum (", wall_min, "mm)"));
+bridge_check("tunnel_b_span", p9_block_d);
 
 // Part selector
 part = "assembly";
@@ -59,9 +62,8 @@ if (part == "block_left") {
 } else if (part == "block_right") {
     p9_block_half(left=false);
 } else if (part == "tunnel_a_liner") {
-    p9_tunnel_liner(p9_block_d + 2);  // Tunnel A runs front-back... wait
-    // Tunnel A runs LEFT-RIGHT (X axis), so length = block_w/2 per half
-    p9_tunnel_liner(p9_block_w / 2 + 1);
+    // Tunnel A runs LEFT-RIGHT (X axis), full block width
+    p9_tunnel_liner(p9_block_w + 2);
 } else if (part == "tunnel_b_liner") {
     // Tunnel B runs FRONT-BACK (Y axis)
     p9_tunnel_liner(p9_block_d + 2);

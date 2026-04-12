@@ -19,6 +19,12 @@ p3_frame_h = 150;
 p3_ring_od = 50;
 p3_crossbar_y = 0;  // At midpoint (center of frame)
 
+// Constraint assertions
+assert(p3_ring_od < p3_frame_w,
+       str("Ring OD (", p3_ring_od, "mm) must fit within frame width (", p3_frame_w, "mm)"));
+assert(p3_ring_od < p3_frame_h,
+       str("Ring OD (", p3_ring_od, "mm) must fit within frame height (", p3_frame_h, "mm)"));
+
 // Part selector
 part = "assembly";
 
