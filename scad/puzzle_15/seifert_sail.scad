@@ -28,7 +28,7 @@ use <../common/press_fit.scad>
 // Puzzle-specific parameters
 p15_scale = 20;
 p15_frame_span = 120;     // Approximate span of trefoil frame
-p15_trefoil_steps = 60;
+p15_trefoil_steps = 36;
 p15_base_w = 100;
 p15_base_d = 80;
 p15_base_h = 15;

@@ -28,7 +28,7 @@ use <../common/layer_optimization.scad>
 p14_scale = 25;
 p14_frame_span = 150;     // Approximate span of trefoil frame
 p14_crossing_raise = 10;  // Over-strand raised height at crossings
-p14_trefoil_steps = 60;
+p14_trefoil_steps = 18;  // Keep low for CGAL hull-chain performance
 p14_ring_od = 30;
 p14_base_w = 140;
 p14_base_d = 140;

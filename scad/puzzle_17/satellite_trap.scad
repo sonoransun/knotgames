@@ -39,7 +39,7 @@ p17_ring_outer_od = 30;
 p17_ball_d = 10;
 p17_align_pin_d = 3;
 p17_align_pin_h = 6;
-p17_knot_steps = 60;
+p17_knot_steps = 36;
 p17_clip_clearance = 0.2;
 
 // Constraint assertions

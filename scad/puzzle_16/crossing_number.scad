@@ -32,7 +32,7 @@ use <../common/press_fit.scad>
 // Puzzle-specific parameters
 p16_scale = 18;
 p16_frame_span = 150;     // Approximate span of figure-eight frame
-p16_fig8_steps = 60;
+p16_fig8_steps = 36;
 p16_ring_od = 25;
 p16_pin_d = 5;
 p16_pin_h = 20;

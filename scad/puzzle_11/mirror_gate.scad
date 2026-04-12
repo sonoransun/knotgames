@@ -24,7 +24,7 @@ use <../common/bridges.scad>
 
 // Puzzle-specific parameters
 p11_scale = 35;
-p11_trefoil_steps = 60;
+p11_trefoil_steps = 18;  // Keep low for CGAL hull-chain performance
 p11_base_w = 200;
 p11_base_d = 80;
 p11_base_h = 20;
