@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250">
+  <title>Yang-Baxter Relation</title>
+  <desc>Visual proof that sigma_1*sigma_2*sigma_1 equals sigma_2*sigma_1*sigma_2. Three colored strands on each side produce the same permutation.</desc>
+
+  <rect width="400" height="250" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="200" y="22" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="13" fill="#666" font-weight="bold">Yang-Baxter Relation</text>
+
+  <!-- Equals sign in center -->
+  <line x1="193" y1="120" x2="207" y2="120" stroke="#666" stroke-width="2"/>
+  <line x1="193" y1="128" x2="207" y2="128" stroke="#666" stroke-width="2"/>
+
+  <!-- === LEFT SIDE: sigma_1 sigma_2 sigma_1 === -->
+  <text x="90" y="45" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666" font-weight="bold">&#x03C3;&#x2081;&#x03C3;&#x2082;&#x03C3;&#x2081;</text>
+
+  <!-- Three strands, three crossings -->
+  <!-- Entry points: x=50, 90, 130 at y=55 -->
+  <!-- Crossing 1 (sigma_1): strands 1,2 at y=70-90 -->
+  <!-- Blue strand 1: goes from x=50 to x=90 -->
+  <line x1="50" y1="55" x2="50" y2="70" stroke="#3333dd" stroke-width="2.5"/>
+  <line x1="50" y1="70" x2="90" y2="95" stroke="#3333dd" stroke-width="2.5"/>
+  <!-- Yellow strand 2: goes from x=90 to x=50 (under) -->
+  <line x1="90" y1="55" x2="90" y2="70" stroke="#ddcc33" stroke-width="2.5"/>
+  <line x1="90" y1="70" x2="78" y2="78" stroke="#ddcc33" stroke-width="2.5"/>
+  <line x1="62" y1="87" x2="50" y2="95" stroke="#ddcc33" stroke-width="2.5"/>
+  <!-- Red strand 3: straight -->
+  <line x1="130" y1="55" x2="130" y2="95" stroke="#dd3333" stroke-width="2.5"/>
+
+  <!-- Crossing 2 (sigma_2): strands 2,3 at y=100-120 -->
+  <!-- Blue (now pos 2) crosses over Red (pos 3) -->
+  <line x1="90" y1="95" x2="130" y2="125" stroke="#3333dd" stroke-width="2.5"/>
+  <!-- Red (pos 3) goes under -->
+  <line x1="130" y1="95" x2="118" y2="103" stroke="#dd3333" stroke-width="2.5"/>
+  <line x1="102" y1="117" x2="90" y2="125" stroke="#dd3333" stroke-width="2.5"/>
+  <!-- Yellow straight -->
+  <line x1="50" y1="95" x2="50" y2="125" stroke="#ddcc33" stroke-width="2.5"/>
+
+  <!-- Crossing 3 (sigma_1): strands 1,2 at y=130-150 -->
+  <!-- Yellow (pos 1) crosses over Red (now pos 2) -->
+  <line x1="50" y1="125" x2="90" y2="155" stroke="#ddcc33" stroke-width="2.5"/>
+  <!-- Red goes under -->
+  <line x1="90" y1="125" x2="78" y2="133" stroke="#dd3333" stroke-width="2.5"/>
+  <line x1="62" y1="147" x2="50" y2="155" stroke="#dd3333" stroke-width="2.5"/>
+  <!-- Blue straight -->
+  <line x1="130" y1="125" x2="130" y2="155" stroke="#3333dd" stroke-width="2.5"/>
+
+  <!-- Exit lines -->
+  <line x1="90" y1="155" x2="90" y2="170" stroke="#ddcc33" stroke-width="2.5"/>
+  <line x1="50" y1="155" x2="50" y2="170" stroke="#dd3333" stroke-width="2.5"/>
+  <line x1="130" y1="155" x2="130" y2="170" stroke="#3333dd" stroke-width="2.5"/>
+
+  <!-- Result labels -->
+  <text x="50" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#dd3333">R</text>
+  <text x="90" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#ddcc33">Y</text>
+  <text x="130" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#3333dd">B</text>
+
+  <!-- === RIGHT SIDE: sigma_2 sigma_1 sigma_2 === -->
+  <text x="310" y="45" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666" font-weight="bold">&#x03C3;&#x2082;&#x03C3;&#x2081;&#x03C3;&#x2082;</text>
+
+  <!-- Entry points: x=270, 310, 350 at y=55 -->
+  <!-- Crossing 1 (sigma_2): strands 2,3 at y=70-90 -->
+  <!-- Yellow strand 2 crosses over Red strand 3 -->
+  <line x1="310" y1="55" x2="310" y2="70" stroke="#ddcc33" stroke-width="2.5"/>
+  <line x1="310" y1="70" x2="350" y2="95" stroke="#ddcc33" stroke-width="2.5"/>
+  <!-- Red under -->
+  <line x1="350" y1="55" x2="350" y2="70" stroke="#dd3333" stroke-width="2.5"/>
+  <line x1="350" y1="70" x2="338" y2="78" stroke="#dd3333" stroke-width="2.5"/>
+  <line x1="322" y1="87" x2="310" y2="95" stroke="#dd3333" stroke-width="2.5"/>
+  <!-- Blue straight -->
+  <line x1="270" y1="55" x2="270" y2="95" stroke="#3333dd" stroke-width="2.5"/>
+
+  <!-- Crossing 2 (sigma_1): strands 1,2 at y=100-120 -->
+  <!-- Blue (pos 1) crosses over Red (now pos 2) -->
+  <line x1="270" y1="95" x2="310" y2="125" stroke="#3333dd" stroke-width="2.5"/>
+  <!-- Red under -->
+  <line x1="310" y1="95" x2="298" y2="103" stroke="#dd3333" stroke-width="2.5"/>
+  <line x1="282" y1="117" x2="270" y2="125" stroke="#dd3333" stroke-width="2.5"/>
+  <!-- Yellow straight -->
+  <line x1="350" y1="95" x2="350" y2="125" stroke="#ddcc33" stroke-width="2.5"/>
+
+  <!-- Crossing 3 (sigma_2): strands 2,3 at y=130-150 -->
+  <!-- Blue (now pos 2) crosses over Yellow (pos 3) -->
+  <line x1="310" y1="125" x2="350" y2="155" stroke="#3333dd" stroke-width="2.5"/>
+  <!-- Yellow under -->
+  <line x1="350" y1="125" x2="338" y2="133" stroke="#ddcc33" stroke-width="2.5"/>
+  <line x1="322" y1="147" x2="310" y2="155" stroke="#ddcc33" stroke-width="2.5"/>
+  <!-- Red straight -->
+  <line x1="270" y1="125" x2="270" y2="155" stroke="#dd3333" stroke-width="2.5"/>
+
+  <!-- Exit lines -->
+  <line x1="270" y1="155" x2="270" y2="170" stroke="#dd3333" stroke-width="2.5"/>
+  <line x1="310" y1="155" x2="310" y2="170" stroke="#ddcc33" stroke-width="2.5"/>
+  <line x1="350" y1="155" x2="350" y2="170" stroke="#3333dd" stroke-width="2.5"/>
+
+  <!-- Result labels -->
+  <text x="270" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#dd3333">R</text>
+  <text x="310" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#ddcc33">Y</text>
+  <text x="350" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#3333dd">B</text>
+
+  <!-- Same permutation note -->
+  <text x="200" y="200" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666">Same final permutation: (B,Y,R) &#x2192; (R,Y,B)</text>
+
+  <!-- Legend -->
+  <line x1="30" y1="225" x2="55" y2="225" stroke="#3333dd" stroke-width="2.5"/>
+  <text x="63" y="229" font-family="system-ui, sans-serif" font-size="9" fill="#666">blue strand</text>
+
+  <line x1="140" y1="225" x2="165" y2="225" stroke="#ddcc33" stroke-width="2.5"/>
+  <text x="173" y="229" font-family="system-ui, sans-serif" font-size="9" fill="#666">yellow strand</text>
+
+  <line x1="260" y1="225" x2="285" y2="225" stroke="#dd3333" stroke-width="2.5"/>
+  <text x="293" y="229" font-family="system-ui, sans-serif" font-size="9" fill="#666">red strand</text>
+
+  <text x="200" y="245" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#999">gap at crossing = strand passes underneath</text>
+</svg>

@@ -13,6 +13,13 @@ const puzzleFiles = [
   { id: 8,  path: '../puzzles/puzzle-08.js' },
   { id: 9,  path: '../puzzles/puzzle-09.js' },
   { id: 10, path: '../puzzles/puzzle-10.js' },
+  { id: 11, path: '../puzzles/puzzle-11.js' },
+  { id: 12, path: '../puzzles/puzzle-12.js' },
+  { id: 13, path: '../puzzles/puzzle-13.js' },
+  { id: 14, path: '../puzzles/puzzle-14.js' },
+  { id: 15, path: '../puzzles/puzzle-15.js' },
+  { id: 16, path: '../puzzles/puzzle-16.js' },
+  { id: 17, path: '../puzzles/puzzle-17.js' },
 ];
 
 describe('puzzle module structure', () => {

@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <title>Fox Coloring Rule</title>
+  <desc>Three panels showing valid and invalid colorings at a crossing, plus the fully colored trefoil with each crossing verified.</desc>
+
+  <rect width="400" height="300" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="200" y="22" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="13" fill="#666" font-weight="bold">Fox Tricoloring Rule</text>
+
+  <!-- Panel separators -->
+  <line x1="135" y1="30" x2="135" y2="145" stroke="#ddd" stroke-width="1"/>
+  <line x1="270" y1="30" x2="270" y2="145" stroke="#ddd" stroke-width="1"/>
+
+  <!-- === Panel 1: All same color === -->
+  <text x="67" y="48" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666" font-weight="bold">All same color</text>
+
+  <!-- Crossing diagram: two strands crossing -->
+  <line x1="30" y1="65" x2="105" y2="130" stroke="#dd3333" stroke-width="2.5"/>
+  <!-- Under strand with gap -->
+  <line x1="105" y1="65" x2="80" y2="85" stroke="#dd3333" stroke-width="2.5"/>
+  <line x1="55" y1="107" x2="30" y2="130" stroke="#dd3333" stroke-width="2.5"/>
+
+  <text x="67" y="142" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="16" fill="#33aa33">&#x2713;</text>
+
+  <!-- === Panel 2: All different colors === -->
+  <text x="202" y="48" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666" font-weight="bold">All different</text>
+
+  <!-- Over strand -->
+  <line x1="165" y1="65" x2="240" y2="130" stroke="#dd3333" stroke-width="2.5"/>
+  <!-- Under strand pieces (different colors) -->
+  <line x1="240" y1="65" x2="215" y2="85" stroke="#3333dd" stroke-width="2.5"/>
+  <line x1="190" y1="107" x2="165" y2="130" stroke="#ddcc33" stroke-width="2.5"/>
+
+  <text x="202" y="142" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="16" fill="#33aa33">&#x2713;</text>
+
+  <!-- === Panel 3: Two same, one different (INVALID) === -->
+  <text x="335" y="48" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666" font-weight="bold">Two same, one diff</text>
+
+  <!-- Over strand -->
+  <line x1="300" y1="65" x2="375" y2="130" stroke="#dd3333" stroke-width="2.5"/>
+  <!-- Under strand pieces -->
+  <line x1="375" y1="65" x2="350" y2="85" stroke="#dd3333" stroke-width="2.5"/>
+  <line x1="325" y1="107" x2="300" y2="130" stroke="#3333dd" stroke-width="2.5"/>
+
+  <text x="335" y="142" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="16" fill="#dd3333">&#x2717;</text>
+
+  <!-- Divider line -->
+  <line x1="20" y1="155" x2="380" y2="155" stroke="#ddd" stroke-width="1"/>
+
+  <!-- === Bottom section: Colored trefoil === -->
+  <text x="200" y="175" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="11" fill="#666" font-weight="bold">Valid Tricoloring of Trefoil</text>
+
+  <!-- Trefoil with three colored arcs -->
+  <!-- Arc 1 (red): top -->
+  <path d="M 140,195 Q 130,185 145,182 Q 170,175 200,182 Q 215,185 210,195"
+        fill="none" stroke="#dd3333" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Arc 2 (blue): right side going down -->
+  <path d="M 210,195 Q 225,215 215,235 Q 205,250 185,255 Q 170,258 165,250"
+        fill="none" stroke="#3333dd" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Arc 3 (yellow): left side going up -->
+  <path d="M 165,250 Q 150,258 140,250 Q 125,240 120,220 Q 118,205 140,195"
+        fill="none" stroke="#ddcc33" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Crossing gaps -->
+  <!-- Top crossing: red over, blue-yellow under -->
+  <circle cx="175" cy="195" r="4" fill="#fafafa" stroke="none"/>
+  <path d="M 160,210 Q 175,188 190,210" fill="none" stroke="#888" stroke-width="1.5" stroke-dasharray="2,2"/>
+
+  <!-- Right crossing -->
+  <circle cx="205" cy="230" r="4" fill="#fafafa" stroke="none"/>
+
+  <!-- Left crossing -->
+  <circle cx="138" cy="230" r="4" fill="#fafafa" stroke="none"/>
+
+  <!-- Checkmarks at each crossing -->
+  <text x="175" y="220" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#33aa33">&#x2713;</text>
+  <text x="215" y="242" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#33aa33">&#x2713;</text>
+  <text x="127" y="242" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#33aa33">&#x2713;</text>
+
+  <!-- Color labels -->
+  <text x="175" y="175" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8" fill="#dd3333">red</text>
+  <text x="230" y="240" font-family="system-ui, sans-serif"
+        font-size="8" fill="#3333dd">blue</text>
+  <text x="100" y="230" text-anchor="end" font-family="system-ui, sans-serif"
+        font-size="8" fill="#ddcc33">yellow</text>
+
+  <!-- Legend -->
+  <line x1="30" y1="280" x2="55" y2="280" stroke="#dd3333" stroke-width="2.5"/>
+  <text x="63" y="284" font-family="system-ui, sans-serif" font-size="9" fill="#666">red arc</text>
+
+  <line x1="130" y1="280" x2="155" y2="280" stroke="#3333dd" stroke-width="2.5"/>
+  <text x="163" y="284" font-family="system-ui, sans-serif" font-size="9" fill="#666">blue arc</text>
+
+  <line x1="230" y1="280" x2="255" y2="280" stroke="#ddcc33" stroke-width="2.5"/>
+  <text x="263" y="284" font-family="system-ui, sans-serif" font-size="9" fill="#666">yellow arc</text>
+</svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350">
+  <title>The Mirror Gate - Solved</title>
+  <desc>Same base as setup, but each trefoil now seated in its matching recess: left-handed trefoil in the left red recess, right-handed trefoil in the right blue recess.</desc>
+
+  <rect width="300" height="350" fill="#fafafa"/>
+
+  <!-- Wooden base -->
+  <rect x="20" y="240" width="260" height="30" rx="3" fill="none" stroke="#888" stroke-width="2"/>
+  <line x1="20" y1="255" x2="280" y2="255" stroke="#888" stroke-width="0.5" stroke-dasharray="2,4"/>
+
+  <!-- Left recess (red — now holds left-handed trefoil) -->
+  <rect x="40" y="244" width="60" height="22" rx="2" fill="#dd3333" fill-opacity="0.1" stroke="#dd3333" stroke-width="1.5"/>
+  <text x="70" y="280" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#dd3333">L recess ✓</text>
+
+  <!-- Right recess (blue — now holds right-handed trefoil) -->
+  <rect x="200" y="244" width="60" height="22" rx="2" fill="#3333dd" fill-opacity="0.1" stroke="#3333dd" stroke-width="1.5"/>
+  <text x="230" y="280" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#3333dd">R recess ✓</text>
+
+  <!-- Center post -->
+  <rect x="145" y="200" width="10" height="40" fill="none" stroke="#888" stroke-width="2"/>
+  <circle cx="150" cy="197" r="5" fill="none" stroke="#888" stroke-width="1.5"/>
+
+  <!-- Cord relaxed -->
+  <path d="M 100,220 Q 125,210 145,220"
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+  <path d="M 155,220 Q 175,210 200,220"
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Red trefoil (left-handed) on LEFT side (correct!) -->
+  <g transform="translate(70,150)">
+    <path d="M 0,-35 C -20,-35 -30,-15 -20,0 C -10,15 10,15 20,0 C 30,-15 20,-35 0,-35"
+          fill="none" stroke="#dd3333" stroke-width="2.5"/>
+    <line x1="8" y1="-10" x2="-8" y2="-20" stroke="#dd3333" stroke-width="2.5"/>
+    <line x1="12" y1="5" x2="0" y2="-8" stroke="#dd3333" stroke-width="2.5"/>
+    <line x1="-12" y1="5" x2="0" y2="-8" stroke="#dd3333" stroke-width="2.5"/>
+    <text x="0" y="30" text-anchor="middle" font-family="system-ui, sans-serif"
+          font-size="9" fill="#dd3333">L-trefoil</text>
+  </g>
+
+  <!-- Blue trefoil (right-handed) on RIGHT side (correct!) -->
+  <g transform="translate(230,150)">
+    <path d="M 0,-35 C 20,-35 30,-15 20,0 C 10,15 -10,15 -20,0 C -30,-15 -20,-35 0,-35"
+          fill="none" stroke="#3333dd" stroke-width="2.5"/>
+    <line x1="-8" y1="-10" x2="8" y2="-20" stroke="#3333dd" stroke-width="2.5"/>
+    <line x1="-12" y1="5" x2="0" y2="-8" stroke="#3333dd" stroke-width="2.5"/>
+    <line x1="12" y1="5" x2="0" y2="-8" stroke="#3333dd" stroke-width="2.5"/>
+    <text x="0" y="30" text-anchor="middle" font-family="system-ui, sans-serif"
+          font-size="9" fill="#3333dd">R-trefoil</text>
+  </g>
+
+  <!-- Check marks -->
+  <text x="70" y="100" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="18" fill="#33aa33">&#x2713;</text>
+  <text x="230" y="100" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="18" fill="#33aa33">&#x2713;</text>
+
+  <!-- Title label -->
+  <text x="150" y="25" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="13" fill="#666" font-weight="bold">The Mirror Gate — Solved</text>
+  <text x="150" y="42" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#33aa33">Each trefoil in matching recess</text>
+
+  <!-- Legend -->
+  <line x1="20" y1="305" x2="50" y2="305" stroke="#dd3333" stroke-width="2.5"/>
+  <text x="58" y="309" font-family="system-ui, sans-serif" font-size="9" fill="#666">left-handed trefoil</text>
+
+  <line x1="20" y1="320" x2="50" y2="320" stroke="#3333dd" stroke-width="2.5"/>
+  <text x="58" y="324" font-family="system-ui, sans-serif" font-size="9" fill="#666">right-handed trefoil</text>
+
+  <line x1="20" y1="335" x2="50" y2="335" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="58" y="339" font-family="system-ui, sans-serif" font-size="9" fill="#666">flexible cord</text>
+</svg>

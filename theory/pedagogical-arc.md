@@ -426,3 +426,229 @@ flowchart TD
 ```
 
 Each arrow represents a direct conceptual dependency. The solver who works through the series in order arrives at each puzzle with exactly the preparation they need — and none of the preparation they do not.
+
+---
+
+## 6. Extended Series: Puzzles 11-17
+
+Puzzles 11-17 form a fourth arc that builds on the foundations laid by the original ten puzzles. This arc focuses on **invariants and classification** — the tools mathematicians use to distinguish and organize knots systematically.
+
+### Arc 4 — "Classification and Decomposition" (Puzzles 11-17)
+
+**Theme:** Knot invariants as practical tools for identification, construction, and decomposition.
+
+**Narrative progression:**
+- Puzzle 11: Mirror images can be inequivalent — chirality is an invariant (identification).
+- Puzzle 12: Non-commutative algebra constrains physical operations — braid groups (algebraic structure).
+- Puzzle 13: Knots come in parametric families — torus knots and winding numbers (construction).
+- Puzzle 14: Coloring rules distinguish knot types — tricolorability (invariant computation).
+- Puzzle 15: Every knot bounds a surface — Seifert surfaces and genus (surface construction).
+- Puzzle 16: Crossing changes have measurable distance — unknotting number (transformation).
+- Puzzle 17: Complex knots decompose into layers — satellite knots and JSJ (decomposition).
+
+**What unifies these puzzles:** Each puzzle introduces a knot invariant or classification tool and demonstrates that it has direct physical consequences. The solver moves from recognizing invariants (chirality, coloring) to constructing mathematical objects (torus knots, Seifert surfaces) to decomposing complex structures (satellite knots).
+
+**Emotional arc:** Curiosity (Puzzle 11 — "these look the same but aren't") deepens into systematic thinking (Puzzles 12-14 — "there are rules that govern this") and expands into constructive mathematics (Puzzles 15-16 — "I can build the mathematical objects") before culminating in analytical decomposition (Puzzle 17 — "I can take this apart into solvable pieces").
+
+---
+
+### Puzzle 11: The Mirror Gate (Intermediate)
+
+**New concept introduced:** Chirality — mirror images that are topologically inequivalent.
+
+**Prior concepts assumed:** From Puzzles 1-4 — visual similarity does not imply topological equivalence. From Puzzle 7 — the trefoil knot is a specific mathematical object with definite properties.
+
+**What the solver should understand afterward:** Knots have handedness. A left-handed trefoil and a right-handed trefoil are fundamentally different objects, not rotations of each other. Chirality is an invariant that cannot be detected by casual visual inspection.
+
+**Common misconceptions at this stage:**
+- "Rotating the trefoil 180 degrees makes it the other hand." (Rotation does not change chirality.)
+- "Both trefoils look the same, so they ARE the same." (The lesson of Puzzle 1 revisited at a higher level.)
+
+---
+
+### Puzzle 12: The Braid Cage (Intermediate-Advanced)
+
+**New concept introduced:** Braid groups and non-commutativity. The order of operations matters — certain sequences of swaps leave cords untangled while others tangle them, even when both achieve the same permutation.
+
+**Prior concepts assumed:** From Puzzle 6 — configuration space topology and multi-step cord manipulation as precondition. From Puzzle 8 — systematic sequences where the order matters.
+
+**What the solver should understand afterward:** When operations have memory (the cords), the order of operations is not interchangeable. The Yang-Baxter relation is not an abstraction — it is a physical constraint on which swap sequences work.
+
+**Common misconceptions at this stage:**
+- "Any sequence of swaps that puts the rings in the right positions should work." (Correct for permutations, wrong for braids.)
+- "The cords are tangled because I made a mistake." (The tangle IS the wrong braid word — it is the expected consequence of a non-relation sequence.)
+
+---
+
+### Puzzle 13: The Torus Winder (Advanced)
+
+**New concept introduced:** Torus knots as a parametric family. The winding numbers (p,q) determine whether the cord is knotted, linked, or trivial.
+
+**Prior concepts assumed:** From Puzzle 7 — crossing number and knot diagrams. From Puzzle 11 — specific knot types have specific properties. Puzzle 13 extends this from individual knots to families parametrized by numbers.
+
+**What the solver should understand afterward:** Knots are not random tangles — they belong to families with systematic properties. The (p,q) winding numbers are a constructive recipe for building knots, and the gcd criterion provides a complete answer to which recipes produce genuine knots.
+
+**Common misconceptions at this stage:**
+- "More winding = more knotted." (Wrong — (1,100) is an unknot despite extensive winding.)
+- "Winding (2,2) and (2,3) are basically the same." (One is a link, the other is a trefoil.)
+
+---
+
+### Puzzle 14: The Tricolor Lock (Intermediate)
+
+**New concept introduced:** Fox 3-coloring as a knot invariant. An algebraic rule (coloring condition) distinguishes knot types.
+
+**Prior concepts assumed:** From Puzzle 3 — algebraic properties (linking number) determine topological freedom. From Puzzle 11 — knots have invariant properties that can be detected. Puzzle 14 introduces the first invariant that the solver must actively compute rather than observe.
+
+**What the solver should understand afterward:** Knot invariants can be computed from diagrams using explicit rules. Tricolorability proves the trefoil is not the unknot — a proof the solver constructs with their own hands.
+
+**Common misconceptions at this stage:**
+- "This is like coloring a map." (Fox coloring has different rules from graph coloring.)
+- "The unknot should also be tricolorable." (It is not — and that's what makes tricolorability useful as a distinguishing invariant.)
+
+---
+
+### Puzzle 15: The Seifert Sail (Advanced)
+
+**New concept introduced:** Seifert surfaces — every knot bounds an orientable surface, and the genus of this surface is a knot invariant.
+
+**Prior concepts assumed:** From Puzzle 4 — surfaces can have non-obvious properties. From Puzzle 9 — genus and handles have physical consequences. Puzzle 15 connects knot theory to surface theory by constructing a surface whose boundary is a knot.
+
+**What the solver should understand afterward:** Knots and surfaces are deeply connected. The Seifert surface is not just a theoretical construction — it can be physically built, and it provides the mechanism for freeing a linked cord.
+
+**Common misconceptions at this stage:**
+- "A knotted wire can't bound any surface." (Seifert's theorem says it always can.)
+- "The surface should be flat." (It has half-twist bands at each crossing.)
+
+---
+
+### Puzzle 16: The Crossing Number (Beginner-Intermediate)
+
+**New concept introduced:** Unknotting number — the minimum number of crossing changes to reach the unknot. Crossing changes as a fundamental operation.
+
+**Prior concepts assumed:** From Puzzle 1 — the unknot is the "zero" of knot theory. From Puzzle 7 — crossing number and Reidemeister moves. Puzzle 16 introduces a new operation (crossing change) that is more powerful than Reidemeister moves — it can change the knot type.
+
+**What the solver should understand afterward:** Knots have a well-defined distance from the unknot, measured in crossing changes. This distance is a topological invariant. The figure-eight knot is exactly one crossing change away from the unknot, but only at one specific crossing.
+
+**Common misconceptions at this stage:**
+- "All crossings are equivalent, so any flip should work." (Different crossings play different structural roles.)
+- "Flipping a crossing always simplifies the knot." (It can make the knot more complex.)
+
+---
+
+### Puzzle 17: The Satellite Trap (Expert)
+
+**New concept introduced:** Satellite knots and JSJ decomposition. A complex knot decomposes into independent layers (companion + pattern) that can be analyzed separately.
+
+**Prior concepts assumed:** From Puzzle 9 — multi-step cord rerouting and fundamental group thinking. From Puzzle 13 — torus knots as building blocks. From Puzzle 10 — the solver is comfortable with invisible, multi-layered structure. Puzzle 17 is the capstone of Arc 4, synthesizing all the classification tools into a decomposition problem.
+
+**What the solver should understand afterward:** Complex topological structures can be uniquely decomposed into simpler pieces. Solving each piece independently is the strategy — not trying to solve everything at once. This is the JSJ decomposition in action.
+
+**Common misconceptions at this stage:**
+- "Both rings are trapped by the same mechanism." (They are trapped by different layers.)
+- "I need to open the torus shell to solve it." (The pattern can be changed at the surface ports without opening the shell.)
+
+---
+
+## Extended Concept Map
+
+```mermaid
+flowchart TD
+    P1["1: Unknot recognition"]
+    P2["2: Genus, model inversion"]
+    P3["3: Linking number, algebraic cancellation"]
+    P4["4: Non-orientability, boundary structure"]
+    P5["5: Collective properties (Borromean)"]
+    P6["6: Configuration space topology"]
+    P7["7: Open arc vs closed knot"]
+    P8["8: Irreducible sequential complexity"]
+    P9["9: Fundamental group, word cancellation"]
+    P10["10: Hopf fibration, coupled rotation"]
+    P11["11: Chirality (handedness)"]
+    P12["12: Braid groups (Yang-Baxter)"]
+    P13["13: Torus knots (p,q winding)"]
+    P14["14: Fox tricolorability"]
+    P15["15: Seifert surfaces (genus)"]
+    P16["16: Unknotting number"]
+    P17["17: Satellite knots (JSJ)"]
+
+    P1 --> P2 --> P3 --> P4 --> P5 --> P6 --> P7 --> P8 --> P9 --> P10
+
+    P3 -.-> P6
+    P4 -.-> P6
+    P1 -.-> P7
+    P4 -.-> P7
+    P6 -.-> P8
+    P7 -.-> P8
+    P2 -.-> P9
+    P3 -.-> P9
+    P6 -.-> P9
+    P8 -.-> P9
+    P1 -.-> P10
+    P6 -.-> P10
+    P7 -.-> P10
+    P8 -.-> P10
+    P9 -.-> P10
+
+    P7 -.-> P11
+    P1 -.-> P11
+    P6 -.-> P12
+    P8 -.-> P12
+    P7 -.-> P13
+    P11 -.-> P13
+    P3 -.-> P14
+    P11 -.-> P14
+    P4 -.-> P15
+    P9 -.-> P15
+    P1 -.-> P16
+    P7 -.-> P16
+    P9 -.-> P17
+    P13 -.-> P17
+    P10 -.-> P17
+```
+
+## Extended Difficulty and Time Estimates
+
+| # | Puzzle | Novice Time | Experienced Time | Aha Moment |
+|---|--------|-------------|-----------------|------------|
+| 1 | The Gatekeeper | 5-15 min | 1-3 min | "The cord isn't a loop — it can't actually go *around* anything." |
+| 2 | Shepherd's Yoke | 10-30 min | 3-10 min | "Wait — what if the paddle goes through the loop instead?" |
+| 3 | The Prisoner's Ring | 15-45 min | 5-15 min | "The two crossings cancel — the cord isn't really around the crossbar." |
+| 4 | Mobius Snare | 20-60 min | 10-20 min | "The twist isn't a complication — it's *why* the cord can escape." |
+| 5 | Trinity Lock | 30-90 min | 15-30 min | "No two are linked. They all have to go together, simultaneously." |
+| 6 | Devil's Pitchfork | 45-120 min | 20-45 min | "The short center prong — I can loop the cord over it." |
+| 7 | The Ferryman's Knot | 30-120 min | 15-60 min | "It's not a trefoil. It has endpoints. I can just lift each wrap over the top." |
+| 8 | Ouroboros Chain | 60-180 min | 30-90 min | "There is no shortcut. I have to trust the recursive pattern." |
+| 9 | Genus Trap | 90-300 min | 45-120 min | "The cord path is a *word*. If I cancel the b, the word becomes trivial." |
+| 10 | The Hopf Paradox | 120-600 min | 60-240 min | "I can't rotate then push. I have to rotate *and* push at the same time." |
+| 11 | The Mirror Gate | 15-45 min | 5-15 min | "They look the same but they're mirror images — and mirrors don't preserve chirality." |
+| 12 | The Braid Cage | 30-90 min | 15-40 min | "The ORDER of swaps matters — not just which rings end up where." |
+| 13 | The Torus Winder | 45-120 min | 20-50 min | "Two through and three around makes a trefoil. Different numbers make different knots." |
+| 14 | The Tricolor Lock | 20-60 min | 10-25 min | "Three colors, all different at each crossing — and the notches align!" |
+| 15 | The Seifert Sail | 45-150 min | 20-60 min | "The surface actually SPANS the knot. I can push the cord across it." |
+| 16 | The Crossing Number | 15-45 min | 5-20 min | "Only ONE crossing flip unknots it — and it's crossing C." |
+| 17 | The Satellite Trap | 90-300 min | 45-150 min | "The two rings are trapped by DIFFERENT mechanisms. I can change the pattern without touching the companion." |
+
+## Extended Discussion Prompts
+
+| Puzzle | Discussion Prompt |
+|--------|------------------|
+| 11 | "Hold both trefoils. What makes them different? Can you describe the difference without looking at them?" |
+| 12 | "Why does the order of swaps matter? Can you give an example from real life where doing the same things in different orders produces different results?" |
+| 13 | "What happens if you wind (1,5) instead of (2,3)? Why is one knotted and the other not?" |
+| 14 | "Can you 3-color the unknot? Why or why not? What does that tell you about the trefoil?" |
+| 15 | "Before you built the surface, did you believe it was possible? What changed your mind?" |
+| 16 | "You flipped one crossing and everything changed. What does that tell you about the role of individual crossings in a knot?" |
+| 17 | "Why can you free one ring but not the other? What is the difference between their topological situations?" |
+
+## Extended Suggested Reading
+
+| After Puzzle | Suggested Reading |
+|-------------|-------------------|
+| 11 | Livingston, *Knot Theory*, Chapter 3 (chirality and the Jones polynomial) |
+| 12 | Kassel & Turaev, *Braid Groups*, Chapters 1-2, or Birman, *Braids, Links, and Mapping Class Groups* |
+| 13 | Adams, *The Knot Book*, Chapter 5 (torus knots and satellite knots) |
+| 14 | Adams, *The Knot Book*, Chapter 3 (tricolorability and Fox coloring) |
+| 15 | Cromwell, *Knots and Links*, Chapter 6 (Seifert surfaces and genus) |
+| 16 | Adams, *The Knot Book*, Chapter 4 (unknotting number) |
+| 17 | Burde & Zieschang, *Knots*, Chapter 4 (satellite knots) — or Thurston's geometrization for the JSJ decomposition |

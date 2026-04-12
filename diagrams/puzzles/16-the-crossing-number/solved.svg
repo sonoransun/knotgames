@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350">
+  <title>The Crossing Number - Solved</title>
+  <desc>Same figure-eight frame but crossing C is now flipped (highlighted green). Ring has been freed and sits to the side. Label: Unknotting number = 1.</desc>
+
+  <defs>
+    <marker id="exitArrow2" markerWidth="6" markerHeight="4" refX="3" refY="2"
+            orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 6,2 L 0,4 Z" fill="#33aa33"/>
+    </marker>
+  </defs>
+
+  <rect width="300" height="350" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="150" y="25" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="13" fill="#666" font-weight="bold">The Crossing Number — Solved</text>
+  <text x="150" y="42" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#33aa33">crossing C flipped, ring freed</text>
+
+  <!-- Wooden base -->
+  <rect x="40" y="255" width="220" height="20" rx="3" fill="none" stroke="#888" stroke-width="2"/>
+
+  <!-- Figure-eight knot diagram (same as setup) -->
+  <!-- Segment 1: top loop -->
+  <path d="M 100,80 Q 80,65 90,55 Q 110,40 140,50 Q 165,58 180,80"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Segment 2 -->
+  <path d="M 180,80 Q 195,105 185,130"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Segment 3 -->
+  <path d="M 185,130 Q 170,155 145,160"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Segment 4 -->
+  <path d="M 145,160 Q 120,165 110,180"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Segment 5 -->
+  <path d="M 110,180 Q 95,210 110,230 Q 130,245 155,230 Q 175,215 185,195"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Segment 6 -->
+  <path d="M 185,195 Q 195,170 190,150"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Segment 7 -->
+  <path d="M 190,150 Q 180,125 160,110 Q 135,95 110,100 Q 90,105 100,80"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Crossing pins A, B, D (unchanged, gray) -->
+  <circle cx="175" cy="95" r="10" fill="none" stroke="#999" stroke-width="1"/>
+  <text x="175" y="99" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#999">A</text>
+
+  <circle cx="165" cy="145" r="10" fill="none" stroke="#999" stroke-width="1"/>
+  <text x="165" y="149" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#999">B</text>
+
+  <circle cx="188" cy="170" r="10" fill="none" stroke="#999" stroke-width="1"/>
+  <text x="188" y="174" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#999">D</text>
+
+  <!-- Crossing C (FLIPPED — highlighted green) -->
+  <circle cx="120" cy="175" r="12" fill="#eeffee" stroke="#33aa33" stroke-width="2"/>
+  <text x="120" y="179" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#33aa33" font-weight="bold">C</text>
+
+  <!-- "FLIPPED" label for crossing C -->
+  <text x="95" y="195" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="7" fill="#33aa33">FLIPPED</text>
+
+  <!-- Ring freed — sitting to the right -->
+  <circle cx="255" cy="100" r="12" fill="none" stroke="#cc8800" stroke-width="2.5"/>
+  <text x="255" y="125" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#cc8800">ring (free)</text>
+
+  <!-- Exit path arrow -->
+  <path d="M 132,65 Q 180,55 240,88"
+        fill="none" stroke="#33aa33" stroke-width="1.5" stroke-dasharray="4,2"
+        marker-end="url(#exitArrow2)"/>
+  <text x="185" y="52" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="7" fill="#33aa33">exit path</text>
+
+  <!-- Unknotting number label -->
+  <rect x="60" y="230" width="180" height="22" rx="4" fill="#f0f0ff" stroke="#ccc" stroke-width="0.5"/>
+  <text x="150" y="245" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666" font-weight="bold">Unknotting number = 1</text>
+
+  <!-- Legend -->
+  <line x1="20" y1="290" x2="50" y2="290" stroke="#888" stroke-width="2.5"/>
+  <text x="58" y="294" font-family="system-ui, sans-serif" font-size="9" fill="#666">figure-eight wire frame</text>
+
+  <circle cx="35" cy="307" r="8" fill="#eeffee" stroke="#33aa33" stroke-width="2"/>
+  <text x="58" y="311" font-family="system-ui, sans-serif" font-size="9" fill="#666">flipped crossing (C)</text>
+
+  <circle cx="35" cy="325" r="6" fill="none" stroke="#cc8800" stroke-width="2"/>
+  <text x="58" y="329" font-family="system-ui, sans-serif" font-size="9" fill="#666">ring (freed)</text>
+
+  <line x1="20" y1="340" x2="50" y2="340" stroke="#33aa33" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="58" y="344" font-family="system-ui, sans-serif" font-size="9" fill="#666">exit path</text>
+</svg>

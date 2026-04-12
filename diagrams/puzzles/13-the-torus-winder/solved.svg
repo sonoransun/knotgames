@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350">
+  <title>The Torus Winder - Solved</title>
+  <desc>Top-down torus view with cord wound in a (2,3) pattern. Cord crosses visible. Small ring trapped on cord with ball-stops on either side.</desc>
+
+  <rect width="300" height="350" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="150" y="25" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="13" fill="#666" font-weight="bold">The Torus Winder — Solved</text>
+  <text x="150" y="42" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#33aa33">(2,3) torus knot wound</text>
+
+  <!-- Torus: outer ellipse -->
+  <ellipse cx="150" cy="170" rx="110" ry="70" fill="none" stroke="#888" stroke-width="2"/>
+
+  <!-- Torus: inner ellipse (hole) -->
+  <ellipse cx="150" cy="170" rx="40" ry="25" fill="none" stroke="#888" stroke-width="2"/>
+
+  <!-- Cord wound in (2,3) pattern: wraps 2 times around meridian, 3 times around longitude -->
+  <!-- Segment 1: from outer-right, dipping into the hole -->
+  <path d="M 260,170 Q 230,120 190,145"
+        fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <!-- Crosses into hole -->
+  <path d="M 190,145 Q 160,155 150,145"
+        fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <!-- Emerges and wraps around top -->
+  <path d="M 150,145 Q 120,125 80,140"
+        fill="none" stroke="#2255aa" stroke-width="2.5"/>
+  <!-- Continues around to bottom-left -->
+  <path d="M 80,140 Q 45,165 70,210"
+        fill="none" stroke="#2255aa" stroke-width="2.5"/>
+  <!-- Back into hole from bottom -->
+  <path d="M 70,210 Q 100,220 130,195"
+        fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <!-- Through hole, emerges top-right -->
+  <path d="M 130,195 Q 150,180 170,195"
+        fill="none" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <!-- Around bottom to right -->
+  <path d="M 170,195 Q 220,225 240,195"
+        fill="none" stroke="#2255aa" stroke-width="2.5"/>
+  <!-- Back up and into hole again -->
+  <path d="M 240,195 Q 260,175 250,155"
+        fill="none" stroke="#2255aa" stroke-width="2.5"/>
+  <!-- Final wrap connecting back -->
+  <path d="M 250,155 Q 240,140 260,170"
+        fill="none" stroke="#2255aa" stroke-width="2.5"/>
+
+  <!-- Crossing marks (where cord passes over/under itself) -->
+  <!-- Crossing 1 -->
+  <circle cx="155" cy="148" r="3" fill="#fafafa" stroke="#2255aa" stroke-width="1"/>
+  <!-- Crossing 2 -->
+  <circle cx="100" cy="175" r="3" fill="#fafafa" stroke="#2255aa" stroke-width="1"/>
+  <!-- Crossing 3 -->
+  <circle cx="200" cy="185" r="3" fill="#fafafa" stroke="#2255aa" stroke-width="1"/>
+
+  <!-- Ring trapped on the cord -->
+  <circle cx="95" cy="150" r="8" fill="none" stroke="#cc8800" stroke-width="2.5"/>
+  <text x="78" y="140" text-anchor="end" font-family="system-ui, sans-serif"
+        font-size="8" fill="#cc8800">ring</text>
+
+  <!-- Ball-stop before ring -->
+  <circle cx="115" cy="140" r="4" fill="#888" stroke="#888" stroke-width="1"/>
+  <!-- Ball-stop after ring -->
+  <circle cx="78" cy="148" r="4" fill="#888" stroke="#888" stroke-width="1"/>
+
+  <!-- Labels for ball-stops -->
+  <text x="120" y="133" font-family="system-ui, sans-serif" font-size="7" fill="#666">stop</text>
+  <text x="68" y="160" font-family="system-ui, sans-serif" font-size="7" fill="#666">stop</text>
+
+  <!-- Winding label -->
+  <text x="150" y="270" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666">p = 2 (meridional), q = 3 (longitudinal)</text>
+  <text x="150" y="285" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#999">3 crossings visible</text>
+
+  <!-- Legend -->
+  <line x1="20" y1="310" x2="50" y2="310" stroke="#888" stroke-width="2"/>
+  <text x="58" y="314" font-family="system-ui, sans-serif" font-size="9" fill="#666">torus surface</text>
+
+  <line x1="20" y1="325" x2="50" y2="325" stroke="#2255aa" stroke-width="2.5"/>
+  <text x="58" y="329" font-family="system-ui, sans-serif" font-size="9" fill="#666">cord (wound, solid=over)</text>
+
+  <line x1="170" y1="325" x2="200" y2="325" stroke="#2255aa" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <text x="208" y="329" font-family="system-ui, sans-serif" font-size="9" fill="#666">cord (under/inside)</text>
+
+  <circle cx="35" cy="340" r="4" fill="none" stroke="#cc8800" stroke-width="2"/>
+  <text x="58" y="344" font-family="system-ui, sans-serif" font-size="9" fill="#666">ring (trapped)</text>
+</svg>

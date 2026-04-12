@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <title>Chirality Comparison</title>
+  <desc>Side-by-side comparison of left-handed and right-handed trefoil crossing patterns, with mirror line between them. Arrows show clockwise vs counterclockwise spiral direction.</desc>
+
+  <defs>
+    <marker id="arrowRed" markerWidth="6" markerHeight="4" refX="3" refY="2"
+            orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 6,2 L 0,4 Z" fill="#dd3333"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="6" markerHeight="4" refX="3" refY="2"
+            orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 6,2 L 0,4 Z" fill="#3333dd"/>
+    </marker>
+  </defs>
+
+  <rect width="400" height="300" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="200" y="25" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="13" fill="#666" font-weight="bold">Chirality Comparison</text>
+
+  <!-- Mirror line -->
+  <line x1="200" y1="40" x2="200" y2="230" stroke="#999" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="200" y="245" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#999">mirror line</text>
+
+  <!-- LEFT-HANDED TREFOIL (left side) -->
+  <g transform="translate(100,130)">
+    <!-- Three-lobed trefoil shape -->
+    <path d="M 0,-50 C -30,-50 -55,-20 -40,5 C -25,30 -5,35 0,20
+             C 5,35 25,30 40,5 C 55,-20 30,-50 0,-50"
+          fill="none" stroke="#dd3333" stroke-width="2.5"/>
+
+    <!-- Crossing 1: top -->
+    <line x1="-12" y1="-25" x2="12" y2="-25" stroke="#fafafa" stroke-width="6"/>
+    <line x1="-12" y1="-25" x2="12" y2="-25" stroke="#dd3333" stroke-width="2.5"/>
+
+    <!-- Crossing 2: bottom-left -->
+    <line x1="-25" y1="8" x2="-10" y2="-5" stroke="#fafafa" stroke-width="6"/>
+    <line x1="-25" y1="8" x2="-10" y2="-5" stroke="#dd3333" stroke-width="2.5"/>
+
+    <!-- Crossing 3: bottom-right -->
+    <line x1="10" y1="-5" x2="25" y2="8" stroke="#fafafa" stroke-width="6"/>
+    <line x1="10" y1="-5" x2="25" y2="8" stroke="#dd3333" stroke-width="2.5"/>
+
+    <!-- CCW spiral arrow -->
+    <path d="M 40,-40 A 20,20 0 0,0 20,-55"
+          fill="none" stroke="#dd3333" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+    <text x="50" y="-35" font-family="system-ui, sans-serif"
+          font-size="8" fill="#dd3333">CCW</text>
+  </g>
+
+  <text x="100" y="210" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="11" fill="#dd3333" font-weight="bold">Left-handed (L)</text>
+  <text x="100" y="225" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#999">counterclockwise crossings</text>
+
+  <!-- RIGHT-HANDED TREFOIL (right side) -->
+  <g transform="translate(300,130)">
+    <!-- Three-lobed trefoil shape (mirrored) -->
+    <path d="M 0,-50 C 30,-50 55,-20 40,5 C 25,30 5,35 0,20
+             C -5,35 -25,30 -40,5 C -55,-20 -30,-50 0,-50"
+          fill="none" stroke="#3333dd" stroke-width="2.5"/>
+
+    <!-- Crossing 1: top (mirrored) -->
+    <line x1="12" y1="-25" x2="-12" y2="-25" stroke="#fafafa" stroke-width="6"/>
+    <line x1="12" y1="-25" x2="-12" y2="-25" stroke="#3333dd" stroke-width="2.5"/>
+
+    <!-- Crossing 2: bottom-right (mirrored) -->
+    <line x1="25" y1="8" x2="10" y2="-5" stroke="#fafafa" stroke-width="6"/>
+    <line x1="25" y1="8" x2="10" y2="-5" stroke="#3333dd" stroke-width="2.5"/>
+
+    <!-- Crossing 3: bottom-left (mirrored) -->
+    <line x1="-10" y1="-5" x2="-25" y2="8" stroke="#fafafa" stroke-width="6"/>
+    <line x1="-10" y1="-5" x2="-25" y2="8" stroke="#3333dd" stroke-width="2.5"/>
+
+    <!-- CW spiral arrow -->
+    <path d="M -40,-40 A 20,20 0 0,1 -20,-55"
+          fill="none" stroke="#3333dd" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+    <text x="-60" y="-35" font-family="system-ui, sans-serif"
+          font-size="8" fill="#3333dd">CW</text>
+  </g>
+
+  <text x="300" y="210" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="11" fill="#3333dd" font-weight="bold">Right-handed (R)</text>
+  <text x="300" y="225" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#999">clockwise crossings</text>
+
+  <!-- Legend -->
+  <line x1="30" y1="270" x2="60" y2="270" stroke="#dd3333" stroke-width="2.5"/>
+  <text x="68" y="274" font-family="system-ui, sans-serif" font-size="9" fill="#666">left-handed trefoil</text>
+
+  <line x1="200" y1="270" x2="230" y2="270" stroke="#3333dd" stroke-width="2.5"/>
+  <text x="238" y="274" font-family="system-ui, sans-serif" font-size="9" fill="#666">right-handed trefoil</text>
+
+  <line x1="30" y1="287" x2="60" y2="287" stroke="#999" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="68" y="291" font-family="system-ui, sans-serif" font-size="9" fill="#666">mirror axis</text>
+</svg>

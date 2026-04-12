@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350">
+  <title>The Crossing Number - Setup</title>
+  <desc>Figure-eight knot diagram with 4 crossings. Each crossing has a labeled pin (A, B, C, D). Ring trapped on the frame. Base visible.</desc>
+
+  <rect width="300" height="350" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="150" y="25" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="13" fill="#666" font-weight="bold">The Crossing Number — Setup</text>
+  <text x="150" y="42" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#999">figure-eight knot, 4 crossings</text>
+
+  <!-- Wooden base -->
+  <rect x="40" y="255" width="220" height="20" rx="3" fill="none" stroke="#888" stroke-width="2"/>
+
+  <!-- Figure-eight knot diagram -->
+  <!-- Main knot path: figure-eight shape with 4 crossings -->
+
+  <!-- Segment 1: top loop going right -->
+  <path d="M 100,80 Q 80,65 90,55 Q 110,40 140,50 Q 165,58 180,80"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Segment 2: right side going down through crossing A -->
+  <path d="M 180,80 Q 195,105 185,130"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Segment 3: crossing over, going left through crossing B -->
+  <path d="M 185,130 Q 170,155 145,160"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Segment 4: continuing left, going down through crossing C -->
+  <path d="M 145,160 Q 120,165 110,180"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Segment 5: bottom loop going left and up -->
+  <path d="M 110,180 Q 95,210 110,230 Q 130,245 155,230 Q 175,215 185,195"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Segment 6: going up through crossing D -->
+  <path d="M 185,195 Q 195,170 190,150"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Segment 7: back to crossing and closing the loop -->
+  <path d="M 190,150 Q 180,125 160,110 Q 135,95 110,100 Q 90,105 100,80"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Crossing gaps (white breaks for under-strand) -->
+  <!-- Crossing A -->
+  <circle cx="175" cy="95" r="3" fill="#fafafa" stroke="none"/>
+  <!-- Crossing B -->
+  <circle cx="165" cy="145" r="3" fill="#fafafa" stroke="none"/>
+  <!-- Crossing C -->
+  <circle cx="120" cy="175" r="3" fill="#fafafa" stroke="none"/>
+  <!-- Crossing D -->
+  <circle cx="188" cy="170" r="3" fill="#fafafa" stroke="none"/>
+
+  <!-- Crossing pins (labeled circles) -->
+  <!-- Pin A -->
+  <circle cx="175" cy="95" r="10" fill="none" stroke="#dd3333" stroke-width="1.5"/>
+  <text x="175" y="99" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#dd3333" font-weight="bold">A</text>
+
+  <!-- Pin B -->
+  <circle cx="165" cy="145" r="10" fill="none" stroke="#dd3333" stroke-width="1.5"/>
+  <text x="165" y="149" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#dd3333" font-weight="bold">B</text>
+
+  <!-- Pin C -->
+  <circle cx="120" cy="175" r="10" fill="none" stroke="#dd3333" stroke-width="1.5"/>
+  <text x="120" y="179" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#dd3333" font-weight="bold">C</text>
+
+  <!-- Pin D -->
+  <circle cx="188" cy="170" r="10" fill="none" stroke="#dd3333" stroke-width="1.5"/>
+  <text x="188" y="174" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#dd3333" font-weight="bold">D</text>
+
+  <!-- Ring trapped on the frame -->
+  <circle cx="110" cy="55" r="10" fill="none" stroke="#cc8800" stroke-width="2.5"/>
+  <text x="110" y="40" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8" fill="#cc8800">ring</text>
+
+  <!-- Info -->
+  <text x="150" y="245" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#666">Flip one crossing to unknot. Which one?</text>
+
+  <!-- Legend -->
+  <line x1="20" y1="290" x2="50" y2="290" stroke="#888" stroke-width="2.5"/>
+  <text x="58" y="294" font-family="system-ui, sans-serif" font-size="9" fill="#666">figure-eight wire frame</text>
+
+  <circle cx="35" cy="305" r="8" fill="none" stroke="#dd3333" stroke-width="1.5"/>
+  <text x="58" y="309" font-family="system-ui, sans-serif" font-size="9" fill="#666">crossing pin (flippable)</text>
+
+  <circle cx="35" cy="322" r="6" fill="none" stroke="#cc8800" stroke-width="2"/>
+  <text x="58" y="326" font-family="system-ui, sans-serif" font-size="9" fill="#666">ring (trapped)</text>
+</svg>

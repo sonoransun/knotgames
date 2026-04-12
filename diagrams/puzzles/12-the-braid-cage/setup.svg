@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350">
+  <title>The Braid Cage - Setup</title>
+  <desc>Three vertical posts on a wooden base with finial balls. Three colored rings (blue, yellow, red) on the posts. Cords connecting adjacent ring pairs hang in catenary curves.</desc>
+
+  <defs>
+    <marker id="cordArrow" markerWidth="6" markerHeight="4" refX="3" refY="2"
+            orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 6,2 L 0,4 Z" fill="#2255aa"/>
+    </marker>
+  </defs>
+
+  <rect width="300" height="350" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="150" y="25" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="13" fill="#666" font-weight="bold">The Braid Cage — Setup</text>
+
+  <!-- Wooden base -->
+  <rect x="30" y="250" width="240" height="25" rx="3" fill="none" stroke="#888" stroke-width="2"/>
+  <line x1="30" y1="262" x2="270" y2="262" stroke="#888" stroke-width="0.5" stroke-dasharray="2,4"/>
+
+  <!-- Post 1 (left) -->
+  <line x1="80" y1="80" x2="80" y2="250" stroke="#888" stroke-width="3"/>
+  <circle cx="80" cy="75" r="6" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="80" y="65" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#666">1</text>
+
+  <!-- Post 2 (center) -->
+  <line x1="150" y1="80" x2="150" y2="250" stroke="#888" stroke-width="3"/>
+  <circle cx="150" cy="75" r="6" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="150" y="65" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#666">2</text>
+
+  <!-- Post 3 (right) -->
+  <line x1="220" y1="80" x2="220" y2="250" stroke="#888" stroke-width="3"/>
+  <circle cx="220" cy="75" r="6" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="220" y="65" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#666">3</text>
+
+  <!-- Blue ring on post 1 -->
+  <ellipse cx="80" cy="140" rx="12" ry="5" fill="none" stroke="#3333dd" stroke-width="2.5"/>
+  <text x="55" y="138" text-anchor="end" font-family="system-ui, sans-serif"
+        font-size="8" fill="#3333dd">blue</text>
+
+  <!-- Yellow ring on post 2 -->
+  <ellipse cx="150" cy="160" rx="12" ry="5" fill="none" stroke="#ddcc33" stroke-width="2.5"/>
+  <text x="175" y="158" font-family="system-ui, sans-serif"
+        font-size="8" fill="#ddcc33">yellow</text>
+
+  <!-- Red ring on post 3 -->
+  <ellipse cx="220" cy="140" rx="12" ry="5" fill="none" stroke="#dd3333" stroke-width="2.5"/>
+  <text x="245" y="138" font-family="system-ui, sans-serif"
+        font-size="8" fill="#dd3333">red</text>
+
+  <!-- Cord 1: blue ring to yellow ring (catenary) -->
+  <path d="M 92,140 Q 115,185 138,160"
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Cord 2: yellow ring to red ring (catenary) -->
+  <path d="M 162,160 Q 185,205 208,140"
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Cord labels -->
+  <text x="115" y="185" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8" fill="#2255aa">cord 1</text>
+  <text x="185" y="200" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8" fill="#2255aa">cord 2</text>
+
+  <!-- Legend -->
+  <line x1="20" y1="295" x2="50" y2="295" stroke="#888" stroke-width="3"/>
+  <text x="58" y="299" font-family="system-ui, sans-serif" font-size="9" fill="#666">vertical post</text>
+
+  <line x1="20" y1="310" x2="50" y2="310" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="58" y="314" font-family="system-ui, sans-serif" font-size="9" fill="#666">flexible cord</text>
+
+  <ellipse cx="35" cy="328" rx="10" ry="4" fill="none" stroke="#cc8800" stroke-width="2"/>
+  <text x="58" y="332" font-family="system-ui, sans-serif" font-size="9" fill="#666">colored ring</text>
+</svg>

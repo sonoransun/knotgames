@@ -19,7 +19,14 @@ If you can tie your shoes and follow an argument, you can read this document.
 9.  [Gray Codes and Recursive Complexity](#9-gray-codes-and-recursive-complexity)
 10. [Fiber Bundles and the Hopf Fibration](#10-fiber-bundles-and-the-hopf-fibration)
 11. [Knot Theory Basics](#11-knot-theory-basics)
-12. [Glossary](#12-glossary)
+12. [Chirality and Handedness](#12-chirality-and-handedness)
+13. [Braid Groups](#13-braid-groups)
+14. [Torus Knots](#14-torus-knots)
+15. [Knot Coloring and Tricolorability](#15-knot-coloring-and-tricolorability)
+16. [Seifert Surfaces](#16-seifert-surfaces)
+17. [Unknotting Number](#17-unknotting-number)
+18. [Satellite Knots and JSJ Decomposition](#18-satellite-knots-and-jss-decomposition)
+19. [Glossary](#19-glossary)
 
 ---
 
@@ -932,7 +939,180 @@ crossing number.
 
 ---
 
-## 12. Glossary
+## 12. Chirality and Handedness
+
+### Plain-language definition
+
+A knot is **chiral** if it is not equivalent to its mirror image. The simplest example: the trefoil knot comes in two versions — left-handed and right-handed — that are topologically distinct. No continuous deformation in 3D space can convert one into the other.
+
+A knot that IS equivalent to its mirror image is called **amphichiral** (or achiral). The figure-eight knot is amphichiral — its mirror image can be deformed back to the original.
+
+### How to detect chirality
+
+At each crossing, follow the knot in a consistent direction. If the overpasses spiral clockwise, the trefoil is right-handed. If counterclockwise, left-handed. More formally, chirality can be detected by knot polynomials: the Jones polynomial of a chiral knot differs from the Jones polynomial of its mirror image.
+
+### Which puzzles use this
+
+- **Puzzle 11, The Mirror Gate:** Two trefoil frames — one left-handed, one right-handed — must be matched to mirror-image recesses. The solver must identify the handedness of each trefoil by examining its crossing pattern.
+
+### Physical intuition
+
+Hold both trefoils side by side. They look identical until you try to seat one in the other's recess — it simply does not fit. The physical mismatch at the crossing points IS the chirality. Your hands can feel the difference that your eyes initially miss. This is exactly the situation in chemistry, where chiral molecules (enantiomers) have identical properties in isolation but interact differently with other chiral structures.
+
+---
+
+## 13. Braid Groups
+
+### Plain-language definition
+
+A **braid** on n strands is a set of n non-intersecting curves that may cross over and under each other. The **braid group** B_n is the set of all such braids, with "stacking" (composition) as the group operation.
+
+For three strands (B_3), the two generators are:
+- **sigma_1**: strand 1 crosses over strand 2
+- **sigma_2**: strand 2 crosses over strand 3
+
+These generators do NOT commute: sigma_1 * sigma_2 ≠ sigma_2 * sigma_1.
+
+### The Yang-Baxter relation
+
+The key algebraic relation in B_3 is: **sigma_1 * sigma_2 * sigma_1 = sigma_2 * sigma_1 * sigma_2**. This is the braid relation (Yang-Baxter equation). It says that two specific three-step sequences of swaps produce the same braid.
+
+### Which puzzles use this
+
+- **Puzzle 12, The Braid Cage:** Three rings on posts connected by cords. The cords record the history of swaps. Only braid-relation sequences leave the cords untangled. The solver feels non-commutativity directly — wrong swap orders tangle the cords.
+
+### Physical intuition
+
+When you swap two rings by lifting one over a post finial, the connecting cord records the swap as a braid generator. Swapping in a different order produces a different braid — and different braids leave the cords in different states (tangled vs. untangled). The order of operations has physical consequences.
+
+---
+
+## 14. Torus Knots
+
+### Plain-language definition
+
+A **(p,q) torus knot** lies on the surface of a torus, winding p times through the torus hole and q times around the tube. The curve closes up into a single connected knot when gcd(p,q) = 1.
+
+Key examples:
+- (1, q) for any q → unknot
+- (2, 2) → two-component link
+- (2, 3) → trefoil (simplest torus knot, 3 crossings)
+- (2, 5) → Solomon's seal knot (5 crossings)
+- (3, 4) → torus knot with 8 crossings
+
+The rule: (p,q) with gcd(p,q) = 1 and p,q ≥ 2 produces a genuine knot.
+
+### Which puzzles use this
+
+- **Puzzle 13, The Torus Winder:** A cord must be wound around a torus following guide notches to create the (2,3) torus knot. Most windings fail to trap a sliding ring — only the correct (p,q) pair produces a genuine knot.
+
+- **Puzzle 17, The Satellite Trap:** The internal tunnel of the torus shell follows a (2,3) torus knot path, forming the companion knot of the satellite structure.
+
+### Physical intuition
+
+Wind a cord around a donut-shaped ring. If you go through the hole twice and around the tube three times, the cord crosses itself exactly three times and cannot be unwound without cutting. Change the numbers and the knot either simplifies to a circle or splits into multiple loops. The relationship between the two winding numbers is what determines knottedness.
+
+---
+
+## 15. Knot Coloring and Tricolorability
+
+### Plain-language definition
+
+A **Fox 3-coloring** of a knot diagram assigns one of three colors to each arc (strand between consecutive undercrossings) such that at every crossing, the three meeting arcs are either all the same color or all different colors.
+
+A knot is **tricolorable** if it admits a non-trivial Fox 3-coloring (one using more than one color). Tricolorability is a topological invariant — it is preserved under Reidemeister moves.
+
+Key facts:
+- The unknot is NOT tricolorable
+- The trefoil IS tricolorable
+- The figure-eight IS NOT tricolorable
+- Since the unknot and trefoil differ in tricolorability, they are distinct knots
+
+### Which puzzles use this
+
+- **Puzzle 14, The Tricolor Lock:** The solver must find the valid Fox 3-coloring of a trefoil frame. Valid coloring reveals a physical passage (aligned notches) that frees a trapped ring. Invalid coloring leaves the ring trapped.
+
+### Physical intuition
+
+Color the three arcs of a trefoil with three distinct colors. At each crossing, check: are all three colors different? If yes at every crossing, the coloring is valid. This algebraic rule has a physical consequence in the puzzle: the colored sleeves have notches that align only under a valid coloring. The invariant is not just a number — it changes the puzzle's physical geometry.
+
+---
+
+## 16. Seifert Surfaces
+
+### Plain-language definition
+
+A **Seifert surface** for a knot is an orientable, connected surface whose boundary (edge) is the knot itself. Seifert's theorem (1934) guarantees that every knot bounds such a surface.
+
+The **Seifert algorithm** constructs the surface explicitly:
+1. At each crossing, smooth it into two parallel arcs
+2. The smoothed arcs form simple closed curves (Seifert circles)
+3. Fill each circle with a disk
+4. Reconnect at crossings with half-twist bands
+
+The **genus** of the minimal Seifert surface is a knot invariant: genus = (crossings - Seifert circles + 1) / 2.
+
+### Which puzzles use this
+
+- **Puzzle 15, The Seifert Sail:** Three shaped panels are assembled inside a trefoil frame to physically construct a Seifert surface. Once built, a cord loop can be pushed across the surface and freed. The surface makes visible the theorem that every knot bounds an orientable surface.
+
+### Physical intuition
+
+The Seifert surface is a membrane spanning the interior of a knot. Imagine stretching a soap film inside a wire trefoil — the film would form a surface whose edge is the trefoil wire. This surface has a half-twist at each crossing (which is why soap films on trefoils look twisted). A cord linked with the wire can be pushed across this surface and freed, because the surface provides a continuous path from one side to the other.
+
+---
+
+## 17. Unknotting Number
+
+### Plain-language definition
+
+The **unknotting number** u(K) of a knot K is the minimum number of crossing changes needed to convert K into the unknot. A crossing change swaps which strand goes over and which goes under at a single crossing.
+
+Key values:
+- Unknot: u = 0
+- Trefoil: u = 1
+- Figure-eight: u = 1
+- Cinquefoil (5_1): u = 2
+
+The unknotting number is a topological invariant that measures how far a knot is from being trivial.
+
+### Which puzzles use this
+
+- **Puzzle 16, The Crossing Number:** A figure-eight knot frame with 4 flippable crossing pins. The solver must find the one crossing whose flip converts the knot to the unknot (u = 1). Three of the four crossings produce different non-trivial knots when flipped.
+
+### Physical intuition
+
+Each crossing pin controls which strand is on top at that point. Flip a pin and test: does the ring slide freely now? If so, you found the unknotting crossing. If the ring still catches, restore the pin and try the next. The unknotting number tells you how many pins you need to flip — for the figure-eight, exactly one. But it does not tell you WHICH one.
+
+---
+
+## 18. Satellite Knots and JSJ Decomposition
+
+### Plain-language definition
+
+A **satellite knot** is a knot that can be decomposed into two layers:
+- The **companion**: a non-trivial knot embedded as the core curve of a solid torus
+- The **pattern**: a knot or link inside the solid torus that wraps around the companion
+
+The satellite knot is the result of replacing the companion's tubular neighborhood with the pattern's structure. It is more complex than either component alone.
+
+### JSJ decomposition
+
+The **Jaco-Shalen-Johannson (JSJ) decomposition** theorem states that every compact, orientable, irreducible 3-manifold has a unique decomposition along incompressible tori into Seifert-fibered and hyperbolic pieces. For knot complements, this means satellite knots decompose uniquely into companion and pattern components.
+
+The practical consequence: a satellite knot's properties can be analyzed by studying each layer independently.
+
+### Which puzzles use this
+
+- **Puzzle 17, The Satellite Trap:** A torus shell contains a trefoil-knotted tunnel (companion). A cord threads through the tunnel and connects externally (pattern). Two rings are trapped by different layers: the outer ring is linked only with the pattern (and can be freed by rerouting the external cord), while the inner ring is linked with the companion (and is permanently trapped).
+
+### Physical intuition
+
+Think of a satellite knot as a knot within a knot, like Russian nesting dolls. The outer structure (pattern) can be manipulated without affecting the inner structure (companion). In the puzzle, you can reroute the cord where it exits the torus (changing the pattern) without being able to change the trefoil tunnel inside (the companion). One ring lives in the pattern layer and can be freed; the other lives in the companion layer and cannot.
+
+---
+
+## 19. Glossary
 
 Concise definitions of every technical term used across the EXKNOTS puzzle
 files, listed alphabetically.
@@ -1065,6 +1245,6 @@ when the word reduces to the identity (Puzzle 9).
 
 ---
 
-*This primer covers every topological concept used in the ten EXKNOTS
+*This primer covers every topological concept used in the seventeen EXKNOTS
 puzzles. For construction details, solution walkthroughs, and physical
 specifications, see the individual puzzle files in the `puzzles/` directory.*

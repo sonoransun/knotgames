@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350">
+  <title>The Seifert Sail - Setup</title>
+  <desc>Trefoil wire frame mounted vertically on base. Cord loop threaded through the frame. Three separate panels/sheets shown nearby (unassembled).</desc>
+
+  <rect width="300" height="350" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="150" y="25" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="13" fill="#666" font-weight="bold">The Seifert Sail — Setup</text>
+  <text x="150" y="42" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#999">surface panels unassembled</text>
+
+  <!-- Wooden base -->
+  <rect x="30" y="260" width="160" height="20" rx="3" fill="none" stroke="#888" stroke-width="2"/>
+  <line x1="30" y1="270" x2="190" y2="270" stroke="#888" stroke-width="0.5" stroke-dasharray="2,4"/>
+
+  <!-- Vertical mount post -->
+  <line x1="110" y1="230" x2="110" y2="260" stroke="#888" stroke-width="3"/>
+
+  <!-- Trefoil wire frame (mounted vertically, viewed from front) -->
+  <!-- Arc 1: top lobe -->
+  <path d="M 80,140 Q 65,100 90,80 Q 110,65 130,80 Q 155,100 140,140"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Arc 2: bottom-right lobe -->
+  <path d="M 140,140 Q 155,155 155,180 Q 155,205 130,215 Q 115,222 110,210"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Arc 3: bottom-left lobe -->
+  <path d="M 110,210 Q 105,222 90,215 Q 65,205 65,180 Q 65,155 80,140"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Crossings (gaps for under-strand) -->
+  <line x1="105" y1="135" x2="115" y2="145" stroke="#fafafa" stroke-width="7"/>
+  <line x1="85" y1="173" x2="80" y2="183" stroke="#fafafa" stroke-width="7"/>
+  <line x1="137" y1="173" x2="142" y2="183" stroke="#fafafa" stroke-width="7"/>
+
+  <!-- Cord loop threaded through trefoil -->
+  <path d="M 85,120 Q 100,115 115,120"
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+  <path d="M 115,120 Q 130,130 125,145"
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+  <path d="M 125,145 Q 115,155 100,150"
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+  <path d="M 100,150 Q 85,145 85,130"
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+  <path d="M 85,130 Q 85,125 85,120"
+        fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="100" y="108" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8" fill="#2255aa">cord loop</text>
+
+  <!-- Three separate panels (unassembled, shown to the right) -->
+  <!-- Panel 1 (disk) -->
+  <ellipse cx="230" cy="100" rx="25" ry="15" fill="#3333dd" fill-opacity="0.1"
+           stroke="#3333dd" stroke-width="1.5"/>
+  <text x="230" y="105" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8" fill="#3333dd">disk 1</text>
+
+  <!-- Panel 2 (disk) -->
+  <ellipse cx="230" cy="150" rx="25" ry="15" fill="#3333dd" fill-opacity="0.1"
+           stroke="#3333dd" stroke-width="1.5"/>
+  <text x="230" y="155" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8" fill="#3333dd">disk 2</text>
+
+  <!-- Panel 3 (twist band) -->
+  <path d="M 210,190 Q 225,195 230,210 Q 235,225 250,220"
+        fill="none" stroke="#3333dd" stroke-width="1.5"/>
+  <path d="M 215,190 Q 230,195 235,210 Q 240,225 255,220"
+        fill="none" stroke="#3333dd" stroke-width="1.5"/>
+  <text x="232" y="240" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8" fill="#3333dd">twist band</text>
+
+  <!-- Arrow indicating panels go into trefoil -->
+  <path d="M 200,150 L 165,150" fill="none" stroke="#999" stroke-width="1"
+        marker-end="url(#assemblyArrow)"/>
+  <text x="182" y="145" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="7" fill="#999">assemble</text>
+
+  <!-- Legend -->
+  <line x1="20" y1="300" x2="50" y2="300" stroke="#888" stroke-width="2.5"/>
+  <text x="58" y="304" font-family="system-ui, sans-serif" font-size="9" fill="#666">trefoil wire frame</text>
+
+  <line x1="20" y1="315" x2="50" y2="315" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="58" y="319" font-family="system-ui, sans-serif" font-size="9" fill="#666">cord loop</text>
+
+  <line x1="20" y1="330" x2="50" y2="330" stroke="#3333dd" stroke-width="1.5"/>
+  <text x="58" y="334" font-family="system-ui, sans-serif" font-size="9" fill="#666">surface panel</text>
+</svg>

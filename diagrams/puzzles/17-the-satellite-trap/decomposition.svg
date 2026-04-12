@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <title>JSJ Decomposition</title>
+  <desc>Two-column diagram: Left column shows Companion (trefoil tunnel inside torus, red, labeled fixed). Right column shows Pattern (external cord path, blue, labeled can be rerouted). Arrow between them: Satellite = Companion + Pattern. Below: Outer ring linked to Pattern only, can be freed.</desc>
+
+  <defs>
+    <marker id="decompArrow" markerWidth="8" markerHeight="6" refX="4" refY="3"
+            orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#666"/>
+    </marker>
+  </defs>
+
+  <rect width="400" height="300" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="200" y="22" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="13" fill="#666" font-weight="bold">JSJ Decomposition</text>
+
+  <!-- Center equals / plus -->
+  <text x="200" y="130" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="18" fill="#666">+</text>
+
+  <!-- Top equation -->
+  <text x="200" y="48" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666">Satellite = Companion + Pattern</text>
+
+  <!-- === LEFT COLUMN: Companion === -->
+  <rect x="20" y="55" width="160" height="155" rx="5" fill="none" stroke="#dd3333" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+  <text x="100" y="75" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="11" fill="#dd3333" font-weight="bold">Companion</text>
+  <text x="100" y="88" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#999">(trefoil tunnel, fixed)</text>
+
+  <!-- Torus with internal trefoil path -->
+  <ellipse cx="100" cy="145" rx="55" ry="35" fill="none" stroke="#888" stroke-width="1.5"/>
+  <ellipse cx="100" cy="145" rx="18" ry="12" fill="none" stroke="#888" stroke-width="1"/>
+
+  <!-- Trefoil tunnel inside torus -->
+  <path d="M 60,130 Q 50,145 65,158 Q 80,168 100,160"
+        fill="none" stroke="#dd3333" stroke-width="2" stroke-dasharray="3,2"/>
+  <path d="M 100,160 Q 115,150 120,135 Q 125,120 140,125"
+        fill="none" stroke="#dd3333" stroke-width="2" stroke-dasharray="3,2"/>
+  <path d="M 140,125 Q 155,135 148,155 Q 140,165 120,165"
+        fill="none" stroke="#dd3333" stroke-width="2" stroke-dasharray="3,2"/>
+  <path d="M 120,165 Q 100,165 85,155 Q 70,145 60,130"
+        fill="none" stroke="#dd3333" stroke-width="2" stroke-dasharray="3,2"/>
+
+  <!-- Inner ring trapped -->
+  <circle cx="90" cy="148" r="6" fill="none" stroke="#cc8800" stroke-width="2"/>
+  <text x="90" y="168" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="7" fill="#cc8800">inner ring</text>
+
+  <!-- Lock icon -->
+  <text x="100" y="200" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#dd3333">FIXED (cannot change)</text>
+
+  <!-- === RIGHT COLUMN: Pattern === -->
+  <rect x="220" y="55" width="160" height="155" rx="5" fill="none" stroke="#2255aa" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+  <text x="300" y="75" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="11" fill="#2255aa" font-weight="bold">Pattern</text>
+  <text x="300" y="88" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#999">(external cord, reroutable)</text>
+
+  <!-- Torus outline (just the shell, no tunnel) -->
+  <ellipse cx="300" cy="145" rx="55" ry="35" fill="none" stroke="#888" stroke-width="1.5"/>
+  <ellipse cx="300" cy="145" rx="18" ry="12" fill="none" stroke="#888" stroke-width="1"/>
+
+  <!-- External cord pattern -->
+  <path d="M 250,125 Q 235,100 265,90 Q 300,82 335,95 Q 355,110 345,130"
+        fill="none" stroke="#2255aa" stroke-width="2.5"/>
+  <path d="M 345,130 Q 360,155 345,170 Q 330,185 305,185"
+        fill="none" stroke="#2255aa" stroke-width="2.5"/>
+  <path d="M 305,185 Q 270,190 250,175 Q 235,160 250,140"
+        fill="none" stroke="#2255aa" stroke-width="2.5"/>
+  <path d="M 250,140 Q 248,132 250,125"
+        fill="none" stroke="#2255aa" stroke-width="2.5"/>
+
+  <!-- Port markers on torus -->
+  <circle cx="250" cy="130" r="4" fill="none" stroke="#ddcc33" stroke-width="1.5"/>
+  <circle cx="345" cy="135" r="4" fill="none" stroke="#ddcc33" stroke-width="1.5"/>
+  <circle cx="250" cy="165" r="4" fill="none" stroke="#ddcc33" stroke-width="1.5"/>
+  <circle cx="340" cy="168" r="4" fill="none" stroke="#ddcc33" stroke-width="1.5"/>
+
+  <!-- Outer ring on external cord -->
+  <circle cx="300" cy="88" r="6" fill="none" stroke="#cc8800" stroke-width="2"/>
+  <text x="300" y="80" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="7" fill="#cc8800">outer ring</text>
+
+  <!-- Reroute label -->
+  <text x="300" y="200" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#2255aa">CAN BE REROUTED</text>
+
+  <!-- Connection arrow -->
+  <line x1="180" y1="130" x2="218" y2="130" stroke="#666" stroke-width="1.5" marker-end="url(#decompArrow)"/>
+
+  <!-- Bottom conclusion box -->
+  <rect x="30" y="220" width="340" height="55" rx="4" fill="#f0f0ff" stroke="#ccc" stroke-width="0.5"/>
+
+  <text x="200" y="238" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666" font-weight="bold">Key Insight:</text>
+  <text x="200" y="254" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666">Outer ring is linked to Pattern only</text>
+  <text x="200" y="268" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#33aa33">→ reroute Pattern to free outer ring</text>
+
+  <!-- Legend -->
+  <line x1="30" y1="290" x2="55" y2="290" stroke="#dd3333" stroke-width="2" stroke-dasharray="3,2"/>
+  <text x="63" y="294" font-family="system-ui, sans-serif" font-size="9" fill="#666">companion (fixed)</text>
+
+  <line x1="200" y1="290" x2="225" y2="290" stroke="#2255aa" stroke-width="2.5"/>
+  <text x="233" y="294" font-family="system-ui, sans-serif" font-size="9" fill="#666">pattern (reroutable)</text>
+</svg>

@@ -16,6 +16,13 @@ const puzzleRegistry = [
   { id: 8,  module: './puzzles/puzzle-08.js', name: 'Ouroboros Chain',    difficulty: 'advanced' },
   { id: 9,  module: './puzzles/puzzle-09.js', name: 'Genus Trap',         difficulty: 'expert' },
   { id: 10, module: './puzzles/puzzle-10.js', name: 'The Hopf Paradox',   difficulty: 'expert' },
+  { id: 11, module: './puzzles/puzzle-11.js', name: 'The Mirror Gate',    difficulty: 'intermediate' },
+  { id: 12, module: './puzzles/puzzle-12.js', name: 'The Braid Cage',     difficulty: 'intermediate' },
+  { id: 13, module: './puzzles/puzzle-13.js', name: 'The Torus Winder',   difficulty: 'advanced' },
+  { id: 14, module: './puzzles/puzzle-14.js', name: 'The Tricolor Lock',  difficulty: 'intermediate' },
+  { id: 15, module: './puzzles/puzzle-15.js', name: 'The Seifert Sail',   difficulty: 'advanced' },
+  { id: 16, module: './puzzles/puzzle-16.js', name: 'The Crossing Number', difficulty: 'intermediate' },
+  { id: 17, module: './puzzles/puzzle-17.js', name: 'The Satellite Trap', difficulty: 'expert' },
 ];
 
 // Debug mode initialization

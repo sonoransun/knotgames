@@ -38,6 +38,13 @@ const PUZZLES = [
   'puzzle_08/ouroboros_chain.scad',
   'puzzle_09/genus_trap.scad',
   'puzzle_10/hopf_paradox.scad',
+  'puzzle_11/mirror_gate.scad',
+  'puzzle_12/braid_cage.scad',
+  'puzzle_13/torus_winder.scad',
+  'puzzle_14/tricolor_lock.scad',
+  'puzzle_15/seifert_sail.scad',
+  'puzzle_16/crossing_number.scad',
+  'puzzle_17/satellite_trap.scad',
 ];
 
 describe.skipIf(!HAS_OPENSCAD)('OpenSCAD compilation', () => {

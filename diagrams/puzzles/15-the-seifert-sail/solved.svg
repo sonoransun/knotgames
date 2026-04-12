@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350">
+  <title>The Seifert Sail - Solved</title>
+  <desc>Trefoil frame with Seifert surface assembled inside (semi-transparent blue fill). Cord loop pushed across the surface and now free. Label: Genus 1.</desc>
+
+  <rect width="300" height="350" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="150" y="25" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="13" fill="#666" font-weight="bold">The Seifert Sail — Solved</text>
+  <text x="150" y="42" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#33aa33">surface assembled, cord freed</text>
+
+  <!-- Wooden base -->
+  <rect x="40" y="260" width="140" height="20" rx="3" fill="none" stroke="#888" stroke-width="2"/>
+
+  <!-- Vertical mount post -->
+  <line x1="110" y1="230" x2="110" y2="260" stroke="#888" stroke-width="3"/>
+
+  <!-- Trefoil wire frame -->
+  <!-- Arc 1: top lobe -->
+  <path d="M 80,140 Q 65,100 90,80 Q 110,65 130,80 Q 155,100 140,140"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Arc 2: bottom-right lobe -->
+  <path d="M 140,140 Q 155,155 155,180 Q 155,205 130,215 Q 115,222 110,210"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Arc 3: bottom-left lobe -->
+  <path d="M 110,210 Q 105,222 90,215 Q 65,205 65,180 Q 65,155 80,140"
+        fill="none" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Seifert surface (semi-transparent blue fill inside trefoil) -->
+  <!-- Outer disk region -->
+  <path d="M 80,140 Q 65,100 90,80 Q 110,65 130,80 Q 155,100 140,140
+           Q 155,155 155,180 Q 155,205 130,215 Q 115,222 110,210
+           Q 105,222 90,215 Q 65,205 65,180 Q 65,155 80,140 Z"
+        fill="#3333dd" fill-opacity="0.12" stroke="none"/>
+
+  <!-- Inner region (hole of genus) shown as slightly different shade -->
+  <ellipse cx="110" cy="155" rx="18" ry="22" fill="#3333dd" fill-opacity="0.08"
+           stroke="#3333dd" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- Twist band indicators at crossings -->
+  <!-- Crossing 1: center -->
+  <line x1="105" y1="135" x2="115" y2="145" stroke="#cc8800" stroke-width="2"/>
+  <line x1="115" y1="135" x2="105" y2="145" stroke="#cc8800" stroke-width="2"/>
+
+  <!-- Crossing 2: bottom-left -->
+  <line x1="78" y1="170" x2="85" y2="182" stroke="#cc8800" stroke-width="2"/>
+  <line x1="85" y1="170" x2="78" y2="182" stroke="#cc8800" stroke-width="2"/>
+
+  <!-- Crossing 3: bottom-right -->
+  <line x1="134" y1="170" x2="141" y2="182" stroke="#cc8800" stroke-width="2"/>
+  <line x1="141" y1="170" x2="134" y2="182" stroke="#cc8800" stroke-width="2"/>
+
+  <!-- Genus label -->
+  <text x="110" y="158" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#3333dd">g = 1</text>
+
+  <!-- Cord loop — now free, sitting off to the right -->
+  <ellipse cx="230" cy="140" rx="20" ry="14" fill="none" stroke="#2255aa" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="230" y="165" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="#2255aa">cord loop (free)</text>
+
+  <!-- Arrow showing cord was pushed across surface -->
+  <path d="M 135,135 Q 170,120 208,132"
+        fill="none" stroke="#33aa33" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="172" y="112" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="7" fill="#33aa33">pushed across surface</text>
+
+  <!-- Genus 1 label -->
+  <rect x="195" y="180" width="80" height="22" rx="3" fill="#f0f0ff" stroke="#ccc" stroke-width="0.5"/>
+  <text x="235" y="195" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="#666" font-weight="bold">Genus 1</text>
+
+  <!-- Legend -->
+  <line x1="20" y1="295" x2="50" y2="295" stroke="#888" stroke-width="2.5"/>
+  <text x="58" y="299" font-family="system-ui, sans-serif" font-size="9" fill="#666">trefoil wire frame</text>
+
+  <rect x="20" y="308" width="30" height="10" fill="#3333dd" fill-opacity="0.12" stroke="#3333dd" stroke-width="1"/>
+  <text x="58" y="318" font-family="system-ui, sans-serif" font-size="9" fill="#666">Seifert surface</text>
+
+  <line x1="20" y1="332" x2="50" y2="332" stroke="#cc8800" stroke-width="2"/>
+  <text x="58" y="336" font-family="system-ui, sans-serif" font-size="9" fill="#666">half-twist band</text>
+</svg>
