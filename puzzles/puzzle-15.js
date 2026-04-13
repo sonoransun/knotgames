@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createRod, createBlock } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -126,6 +128,7 @@ export function create3DScene() {
   const surface = createSeifertSurface(surfaceMat);
   group.add(surface);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -182,30 +185,44 @@ export function createAnimScene() {
     [TREFOIL_SCALE * 2.0, 20, 30],
   ];
 
-  return { group, objects: { surface, surfaceMat, cord, cordPts, freedCordPts } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { surface, surfaceMat, cord, cordPts, freedCordPts, arrowManager } };
 }
+
+const arrowConfigs = {
+  1: { arrows: [
+    { from: [0, TREFOIL_SCALE * 1.2, 0], to: [0, TREFOIL_SCALE * 0.8, 0], opts: { color: 0x66aadd } },
+    { from: [-TREFOIL_SCALE, -TREFOIL_SCALE * 0.2, 0], to: [-TREFOIL_SCALE * 0.7, -TREFOIL_SCALE * 0.4, 0], opts: { color: 0x66aadd } },
+  ]},
+  2: { arrows: [
+    { from: [TREFOIL_SCALE * 0.5, 20, 10], to: [TREFOIL_SCALE * 1.5, 20, 30], opts: { color: 0x44cc44 } },
+  ]},
+};
+let highlightMat = null;
 
 export const animationSteps = [
   {
-    label: 'Trefoil frame with linked cord — the cord appears permanently linked',
+    label: 'Look: the cord loops through the trefoil frame, seemingly stuck',
     duration: 2.0,
     surfaceOpacity: 0.0,
     cordPhase: 'linked',
   },
   {
-    label: 'Assemble Seifert surface panels inside the trefoil boundary',
+    label: 'Slide the three panels into the frame to fill the trefoil shape',
     duration: 3.0,
     surfaceOpacity: 0.7,
     cordPhase: 'linked',
   },
   {
-    label: 'Surface complete — genus 1 (one handle). Push cord across the surface.',
+    label: 'Push the cord sideways across the filled surface to unlink it',
     duration: 2.5,
     surfaceOpacity: 0.7,
     cordPhase: 'freed',
   },
   {
-    label: 'Cord is free! Every knot bounds an orientable surface (Seifert\'s theorem)',
+    label: 'Pull the cord free! The surface showed a path through the knot',
     duration: 2.5,
     surfaceOpacity: 0.4,
     cordPhase: 'freed',
@@ -214,6 +231,23 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight cord during push/free steps
+  if (stepIndex >= 2) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.cord.mesh.material, 0x4488ff, 0.3);
+    }
+    applyHighlight(objects.cord.mesh, highlightMat);
+  } else {
+    removeHighlight(objects.cord.mesh);
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
 
@@ -277,32 +311,36 @@ export function createSVGDiagram(container) {
   svg.text(s, cx + 20, cy - 5, 'band', { fontSize: 8, fill: '#4488bb' });
   svg.text(s, cx, cy + 42, 'band', { fontSize: 8, anchor: 'middle', fill: '#4488bb' });
 
-  // Seifert algorithm explanation
-  svg.rect(s, 40, 240, 420, 75, { fill: '#f5f5f5', stroke: '#ddd', strokeWidth: 1, rx: 4 });
-  svg.text(s, 250, 258, 'Seifert Algorithm:', { fontSize: 11, anchor: 'middle', fontWeight: 'bold', fill: '#333' });
-  svg.text(s, 250, 274, '1. At each crossing, resolve into two parallel arcs (smoothing)', {
+  // Motion arrows showing assembly and cord push
+  svg.motionArrow(s, cx - 25, cy - 70, cx, cy - 35, { label: 'Place panel 1', curvature: 0.3 });
+  svg.motionArrow(s, cx + 60, cy + 30, cx + 30, cy + 20, { label: 'Push cord across', curvature: 0.3 });
+
+  // Hand icon
+  svg.handIcon(s, cx - 55, cy - 30, { scale: 0.6, rotation: 15 });
+
+  // Assembly steps
+  svg.rect(s, 40, 240, 420, 55, { fill: '#f5f5f5', stroke: '#ddd', strokeWidth: 1, rx: 4 });
+  svg.text(s, 250, 258, 'Assembly Steps:', { fontSize: 11, anchor: 'middle', fontWeight: 'bold', fill: '#333' });
+  svg.text(s, 250, 274, '1. Fit three shaped panels into the trefoil frame', {
     fontSize: 9, anchor: 'middle', fill: '#666',
   });
-  svg.text(s, 250, 288, '2. Each resolution produces a simple closed curve (Seifert circle)', {
-    fontSize: 9, anchor: 'middle', fill: '#666',
-  });
-  svg.text(s, 250, 302, '3. Fill each circle with a disk, connect at crossings with half-twist bands', {
+  svg.text(s, 250, 288, '2. Connect panels at crossings with twisted strips', {
     fontSize: 9, anchor: 'middle', fill: '#666',
   });
 
-  // Genus info
-  svg.text(s, 250, 340, 'Trefoil Seifert surface: genus 1 (one handle)', {
-    fontSize: 11, anchor: 'middle', fill: '#555', fontWeight: 'bold',
-  });
-  svg.text(s, 250, 354, 'genus = (crossings - Seifert circles + 1) / 2 = (3 - 2 + 1) / 2 = 1', {
-    fontSize: 9, anchor: 'middle', fill: '#888',
-  });
+  // Step badges
+  svg.stepBadge(s, 35, 310, 1, 3, { radius: 11 });
+  svg.actionLabel(s, 100, 310, 'Insert panels into frame');
+  svg.stepBadge(s, 35, 335, 2, 3, { radius: 11 });
+  svg.actionLabel(s, 100, 335, 'Push cord across surface');
+  svg.stepBadge(s, 35, 360, 3, 3, { radius: 11 });
+  svg.actionLabel(s, 100, 360, 'Pull cord free');
 
   // Key insight
-  const calloutRect = svg.rect(s, 30, 370, 440, 25, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 30, 375, 440, 25, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
   calloutRect.classList.add('callout-box');
-  svg.text(s, 250, 387, 'Key: Every knot bounds an orientable surface — Seifert\'s theorem', {
-    fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
+  svg.text(s, 250, 392, 'Fill the knot with panels and the cord can slide across them to escape!', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
 
   let styleEl = s.querySelector('style[data-anim]');

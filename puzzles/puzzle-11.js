@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createRod, createBall, createBlock } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -85,6 +87,7 @@ export function create3DScene() {
   post.position.set(0, 15, 0);
   group.add(post);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -111,7 +114,10 @@ export function createAnimScene() {
   post.position.set(0, 15, 0);
   group.add(post);
 
-  return { group, objects: { leftTrefoil, rightTrefoil } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { leftTrefoil, rightTrefoil, arrowManager } };
 }
 
 const WRONG = { left: [55, 40, 0], right: [-55, 40, 0] };
@@ -119,24 +125,41 @@ const LIFT = { left: [55, 80, 0], right: [-55, 80, 0] };
 const CROSS = { left: [-55, 80, 0], right: [55, 80, 0] };
 const CORRECT = { left: [-55, 40, 0], right: [55, 40, 0] };
 
+const arrowConfigs = {
+  1: { arrows: [
+    { from: [55, 40, 0], to: [55, 80, 0], opts: { color: 0xcc4444 } },
+    { from: [-55, 40, 0], to: [-55, 80, 0], opts: { color: 0x4444cc } },
+  ]},
+  2: { arrows: [
+    { from: [55, 80, 0], to: [-55, 80, 0], opts: { color: 0xcc4444 } },
+    { from: [-55, 80, 0], to: [55, 80, 0], opts: { color: 0x4444cc } },
+  ]},
+  3: { arrows: [
+    { from: [-55, 80, 0], to: [-55, 40, 0], opts: { color: 0xcc4444 } },
+    { from: [55, 80, 0], to: [55, 40, 0], opts: { color: 0x4444cc } },
+  ]},
+};
+
+let highlightMat = null;
+
 export const animationSteps = [
   {
-    label: 'Both trefoils appear identical — but they are mirror images',
+    label: 'Look: two shapes sit in the wrong recesses — they look the same',
     duration: 2.5,
     positions: WRONG,
   },
   {
-    label: 'Lift trefoils to examine crossing handedness',
+    label: 'Lift both shapes up to compare their spiral directions',
     duration: 2.0,
     positions: LIFT,
   },
   {
-    label: 'Swap: left-handed trefoil goes to left recess, right to right',
+    label: 'Swap them — the red one goes left, the blue one goes right',
     duration: 2.5,
     positions: CROSS,
   },
   {
-    label: 'Seat each trefoil in its matching recess — chirality identified!',
+    label: 'Set each shape into its matching recess — perfect fit!',
     duration: 2.0,
     positions: CORRECT,
   },
@@ -144,6 +167,25 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight trefoils during movement steps
+  if (stepIndex >= 1) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.leftTrefoil.material, 0xffaa44, 0.3);
+    }
+    applyHighlight(objects.leftTrefoil, highlightMat);
+    applyHighlight(objects.rightTrefoil, highlightMat);
+  } else {
+    removeHighlight(objects.leftTrefoil);
+    removeHighlight(objects.rightTrefoil);
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
 
@@ -198,11 +240,27 @@ export function createSVGDiagram(container) {
   svg.rect(s, 280, 310, 160, 30, { fill: '#dddeff', stroke: '#3333dd', strokeWidth: 1.5, rx: 3 });
   svg.text(s, 360, 330, 'Right recess', { fontSize: 10, anchor: 'middle', fill: '#3333dd' });
 
+  // Motion arrows showing the swap
+  svg.motionArrow(s, lx, ly + 30, rx, ly + 30, { label: 'Swap sides', curvature: 0.3 });
+  svg.motionArrow(s, rx, ly - 10, lx, ly - 10, { label: 'Swap sides', curvature: 0.3 });
+
+  // Hand icons near both trefoils
+  svg.handIcon(s, lx + 40, ly - 20, { scale: 0.6, rotation: 15 });
+  svg.handIcon(s, rx - 40, ly - 20, { scale: 0.6, rotation: -15 });
+
+  // Step badges
+  svg.stepBadge(s, 30, 100, 1, 3, { radius: 11 });
+  svg.actionLabel(s, 90, 100, 'Lift both shapes up');
+  svg.stepBadge(s, 30, 128, 2, 3, { radius: 11 });
+  svg.actionLabel(s, 115, 128, 'Check spiral direction');
+  svg.stepBadge(s, 30, 156, 3, 3, { radius: 11 });
+  svg.actionLabel(s, 120, 156, 'Swap and seat in recesses');
+
   // Key insight
-  const calloutRect = svg.rect(s, 30, 355, 440, 35, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 30, 355, 440, 35, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
   calloutRect.classList.add('callout-box');
-  svg.text(s, 250, 377, 'Key: Mirror images can be topologically inequivalent — chirality is an invariant', {
-    fontSize: 11, anchor: 'middle', fill: '#2a5a8a',
+  svg.text(s, 250, 377, 'These shapes are mirror images — no rotation can turn one into the other!', {
+    fontSize: 11, anchor: 'middle', fill: '#bf5f00',
   });
 
   let styleEl = s.querySelector('style[data-anim]');

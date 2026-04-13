@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createStraightRod, createRing, createBall } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -105,6 +107,7 @@ export function create3DScene() {
   });
   cord.addTo(group);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -125,24 +128,36 @@ export function createAnimScene() {
   });
   cord.addTo(group);
 
-  return { group, objects: { ring, cord } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { ring, cord, arrowManager } };
 }
+
+const arrowConfigs = {
+  1: { arrows: [
+    { from: [-PRONG_SPACING, 70, 0], to: [-PRONG_SPACING, 15, 0], opts: { color: 0xffcc44 } },
+    { from: [-10, 20, 10], to: [0, CENTER_H + 5, 8], opts: { color: 0x4488ff } },
+  ] },
+  2: { arrows: [{ from: [-PRONG_SPACING, 15, 0], to: [PRONG_SPACING, 70, 0], opts: { color: 0xffcc44 } }] },
+};
+let highlightMat = null;
 
 export const animationSteps = [
   {
-    label: 'Initial: ring on left prong, cord too short for direct transfer',
+    label: 'Look: the ring sits on the left prong, cord is too short to reach across',
     duration: 2.0,
     cord: initialCordPath(),
     ring: { position: [-PRONG_SPACING, 70, 0] },
   },
   {
-    label: 'Slide ring to base. Loop cord over the shorter center prong!',
+    label: 'Slide the ring down and loop the cord over the shorter center prong',
     duration: 3.0,
     cord: midCordPath1(),
     ring: { position: [-PRONG_SPACING, 15, 0] },
   },
   {
-    label: 'New cord geometry allows ring to transfer to right prong',
+    label: 'Now swing the ring across to the right prong — the cord reaches!',
     duration: 3.0,
     cord: solvedCordPath(),
     ring: { position: [PRONG_SPACING, 70, 0] },
@@ -151,6 +166,23 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight active ring
+  if (stepIndex >= 1) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.ring.material, 0xffcc44, 0.3);
+    }
+    applyHighlight(objects.ring, highlightMat);
+  } else {
+    removeHighlight(objects.ring);
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
 
@@ -219,10 +251,26 @@ export function createSVGDiagram(container) {
   svg.label(s, 90, lTop + 40, lx - 18, lTop + 40, 'Ring');
   svg.label(s, 420, baseY, cx + 30, baseY, 'Cord to base');
 
+  // Motion arrows showing key movements
+  svg.motionArrow(s, lx, lTop + 55, lx, baseY - 30, { label: 'Slide ring down', curvature: 0.2 });
+  svg.motionArrow(s, lx + 20, baseY - 40, cx, cTop - 10, { label: 'Loop cord over', curvature: 0.4 });
+  svg.motionArrow(s, lx + 30, baseY - 20, rx - 30, lTop + 55, { label: 'Transfer ring', curvature: 0.3 });
+
+  // Hand icon near the ring
+  svg.handIcon(s, lx + 30, lTop + 30, { scale: 0.6, rotation: -15 });
+
+  // Step badges
+  svg.stepBadge(s, lx - 55, lTop + 80, 1, 3);
+  svg.actionLabel(s, lx - 55, lTop + 93, 'Slide ring down');
+  svg.stepBadge(s, cx, cTop - 25, 2, 3);
+  svg.actionLabel(s, cx, cTop - 12, 'Loop over center');
+  svg.stepBadge(s, rx + 30, lTop + 80, 3, 3);
+  svg.actionLabel(s, rx + 30, lTop + 93, 'Move ring right');
+
   // Key insight
-  const calloutRect = svg.rect(s, 20, 360, 460, 30, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
-  svg.text(s, 250, 380, 'Key: Loop cord over the shorter center prong, then transfer ring to right', {
-    fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
+  const calloutRect = svg.rect(s, 20, 360, 460, 30, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
+  svg.text(s, 250, 380, 'Key: The short center prong lets you loop the cord over it to gain slack', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
 
   // Inject pulse animation for the callout

@@ -1,5 +1,7 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -77,13 +79,16 @@ function createBorromeanGroup(mats, separated = false) {
 export function create3DScene() {
   const mats = createMaterials();
   const { group } = createBorromeanGroup(mats, false);
+  enableShadowsOnGroup(group);
   return group;
 }
 
 export function createAnimScene() {
   const mats = createMaterials();
   const { group, ovals } = createBorromeanGroup(mats, true);
-  return { group, objects: ovals };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+  return { group, objects: { ...ovals, arrowManager } };
 }
 
 const SEP = { red: [-80, 0, 0], blue: [80, 0, 0], yellow: [0, 80, 0] };
@@ -96,27 +101,41 @@ const SEP_R = {
   yellow: [Math.PI / 2, Math.PI / 2, 0],
 };
 
+const arrowConfigs = {
+  1: { arrows: [
+    { from: [-80, 0, 0], to: [-30, 0, 0], opts: { color: 0xdd3333 } },
+    { from: [80, 0, 0], to: [30, 0, 0], opts: { color: 0x3333dd } },
+    { from: [0, 80, 0], to: [0, 30, 0], opts: { color: 0xddcc33 } },
+  ] },
+  2: { arrows: [
+    { from: [-30, 0, 0], to: [0, 0, 0], opts: { color: 0xdd3333 } },
+    { from: [30, 0, 0], to: [0, 0, 0], opts: { color: 0x3333dd } },
+    { from: [0, 30, 0], to: [0, 0, 0], opts: { color: 0xddcc33 } },
+  ] },
+};
+let highlightMat = null;
+
 export const animationSteps = [
   {
-    label: 'Three separate ovals — no two can be pairwise linked',
+    label: 'Start: hold three separate ovals — no two are linked together',
     duration: 2.0,
     positions: SEP,
     rotations: SEP_R,
   },
   {
-    label: 'Bring ovals together, crossing but not linking',
+    label: 'Slide the ovals closer, overlapping but not yet interlocked',
     duration: 2.5,
     positions: MID,
     rotations: SEP_R,
   },
   {
-    label: 'Thread all three simultaneously into Borromean configuration',
+    label: 'Weave all three ovals together at the same time',
     duration: 3.0,
     positions: LOCK,
     rotations: SEP_R,
   },
   {
-    label: 'Locked! Remove any one oval and the other two fall apart.',
+    label: 'Hold and check: remove any one oval and the others fall apart',
     duration: 2.5,
     positions: LOCK,
     rotations: SEP_R,
@@ -125,6 +144,30 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight active ovals during weaving
+  if (stepIndex >= 2) {
+    for (const name of ['red', 'blue', 'yellow']) {
+      const oval = objects[name];
+      if (!oval) continue;
+      if (!highlightMat) {
+        highlightMat = createHighlightMaterial(oval.material, 0xaaccff, 0.3);
+      }
+      applyHighlight(oval, highlightMat);
+    }
+  } else {
+    for (const name of ['red', 'blue', 'yellow']) {
+      const oval = objects[name];
+      if (oval) removeHighlight(oval);
+    }
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
 
@@ -176,9 +219,9 @@ export function createSVGDiagram(container) {
   }
 
   // Over-under indicators (arrows showing the weaving pattern)
-  svg.text(s, cx - 15, cy - 15, 'A over B', { fontSize: 8, fill: '#dd3333' });
-  svg.text(s, cx + 5, cy + 20, 'B over C', { fontSize: 8, fill: '#3333dd' });
-  svg.text(s, cx - 35, cy + 20, 'C over A', { fontSize: 8, fill: '#ccaa00' });
+  svg.text(s, cx - 18, cy - 15, 'Red over Blue', { fontSize: 7, fill: '#dd3333' });
+  svg.text(s, cx + 2, cy + 20, 'Blue over Yellow', { fontSize: 7, fill: '#3333dd' });
+  svg.text(s, cx - 45, cy + 20, 'Yellow over Red', { fontSize: 7, fill: '#ccaa00' });
 
   // Labels
   for (let i = 0; i < 3; i++) {
@@ -189,20 +232,36 @@ export function createSVGDiagram(container) {
     });
   }
 
+  // Motion arrows showing assembly direction
+  svg.motionArrow(s, positions[0][0] - 30, positions[0][1], positions[0][0], positions[0][1], { label: 'Red', curvature: 0.3 });
+  svg.motionArrow(s, positions[1][0], positions[1][1] + 30, positions[1][0], positions[1][1], { label: 'Blue', curvature: 0.3 });
+  svg.motionArrow(s, positions[2][0] + 30, positions[2][1], positions[2][0], positions[2][1], { label: 'Yellow', curvature: 0.3 });
+
+  // Hand icon near center
+  svg.handIcon(s, cx + 50, cy - 10, { scale: 0.6, rotation: 0 });
+
+  // Step badges
+  svg.stepBadge(s, cx - 80, cy - 60, 1, 3);
+  svg.actionLabel(s, cx - 80, cy - 47, 'Lay ovals flat');
+  svg.stepBadge(s, cx + 60, cy - 60, 2, 3);
+  svg.actionLabel(s, cx + 60, cy - 47, 'Overlap loosely');
+  svg.stepBadge(s, cx, cy + 65, 3, 3);
+  svg.actionLabel(s, cx, cy + 78, 'Weave all three');
+
   // Properties box
-  const calloutRect = svg.rect(s, 30, 290, 440, 75, { fill: '#f5f5f5', stroke: '#ddd', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 30, 290, 440, 75, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
   calloutRect.classList.add('callout-box');
-  svg.text(s, 250, 310, 'Borromean Properties:', {
-    fontSize: 12, anchor: 'middle', fontWeight: 'bold', fill: '#333',
+  svg.text(s, 250, 310, 'How it works:', {
+    fontSize: 12, anchor: 'middle', fontWeight: 'bold', fill: '#bf5f00',
   });
-  svg.text(s, 250, 328, 'No two rings are pairwise linked (linking number = 0 for each pair)', {
-    fontSize: 10, anchor: 'middle', fill: '#666',
+  svg.text(s, 250, 328, 'No two ovals are linked on their own — pull any pair apart easily', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
-  svg.text(s, 250, 344, 'All three together are mutually linked (Milnor invariant non-zero)', {
-    fontSize: 10, anchor: 'middle', fill: '#666',
+  svg.text(s, 250, 344, 'But all three woven together lock tight — each one traps the other two', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
-  svg.text(s, 250, 358, 'Remove any one ring and the other two separate immediately', {
-    fontSize: 10, anchor: 'middle', fill: '#666',
+  svg.text(s, 250, 358, 'Remove any one oval and the remaining two fall apart immediately', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
 
   // Inject pulse animation for the callout

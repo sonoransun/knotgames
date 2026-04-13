@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createRing } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -160,6 +162,7 @@ export function create3DScene() {
   rivet2.position.set(BAND_R + 9, 0, 0);
   group.add(rivet2);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -182,24 +185,33 @@ export function createAnimScene() {
   });
   cord.addTo(group);
 
-  return { group, objects: { ring, cord } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { ring, cord, arrowManager } };
 }
+
+const arrowConfigs = {
+  1: { arrows: [{ from: [52, -25, 0], to: [40, -40, 15], opts: { color: 0x44cc44 } }] },
+  2: { arrows: [{ from: [40, -40, 15], to: [0, -80, 0], opts: { color: 0x44cc44 } }] },
+};
+let highlightMat = null;
 
 export const animationSteps = [
   {
-    label: 'Initial: cord loop threaded around the Mobius band',
+    label: 'Look: the cord loop wraps around the twisted band',
     duration: 2.0,
     cord: initialCordPath(),
     ring: { position: [0, -60, 0] },
   },
   {
-    label: 'Slide cord along the surface, through the half-twist',
+    label: 'Slide the cord along the surface, following the half-twist',
     duration: 3.0,
     cord: midCordPath1(),
     ring: { position: [0, -65, 0] },
   },
   {
-    label: 'Cord reaches the single edge and slips free — the twist enabled escape!',
+    label: 'Pull the cord off the single edge — the twist lets it escape!',
     duration: 2.5,
     cord: solvedCordPath(),
     ring: { position: [0, -80, 0] },
@@ -208,6 +220,23 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight active cord
+  if (stepIndex >= 1) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.cord.mesh.material, 0x4488ff, 0.3);
+    }
+    applyHighlight(objects.cord.mesh, highlightMat);
+  } else {
+    removeHighlight(objects.cord.mesh);
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
 
@@ -265,14 +294,27 @@ export function createSVGDiagram(container) {
   svg.label(s, 370, 275, 268, 275, 'Ring');
   svg.label(s, 380, 200, 300, 195, 'Cord loop');
 
+  // Motion arrows showing key movements
+  svg.motionArrow(s, 230, 175, 300, 195, { label: 'Slide along surface', curvature: 0.3 });
+  svg.motionArrow(s, 250, 260, 250, 300, { label: 'Pull free', curvature: 0.2 });
+
+  // Hand icon near manipulation point
+  svg.handIcon(s, 200, 220, { scale: 0.6, rotation: 15 });
+
+  // Step badges
+  svg.stepBadge(s, 130, 200, 1, 2);
+  svg.actionLabel(s, 130, 213, 'Slide cord through twist');
+  svg.stepBadge(s, 300, 260, 2, 2);
+  svg.actionLabel(s, 300, 273, 'Pull cord off edge');
+
   // Key insight
-  const calloutRect = svg.rect(s, 20, 330, 460, 40, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 20, 330, 460, 40, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
   calloutRect.classList.add('callout-box');
-  svg.text(s, 250, 348, 'Key: Mobius band has ONE edge (not two).', {
-    fontSize: 11, anchor: 'middle', fill: '#2a5a8a', fontWeight: 'bold',
+  svg.text(s, 250, 348, 'Key: The band has only ONE edge because of the twist.', {
+    fontSize: 11, anchor: 'middle', fill: '#bf5f00', fontWeight: 'bold',
   });
-  svg.text(s, 250, 362, 'The twist enables escape — cord follows the single edge and slips off.', {
-    fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
+  svg.text(s, 250, 362, 'Slide the cord along the surface and it can slip right off.', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
 
   // Inject pulse animation for the callout

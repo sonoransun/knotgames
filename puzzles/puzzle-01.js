@@ -1,9 +1,11 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createUBar, createRing } from '../lib/components.js';
 import { CordPath, catenaryPoints } from '../lib/cord.js';
-import * as svg from '../lib/svg.js';
 import { CordPath as CordPathClass } from '../lib/cord.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
+import * as svg from '../lib/svg.js';
 
 export const metadata = {
   id: 1,
@@ -143,6 +145,7 @@ export function create3DScene() {
   knot2.position.set(...RIGHT_TIP);
   group.add(knot2);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -182,41 +185,74 @@ export function createAnimScene() {
   knot2.position.set(...RIGHT_TIP);
   group.add(knot2);
 
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
   return {
     group,
-    objects: { ring, cord },
+    objects: { ring, cord, arrowManager },
   };
 }
 
+const arrowConfigs = {
+  1: { arrows: [
+    { from: [0, 55, 5], to: [-20, 85, 3], opts: { color: 0x44cc44 } },
+  ]},
+  2: { arrows: [
+    { from: [0, 45, 0], to: [-5, 20, 3], opts: { color: 0x44cc44 } },
+  ]},
+  3: { arrows: [
+    { from: [-5, 20, 3], to: [50, 10, 30], opts: { color: 0x44cc44 } },
+  ]},
+};
+
+let ringHighlightMat = null;
+
 export const animationSteps = [
   {
-    label: 'Initial state: ring appears trapped by the cord wrap',
+    label: 'Look: the ring seems trapped by the cord around the U-bar',
     duration: 2.0,
     ring: { position: [0, RING_REST_Y, 0] },
     cord: initialCordPath(),
   },
   {
-    label: 'Push cord slack toward the left tip to create room',
+    label: 'Push the cord toward the left to make slack below the ring',
     duration: 2.0,
     ring: { position: [0, 45, 0] },
     cord: midCordPath1(),
   },
   {
-    label: 'Slide the ring downward past the wrap point',
+    label: 'Slide the ring down — it clears the cord\'s drape',
     duration: 2.5,
     ring: { position: [-5, 20, 3] },
     cord: midCordPath2(),
   },
   {
-    label: 'Ring slides free — the cord was never a closed loop!',
+    label: 'Pull the ring free! The cord was just draped, never knotted',
     duration: 2.5,
-    ring: { position: [50, 10, 30] }, // Ring falls free to the side
+    ring: { position: [50, 10, 30] },
     cord: solvedCordPath(),
   },
 ];
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight active ring during movement steps
+  if (stepIndex >= 1 && stepIndex <= 3) {
+    if (!ringHighlightMat) {
+      ringHighlightMat = createHighlightMaterial(objects.ring.material, 0xffcc44, 0.3);
+    }
+    applyHighlight(objects.ring, ringHighlightMat);
+  } else {
+    removeHighlight(objects.ring);
+  }
 
   // Get current and previous step data
   const step = animationSteps[stepIndex];
@@ -316,25 +352,39 @@ export function createSVGDiagram(container) {
   svg.label(s, 350, 45, barRight, barTop, 'Stopper knot');
   svg.label(s, 340, 160, 272, 160, 'Ring (50mm)');
   svg.label(s, 130, 280, barLeft, 280, 'U-bar');
-  svg.label(s, 340, 240, 280, 240, 'Cord wraps around');
 
   // Dimension: bar width
   svg.dimensionArrow(s, barLeft, 340, barRight, 340, '60mm');
   // Dimension: bar height
   svg.dimensionArrow(s, 170, barTop, 170, bendCenterY, '120mm');
 
+  // Motion arrows showing solution steps
+  svg.motionArrow(s, 240, 165, 220, 210, { label: 'Slide ring down', curvature: 0.4 });
+  svg.motionArrow(s, 215, 215, 165, 195, { label: 'Ring clears drape', curvature: 0.3 });
+
+  // Hand icon near the ring
+  svg.handIcon(s, 275, 148, { scale: 0.6, rotation: -20 });
+
+  // Step badges showing order
+  svg.stepBadge(s, 42, 170, 1, 3, { radius: 11 });
+  svg.actionLabel(s, 100, 170, 'Push cord left');
+  svg.stepBadge(s, 42, 205, 2, 3, { radius: 11 });
+  svg.actionLabel(s, 110, 205, 'Slide ring down');
+  svg.stepBadge(s, 42, 240, 3, 3, { radius: 11 });
+  svg.actionLabel(s, 100, 240, 'Pull ring free');
+
   // Key insight callout
   const calloutRect = svg.rect(s, 20, 355, 460, 35, {
-    fill: '#e8f0fe',
-    stroke: '#4a90d9',
+    fill: '#fff3e0',
+    stroke: '#e67e22',
     strokeWidth: 1,
     rx: 4,
   });
   calloutRect.classList.add('callout-box');
-  svg.text(s, 250, 377, 'Key: The cord is an arc (open), not a closed loop — the wrap is an illusion', {
+  svg.text(s, 250, 377, 'The cord is just draped over the bar — it never forms a closed loop!', {
     fontSize: 11,
     anchor: 'middle',
-    fill: '#2a5a8a',
+    fill: '#bf5f00',
   });
 
   // Inject pulse animation for the callout

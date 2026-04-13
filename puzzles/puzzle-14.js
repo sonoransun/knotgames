@@ -1,6 +1,8 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createRod, createRing, createBlock } from '../lib/components.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -101,6 +103,7 @@ export function create3DScene() {
   ring.position.set(0, 0, TREFOIL_SCALE * 0.5);
   group.add(ring);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -128,30 +131,43 @@ export function createAnimScene() {
   ring.position.set(0, 0, TREFOIL_SCALE * 0.5);
   group.add(ring);
 
-  return { group, objects: { grayArcs, coloredArcs, ring } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { grayArcs, coloredArcs, ring, arrowManager } };
 }
+
+const arrowConfigs = {
+  1: { arrows: [
+    { from: [0, TREFOIL_SCALE * 0.8, 0], to: [0, 0, TREFOIL_SCALE * 0.5], opts: { color: 0xdd3333 } },
+  ]},
+  3: { arrows: [
+    { from: [0, 0, TREFOIL_SCALE * 0.5], to: [TREFOIL_SCALE * 1.5, -TREFOIL_SCALE, TREFOIL_SCALE], opts: { color: 0x44cc44 } },
+  ]},
+};
+let highlightMat = null;
 
 export const animationSteps = [
   {
-    label: 'Uncolored trefoil with three arcs — ring is trapped',
+    label: 'Look: three gray arcs form a trefoil — the ring is trapped',
     duration: 2.0,
     colored: false,
     ringPos: [0, 0, TREFOIL_SCALE * 0.5],
   },
   {
-    label: 'Apply Fox 3-coloring: one color per arc, check crossing rule',
+    label: 'Paint each arc a different color: red, blue, yellow',
     duration: 2.5,
     colored: true,
     ringPos: [0, 0, TREFOIL_SCALE * 0.5],
   },
   {
-    label: 'Valid! At each crossing: all three colors are different',
+    label: 'Check each crossing — all three colors meet at every one',
     duration: 2.0,
     colored: true,
     ringPos: [0, 0, TREFOIL_SCALE * 0.5],
   },
   {
-    label: 'Coloring reveals passage — ring slides free through aligned crossing',
+    label: 'Slide the ring out through the color-aligned crossing',
     duration: 2.5,
     colored: true,
     ringPos: [TREFOIL_SCALE * 1.5, -TREFOIL_SCALE, TREFOIL_SCALE],
@@ -160,6 +176,23 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight ring during movement
+  if (stepIndex >= 1) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.ring.material, 0xffcc44, 0.3);
+    }
+    applyHighlight(objects.ring, highlightMat);
+  } else {
+    removeHighlight(objects.ring);
+  }
+
   const step = animationSteps[stepIndex];
 
   // Toggle coloring visibility
@@ -227,30 +260,32 @@ export function createSVGDiagram(container) {
   // Ring
   svg.ellipse(s, cx, cy, 15, 12, { stroke: '#cc8800', strokeWidth: 2.5, fill: 'none' });
 
-  // Fox coloring rule box
-  svg.rect(s, 50, 260, 400, 60, { fill: '#f5f5f5', stroke: '#ddd', strokeWidth: 1, rx: 4 });
-  svg.text(s, 250, 278, 'Fox 3-Coloring Rule:', { fontSize: 11, anchor: 'middle', fontWeight: 'bold', fill: '#333' });
-  svg.text(s, 250, 294, 'At each crossing: all three strands same color OR all three different', {
-    fontSize: 10, anchor: 'middle', fill: '#666',
-  });
-  svg.text(s, 250, 310, 'Trefoil: tricolorable (3 arcs, 3 colors). Unknot: NOT tricolorable.', {
+  // Motion arrow showing ring exit
+  svg.motionArrow(s, cx + 5, cy + 15, cx + 55, cy + 50, { label: 'Slide ring out', curvature: 0.3 });
+
+  // Hand icon near the ring
+  svg.handIcon(s, cx + 20, cy + 5, { scale: 0.6, rotation: 30 });
+
+  // Coloring rule box
+  svg.rect(s, 50, 260, 400, 45, { fill: '#f5f5f5', stroke: '#ddd', strokeWidth: 1, rx: 4 });
+  svg.text(s, 250, 278, '3-Color Rule:', { fontSize: 11, anchor: 'middle', fontWeight: 'bold', fill: '#333' });
+  svg.text(s, 250, 294, 'At each crossing, all three strands must be different colors', {
     fontSize: 10, anchor: 'middle', fill: '#666',
   });
 
-  // Crossing check table
-  svg.rect(s, 80, 328, 340, 35, { fill: '#fff', stroke: '#ddd', strokeWidth: 1, rx: 3 });
-  svg.text(s, 250, 343, 'Crossing 1: R,B,Y \u2713    Crossing 2: R,B,Y \u2713    Crossing 3: R,B,Y \u2713', {
-    fontSize: 9, anchor: 'middle', fill: '#339933',
-  });
-  svg.text(s, 250, 356, 'All crossings valid \u2192 tricoloring confirmed!', {
-    fontSize: 9, anchor: 'middle', fill: '#339933', fontWeight: 'bold',
-  });
+  // Step badges
+  svg.stepBadge(s, 35, 320, 1, 3, { radius: 11 });
+  svg.actionLabel(s, 95, 320, 'Paint each arc a color');
+  svg.stepBadge(s, 35, 345, 2, 3, { radius: 11 });
+  svg.actionLabel(s, 95, 345, 'Check all crossings');
+  svg.stepBadge(s, 35, 370, 3, 3, { radius: 11 });
+  svg.actionLabel(s, 95, 370, 'Slide ring through');
 
   // Key insight
-  const calloutRect = svg.rect(s, 30, 370, 440, 25, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 30, 385, 440, 25, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
   calloutRect.classList.add('callout-box');
-  svg.text(s, 250, 387, 'Key: Tricolorability is a knot invariant — it distinguishes the trefoil from the unknot', {
-    fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
+  svg.text(s, 250, 402, 'If you can 3-color it, it is a real knot — a simple visual test!', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
 
   let styleEl = s.querySelector('style[data-anim]');

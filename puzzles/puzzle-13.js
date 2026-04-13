@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createRing, createBall } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -109,6 +111,7 @@ export function create3DScene() {
   ring.position.set(TORUS_MAJOR_R + TORUS_MINOR_R + 5, 0, 0);
   group.add(ring);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -135,30 +138,43 @@ export function createAnimScene() {
   ring.position.set(TORUS_MAJOR_R + TORUS_MINOR_R + 15, 0, 0);
   group.add(ring);
 
-  return { group, objects: { cord, ring } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { cord, ring, arrowManager } };
 }
+
+const arrowConfigs = {
+  1: { arrows: [
+    { from: [TORUS_MAJOR_R + 20, 0, 20], to: [TORUS_MAJOR_R, 15, 30], opts: { color: 0x4488ff } },
+  ]},
+  2: { arrows: [
+    { from: [TORUS_MAJOR_R, 15, 30], to: [-TORUS_MAJOR_R, -10, -20], opts: { color: 0x4488ff } },
+  ]},
+};
+let highlightMat = null;
 
 export const animationSteps = [
   {
-    label: 'Unwound cord lies flat on the torus — ring slides freely',
+    label: 'Look: the cord sits flat on the torus — the ring slides freely',
     duration: 2.0,
     cord: unwoundCordPath(),
     ringPos: [TORUS_MAJOR_R + TORUS_MINOR_R + 15, 0, 0],
   },
   {
-    label: 'Begin winding: 1 loop through hole, 2 around tube (not yet a knot)',
+    label: 'Wind the cord once through the hole and twice around the tube',
     duration: 3.0,
     cord: partialWindPath(),
     ringPos: [TORUS_MAJOR_R + TORUS_MINOR_R + 10, 0, 0],
   },
   {
-    label: 'Complete (2,3) winding: 2 through hole, 3 around tube — a trefoil!',
+    label: 'Wind again: two passes through the hole, three around the tube',
     duration: 3.0,
     cord: fullWindPath(),
     ringPos: [TORUS_MAJOR_R + TORUS_MINOR_R + 5, 0, 0],
   },
   {
-    label: 'Ring is trapped! The (2,3) torus knot is genuinely knotted.',
+    label: 'The ring is trapped! The winding creates a genuine knot',
     duration: 2.5,
     cord: fullWindPath(),
     ringPos: [TORUS_MAJOR_R + TORUS_MINOR_R + 5, 0, 0],
@@ -167,6 +183,23 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight cord during winding steps
+  if (stepIndex >= 1) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.cord.mesh.material, 0x4488ff, 0.3);
+    }
+    applyHighlight(objects.cord.mesh, highlightMat);
+  } else {
+    removeHighlight(objects.cord.mesh);
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
 
@@ -215,25 +248,30 @@ export function createSVGDiagram(container) {
   }
 
   // Winding number labels
-  svg.text(s, cx, cy + 90, 'p = 2 (through hole)', { fontSize: 11, anchor: 'middle', fill: '#555' });
-  svg.text(s, cx, cy + 105, 'q = 3 (around tube)', { fontSize: 11, anchor: 'middle', fill: '#555' });
-  svg.text(s, cx, cy + 120, 'gcd(2,3) = 1 \u2192 genuine knot (trefoil)', { fontSize: 11, anchor: 'middle', fill: '#2255aa', fontWeight: 'bold' });
+  svg.text(s, cx, cy + 90, '2 passes through the hole', { fontSize: 11, anchor: 'middle', fill: '#555' });
+  svg.text(s, cx, cy + 105, '3 wraps around the tube', { fontSize: 11, anchor: 'middle', fill: '#555' });
+  svg.text(s, cx, cy + 120, 'This combination creates a true knot (trefoil)', { fontSize: 11, anchor: 'middle', fill: '#2255aa', fontWeight: 'bold' });
 
-  // Comparison table
-  svg.rect(s, 50, 305, 400, 55, { fill: '#f5f5f5', stroke: '#ddd', strokeWidth: 1, rx: 4 });
-  svg.text(s, 250, 320, 'Winding pairs and their knot types:', { fontSize: 10, anchor: 'middle', fontWeight: 'bold', fill: '#333' });
-  svg.text(s, 250, 335, '(1,q) = unknot    (2,2) = link    (2,3) = trefoil    (2,5) = Solomon\'s seal', {
-    fontSize: 9, anchor: 'middle', fill: '#666',
-  });
-  svg.text(s, 250, 350, 'Rule: (p,q) with gcd(p,q)=1 and p,q \u2265 2 produces a genuine knot', {
-    fontSize: 9, anchor: 'middle', fill: '#666',
-  });
+  // Motion arrows showing winding direction
+  svg.motionArrow(s, cx + 90, cy - 10, cx + 60, cy - 50, { label: 'Wind through', curvature: 0.3 });
+  svg.motionArrow(s, cx - 50, cy + 40, cx + 50, cy + 40, { label: 'Wrap around', curvature: 0.3 });
+
+  // Hand icon near the cord
+  svg.handIcon(s, cx + 110, cy + 10, { scale: 0.6, rotation: -25 });
+
+  // Step badges
+  svg.stepBadge(s, 35, 310, 1, 3, { radius: 11 });
+  svg.actionLabel(s, 95, 310, 'Wind cord through hole');
+  svg.stepBadge(s, 35, 335, 2, 3, { radius: 11 });
+  svg.actionLabel(s, 95, 335, 'Wrap cord around tube');
+  svg.stepBadge(s, 35, 360, 3, 3, { radius: 11 });
+  svg.actionLabel(s, 95, 360, 'Check: ring is trapped');
 
   // Key insight
-  const calloutRect = svg.rect(s, 30, 370, 440, 25, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 30, 370, 440, 25, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
   calloutRect.classList.add('callout-box');
-  svg.text(s, 250, 387, 'Key: The winding numbers determine whether the cord is knotted — numbers matter', {
-    fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
+  svg.text(s, 250, 387, 'How many times you wind through and around decides if the cord is truly knotted!', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
 
   let styleEl = s.querySelector('style[data-anim]');

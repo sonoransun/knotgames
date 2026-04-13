@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createRing, createBall } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -147,6 +149,7 @@ export function create3DScene() {
   outerRing.rotation.x = Math.PI / 2;
   group.add(outerRing);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -189,33 +192,49 @@ export function createAnimScene() {
   outerRing.rotation.x = Math.PI / 2;
   group.add(outerRing);
 
-  return { group, objects: { extCord, outerRing, innerRing } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { extCord, outerRing, innerRing, arrowManager } };
 }
+
+const arrowConfigs = {
+  1: { arrows: [
+    { from: [TORUS_MAJOR_R + 30, 20, 5], to: [TORUS_MAJOR_R + 30, 20, -5], opts: { color: 0xffcc44 } },
+  ]},
+  2: { arrows: [
+    { from: [TORUS_MAJOR_R + TORUS_MINOR_R + 5, 0, 0], to: [TORUS_MAJOR_R + 20, 5, 15], opts: { color: 0x4488ff } },
+  ]},
+  3: { arrows: [
+    { from: [TORUS_MAJOR_R + 30, 20, 0], to: [TORUS_MAJOR_R + 50, 40, 30], opts: { color: 0x44cc44 } },
+  ]},
+};
+let highlightMat = null;
 
 export const animationSteps = [
   {
-    label: 'Satellite knot: trefoil tunnel (companion) with external cord loop (pattern)',
+    label: 'Look: two rings sit on a knot-within-a-knot structure',
     duration: 2.5,
     extCord: externalCordPath(),
     outerRingPos: [TORUS_MAJOR_R + 30, 20, 0],
     innerRingPos: [-(TORUS_MAJOR_R + 5), 0, 0],
   },
   {
-    label: 'Identify the decomposition: outer ring is linked only to the pattern, not the companion',
+    label: 'The outer ring hooks only on the external cord, not the inner tunnel',
     duration: 2.5,
     extCord: externalCordPath(),
     outerRingPos: [TORUS_MAJOR_R + 30, 20, 0],
     innerRingPos: [-(TORUS_MAJOR_R + 5), 0, 0],
   },
   {
-    label: 'Reroute the external cord at the ports — change the pattern without touching the tunnel',
+    label: 'Reroute the cord at the ports to bypass the outer ring',
     duration: 3.0,
     extCord: freedExternalCord(),
     outerRingPos: [TORUS_MAJOR_R + 30, 20, 0],
     innerRingPos: [-(TORUS_MAJOR_R + 5), 0, 0],
   },
   {
-    label: 'Outer ring is free! Inner ring stays trapped by the companion knot.',
+    label: 'Pull the outer ring free! The inner ring stays locked forever',
     duration: 2.5,
     extCord: freedExternalCord(),
     outerRingPos: [TORUS_MAJOR_R + 50, 40, 30],
@@ -225,6 +244,23 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight outer ring during movement
+  if (stepIndex >= 1) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.outerRing.material, 0xffcc44, 0.3);
+    }
+    applyHighlight(objects.outerRing, highlightMat);
+  } else {
+    removeHighlight(objects.outerRing);
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
 
@@ -294,38 +330,38 @@ export function createSVGDiagram(container) {
   svg.ellipse(s, cx - 70, cy, 10, 7, { stroke: '#cc8800', strokeWidth: 2.5, fill: 'none' });
   svg.label(s, cx - 115, cy - 15, cx - 80, cy, 'Inner ring');
 
-  // Decomposition diagram
-  svg.rect(s, 30, 250, 440, 80, { fill: '#f5f5f5', stroke: '#ddd', strokeWidth: 1, rx: 4 });
-  svg.text(s, 250, 268, 'Satellite Knot = Companion + Pattern', {
+  // Motion arrows showing reroute and ring exit
+  svg.motionArrow(s, cx + 100, cy - 8, cx + 100, cy + 8, { label: 'Reroute cord', curvature: 0.4 });
+  svg.motionArrow(s, cx + 140, cy, cx + 170, cy - 20, { label: 'Pull ring free', curvature: 0.3 });
+
+  // Hand icon near the ports
+  svg.handIcon(s, cx + 120, cy + 20, { scale: 0.6, rotation: -10 });
+
+  // Explanation
+  svg.rect(s, 30, 250, 440, 60, { fill: '#f5f5f5', stroke: '#ddd', strokeWidth: 1, rx: 4 });
+  svg.text(s, 250, 268, 'Two layers — solve each one separately:', {
     fontSize: 11, anchor: 'middle', fontWeight: 'bold', fill: '#333',
   });
-  svg.text(s, 250, 285, 'Companion: trefoil knot in the torus tunnel (fixed, cannot be changed)', {
+  svg.text(s, 250, 285, 'Inner tunnel (red dashed): a fixed knot that traps the inner ring', {
     fontSize: 9, anchor: 'middle', fill: '#cc3333',
   });
-  svg.text(s, 250, 299, 'Pattern: how cord connects outside the torus (can be rerouted at ports)', {
+  svg.text(s, 250, 299, 'Outer loop (blue): can be rerouted at the ports to free the outer ring', {
     fontSize: 9, anchor: 'middle', fill: '#2255aa',
   });
-  svg.text(s, 250, 316, 'Outer ring: linked to pattern only \u2192 can be freed by rerouting', {
-    fontSize: 9, anchor: 'middle', fill: '#339933', fontWeight: 'bold',
-  });
-  svg.text(s, 250, 328, 'Inner ring: locked by companion \u2192 stays trapped forever', {
-    fontSize: 9, anchor: 'middle', fill: '#cc3333',
-  });
 
-  // JSJ theorem note
-  svg.rect(s, 60, 340, 380, 32, { fill: '#fff', stroke: '#ddd', strokeWidth: 1, rx: 3 });
-  svg.text(s, 250, 354, 'JSJ Decomposition Theorem: every 3-manifold has a unique', {
-    fontSize: 9, anchor: 'middle', fill: '#666',
-  });
-  svg.text(s, 250, 366, 'decomposition into geometric pieces along incompressible tori', {
-    fontSize: 9, anchor: 'middle', fill: '#666',
-  });
+  // Step badges
+  svg.stepBadge(s, 45, 325, 1, 3, { radius: 11 });
+  svg.actionLabel(s, 110, 325, 'Spot which ring is on which layer');
+  svg.stepBadge(s, 45, 350, 2, 3, { radius: 11 });
+  svg.actionLabel(s, 110, 350, 'Reroute cord at the two ports');
+  svg.stepBadge(s, 45, 375, 3, 3, { radius: 11 });
+  svg.actionLabel(s, 110, 375, 'Pull outer ring free');
 
   // Key insight
-  const calloutRect = svg.rect(s, 30, 385, 440, 25, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 30, 390, 440, 25, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
   calloutRect.classList.add('callout-box');
-  svg.text(s, 250, 402, 'Key: Satellite knots decompose — solve each layer independently', {
-    fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
+  svg.text(s, 250, 407, 'A knot inside a knot — solve each layer on its own to free the right ring!', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
 
   let styleEl = s.querySelector('style[data-anim]');

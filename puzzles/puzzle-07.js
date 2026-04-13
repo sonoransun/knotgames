@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createPost, createRing, createBall } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -152,6 +154,7 @@ export function create3DScene() {
   });
   cord.addTo(group);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -191,30 +194,48 @@ export function createAnimScene() {
   });
   cord.addTo(group);
 
-  return { group, objects: { ring, cord } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { ring, cord, arrowManager } };
 }
+
+const arrowConfigs = {
+  1: { arrows: [
+    { from: [0, RING_Y, 0], to: [0, 20, 0], opts: { color: 0xffcc44 } },
+    { from: [0, 180, 0], to: [20, 210, 10], opts: { color: 0x44cc44 } },
+  ]},
+  2: { arrows: [
+    { from: [0, 180, 0], to: [20, 210, 10], opts: { color: 0x44cc44 } },
+  ]},
+  3: { arrows: [
+    { from: [0, 180, 0], to: [20, 210, 10], opts: { color: 0x44cc44 } },
+  ]},
+};
+
+let highlightMat = null;
 
 export const animationSteps = [
   {
-    label: 'Initial: cord wraps 3 times around post — looks like a trefoil',
+    label: 'Look: the cord wraps three times around the post like a knot',
     duration: 2.5,
     cord: initialCordPath(),
     ring: { position: [0, RING_Y, 0] },
   },
   {
-    label: 'Slide ring down for slack. Lift outermost wrap over the ball finial',
+    label: 'Slide the ring down, then lift the top wrap over the ball finial',
     duration: 3.0,
     cord: midCordPath1(),
     ring: { position: [0, 20, 0] },
   },
   {
-    label: 'Second wrap lifted over the finial — one wrap remaining',
+    label: 'Lift the second wrap over the finial — one wrap left',
     duration: 3.0,
     cord: midCordPath2(),
     ring: { position: [0, 15, 0] },
   },
   {
-    label: 'Third wrap cleared — cord hangs free! It was an open arc, not a trefoil.',
+    label: 'Pull the last wrap over the finial — cord hangs free!',
     duration: 2.5,
     cord: solvedCordPath(),
     ring: { position: [0, RING_Y, 0] },
@@ -223,6 +244,23 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight active cord during movement steps
+  if (stepIndex >= 1) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.cord.mesh.material, 0x4488ff, 0.3);
+    }
+    applyHighlight(objects.cord.mesh, highlightMat);
+  } else {
+    removeHighlight(objects.cord.mesh);
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
 
@@ -290,13 +328,28 @@ export function createSVGDiagram(container) {
   svg.label(s, 350, 305, 272, 305, 'Ring (trapped by finial)');
   svg.label(s, 360, 320, 320, 315, 'Hook in base');
 
+  // Motion arrows showing solution
+  svg.motionArrow(s, 250, 300, 250, 270, { label: 'Slide ring down', curvature: 0.3 });
+  svg.motionArrow(s, 260, 120, 290, 55, { label: 'Lift wrap over ball', curvature: 0.4 });
+
+  // Hand icon near manipulation point
+  svg.handIcon(s, 285, 130, { scale: 0.6, rotation: -15 });
+
+  // Step badges
+  svg.stepBadge(s, 42, 130, 1, 3, { radius: 11 });
+  svg.actionLabel(s, 105, 130, 'Slide ring down');
+  svg.stepBadge(s, 42, 165, 2, 3, { radius: 11 });
+  svg.actionLabel(s, 130, 165, 'Lift each wrap over ball');
+  svg.stepBadge(s, 42, 200, 3, 3, { radius: 11 });
+  svg.actionLabel(s, 110, 200, 'Pull cord free');
+
   // Key insight
-  const calloutRect = svg.rect(s, 20, 355, 460, 35, { fill: '#fee8e8', stroke: '#d44', strokeWidth: 1, rx: 4 });
-  svg.text(s, 250, 370, 'Seems impossible! But this is an OPEN ARC, not a closed trefoil.', {
-    fontSize: 10, anchor: 'middle', fill: '#a33', fontWeight: 'bold',
+  const calloutRect = svg.rect(s, 20, 355, 460, 35, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
+  svg.text(s, 250, 370, 'The cord is an open arc, not a closed knot — each wrap lifts off!', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00', fontWeight: 'bold',
   });
-  svg.text(s, 250, 383, 'Each wrap can be lifted over the finial one at a time.', {
-    fontSize: 10, anchor: 'middle', fill: '#a33',
+  svg.text(s, 250, 383, 'Slide the ring down for slack, then lift wraps over the finial one by one.', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
 
   // Inject pulse animation for the callout

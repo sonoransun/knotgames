@@ -1,6 +1,8 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createRod, createRing, createBall, createBlock } from '../lib/components.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -93,6 +95,7 @@ export function create3DScene() {
   ring.position.set(0, 0, FIG8_SCALE * 0.3);
   group.add(ring);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -119,30 +122,46 @@ export function createAnimScene() {
   ring.position.set(0, 0, FIG8_SCALE * 0.3);
   group.add(ring);
 
-  return { group, objects: { ring, pinC: pins[2] } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { ring, pinC: pins[2], arrowManager } };
 }
+
+const arrowConfigs = {
+  1: { arrows: [
+    { from: [0, -FIG8_SCALE * 0.3, 5], to: [0, -FIG8_SCALE * 0.5, 5], opts: { color: 0x33cc33 } },
+  ]},
+  2: { arrows: [
+    { from: [0, -FIG8_SCALE * 0.5, -5], to: [0, -FIG8_SCALE * 0.5, 10], opts: { color: 0x33cc33 } },
+  ]},
+  3: { arrows: [
+    { from: [0, 0, FIG8_SCALE * 0.3], to: [FIG8_SCALE * 1.5, -FIG8_SCALE, FIG8_SCALE], opts: { color: 0x44cc44 } },
+  ]},
+};
+let highlightMat = null;
 
 export const animationSteps = [
   {
-    label: 'Figure-eight knot with 4 crossings — ring is trapped',
+    label: 'Look: the figure-eight knot has four crossing pins — ring is trapped',
     duration: 2.0,
     ringPos: [0, 0, FIG8_SCALE * 0.3],
     pinFlipped: false,
   },
   {
-    label: 'Identify crossing C (highlighted green) — the unknotting crossing',
+    label: 'Find the green pin at crossing C — this is the one to flip',
     duration: 2.0,
     ringPos: [0, 0, FIG8_SCALE * 0.3],
     pinFlipped: false,
   },
   {
-    label: 'Flip crossing C: swap over/under — figure-eight becomes the unknot!',
+    label: 'Flip pin C to swap the over-under — the knot unravels!',
     duration: 2.5,
     ringPos: [0, 0, FIG8_SCALE * 0.3],
     pinFlipped: true,
   },
   {
-    label: 'Ring slides free — unknotting number of the figure-eight is 1',
+    label: 'Slide the ring off — one flip was all it took',
     duration: 2.5,
     ringPos: [FIG8_SCALE * 1.5, -FIG8_SCALE, FIG8_SCALE],
     pinFlipped: true,
@@ -151,6 +170,23 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight ring during movement
+  if (stepIndex >= 1) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.ring.material, 0xffcc44, 0.3);
+    }
+    applyHighlight(objects.ring, highlightMat);
+  } else {
+    removeHighlight(objects.ring);
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
 
@@ -221,33 +257,36 @@ export function createSVGDiagram(container) {
   svg.ellipse(s, cx + 40, cy, 15, 12, { stroke: '#cc8800', strokeWidth: 2.5, fill: 'none' });
   svg.label(s, cx + 80, cy - 15, cx + 55, cy, 'Ring');
 
-  // Unknotting number explanation
-  svg.rect(s, 40, 240, 420, 70, { fill: '#f5f5f5', stroke: '#ddd', strokeWidth: 1, rx: 4 });
-  svg.text(s, 250, 258, 'Unknotting Number:', { fontSize: 11, anchor: 'middle', fontWeight: 'bold', fill: '#333' });
-  svg.text(s, 250, 274, 'Minimum crossing changes to convert to the unknot', {
+  // Motion arrow showing the flip and ring exit
+  svg.motionArrow(s, cx, cy + 35, cx, cy + 55, { label: 'Flip pin C', curvature: 0.2 });
+  svg.motionArrow(s, cx + 15, cy, cx + 60, cy - 20, { label: 'Ring slides out', curvature: 0.3 });
+
+  // Hand icon near pin C
+  svg.handIcon(s, cx + 25, cy + 35, { scale: 0.6, rotation: 0 });
+
+  // Explanation
+  svg.rect(s, 40, 240, 420, 50, { fill: '#f5f5f5', stroke: '#ddd', strokeWidth: 1, rx: 4 });
+  svg.text(s, 250, 258, 'How it works:', { fontSize: 11, anchor: 'middle', fontWeight: 'bold', fill: '#333' });
+  svg.text(s, 250, 274, 'Flipping one crossing pin swaps which strand goes over and under', {
     fontSize: 10, anchor: 'middle', fill: '#666',
   });
-  svg.text(s, 250, 292, 'Figure-eight knot: unknotting number = 1 (flip crossing C)', {
+  svg.text(s, 250, 288, 'Only pin C turns this knot into a simple loop — the ring can escape', {
     fontSize: 10, anchor: 'middle', fill: '#33cc33', fontWeight: 'bold',
   });
-  svg.text(s, 250, 306, 'Trefoil knot: unknotting number = 1    Unknot: unknotting number = 0', {
-    fontSize: 9, anchor: 'middle', fill: '#888',
-  });
 
-  // Trial results
-  svg.rect(s, 70, 320, 360, 40, { fill: '#fff', stroke: '#ddd', strokeWidth: 1, rx: 3 });
-  svg.text(s, 250, 335, 'Flip A \u2192 trefoil \u2717   Flip B \u2192 5_1 knot \u2717   Flip C \u2192 unknot \u2713   Flip D \u2192 trefoil \u2717', {
-    fontSize: 9, anchor: 'middle', fill: '#555',
-  });
-  svg.text(s, 250, 350, 'Only one crossing change works!', {
-    fontSize: 9, anchor: 'middle', fill: '#33cc33', fontWeight: 'bold',
-  });
+  // Step badges
+  svg.stepBadge(s, 50, 310, 1, 3, { radius: 11 });
+  svg.actionLabel(s, 115, 310, 'Find the green pin (C)');
+  svg.stepBadge(s, 50, 335, 2, 3, { radius: 11 });
+  svg.actionLabel(s, 115, 335, 'Flip pin C over');
+  svg.stepBadge(s, 50, 360, 3, 3, { radius: 11 });
+  svg.actionLabel(s, 115, 360, 'Slide ring free');
 
   // Key insight
-  const calloutRect = svg.rect(s, 30, 370, 440, 25, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 30, 375, 440, 25, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
   calloutRect.classList.add('callout-box');
-  svg.text(s, 250, 387, 'Key: Unknotting number measures a knot\'s intrinsic distance from the unknot', {
-    fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
+  svg.text(s, 250, 392, 'One crossing flip is all it takes — but only the right one works!', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
 
   let styleEl = s.querySelector('style[data-anim]');

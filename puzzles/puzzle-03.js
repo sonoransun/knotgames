@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createFrame, createRing } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -97,6 +99,7 @@ export function create3DScene() {
   });
   cord.addTo(group);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -121,24 +124,33 @@ export function createAnimScene() {
   });
   cord.addTo(group);
 
-  return { group, objects: { ring, cord } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { ring, cord, arrowManager } };
 }
+
+const arrowConfigs = {
+  1: { arrows: [{ from: [45, 115, 8], to: [55, 115, -2], opts: { color: 0x44cc44 } }] },
+  2: { arrows: [{ from: [0, 135, 8], to: [40, 25, 30], opts: { color: 0x44cc44 } }] },
+};
+let highlightMat = null;
 
 export const animationSteps = [
   {
-    label: 'Initial: cord wraps over crossbar with opposing crossings (+1 and -1)',
+    label: 'Look: the cord wraps over the crossbar with two opposite twists',
     duration: 2.0,
     cord: initialCordPath(),
     ring: { position: [0, -30, 15] },
   },
   {
-    label: 'Pull the cord bight over the right end of the crossbar',
+    label: 'Pull the cord loop over the right end of the crossbar',
     duration: 2.5,
     cord: midCordPath1(),
     ring: { position: [0, -30, 15] },
   },
   {
-    label: 'Cord unhitches from crossbar — it was never truly linked! Slide ring off.',
+    label: 'Cord slips free from the bar — now slide the ring off',
     duration: 2.5,
     cord: solvedCordPath(),
     ring: { position: [40, -50, 30] },
@@ -147,6 +159,23 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight active ring
+  if (stepIndex >= 1) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.ring.material, 0xffcc44, 0.3);
+    }
+    applyHighlight(objects.ring, highlightMat);
+  } else {
+    removeHighlight(objects.ring);
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
   const FH = FRAME_H / 2;
@@ -202,26 +231,39 @@ export function createSVGDiagram(container) {
   });
 
   // Crossing indicators
-  svg.text(s, fx + 15, crossY - 5, '+1', { fontSize: 11, fill: '#d44', fontWeight: 'bold' });
-  svg.text(s, fx + fw - 30, crossY - 5, '-1', { fontSize: 11, fill: '#44d', fontWeight: 'bold' });
+  svg.text(s, fx + 15, crossY - 5, 'twist A', { fontSize: 9, fill: '#d44', fontWeight: 'bold' });
+  svg.text(s, fx + fw - 35, crossY - 5, 'twist B', { fontSize: 9, fill: '#44d', fontWeight: 'bold' });
 
   // Labels
   svg.label(s, 100, 80, fx, fy + 30, 'Frame');
   svg.label(s, 400, crossY, fx + fw, crossY, 'Crossbar');
   svg.label(s, 370, crossY + 65, 270, crossY + 65, 'Ring');
-  svg.text(s, 250, crossY + 95, 'Linking number = (+1) + (-1) = 0', {
-    fontSize: 11, anchor: 'middle', fill: '#666', fontStyle: 'italic',
+  svg.text(s, 250, crossY + 95, 'The two twists cancel each other — the cord is not truly trapped', {
+    fontSize: 10, anchor: 'middle', fill: '#666', fontStyle: 'italic',
   });
 
   // Dimensions
   svg.dimensionArrow(s, fx, fy + fh + 20, fx + fw, fy + fh + 20, '100mm');
   svg.dimensionArrow(s, fx - 25, fy, fx - 25, fy + fh, '150mm');
 
+  // Motion arrows showing key movements
+  svg.motionArrow(s, fx + fw - 20, crossY - 20, fx + fw + 15, crossY - 10, { label: 'Pull over end', curvature: 0.3 });
+  svg.motionArrow(s, 270, crossY + 65, 320, crossY + 80, { label: 'Slide ring off', curvature: 0.3 });
+
+  // Hand icon near manipulation point
+  svg.handIcon(s, fx + fw + 20, crossY + 10, { scale: 0.6, rotation: -20 });
+
+  // Step badges
+  svg.stepBadge(s, fx + fw + 25, crossY - 30, 1, 2);
+  svg.actionLabel(s, fx + fw + 25, crossY - 17, 'Pull cord over bar end');
+  svg.stepBadge(s, 320, crossY + 90, 2, 2);
+  svg.actionLabel(s, 320, crossY + 103, 'Slide ring off');
+
   // Key insight
-  const calloutRect = svg.rect(s, 30, 355, 440, 35, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 30, 355, 440, 35, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
   calloutRect.classList.add('callout-box');
-  svg.text(s, 250, 377, 'Key: Opposite crossings cancel. Pull cord over crossbar end to unhitch.', {
-    fontSize: 11, anchor: 'middle', fill: '#2a5a8a',
+  svg.text(s, 250, 377, 'Key: The two twists cancel out — pull the cord over one end to unhitch it', {
+    fontSize: 11, anchor: 'middle', fill: '#bf5f00',
   });
 
   // Inject pulse animation for the callout

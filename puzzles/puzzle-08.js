@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createStraightRod } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -107,6 +109,7 @@ export function create3DScene() {
     cord.addTo(group);
   }
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -130,7 +133,10 @@ export function createAnimScene() {
     cords.push(cord);
   }
 
-  return { group, objects: { cords } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { cords, arrowManager } };
 }
 
 // Generate first 8 moves of the Gray code sequence for animation
@@ -152,17 +158,46 @@ function generateFirstMoves() {
 
 const states = generateFirstMoves();
 
+// Post x positions for arrow targets (loop index 0..5)
+const _postX = (i) => (i - (NUM_LOOPS - 1) / 2) * POST_SPACING;
+
+const arrowConfigs = {
+  1: { arrows: [
+    { from: [_postX(5), 15, BASE_D / 2 - 5], to: [_postX(5), -10, 18], opts: { color: 0x44cc44 } },
+  ]},
+  2: { arrows: [
+    { from: [_postX(4), 15, BASE_D / 2 - 5], to: [_postX(4), -10, 18], opts: { color: 0x44cc44 } },
+  ]},
+  3: { arrows: [
+    { from: [_postX(5), -10, 18], to: [_postX(5), 15, BASE_D / 2 - 5], opts: { color: 0xcc4444 } },
+  ]},
+  4: { arrows: [
+    { from: [_postX(3), 15, BASE_D / 2 - 5], to: [_postX(3), -10, 18], opts: { color: 0x44cc44 } },
+  ]},
+  5: { arrows: [
+    { from: [_postX(5), 15, BASE_D / 2 - 5], to: [_postX(5), -10, 18], opts: { color: 0x44cc44 } },
+  ]},
+  6: { arrows: [
+    { from: [_postX(2), 15, BASE_D / 2 - 5], to: [_postX(2), -10, 18], opts: { color: 0x44cc44 } },
+  ]},
+  7: { arrows: [
+    { from: [_postX(5), -10, 18], to: [_postX(5), 15, BASE_D / 2 - 5], opts: { color: 0xcc4444 } },
+  ]},
+};
+
+let highlightMat = null;
+
 export const animationSteps = states.map((state, i) => {
   const labels = [
-    'Initial: all 6 loops on the shuttle bar',
-    'Move 1: Remove loop 6 (rightmost)',
-    'Move 2: Remove loop 5',
-    'Move 3: Replace loop 6 (must go backward!)',
-    'Move 4: Remove loop 4',
-    'Move 5: Remove loop 6 again',
-    'Move 6: Remove loop 3',
-    'Move 7: Replace loop 6 (recursive pattern continues...)',
-    '...42 moves later: all loops removed! Shuttle bar is free.',
+    'Look: six loops sit on the shuttle bar, each linked to its neighbor',
+    'Slide the rightmost loop (#6) off the bar',
+    'Slide loop #5 off the bar',
+    'Put loop #6 back on the bar — you must go backward!',
+    'Slide loop #4 off the bar',
+    'Slide loop #6 off the bar again',
+    'Slide loop #3 off the bar',
+    'Put loop #6 back on — the pattern keeps repeating',
+    'After 42 moves in this sequence, every loop is off. Bar is free!',
   ];
   return {
     label: labels[i] || `State ${i}`,
@@ -171,8 +206,37 @@ export const animationSteps = states.map((state, i) => {
   };
 });
 
+// Map step index to which cord index is active
+const _activeLoop = { 1: 5, 2: 4, 3: 5, 4: 3, 5: 5, 6: 2, 7: 5 };
+
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight the active loop cord
+  const activeIdx = _activeLoop[stepIndex];
+  if (activeIdx !== undefined && objects.cords[activeIdx]) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.cords[activeIdx].mesh.material, 0x4488ff, 0.3);
+    }
+    for (let i = 0; i < NUM_LOOPS; i++) {
+      if (i === activeIdx) {
+        applyHighlight(objects.cords[i].mesh, highlightMat);
+      } else {
+        removeHighlight(objects.cords[i].mesh);
+      }
+    }
+  } else {
+    for (let i = 0; i < NUM_LOOPS; i++) {
+      removeHighlight(objects.cords[i].mesh);
+    }
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
 
@@ -247,10 +311,25 @@ export function createSVGDiagram(container) {
     svg.text(s, 180, 275 + i * 14, row[1], { fontSize: 9, fill: '#333', fontFamily: 'monospace' });
   });
 
+  // Motion arrows showing removal direction
+  svg.motionArrow(s, 390, 120, 390, 155, { label: 'Remove #6', curvature: 0.3 });
+  svg.motionArrow(s, 334, 120, 334, 155, { label: 'Then #5', curvature: 0.3 });
+
+  // Hand icon near rightmost loop
+  svg.handIcon(s, 405, 110, { scale: 0.6, rotation: 0 });
+
+  // Step badges
+  svg.stepBadge(s, 435, 85, 1, 3, { radius: 11 });
+  svg.actionLabel(s, 455, 85, 'Remove #6');
+  svg.stepBadge(s, 435, 108, 2, 3, { radius: 11 });
+  svg.actionLabel(s, 455, 108, 'Remove #5');
+  svg.stepBadge(s, 435, 131, 3, 3, { radius: 11 });
+  svg.actionLabel(s, 455, 131, 'Replace #6!');
+
   // Key insight
-  const calloutRect = svg.rect(s, 50, 340, 400, 30, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
-  svg.text(s, 250, 360, 'Key: Removal order follows a binary Gray code — no shortcuts exist', {
-    fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
+  const calloutRect = svg.rect(s, 50, 340, 400, 30, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
+  svg.text(s, 250, 360, 'You must remove and replace loops in a strict order — no shortcuts!', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
 
   // Inject pulse animation for the callout

@@ -163,7 +163,7 @@ describe('SVG helpers', () => {
       const svg = createSVG(container);
       const el = crossingGap(svg, 50, 50, Math.PI / 4);
       expect(el.tagName).toBe('line');
-      expect(el.getAttribute('stroke')).toBe('#fafafa');
+      expect(el.getAttribute('stroke')).toBe('#fdf8f0');
       expect(el.getAttribute('stroke-linecap')).toBe('round');
     });
   });

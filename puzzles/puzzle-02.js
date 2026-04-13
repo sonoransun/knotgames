@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createRing, createBall } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -144,6 +146,7 @@ export function create3DScene() {
   });
   cord.addTo(group);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -161,27 +164,37 @@ export function createAnimScene() {
   });
   cord.addTo(group);
 
-  return { group, objects: { cord } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { cord, arrowManager } };
 }
+
+const arrowConfigs = {
+  1: { arrows: [{ from: [5, 2, 0], to: [10, 15, -8], opts: { color: 0x44cc44 } }] },
+  2: { arrows: [{ from: [10, 15, -8], to: [45, 0, 0], opts: { color: 0x44cc44 } }] },
+  3: { arrows: [{ from: [45, 0, 0], to: [0, -60, 8], opts: { color: 0x44cc44 } }] },
+};
+let highlightMat = null;
 
 export const animationSteps = [
   {
-    label: 'Initial state: cord loop threaded through the paddle hole',
+    label: 'Look: the cord loop threads through the paddle hole on both sides',
     duration: 2.0,
     cord: initialCordPath(),
   },
   {
-    label: 'Push a bight of cord back through the hole',
+    label: 'Push a loop of cord back through the hole from front to back',
     duration: 2.5,
     cord: midCordPath1(),
   },
   {
-    label: 'Stretch the bight over the short edge of the paddle',
+    label: 'Stretch that loop over the short edge of the paddle',
     duration: 2.5,
     cord: midCordPath2(),
   },
   {
-    label: 'Pull through — the loop is free! The paddle went through the loop.',
+    label: 'Pull the cord free — the paddle passed through the loop!',
     duration: 2.5,
     cord: solvedCordPath(),
   },
@@ -189,6 +202,23 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight active cord
+  if (stepIndex >= 1) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.cord.mesh.material, 0x4488ff, 0.3);
+    }
+    applyHighlight(objects.cord.mesh, highlightMat);
+  } else {
+    removeHighlight(objects.cord.mesh);
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
 
@@ -277,11 +307,26 @@ export function createSVGDiagram(container) {
   svg.line(s, 95, 295, 95, 300, { stroke: '#2255aa', strokeWidth: 2 });
   svg.path(s, 'M 85 300 Q 95 310 105 300', { stroke: '#2255aa', strokeWidth: 2, fill: 'none' });
 
+  // Motion arrows showing key movements
+  svg.motionArrow(s, holeX, holeY + 5, holeX, holeY - 20, { label: 'Push through', curvature: 0.3 });
+  svg.motionArrow(s, holeX + 10, holeY - 20, px + pw + 10, holeY - 10, { label: 'Stretch over edge', curvature: 0.3 });
+
+  // Hand icon near manipulation point
+  svg.handIcon(s, holeX + 35, holeY + 30, { scale: 0.6, rotation: -30 });
+
+  // Step badges
+  svg.stepBadge(s, holeX - 40, holeY - 15, 1, 3);
+  svg.actionLabel(s, holeX - 40, holeY - 2, 'Push loop through hole');
+  svg.stepBadge(s, px + pw + 15, holeY - 30, 2, 3);
+  svg.actionLabel(s, px + pw + 15, holeY - 17, 'Stretch over edge');
+  svg.stepBadge(s, holeX, py + ph + 10, 3, 3);
+  svg.actionLabel(s, holeX, py + ph + 23, 'Pull free');
+
   // Key insight
-  const calloutRect = svg.rect(s, 20, 340, 460, 30, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 20, 340, 460, 30, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
   calloutRect.classList.add('callout-box');
-  svg.text(s, 250, 360, 'Key: The paddle (80mm edge) fits through the loop (100mm half-circumference)', {
-    fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
+  svg.text(s, 250, 360, 'Key: The short edge of the paddle can fit through the cord loop', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
 
   // Inject pulse animation for the callout

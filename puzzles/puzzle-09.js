@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createRing, createBall } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -163,6 +165,7 @@ export function create3DScene() {
   });
   cord.addTo(group);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -195,26 +198,42 @@ export function createAnimScene() {
   });
   cord.addTo(group);
 
-  return { group, objects: { ring1, ring2, cord } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { ring1, ring2, cord, arrowManager } };
 }
+
+const arrowConfigs = {
+  1: { arrows: [
+    { from: [0, 35, -BLOCK_D / 2 - 5], to: [0, 35, BLOCK_D / 2 + 5], opts: { color: 0x4488ff } },
+    { from: [-BLOCK_W / 2 - 5, 25, 0], to: [BLOCK_W / 2 + 5, 25, 0], opts: { color: 0x4488ff } },
+  ]},
+  2: { arrows: [
+    { from: [50, 10, -BLOCK_D / 2 - 8], to: [50, 10, -BLOCK_D / 2 - 30], opts: { color: 0xffcc44 } },
+    { from: [-BLOCK_W / 2 - 12, 10, BLOCK_D / 2 + 5], to: [-BLOCK_W / 2 - 30, 10, BLOCK_D / 2 + 25], opts: { color: 0xffcc44 } },
+  ]},
+};
+
+let highlightMat = null;
 
 export const animationSteps = [
   {
-    label: 'Initial: cord path encodes word aba\u207B\u00B9 — rings are trapped',
+    label: 'Look: the cord winds through both tunnels, trapping two rings',
     duration: 3.0,
     cord: cordPathInitial(),
     ring1: { position: [25, 35, -BLOCK_D / 2 - 8] },
     ring2: { position: [-BLOCK_W / 2 - 12, 30, BLOCK_D / 2 + 5] },
   },
   {
-    label: 'Pull bight through Tunnel B and reroute through Tunnel A',
+    label: 'Pull a loop of cord back through the front tunnel to undo the path',
     duration: 3.5,
     cord: cordPathMid(),
     ring1: { position: [25, 35, -BLOCK_D / 2 - 8] },
     ring2: { position: [-BLOCK_W / 2 - 12, 30, BLOCK_D / 2 + 5] },
   },
   {
-    label: 'Word becomes aa\u207B\u00B9 = identity. Rings slide free!',
+    label: 'The cord now runs straight through — slide both rings off!',
     duration: 3.0,
     cord: cordPathSolved(),
     ring1: { position: [50, 10, -BLOCK_D / 2 - 30] },
@@ -224,6 +243,23 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight active cord during rerouting
+  if (stepIndex >= 1) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.cord.mesh.material, 0x4488ff, 0.3);
+    }
+    applyHighlight(objects.cord.mesh, highlightMat);
+  } else {
+    removeHighlight(objects.cord.mesh);
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
 
@@ -311,19 +347,32 @@ export function createSVGDiagram(container) {
   svg.ellipse(s, bx + bw + 15, taY - 25, 10, 8, { stroke: '#cc8800', strokeWidth: 2.5, fill: 'none' });
   svg.ellipse(s, bx - 15, tbY + 20, 10, 8, { stroke: '#cc8800', strokeWidth: 2.5, fill: 'none' });
 
+  // Motion arrows showing solution
+  svg.motionArrow(s, bx + bw + 10, taY, bx + bw - 20, tbY, { label: 'Pull cord loop back', curvature: 0.4 });
+  svg.motionArrow(s, bx - 15, tbY + 28, bx - 30, tbY + 50, { label: 'Ring slides off', curvature: 0.3 });
+
+  // Hand icon near tunnel entrance
+  svg.handIcon(s, bx + bw + 25, taY - 15, { scale: 0.6, rotation: -30 });
+
+  // Step badges
+  svg.stepBadge(s, 30, 250, 1, 2, { radius: 11 });
+  svg.actionLabel(s, 90, 250, 'Pull cord back through tunnel');
+  svg.stepBadge(s, 30, 280, 2, 2, { radius: 11 });
+  svg.actionLabel(s, 90, 280, 'Slide both rings off');
+
   // Word annotation
   svg.rect(s, 50, 250, 400, 50, { fill: '#f5f5f5', stroke: '#ddd', strokeWidth: 1, rx: 4 });
-  svg.text(s, 250, 270, 'Cord path = word aba\u207B\u00B9 in fundamental group F(a,b)', {
+  svg.text(s, 250, 270, 'The cord goes through tunnel A, around to tunnel B, then back through A', {
     fontSize: 11, anchor: 'middle', fontWeight: 'bold', fill: '#333',
   });
-  svg.text(s, 250, 288, 'Solution: reroute to cancel b, giving aa\u207B\u00B9 = identity', {
+  svg.text(s, 250, 288, 'Pull a loop back through the front tunnel to straighten the path', {
     fontSize: 10, anchor: 'middle', fill: '#666',
   });
 
   // Key insight
-  const calloutRect = svg.rect(s, 50, 315, 400, 30, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
-  svg.text(s, 250, 335, 'Key: Two non-intersecting tunnels create genus-2 topology', {
-    fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
+  const calloutRect = svg.rect(s, 50, 315, 400, 30, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
+  svg.text(s, 250, 335, 'Two crossing tunnels make the cord look trapped, but it can be rerouted!', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
 
   // Inject pulse animation for the callout

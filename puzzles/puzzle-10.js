@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createRing, createBall } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -104,6 +106,7 @@ export function create3DScene() {
   handle.position.set(HOOP_R, -HOOP_R - 20, 0);
   group.add(handle);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -135,34 +138,54 @@ export function createAnimScene() {
   handle.position.set(HOOP_R, -HOOP_R - 20, 0);
   group.add(handle);
 
-  return { group, objects: { ring, cord } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { ring, cord, arrowManager } };
 }
 
 const ringStates = [RING_INIT, RING_STEP1, RING_STEP2, RING_STEP3, RING_FINAL];
 
+const arrowConfigs = {
+  1: { arrows: [
+    { from: RING_INIT.pos, to: RING_STEP1.pos, opts: { color: 0xffcc44 } },
+  ]},
+  2: { arrows: [
+    { from: RING_STEP1.pos, to: RING_STEP2.pos, opts: { color: 0xffcc44 } },
+  ]},
+  3: { arrows: [
+    { from: RING_STEP2.pos, to: RING_STEP3.pos, opts: { color: 0x44cc44 } },
+  ]},
+  4: { arrows: [
+    { from: RING_STEP3.pos, to: RING_FINAL.pos, opts: { color: 0x44cc44 } },
+  ]},
+};
+
+let highlightMat = null;
+
 export const animationSteps = [
   {
-    label: 'Initial: ring inside cage, sitting on equatorial hoop',
+    label: 'Look: the ring sits inside a cage made of two crossed hoops',
     duration: 2.0,
     ringState: RING_INIT,
   },
   {
-    label: 'Step 1: Rotate ring 90\u00B0 to disengage from equatorial hoop',
+    label: 'Rotate the ring to lift it off the horizontal hoop',
     duration: 2.5,
     ringState: RING_STEP1,
   },
   {
-    label: 'Step 2: Slide ring toward the north pole junction',
+    label: 'Slide the ring upward toward the top where the hoops meet',
     duration: 2.5,
     ringState: RING_STEP2,
   },
   {
-    label: 'Step 3: THE HOPF MOVE — corkscrew through the pole junction!',
+    label: 'Corkscrew the ring through the junction — twist and push at once!',
     duration: 4.0,
     ringState: RING_STEP3,
   },
   {
-    label: 'Step 4: Ring exits through window — extraction complete!',
+    label: 'Pull the ring out through the gap — it is free!',
     duration: 2.5,
     ringState: RING_FINAL,
   },
@@ -170,6 +193,23 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight ring during movement steps
+  if (stepIndex >= 1) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.ring.material, 0xffcc44, 0.3);
+    }
+    applyHighlight(objects.ring, highlightMat);
+  } else {
+    removeHighlight(objects.ring);
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
 
@@ -245,16 +285,33 @@ export function createSVGDiagram(container) {
   svg.rect(s, cx + 45, cy + R + 28, 30, 10, { fill: '#8b6914', stroke: '#6b4f12', strokeWidth: 1 });
   svg.text(s, cx + 60, cy + R + 48, 'Handle', { fontSize: 9, fill: '#666', anchor: 'middle' });
 
+  // Motion arrows showing solution path
+  svg.motionArrow(s, cx + 30, cy, cx + 10, cy - R + 20, { label: 'Slide ring up', curvature: 0.3 });
+  svg.motionArrow(s, cx + 5, cy - R + 15, cx - 30, cy - R * 0.3, { label: 'Twist through junction', curvature: 0.5 });
+
+  // Hand icon near ring
+  svg.handIcon(s, cx + 55, cy - 10, { scale: 0.6, rotation: -25 });
+
+  // Step badges
+  svg.stepBadge(s, 30, 100, 1, 4, { radius: 11 });
+  svg.actionLabel(s, 90, 100, 'Rotate ring off hoop');
+  svg.stepBadge(s, 30, 128, 2, 4, { radius: 11 });
+  svg.actionLabel(s, 90, 128, 'Slide ring to top');
+  svg.stepBadge(s, 30, 156, 3, 4, { radius: 11 });
+  svg.actionLabel(s, 115, 156, 'Corkscrew through junction');
+  svg.stepBadge(s, 30, 184, 4, 4, { radius: 11 });
+  svg.actionLabel(s, 90, 184, 'Pull ring free');
+
   // Hopf move diagram
-  const calloutRect = svg.rect(s, 30, 320, 440, 60, { fill: '#f5f0ff', stroke: '#9c27b0', strokeWidth: 1, rx: 4 });
-  svg.text(s, 250, 338, 'The Hopf Move (at the pole junction):', {
-    fontSize: 11, anchor: 'middle', fontWeight: 'bold', fill: '#6a1b9a',
+  const calloutRect = svg.rect(s, 30, 320, 440, 60, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
+  svg.text(s, 250, 338, 'The key move at the top junction:', {
+    fontSize: 11, anchor: 'middle', fontWeight: 'bold', fill: '#bf5f00',
   });
-  svg.text(s, 250, 355, 'Simultaneously rotate around one axis while advancing along the other', {
-    fontSize: 10, anchor: 'middle', fill: '#7b1fa2',
+  svg.text(s, 250, 355, 'Twist the ring while pushing it forward — both motions at once!', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
-  svg.text(s, 250, 370, 'Cannot be decomposed into sequential single-axis moves!', {
-    fontSize: 10, anchor: 'middle', fill: '#7b1fa2', fontStyle: 'italic',
+  svg.text(s, 250, 370, 'You cannot do these motions one at a time — they must happen together.', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00', fontStyle: 'italic',
   });
 
   // Inject pulse animation for the callout

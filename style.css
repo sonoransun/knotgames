@@ -231,7 +231,7 @@ html, body {
   height: 400px;
   border-radius: 4px;
   overflow: hidden;
-  background: #f0f0f0;
+  background: #f5f0e8;
 }
 
 #three-canvas {
@@ -247,7 +247,7 @@ html, body {
   height: 400px;
   border-radius: 4px;
   overflow: hidden;
-  background: #f0f0f0;
+  background: #f5f0e8;
 }
 
 #anim-canvas {
@@ -261,7 +261,7 @@ html, body {
   bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0,0,0,0.7);
+  background: rgba(30,20,10,0.85);
   color: white;
   padding: 6px 16px;
   border-radius: 20px;

@@ -1,7 +1,9 @@
 import * as THREE from 'three';
-import { createMaterials } from '../lib/materials.js';
+import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
 import { createRing, createBall, createBlock } from '../lib/components.js';
 import { CordPath, catenaryPoints } from '../lib/cord.js';
+import { enableShadowsOnGroup } from '../lib/scene.js';
+import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -66,7 +68,7 @@ export function create3DScene() {
   const yellowRing = ringOnPost(POST_SPACING, 25, mats.yellow);
   group.add(redRing, blueRing, yellowRing);
 
-  // Cords connecting adjacent pairs
+  // Cords connecting adjacent pairs (in create3DScene)
   const cord1 = new CordPath(
     catenaryPoints([-POST_SPACING, 5, 0], [0, 5, 0], 10),
     { radius: 2, material: mats.cord }
@@ -79,6 +81,7 @@ export function create3DScene() {
   );
   cord2.addTo(group);
 
+  enableShadowsOnGroup(group);
   return group;
 }
 
@@ -110,7 +113,10 @@ export function createAnimScene() {
   );
   cord2.addTo(group);
 
-  return { group, objects: { ring1, ring2, ring3, cord1, cord2 } };
+  enableShadowsOnGroup(group);
+  const arrowManager = new StepArrowManager(group);
+
+  return { group, objects: { ring1, ring2, ring3, cord1, cord2, arrowManager } };
 }
 
 // Braid animation: sigma1 * sigma2 * sigma1 (Yang-Baxter)
@@ -119,29 +125,45 @@ const P1 = -POST_SPACING, P2 = 0, P3 = POST_SPACING;
 const RY = 25;
 const LIFT_Y = POST_HEIGHT + 20;
 
+const arrowConfigs = {
+  1: { arrows: [
+    { from: [P1, LIFT_Y, 0], to: [P2, RY, 0], opts: { color: 0x3333dd } },
+    { from: [P2, LIFT_Y, 0], to: [P1, RY, 0], opts: { color: 0xddcc33 } },
+  ]},
+  2: { arrows: [
+    { from: [P2, LIFT_Y, 0], to: [P3, RY, 0], opts: { color: 0x3333dd } },
+    { from: [P3, LIFT_Y, 0], to: [P2, RY, 0], opts: { color: 0xdd3333 } },
+  ]},
+  3: { arrows: [
+    { from: [P1, LIFT_Y, 0], to: [P2, RY, 0], opts: { color: 0xddcc33 } },
+    { from: [P2, LIFT_Y, 0], to: [P1, RY, 0], opts: { color: 0xdd3333 } },
+  ]},
+};
+let highlightMat = null;
+
 export const animationSteps = [
   {
-    label: 'Initial: rings are scrambled (Blue, Yellow, Red)',
+    label: 'Look: three rings sit scrambled — Blue, Yellow, Red',
     duration: 2.0,
     ringPos: { ring1: [P1, RY, 0], ring2: [P2, RY, 0], ring3: [P3, RY, 0] },
   },
   {
-    label: 'Step 1 (sigma_1): Swap posts 1-2 — lift Blue over Yellow',
+    label: 'Lift Blue over Yellow and swap them on posts 1 and 2',
     duration: 2.5,
     ringPos: { ring1: [P2, RY, 0], ring2: [P1, RY, 0], ring3: [P3, RY, 0] },
   },
   {
-    label: 'Step 2 (sigma_2): Swap posts 2-3 — lift Blue over Red',
+    label: 'Lift Blue over Red and swap them on posts 2 and 3',
     duration: 2.5,
     ringPos: { ring1: [P3, RY, 0], ring2: [P1, RY, 0], ring3: [P2, RY, 0] },
   },
   {
-    label: 'Step 3 (sigma_1): Swap posts 1-2 — lift Yellow over Red',
+    label: 'Lift Yellow over Red and swap them on posts 1 and 2',
     duration: 2.5,
     ringPos: { ring1: [P3, RY, 0], ring2: [P2, RY, 0], ring3: [P1, RY, 0] },
   },
   {
-    label: 'Solved! Red-Blue-Yellow. The Yang-Baxter braid relation keeps cords untangled.',
+    label: 'Solved! All rings in order and the cords stay untangled',
     duration: 2.0,
     ringPos: { ring1: [P3, RY, 0], ring2: [P2, RY, 0], ring3: [P1, RY, 0] },
   },
@@ -149,6 +171,27 @@ export const animationSteps = [
 
 export function updateAnimation(objects, state) {
   const { stepIndex, stepProgress } = state;
+
+  // Direction arrows
+  if (objects.arrowManager) {
+    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
+    objects.arrowManager.updateOpacity(stepProgress);
+  }
+
+  // Highlight active rings during movement steps
+  if (stepIndex >= 1 && stepIndex <= 3) {
+    if (!highlightMat) {
+      highlightMat = createHighlightMaterial(objects.ring1.material, 0xffcc44, 0.3);
+    }
+    applyHighlight(objects.ring1, highlightMat);
+    applyHighlight(objects.ring2, highlightMat);
+    applyHighlight(objects.ring3, highlightMat);
+  } else {
+    removeHighlight(objects.ring1);
+    removeHighlight(objects.ring2);
+    removeHighlight(objects.ring3);
+  }
+
   const step = animationSteps[stepIndex];
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
 
@@ -202,13 +245,12 @@ export function createSVGDiagram(container) {
   svg.rect(s, 95, postBot, 310, 15, { fill: '#c4956a', stroke: '#8b6914', strokeWidth: 1.5, rx: 3 });
 
   // Braid diagram below
-  svg.text(s, 250, 260, 'Yang-Baxter Relation:', {
+  svg.text(s, 250, 260, 'Braid Swap Rule:', {
     fontSize: 12, anchor: 'middle', fontWeight: 'bold', fill: '#333',
   });
 
-  // sigma_1 sigma_2 sigma_1 = sigma_2 sigma_1 sigma_2
-  svg.text(s, 250, 280, '\u03C3\u2081\u03C3\u2082\u03C3\u2081 = \u03C3\u2082\u03C3\u2081\u03C3\u2082', {
-    fontSize: 14, anchor: 'middle', fill: '#555', fontFamily: 'serif',
+  svg.text(s, 250, 280, 'Swap 1-2, then 2-3, then 1-2 again keeps cords clean', {
+    fontSize: 11, anchor: 'middle', fill: '#555',
   });
 
   // Visual braid strands
@@ -229,11 +271,27 @@ export function createSVGDiagram(container) {
     stroke: colors[2], strokeWidth: 2.5, fill: 'none',
   });
 
+  // Motion arrows showing swap directions
+  svg.motionArrow(s, postX[0], postBot - 50, postX[1], postBot - 50, { label: 'Swap 1', curvature: 0.4 });
+  svg.motionArrow(s, postX[1], postBot - 60, postX[2], postBot - 60, { label: 'Swap 2', curvature: 0.4 });
+  svg.motionArrow(s, postX[0], postBot - 70, postX[1], postBot - 70, { label: 'Swap 3', curvature: 0.4 });
+
+  // Hand icon near the rings
+  svg.handIcon(s, postX[1] + 30, postBot - 45, { scale: 0.6, rotation: -15 });
+
+  // Step badges
+  svg.stepBadge(s, 35, 270, 1, 3, { radius: 11 });
+  svg.actionLabel(s, 90, 270, 'Swap posts 1-2');
+  svg.stepBadge(s, 35, 295, 2, 3, { radius: 11 });
+  svg.actionLabel(s, 90, 295, 'Swap posts 2-3');
+  svg.stepBadge(s, 35, 320, 3, 3, { radius: 11 });
+  svg.actionLabel(s, 90, 320, 'Swap posts 1-2');
+
   // Key insight
-  const calloutRect = svg.rect(s, 30, 370, 440, 25, { fill: '#e8f0fe', stroke: '#4a90d9', strokeWidth: 1, rx: 4 });
+  const calloutRect = svg.rect(s, 30, 370, 440, 25, { fill: '#fff3e0', stroke: '#e67e22', strokeWidth: 1, rx: 4 });
   calloutRect.classList.add('callout-box');
-  svg.text(s, 250, 387, 'Key: The order of swaps matters — only braid-relation sequences keep cords untangled', {
-    fontSize: 10, anchor: 'middle', fill: '#2a5a8a',
+  svg.text(s, 250, 387, 'The order of swaps matters — only this sequence keeps the cords untangled!', {
+    fontSize: 10, anchor: 'middle', fill: '#bf5f00',
   });
 
   let styleEl = s.querySelector('style[data-anim]');
