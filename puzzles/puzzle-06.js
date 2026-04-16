@@ -7,7 +7,7 @@ import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
-  id: 6,
+  id: 7,
   name: "Devil's Pitchfork",
   difficulty: 'Intermediate-Advanced',
   principle: 'Fundamental group of configuration space',

@@ -1,4 +1,4 @@
-# Puzzle 5: Trinity Lock
+# Puzzle 6: Trinity Lock
 
 **Difficulty:** Intermediate
 **Type:** Assembly
@@ -89,6 +89,12 @@ Repeat the test for each oval: remove Blue (Red and Yellow should separate) and 
 ### Borromean Configuration — Three Views
 
 ![Three orthogonal views of the Borromean configuration showing over/under crossings](../diagrams/puzzles/05-trinity-lock/three-views.svg)
+
+### The cyclic over/under pattern in 3D
+
+The orthogonal views above show what each strand does at each crossing, but the *cyclic* nature of the pattern is easier to see in perspective:
+
+![Isometric view of the three Borromean rings showing the cyclic over/under cycle](../diagrams/puzzles/05-trinity-lock/borromean-perspective.svg)
 
 ## Why It's Tricky
 

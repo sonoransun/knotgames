@@ -7,7 +7,7 @@ import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
-  id: 12,
+  id: 13,
   name: 'The Braid Cage',
   difficulty: 'Intermediate-Advanced',
   principle: 'Braid groups (Yang-Baxter relation)',
@@ -46,6 +46,19 @@ function createBase(mats) {
 
 function ringOnPost(postX, ringY, material) {
   const ring = createRing(RING_OD, 4, material);
+  ring.position.set(postX, ringY, 0);
+  ring.rotation.x = Math.PI / 2;
+  return ring;
+}
+
+// Ghost ring at target position — translucent outline showing where this
+// ring needs to end up. Helps the solver see the goal during the braid.
+function ghostRingOnPost(postX, ringY, sourceMaterial) {
+  const ghostMat = sourceMaterial.clone();
+  ghostMat.transparent = true;
+  ghostMat.opacity = 0.22;
+  ghostMat.depthWrite = false;
+  const ring = createRing(RING_OD, 4, ghostMat);
   ring.position.set(postX, ringY, 0);
   ring.rotation.x = Math.PI / 2;
   return ring;
@@ -101,6 +114,13 @@ export function createAnimScene() {
   const ring3 = ringOnPost(POST_SPACING, 25, mats.red);
   group.add(ring1, ring2, ring3);
 
+  // Ghost rings at TARGET positions: Red·Blue·Yellow at P1·P2·P3
+  // Stacked slightly higher than active rings so they're visible as targets.
+  const ghostRed = ghostRingOnPost(-POST_SPACING, 50, mats.red);
+  const ghostBlue = ghostRingOnPost(0, 50, mats.blue);
+  const ghostYellow = ghostRingOnPost(POST_SPACING, 50, mats.yellow);
+  group.add(ghostRed, ghostBlue, ghostYellow);
+
   const cord1 = new CordPath(
     catenaryPoints([-POST_SPACING, 5, 0], [0, 5, 0], 10),
     { radius: 2, material: mats.cord }
@@ -116,26 +136,30 @@ export function createAnimScene() {
   enableShadowsOnGroup(group);
   const arrowManager = new StepArrowManager(group);
 
-  return { group, objects: { ring1, ring2, ring3, cord1, cord2, arrowManager } };
+  return {
+    group,
+    objects: { ring1, ring2, ring3, cord1, cord2, arrowManager,
+               ghosts: [ghostRed, ghostBlue, ghostYellow] },
+  };
 }
 
-// Braid animation: sigma1 * sigma2 * sigma1 (Yang-Baxter)
-// Positions: post centers at x = -50, 0, 50
+// Braid animation for the Blue·Yellow·Red → Red·Blue·Yellow cyclic permutation.
+// Minimum braid word: sigma_2 * sigma_1 (two adjacent swaps).
+// ring1 = Blue (starts P1), ring2 = Yellow (starts P2), ring3 = Red (starts P3).
 const P1 = -POST_SPACING, P2 = 0, P3 = POST_SPACING;
 const RY = 25;
 const LIFT_Y = POST_HEIGHT + 20;
 
 const arrowConfigs = {
+  // Step 1: σ₂ — swap rings at posts 2 and 3 (Yellow ↔ Red)
   1: { arrows: [
-    { from: [P1, LIFT_Y, 0], to: [P2, RY, 0], opts: { color: 0x3333dd } },
-    { from: [P2, LIFT_Y, 0], to: [P1, RY, 0], opts: { color: 0xddcc33 } },
-  ]},
-  2: { arrows: [
-    { from: [P2, LIFT_Y, 0], to: [P3, RY, 0], opts: { color: 0x3333dd } },
+    { from: [P2, LIFT_Y, 0], to: [P3, RY, 0], opts: { color: 0xddcc33 } },
     { from: [P3, LIFT_Y, 0], to: [P2, RY, 0], opts: { color: 0xdd3333 } },
   ]},
+  // Step 2: rest state after σ₂ (label-only, no arrows)
+  // Step 3: σ₁ — swap rings at posts 1 and 2 (Blue ↔ Red)
   3: { arrows: [
-    { from: [P1, LIFT_Y, 0], to: [P2, RY, 0], opts: { color: 0xddcc33 } },
+    { from: [P1, LIFT_Y, 0], to: [P2, RY, 0], opts: { color: 0x3333dd } },
     { from: [P2, LIFT_Y, 0], to: [P1, RY, 0], opts: { color: 0xdd3333 } },
   ]},
 };
@@ -143,29 +167,29 @@ let highlightMat = null;
 
 export const animationSteps = [
   {
-    label: 'Look: three rings sit scrambled — Blue, Yellow, Red',
-    duration: 2.0,
+    label: 'Initial: Blue · Yellow · Red. Target: Red · Blue · Yellow (cyclic shift).',
+    duration: 2.5,
     ringPos: { ring1: [P1, RY, 0], ring2: [P2, RY, 0], ring3: [P3, RY, 0] },
   },
   {
-    label: 'Lift Blue over Yellow and swap them on posts 1 and 2',
-    duration: 2.5,
-    ringPos: { ring1: [P2, RY, 0], ring2: [P1, RY, 0], ring3: [P3, RY, 0] },
+    label: 'σ₂ — Swap rings at posts 2 and 3: lift Yellow over center finial, lift Red over right finial',
+    duration: 3.0,
+    ringPos: { ring1: [P1, RY, 0], ring2: [P3, RY, 0], ring3: [P2, RY, 0] },
   },
   {
-    label: 'Lift Blue over Red and swap them on posts 2 and 3',
-    duration: 2.5,
-    ringPos: { ring1: [P3, RY, 0], ring2: [P1, RY, 0], ring3: [P2, RY, 0] },
+    label: 'After σ₂: Blue · Red · Yellow. Cords cross once — clean braid.',
+    duration: 1.5,
+    ringPos: { ring1: [P1, RY, 0], ring2: [P3, RY, 0], ring3: [P2, RY, 0] },
   },
   {
-    label: 'Lift Yellow over Red and swap them on posts 1 and 2',
-    duration: 2.5,
-    ringPos: { ring1: [P3, RY, 0], ring2: [P2, RY, 0], ring3: [P1, RY, 0] },
+    label: 'σ₁ — Swap rings at posts 1 and 2: lift Blue over left finial, lift Red over center finial',
+    duration: 3.0,
+    ringPos: { ring1: [P2, RY, 0], ring2: [P3, RY, 0], ring3: [P1, RY, 0] },
   },
   {
-    label: 'Solved! All rings in order and the cords stay untangled',
-    duration: 2.0,
-    ringPos: { ring1: [P3, RY, 0], ring2: [P2, RY, 0], ring3: [P1, RY, 0] },
+    label: 'Solved! Red · Blue · Yellow. Two swaps, cords clean — order σ₂·σ₁ (NOT σ₁·σ₂).',
+    duration: 2.5,
+    ringPos: { ring1: [P2, RY, 0], ring2: [P3, RY, 0], ring3: [P1, RY, 0] },
   },
 ];
 
@@ -178,8 +202,20 @@ export function updateAnimation(objects, state) {
     objects.arrowManager.updateOpacity(stepProgress);
   }
 
-  // Highlight active rings during movement steps
-  if (stepIndex >= 1 && stepIndex <= 3) {
+  // Fade ghosts out as we approach the solved state. They're a target hint;
+  // once the rings actually reach the target, the ghosts become noise.
+  if (objects.ghosts) {
+    const lastIndex = animationSteps.length - 1;
+    const fadeAmount = stepIndex >= lastIndex ? stepProgress : 0;
+    for (const g of objects.ghosts) {
+      g.material.opacity = 0.22 * (1 - fadeAmount);
+      g.visible = g.material.opacity > 0.01;
+    }
+  }
+
+  // Highlight rings during the active swap steps (σ₂ at 1, σ₁ at 3)
+  const isSwapStep = stepIndex === 1 || stepIndex === 3;
+  if (isSwapStep) {
     if (!highlightMat) {
       highlightMat = createHighlightMaterial(objects.ring1.material, 0xffcc44, 0.3);
     }
@@ -201,8 +237,8 @@ export function updateAnimation(objects, state) {
     const f = prevStep.ringPos[name];
     const t = step.ringPos[name];
 
-    // Arc motion: lift up in first half, descend in second half
-    const arcY = (stepIndex > 0 && stepIndex < animationSteps.length - 1)
+    // Arc motion only on swap steps (when rings actually need to lift over finials)
+    const arcY = isSwapStep && (f[0] !== t[0])
       ? Math.sin(stepProgress * Math.PI) * 60
       : 0;
 

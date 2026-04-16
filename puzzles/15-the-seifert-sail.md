@@ -1,4 +1,4 @@
-# Puzzle 15: The Seifert Sail
+# Puzzle 16: The Seifert Sail
 
 **Difficulty:** Advanced
 **Type:** Assembly (surface construction)

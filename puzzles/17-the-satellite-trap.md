@@ -60,6 +60,10 @@ The **Jaco-Shalen-Johannson (JSJ) decomposition theorem** states that every comp
 
 ![Decomposition: companion (trefoil tunnel) + pattern (external cord)](../diagrams/puzzles/17-the-satellite-trap/decomposition.svg)
 
+The cutaway view below shows where each ring lives — and why one is freeable and the other is permanent:
+
+![Cutaway side view of torus showing trefoil tunnel inside (companion) and external cord pattern, with both rings labeled by their layer](../diagrams/puzzles/17-the-satellite-trap/cutaway-layers.svg)
+
 This decomposition is the key to solving the puzzle:
 - The **outer ring** is linked only with the pattern (the external cord arcs). Changing the pattern can free it.
 - The **inner ring** is linked with the companion (the trefoil tunnel). The companion cannot be changed — it is molded into the shell.

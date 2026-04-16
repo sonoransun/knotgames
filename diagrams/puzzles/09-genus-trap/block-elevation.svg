@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360">
+  <title>Genus Trap - Side and Front Elevations</title>
+  <desc>Two elevation views of the acrylic block showing the vertical separation between Tunnel A (25mm) and Tunnel B (35mm). The tunnels appear to cross in the top-down view but are 10mm apart vertically.</desc>
+
+  <rect width="480" height="360" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="240" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#333" font-weight="bold">The tunnels do not intersect — they pass at different heights</text>
+
+  <!-- ===== LEFT: SIDE VIEW (looking from the right side; X axis into page) ===== -->
+  <text x="120" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#555" font-weight="bold">Side view (looking from the right)</text>
+
+  <!-- Block outline -->
+  <rect x="40" y="60" width="160" height="120" fill="#aaccee" fill-opacity="0.10" stroke="#333" stroke-width="2"/>
+
+  <!-- Y-axis ruler (height) -->
+  <line x1="30" y1="60" x2="30" y2="180" stroke="#888" stroke-width="1"/>
+  <line x1="27" y1="60" x2="33" y2="60" stroke="#888" stroke-width="1"/>
+  <line x1="27" y1="180" x2="33" y2="180" stroke="#888" stroke-width="1"/>
+  <text x="22" y="64" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#888">60mm</text>
+  <text x="22" y="184" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#888">0</text>
+
+  <!-- Front/back labels -->
+  <text x="40" y="195" font-family="system-ui, sans-serif" font-size="9" fill="#666">FRONT</text>
+  <text x="200" y="195" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#666">BACK</text>
+
+  <!-- Tunnel A: appears as a circle (cut by side view, since A runs left-right) -->
+  <!-- Position: at height 25mm from bottom = 180-50 = 130 in svg, centered at x=120 -->
+  <circle cx="120" cy="130" r="12" fill="#fff" stroke="#c44" stroke-width="2"/>
+  <text x="120" y="134" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#c44" font-weight="bold">A</text>
+  <!-- Height label for A -->
+  <line x1="148" y1="130" x2="220" y2="130" stroke="#c44" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <text x="225" y="133" font-family="system-ui, sans-serif" font-size="9" fill="#c44">25mm (Tunnel A height)</text>
+
+  <!-- Tunnel B: appears as a horizontal line (B runs front-back, so seen from the side it's a line) -->
+  <!-- Position: at height 35mm from bottom = 180-70 = 110 -->
+  <line x1="40" y1="110" x2="200" y2="110" stroke="#44c" stroke-width="3"/>
+  <line x1="40" y1="110" x2="200" y2="110" stroke="#fff" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="120" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#44c" font-weight="bold">B</text>
+  <!-- Height label for B -->
+  <line x1="200" y1="110" x2="220" y2="110" stroke="#44c" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <text x="225" y="113" font-family="system-ui, sans-serif" font-size="9" fill="#44c">35mm (Tunnel B height)</text>
+
+  <!-- 10mm gap annotation -->
+  <line x1="60" y1="110" x2="60" y2="130" stroke="#0a0" stroke-width="1.5"/>
+  <line x1="56" y1="110" x2="64" y2="110" stroke="#0a0" stroke-width="1.5"/>
+  <line x1="56" y1="130" x2="64" y2="130" stroke="#0a0" stroke-width="1.5"/>
+  <text x="68" y="123" font-family="system-ui, sans-serif" font-size="10" fill="#0a0" font-weight="bold">10mm</text>
+  <text x="68" y="135" font-family="system-ui, sans-serif" font-size="8" fill="#0a0">gap</text>
+
+  <!-- ===== RIGHT: FRONT VIEW (looking from the front; Z axis into page) ===== -->
+  <text x="360" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#555" font-weight="bold">Front view (looking from the front)</text>
+
+  <!-- Block outline (wider in this view; block is 120 wide x 60 tall) -->
+  <rect x="260" y="80" width="200" height="100" fill="#aaccee" fill-opacity="0.10" stroke="#333" stroke-width="2"/>
+
+  <!-- Left/Right labels -->
+  <text x="260" y="195" font-family="system-ui, sans-serif" font-size="9" fill="#666">LEFT</text>
+  <text x="460" y="195" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#666">RIGHT</text>
+
+  <!-- Tunnel A: horizontal line (A runs left-right) seen from front -->
+  <!-- Height 25mm from bottom = 180-(25/60)*100 = 180-41.7 ≈ 138 -->
+  <line x1="260" y1="138" x2="460" y2="138" stroke="#c44" stroke-width="3"/>
+  <line x1="260" y1="138" x2="460" y2="138" stroke="#fff" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="360" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#c44" font-weight="bold">Tunnel A (left ↔ right)</text>
+
+  <!-- Tunnel B: appears as circle (B runs front-back, seen from front it's a circle) -->
+  <!-- Height 35mm = 180-58.3 ≈ 122, centered horizontally -->
+  <circle cx="360" cy="122" r="12" fill="#fff" stroke="#44c" stroke-width="2"/>
+  <text x="360" y="126" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#44c" font-weight="bold">B</text>
+
+  <!-- Height annotations -->
+  <line x1="248" y1="80" x2="248" y2="180" stroke="#888" stroke-width="1"/>
+  <line x1="245" y1="80" x2="251" y2="80" stroke="#888" stroke-width="1"/>
+  <line x1="245" y1="180" x2="251" y2="180" stroke="#888" stroke-width="1"/>
+  <text x="240" y="84" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#888">60mm</text>
+  <text x="240" y="184" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="#888">0</text>
+
+  <!-- Caption -->
+  <text x="240" y="240" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#444" font-weight="bold">Why this matters:</text>
+  <text x="240" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#555">In the top-down view the tunnels appear to cross at the center of the block.</text>
+  <text x="240" y="272" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#555">The elevations show they are 10mm apart in height — they pass over/under without touching.</text>
+  <text x="240" y="290" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#555">This vertical separation is what makes the block a genus-2 handlebody (two independent tunnels).</text>
+
+  <!-- Color legend -->
+  <rect x="160" y="316" width="14" height="3" fill="#c44"/>
+  <text x="178" y="320" font-family="system-ui, sans-serif" font-size="9" fill="#444">Tunnel A (left↔right at 25mm)</text>
+  <rect x="160" y="332" width="14" height="3" fill="#44c"/>
+  <text x="178" y="336" font-family="system-ui, sans-serif" font-size="9" fill="#444">Tunnel B (front↔back at 35mm)</text>
+</svg>

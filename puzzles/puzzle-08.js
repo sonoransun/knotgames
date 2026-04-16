@@ -7,7 +7,7 @@ import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
-  id: 8,
+  id: 10,
   name: 'Ouroboros Chain',
   difficulty: 'Advanced',
   principle: 'Gray code / binary recursion (Chinese Rings)',

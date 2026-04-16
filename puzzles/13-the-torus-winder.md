@@ -1,4 +1,4 @@
-# Puzzle 13: The Torus Winder
+# Puzzle 14: The Torus Winder
 
 **Difficulty:** Advanced
 **Type:** Assembly

@@ -7,7 +7,7 @@ import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
-  id: 15,
+  id: 16,
   name: 'The Seifert Sail',
   difficulty: 'Advanced',
   principle: 'Seifert surfaces (surfaces bounded by knots)',

@@ -7,7 +7,7 @@ import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
-  id: 7,
+  id: 8,
   name: "The Ferryman's Knot",
   difficulty: 'Advanced',
   principle: 'Open knot vs closed knot; Reidemeister moves',

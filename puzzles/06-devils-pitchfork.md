@@ -1,4 +1,4 @@
-# Puzzle 6: Devil's Pitchfork
+# Puzzle 7: Devil's Pitchfork
 
 **Difficulty:** Intermediate-Advanced
 **Type:** Transfer (manipulation)

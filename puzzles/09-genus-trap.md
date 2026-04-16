@@ -1,4 +1,4 @@
-# Puzzle 9: Genus Trap
+# Puzzle 11: Genus Trap
 
 **Difficulty:** Expert
 **Type:** Disentanglement
@@ -10,7 +10,7 @@
 
 A clear acrylic block contains two through-tunnels that pass over and under each other without intersecting. A cord is threaded through both tunnels in a specific pattern, with two rings captured on the cord between the tunnels. Wooden balls on the cord ends prevent them from pulling through. The cord's path encodes an algebraic word in the fundamental group — and only the right algebraic manipulation (generator cancellation) will free the rings.
 
-This puzzle has the highest **cognitive load** in the series. The solver must build and maintain a mental model of invisible 3D topology.
+This puzzle has the highest **cognitive load** in the series. Even though the acrylic is clear, you cannot easily reason about how the two tunnels relate to each other and how the cord winds through them — your eyes report a confusing tangle of curves that seem to intersect (they don't — they pass at different heights). You must build, in your mind, a 3D map of the two tunnels and the cord's path through them, and then plan a sequence of physical manipulations that will simplify that path. There is no way to peek inside and check your model against reality except by trying a move and seeing what happens.
 
 ## Components
 
@@ -29,6 +29,10 @@ Tunnel A runs horizontally left-to-right at 25mm height. Tunnel B runs horizonta
 ## Setup
 
 ![Top view of acrylic block with two crossing tunnels (A and B) and cord path schematic](../diagrams/puzzles/09-genus-trap/block-top-view.svg)
+
+The top-down view above can be misleading — the tunnels appear to intersect at the center. They don't. The two elevations below show their vertical separation:
+
+![Side and front elevations showing 10mm vertical gap between Tunnel A (25mm height) and Tunnel B (35mm height)](../diagrams/puzzles/09-genus-trap/block-elevation.svg)
 
 ### Cord path in detail
 
@@ -118,7 +122,7 @@ To free the rings, the cord's path in the ring-bearing region must be changed to
 1. Canceling the **b** generator: reroute the cord so it no longer passes through Tunnel B in the ring region
 2. This leaves **a a⁻¹ = identity** — the cord is trivially wound and the rings are free
 
-Physically, this means pulling a bight of cord back through one tunnel and rerouting it around the block through the other tunnel, effectively "canceling" one generator.
+Physically: pull a loop (bight) of the cord backward out of Tunnel B from the front face. The cord will resist — the slack must come from the external sections, so first slide both rings toward Tunnel A to release tension. Once the bight clears the front of Tunnel B, route it horizontally around the block's left side and feed it into Tunnel A from the left face. The cord now traces a different word: where it previously went `... b a⁻¹` it now traces `... (aa⁻¹) a⁻¹`. The new `aa⁻¹` pair is adjacent and cancels, leaving only `a⁻¹`. Combined with the earlier `a`, the entire ring-region word collapses to `aa⁻¹ = identity`. The slack that suddenly appears between the rings IS that algebraic cancellation — and it is exactly the slack the rings need to slide off.
 
 ## Solution
 

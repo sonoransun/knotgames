@@ -115,7 +115,7 @@ have.
   truly encircles the bar. Solvers who assume the cord is a closed loop will
   believe the puzzle is unsolvable.
 
-- **Puzzle 7, The Ferryman's Knot:** The cord wraps around a post in a
+- **Puzzle 8, The Ferryman's Knot:** The cord wraps around a post in a
   trefoil-like pattern with three crossings. If the cord were a closed loop,
   it would be a genuine trefoil knot — permanently knotted. But the cord is
   an open arc (one end tied to a ring on the post, the other to a hook in
@@ -249,7 +249,7 @@ fundamental group.
   paddle's edge, you pass the paddle's body through the loop — the handle
   becomes the escape route, not the trap.
 
-- **Puzzle 9, Genus Trap:** The acrylic block with two non-intersecting
+- **Puzzle 11, Genus Trap:** The acrylic block with two non-intersecting
   through-tunnels is a genus-2 handlebody. Each tunnel is a handle. The
   fundamental group of this handlebody is the free group on two generators,
   F(a, b), where generator **a** corresponds to a path through Tunnel A and
@@ -390,9 +390,9 @@ would simplify to b (because you could swap the order). But the free group
 is non-abelian: the order of generators matters, and you cannot move **b**
 past **a** or **a^{-1}**.
 
-### Worked example: aba^{-1} in the genus-2 handlebody (Puzzle 9)
+### Worked example: aba^{-1} in the genus-2 handlebody (Puzzle 11)
 
-Puzzle 9, Genus Trap, has an acrylic block with two tunnels:
+Puzzle 11, Genus Trap, has an acrylic block with two tunnels:
 - Tunnel A (left-to-right) contributes generator **a**
 - Tunnel B (front-to-back) contributes generator **b**
 
@@ -424,13 +424,13 @@ free.
 
 ### Which puzzles use this
 
-- **Puzzle 6, Devil's Pitchfork:** The configuration space of the ring on
+- **Puzzle 7, Devil's Pitchfork:** The configuration space of the ring on
   the three-pronged fork has a non-trivial fundamental group. The solution
   requires the cord to trace a specific non-contractible loop (over the
   center prong) before the ring can be transferred. The loop represents a
   non-trivial element of the fundamental group of the configuration space.
 
-- **Puzzle 9, Genus Trap:** The full worked example above. The free group
+- **Puzzle 11, Genus Trap:** The full worked example above. The free group
   F(a, b) is the fundamental group of the genus-2 handlebody, and the
   cord's path is a word in this group.
 
@@ -443,7 +443,7 @@ Threading through different tunnels stacks up letters that cannot cancel
 with each other. To free a cord, you must manipulate it until the word
 reduces to nothing — the identity element.
 
-When you are stuck on Puzzle 9, write down the word. Every move you make
+When you are stuck on Puzzle 11, write down the word. Every move you make
 with the cord changes the word. If the word is getting longer, you are going
 the wrong direction. If adjacent inverses appear, you are making progress.
 
@@ -512,7 +512,7 @@ rings are collectively linked despite being pairwise unlinked.
 
 ### Which puzzle uses this
 
-- **Puzzle 5, Trinity Lock:** Three identical steel ovals must be assembled
+- **Puzzle 6, Trinity Lock:** Three identical steel ovals must be assembled
   into the Borromean configuration. The puzzle is an assembly challenge: the
   solver must weave all three simultaneously because no two are ever linked
   at any intermediate stage. The natural instinct — "connect two first,
@@ -593,7 +593,7 @@ no shortcuts.
 
 ### Which puzzle uses this
 
-- **Puzzle 6, Devil's Pitchfork:** A ring sits on the left prong of a
+- **Puzzle 7, Devil's Pitchfork:** A ring sits on the left prong of a
   three-pronged fork. A cord connects it to the base of the center prong.
   The goal is to move the ring to the right prong. The configuration space
   of this system has a non-trivial fundamental group because of how the
@@ -674,7 +674,7 @@ n, which requires the same kind of recursive setup.
 
 ### Which puzzle uses this
 
-- **Puzzle 8, Ouroboros Chain:** Six cord loops on posts, each threaded
+- **Puzzle 10, Ouroboros Chain:** Six cord loops on posts, each threaded
   through its neighbor, with a shuttle bar through all of them. This is a
   reimagining of the Baguenaudier (Chinese Rings). Each loop is either ON
   (1) or OFF (0) the shuttle bar, giving a 6-bit state. The rules for which
@@ -804,7 +804,7 @@ waiters use this daily.
 
 ### Which puzzle uses this
 
-- **Puzzle 10, The Hopf Paradox:** A ring is trapped inside a cage made of
+- **Puzzle 12, The Hopf Paradox:** A ring is trapped inside a cage made of
   two orthogonal great-circle hoops. The ring cannot be extracted by any
   sequence of single-axis rotations. At the pole (where the two hoops
   intersect), the ring must execute a corkscrew motion: simultaneous
@@ -816,7 +816,7 @@ waiters use this daily.
 
 ### Physical intuition
 
-When you hold the cage from Puzzle 10 and try to extract the ring at the
+When you hold the cage from Puzzle 12 and try to extract the ring at the
 pole junction, your hands will naturally attempt sequential moves: rotate
 the ring, then push it forward, then rotate again. This fails. The junction
 geometry requires both motions simultaneously. The moment you find the
@@ -889,7 +889,7 @@ the EXKNOTS puzzles.
 
 However, an open arc **with constrained endpoints** (e.g., one end tied to
 a post, the other to a hook) behaves differently from a free arc. The
-constraints limit which Reidemeister moves are available. In Puzzle 7, each
+constraints limit which Reidemeister moves are available. In Puzzle 8, each
 wrap corresponds to a Type I Reidemeister move (twist removal), and the
 finial provides the mechanism for executing it.
 
@@ -903,7 +903,7 @@ finial provides the mechanism for executing it.
   two-component link. The linking number (computed from crossing signs) is
   zero, so the link is trivial — the components can be separated.
 
-- **Puzzle 7, The Ferryman's Knot:** The cord wraps around a post in a
+- **Puzzle 8, The Ferryman's Knot:** The cord wraps around a post in a
   trefoil-like pattern (3 crossings). If the cord were a closed loop, this
   would be a genuine trefoil (crossing number 3, not unknottable). But the
   cord is an open arc on a fixed axis, and each crossing can be removed by
@@ -953,7 +953,7 @@ At each crossing, follow the knot in a consistent direction. If the overpasses s
 
 ### Which puzzles use this
 
-- **Puzzle 11, The Mirror Gate:** Two trefoil frames — one left-handed, one right-handed — must be matched to mirror-image recesses. The solver must identify the handedness of each trefoil by examining its crossing pattern.
+- **Puzzle 5, The Mirror Gate:** Two trefoil frames — one left-handed, one right-handed — must be matched to mirror-image recesses. The solver must identify the handedness of each trefoil by examining its crossing pattern.
 
 ### Physical intuition
 
@@ -979,7 +979,7 @@ The key algebraic relation in B_3 is: **sigma_1 * sigma_2 * sigma_1 = sigma_2 * 
 
 ### Which puzzles use this
 
-- **Puzzle 12, The Braid Cage:** Three rings on posts connected by cords. The cords record the history of swaps. Only braid-relation sequences leave the cords untangled. The solver feels non-commutativity directly — wrong swap orders tangle the cords.
+- **Puzzle 13, The Braid Cage:** Three rings on posts connected by cords. The cords record the history of swaps. Only braid-relation sequences leave the cords untangled. The solver feels non-commutativity directly — wrong swap orders tangle the cords.
 
 ### Physical intuition
 
@@ -1004,7 +1004,7 @@ The rule: (p,q) with gcd(p,q) = 1 and p,q ≥ 2 produces a genuine knot.
 
 ### Which puzzles use this
 
-- **Puzzle 13, The Torus Winder:** A cord must be wound around a torus following guide notches to create the (2,3) torus knot. Most windings fail to trap a sliding ring — only the correct (p,q) pair produces a genuine knot.
+- **Puzzle 14, The Torus Winder:** A cord must be wound around a torus following guide notches to create the (2,3) torus knot. Most windings fail to trap a sliding ring — only the correct (p,q) pair produces a genuine knot.
 
 - **Puzzle 17, The Satellite Trap:** The internal tunnel of the torus shell follows a (2,3) torus knot path, forming the companion knot of the satellite structure.
 
@@ -1030,7 +1030,7 @@ Key facts:
 
 ### Which puzzles use this
 
-- **Puzzle 14, The Tricolor Lock:** The solver must find the valid Fox 3-coloring of a trefoil frame. Valid coloring reveals a physical passage (aligned notches) that frees a trapped ring. Invalid coloring leaves the ring trapped.
+- **Puzzle 15, The Tricolor Lock:** The solver must find the valid Fox 3-coloring of a trefoil frame. Valid coloring reveals a physical passage (aligned notches) that frees a trapped ring. Invalid coloring leaves the ring trapped.
 
 ### Physical intuition
 
@@ -1054,7 +1054,7 @@ The **genus** of the minimal Seifert surface is a knot invariant: genus = (cross
 
 ### Which puzzles use this
 
-- **Puzzle 15, The Seifert Sail:** Three shaped panels are assembled inside a trefoil frame to physically construct a Seifert surface. Once built, a cord loop can be pushed across the surface and freed. The surface makes visible the theorem that every knot bounds an orientable surface.
+- **Puzzle 16, The Seifert Sail:** Three shaped panels are assembled inside a trefoil frame to physically construct a Seifert surface. Once built, a cord loop can be pushed across the surface and freed. The surface makes visible the theorem that every knot bounds an orientable surface.
 
 ### Physical intuition
 
@@ -1078,7 +1078,7 @@ The unknotting number is a topological invariant that measures how far a knot is
 
 ### Which puzzles use this
 
-- **Puzzle 16, The Crossing Number:** A figure-eight knot frame with 4 flippable crossing pins. The solver must find the one crossing whose flip converts the knot to the unknot (u = 1). Three of the four crossings produce different non-trivial knots when flipped.
+- **Puzzle 9, The Crossing Number:** A figure-eight knot frame with 4 flippable crossing pins. The solver must find the one crossing whose flip converts the knot to the unknot (u = 1). Three of the four crossings produce different non-trivial knots when flipped.
 
 ### Physical intuition
 
@@ -1127,7 +1127,7 @@ in Puzzles 2, 3, 7, and 9 to thread cord through holes or over obstacles.
 
 **Borromean rings** — A specific 3-component link in which the three
 components are mutually linked but no two are linked to each other. The
-simplest non-trivial Brunnian link. Puzzle 5 (Trinity Lock) is built on
+simplest non-trivial Brunnian link. Puzzle 6 (Trinity Lock) is built on
 this structure.
 
 **Brunnian link** — A link of n components such that removing any single
@@ -1136,7 +1136,7 @@ rings are the case n = 3. Named after Hermann Brunn (1892).
 
 **Configuration space** — The space of all possible states of a mechanical
 system. Each point represents one arrangement of all parts. The topology of
-this space governs which transitions between states are possible (Puzzle 6).
+this space governs which transitions between states are possible (Puzzle 7).
 
 **Crossing number** — The minimum number of crossings in any planar diagram
 of a knot or link. The unknot has crossing number 0; the trefoil has
@@ -1144,16 +1144,16 @@ crossing number 3.
 
 **Fiber bundle** — A space that is locally a product of a base space and a
 fiber, but may be globally twisted. The Hopf fibration is the central
-example in EXKNOTS (Puzzle 10).
+example in EXKNOTS (Puzzle 12).
 
 **Free group** — A group whose generators satisfy no relations other than
 the trivial cancellation of a generator with its inverse. The free group
 F(a, b) on two generators is the fundamental group of a genus-2 handlebody
-(Puzzle 9).
+(Puzzle 11).
 
 **Fundamental group** — The group of homotopy classes of loops at a
 basepoint in a topological space. Captures the distinct ways to walk in a
-closed path. Denoted pi_1(X). Used in Puzzles 6 and 9.
+closed path. Denoted pi_1(X). Used in Puzzles 7 and 9.
 
 **Generator** — A basic element of a group from which all other elements
 can be built by composition and inversion. In the fundamental group of a
@@ -1165,11 +1165,11 @@ genus equals the number of through-tunnels (Puzzles 2, 9).
 
 **Gray code** — A binary numbering system in which consecutive values
 differ by exactly one bit. Also called reflected binary code. Governs the
-solution sequence of the Ouroboros Chain (Puzzle 8).
+solution sequence of the Ouroboros Chain (Puzzle 10).
 
 **Handlebody** — A solid body with through-tunnels. A genus-g handlebody
 has g tunnels and its fundamental group is the free group on g generators.
-The acrylic block in Puzzle 9 is a genus-2 handlebody.
+The acrylic block in Puzzle 11 is a genus-2 handlebody.
 
 **Homeomorphism** — A continuous bijection whose inverse is also
 continuous. Two spaces related by a homeomorphism are topologically
@@ -1182,7 +1182,7 @@ group.
 
 **Hopf fibration** — The map h: S^3 -> S^2 whose fibers are circles (S^1).
 Discovered by Heinz Hopf in 1931. Decomposes the 3-sphere into a family of
-linked circles. Underlies the coupled-rotation mechanism of Puzzle 10.
+linked circles. Underlies the coupled-rotation mechanism of Puzzle 12.
 
 **Identity** — The neutral element of a group. In the fundamental group,
 the identity is the class of loops that can be contracted to a point. In the
@@ -1197,7 +1197,7 @@ sufficient) for the curves to be separable (Puzzles 1, 3).
 **Milnor invariant** — A higher-order linking invariant that detects
 collective linking among three or more components when pairwise linking
 numbers are all zero. Specifically, the Milnor mu-bar invariant. Detects
-the non-triviality of Borromean rings (Puzzle 5).
+the non-triviality of Borromean rings (Puzzle 6).
 
 **Mobius band** — A non-orientable surface with one edge and one side,
 formed by joining a rectangular strip with a single half-twist. The single
@@ -1228,7 +1228,7 @@ isotopy). Examples: genus, linking number, crossing number, fundamental
 group. Invariants are what topology actually measures.
 
 **Trefoil** — The simplest non-trivial knot, with crossing number 3. It
-cannot be unknotted. The visual pattern in Puzzle 7 (The Ferryman's Knot)
+cannot be unknotted. The visual pattern in Puzzle 8 (The Ferryman's Knot)
 resembles a trefoil, but the cord is an open arc rather than a closed loop,
 so it is not a true trefoil.
 
@@ -1241,7 +1241,7 @@ number 0. The cord in Puzzle 1 (The Gatekeeper) is topologically an unknot
 inverses. For example, aba^{-1} is a word in the free group F(a, b). The
 word represents an element of the group. In EXKNOTS, a cord's path through
 tunnels encodes a word in the fundamental group, and the puzzle is solved
-when the word reduces to the identity (Puzzle 9).
+when the word reduces to the identity (Puzzle 11).
 
 ---
 

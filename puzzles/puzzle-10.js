@@ -7,7 +7,7 @@ import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
-  id: 10,
+  id: 12,
   name: 'The Hopf Paradox',
   difficulty: 'Expert',
   principle: 'Hopf fibration / coupled rotation in S\u00B3',

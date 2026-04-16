@@ -6,7 +6,7 @@ import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
-  id: 14,
+  id: 15,
   name: 'The Tricolor Lock',
   difficulty: 'Intermediate',
   principle: 'Fox tricolorability (knot invariant)',
@@ -131,10 +131,19 @@ export function createAnimScene() {
   ring.position.set(0, 0, TREFOIL_SCALE * 0.5);
   group.add(ring);
 
+  // Ghost ring at the escape destination — translucent target indicator.
+  const ghostMat = mats.brass.clone();
+  ghostMat.transparent = true;
+  ghostMat.opacity = 0.20;
+  ghostMat.depthWrite = false;
+  const ghostRing = createRing(30, 3, ghostMat);
+  ghostRing.position.set(TREFOIL_SCALE * 1.5, -TREFOIL_SCALE, TREFOIL_SCALE);
+  group.add(ghostRing);
+
   enableShadowsOnGroup(group);
   const arrowManager = new StepArrowManager(group);
 
-  return { group, objects: { grayArcs, coloredArcs, ring, arrowManager } };
+  return { group, objects: { grayArcs, coloredArcs, ring, ghostRing, arrowManager } };
 }
 
 const arrowConfigs = {
@@ -198,6 +207,14 @@ export function updateAnimation(objects, state) {
   // Toggle coloring visibility
   objects.grayArcs.visible = !step.colored;
   objects.coloredArcs.visible = step.colored;
+
+  // Fade the ghost target ring as the active ring approaches it
+  if (objects.ghostRing) {
+    const lastIndex = animationSteps.length - 1;
+    const fadeAmount = stepIndex >= lastIndex ? stepProgress : 0;
+    objects.ghostRing.material.opacity = 0.20 * (1 - fadeAmount);
+    objects.ghostRing.visible = objects.ghostRing.material.opacity > 0.01;
+  }
 
   // Interpolate ring position
   const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];

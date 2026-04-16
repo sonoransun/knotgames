@@ -1,4 +1,4 @@
-# Puzzle 14: The Tricolor Lock
+# Puzzle 15: The Tricolor Lock
 
 **Difficulty:** Intermediate
 **Type:** Assembly

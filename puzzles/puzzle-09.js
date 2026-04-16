@@ -7,7 +7,7 @@ import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
-  id: 9,
+  id: 11,
   name: 'Genus Trap',
   difficulty: 'Expert',
   principle: 'Genus-2 surface fundamental group',
@@ -133,6 +133,85 @@ function cordPathMid() {
   ];
 }
 
+// Stage 1: rings slid toward Tunnel A to free up slack
+function cordPathSlackBuild() {
+  const hw = BLOCK_W / 2 + 5;
+  const hd = BLOCK_D / 2 + 5;
+  return [
+    [-hw - 25, 25, 0],
+    [-hw, 25, 0],
+    [hw, 25, 0],
+    [hw + 12, 28, -8],         // slacker external curve
+    [10, 33, -hd + 2],
+    [0, 35, -hd],              // tunnel B entrance
+    [0, 35, hd],               // tunnel B exit
+    [-25, 33, hd + 2],
+    [-hw - 8, 30, 4],          // less slack on this side
+    [-hw, 25, 0],
+    [hw, 25, 0],
+    [hw + 25, 25, 0],
+  ];
+}
+
+// Stage 2: bight pulled outward from front face of Tunnel B (before clearing)
+function cordPathBightForming() {
+  const hw = BLOCK_W / 2 + 5;
+  const hd = BLOCK_D / 2 + 5;
+  return [
+    [-hw - 25, 25, 0],
+    [-hw, 25, 0],
+    [hw, 25, 0],
+    [hw + 12, 28, -8],
+    [10, 33, -hd - 5],         // pulled outward in front
+    [0, 35, -hd - 15],         // bight extends in front
+    [0, 35, hd],               // back end still in tunnel
+    [-25, 33, hd + 2],
+    [-hw - 8, 30, 4],
+    [-hw, 25, 0],
+    [hw, 25, 0],
+    [hw + 25, 25, 0],
+  ];
+}
+
+// Stage 3: bight has cleared the front of Tunnel B entirely
+function cordPathBightCleared() {
+  const hw = BLOCK_W / 2 + 5;
+  const hd = BLOCK_D / 2 + 5;
+  return [
+    [-hw - 25, 25, 0],
+    [-hw, 25, 0],
+    [hw, 25, 0],
+    [hw + 12, 28, -8],
+    [10, 30, -hd - 12],
+    [-15, 30, -hd - 18],       // bight floating in front of block
+    [-30, 30, -hd - 5],
+    [-hw - 12, 28, hd - 5],    // routing toward back
+    [-hw - 8, 26, 5],
+    [-hw, 25, 0],
+    [hw, 25, 0],
+    [hw + 25, 25, 0],
+  ];
+}
+
+// Stage 4: bight routed around left side, ready to enter Tunnel A from left
+function cordPathBightToTunnelA() {
+  const hw = BLOCK_W / 2 + 5;
+  return [
+    [-hw - 25, 25, 0],
+    [-hw, 25, 0],
+    [hw, 25, 0],
+    [hw + 12, 28, -8],
+    [-30, 28, -20],
+    [-hw - 18, 26, -5],        // wrapping around left
+    [-hw - 18, 26, 5],
+    [-hw - 12, 26, 0],
+    [-hw, 25, 0],              // entering Tunnel A from left (cancellation move)
+    [-hw, 25, 0],
+    [hw, 25, 0],
+    [hw + 25, 25, 0],
+  ];
+}
+
 export function create3DScene() {
   const mats = createMaterials();
   const group = new THREE.Group();
@@ -205,13 +284,30 @@ export function createAnimScene() {
 }
 
 const arrowConfigs = {
+  // Step 1: rings move toward Tunnel A to free up slack
   1: { arrows: [
-    { from: [0, 35, -BLOCK_D / 2 - 5], to: [0, 35, BLOCK_D / 2 + 5], opts: { color: 0x4488ff } },
-    { from: [-BLOCK_W / 2 - 5, 25, 0], to: [BLOCK_W / 2 + 5, 25, 0], opts: { color: 0x4488ff } },
+    { from: [25, 35, -BLOCK_D / 2 - 8], to: [BLOCK_W / 2 + 10, 30, -8], opts: { color: 0xffcc44 } },
   ]},
+  // Step 2: bight begins to emerge from front of Tunnel B
   2: { arrows: [
-    { from: [50, 10, -BLOCK_D / 2 - 8], to: [50, 10, -BLOCK_D / 2 - 30], opts: { color: 0xffcc44 } },
-    { from: [-BLOCK_W / 2 - 12, 10, BLOCK_D / 2 + 5], to: [-BLOCK_W / 2 - 30, 10, BLOCK_D / 2 + 25], opts: { color: 0xffcc44 } },
+    { from: [0, 35, -BLOCK_D / 2], to: [0, 35, -BLOCK_D / 2 - 20], opts: { color: 0xff8844 } },
+  ]},
+  // Step 3: bight clears the tunnel entirely
+  3: { arrows: [
+    { from: [0, 35, -BLOCK_D / 2 - 15], to: [-30, 30, -BLOCK_D / 2 - 10], opts: { color: 0xff8844 } },
+  ]},
+  // Step 4: bight routes around left side
+  4: { arrows: [
+    { from: [-30, 28, -BLOCK_D / 2 - 5], to: [-BLOCK_W / 2 - 18, 26, 0], opts: { color: 0x44ccff } },
+  ]},
+  // Step 5: bight enters Tunnel A — algebraic cancellation
+  5: { arrows: [
+    { from: [-BLOCK_W / 2 - 15, 26, 0], to: [-BLOCK_W / 2, 25, 0], opts: { color: 0x44ff88 } },
+  ]},
+  // Step 6: rings slide off
+  6: { arrows: [
+    { from: [50, 10, -BLOCK_D / 2 - 8], to: [50, 10, -BLOCK_D / 2 - 30], opts: { color: 0x44ff88 } },
+    { from: [-BLOCK_W / 2 - 12, 10, BLOCK_D / 2 + 5], to: [-BLOCK_W / 2 - 30, 10, BLOCK_D / 2 + 25], opts: { color: 0x44ff88 } },
   ]},
 };
 
@@ -219,21 +315,49 @@ let highlightMat = null;
 
 export const animationSteps = [
   {
-    label: 'Look: the cord winds through both tunnels, trapping two rings',
+    label: 'Cord encodes the word a·b·a⁻¹ — both rings trapped',
     duration: 3.0,
     cord: cordPathInitial(),
     ring1: { position: [25, 35, -BLOCK_D / 2 - 8] },
     ring2: { position: [-BLOCK_W / 2 - 12, 30, BLOCK_D / 2 + 5] },
   },
   {
-    label: 'Pull a loop of cord back through the front tunnel to undo the path',
-    duration: 3.5,
-    cord: cordPathMid(),
-    ring1: { position: [25, 35, -BLOCK_D / 2 - 8] },
+    label: 'Step 1 — Slide both rings toward Tunnel A to free slack from the external sections',
+    duration: 2.5,
+    cord: cordPathSlackBuild(),
+    ring1: { position: [BLOCK_W / 2 + 10, 30, -8] },
     ring2: { position: [-BLOCK_W / 2 - 12, 30, BLOCK_D / 2 + 5] },
   },
   {
-    label: 'The cord now runs straight through — slide both rings off!',
+    label: 'Step 2 — Pull a bight (loop) of cord backward out of Tunnel B from the front face',
+    duration: 2.5,
+    cord: cordPathBightForming(),
+    ring1: { position: [BLOCK_W / 2 + 10, 30, -8] },
+    ring2: { position: [-BLOCK_W / 2 - 12, 30, BLOCK_D / 2 + 5] },
+  },
+  {
+    label: 'Step 3 — The bight clears Tunnel B entirely; b is removed from the word',
+    duration: 2.5,
+    cord: cordPathBightCleared(),
+    ring1: { position: [BLOCK_W / 2 + 10, 30, -8] },
+    ring2: { position: [-BLOCK_W / 2 - 12, 30, BLOCK_D / 2 + 5] },
+  },
+  {
+    label: 'Step 4 — Route the bight horizontally around the left side of the block',
+    duration: 2.5,
+    cord: cordPathBightToTunnelA(),
+    ring1: { position: [BLOCK_W / 2 + 10, 30, -8] },
+    ring2: { position: [-BLOCK_W / 2 - 12, 30, BLOCK_D / 2 + 5] },
+  },
+  {
+    label: 'Step 5 — Feed the bight into Tunnel A from the left: word becomes a·(a·a⁻¹)·a⁻¹ → identity',
+    duration: 2.5,
+    cord: cordPathMid(),
+    ring1: { position: [BLOCK_W / 2 + 10, 30, -8] },
+    ring2: { position: [-BLOCK_W / 2 - 12, 30, BLOCK_D / 2 + 5] },
+  },
+  {
+    label: 'Step 6 — Cord runs straight through Tunnel A only; rings slide off freely',
     duration: 3.0,
     cord: cordPathSolved(),
     ring1: { position: [50, 10, -BLOCK_D / 2 - 30] },

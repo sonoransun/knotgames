@@ -1,4 +1,4 @@
-# Puzzle 11: The Mirror Gate
+# Puzzle 5: The Mirror Gate
 
 **Difficulty:** Intermediate
 **Type:** Identification
@@ -37,7 +37,9 @@ Seat each trefoil frame into its correct matching recess. Each recess accepts on
 
 ## The Topology
 
-The two trefoil frames are **chiral** — they are mirror images that are topologically inequivalent. A left-handed trefoil and a right-handed trefoil cannot be continuously deformed into each other in three-dimensional space. They are as fundamentally different as your left and right hands.
+The two trefoil frames are **chiral** — they are mirror images that are topologically inequivalent. What "inequivalent" means in operational terms: no amount of rotating, flipping, bending, or repositioning the left-handed trefoil in 3D space will ever turn it into the right-handed trefoil. You can hold them at any angle, even pass one through the other — they remain stubbornly different objects. The recesses in the wooden base are the physical witness of this fact: each recess accepts exactly one handedness and rejects the other, and no amount of rotating the trefoil will change which recess it fits.
+
+This is the same kind of difference that distinguishes your left hand from your right. A left glove will never fit your right hand no matter how you rotate it, because rotation in 3D space cannot change handedness — only a true mirror reflection can, and mirror reflection is not a physical motion.
 
 ### What Is Chirality?
 
@@ -45,7 +47,7 @@ A knot is **chiral** if it is not equivalent to its mirror image. The trefoil is
 
 ![Left-handed vs right-handed trefoil crossing patterns](../diagrams/puzzles/11-the-mirror-gate/chirality-comparison.svg)
 
-Some knots are **amphichiral** — they ARE equivalent to their mirror image. The figure-eight knot (Puzzle 16) is amphichiral. The trefoil is not. Chirality is a topological invariant: it depends on the knot type, not on the particular diagram or physical realization.
+Some knots are **amphichiral** — they ARE equivalent to their mirror image. The figure-eight knot (Puzzle 9) is amphichiral. The trefoil is not. Chirality is a topological invariant: it depends on the knot type, not on the particular diagram or physical realization.
 
 ### How to Tell Them Apart
 

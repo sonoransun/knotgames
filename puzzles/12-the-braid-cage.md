@@ -1,4 +1,4 @@
-# Puzzle 12: The Braid Cage
+# Puzzle 13: The Braid Cage
 
 **Difficulty:** Intermediate-Advanced
 **Type:** Transfer
@@ -56,15 +56,15 @@ These generators do not commute: sigma_1 * sigma_2 does NOT equal sigma_2 * sigm
 
 ### The Yang-Baxter Relation
 
-The key algebraic relation in B_3 is the **Yang-Baxter relation** (also called the braid relation):
+Two sequences of ring-swaps can land every ring in the same final position **and yet** leave the cords in completely different states — one set hanging clean, the other twisted into knots. The algebraic rule that distinguishes "clean" sequences from "twisted" ones is the **Yang-Baxter relation** (also called the braid relation):
 
-**sigma_1 * sigma_2 * sigma_1 = sigma_2 * sigma_1 * sigma_2**
+**σ₁ · σ₂ · σ₁ = σ₂ · σ₁ · σ₂**
+
+In words: swap-left-then-center-then-left produces the same braid as swap-center-then-left-then-center. Both sequences achieve the same permutation of the rings AND leave the cords in the same untangled state. Most other 3-swap sequences with the same permutation produce *different* (tangled) braids.
 
 ![Braid sequence showing the Yang-Baxter relation](../diagrams/puzzles/12-the-braid-cage/braid-sequence.svg)
 
-This means: swapping 1-2, then 2-3, then 1-2 again produces the same result as swapping 2-3, then 1-2, then 2-3. Both sequences achieve the same permutation AND leave the cords in the same untangled state.
-
-The naive approach — arbitrary sequences of swaps — will tangle the cords even if it achieves the correct permutation. Only sequences that respect the braid relation leave the cords free.
+**Why this matters for the puzzle:** the cords are physically anchored. They record every swap you perform, like a transcript. If your transcript respects the Yang-Baxter relation (and the trivial relation σᵢ · σᵢ⁻¹ = identity), the cords stay clean. If it doesn't, you'll end up with the right ring positions but the cords tangled around each other, physically resisting the final placement. **You can feel non-commutativity in your hands** — the tangle is the algebra refusing to let you cheat.
 
 ![Yang-Baxter relation: two equivalent braid words](../diagrams/puzzles/12-the-braid-cage/yang-baxter.svg)
 
@@ -74,17 +74,25 @@ The naive approach — arbitrary sequences of swaps — will tangle the cords ev
 
 ## Solution
 
-1. **sigma_1:** Lift Blue ring over left finial, place it on center post. (Blue and Yellow swap.)
-2. **sigma_2:** Lift Blue ring over center finial, place it on right post. (Blue and Red swap.)
-3. **sigma_1:** Lift Yellow ring over left finial, place it on center post. (Yellow and Red swap.)
+Initial positions: **Blue · Yellow · Red** (posts 1·2·3). Target: **Red · Blue · Yellow**.
 
-Result: Red (left), Blue (center — wait, this doesn't land correctly with that initial state). Actually, with initial Blue-Yellow-Red and target Red-Blue-Yellow:
+The permutation needed is a 3-cycle: the ring at post 1 ends at post 2, post 2's ring ends at post 3, post 3's ring ends at post 1. The minimum braid word that achieves this with clean cords is **σ₂ · σ₁** (two adjacent swaps):
 
-1. Lift Blue from post 1 over finial to post 2 (swap positions 1-2)
-2. Lift Blue from post 2 over finial to post 3 (swap positions 2-3)
-3. Lift Yellow from post 1 over finial to post 2 (swap positions 1-2)
+| Step | Operation | Physical move | Positions after |
+|------|-----------|---------------|-----------------|
+| 1 | **σ₂** | Swap the rings at posts 2 and 3: lift Yellow over the center finial onto post 3, then lift Red over the right finial onto post 2. | Blue · Red · Yellow |
+| 2 | **σ₁** | Swap the rings at posts 1 and 2: lift Blue over the left finial onto post 2, then lift Red over the center finial onto post 1. | **Red · Blue · Yellow** ✓ |
 
-Final: Red on post 1, Yellow on post 2, Blue on post 3 — but we want Red-Blue-Yellow, so the specific sequence depends on the exact initial and target states. The key insight is that the Yang-Baxter sequence keeps cords untangled.
+The cords end with the topological signature of a 3-cycle braid: cord 1 (anchored between posts 1 and 2) and cord 2 (anchored between posts 2 and 3) cross once — that's the unavoidable braid generator pattern σ₂σ₁ produces. They are *not* tangled around each other; they hang in a clean two-strand crossing.
+
+**The Yang-Baxter test.** Try the alternative sequence **σ₁ · σ₂** instead:
+
+1. σ₁ first: swap rings at posts 1–2 → Yellow · Blue · Red.
+2. σ₂: swap rings at posts 2–3 → Yellow · Red · Blue.
+
+Different final permutation! σ₁σ₂ ≠ σ₂σ₁ — the order matters. This is non-commutativity made physical.
+
+**Why the longer Yang-Baxter sequences (σ₁σ₂σ₁ or σ₂σ₁σ₂) don't appear here.** Those three-letter words give the same permutation as σ₂σ₁ followed by an extra swap that lands one ring back in its original spot — *not* this 3-cycle target. They are useful when you need to demonstrate that two seemingly-different moves are equivalent, not when you're solving a specific permutation. For this puzzle, σ₂σ₁ is both correct and minimal.
 
 ## Why It's Tricky
 

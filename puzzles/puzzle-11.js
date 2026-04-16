@@ -7,7 +7,7 @@ import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
-  id: 11,
+  id: 5,
   name: 'The Mirror Gate',
   difficulty: 'Intermediate',
   principle: 'Chirality (handedness)',

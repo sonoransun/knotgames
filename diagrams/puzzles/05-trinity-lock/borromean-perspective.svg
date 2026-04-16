@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 420">
+  <title>Trinity Lock — Isometric Perspective</title>
+  <desc>An isometric (3D-like) view of the three Borromean ovals showing the cyclic over-under pattern. Each oval passes OVER one neighbor and UNDER the other — no two ovals are pairwise linked.</desc>
+
+  <rect width="500" height="420" fill="#fafafa"/>
+
+  <text x="250" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#333" font-weight="bold">Borromean rings: cyclic over-under, no pairwise linking</text>
+
+  <defs>
+    <filter id="overShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0.6" dy="0.6" stdDeviation="1" flood-color="#000" flood-opacity="0.30"/>
+    </filter>
+  </defs>
+
+  <!-- Three ovals arranged in 3D perspective at 120-degree rotations.
+       Each oval is rotated to lie in a different plane, giving the
+       characteristic 3-fold symmetric Borromean image. -->
+  <g transform="translate(250, 200)">
+
+    <!-- ===== RED oval (vertical, slight left tilt) ===== -->
+    <!-- Under-arc on the left (where it goes under Yellow) -->
+    <ellipse cx="0" cy="0" rx="75" ry="115"
+             transform="rotate(-30)"
+             fill="none" stroke="#c44" stroke-width="3"
+             stroke-dasharray="0"/>
+    <!-- Erase a section where Red goes UNDER Yellow (top-right area) -->
+    <path d="M 33,-95 A 75,115 0 0 1 65,-30"
+          transform="rotate(-30)"
+          fill="none" stroke="#fafafa" stroke-width="6"/>
+
+    <!-- ===== YELLOW oval (rotated 120 degrees) ===== -->
+    <ellipse cx="0" cy="0" rx="75" ry="115"
+             transform="rotate(90)"
+             fill="none" stroke="#dc3" stroke-width="3"/>
+    <!-- Erase where Yellow goes UNDER Blue -->
+    <path d="M 33,-95 A 75,115 0 0 1 65,-30"
+          transform="rotate(90)"
+          fill="none" stroke="#fafafa" stroke-width="6"/>
+
+    <!-- ===== BLUE oval (rotated 210 degrees) ===== -->
+    <ellipse cx="0" cy="0" rx="75" ry="115"
+             transform="rotate(210)"
+             fill="none" stroke="#44c" stroke-width="3"/>
+    <!-- Erase where Blue goes UNDER Red -->
+    <path d="M 33,-95 A 75,115 0 0 1 65,-30"
+          transform="rotate(210)"
+          fill="none" stroke="#fafafa" stroke-width="6"/>
+
+  </g>
+
+  <!-- Labels for each oval -->
+  <text x="250" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#c44" font-weight="bold">Red</text>
+  <text x="120" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#44c" font-weight="bold">Blue</text>
+  <text x="380" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#aa9000" font-weight="bold">Yellow</text>
+
+  <!-- Caption: the over/under cycle -->
+  <text x="250" y="335" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#444" font-weight="bold">The cyclic relationship:</text>
+  <text x="250" y="352" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#555">Red goes OVER Blue and UNDER Yellow.</text>
+  <text x="250" y="366" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#555">Yellow goes OVER Red and UNDER Blue.</text>
+  <text x="250" y="380" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#555">Blue goes OVER Yellow and UNDER Red.</text>
+  <text x="250" y="402" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#a40" font-style="italic">Remove ANY one ring → the other two fall apart.</text>
+</svg>

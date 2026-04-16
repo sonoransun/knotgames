@@ -7,7 +7,7 @@ import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
-  id: 13,
+  id: 14,
   name: 'The Torus Winder',
   difficulty: 'Advanced',
   principle: 'Torus knots — (p,q) winding numbers',

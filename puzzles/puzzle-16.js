@@ -6,7 +6,7 @@ import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
-  id: 16,
+  id: 9,
   name: 'The Crossing Number',
   difficulty: 'Beginner-Intermediate',
   principle: 'Unknotting number (crossing changes)',

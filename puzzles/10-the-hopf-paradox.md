@@ -1,4 +1,4 @@
-# Puzzle 10: The Hopf Paradox
+# Puzzle 12: The Hopf Paradox
 
 **Difficulty:** Expert
 **Type:** Extraction

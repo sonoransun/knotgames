@@ -5,7 +5,7 @@ import { StepArrowManager } from '../lib/arrow-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
-  id: 5,
+  id: 6,
   name: 'Trinity Lock',
   difficulty: 'Intermediate',
   principle: 'Borromean rings (no pairwise linking)',

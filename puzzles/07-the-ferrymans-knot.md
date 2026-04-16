@@ -1,4 +1,4 @@
-# Puzzle 7: The Ferryman's Knot
+# Puzzle 8: The Ferryman's Knot
 
 **Difficulty:** Advanced
 **Type:** Disentanglement

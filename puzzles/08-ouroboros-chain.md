@@ -1,4 +1,4 @@
-# Puzzle 8: Ouroboros Chain
+# Puzzle 10: Ouroboros Chain
 
 **Difficulty:** Advanced
 **Type:** Sequential disentanglement

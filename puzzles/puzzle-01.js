@@ -109,6 +109,27 @@ function midCordPath2() {
   ];
 }
 
+// Ring at the drape point — the critical moment when the ring meets
+// the cord's lowest crossing of the U-bar. This is the "gate" the ring
+// must pass over to escape.
+function drapePointCordPath() {
+  return [
+    LEFT_TIP,
+    [-30, 100, 0],
+    [-28, 75, 2],
+    [-15, 30, 4],
+    [-5, 18, 3],         // cord cresting just above the curve
+    [-12, 12, 1],
+    [0, 8, 5],           // drape point — where ring will pass over
+    [12, 12, 1],
+    [5, 18, -3],
+    [15, 30, -4],
+    [28, 75, -2],
+    [30, 100, 0],
+    RIGHT_TIP,
+  ];
+}
+
 export function create3DScene() {
   const mats = createMaterials();
   const group = new THREE.Group();
@@ -199,10 +220,14 @@ const arrowConfigs = {
     { from: [0, 55, 5], to: [-20, 85, 3], opts: { color: 0x44cc44 } },
   ]},
   2: { arrows: [
-    { from: [0, 45, 0], to: [-5, 20, 3], opts: { color: 0x44cc44 } },
+    { from: [0, 45, 0], to: [-2, 25, 4], opts: { color: 0x44cc44 } },
   ]},
   3: { arrows: [
-    { from: [-5, 20, 3], to: [50, 10, 30], opts: { color: 0x44cc44 } },
+    // Highlight the drape point — the critical crossing the ring must pass over
+    { from: [-2, 25, 4], to: [0, 12, 6], opts: { color: 0xffaa22 } },
+  ]},
+  4: { arrows: [
+    { from: [-2, 12, 4], to: [50, 10, 30], opts: { color: 0x44cc44 } },
   ]},
 };
 
@@ -216,15 +241,21 @@ export const animationSteps = [
     cord: initialCordPath(),
   },
   {
-    label: 'Push the cord toward the left to make slack below the ring',
+    label: 'Push the cord aside to make slack below the ring',
     duration: 2.0,
     ring: { position: [0, 45, 0] },
     cord: midCordPath1(),
   },
   {
-    label: 'Slide the ring down — it clears the cord\'s drape',
-    duration: 2.5,
-    ring: { position: [-5, 20, 3] },
+    label: 'Lower the ring toward the drape point — the cord crosses the U-bar here',
+    duration: 2.0,
+    ring: { position: [-2, 25, 4] },
+    cord: drapePointCordPath(),
+  },
+  {
+    label: 'Slip the ring over the drape point — it passes the cord\'s lowest crossing',
+    duration: 2.0,
+    ring: { position: [-2, 12, 4] },
     cord: midCordPath2(),
   },
   {
@@ -245,7 +276,7 @@ export function updateAnimation(objects, state) {
   }
 
   // Highlight active ring during movement steps
-  if (stepIndex >= 1 && stepIndex <= 3) {
+  if (stepIndex >= 1 && stepIndex <= 4) {
     if (!ringHighlightMat) {
       ringHighlightMat = createHighlightMaterial(objects.ring.material, 0xffcc44, 0.3);
     }

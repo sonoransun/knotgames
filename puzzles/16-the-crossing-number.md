@@ -1,4 +1,4 @@
-# Puzzle 16: The Crossing Number
+# Puzzle 9: The Crossing Number
 
 **Difficulty:** Beginner-Intermediate
 **Type:** Transformation
