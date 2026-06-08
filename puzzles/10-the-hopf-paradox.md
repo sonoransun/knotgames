@@ -105,8 +105,12 @@ At the pole, the two hoops cross, creating a tight junction. The ring must pass 
 - The rotation and translation must be continuous and coupled — if you try to rotate first and then translate (or vice versa), the ring jams against the hoop wires
 - Think of it as threading a nut onto a bolt — the rotation and forward motion happen simultaneously
 
+![The Hopf move: the ring must rotate about the polar hoop and translate along it simultaneously — the motion cannot be decomposed into rotate-then-slide](../diagrams/puzzles/10-the-hopf-paradox/key-move.svg)
+
 ### Step 4: Exit through window
 After passing through the pole junction, the ring is in a new quadrant. Orient it to fit through the adjacent window opening and slide it out of the cage.
+
+![Solved: the ring has exited through the north-east window and hangs free outside the now-empty cage, still on its cord to the handle](../diagrams/puzzles/10-the-hopf-paradox/solved.svg)
 
 ## Why It's Tricky
 

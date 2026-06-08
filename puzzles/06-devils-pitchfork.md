@@ -88,6 +88,8 @@ flowchart LR
 
 The key is that the cord loop over the center prong creates a **pulley-like** redirection of the constraint, giving the ring enough freedom to reach the right side.
 
+![Solved: cord looped over the center prong, ring transferred from the left prong to the right prong](../diagrams/puzzles/06-devils-pitchfork/solved.svg)
+
 ## Why It's Tricky
 
 **The height difference is dismissed.** The center prong being 20mm shorter looks like an imprecision or aesthetic choice. Solvers do not recognize it as the critical functional feature. It is, in puzzle design terms, a "hidden in plain sight" element.

@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ouroboros Chain · EXKNOTS</title>
+<meta name="description" content="Ouroboros Chain — Gray code / binary recursion (Chinese Rings reimagined). Setup, solution, topology, and construction.">
+<link rel="canonical" href="https://sonoransun.github.io/knotgames/puzzles/08-ouroboros-chain.html">
+<meta name="theme-color" content="#0f1320">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EXKNOTS">
+<meta property="og:title" content="Ouroboros Chain">
+<meta property="og:description" content="Ouroboros Chain — Gray code / binary recursion (Chinese Rings reimagined). Setup, solution, topology, and construction.">
+<meta property="og:url" content="https://sonoransun.github.io/knotgames/puzzles/08-ouroboros-chain.html">
+<meta property="og:image" content="https://sonoransun.github.io/knotgames/assets/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sonoransun.github.io/knotgames/assets/brand/og-image.png">
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/brand/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&display=swap">
+<link rel="stylesheet" href="../assets/css/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Primary">
+  <a class="brand" href="../index.html" aria-label="EXKNOTS home"><svg class="logomark" viewBox="0 0 100 100" role="img" aria-label="EXKNOTS" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
+  <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
+</svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
+  <button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="../explore/">Explore</a></li>
+    <li><a href="../puzzles/" aria-current="page">Puzzles</a></li>
+    <li><a href="../theory/">Theory</a></li>
+    <li><a href="../construction/materials.html">Build</a></li>
+    <li><a href="https://github.com/sonoransun/knotgames">GitHub ↗</a></li>
+    <li><a href="../explore/" class="cta">Open Explorer</a></li>
+  </ul>
+  <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle theme"><span class="sun">☀</span><span class="moon">☾</span></button>
+</nav>
+<div class="progress" role="presentation"></div>
+<main id="main">
+<header class="doc-header" style="--ac:var(--arc3)"><div class="wrap">
+  <span class="doc-num">10</span>
+  <h1 class="doc-title">Ouroboros Chain</h1>
+  <div class="doc-meta">
+    <span class="pill advanced">Advanced</span>
+    <span class="pc-type">Sequential disentanglement</span>
+    <span class="pc-principle">Gray code / binary recursion (Chinese Rings reimagined)</span>
+  </div>
+  <div class="doc-actions"><a class="btn btn--primary" href="../explore/#10">▶ Open in Interactive Explorer</a></div>
+</div></header>
+<div class="wrap band" style="padding-top:1.4rem"><div class="doc-layout"><div class="prose"><h2 id="overview">Overview <a href="#overview" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>Six cord loops hang from posts on a wooden base, each threaded onto a shuttle bar and each chained through its neighbor. The shuttle bar cannot be lifted out. Removing it requires a precise sequence of 42 moves — no more, no less. There are no shortcuts. This is a puzzle about recursive structure, patience, and trust.</p>
+<h2 id="components">Components <a href="#components" class="anchor-link" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Material</th>
+<th>Dimensions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Base</td>
+<td>Hardwood (maple or beech)</td>
+<td>250mm x 60mm x 30mm</td>
+</tr>
+<tr>
+<td>Posts (x6)</td>
+<td>Wooden dowels</td>
+<td>10mm diameter, 80mm tall, spaced 30mm apart</td>
+</tr>
+<tr>
+<td>Shuttle bar</td>
+<td>3mm steel rod</td>
+<td>250mm long</td>
+</tr>
+<tr>
+<td>Cord loops (x6)</td>
+<td>5mm braided nylon, spliced closed</td>
+<td>150mm circumference each</td>
+</tr>
+<tr>
+<td>Base notches</td>
+<td>Routed channels</td>
+<td>4mm wide, in front face of base, to hold shuttle bar</td>
+</tr>
+</tbody></table></div>
+<h2 id="setup">Setup <a href="#setup" class="anchor-link" aria-hidden="true">#</a></h2>
+<p><figure class="dia-figure dia-wide"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" class="dia">
+  <title>Ouroboros Chain - Setup</title>
+  <desc>Six posts in a row on a wooden base, each with a cord loop hanging from it. The loops are chained: loop 2 passes through loop 1, loop 3 through loop 2, and so on. A horizontal shuttle bar runs through all 6 loops.</desc>
+
+  
+
+  <!-- Wooden base (wood color) -->
+  <rect x="30" y="170" width="440" height="18" rx="3" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"></rect>
+
+  <!-- Posts (wood) -->
+  <line x1="75" y1="60" x2="75" y2="170" stroke="var(--dia-wood, #b07d52)" stroke-width="2.5"></line>
+  <line x1="150" y1="60" x2="150" y2="170" stroke="var(--dia-wood, #b07d52)" stroke-width="2.5"></line>
+  <line x1="225" y1="60" x2="225" y2="170" stroke="var(--dia-wood, #b07d52)" stroke-width="2.5"></line>
+  <line x1="300" y1="60" x2="300" y2="170" stroke="var(--dia-wood, #b07d52)" stroke-width="2.5"></line>
+  <line x1="375" y1="60" x2="375" y2="170" stroke="var(--dia-wood, #b07d52)" stroke-width="2.5"></line>
+  <line x1="450" y1="60" x2="450" y2="170" stroke="var(--dia-wood, #b07d52)" stroke-width="2.5"></line>
+
+  <!-- Post caps (wood, darker) -->
+  <circle cx="75" cy="58" r="4" fill="var(--dia-wood, #b07d52)"></circle>
+  <circle cx="150" cy="58" r="4" fill="var(--dia-wood, #b07d52)"></circle>
+  <circle cx="225" cy="58" r="4" fill="var(--dia-wood, #b07d52)"></circle>
+  <circle cx="300" cy="58" r="4" fill="var(--dia-wood, #b07d52)"></circle>
+  <circle cx="375" cy="58" r="4" fill="var(--dia-wood, #b07d52)"></circle>
+  <circle cx="450" cy="58" r="4" fill="var(--dia-wood, #b07d52)"></circle>
+
+  <!-- Post labels -->
+  <text x="75" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">1</text>
+  <text x="150" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">2</text>
+  <text x="225" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">3</text>
+  <text x="300" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">4</text>
+  <text x="375" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">5</text>
+  <text x="450" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">6</text>
+
+  <!-- Chained loops hanging from posts (blue cord) -->
+  <!-- Loop 1: hangs from post 1, oval shape -->
+  <ellipse cx="75" cy="110" rx="22" ry="40" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></ellipse>
+
+  <!-- Loop 2: hangs from post 2, passes through loop 1 -->
+  <ellipse cx="150" cy="110" rx="22" ry="40" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></ellipse>
+
+  <!-- Loop 3: hangs from post 3, passes through loop 2 -->
+  <ellipse cx="225" cy="110" rx="22" ry="40" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></ellipse>
+
+  <!-- Loop 4: hangs from post 4, passes through loop 3 -->
+  <ellipse cx="300" cy="110" rx="22" ry="40" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></ellipse>
+
+  <!-- Loop 5: hangs from post 5, passes through loop 4 -->
+  <ellipse cx="375" cy="110" rx="22" ry="40" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></ellipse>
+
+  <!-- Loop 6: hangs from post 6, passes through loop 5 -->
+  <ellipse cx="450" cy="110" rx="22" ry="40" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></ellipse>
+
+  <!-- Chain links between adjacent loops (more prominent) -->
+  <path d="M 97,105 Q 112,95 128,105" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="2" stroke-dasharray="3,2"></path>
+  <path d="M 172,105 Q 187,95 203,105" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="2" stroke-dasharray="3,2"></path>
+  <path d="M 247,105 Q 262,95 278,105" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="2" stroke-dasharray="3,2"></path>
+  <path d="M 322,105 Q 337,95 353,105" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="2" stroke-dasharray="3,2"></path>
+  <path d="M 397,105 Q 412,95 428,105" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="2" stroke-dasharray="3,2"></path>
+
+  <!-- Shuttle bar: solid horizontal line through all loops (steel) -->
+  <line x1="45" y1="120" x2="480" y2="120" stroke="var(--dia-rigid, #8a8275)" stroke-width="3" stroke-linecap="round"></line>
+  <!-- Shuttle bar end caps (steel) -->
+  <circle cx="45" cy="120" r="4" fill="var(--dia-rigid, #8a8275)"></circle>
+  <circle cx="480" cy="120" r="4" fill="var(--dia-rigid, #8a8275)"></circle>
+
+  <!-- Annotations -->
+  <text x="250" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-rigid, #8a8275)">Posts: 1  2  3  4  5  6</text>
+
+  <text x="250" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">loops hang from posts</text>
+
+  <text x="250" y="215" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">shuttle bar through all loops</text>
+
+  <!-- Legend -->
+  <line x1="30" y1="237" x2="60" y2="237" stroke="var(--dia-rigid, #8a8275)" stroke-width="3"></line>
+  <text x="65" y="240" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">shuttle bar (rigid)</text>
+
+  <line x1="200" y1="237" x2="230" y2="237" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"></line>
+  <text x="235" y="240" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">cord loops (flexible)</text>
+</svg><figcaption>Setup: 6 posts with chained loops, shuttle bar through all loops</figcaption></figure></p>
+<p>Each cord loop:</p>
+<ol>
+<li>Hangs from its post (permanently — the post was inserted through the loop before being glued into the base)</li>
+<li>Is threaded onto the shuttle bar</li>
+<li>Passes through the loop on the post to its left (except Loop 1, which is the anchor)</li>
+</ol>
+<p>The shuttle bar rests in notches on the front face of the base. It cannot be lifted out because the interlocking loops prevent it.</p>
+<h2 id="solved-state">Solved State <a href="#solved-state" class="anchor-link" aria-hidden="true">#</a></h2>
+<p><figure class="dia-figure dia-wide"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" class="dia">
+  <title>Ouroboros Chain - Solved</title>
+  <desc>Six posts on a wooden base with cord loops still hanging from them, but the shuttle bar is now completely separate below, free from all loops.</desc>
+
+  
+
+  <!-- Green "Solved" indicator (upper-right) -->
+  <circle cx="472" cy="22" r="16" fill="var(--dia-pos, #2f8f43)" opacity="0.12" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5"></circle>
+  <path d="M464,22 L470,28 L482,16" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <!-- Wooden base (wood color) -->
+  <rect x="30" y="140" width="440" height="18" rx="3" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"></rect>
+
+  <!-- Posts (wood) -->
+  <line x1="75" y1="45" x2="75" y2="140" stroke="var(--dia-wood, #b07d52)" stroke-width="2.5"></line>
+  <line x1="150" y1="45" x2="150" y2="140" stroke="var(--dia-wood, #b07d52)" stroke-width="2.5"></line>
+  <line x1="225" y1="45" x2="225" y2="140" stroke="var(--dia-wood, #b07d52)" stroke-width="2.5"></line>
+  <line x1="300" y1="45" x2="300" y2="140" stroke="var(--dia-wood, #b07d52)" stroke-width="2.5"></line>
+  <line x1="375" y1="45" x2="375" y2="140" stroke="var(--dia-wood, #b07d52)" stroke-width="2.5"></line>
+  <line x1="450" y1="45" x2="450" y2="140" stroke="var(--dia-wood, #b07d52)" stroke-width="2.5"></line>
+
+  <!-- Post caps (wood, darker) -->
+  <circle cx="75" cy="43" r="4" fill="var(--dia-wood, #b07d52)"></circle>
+  <circle cx="150" cy="43" r="4" fill="var(--dia-wood, #b07d52)"></circle>
+  <circle cx="225" cy="43" r="4" fill="var(--dia-wood, #b07d52)"></circle>
+  <circle cx="300" cy="43" r="4" fill="var(--dia-wood, #b07d52)"></circle>
+  <circle cx="375" cy="43" r="4" fill="var(--dia-wood, #b07d52)"></circle>
+  <circle cx="450" cy="43" r="4" fill="var(--dia-wood, #b07d52)"></circle>
+
+  <!-- Post labels -->
+  <text x="75" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">1</text>
+  <text x="150" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">2</text>
+  <text x="225" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">3</text>
+  <text x="300" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">4</text>
+  <text x="375" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">5</text>
+  <text x="450" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">6</text>
+
+  <!-- Loops still hanging from posts (blue cord, relaxed) -->
+  <ellipse cx="75" cy="90" rx="20" ry="35" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></ellipse>
+  <ellipse cx="150" cy="90" rx="20" ry="35" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></ellipse>
+  <ellipse cx="225" cy="90" rx="20" ry="35" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></ellipse>
+  <ellipse cx="300" cy="90" rx="20" ry="35" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></ellipse>
+  <ellipse cx="375" cy="90" rx="20" ry="35" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></ellipse>
+  <ellipse cx="450" cy="90" rx="20" ry="35" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></ellipse>
+
+  <!-- Chain links between adjacent loops (more prominent) -->
+  <path d="M 95,85 Q 112,75 130,85" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="2" stroke-dasharray="3,2"></path>
+  <path d="M 170,85 Q 187,75 205,85" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="2" stroke-dasharray="3,2"></path>
+  <path d="M 245,85 Q 262,75 280,85" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="2" stroke-dasharray="3,2"></path>
+  <path d="M 320,85 Q 337,75 355,85" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="2" stroke-dasharray="3,2"></path>
+  <path d="M 395,85 Q 412,75 430,85" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="2" stroke-dasharray="3,2"></path>
+
+  <!-- Shuttle bar: separate, below the base, completely free (steel) -->
+  <line x1="100" y1="195" x2="400" y2="195" stroke="var(--dia-rigid, #8a8275)" stroke-width="3" stroke-linecap="round"></line>
+  <circle cx="100" cy="195" r="4" fill="var(--dia-rigid, #8a8275)"></circle>
+  <circle cx="400" cy="195" r="4" fill="var(--dia-rigid, #8a8275)"></circle>
+
+  <!-- Annotation arrow showing separation -->
+  <path d="M 250,165 L 250,185" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5" marker-end="url(#d1-arrowhead)"></path>
+  <defs>
+    <marker id="d1-arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="var(--dia-pos, #2f8f43)"></path>
+    </marker>
+  </defs>
+
+  <!-- Labels -->
+  <text x="250" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-pos, #2f8f43)" font-weight="bold">freed</text>
+
+  <text x="250" y="220" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-pos, #2f8f43)" font-weight="bold">shuttle bar removed, completely free</text>
+
+  <!-- Legend -->
+  <line x1="30" y1="240" x2="60" y2="240" stroke="var(--dia-rigid, #8a8275)" stroke-width="3"></line>
+  <text x="65" y="243" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">shuttle bar (rigid)</text>
+
+  <line x1="200" y1="240" x2="230" y2="240" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"></line>
+  <text x="235" y="243" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">cord loops (flexible)</text>
+</svg><figcaption>Solved: shuttle bar removed, completely free of all loops</figcaption></figure></p>
+<h2 id="objective">Objective <a href="#objective" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>Remove the shuttle bar completely from all six loops.</p>
+<h2 id="the-topology">The Topology <a href="#the-topology" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>This is a reimagining of the <strong>Baguenaudier</strong> (Chinese Rings), one of the oldest mathematical puzzles. The state space is isomorphic to the <strong>Gray code</strong> — a binary counting system where consecutive numbers differ by exactly one bit.</p>
+<p>Each loop is either ON the shuttle bar (1) or OFF (0). The state is a 6-bit binary number. The rules:</p>
+<ul>
+<li><strong>Rule 1:</strong> You can always add or remove <strong>Loop 6</strong> (the rightmost) from the shuttle bar.</li>
+<li><strong>Rule 2:</strong> You can add or remove <strong>Loop k</strong> only when Loop k+1 is ON the bar and all loops to the right of k+1 are OFF.</li>
+</ul>
+<p>These rules mirror the constraints of Gray code counting. The starting state is <code>111111</code> (all loops on) and the goal state is <code>000000</code> (all loops off).</p>
+<p><strong>Minimum moves:</strong> For n loops, the minimum is:</p>
+<ul>
+<li>n odd: (2^n + 1) / 3</li>
+<li>n even: (2^n - 1) / 3</li>
+</ul>
+<p>For n = 6: (2^6 - 1) / 3 = <strong>63/3 = 21</strong> ... but each "move" involves lifting a loop off and then replacing preparatory loops, so the total physical manipulations is <strong>42</strong>.</p>
+<h3 id="what-is-a-gray-code">What Is a Gray Code? <a href="#what-is-a-gray-code" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>A <strong>Gray code</strong> is a binary counting system where consecutive numbers differ by exactly one bit. Compare with normal binary:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Normal Binary</th>
+<th>Gray Code</th>
+<th>Bit Flipped</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>000</td>
+<td>000</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1</td>
+<td>001</td>
+<td>001</td>
+<td>bit 1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>010</td>
+<td>011</td>
+<td>bit 2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>011</td>
+<td>010</td>
+<td>bit 1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>100</td>
+<td>110</td>
+<td>bit 3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>101</td>
+<td>111</td>
+<td>bit 1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>110</td>
+<td>101</td>
+<td>bit 2</td>
+</tr>
+<tr>
+<td>7</td>
+<td>111</td>
+<td>100</td>
+<td>bit 1</td>
+</tr>
+</tbody></table></div>
+<p>In normal binary, going from 011 to 100 requires flipping ALL THREE bits simultaneously. In Gray code, only one bit changes at a time. This maps perfectly to the puzzle's physical constraint: you can only add or remove ONE loop per move.</p>
+<p>The puzzle state <code>111111</code> (all loops on) must reach <code>000000</code> (all loops off) by flipping one bit at a time, subject to the constraint rules. The Gray code path is the ONLY valid path — there are no shortcuts.</p>
+<h3 id="state-table-first-15-moves">State Table (First 15 Moves) <a href="#state-table-first-15-moves" class="anchor-link" aria-hidden="true">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Move</th>
+<th>Action</th>
+<th>State</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>(start)</td>
+<td>111111</td>
+<td>All loops ON shuttle bar</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Remove Loop 6</td>
+<td>111110</td>
+<td>Rule 1: rightmost always free</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Remove Loop 5</td>
+<td>111100</td>
+<td>Rule 2: Loop 6 OFF, so 5 free</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Replace Loop 6</td>
+<td>111101</td>
+<td>Need Loop 6 ON to free Loop 4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Remove Loop 4</td>
+<td>111001</td>
+<td>Rule 2: Loop 5 ON, 6 OFF → free</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Remove Loop 6</td>
+<td>111000</td>
+<td>Rule 1: rightmost always free</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Remove Loop 5</td>
+<td>110100</td>
+<td>Preparing to remove Loop 3</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Replace Loop 6</td>
+<td>110101</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Remove Loop 3</td>
+<td>110001</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Remove Loop 6</td>
+<td>110000</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Replace Loop 5</td>
+<td>110010</td>
+<td>Rebuilding right side for Loop 2</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Replace Loop 6</td>
+<td>110011</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Remove Loop 4</td>
+<td>110111</td>
+<td><strong>Backward steps!</strong></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Remove Loop 6</td>
+<td>110110</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Remove Loop 5</td>
+<td>110100</td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>Replace Loop 6</td>
+<td>110101</td>
+<td></td>
+</tr>
+<tr>
+<td>...</td>
+<td>(continues)</td>
+<td>...</td>
+<td>42 moves total to reach 000000</td>
+</tr>
+</tbody></table></div>
+<p><strong>Note:</strong> This table illustrates the key frustration: moves 10-12 involve REPLACING loops that were already removed. This is not a mistake — it's the necessary setup for removing Loop 2. Trust the algorithm.</p>
+<h3 id="why-recursion">Why Recursion? <a href="#why-recursion" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>To remove loop k, you first need loop k+1 ON and everything right of k+1 OFF. But getting that configuration requires its own sequence of moves. This nesting is <strong>recursion</strong> — the same pattern repeating at every scale.</p>
+<p>Think of it like a combination lock with a twist: to turn dial 3, you must first set dials 4, 5, 6 to a specific pattern. But setting dial 4 requires its own pattern for dials 5 and 6. The puzzle is a tower of nested preconditions.</p>
+<p>This is why 6 loops require 42 moves. Each added loop roughly doubles the solution length — the complexity is exponential: O(2^n).</p>
+<div class="callout callout--intuition"><span class="callout-label">Physical intuition</span><p>What you feel in your hands is a rhythm: remove right, remove next, replace right, remove deeper. The same three-move pattern repeats at every level, but the 'depth' of recursion makes each cycle longer. By loop 3, you're doing a dozen moves just to prepare for one removal. Trust the pattern — if you've been following the rules, you ARE making progress even when it feels like backtracking.</p></div>
+<p><em>For the mathematical foundations of Gray codes, see <a href="../theory/topology-primer.html#gray-codes-and-recursive-complexity">Topology Primer: Gray Codes and Recursive Complexity</a>.</em></p>
+<h2 id="solution">Solution <a href="#solution" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>The solution follows a recursive algorithm. Here is the pattern for the first several moves:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Move</th>
+<th>Action</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Remove Loop 6</td>
+<td>111110</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Remove Loop 5</td>
+<td>111100</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Replace Loop 6</td>
+<td>111101</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Remove Loop 4</td>
+<td>111001</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Remove Loop 6</td>
+<td>111000</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Remove Loop 3</td>
+<td>110000</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Replace Loop 6</td>
+<td>110001</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Replace Loop 5</td>
+<td>110011</td>
+</tr>
+<tr>
+<td>...</td>
+<td>(continues recursively)</td>
+<td>...</td>
+</tr>
+</tbody></table></div>
+<p>The recursive pattern:</p>
+<ul>
+<li>To remove loop k, first ensure loop k+1 is ON and everything right of k+1 is OFF</li>
+<li>Remove loop k</li>
+<li>Then set up the configuration to remove loop k-1</li>
+<li>This recursion continues down to loop 1</li>
+</ul>
+<p><strong>Key insight:</strong> Trust the algorithm. The solution requires what feels like "going backwards" (replacing loops you already removed). This is not a mistake — it's the necessary setup for removing the next loop. Resist the urge to look for shortcuts; none exist.</p>
+<p><figure class="dia-figure dia-wide"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" class="dia">
+  <title>Ouroboros Chain - Key Move</title>
+  <desc>The recursive Gray-code rule: at any moment only one loop can legally leave the shuttle bar. Here the rightmost free loop (post 6) is lifted off the end of the bar; every other loop is still locked by its neighbour, so this is the single available move.</desc>
+
+  <defs>
+    <marker id="d2-mv8" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="var(--dia-neg, #cf3a26)"></path>
+    </marker>
+  </defs>
+
+  <text x="250" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-ink, #24211a)" font-weight="bold">Key move: only one loop is ever free</text>
+
+  <!-- Base + posts (wood) -->
+  <rect x="30" y="170" width="440" height="18" rx="3" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"></rect>
+  <g stroke="var(--dia-wood, #b07d52)" stroke-width="2.5">
+    <line x1="75" y1="60" x2="75" y2="170"></line><line x1="150" y1="60" x2="150" y2="170"></line>
+    <line x1="225" y1="60" x2="225" y2="170"></line><line x1="300" y1="60" x2="300" y2="170"></line>
+    <line x1="375" y1="60" x2="375" y2="170"></line><line x1="450" y1="60" x2="450" y2="170"></line>
+  </g>
+
+  <!-- Locked loops 1-5 (faded: cannot move) -->
+  <g fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="2.5" stroke-dasharray="5,3">
+    <ellipse cx="75" cy="110" rx="22" ry="40"></ellipse><ellipse cx="150" cy="110" rx="22" ry="40"></ellipse>
+    <ellipse cx="225" cy="110" rx="22" ry="40"></ellipse><ellipse cx="300" cy="110" rx="22" ry="40"></ellipse>
+    <ellipse cx="375" cy="110" rx="22" ry="40"></ellipse>
+  </g>
+  <text x="225" y="232" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-faint, #c9bda7)">loops 1-5 still locked by their neighbours</text>
+
+  <!-- Free loop 6 being lifted off the bar end (highlighted blue) -->
+  <ellipse cx="450" cy="86" rx="22" ry="40" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="3"></ellipse>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-cord, #1f57c4)" font-weight="bold">loop 6 free</text>
+
+  <!-- Shuttle bar (steel) -->
+  <line x1="45" y1="120" x2="480" y2="120" stroke="var(--dia-rigid, #8a8275)" stroke-width="3" stroke-linecap="round"></line>
+  <circle cx="45" cy="120" r="4" fill="var(--dia-rigid, #8a8275)"></circle>
+  <circle cx="480" cy="120" r="4" fill="var(--dia-rigid, #8a8275)"></circle>
+
+  <!-- Lift-off arrow -->
+  <path d="M450,118 C 470,108 472,92 458,72" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" marker-end="url(#d2-mv8)"></path>
+
+  <text x="250" y="246" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">Each freed loop unlocks the next — a recursive (Gray-code) sequence, not a single tug.</text>
+</svg><figcaption>Key move: only one loop is ever free to leave the shuttle bar; freeing it unlocks the next, a recursive Gray-code sequence</figcaption></figure></p>
+<h2 id="why-its-tricky">Why It's Tricky <a href="#why-its-tricky" class="anchor-link" aria-hidden="true">#</a></h2>
+<p><strong>Length, not complexity.</strong> Each individual move is simple. The difficulty is executing 42 precise moves in sequence without error. One wrong move adds more moves to recover from.</p>
+<p><strong>Backwards steps feel wrong.</strong> The algorithm frequently requires <em>replacing</em> loops that were previously removed. This feels like undoing progress. Solvers who refuse to "go backward" cannot progress.</p>
+<p><strong>No shortcuts.</strong> Many puzzles have an "aha!" moment — a single insight that unlocks the solution. This puzzle has no such moment. The solution is a recursive process that must be followed completely. Solvers who look for a clever trick will be frustrated because there isn't one. The puzzle rewards patience and systematic thinking, not cleverness.</p>
+<p><strong>State tracking.</strong> With 6 loops and 42 moves, it's easy to lose track of which loops are on and off. A mistake requires either starting over or carefully reasoning about the current state — which is hard when you're already confused.</p>
+<div class="callout callout--lesson"><span class="callout-label">Lesson</span><p>Some topological puzzles have irreducible sequential complexity. The structure of the solution is a deep mathematical object (Gray code / binary recursion), and it cannot be shortcutted. Trust the process.</p></div>
+<h2 id="common-mistakes">Common Mistakes <a href="#common-mistakes" class="anchor-link" aria-hidden="true">#</a></h2>
+<ol>
+<li><p><strong>Refusing to replace loops.</strong> The algorithm requires putting loops BACK on the shuttle bar that you already removed. This feels like going backward, and solvers resist it. But the recursive structure demands it — you cannot reach deeper loops without rebuilding the right-side configuration. If you refuse to go backward, you get stuck.</p>
+</li>
+<li><p><strong>Losing track of state.</strong> With 6 loops and 42 moves, it's easy to forget which loops are on and off. Use a piece of paper to track binary state (e.g., "111001") after each move. Alternatively, mark the loops with numbers 1-6 and write down each move.</p>
+</li>
+<li><p><strong>Looking for a shortcut.</strong> There isn't one. The minimum solution is 42 moves, proven by the mathematics of Gray codes. Every "clever trick" a solver tries will either violate the constraint rules (and jam the puzzle) or result in a longer path back to the goal state.</p>
+</li>
+<li><p><strong>Removing the wrong loop.</strong> The rules are strict: only the rightmost loop or a loop whose right neighbor is ON (with everything further right OFF) can be moved. Attempting to remove a loop out of order will physically jam because the chaining prevents it.</p>
+</li>
+</ol>
+<h2 id="construction-notes">Construction Notes <a href="#construction-notes" class="anchor-link" aria-hidden="true">#</a></h2>
+<h3 id="assembly-right-to-left-this-is-critical">Assembly (right to left — this is critical) <a href="#assembly-right-to-left-this-is-critical" class="anchor-link" aria-hidden="true">#</a></h3>
+<ol>
+<li>Thread Loop 6 onto Post 6 (slide the post through the loop). Thread the loop onto the shuttle bar.</li>
+<li>Thread Loop 5 through Loop 6. Then thread Loop 5 onto Post 5 and onto the shuttle bar.</li>
+<li>Thread Loop 4 through Loop 5. Then thread Loop 4 onto Post 4 and onto the shuttle bar.</li>
+<li>Continue for Loops 3, 2, 1.</li>
+<li>Glue all posts into the base with wood glue (pre-drill 10mm holes in the base).</li>
+<li>Set the shuttle bar into the base notches.</li>
+</ol>
+<h3 id="dimensional-tuning">Dimensional tuning <a href="#dimensional-tuning" class="anchor-link" aria-hidden="true">#</a></h3>
+<ul>
+<li>Loop circumference (150mm) must allow enough slack to be lifted off the shuttle bar when manipulated, but not so much that loops tangle with each other</li>
+<li>Post spacing (30mm) should be wide enough to work each loop independently but close enough that the chaining is maintained</li>
+<li>The shuttle bar should slide freely in the base notches but not fall out on its own</li>
+</ul>
+<h3 id="included-materials">Included materials <a href="#included-materials" class="anchor-link" aria-hidden="true">#</a></h3>
+<ul>
+<li>A printed <strong>instruction sheet</strong> showing the first 10 moves to get the solver started on the pattern</li>
+<li>A printed <strong>state table</strong> showing all 42 states (optional, for solvers who want to follow along)</li>
+<li>A note explaining that the minimum solution is 42 moves and there are no shortcuts</li>
+</ul>
+<nav class="prevnext" aria-label="Puzzle navigation"><a class="pn-prev" href="../puzzles/16-the-crossing-number.html"><span class="pn-k">← Previous</span><span class="pn-name">9. The Crossing Number</span></a><a class="pn-next" href="../puzzles/09-genus-trap.html"><span class="pn-k">Next →</span><span class="pn-name">11. Genus Trap</span></a></nav></div><aside class="toc" aria-label="On this page"><span class="eyebrow">On this page</span><ol><li><a class="lvl-2" href="#overview">Overview</a></li><li><a class="lvl-2" href="#components">Components</a></li><li><a class="lvl-2" href="#setup">Setup</a></li><li><a class="lvl-2" href="#solved-state">Solved State</a></li><li><a class="lvl-2" href="#objective">Objective</a></li><li><a class="lvl-2" href="#the-topology">The Topology</a></li><li><a class="lvl-2" href="#solution">Solution</a></li><li><a class="lvl-2" href="#why-its-tricky">Why It's Tricky</a></li><li><a class="lvl-2" href="#common-mistakes">Common Mistakes</a></li><li><a class="lvl-2" href="#construction-notes">Construction Notes</a></li></ol></aside></div></div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../index.html" style="color:#ece5d6"><svg class="logomark" viewBox="0 0 100 100" role="img" aria-label="EXKNOTS" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
+  <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
+</svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
+        <p style="margin:.8rem 0 0;max-width:30ch;font-size:.92rem">Topology you solve with your hands — 17 puzzles, their solutions, and the mathematics behind them.</p>
+      </div>
+      <div><h4>Arc 1</h4><ul><li><a href="../puzzles/01-the-gatekeeper.html">1. The Gatekeeper</a></li><li><a href="../puzzles/02-shepherds-yoke.html">2. Shepherd's Yoke</a></li><li><a href="../puzzles/03-the-prisoners-ring.html">3. The Prisoner's Ring</a></li><li><a href="../puzzles/04-mobius-snare.html">4. Mobius Snare</a></li><li><a href="../puzzles/11-the-mirror-gate.html">5. The Mirror Gate</a></li></ul></div><div><h4>Arc 2</h4><ul><li><a href="../puzzles/05-trinity-lock.html">6. Trinity Lock</a></li><li><a href="../puzzles/06-devils-pitchfork.html">7. Devil's Pitchfork</a></li><li><a href="../puzzles/07-the-ferrymans-knot.html">8. The Ferryman's Knot</a></li><li><a href="../puzzles/16-the-crossing-number.html">9. The Crossing Number</a></li></ul></div><div><h4>Arc 3</h4><ul><li><a href="../puzzles/08-ouroboros-chain.html">10. Ouroboros Chain</a></li><li><a href="../puzzles/09-genus-trap.html">11. Genus Trap</a></li><li><a href="../puzzles/10-the-hopf-paradox.html">12. The Hopf Paradox</a></li></ul></div><div><h4>Arc 4</h4><ul><li><a href="../puzzles/12-the-braid-cage.html">13. The Braid Cage</a></li><li><a href="../puzzles/13-the-torus-winder.html">14. The Torus Winder</a></li><li><a href="../puzzles/14-the-tricolor-lock.html">15. The Tricolor Lock</a></li><li><a href="../puzzles/15-the-seifert-sail.html">16. The Seifert Sail</a></li><li><a href="../puzzles/17-the-satellite-trap.html">17. The Satellite Trap</a></li></ul></div>
+    </div>
+    <div class="foot-fine">
+      <span>EXKNOTS · MIT License</span>
+      <span><a href="../theory/topology-primer.html">Topology Primer</a> · <a href="../construction/materials.html">Build Guide</a> · <a href="https://github.com/sonoransun/knotgames">Source ↗</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/docs.js" defer></script>
+</body>
+</html>

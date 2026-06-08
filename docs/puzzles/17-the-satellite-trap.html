@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Satellite Trap · EXKNOTS</title>
+<meta name="description" content="The Satellite Trap — Satellite knots (JSJ decomposition). Setup, solution, topology, and construction.">
+<link rel="canonical" href="https://sonoransun.github.io/knotgames/puzzles/17-the-satellite-trap.html">
+<meta name="theme-color" content="#0f1320">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EXKNOTS">
+<meta property="og:title" content="The Satellite Trap">
+<meta property="og:description" content="The Satellite Trap — Satellite knots (JSJ decomposition). Setup, solution, topology, and construction.">
+<meta property="og:url" content="https://sonoransun.github.io/knotgames/puzzles/17-the-satellite-trap.html">
+<meta property="og:image" content="https://sonoransun.github.io/knotgames/assets/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sonoransun.github.io/knotgames/assets/brand/og-image.png">
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/brand/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&display=swap">
+<link rel="stylesheet" href="../assets/css/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Primary">
+  <a class="brand" href="../index.html" aria-label="EXKNOTS home"><svg class="logomark" viewBox="0 0 100 100" role="img" aria-label="EXKNOTS" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
+  <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
+</svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
+  <button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="../explore/">Explore</a></li>
+    <li><a href="../puzzles/" aria-current="page">Puzzles</a></li>
+    <li><a href="../theory/">Theory</a></li>
+    <li><a href="../construction/materials.html">Build</a></li>
+    <li><a href="https://github.com/sonoransun/knotgames">GitHub ↗</a></li>
+    <li><a href="../explore/" class="cta">Open Explorer</a></li>
+  </ul>
+  <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle theme"><span class="sun">☀</span><span class="moon">☾</span></button>
+</nav>
+<div class="progress" role="presentation"></div>
+<main id="main">
+<header class="doc-header" style="--ac:var(--arc4)"><div class="wrap">
+  <span class="doc-num">17</span>
+  <h1 class="doc-title">The Satellite Trap</h1>
+  <div class="doc-meta">
+    <span class="pill expert">Expert</span>
+    <span class="pc-type">Extraction</span>
+    <span class="pc-principle">Satellite knots (JSJ decomposition)</span>
+  </div>
+  <div class="doc-actions"><a class="btn btn--primary" href="../explore/#17">▶ Open in Interactive Explorer</a></div>
+</div></header>
+<div class="wrap band" style="padding-top:1.4rem"><div class="doc-layout"><div class="prose"><h2 id="overview">Overview <a href="#overview" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>A translucent torus shell hides a trefoil-knotted internal tunnel. A cord threads through this tunnel with ball-stops at each end. Two rings are part of the assembly — an inner ring on the cord (trapped forever by the companion knot) and an outer ring linked only to the cord's external path. The solver must decompose the two-level satellite structure and free the outer ring without disturbing the inner.</p>
+<h2 id="components">Components <a href="#components" class="anchor-link" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Material</th>
+<th>Dimensions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Torus shell</td>
+<td>Semi-transparent resin or acrylic (2 halves, clip-together)</td>
+<td>120mm OD, 20mm tube diameter</td>
+</tr>
+<tr>
+<td>Internal tunnel</td>
+<td>Molded channel in shell wall</td>
+<td>6mm diameter, trefoil (2,3) torus knot path</td>
+</tr>
+<tr>
+<td>Cord</td>
+<td>4mm paracord</td>
+<td>800mm long</td>
+</tr>
+<tr>
+<td>Ball-stops (x2)</td>
+<td>Wood</td>
+<td>10mm diameter</td>
+</tr>
+<tr>
+<td>Inner ring</td>
+<td>Welded steel O-ring</td>
+<td>22mm OD, 3mm wire</td>
+</tr>
+<tr>
+<td>Outer ring</td>
+<td>Welded steel O-ring</td>
+<td>30mm OD, 4mm wire</td>
+</tr>
+<tr>
+<td>Surface ports (x4)</td>
+<td>Open channels in shell surface</td>
+<td>6mm wide, cord access points</td>
+</tr>
+</tbody></table></div>
+<p>The torus shell is made from two half-shells that clip together. The internal tunnel follows a (2,3) torus knot path through the tube wall. Four ports on the surface allow the cord to exit and re-enter the torus.</p>
+<h2 id="setup">Setup <a href="#setup" class="anchor-link" aria-hidden="true">#</a></h2>
+<p><figure class="dia-figure dia-narrow"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 400" class="dia">
+  <title>The Satellite Trap - Setup</title>
+  <desc>Top-down view of torus shell (two concentric ellipses). Internal tunnel shown as red dashed path (trefoil pattern). External cord shown as blue path. Port markers (yellow circles) where cord exits. Inner ring inside torus, outer ring on external cord.</desc>
+
+  
+
+  <!-- Title -->
+  <text x="175" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">The Satellite Trap — Setup</text>
+  <text x="175" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">top-down view of torus shell</text>
+
+  <!-- Torus shell: outer ellipse -->
+  <ellipse cx="175" cy="190" rx="130" ry="85" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"></ellipse>
+
+  <!-- Torus shell: inner ellipse (hole) -->
+  <ellipse cx="175" cy="190" rx="45" ry="30" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></ellipse>
+
+  <!-- Internal tunnel: trefoil pattern (red dashed) -->
+  <!-- The companion knot lives inside the torus shell -->
+  <path d="M 80,150 Q 60,170 80,195 Q 100,220 130,210" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"></path>
+  <path d="M 130,210 Q 155,200 165,170 Q 175,140 200,140" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"></path>
+  <path d="M 200,140 Q 230,140 250,165 Q 270,190 250,215" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"></path>
+  <path d="M 250,215 Q 230,240 200,235 Q 170,230 155,210" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"></path>
+  <path d="M 155,210 Q 140,190 120,175 Q 100,160 80,150" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"></path>
+
+  <!-- Tunnel crossing indicators -->
+  <circle cx="145" cy="195" r="4" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"></circle>
+  <circle cx="185" cy="155" r="4" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"></circle>
+  <circle cx="225" cy="210" r="4" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"></circle>
+
+  <!-- Port markers (yellow circles where cord enters/exits torus) -->
+  <circle cx="75" cy="150" r="6" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"></circle>
+  <text x="58" y="145" text-anchor="end" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">port A</text>
+
+  <circle cx="250" cy="145" r="6" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"></circle>
+  <text x="268" y="140" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">port B</text>
+
+  <circle cx="275" cy="215" r="6" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"></circle>
+  <text x="290" y="212" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">port C</text>
+
+  <circle cx="100" cy="235" r="6" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"></circle>
+  <text x="83" y="240" text-anchor="end" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">port D</text>
+
+  <!-- External cord (blue, solid — satellite pattern) -->
+  <!-- Cord exits port A, loops externally, enters port B -->
+  <path d="M 69,150 Q 40,120 60,90 Q 90,65 150,60 Q 220,55 260,80 Q 285,100 256,145" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+
+  <!-- Cord exits port B, goes to port C externally -->
+  <path d="M 256,145 Q 290,160 281,215" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+
+  <!-- Cord exits port C, loops to port D -->
+  <path d="M 275,221 Q 260,270 200,285 Q 140,295 100,270 Q 80,255 94,235" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+
+  <!-- Cord exits port D back to port A -->
+  <path d="M 94,235 Q 65,220 60,190 Q 55,165 69,150" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+
+  <!-- Inner ring (inside torus, on the tunnel) -->
+  <circle cx="160" cy="180" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+  <text x="160" y="170" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-ring, #b97d12)">inner ring</text>
+
+  <!-- Outer ring (on external cord) -->
+  <circle cx="150" cy="65" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+  <text x="150" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-ring, #b97d12)">outer ring</text>
+
+  <!-- Labels -->
+  <text x="175" y="195" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-neg, #cf3a26)">companion</text>
+  <text x="175" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-neg, #cf3a26)">(trefoil tunnel)</text>
+
+  <text x="55" y="85" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-cord, #1f57c4)">pattern</text>
+  <text x="55" y="95" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-cord, #1f57c4)">(external cord)</text>
+
+  <!-- Legend -->
+  <line x1="20" y1="330" x2="50" y2="330" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"></line>
+  <text x="58" y="334" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">torus shell</text>
+
+  <line x1="20" y1="345" x2="50" y2="345" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"></line>
+  <text x="58" y="349" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">internal tunnel (companion)</text>
+
+  <line x1="20" y1="360" x2="50" y2="360" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+  <text x="58" y="364" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">external cord (pattern)</text>
+
+  <circle cx="35" cy="378" r="5" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2"></circle>
+  <text x="58" y="382" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">port (entry/exit)</text>
+
+  <circle cx="200" cy="378" r="5" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2"></circle>
+  <text x="213" y="382" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">ring</text>
+</svg><figcaption>Torus shell with internal tunnel, external cord, and two rings</figcaption></figure></p>
+<ol>
+<li>The cord enters the torus at port 1 and follows the trefoil tunnel inside</li>
+<li>The cord exits at port 2, loops outside where the outer ring sits</li>
+<li>The cord re-enters at port 3, continues through the tunnel</li>
+<li>The cord exits at port 4, with the inner ring on this external section</li>
+<li>Ball-stops on both cord ends prevent full extraction</li>
+</ol>
+<h3 id="cord-path-summary">Cord path summary <a href="#cord-path-summary" class="anchor-link" aria-hidden="true">#</a></h3>
+<ul>
+<li><strong>Internal (companion):</strong> Through trefoil tunnel inside the torus shell</li>
+<li><strong>External (pattern):</strong> Two arcs on the torus surface connecting ports, with rings</li>
+</ul>
+<h2 id="objective">Objective <a href="#objective" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>Free the outer ring (30mm) from the assembly. The inner ring (22mm) must remain trapped. Nothing is cut or broken.</p>
+<h2 id="the-topology">The Topology <a href="#the-topology" class="anchor-link" aria-hidden="true">#</a></h2>
+<h3 id="what-is-a-satellite-knot">What Is a Satellite Knot? <a href="#what-is-a-satellite-knot" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>A <strong>satellite knot</strong> is a knot that contains a non-trivial knot (the <strong>companion</strong>) within a torus neighborhood, combined with a specific winding pattern (the <strong>pattern</strong>) on the torus boundary. The satellite knot is more complex than either the companion or pattern alone.</p>
+<p>In this puzzle:</p>
+<ul>
+<li><strong>Companion:</strong> The trefoil knot formed by the internal tunnel (fixed, embedded in the shell)</li>
+<li><strong>Pattern:</strong> The way the cord connects outside the torus (the external arcs through the ports)</li>
+</ul>
+<p>The satellite structure has a critical property: <strong>the two layers are independent.</strong> The companion can be analyzed separately from the pattern, and vice versa.</p>
+<h3 id="jsj-decomposition">JSJ Decomposition <a href="#jsj-decomposition" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>The <strong>Jaco-Shalen-Johannson (JSJ) decomposition theorem</strong> states that every compact, orientable, irreducible 3-manifold can be uniquely decomposed along incompressible tori into pieces that are either Seifert-fibered or hyperbolic. For knot complements, this means satellite knots decompose uniquely into companion and pattern components.</p>
+<p><figure class="dia-figure"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" class="dia">
+  <title>JSJ Decomposition</title>
+  <desc>Two-column diagram: Left column shows Companion (trefoil tunnel inside torus, red, labeled fixed). Right column shows Pattern (external cord path, blue, labeled can be rerouted). Arrow between them: Satellite = Companion + Pattern. Below: Outer ring linked to Pattern only, can be freed.</desc>
+
+  <defs>
+    <marker id="d1-decompArrow" markerWidth="8" markerHeight="6" refX="4" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="var(--dia-inksoft, #6a6151)"></path>
+    </marker>
+  </defs>
+
+  
+
+  <!-- Title -->
+  <text x="200" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">JSJ Decomposition</text>
+
+  <!-- Center equals / plus -->
+  <text x="200" y="130" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="var(--dia-inksoft, #6a6151)">+</text>
+
+  <!-- Top equation -->
+  <text x="200" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">Satellite = Companion + Pattern</text>
+
+  <!-- === LEFT COLUMN: Companion === -->
+  <rect x="20" y="55" width="160" height="155" rx="5" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5" stroke-dasharray="5,3"></rect>
+
+  <text x="100" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">Companion</text>
+  <text x="100" y="88" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">(trefoil tunnel, fixed)</text>
+
+  <!-- Torus with internal trefoil path -->
+  <ellipse cx="100" cy="145" rx="55" ry="35" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></ellipse>
+  <ellipse cx="100" cy="145" rx="18" ry="12" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></ellipse>
+
+  <!-- Trefoil tunnel inside torus -->
+  <path d="M 60,130 Q 50,145 65,158 Q 80,168 100,160" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="3,2"></path>
+  <path d="M 100,160 Q 115,150 120,135 Q 125,120 140,125" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="3,2"></path>
+  <path d="M 140,125 Q 155,135 148,155 Q 140,165 120,165" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="3,2"></path>
+  <path d="M 120,165 Q 100,165 85,155 Q 70,145 60,130" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="3,2"></path>
+
+  <!-- Inner ring trapped -->
+  <circle cx="90" cy="148" r="6" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2"></circle>
+  <text x="90" y="168" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-ring, #b97d12)">inner ring</text>
+
+  <!-- Lock icon -->
+  <text x="100" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)">FIXED (cannot change)</text>
+
+  <!-- === RIGHT COLUMN: Pattern === -->
+  <rect x="220" y="55" width="160" height="155" rx="5" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="1.5" stroke-dasharray="5,3"></rect>
+
+  <text x="300" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-cord, #1f57c4)" font-weight="bold">Pattern</text>
+  <text x="300" y="88" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">(external cord, reroutable)</text>
+
+  <!-- Torus outline (just the shell, no tunnel) -->
+  <ellipse cx="300" cy="145" rx="55" ry="35" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></ellipse>
+  <ellipse cx="300" cy="145" rx="18" ry="12" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></ellipse>
+
+  <!-- External cord pattern -->
+  <path d="M 250,125 Q 235,100 265,90 Q 300,82 335,95 Q 355,110 345,130" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+  <path d="M 345,130 Q 360,155 345,170 Q 330,185 305,185" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+  <path d="M 305,185 Q 270,190 250,175 Q 235,160 250,140" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+  <path d="M 250,140 Q 248,132 250,125" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+
+  <!-- Port markers on torus -->
+  <circle cx="250" cy="130" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"></circle>
+  <circle cx="345" cy="135" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"></circle>
+  <circle cx="250" cy="165" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"></circle>
+  <circle cx="340" cy="168" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"></circle>
+
+  <!-- Outer ring on external cord -->
+  <circle cx="300" cy="88" r="6" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2"></circle>
+  <text x="300" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-ring, #b97d12)">outer ring</text>
+
+  <!-- Reroute label -->
+  <text x="300" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">CAN BE REROUTED</text>
+
+  <!-- Connection arrow -->
+  <line x1="180" y1="130" x2="218" y2="130" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1.5" marker-end="url(#d1-decompArrow)"></line>
+
+  <!-- Bottom conclusion box -->
+  <rect x="30" y="220" width="340" height="55" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"></rect>
+
+  <text x="200" y="238" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Key Insight:</text>
+  <text x="200" y="254" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">Outer ring is linked to Pattern only</text>
+  <text x="200" y="268" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-pos, #2f8f43)">→ reroute Pattern to free outer ring</text>
+
+  <!-- Legend -->
+  <line x1="30" y1="290" x2="55" y2="290" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="3,2"></line>
+  <text x="63" y="294" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">companion (fixed)</text>
+
+  <line x1="200" y1="290" x2="225" y2="290" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+  <text x="233" y="294" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">pattern (reroutable)</text>
+</svg><figcaption>Decomposition: companion (trefoil tunnel) + pattern (external cord)</figcaption></figure></p>
+<p>The cutaway view below shows where each ring lives — and why one is freeable and the other is permanent:</p>
+<p><figure class="dia-figure dia-wide"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 380" class="dia">
+  <title>Satellite Trap — Cutaway Layer View</title>
+  <desc>Cross-section of the torus shell showing the trefoil-knotted internal tunnel (companion) and the cord pattern threaded through it. The two rings are trapped at different layers: outer ring linked to the pattern (freeable), inner ring linked to the companion (permanent).</desc>
+
+  
+
+  <text x="270" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-ink, #24211a)" font-weight="bold">Satellite knot — two independent topological layers</text>
+
+  <!-- ============================================================ -->
+  <!-- LEFT: cutaway view of torus + companion + cord              -->
+  <!-- ============================================================ -->
+  <g transform="translate(40, 50)">
+    <text x="120" y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Cutaway side view</text>
+
+    <!-- Outer torus (semi-transparent shell) -->
+    <ellipse cx="120" cy="160" rx="110" ry="70" fill="var(--dia-wash, #ece3d0)" fill-opacity="0.10" stroke="var(--dia-cord, #1f57c4)" stroke-width="2"></ellipse>
+    <ellipse cx="120" cy="160" rx="60" ry="20" fill="var(--dia-surface, #fbf7ee)" fill-opacity="1" stroke="var(--dia-cord, #1f57c4)" stroke-width="2"></ellipse>
+
+    <!-- Cutaway hint: dashed line on the right showing the cut -->
+    <path d="M 120,90 Q 230,160 120,230" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="0.7" stroke-dasharray="3,2"></path>
+
+    <!-- The trefoil-knotted internal tunnel (companion knot) drawn winding inside -->
+    <!-- We approximate the trefoil winding as 3 lobes inside the torus -->
+    <g stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5" fill="none">
+      <path d="M 50,150 Q 60,120 90,130 Q 130,140 130,170 Q 130,200 100,200 Q 70,200 60,180"></path>
+      <path d="M 95,135 Q 130,115 165,140"></path>
+      <path d="M 165,140 Q 195,170 175,200 Q 145,210 120,200"></path>
+      <path d="M 90,180 Q 110,160 130,180"></path>
+    </g>
+    <text x="200" y="115" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-neg, #cf3a26)" font-weight="bold">Companion</text>
+    <text x="200" y="128" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)">(trefoil tunnel</text>
+    <text x="200" y="139" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)">inside the shell)</text>
+
+    <!-- Inner ring (trapped by companion — drawn small, inside the trefoil region) -->
+    <ellipse cx="115" cy="170" rx="14" ry="6" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></ellipse>
+    <text x="115" y="173" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-rigid, #8a8275)">inner</text>
+    <text x="115" y="188" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-neg, #cf3a26)" font-weight="bold">TRAPPED</text>
+
+    <!-- External cord (pattern) -->
+    <g stroke="var(--dia-cord, #1f57c4)" stroke-width="2" fill="none">
+      <path d="M 5,120 Q 30,90 60,95 Q 90,100 100,90"></path>
+      <path d="M 145,90 Q 200,80 235,110 Q 250,140 235,170 Q 200,200 150,210"></path>
+      <path d="M 90,215 Q 60,225 30,210 Q 5,195 10,170"></path>
+    </g>
+    <text x="-30" y="80" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-cord, #1f57c4)" font-weight="bold">Pattern</text>
+    <text x="-30" y="93" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">(external cord</text>
+    <text x="-30" y="104" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">through tunnel)</text>
+
+    <!-- Outer ring (linked to pattern only) -->
+    <ellipse cx="200" cy="190" rx="18" ry="8" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="2.5"></ellipse>
+    <text x="200" y="193" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-pos, #2f8f43)">outer</text>
+    <text x="200" y="220" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-pos, #2f8f43)" font-weight="bold">FREEABLE</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- RIGHT: layer separation diagram                             -->
+  <!-- ============================================================ -->
+  <g transform="translate(330, 50)">
+    <text x="100" y="0" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Independent layers</text>
+
+    <!-- Companion layer box -->
+    <rect x="0" y="20" width="200" height="80" rx="6" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5"></rect>
+    <text x="100" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">Companion (fixed)</text>
+    <text x="100" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">The trefoil-knotted tunnel</text>
+    <text x="100" y="74" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">inside the torus shell.</text>
+    <text x="100" y="91" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)" font-style="italic">Cannot be changed.</text>
+
+    <!-- + sign -->
+    <text x="100" y="120" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">+</text>
+
+    <!-- Pattern layer box -->
+    <rect x="0" y="135" width="200" height="80" rx="6" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-cord, #1f57c4)" stroke-width="1.5"></rect>
+    <text x="100" y="157" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-cord, #1f57c4)" font-weight="bold">Pattern (mutable)</text>
+    <text x="100" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">The cord routed through</text>
+    <text x="100" y="189" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">the tunnel and externally.</text>
+    <text x="100" y="206" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-pos, #2f8f43)" font-style="italic">Reroute to free outer ring.</text>
+
+    <!-- = Satellite -->
+    <text x="100" y="240" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)" font-weight="bold">= Satellite knot</text>
+  </g>
+
+  <!-- Bottom caption -->
+  <text x="270" y="320" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)" font-weight="bold">JSJ decomposition strategy:</text>
+  <text x="270" y="338" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">Each ring is trapped by a different layer. Solve each layer independently.</text>
+  <text x="270" y="354" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">The outer ring's freedom depends only on the pattern — change the cord route at the surface ports.</text>
+  <text x="270" y="368" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">The inner ring is trapped by the companion (the trefoil tunnel) and cannot be freed without breaking the shell.</text>
+</svg><figcaption>Cutaway side view of torus showing trefoil tunnel inside (companion) and external cord pattern, with both rings labeled by their layer</figcaption></figure></p>
+<p>This decomposition is the key to solving the puzzle:</p>
+<ul>
+<li>The <strong>outer ring</strong> is linked only with the pattern (the external cord arcs). Changing the pattern can free it.</li>
+<li>The <strong>inner ring</strong> is linked with the companion (the trefoil tunnel). The companion cannot be changed — it is molded into the shell.</li>
+</ul>
+<h3 id="why-the-outer-ring-can-be-freed">Why the Outer Ring Can Be Freed <a href="#why-the-outer-ring-can-be-freed" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>The external cord path (the pattern) can be rerouted at the surface ports. By pulling a bight of cord through a port and rerouting it around the outer ring, the pattern changes from "linked with the ring" to "unlinked." This rerouting changes ONLY the pattern — the companion (internal tunnel) is unaffected.</p>
+<p>The inner ring, by contrast, is on a section of cord that passes through the trefoil tunnel. Its topological relationship is with the companion knot, which is physically embedded in the shell and cannot be changed by cord manipulation at the surface. The inner ring is trapped permanently.</p>
+<div class="callout callout--intuition"><span class="callout-label">Physical Intuition</span><p>What you feel in your hands: the torus is smooth and heavy. The cord emerges from ports and dives back in, and you can trace its path by feel. The outer ring is on an external arc — push a finger under the cord near a port and you can feel the cord slide through the port channel. Pull a bight of cord through the port, reroute it around the ring, and feed it back in. The outer ring falls free. Now try the same with the inner ring — the cord goes into the tunnel and you cannot reach it. No amount of manipulation at the surface changes what happens inside. That impenetrability IS the companion knot — the topology you cannot touch.</p></div>
+<p><em>For the complete treatment of satellite knots and decomposition, see <a href="../theory/topology-primer.html#satellite-knots-and-jsj-decomposition">Topology Primer: Satellite Knots and JSJ Decomposition</a>.</em></p>
+<h2 id="solution">Solution <a href="#solution" class="anchor-link" aria-hidden="true">#</a></h2>
+<ol>
+<li><strong>Trace the cord path.</strong> Identify which sections are internal (in the tunnel) and which are external (between ports).</li>
+<li><strong>Identify the outer ring's cord section.</strong> It is on the external arc between ports 2 and 3.</li>
+<li><strong>Pull a bight</strong> of cord through port 2 by working slack from the external section.</li>
+<li><strong>Reroute the bight</strong> around the outer ring — pass the bight over the ring to change the linking.</li>
+<li><strong>Feed the bight back</strong> through port 3.</li>
+<li><strong>The outer ring is now unlinked</strong> with the cord. Slide it off.</li>
+</ol>
+<p><figure class="dia-figure dia-narrow"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 400" class="dia">
+  <title>The Satellite Trap - Solved</title>
+  <desc>Same torus view. External cord rerouted (different path). Outer ring freed and moved away. Inner ring still trapped. Labels: Outer: FREE and Inner: TRAPPED.</desc>
+
+  <defs>
+    <marker id="d3-freeArrow" markerWidth="6" markerHeight="4" refX="3" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 6,2 L 0,4 Z" fill="var(--dia-pos, #2f8f43)"></path>
+    </marker>
+  </defs>
+
+  
+
+  <!-- Title -->
+  <text x="175" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">The Satellite Trap — Solved</text>
+  <text x="175" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-pos, #2f8f43)">pattern rerouted, outer ring freed</text>
+
+  <!-- Torus shell: outer ellipse -->
+  <ellipse cx="175" cy="200" rx="130" ry="85" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"></ellipse>
+
+  <!-- Torus shell: inner ellipse (hole) -->
+  <ellipse cx="175" cy="200" rx="45" ry="30" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></ellipse>
+
+  <!-- Internal tunnel: trefoil pattern (red dashed — unchanged) -->
+  <path d="M 80,160 Q 60,180 80,205 Q 100,230 130,220" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"></path>
+  <path d="M 130,220 Q 155,210 165,180 Q 175,150 200,150" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"></path>
+  <path d="M 200,150 Q 230,150 250,175 Q 270,200 250,225" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"></path>
+  <path d="M 250,225 Q 230,250 200,245 Q 170,240 155,220" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"></path>
+  <path d="M 155,220 Q 140,200 120,185 Q 100,170 80,160" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"></path>
+
+  <!-- Tunnel crossings -->
+  <circle cx="145" cy="205" r="4" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"></circle>
+  <circle cx="185" cy="165" r="4" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"></circle>
+  <circle cx="225" cy="220" r="4" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"></circle>
+
+  <!-- Port markers -->
+  <circle cx="75" cy="160" r="6" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"></circle>
+  <circle cx="250" cy="155" r="6" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"></circle>
+  <circle cx="275" cy="225" r="6" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"></circle>
+  <circle cx="100" cy="245" r="6" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"></circle>
+
+  <!-- External cord: REROUTED (simpler path, no longer entangling the outer ring) -->
+  <!-- Cord now takes a direct path between ports, not looping wide -->
+  <path d="M 69,160 Q 50,140 55,120 Q 65,100 100,95 Q 200,80 260,100 Q 280,115 256,155" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+  <path d="M 256,155 Q 270,180 281,225" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+  <path d="M 275,231 Q 250,265 175,275 Q 110,278 94,255 Q 88,248 94,245" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+  <path d="M 94,245 Q 70,230 60,200 Q 52,175 69,160" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+
+  <!-- "Rerouted" label on external cord -->
+  <text x="280" y="90" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-cord, #1f57c4)">rerouted</text>
+  <text x="280" y="100" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-cord, #1f57c4)">path</text>
+
+  <!-- Inner ring (STILL TRAPPED inside torus) -->
+  <circle cx="160" cy="190" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+
+  <!-- Inner ring label with TRAPPED indicator -->
+  <rect x="110" y="173" width="70" height="14" rx="2" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-neg, #cf3a26)" stroke-width="0.5"></rect>
+  <text x="145" y="183" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-neg, #cf3a26)" font-weight="bold">Inner: TRAPPED</text>
+
+  <!-- Outer ring: FREED, moved away from torus -->
+  <circle cx="310" cy="55" r="10" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+
+  <!-- Outer ring label with FREE indicator -->
+  <rect x="270" y="70" width="80" height="14" rx="2" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-pos, #2f8f43)" stroke-width="0.5"></rect>
+  <text x="310" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-pos, #2f8f43)" font-weight="bold">Outer: FREE</text>
+
+  <!-- Arrow showing outer ring freed -->
+  <path d="M 200,80 Q 250,55 298,55" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#d3-freeArrow)"></path>
+  <text x="245" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-pos, #2f8f43)">freed</text>
+
+  <!-- Explanation -->
+  <text x="175" y="310" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">Companion (trefoil) is fixed — traps inner ring.</text>
+  <text x="175" y="325" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">Pattern (cord) was rerouted — frees outer ring.</text>
+
+  <!-- Legend -->
+  <line x1="20" y1="350" x2="50" y2="350" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"></line>
+  <text x="58" y="354" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">torus shell</text>
+
+  <line x1="20" y1="365" x2="50" y2="365" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"></line>
+  <text x="58" y="369" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">companion tunnel (fixed)</text>
+
+  <line x1="20" y1="380" x2="50" y2="380" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+  <text x="58" y="384" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">external cord (rerouted)</text>
+
+  <line x1="200" y1="380" x2="230" y2="380" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5" stroke-dasharray="4,2"></line>
+  <text x="238" y="384" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">freed path</text>
+</svg><figcaption>Solved: outer ring freed, inner ring still trapped</figcaption></figure></p>
+<ol start="7">
+<li><strong>Verify:</strong> the inner ring remains trapped — it is on cord passing through the trefoil tunnel.</li>
+</ol>
+<p>This takes approximately 8-12 manipulations, each requiring careful slack management at the ports.</p>
+<h2 id="why-its-tricky">Why It's Tricky <a href="#why-its-tricky" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>The puzzle has two layers of knotting that solvers must distinguish. Most solvers initially treat the entire assembly as a single knot and attempt to free both rings simultaneously. The realization that the two rings have fundamentally different topological relationships — one with the pattern (changeable), one with the companion (fixed) — is the breakthrough.</p>
+<div class="callout callout--lesson"><span class="callout-label">Lesson</span><p>Complex topological structures can be decomposed into independent layers. Solving the whole puzzle at once is impossible, but solving each layer independently is straightforward. The JSJ decomposition is not just a classification theorem — it is a practical problem-solving strategy.</p></div>
+<h2 id="common-mistakes">Common Mistakes <a href="#common-mistakes" class="anchor-link" aria-hidden="true">#</a></h2>
+<ol>
+<li><p><strong>Trying to free the inner ring.</strong> The inner ring is on cord that passes through the trefoil tunnel. No manipulation at the surface ports can change this. Solvers who spend time on the inner ring are working on an impossible sub-problem.</p>
+</li>
+<li><p><strong>Pulling cord through the wrong port.</strong> The ports are close together and the cord path is complex. Pulling a bight through the wrong port changes the pattern in a way that links the outer ring MORE rather than less.</p>
+</li>
+<li><p><strong>Not tracing the full cord path before starting.</strong> The cord enters and exits the torus four times. Without a complete map of the path, manipulations are blind and typically make things worse.</p>
+</li>
+<li><p><strong>Assuming both rings are trapped by the same mechanism.</strong> The outer ring is a pattern problem; the inner ring is a companion problem. They require entirely different analyses, and only one has a solution.</p>
+</li>
+</ol>
+<h2 id="construction-notes">Construction Notes <a href="#construction-notes" class="anchor-link" aria-hidden="true">#</a></h2>
+<h3 id="torus-shell-fabrication">Torus shell fabrication <a href="#torus-shell-fabrication" class="anchor-link" aria-hidden="true">#</a></h3>
+<ul>
+<li>3D print two half-shells in semi-transparent PETG or resin</li>
+<li>The internal tunnel follows a (2,3) torus knot path through the tube wall, offset from the center by half the minor radius</li>
+<li>Tunnel diameter: 6mm (allows 4mm cord to slide freely)</li>
+<li>Four surface ports: 6mm-wide channels connecting the tunnel to the exterior surface</li>
+<li>The two halves join with snap-fit clips (3 clips per half, 120 degrees apart)</li>
+<li>Alignment pins ensure the internal tunnel aligns correctly between halves</li>
+</ul>
+<h3 id="cord-and-rings">Cord and rings <a href="#cord-and-rings" class="anchor-link" aria-hidden="true">#</a></h3>
+<ul>
+<li>Thread cord through the tunnel before assembling the shell halves</li>
+<li>The inner ring (22mm OD) goes on the cord between ports 3 and 4 (internal section)</li>
+<li>The outer ring (30mm OD) goes on the cord between ports 2 and 3 (external section)</li>
+<li>Ball-stops: drill 4mm hole through 10mm wooden balls, thread cord, tie stopper knots</li>
+<li>Ball-stops must be larger than the port channels (10mm &gt; 6mm — satisfied)</li>
+</ul>
+<h3 id="included-materials">Included materials <a href="#included-materials" class="anchor-link" aria-hidden="true">#</a></h3>
+<ul>
+<li>A <strong>cord path diagram</strong> card showing the tunnel layout and port positions (cutaway view)</li>
+<li>A <strong>hint card</strong> (sealed envelope) stating: "The two rings are trapped by different mechanisms. Which ring is linked to the pattern? Which to the companion?"</li>
+</ul>
+<nav class="prevnext" aria-label="Puzzle navigation"><a class="pn-prev" href="../puzzles/15-the-seifert-sail.html"><span class="pn-k">← Previous</span><span class="pn-name">16. The Seifert Sail</span></a><a class="pn-next" href="../theory/topology-primer.html"><span class="pn-k">→</span><span class="pn-name">Topology Primer</span></a></nav></div><aside class="toc" aria-label="On this page"><span class="eyebrow">On this page</span><ol><li><a class="lvl-2" href="#overview">Overview</a></li><li><a class="lvl-2" href="#components">Components</a></li><li><a class="lvl-2" href="#setup">Setup</a></li><li><a class="lvl-2" href="#objective">Objective</a></li><li><a class="lvl-2" href="#the-topology">The Topology</a></li><li><a class="lvl-2" href="#solution">Solution</a></li><li><a class="lvl-2" href="#why-its-tricky">Why It's Tricky</a></li><li><a class="lvl-2" href="#common-mistakes">Common Mistakes</a></li><li><a class="lvl-2" href="#construction-notes">Construction Notes</a></li></ol></aside></div></div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../index.html" style="color:#ece5d6"><svg class="logomark" viewBox="0 0 100 100" role="img" aria-label="EXKNOTS" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
+  <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
+</svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
+        <p style="margin:.8rem 0 0;max-width:30ch;font-size:.92rem">Topology you solve with your hands — 17 puzzles, their solutions, and the mathematics behind them.</p>
+      </div>
+      <div><h4>Arc 1</h4><ul><li><a href="../puzzles/01-the-gatekeeper.html">1. The Gatekeeper</a></li><li><a href="../puzzles/02-shepherds-yoke.html">2. Shepherd's Yoke</a></li><li><a href="../puzzles/03-the-prisoners-ring.html">3. The Prisoner's Ring</a></li><li><a href="../puzzles/04-mobius-snare.html">4. Mobius Snare</a></li><li><a href="../puzzles/11-the-mirror-gate.html">5. The Mirror Gate</a></li></ul></div><div><h4>Arc 2</h4><ul><li><a href="../puzzles/05-trinity-lock.html">6. Trinity Lock</a></li><li><a href="../puzzles/06-devils-pitchfork.html">7. Devil's Pitchfork</a></li><li><a href="../puzzles/07-the-ferrymans-knot.html">8. The Ferryman's Knot</a></li><li><a href="../puzzles/16-the-crossing-number.html">9. The Crossing Number</a></li></ul></div><div><h4>Arc 3</h4><ul><li><a href="../puzzles/08-ouroboros-chain.html">10. Ouroboros Chain</a></li><li><a href="../puzzles/09-genus-trap.html">11. Genus Trap</a></li><li><a href="../puzzles/10-the-hopf-paradox.html">12. The Hopf Paradox</a></li></ul></div><div><h4>Arc 4</h4><ul><li><a href="../puzzles/12-the-braid-cage.html">13. The Braid Cage</a></li><li><a href="../puzzles/13-the-torus-winder.html">14. The Torus Winder</a></li><li><a href="../puzzles/14-the-tricolor-lock.html">15. The Tricolor Lock</a></li><li><a href="../puzzles/15-the-seifert-sail.html">16. The Seifert Sail</a></li><li><a href="../puzzles/17-the-satellite-trap.html">17. The Satellite Trap</a></li></ul></div>
+    </div>
+    <div class="foot-fine">
+      <span>EXKNOTS · MIT License</span>
+      <span><a href="../theory/topology-primer.html">Topology Primer</a> · <a href="../construction/materials.html">Build Guide</a> · <a href="https://github.com/sonoransun/knotgames">Source ↗</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/docs.js" defer></script>
+</body>
+</html>

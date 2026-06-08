@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Mirror Gate · EXKNOTS</title>
+<meta name="description" content="The Mirror Gate — Chirality (handedness). Setup, solution, topology, and construction.">
+<link rel="canonical" href="https://sonoransun.github.io/knotgames/puzzles/11-the-mirror-gate.html">
+<meta name="theme-color" content="#0f1320">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EXKNOTS">
+<meta property="og:title" content="The Mirror Gate">
+<meta property="og:description" content="The Mirror Gate — Chirality (handedness). Setup, solution, topology, and construction.">
+<meta property="og:url" content="https://sonoransun.github.io/knotgames/puzzles/11-the-mirror-gate.html">
+<meta property="og:image" content="https://sonoransun.github.io/knotgames/assets/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sonoransun.github.io/knotgames/assets/brand/og-image.png">
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/brand/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&display=swap">
+<link rel="stylesheet" href="../assets/css/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Primary">
+  <a class="brand" href="../index.html" aria-label="EXKNOTS home"><svg class="logomark" viewBox="0 0 100 100" role="img" aria-label="EXKNOTS" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
+  <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
+</svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
+  <button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="../explore/">Explore</a></li>
+    <li><a href="../puzzles/" aria-current="page">Puzzles</a></li>
+    <li><a href="../theory/">Theory</a></li>
+    <li><a href="../construction/materials.html">Build</a></li>
+    <li><a href="https://github.com/sonoransun/knotgames">GitHub ↗</a></li>
+    <li><a href="../explore/" class="cta">Open Explorer</a></li>
+  </ul>
+  <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle theme"><span class="sun">☀</span><span class="moon">☾</span></button>
+</nav>
+<div class="progress" role="presentation"></div>
+<main id="main">
+<header class="doc-header" style="--ac:var(--arc1)"><div class="wrap">
+  <span class="doc-num">5</span>
+  <h1 class="doc-title">The Mirror Gate</h1>
+  <div class="doc-meta">
+    <span class="pill intermediate">Intermediate</span>
+    <span class="pc-type">Identification</span>
+    <span class="pc-principle">Chirality (handedness)</span>
+  </div>
+  <div class="doc-actions"><a class="btn btn--primary" href="../explore/#5">▶ Open in Interactive Explorer</a></div>
+</div></header>
+<div class="wrap band" style="padding-top:1.4rem"><div class="doc-layout"><div class="prose"><h2 id="overview">Overview <a href="#overview" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>Two trefoil-shaped wire frames sit on a shared cord, with two mirror-image recesses in a wooden base. The frames look identical — but one is left-handed and the other is right-handed. No rotation in three-dimensional space can turn one into the other.</p>
+<h2 id="components">Components <a href="#components" class="anchor-link" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Material</th>
+<th>Dimensions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Trefoil frame (left-handed)</td>
+<td>4mm steel rod</td>
+<td>~100mm across, welded closed</td>
+</tr>
+<tr>
+<td>Trefoil frame (right-handed)</td>
+<td>4mm steel rod</td>
+<td>~100mm across, welded closed</td>
+</tr>
+<tr>
+<td>Base</td>
+<td>Hardwood</td>
+<td>200mm x 80mm x 20mm</td>
+</tr>
+<tr>
+<td>Cord</td>
+<td>5mm braided nylon</td>
+<td>350mm long</td>
+</tr>
+<tr>
+<td>Center post</td>
+<td>6mm steel rod</td>
+<td>30mm tall, press-fit into base</td>
+</tr>
+</tbody></table></div>
+<p>The base has two shaped recesses — one contoured for the left-handed trefoil, one for the right-handed. They are mirror images of each other, with 0.5mm clearance on the correct hand and physical interference on the wrong hand.</p>
+<h2 id="setup">Setup <a href="#setup" class="anchor-link" aria-hidden="true">#</a></h2>
+<p><figure class="dia-figure dia-narrow"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350" class="dia">
+  <title>The Mirror Gate - Setup</title>
+  <desc>Two trefoil wire frames (one red, one blue) sitting on a wooden base. Left recess marked red, right marked blue. Both trefoils currently on wrong sides. Center post with cord visible.</desc>
+
+  <defs>
+    <marker id="d0-cordArrow" markerWidth="6" markerHeight="4" refX="3" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 6,2 L 0,4 Z" fill="var(--dia-cord, #1f57c4)"></path>
+    </marker>
+  </defs>
+
+  
+
+  <!-- Wooden base -->
+  <rect x="20" y="240" width="260" height="30" rx="3" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></rect>
+  <line x1="20" y1="255" x2="280" y2="255" stroke="var(--dia-rigid, #8a8275)" stroke-width="0.5" stroke-dasharray="2,4"></line>
+
+  <!-- Left recess (red outline — expects left-handed trefoil) -->
+  <rect x="40" y="244" width="60" height="22" rx="2" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5" stroke-dasharray="3,2"></rect>
+  <text x="70" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)">L recess</text>
+
+  <!-- Right recess (blue outline — expects right-handed trefoil) -->
+  <rect x="200" y="244" width="60" height="22" rx="2" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="1.5" stroke-dasharray="3,2"></rect>
+  <text x="230" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">R recess</text>
+
+  <!-- Center post -->
+  <rect x="145" y="200" width="10" height="40" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></rect>
+  <circle cx="150" cy="197" r="5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+
+  <!-- Cord through center post -->
+  <path d="M 100,210 Q 125,195 145,215" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"></path>
+  <path d="M 155,215 Q 175,195 200,210" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"></path>
+
+  <!-- Blue trefoil (right-handed) on LEFT side (wrong position) -->
+  <g transform="translate(70,150)">
+    <!-- Trefoil knot shape — three lobes -->
+    <path d="M 0,-35 C 20,-35 30,-15 20,0 C 10,15 -10,15 -20,0 C -30,-15 -20,-35 0,-35" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+    <!-- Crossing indicators -->
+    <line x1="-8" y1="-10" x2="8" y2="-20" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+    <line x1="-12" y1="5" x2="0" y2="-8" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+    <line x1="12" y1="5" x2="0" y2="-8" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+    <text x="0" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">R-trefoil</text>
+  </g>
+
+  <!-- Red trefoil (left-handed) on RIGHT side (wrong position) -->
+  <g transform="translate(230,150)">
+    <!-- Trefoil knot shape — three lobes (mirrored) -->
+    <path d="M 0,-35 C -20,-35 -30,-15 -20,0 C -10,15 10,15 20,0 C 30,-15 20,-35 0,-35" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></path>
+    <!-- Crossing indicators (mirrored) -->
+    <line x1="8" y1="-10" x2="-8" y2="-20" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
+    <line x1="12" y1="5" x2="0" y2="-8" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
+    <line x1="-12" y1="5" x2="0" y2="-8" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
+    <text x="0" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)">L-trefoil</text>
+  </g>
+
+  <!-- Arrows showing wrong placement -->
+  <path d="M 90,115 L 60,244" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="0.8" stroke-dasharray="2,2"></path>
+  <path d="M 210,115 L 240,244" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="0.8" stroke-dasharray="2,2"></path>
+
+  <!-- Title label -->
+  <text x="150" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">The Mirror Gate — Setup</text>
+  <text x="150" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">Trefoils on wrong sides</text>
+
+  <!-- Legend -->
+  <line x1="20" y1="305" x2="50" y2="305" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
+  <text x="58" y="309" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">left-handed trefoil</text>
+
+  <line x1="20" y1="320" x2="50" y2="320" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+  <text x="58" y="324" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">right-handed trefoil</text>
+
+  <line x1="20" y1="335" x2="50" y2="335" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"></line>
+  <text x="58" y="339" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">flexible cord</text>
+</svg><figcaption>Two trefoil frames on a cord, base with two recesses</figcaption></figure></p>
+<ol>
+<li>Both trefoil frames are threaded on the cord</li>
+<li>The cord passes through a hole in the center post</li>
+<li>Each trefoil can slide along the cord toward either recess</li>
+<li>The trefoils are presented in scrambled positions (each near the wrong recess)</li>
+</ol>
+<h2 id="objective">Objective <a href="#objective" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>Seat each trefoil frame into its correct matching recess. Each recess accepts only one specific handedness.</p>
+<h2 id="the-topology">The Topology <a href="#the-topology" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>The two trefoil frames are <strong>chiral</strong> — they are mirror images that are topologically inequivalent. What "inequivalent" means in operational terms: no amount of rotating, flipping, bending, or repositioning the left-handed trefoil in 3D space will ever turn it into the right-handed trefoil. You can hold them at any angle, even pass one through the other — they remain stubbornly different objects. The recesses in the wooden base are the physical witness of this fact: each recess accepts exactly one handedness and rejects the other, and no amount of rotating the trefoil will change which recess it fits.</p>
+<p>This is the same kind of difference that distinguishes your left hand from your right. A left glove will never fit your right hand no matter how you rotate it, because rotation in 3D space cannot change handedness — only a true mirror reflection can, and mirror reflection is not a physical motion.</p>
+<h3 id="what-is-chirality">What Is Chirality? <a href="#what-is-chirality" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>A knot is <strong>chiral</strong> if it is not equivalent to its mirror image. The trefoil is the simplest chiral knot — it comes in two versions (left-handed and right-handed) that are topologically distinct. No sequence of Reidemeister moves can convert one to the other.</p>
+<p><figure class="dia-figure"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" class="dia">
+  <title>Chirality Comparison</title>
+  <desc>Side-by-side comparison of left-handed and right-handed trefoil crossing patterns, with mirror line between them. Arrows show clockwise vs counterclockwise spiral direction.</desc>
+
+  <defs>
+    <marker id="d1-arrowRed" markerWidth="6" markerHeight="4" refX="3" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 6,2 L 0,4 Z" fill="var(--dia-neg, #cf3a26)"></path>
+    </marker>
+    <marker id="d1-arrowBlue" markerWidth="6" markerHeight="4" refX="3" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 6,2 L 0,4 Z" fill="var(--dia-cord, #1f57c4)"></path>
+    </marker>
+  </defs>
+
+  
+
+  <!-- Title -->
+  <text x="200" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Chirality Comparison</text>
+
+  <!-- Mirror line -->
+  <line x1="200" y1="40" x2="200" y2="230" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" stroke-dasharray="4,3"></line>
+  <text x="200" y="245" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">mirror line</text>
+
+  <!-- LEFT-HANDED TREFOIL (left side) -->
+  <g transform="translate(100,130)">
+    <!-- Three-lobed trefoil shape -->
+    <path d="M 0,-50 C -30,-50 -55,-20 -40,5 C -25,30 -5,35 0,20
+             C 5,35 25,30 40,5 C 55,-20 30,-50 0,-50" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></path>
+
+    <!-- Crossing 1: top -->
+    <line x1="-12" y1="-25" x2="12" y2="-25" stroke="var(--dia-surface, #fbf7ee)" stroke-width="6"></line>
+    <line x1="-12" y1="-25" x2="12" y2="-25" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
+
+    <!-- Crossing 2: bottom-left -->
+    <line x1="-25" y1="8" x2="-10" y2="-5" stroke="var(--dia-surface, #fbf7ee)" stroke-width="6"></line>
+    <line x1="-25" y1="8" x2="-10" y2="-5" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
+
+    <!-- Crossing 3: bottom-right -->
+    <line x1="10" y1="-5" x2="25" y2="8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="6"></line>
+    <line x1="10" y1="-5" x2="25" y2="8" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
+
+    <!-- CCW spiral arrow -->
+    <path d="M 40,-40 A 20,20 0 0,0 20,-55" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5" marker-end="url(#d1-arrowRed)"></path>
+    <text x="50" y="-35" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-neg, #cf3a26)">CCW</text>
+  </g>
+
+  <text x="100" y="210" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">Left-handed (L)</text>
+  <text x="100" y="225" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">counterclockwise crossings</text>
+
+  <!-- RIGHT-HANDED TREFOIL (right side) -->
+  <g transform="translate(300,130)">
+    <!-- Three-lobed trefoil shape (mirrored) -->
+    <path d="M 0,-50 C 30,-50 55,-20 40,5 C 25,30 5,35 0,20
+             C -5,35 -25,30 -40,5 C -55,-20 -30,-50 0,-50" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+
+    <!-- Crossing 1: top (mirrored) -->
+    <line x1="12" y1="-25" x2="-12" y2="-25" stroke="var(--dia-surface, #fbf7ee)" stroke-width="6"></line>
+    <line x1="12" y1="-25" x2="-12" y2="-25" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+
+    <!-- Crossing 2: bottom-right (mirrored) -->
+    <line x1="25" y1="8" x2="10" y2="-5" stroke="var(--dia-surface, #fbf7ee)" stroke-width="6"></line>
+    <line x1="25" y1="8" x2="10" y2="-5" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+
+    <!-- Crossing 3: bottom-left (mirrored) -->
+    <line x1="-10" y1="-5" x2="-25" y2="8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="6"></line>
+    <line x1="-10" y1="-5" x2="-25" y2="8" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+
+    <!-- CW spiral arrow -->
+    <path d="M -40,-40 A 20,20 0 0,1 -20,-55" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="1.5" marker-end="url(#d1-arrowBlue)"></path>
+    <text x="-60" y="-35" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-cord, #1f57c4)">CW</text>
+  </g>
+
+  <text x="300" y="210" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-cord, #1f57c4)" font-weight="bold">Right-handed (R)</text>
+  <text x="300" y="225" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">clockwise crossings</text>
+
+  <!-- Legend -->
+  <line x1="30" y1="270" x2="60" y2="270" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
+  <text x="68" y="274" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">left-handed trefoil</text>
+
+  <line x1="200" y1="270" x2="230" y2="270" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+  <text x="238" y="274" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">right-handed trefoil</text>
+
+  <line x1="30" y1="287" x2="60" y2="287" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" stroke-dasharray="4,3"></line>
+  <text x="68" y="291" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">mirror axis</text>
+</svg><figcaption>Left-handed vs right-handed trefoil crossing patterns</figcaption></figure></p>
+<p>Some knots are <strong>amphichiral</strong> — they ARE equivalent to their mirror image. The figure-eight knot (Puzzle 9) is amphichiral. The trefoil is not. Chirality is a topological invariant: it depends on the knot type, not on the particular diagram or physical realization.</p>
+<h3 id="how-to-tell-them-apart">How to Tell Them Apart <a href="#how-to-tell-them-apart" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>At each crossing of the trefoil, one strand passes over the other. If you follow the knot in a consistent direction and the overpasses spiral clockwise, the trefoil is right-handed. If they spiral counterclockwise, it is left-handed. The crossing pattern is the signature of handedness.</p>
+<div class="callout callout--intuition"><span class="callout-label">Physical Intuition</span><p>What you feel in your hands: both trefoils feel the same weight, have the same dimensions, and look nearly identical when held at arm's length. But when you try to seat one in the wrong recess, it simply does not fit — the curves of the trefoil press against the recess walls at the wrong points. The physical mismatch IS the chirality. Your hands can feel the difference that your eyes initially cannot see.</p></div>
+<p><em>For more on chirality and knot invariants, see <a href="../theory/topology-primer.html#chirality-and-handedness">Topology Primer: Chirality and Handedness</a>.</em></p>
+<h2 id="solution">Solution <a href="#solution" class="anchor-link" aria-hidden="true">#</a></h2>
+<ol>
+<li>Examine both trefoils closely. Look at the crossings — one spirals clockwise, the other counterclockwise</li>
+<li>Test-fit each trefoil against each recess. The correct pairing will drop in smoothly; the incorrect pairing will resist</li>
+</ol>
+<p><figure class="dia-figure dia-narrow"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350" class="dia">
+  <title>The Mirror Gate - Solved</title>
+  <desc>Same base as setup, but each trefoil now seated in its matching recess: left-handed trefoil in the left red recess, right-handed trefoil in the right blue recess.</desc>
+
+  
+
+  <!-- Wooden base -->
+  <rect x="20" y="240" width="260" height="30" rx="3" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></rect>
+  <line x1="20" y1="255" x2="280" y2="255" stroke="var(--dia-rigid, #8a8275)" stroke-width="0.5" stroke-dasharray="2,4"></line>
+
+  <!-- Left recess (red — now holds left-handed trefoil) -->
+  <rect x="40" y="244" width="60" height="22" rx="2" fill="var(--dia-neg, #cf3a26)" fill-opacity="0.1" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5"></rect>
+  <text x="70" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)">L recess ✓</text>
+
+  <!-- Right recess (blue — now holds right-handed trefoil) -->
+  <rect x="200" y="244" width="60" height="22" rx="2" fill="var(--dia-cord, #1f57c4)" fill-opacity="0.1" stroke="var(--dia-cord, #1f57c4)" stroke-width="1.5"></rect>
+  <text x="230" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">R recess ✓</text>
+
+  <!-- Center post -->
+  <rect x="145" y="200" width="10" height="40" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></rect>
+  <circle cx="150" cy="197" r="5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+
+  <!-- Cord relaxed -->
+  <path d="M 100,220 Q 125,210 145,220" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"></path>
+  <path d="M 155,220 Q 175,210 200,220" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"></path>
+
+  <!-- Red trefoil (left-handed) on LEFT side (correct!) -->
+  <g transform="translate(70,150)">
+    <path d="M 0,-35 C -20,-35 -30,-15 -20,0 C -10,15 10,15 20,0 C 30,-15 20,-35 0,-35" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></path>
+    <line x1="8" y1="-10" x2="-8" y2="-20" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
+    <line x1="12" y1="5" x2="0" y2="-8" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
+    <line x1="-12" y1="5" x2="0" y2="-8" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
+    <text x="0" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)">L-trefoil</text>
+  </g>
+
+  <!-- Blue trefoil (right-handed) on RIGHT side (correct!) -->
+  <g transform="translate(230,150)">
+    <path d="M 0,-35 C 20,-35 30,-15 20,0 C 10,15 -10,15 -20,0 C -30,-15 -20,-35 0,-35" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+    <line x1="-8" y1="-10" x2="8" y2="-20" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+    <line x1="-12" y1="5" x2="0" y2="-8" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+    <line x1="12" y1="5" x2="0" y2="-8" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+    <text x="0" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">R-trefoil</text>
+  </g>
+
+  <!-- Check marks -->
+  <text x="70" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="var(--dia-pos, #2f8f43)">✓</text>
+  <text x="230" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="var(--dia-pos, #2f8f43)">✓</text>
+
+  <!-- Title label -->
+  <text x="150" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">The Mirror Gate — Solved</text>
+  <text x="150" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-pos, #2f8f43)">Each trefoil in matching recess</text>
+
+  <!-- Legend -->
+  <line x1="20" y1="305" x2="50" y2="305" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
+  <text x="58" y="309" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">left-handed trefoil</text>
+
+  <line x1="20" y1="320" x2="50" y2="320" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
+  <text x="58" y="324" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">right-handed trefoil</text>
+
+  <line x1="20" y1="335" x2="50" y2="335" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"></line>
+  <text x="58" y="339" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">flexible cord</text>
+</svg><figcaption>Solved: each trefoil seated in its matching recess</figcaption></figure></p>
+<ol start="3">
+<li>Route the cord through the center post to give each trefoil enough slack to reach its designated recess</li>
+<li>Seat both trefoils</li>
+</ol>
+<p>The solution takes 1-2 minutes once the handedness is identified.</p>
+<h2 id="why-its-tricky">Why It's Tricky <a href="#why-its-tricky" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>The trefoils look identical to a casual observer. The human visual system is not naturally attuned to chirality in three-dimensional curves — we habitually perceive mirror images as "the same thing." This is why chirality in chemistry (enantiomers) was so difficult to discover and remains a source of errors in drug design.</p>
+<div class="callout callout--lesson"><span class="callout-label">Lesson</span><p>Mirror images can be topologically inequivalent. Before assuming two objects are interchangeable, check their handedness. Chirality is an invariant that visual similarity cannot override.</p></div>
+<h2 id="common-mistakes">Common Mistakes <a href="#common-mistakes" class="anchor-link" aria-hidden="true">#</a></h2>
+<ol>
+<li><p><strong>Trying to force a trefoil into the wrong recess.</strong> The curves are close enough that it almost fits, but the interference points are structural. Forcing risks bending the wire frame.</p>
+</li>
+<li><p><strong>Rotating a trefoil 180 degrees and assuming it becomes the other hand.</strong> Rotation changes orientation but does not change chirality. A left-handed trefoil rotated any way in 3D space remains left-handed.</p>
+</li>
+<li><p><strong>Concluding the puzzle is defective.</strong> Some solvers assume both recesses should accept both trefoils and that the manufacturing is imprecise. The non-interchangeability is the entire point.</p>
+</li>
+<li><p><strong>Ignoring the crossing pattern.</strong> Solvers who focus on the overall shape rather than the over/under crossings cannot identify the handedness. The chirality is in the crossings, not the silhouette.</p>
+</li>
+</ol>
+<h2 id="construction-notes">Construction Notes <a href="#construction-notes" class="anchor-link" aria-hidden="true">#</a></h2>
+<ul>
+<li>Bend trefoil frames from 4mm steel rod using a jig to ensure consistent curves</li>
+<li>The left-handed trefoil is bent with crossings spiraling counterclockwise; the right is clockwise</li>
+<li>Weld the join point and grind smooth so the join is not a visual cue</li>
+<li>Route recesses in the hardwood base using a 2mm ball-end mill on a CNC router, following the trefoil curves with 0.5mm clearance for the correct hand</li>
+<li>The recesses should be 5mm deep — enough to visually confirm seating</li>
+<li>Drill a 6mm hole in the center of the base for the post</li>
+<li>The cord must be long enough for both trefoils to reach either recess</li>
+</ul>
+<nav class="prevnext" aria-label="Puzzle navigation"><a class="pn-prev" href="../puzzles/04-mobius-snare.html"><span class="pn-k">← Previous</span><span class="pn-name">4. Mobius Snare</span></a><a class="pn-next" href="../puzzles/05-trinity-lock.html"><span class="pn-k">Next →</span><span class="pn-name">6. Trinity Lock</span></a></nav></div><aside class="toc" aria-label="On this page"><span class="eyebrow">On this page</span><ol><li><a class="lvl-2" href="#overview">Overview</a></li><li><a class="lvl-2" href="#components">Components</a></li><li><a class="lvl-2" href="#setup">Setup</a></li><li><a class="lvl-2" href="#objective">Objective</a></li><li><a class="lvl-2" href="#the-topology">The Topology</a></li><li><a class="lvl-2" href="#solution">Solution</a></li><li><a class="lvl-2" href="#why-its-tricky">Why It's Tricky</a></li><li><a class="lvl-2" href="#common-mistakes">Common Mistakes</a></li><li><a class="lvl-2" href="#construction-notes">Construction Notes</a></li></ol></aside></div></div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../index.html" style="color:#ece5d6"><svg class="logomark" viewBox="0 0 100 100" role="img" aria-label="EXKNOTS" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
+  <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
+</svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
+        <p style="margin:.8rem 0 0;max-width:30ch;font-size:.92rem">Topology you solve with your hands — 17 puzzles, their solutions, and the mathematics behind them.</p>
+      </div>
+      <div><h4>Arc 1</h4><ul><li><a href="../puzzles/01-the-gatekeeper.html">1. The Gatekeeper</a></li><li><a href="../puzzles/02-shepherds-yoke.html">2. Shepherd's Yoke</a></li><li><a href="../puzzles/03-the-prisoners-ring.html">3. The Prisoner's Ring</a></li><li><a href="../puzzles/04-mobius-snare.html">4. Mobius Snare</a></li><li><a href="../puzzles/11-the-mirror-gate.html">5. The Mirror Gate</a></li></ul></div><div><h4>Arc 2</h4><ul><li><a href="../puzzles/05-trinity-lock.html">6. Trinity Lock</a></li><li><a href="../puzzles/06-devils-pitchfork.html">7. Devil's Pitchfork</a></li><li><a href="../puzzles/07-the-ferrymans-knot.html">8. The Ferryman's Knot</a></li><li><a href="../puzzles/16-the-crossing-number.html">9. The Crossing Number</a></li></ul></div><div><h4>Arc 3</h4><ul><li><a href="../puzzles/08-ouroboros-chain.html">10. Ouroboros Chain</a></li><li><a href="../puzzles/09-genus-trap.html">11. Genus Trap</a></li><li><a href="../puzzles/10-the-hopf-paradox.html">12. The Hopf Paradox</a></li></ul></div><div><h4>Arc 4</h4><ul><li><a href="../puzzles/12-the-braid-cage.html">13. The Braid Cage</a></li><li><a href="../puzzles/13-the-torus-winder.html">14. The Torus Winder</a></li><li><a href="../puzzles/14-the-tricolor-lock.html">15. The Tricolor Lock</a></li><li><a href="../puzzles/15-the-seifert-sail.html">16. The Seifert Sail</a></li><li><a href="../puzzles/17-the-satellite-trap.html">17. The Satellite Trap</a></li></ul></div>
+    </div>
+    <div class="foot-fine">
+      <span>EXKNOTS · MIT License</span>
+      <span><a href="../theory/topology-primer.html">Topology Primer</a> · <a href="../construction/materials.html">Build Guide</a> · <a href="https://github.com/sonoransun/knotgames">Source ↗</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/docs.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 300">
+  <title>Devil's Pitchfork -- Solved</title>
+  <desc>The same three-pronged fork. The cord has been looped over the shorter center prong, which adds enough slack for the ring to travel across; the ring now sits on the right prong, having been transferred from the left.</desc>
+
+  <defs>
+    <marker id="mv" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="var(--dia-neg, #cf3a26)"/>
+    </marker>
+  </defs>
+
+  <text x="175" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-ink, #24211a)" font-weight="bold">Devil's Pitchfork -- Solved</text>
+
+  <!-- Base + prongs (steel) -->
+  <line x1="80" y1="250" x2="270" y2="250" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
+  <line x1="100" y1="250" x2="100" y2="80"  stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
+  <circle cx="100" cy="74" r="6" fill="var(--dia-rigid, #8a8275)"/>
+  <line x1="175" y1="250" x2="175" y2="114" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
+  <circle cx="175" cy="108" r="5" fill="var(--dia-rigid, #8a8275)"/>
+  <line x1="250" y1="250" x2="250" y2="80"  stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
+  <circle cx="250" cy="74" r="6" fill="var(--dia-rigid, #8a8275)"/>
+
+  <!-- Cord now looped OVER the center prong (adds slack) -->
+  <path d="M175,250 Q150,150 175,118 Q200,150 230,175" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="120" y="150" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-cord, #1f57c4)">cord looped over</text>
+  <text x="120" y="162" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-cord, #1f57c4)">center prong</text>
+
+  <!-- Ghost of old ring position on left prong -->
+  <circle cx="100" cy="170" r="12" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="78" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-faint, #c9bda7)">was here</text>
+
+  <!-- Ring now on the RIGHT prong (brass) -->
+  <circle cx="250" cy="170" r="12" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"/>
+  <text x="268" y="172" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-ring, #b97d12)">RING transferred</text>
+
+  <!-- Transfer motion arrow left -> right -->
+  <path d="M118,150 Q175,120 232,150" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" marker-end="url(#mv)"/>
+
+  <text x="175" y="282" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">Looping the cord enlarges the reachable region — the ring crosses over.</text>
+</svg>

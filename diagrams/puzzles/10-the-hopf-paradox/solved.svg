@@ -1,0 +1,43 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 350">
+  <title>The Hopf Paradox - Solved</title>
+  <desc>The wire cage with both hoops, now empty: the ring has been carried out through the north-east window and hangs free outside the cage on its cord to the handle. A curved arrow traces the ring's exit path from inside the cage to the outside.</desc>
+
+  <defs>
+    <linearGradient id="pgrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--dia-rigid, #8a8275)"/>
+      <stop offset="100%" stop-color="var(--dia-inksoft, #6a6151)"/>
+    </linearGradient>
+    <marker id="mvh" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="var(--dia-pos, #2f8f43)"/>
+    </marker>
+  </defs>
+
+  <text x="175" y="18" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-ink, #24211a)" font-weight="bold">The Hopf Paradox -- Ring Freed</text>
+
+  <!-- Cage: polar hoop (circle) -->
+  <path d="M175,75 A100,100 0 0,0 175,275" fill="none" stroke="url(#pgrad2)" stroke-width="2.5" opacity="0.4"/>
+  <path d="M175,75 A100,100 0 0,1 175,275" fill="none" stroke="url(#pgrad2)" stroke-width="2.5"/>
+  <!-- equatorial hoop (ellipse) -->
+  <path d="M75,175 A100,30 0 0,0 275,175" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" opacity="0.4"/>
+  <path d="M75,175 A100,30 0 0,1 275,175" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"/>
+  <circle cx="175" cy="75" r="5" fill="var(--dia-ink, #24211a)"/>
+  <circle cx="175" cy="275" r="5" fill="var(--dia-ink, #24211a)"/>
+
+  <!-- empty interior note -->
+  <text x="175" y="178" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-faint, #c9bda7)" font-style="italic">cage now empty</text>
+
+  <!-- Ring FREE outside the cage (brass), to the upper-right -->
+  <ellipse cx="300" cy="95" rx="26" ry="11" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"/>
+  <text x="300" y="78" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-ring, #b97d12)" font-weight="bold">ring free</text>
+
+  <!-- Exit path: from interior (near equator) out through NE window to the ring -->
+  <path d="M 205,168 Q 250,150 285,105" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="2.5" marker-end="url(#mvh)"/>
+  <text x="232" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-pos, #2f8f43)">exit via NE window</text>
+
+  <!-- Cord still trailing to the handle -->
+  <path d="M 320,90 L 330,60" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <rect x="320" y="40" width="26" height="14" rx="4" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
+  <text x="333" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-rigid, #8a8275)">handle</text>
+
+  <text x="175" y="330" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">The ring is unlinked from the cage — but only the coupled Hopf move gets it here.</text>
+</svg>

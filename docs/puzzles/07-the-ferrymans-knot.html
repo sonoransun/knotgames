@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Ferryman's Knot · EXKNOTS</title>
+<meta name="description" content="The Ferryman's Knot — Open knot vs. closed knot; Reidemeister moves on constrained arcs. Setup, solution, topology, and construction.">
+<link rel="canonical" href="https://sonoransun.github.io/knotgames/puzzles/07-the-ferrymans-knot.html">
+<meta name="theme-color" content="#0f1320">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EXKNOTS">
+<meta property="og:title" content="The Ferryman's Knot">
+<meta property="og:description" content="The Ferryman's Knot — Open knot vs. closed knot; Reidemeister moves on constrained arcs. Setup, solution, topology, and construction.">
+<meta property="og:url" content="https://sonoransun.github.io/knotgames/puzzles/07-the-ferrymans-knot.html">
+<meta property="og:image" content="https://sonoransun.github.io/knotgames/assets/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sonoransun.github.io/knotgames/assets/brand/og-image.png">
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/brand/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&display=swap">
+<link rel="stylesheet" href="../assets/css/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Primary">
+  <a class="brand" href="../index.html" aria-label="EXKNOTS home"><svg class="logomark" viewBox="0 0 100 100" role="img" aria-label="EXKNOTS" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
+  <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
+</svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
+  <button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="../explore/">Explore</a></li>
+    <li><a href="../puzzles/" aria-current="page">Puzzles</a></li>
+    <li><a href="../theory/">Theory</a></li>
+    <li><a href="../construction/materials.html">Build</a></li>
+    <li><a href="https://github.com/sonoransun/knotgames">GitHub ↗</a></li>
+    <li><a href="../explore/" class="cta">Open Explorer</a></li>
+  </ul>
+  <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle theme"><span class="sun">☀</span><span class="moon">☾</span></button>
+</nav>
+<div class="progress" role="presentation"></div>
+<main id="main">
+<header class="doc-header" style="--ac:var(--arc2)"><div class="wrap">
+  <span class="doc-num">8</span>
+  <h1 class="doc-title">The Ferryman's Knot</h1>
+  <div class="doc-meta">
+    <span class="pill advanced">Advanced</span>
+    <span class="pc-type">Disentanglement</span>
+    <span class="pc-principle">Open knot vs. closed knot; Reidemeister moves on constrained arcs</span>
+  </div>
+  <div class="doc-actions"><a class="btn btn--primary" href="../explore/#8">▶ Open in Interactive Explorer</a></div>
+</div></header>
+<div class="wrap band" style="padding-top:1.4rem"><div class="doc-layout"><div class="prose"><h2 id="overview">Overview <a href="#overview" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>A cord wraps around a post in what looks like a trefoil knot pattern — three crossings that appear hopelessly tangled. A ring trapped on the post connects one end; a hook in the base anchors the other. Knot theory says trefoils can't be unknotted. But this isn't a trefoil. It's an open arc on a fixed axis, and the rules are completely different.</p>
+<p><strong>This is the puzzle that seems impossible but isn't.</strong></p>
+<h2 id="components">Components <a href="#components" class="anchor-link" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Material</th>
+<th>Dimensions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Post</td>
+<td>Hardwood (maple) dowel</td>
+<td>20mm diameter, 200mm tall</td>
+</tr>
+<tr>
+<td>Base</td>
+<td>Hardwood block</td>
+<td>100mm x 100mm x 25mm</td>
+</tr>
+<tr>
+<td>Ball finial</td>
+<td>Wooden ball</td>
+<td>30mm diameter, glued to post top</td>
+</tr>
+<tr>
+<td>Ring</td>
+<td>Welded steel O-ring</td>
+<td>50mm OD (~42mm ID)</td>
+</tr>
+<tr>
+<td>Cord</td>
+<td>5mm braided nylon</td>
+<td>600mm long</td>
+</tr>
+<tr>
+<td>Hook</td>
+<td>Steel screw hook</td>
+<td>Screwed into base, 50mm from post</td>
+</tr>
+</tbody></table></div>
+<p>The ring is around the post (trapped by the finial, which is wider than the ring's inner diameter). One cord end ties to the ring; the other ties to the hook.</p>
+<h2 id="setup">Setup <a href="#setup" class="anchor-link" aria-hidden="true">#</a></h2>
+<p><figure class="dia-figure dia-narrow"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 400" class="dia">
+  <title>Puzzle 7: The Ferryman's Knot — Setup</title>
+  <desc>A wooden post with ball finial on a base. A cord wraps around the post in a trefoil-like pattern with 3 crossings. One end attaches to a ring on the post, the other to a hook in the base.</desc>
+
+  
+
+  <!-- Base block (dark wood) -->
+  <rect x="65" y="330" width="120" height="40" rx="3" fill="var(--dia-ring, #b97d12)" stroke="var(--dia-ring, #b97d12)" stroke-width="2"></rect>
+
+  <!-- Post (wood) -->
+  <rect x="115" y="100" width="20" height="230" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"></rect>
+
+  <!-- Ball finial (wood) -->
+  <circle cx="125" cy="85" r="15" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"></circle>
+
+  <!-- Ring on post (brass) -->
+  <circle cx="125" cy="290" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+
+  <!-- Hook at base (steel) -->
+  <path d="M125,330 L125,340 Q125,355 115,355 Q105,355 105,345" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"></path>
+
+  <!-- === Cord wrapping with 3 crossings (trefoil-like) === -->
+
+  <!-- Cord from ring upward to first wrap -->
+  <line x1="133" y1="290" x2="140" y2="260" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></line>
+
+  <!-- Wrap 1 (bottom crossing) -->
+  <!-- Under-strand gap -->
+  <path d="M110,240 Q95,225 110,210" fill="none" stroke="var(--dia-surface, #fbf7ee)" stroke-width="10" stroke-linecap="round"></path>
+  <!-- Over-strand (front, full opacity) -->
+  <path d="M140,260 Q155,240 140,220" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></path>
+  <!-- Under-strand (behind crossing, slightly faded) -->
+  <path d="M110,240 Q95,225 110,210" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.7"></path>
+  <!-- Connecting arc behind post -->
+  <path d="M140,220 Q145,215 140,210" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.4"></path>
+
+  <!-- Wrap 2 (middle crossing) -->
+  <!-- Under-strand gap -->
+  <path d="M140,200 Q155,185 140,170" fill="none" stroke="var(--dia-surface, #fbf7ee)" stroke-width="10" stroke-linecap="round"></path>
+  <!-- Over-strand (front, full opacity) -->
+  <path d="M110,210 Q95,190 110,170" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></path>
+  <!-- Under-strand (behind crossing, slightly faded) -->
+  <path d="M140,200 Q155,185 140,170" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.7"></path>
+  <!-- Connecting arc behind post -->
+  <path d="M110,170 Q105,165 110,160" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.4"></path>
+
+  <!-- Wrap 3 (top crossing) -->
+  <!-- Under-strand gap -->
+  <path d="M110,160 Q95,145 110,130" fill="none" stroke="var(--dia-surface, #fbf7ee)" stroke-width="10" stroke-linecap="round"></path>
+  <!-- Over-strand (front, full opacity) -->
+  <path d="M140,170 Q155,150 140,130" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></path>
+  <!-- Under-strand (behind crossing, slightly faded) -->
+  <path d="M110,160 Q95,145 110,130" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.7"></path>
+
+  <!-- Cord from top wrap to hook (runs down behind post, shown faded) -->
+  <path d="M140,130 Q145,120 140,115" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.4"></path>
+  <line x1="140" y1="115" x2="140" y2="110" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.4"></line>
+
+  <!-- === Labels === -->
+
+  <!-- Ball finial label -->
+  <line x1="142" y1="78" x2="175" y2="55" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="178" y="58" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">30mm ball finial</text>
+
+  <!-- Cord crossings label -->
+  <line x1="160" y1="190" x2="185" y2="190" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="155" y="178" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">cord wraps with</text>
+  <text x="155" y="192" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">3 crossings</text>
+
+  <!-- Ring label -->
+  <line x1="117" y1="290" x2="55" y2="290" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="30" y="294" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">RING</text>
+
+  <!-- Hook label -->
+  <line x1="100" y1="348" x2="55" y2="355" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="22" y="359" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">HOOK</text>
+
+  <!-- Base label -->
+  <text x="125" y="385" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">BASE</text>
+</svg><figcaption>Setup: post with ball finial, cord wrapping 3 times (trefoil-like), ring and hook</figcaption></figure></p>
+<p>The cord runs from the hook in the base upward, wraps around the post three times with specific over-under crossings that resemble a trefoil knot, and terminates at the ring on the post. The ring can slide up and down the post but cannot be removed (finial prevents it).</p>
+<h2 id="solved-state">Solved State <a href="#solved-state" class="anchor-link" aria-hidden="true">#</a></h2>
+<p><figure class="dia-figure dia-narrow"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350" class="dia">
+  <title>Puzzle 7: The Ferryman's Knot — Solved</title>
+  <desc>The solved state: cord hangs freely alongside the post with no wraps. The ring remains on the post, trapped by the finial.</desc>
+
+  
+
+  <!-- Green "Solved" indicator (upper-right) -->
+  <circle cx="222" cy="25" r="16" fill="var(--dia-pos, #2f8f43)" opacity="0.12" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5"></circle>
+  <path d="M214,25 L220,31 L232,19" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <!-- Base block (dark wood) -->
+  <rect x="65" y="280" width="120" height="40" rx="3" fill="var(--dia-ring, #b97d12)" stroke="var(--dia-ring, #b97d12)" stroke-width="2"></rect>
+
+  <!-- Post (wood) -->
+  <rect x="115" y="70" width="20" height="210" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"></rect>
+
+  <!-- Ball finial (wood) -->
+  <circle cx="125" cy="55" r="15" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"></circle>
+
+  <!-- Ring on post (brass, trapped by finial) -->
+  <circle cx="125" cy="110" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+
+  <!-- Hook at base (steel) -->
+  <path d="M125,280 L125,290 Q125,305 115,305 Q105,305 105,295" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"></path>
+
+  <!-- Cord hanging freely (alongside post) -->
+  <line x1="150" y1="110" x2="150" y2="275" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></line>
+  <!-- Cord connects to ring -->
+  <line x1="133" y1="110" x2="150" y2="110" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></line>
+  <!-- Cord connects to hook area -->
+  <path d="M150,275 Q150,285 140,290 Q130,295 125,290" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></path>
+
+  <!-- === Labels === -->
+
+  <!-- "cord hangs freely" label -->
+  <line x1="153" y1="190" x2="180" y2="190" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="183" y="194" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">cord hangs freely</text>
+
+  <!-- "no wraps" label -->
+  <line x1="153" y1="155" x2="180" y2="155" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="183" y="159" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">no wraps</text>
+
+  <!-- Title label -->
+  <text x="125" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-pos, #2f8f43)" font-weight="bold">SOLVED</text>
+</svg><figcaption>Solved: cord hangs freely alongside post, no wraps</figcaption></figure></p>
+<h2 id="objective">Objective <a href="#objective" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>Untangle the cord so it hangs freely from hook to ring without wrapping around the post. The ring stays on the post. The hook stays in the base. Nothing is cut or untied.</p>
+<h2 id="the-topology">The Topology <a href="#the-topology" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>A <strong>trefoil knot</strong> is a closed curve with three crossings that cannot be simplified (it has crossing number 3). It is the simplest non-trivial knot. If this cord were a closed curve forming a trefoil, it would indeed be impossible to unknot.</p>
+<p>But this cord is an <strong>open arc</strong> — it has two endpoints (the hook and the ring). More importantly, one endpoint (the ring) is constrained to a fixed axis (the post). The cord is not a knot in the classical sense; it is an <strong>arc in the complement of a line</strong> (the post).</p>
+<p>Open arcs on fixed axes can always be unwound. The wraps are not true knot crossings because the arc's endpoint can slide along the axis, effectively passing "over" or "under" each crossing. Each wrap can be individually resolved by lifting it over the ball finial.</p>
+<p>The three crossings correspond to three Reidemeister moves (type I: twist removal), each executed by passing a cord loop over the finial.</p>
+<h3 id="reidemeister-moves-and-why-they-matter">Reidemeister Moves and Why They Matter <a href="#reidemeister-moves-and-why-they-matter" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>In knot theory, <strong>Reidemeister moves</strong> are the three elementary operations that can be performed on a knot diagram without changing the knot type:</p>
+<ul>
+<li><strong>Type I:</strong> Add or remove a simple twist (a loop that crosses itself once)</li>
+<li><strong>Type II:</strong> Add or remove two crossings where one strand passes over another</li>
+<li><strong>Type III:</strong> Slide a strand over or under a crossing</li>
+</ul>
+<p>Each wrap removal in this puzzle is a <strong>Type I Reidemeister move</strong> — removing a simple twist. In knot theory, Type I moves don't change the knot type. Since the cord started as an unknot (it's an open arc with endpoints on the hook and ring), each twist removal brings it closer to the visually obvious unknot (a straight cord hanging from hook to ring).</p>
+<p><figure class="dia-figure"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" class="dia">
+  <title>Reidemeister Type I Move (Twist Removal)</title>
+  <desc>Before: a vertical strand with a small loop creating one crossing. After: a straight vertical strand with no crossing.</desc>
+
+  
+
+  <!-- Title -->
+  <text x="200" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Type I move (twist removal)</text>
+
+  <!-- === LEFT: Before (strand with loop/twist) === -->
+
+  <!-- Strand coming from top -->
+  <line x1="100" y1="45" x2="100" y2="80" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></line>
+
+  <!-- Loop/twist creating one crossing -->
+  <!-- Under-strand gap -->
+  <path d="M100,105 Q70,95 80,115" fill="none" stroke="var(--dia-surface, #fbf7ee)" stroke-width="10" stroke-linecap="round"></path>
+
+  <!-- Over-strand (goes from top-strand, loops right, crosses over, continues down) — highlighted as moving strand -->
+  <path d="M100,80 Q130,90 120,110 Q110,130 100,120" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="3" stroke-dasharray="5,3"></path>
+
+  <!-- Under-strand (continues through the crossing, faded) -->
+  <path d="M100,105 Q70,95 80,115 Q90,135 100,120" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.7"></path>
+
+  <!-- Strand continuing downward -->
+  <line x1="100" y1="120" x2="100" y2="160" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></line>
+
+  <!-- Crossing indicator -->
+  <circle cx="95" cy="108" r="4" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="1.5"></circle>
+
+  <!-- Label "One crossing" -->
+  <text x="100" y="182" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">One crossing</text>
+
+  <!-- === Arrow in the middle === -->
+  <line x1="170" y1="105" x2="225" y2="105" stroke="var(--dia-rigid, #8a8275)" stroke-width="2" marker-end="url(#d2-arrowhead)"></line>
+  <defs>
+    <marker id="d2-arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="var(--dia-rigid, #8a8275)"></polygon>
+    </marker>
+  </defs>
+
+  <!-- === RIGHT: After (straight strand) === -->
+
+  <!-- Simple straight vertical strand -->
+  <line x1="300" y1="45" x2="300" y2="160" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></line>
+
+  <!-- Label "Zero crossings" -->
+  <text x="300" y="182" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">Zero crossings</text>
+
+  <!-- Before/After labels -->
+  <text x="100" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">Before</text>
+  <text x="300" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">After</text>
+</svg><figcaption>Type I Reidemeister move: removing a twist reduces one crossing to zero</figcaption></figure></p>
+<p>The key insight: on a closed curve, these three crossings form a trefoil (non-trivial knot). On an open arc with a fixed axis, the same three crossings are three independent twists, each removable by a Type I move. The fixed axis (the post) turns what would be a genuine knot into a sequence of removable twists.</p>
+<p>What you feel in your hands: each wrap feels like its own little puzzle. You slide the ring down for slack, gather the outermost cord loop, and stretch it over the ball finial. There's a satisfying moment when the loop clears the ball and the wrap falls away. The cord noticeably simplifies — one fewer crossing visible. After three of these, the cord hangs straight. Each removal is identical in feel; the puzzle has a rhythm to it.</p>
+<p><em>For the full treatment of knot theory concepts including Reidemeister moves, see <a href="../theory/topology-primer.html#knot-theory-basics">Topology Primer: Knot Theory Basics</a>.</em></p>
+<h2 id="solution">Solution <a href="#solution" class="anchor-link" aria-hidden="true">#</a></h2>
+<ol>
+<li><p><strong>Slide the ring down</strong> to the base of the post, as low as it will go. This creates maximum slack in the cord near the top of the post.</p>
+</li>
+<li><p><strong>Identify the outermost wrap</strong> — the one closest to the finial with the most clearance around it.</p>
+</li>
+<li><p><strong>Lift the outermost wrap over the finial:</strong></p>
+<ul>
+<li>Gather the slack in the wrap</li>
+<li>Push the cord loop upward toward the finial</li>
+<li>Stretch the loop over the 30mm ball</li>
+<li>Pull through and down the other side</li>
+<li>The wrap is eliminated</li>
+</ul>
+</li>
+</ol>
+<p><figure class="dia-figure dia-narrow"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350" class="dia">
+  <title>Puzzle 7: Checkpoint A — 2 Wraps Remain</title>
+  <desc>After removing the first wrap: the post still has 2 wraps of cord around it with visible crossings.</desc>
+
+  
+
+  <!-- Step badge (upper-right) -->
+  <circle cx="225" cy="25" r="16" fill="var(--dia-cord, #1f57c4)" opacity="0.12" stroke="var(--dia-cord, #1f57c4)" stroke-width="1.5"></circle>
+  <text x="225" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-cord, #1f57c4)" font-weight="bold">Step</text>
+  <text x="225" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)" font-weight="bold">1 of 3</text>
+
+  <!-- Base block (dark wood) -->
+  <rect x="65" y="280" width="120" height="40" rx="3" fill="var(--dia-ring, #b97d12)" stroke="var(--dia-ring, #b97d12)" stroke-width="2"></rect>
+
+  <!-- Post (wood) -->
+  <rect x="115" y="70" width="20" height="210" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"></rect>
+
+  <!-- Ball finial (wood) -->
+  <circle cx="125" cy="55" r="15" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"></circle>
+
+  <!-- Ring on post (brass, below wraps) -->
+  <circle cx="125" cy="240" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+
+  <!-- Hook at base (steel) -->
+  <path d="M125,280 L125,290 Q125,305 115,305 Q105,305 105,295" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"></path>
+
+  <!-- Ghost outline of removed wrap (light gray) -->
+  <path d="M140,130 Q155,115 140,100" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="2" stroke-dasharray="4,4"></path>
+  <path d="M110,125 Q95,110 110,95" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="2" stroke-dasharray="4,4"></path>
+  <text x="172" y="115" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-faint, #c9bda7)" font-style="italic">removed</text>
+
+  <!-- Cord from ring upward -->
+  <line x1="133" y1="240" x2="140" y2="215" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></line>
+
+  <!-- Wrap 1 (bottom crossing, 2 remain) -->
+  <!-- Under-strand gap -->
+  <path d="M110,195 Q95,180 110,165" fill="none" stroke="var(--dia-surface, #fbf7ee)" stroke-width="10" stroke-linecap="round"></path>
+  <!-- Over-strand (front, full opacity) -->
+  <path d="M140,215 Q155,195 140,175" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></path>
+  <!-- Under-strand (behind crossing) -->
+  <path d="M110,195 Q95,180 110,165" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.7"></path>
+  <!-- Connecting arc behind post -->
+  <path d="M140,175 Q145,170 140,165" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.4"></path>
+
+  <!-- Wrap 2 (top crossing) -->
+  <!-- Under-strand gap -->
+  <path d="M140,155 Q155,140 140,125" fill="none" stroke="var(--dia-surface, #fbf7ee)" stroke-width="10" stroke-linecap="round"></path>
+  <!-- Over-strand (front, full opacity) -->
+  <path d="M110,165 Q95,145 110,125" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></path>
+  <!-- Under-strand (behind crossing) -->
+  <path d="M140,155 Q155,140 140,125" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.7"></path>
+
+  <!-- Cord from top wrap upward -->
+  <path d="M110,125 Q108,115 110,105" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></path>
+
+  <!-- === Label === -->
+  <text x="125" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">2 wraps remain</text>
+
+  <!-- Annotation -->
+  <line x1="160" y1="170" x2="185" y2="170" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="188" y="174" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">2 crossings</text>
+</svg><figcaption>Checkpoint (a): after removing wrap 1, 2 wraps remain</figcaption></figure></p>
+<ol start="4">
+<li><strong>Repeat for the second wrap.</strong> Slide the ring down again for slack. Lift the now-outermost wrap over the finial.</li>
+</ol>
+<p><figure class="dia-figure dia-narrow"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350" class="dia">
+  <title>Puzzle 7: Checkpoint B — 1 Wrap Remains</title>
+  <desc>After removing the second wrap: the post has only 1 wrap of cord around it with one crossing.</desc>
+
+  
+
+  <!-- Step badge (upper-right) -->
+  <circle cx="225" cy="25" r="16" fill="var(--dia-cord, #1f57c4)" opacity="0.12" stroke="var(--dia-cord, #1f57c4)" stroke-width="1.5"></circle>
+  <text x="225" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-cord, #1f57c4)" font-weight="bold">Step</text>
+  <text x="225" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)" font-weight="bold">2 of 3</text>
+
+  <!-- Base block (dark wood) -->
+  <rect x="65" y="280" width="120" height="40" rx="3" fill="var(--dia-ring, #b97d12)" stroke="var(--dia-ring, #b97d12)" stroke-width="2"></rect>
+
+  <!-- Post (wood) -->
+  <rect x="115" y="70" width="20" height="210" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"></rect>
+
+  <!-- Ball finial (wood) -->
+  <circle cx="125" cy="55" r="15" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"></circle>
+
+  <!-- Ring on post (brass, below wrap) -->
+  <circle cx="125" cy="220" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+
+  <!-- Hook at base (steel) -->
+  <path d="M125,280 L125,290 Q125,305 115,305 Q105,305 105,295" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"></path>
+
+  <!-- Ghost outline of removed wraps (light gray) -->
+  <path d="M140,130 Q155,115 140,100" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="2" stroke-dasharray="4,4"></path>
+  <path d="M110,125 Q95,110 110,95" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="2" stroke-dasharray="4,4"></path>
+  <path d="M140,155 Q155,140 140,125" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="2" stroke-dasharray="4,4"></path>
+  <path d="M110,150 Q95,135 110,120" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="2" stroke-dasharray="4,4"></path>
+  <text x="172" y="125" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-faint, #c9bda7)" font-style="italic">removed</text>
+
+  <!-- Cord from ring upward -->
+  <line x1="133" y1="220" x2="140" y2="190" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></line>
+
+  <!-- Single wrap (one crossing) -->
+  <!-- Under-strand gap -->
+  <path d="M110,170 Q95,155 110,140" fill="none" stroke="var(--dia-surface, #fbf7ee)" stroke-width="10" stroke-linecap="round"></path>
+  <!-- Over-strand (front, full opacity) -->
+  <path d="M140,190 Q155,170 140,150" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></path>
+  <!-- Under-strand (behind crossing) -->
+  <path d="M110,170 Q95,155 110,140" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.7"></path>
+
+  <!-- Cord from wrap upward -->
+  <path d="M140,150 Q142,140 140,130" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></path>
+  <line x1="140" y1="130" x2="140" y2="110" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></line>
+
+  <!-- === Label === -->
+  <text x="125" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">1 wrap remains</text>
+
+  <!-- Annotation -->
+  <line x1="160" y1="165" x2="185" y2="165" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="188" y="169" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">1 crossing</text>
+</svg><figcaption>Checkpoint (b): after removing wrap 2, 1 wrap remains</figcaption></figure></p>
+<ol start="5">
+<li><strong>Repeat for the third wrap.</strong> Same process.</li>
+</ol>
+<p><figure class="dia-figure dia-narrow"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350" class="dia">
+  <title>Puzzle 7: Checkpoint C — Solved</title>
+  <desc>After removing all wraps: the cord hangs freely alongside the post with no wraps remaining. The puzzle is solved.</desc>
+
+  
+
+  <!-- Step badge (upper-right) -->
+  <circle cx="225" cy="25" r="16" fill="var(--dia-cord, #1f57c4)" opacity="0.12" stroke="var(--dia-cord, #1f57c4)" stroke-width="1.5"></circle>
+  <text x="225" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-cord, #1f57c4)" font-weight="bold">Step</text>
+  <text x="225" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)" font-weight="bold">3 of 3</text>
+
+  <!-- Base block (dark wood) -->
+  <rect x="65" y="280" width="120" height="40" rx="3" fill="var(--dia-ring, #b97d12)" stroke="var(--dia-ring, #b97d12)" stroke-width="2"></rect>
+
+  <!-- Post (wood) -->
+  <rect x="115" y="70" width="20" height="210" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"></rect>
+
+  <!-- Ball finial (wood) -->
+  <circle cx="125" cy="55" r="15" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"></circle>
+
+  <!-- Ring on post (brass, trapped by finial) -->
+  <circle cx="125" cy="110" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+
+  <!-- Hook at base (steel) -->
+  <path d="M125,280 L125,290 Q125,305 115,305 Q105,305 105,295" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"></path>
+
+  <!-- Cord hanging freely (alongside post) -->
+  <line x1="150" y1="110" x2="150" y2="275" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></line>
+  <!-- Cord connects to ring -->
+  <line x1="133" y1="110" x2="150" y2="110" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></line>
+  <!-- Cord connects to hook area -->
+  <path d="M150,275 Q150,285 140,290 Q130,295 125,290" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"></path>
+
+  <!-- === Label === -->
+  <text x="125" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">SOLVED -- cord hangs freely</text>
+
+  <!-- Checkmark annotation (green) -->
+  <path d="M20,170 L30,180 L45,160" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+  <text x="15" y="200" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-pos, #2f8f43)">no wraps</text>
+</svg><figcaption>Checkpoint (c) — SOLVED: all wraps removed, cord hangs straight</figcaption></figure></p>
+<ol start="6">
+<li>The cord now hangs freely from hook to ring, draping alongside the post without wrapping it.</li>
+</ol>
+<p>Each individual move takes 10-15 seconds. The total solution takes under a minute once understood.</p>
+<h2 id="why-its-tricky">Why It's Tricky <a href="#why-its-tricky" class="anchor-link" aria-hidden="true">#</a></h2>
+<p><strong>Knowledge becomes a trap.</strong> Anyone who knows even basic knot theory will look at three crossings and think "trefoil" — and trefoils can't be unknotted. The more knowledge a solver has, the more convinced they are that the puzzle is unsolvable. This is rare: a puzzle where expertise is a handicap.</p>
+<p><strong>The finial looks like a constraint, not a tool.</strong> The ball on top of the post seems to exist to trap the ring (which it does). Solvers don't consider that it also provides the fulcrum for unwinding the cord. Its dual role — constraint for the ring, tool for the cord — is not obvious.</p>
+<p><strong>Open vs. closed confusion.</strong> The cord has two free ends, but because it wraps around the post multiple times, it <em>looks</em> like a closed knot. The wrapping disguises the fact that it's an open arc. Solvers must recognize that the cord's endpoints change the topological category of the problem entirely.</p>
+<div class="callout callout--lesson"><span class="callout-label">Lesson</span><p>Open arcs on fixed axes follow fundamentally different rules than closed knots in free space. The same visual pattern (three crossings) can be trivially unknottable or permanently knotted depending on whether the curve is open or closed.</p></div>
+<h2 id="common-mistakes">Common Mistakes <a href="#common-mistakes" class="anchor-link" aria-hidden="true">#</a></h2>
+<ol>
+<li><p><strong>Assuming it's a trefoil and giving up.</strong> Anyone with knot theory knowledge will look at three crossings and think "trefoil — impossible." But a trefoil is a closed curve. This cord is an open arc. The post provides a fixed axis that makes each wrap independently removable. Knowledge of knot theory is, ironically, the biggest obstacle.</p>
+</li>
+<li><p><strong>Trying to lift wraps from the bottom (near the ring).</strong> The wraps must be removed from the TOP — over the finial. The finial is the fulcrum. Working from the bottom tangles the cord further because you're pushing crossings into the constrained space near the base.</p>
+</li>
+<li><p><strong>Not creating enough slack.</strong> Each wrap removal requires pushing the ring all the way down to the base to maximize slack near the finial. If the ring is halfway up the post, there won't be enough cord length to stretch the loop over the 30mm ball. Slide the ring down FIRST, every time.</p>
+</li>
+<li><p><strong>Removing wraps in the wrong order.</strong> Always remove the OUTERMOST wrap (closest to the finial). Attempting to remove an inner wrap while outer wraps are present creates additional tangles.</p>
+</li>
+</ol>
+<h2 id="construction-notes">Construction Notes <a href="#construction-notes" class="anchor-link" aria-hidden="true">#</a></h2>
+<ul>
+<li><strong>Finial sizing is critical:</strong> The ring's inner diameter (~42mm) is larger than the finial (30mm), but the ring is around the post (20mm), so the ring is trapped: the finial's 30mm diameter cannot pass through the ring when the ring is on the 20mm post. But the cord (5mm) can be passed over the finial with effort — the finial circumference (~94mm) requires a cord loop of at least 94mm to pass over it, and the 600mm cord provides ample slack</li>
+<li>Glue the finial with strong wood glue or epoxy; it must withstand upward tugging</li>
+<li>The <strong>crossing pattern</strong> must be set up precisely. Include a detailed setup diagram (instruction card) showing exactly which strand crosses over which. If the solver re-tangles the cord incorrectly, it may become a pattern that truly cannot be unwound on the post</li>
+<li>Mount the post securely in the base (drill a 20mm hole, glue with epoxy, add a screw from underneath)</li>
+<li>Sand the post smooth — the cord must slide freely up and down</li>
+<li>The hook should be a smooth screw-in hook (not a sharp cup hook) to prevent cord damage</li>
+</ul>
+<nav class="prevnext" aria-label="Puzzle navigation"><a class="pn-prev" href="../puzzles/06-devils-pitchfork.html"><span class="pn-k">← Previous</span><span class="pn-name">7. Devil's Pitchfork</span></a><a class="pn-next" href="../puzzles/16-the-crossing-number.html"><span class="pn-k">Next →</span><span class="pn-name">9. The Crossing Number</span></a></nav></div><aside class="toc" aria-label="On this page"><span class="eyebrow">On this page</span><ol><li><a class="lvl-2" href="#overview">Overview</a></li><li><a class="lvl-2" href="#components">Components</a></li><li><a class="lvl-2" href="#setup">Setup</a></li><li><a class="lvl-2" href="#solved-state">Solved State</a></li><li><a class="lvl-2" href="#objective">Objective</a></li><li><a class="lvl-2" href="#the-topology">The Topology</a></li><li><a class="lvl-2" href="#solution">Solution</a></li><li><a class="lvl-2" href="#why-its-tricky">Why It's Tricky</a></li><li><a class="lvl-2" href="#common-mistakes">Common Mistakes</a></li><li><a class="lvl-2" href="#construction-notes">Construction Notes</a></li></ol></aside></div></div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../index.html" style="color:#ece5d6"><svg class="logomark" viewBox="0 0 100 100" role="img" aria-label="EXKNOTS" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
+  <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
+</svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
+        <p style="margin:.8rem 0 0;max-width:30ch;font-size:.92rem">Topology you solve with your hands — 17 puzzles, their solutions, and the mathematics behind them.</p>
+      </div>
+      <div><h4>Arc 1</h4><ul><li><a href="../puzzles/01-the-gatekeeper.html">1. The Gatekeeper</a></li><li><a href="../puzzles/02-shepherds-yoke.html">2. Shepherd's Yoke</a></li><li><a href="../puzzles/03-the-prisoners-ring.html">3. The Prisoner's Ring</a></li><li><a href="../puzzles/04-mobius-snare.html">4. Mobius Snare</a></li><li><a href="../puzzles/11-the-mirror-gate.html">5. The Mirror Gate</a></li></ul></div><div><h4>Arc 2</h4><ul><li><a href="../puzzles/05-trinity-lock.html">6. Trinity Lock</a></li><li><a href="../puzzles/06-devils-pitchfork.html">7. Devil's Pitchfork</a></li><li><a href="../puzzles/07-the-ferrymans-knot.html">8. The Ferryman's Knot</a></li><li><a href="../puzzles/16-the-crossing-number.html">9. The Crossing Number</a></li></ul></div><div><h4>Arc 3</h4><ul><li><a href="../puzzles/08-ouroboros-chain.html">10. Ouroboros Chain</a></li><li><a href="../puzzles/09-genus-trap.html">11. Genus Trap</a></li><li><a href="../puzzles/10-the-hopf-paradox.html">12. The Hopf Paradox</a></li></ul></div><div><h4>Arc 4</h4><ul><li><a href="../puzzles/12-the-braid-cage.html">13. The Braid Cage</a></li><li><a href="../puzzles/13-the-torus-winder.html">14. The Torus Winder</a></li><li><a href="../puzzles/14-the-tricolor-lock.html">15. The Tricolor Lock</a></li><li><a href="../puzzles/15-the-seifert-sail.html">16. The Seifert Sail</a></li><li><a href="../puzzles/17-the-satellite-trap.html">17. The Satellite Trap</a></li></ul></div>
+    </div>
+    <div class="foot-fine">
+      <span>EXKNOTS · MIT License</span>
+      <span><a href="../theory/topology-primer.html">Topology Primer</a> · <a href="../construction/materials.html">Build Guide</a> · <a href="https://github.com/sonoransun/knotgames">Source ↗</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/docs.js" defer></script>
+</body>
+</html>

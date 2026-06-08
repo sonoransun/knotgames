@@ -1,0 +1,37 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 320">
+  <title>The Hopf Paradox - The Hopf Move</title>
+  <desc>A close-up of the crux move near the north pole. The ring must rotate about the polar hoop and translate along it at the same time; neither half of the motion works on its own. Two coupled arrows — a circular rotation arrow and a straight translation arrow — are bracketed together to show they are a single, non-decomposable move.</desc>
+
+  <defs>
+    <marker id="rot" markerWidth="8" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="var(--dia-cord, #1f57c4)"/>
+    </marker>
+    <marker id="tr" markerWidth="8" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="var(--dia-neg, #cf3a26)"/>
+    </marker>
+  </defs>
+
+  <text x="175" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-ink, #24211a)" font-weight="bold">The Hopf Move (the crux)</text>
+
+  <!-- Pole + polar hoop arc (rigid) -->
+  <circle cx="175" cy="60" r="6" fill="var(--dia-ink, #24211a)"/>
+  <text x="175" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">N pole</text>
+  <path d="M105,235 A120,150 0 0,1 245,235" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"/>
+  <text x="262" y="150" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">polar hoop</text>
+
+  <!-- Ring on the hoop (brass), shown edge-on as a short ellipse -->
+  <ellipse cx="175" cy="150" rx="34" ry="13" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5" transform="rotate(-18,175,150)"/>
+  <text x="175" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-ring, #b97d12)">ring</text>
+
+  <!-- Rotation arrow (circular, blue) around the ring -->
+  <path d="M150,118 A40,40 0 1,1 145,150" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" marker-end="url(#rot)"/>
+  <text x="120" y="108" text-anchor="end" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-cord, #1f57c4)">rotate about hoop</text>
+
+  <!-- Translation arrow (straight, red) along the hoop -->
+  <path d="M175,168 L175,225" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5" marker-end="url(#tr)"/>
+  <text x="190" y="205" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-neg, #cf3a26)">translate along hoop</text>
+
+  <!-- Coupling bracket -->
+  <path d="M70,250 q-8,0 -8,8 v18 q0,8 8,8 h210 q8,0 8,-8 v-18 q0,-8 -8,-8" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1.5"/>
+  <text x="175" y="300" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)" font-weight="bold">done together — the motion does not split into rotate-then-slide</text>
+</svg>

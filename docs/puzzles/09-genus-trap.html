@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Genus Trap · EXKNOTS</title>
+<meta name="description" content="Genus Trap — Genus-2 surface fundamental group. Setup, solution, topology, and construction.">
+<link rel="canonical" href="https://sonoransun.github.io/knotgames/puzzles/09-genus-trap.html">
+<meta name="theme-color" content="#0f1320">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EXKNOTS">
+<meta property="og:title" content="Genus Trap">
+<meta property="og:description" content="Genus Trap — Genus-2 surface fundamental group. Setup, solution, topology, and construction.">
+<meta property="og:url" content="https://sonoransun.github.io/knotgames/puzzles/09-genus-trap.html">
+<meta property="og:image" content="https://sonoransun.github.io/knotgames/assets/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sonoransun.github.io/knotgames/assets/brand/og-image.png">
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/brand/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&display=swap">
+<link rel="stylesheet" href="../assets/css/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Primary">
+  <a class="brand" href="../index.html" aria-label="EXKNOTS home"><svg class="logomark" viewBox="0 0 100 100" role="img" aria-label="EXKNOTS" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
+  <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
+</svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
+  <button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="../explore/">Explore</a></li>
+    <li><a href="../puzzles/" aria-current="page">Puzzles</a></li>
+    <li><a href="../theory/">Theory</a></li>
+    <li><a href="../construction/materials.html">Build</a></li>
+    <li><a href="https://github.com/sonoransun/knotgames">GitHub ↗</a></li>
+    <li><a href="../explore/" class="cta">Open Explorer</a></li>
+  </ul>
+  <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle theme"><span class="sun">☀</span><span class="moon">☾</span></button>
+</nav>
+<div class="progress" role="presentation"></div>
+<main id="main">
+<header class="doc-header" style="--ac:var(--arc3)"><div class="wrap">
+  <span class="doc-num">11</span>
+  <h1 class="doc-title">Genus Trap</h1>
+  <div class="doc-meta">
+    <span class="pill expert">Expert</span>
+    <span class="pc-type">Disentanglement</span>
+    <span class="pc-principle">Genus-2 surface fundamental group</span>
+  </div>
+  <div class="doc-actions"><a class="btn btn--primary" href="../explore/#11">▶ Open in Interactive Explorer</a></div>
+</div></header>
+<div class="wrap band" style="padding-top:1.4rem"><div class="doc-layout"><div class="prose"><h2 id="overview">Overview <a href="#overview" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>A clear acrylic block contains two through-tunnels that pass over and under each other without intersecting. A cord is threaded through both tunnels in a specific pattern, with two rings captured on the cord between the tunnels. Wooden balls on the cord ends prevent them from pulling through. The cord's path encodes an algebraic word in the fundamental group — and only the right algebraic manipulation (generator cancellation) will free the rings.</p>
+<p>This puzzle has the highest <strong>cognitive load</strong> in the series. Even though the acrylic is clear, you cannot easily reason about how the two tunnels relate to each other and how the cord winds through them — your eyes report a confusing tangle of curves that seem to intersect (they don't — they pass at different heights). You must build, in your mind, a 3D map of the two tunnels and the cord's path through them, and then plan a sequence of physical manipulations that will simplify that path. There is no way to peek inside and check your model against reality except by trying a move and seeing what happens.</p>
+<h2 id="components">Components <a href="#components" class="anchor-link" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Material</th>
+<th>Dimensions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Block</td>
+<td>Clear cast acrylic</td>
+<td>120mm x 80mm x 60mm</td>
+</tr>
+<tr>
+<td>Tunnel A</td>
+<td>Drilled through-hole (left ↔ right)</td>
+<td>15mm diameter, at 25mm height</td>
+</tr>
+<tr>
+<td>Tunnel B</td>
+<td>Drilled through-hole (front ↔ back)</td>
+<td>15mm diameter, at 35mm height</td>
+</tr>
+<tr>
+<td>Ring 1</td>
+<td>Welded steel O-ring</td>
+<td>40mm OD</td>
+</tr>
+<tr>
+<td>Ring 2</td>
+<td>Welded steel O-ring</td>
+<td>40mm OD</td>
+</tr>
+<tr>
+<td>Cord</td>
+<td>5mm braided nylon</td>
+<td>900mm long</td>
+</tr>
+<tr>
+<td>Ball stops (x2)</td>
+<td>Wooden balls</td>
+<td>30mm diameter, attached to cord ends</td>
+</tr>
+</tbody></table></div>
+<p>Tunnel A runs horizontally left-to-right at 25mm height. Tunnel B runs horizontally front-to-back at 35mm height. They cross in the center of the block but at different heights (10mm vertical separation) — they do <strong>not</strong> intersect.</p>
+<h2 id="setup">Setup <a href="#setup" class="anchor-link" aria-hidden="true">#</a></h2>
+<p><figure class="dia-figure"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 350" class="dia">
+  <title>Genus Trap - Block Top View</title>
+  <desc>Top-down view of an acrylic block with two tunnels (A horizontal, B vertical) that cross without intersecting. Below, a schematic of the cord path through the tunnels.</desc>
+
+  
+
+  <!-- Acrylic block (top-down rectangle with light blue fill) -->
+  <rect x="80" y="30" width="240" height="160" rx="4" fill="var(--dia-wash, #ece3d0)" fill-opacity="0.08" stroke="var(--dia-ink, #24211a)" stroke-width="2"></rect>
+  <!-- Light acrylic body fill -->
+  <rect x="80" y="30" width="240" height="160" rx="4" fill="var(--dia-wash, #ece3d0)" fill-opacity="0.08" stroke="none"></rect>
+
+  <!-- Edge labels -->
+  <text x="200" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">FRONT</text>
+  <text x="200" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">BACK</text>
+  <text x="70" y="114" text-anchor="end" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">LEFT</text>
+  <text x="330" y="114" text-anchor="start" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">RIGHT</text>
+
+  <!-- Tunnel A: horizontal, at a lower vertical position (red, dashed) -->
+  <line x1="80" y1="130" x2="320" y2="130" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="5,3"></line>
+  <!-- Tunnel A entry/exit markers -->
+  <circle cx="80" cy="130" r="4" fill="var(--dia-neg, #cf3a26)"></circle>
+  <circle cx="320" cy="130" r="4" fill="var(--dia-neg, #cf3a26)"></circle>
+  <text x="90" y="145" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-neg, #cf3a26)" font-weight="bold">[A]</text>
+
+  <!-- Tunnel B: vertical, at a higher horizontal position (blue, dashed) -->
+  <line x1="200" y1="30" x2="200" y2="190" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"></line>
+  <!-- Tunnel B entry/exit markers -->
+  <circle cx="200" cy="30" r="4" fill="var(--dia-cord, #1f57c4)"></circle>
+  <circle cx="200" cy="190" r="4" fill="var(--dia-cord, #1f57c4)"></circle>
+  <text x="210" y="55" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-cord, #1f57c4)" font-weight="bold">[B]</text>
+
+  <!-- Crossing indicator -->
+  <circle cx="200" cy="130" r="8" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" stroke-dasharray="3,2"></circle>
+  <text x="230" y="118" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">Tunnels cross</text>
+  <text x="230" y="128" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">but don't intersect</text>
+
+  <!-- Cord path schematic below the block -->
+  <text x="200" y="230" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Cord Path Schematic:</text>
+
+  <!-- Flow diagram using arrows -->
+  <!-- Ball start -->
+  <circle cx="30" cy="258" r="8" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2"></circle>
+  <text x="30" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-cord, #1f57c4)">Ball</text>
+
+  <!-- Arrow to A LEFT entry -->
+  <line x1="38" y1="258" x2="55" y2="258" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" marker-end="url(#d0-arr)"></line>
+
+  <!-- A left-to-right (red-tinted box) -->
+  <rect x="57" y="248" width="42" height="20" rx="3" fill="var(--dia-neg, #cf3a26)" fill-opacity="0.08" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"></rect>
+  <text x="78" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-neg, #cf3a26)">A L→R</text>
+
+  <!-- Arrow to outside loop -->
+  <line x1="99" y1="258" x2="112" y2="258" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" marker-end="url(#d0-arr)"></line>
+
+  <!-- Outside arc 1 -->
+  <text x="124" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-rigid, #8a8275)">loop</text>
+
+  <!-- Arrow to B -->
+  <line x1="136" y1="258" x2="148" y2="258" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" marker-end="url(#d0-arr)"></line>
+
+  <!-- B front-to-back (blue-tinted box) -->
+  <rect x="150" y="248" width="48" height="20" rx="3" fill="var(--dia-cord, #1f57c4)" fill-opacity="0.08" stroke="var(--dia-cord, #1f57c4)" stroke-width="1"></rect>
+  <text x="174" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-cord, #1f57c4)">B F→B</text>
+
+  <!-- Arrow to outside loop -->
+  <line x1="198" y1="258" x2="212" y2="258" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" marker-end="url(#d0-arr)"></line>
+
+  <!-- Outside arc 2 -->
+  <text x="224" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-rigid, #8a8275)">loop</text>
+
+  <!-- Arrow to A reverse -->
+  <line x1="236" y1="258" x2="250" y2="258" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" marker-end="url(#d0-arr)"></line>
+
+  <!-- A right-to-left (red-tinted box, lighter for inverse) -->
+  <rect x="252" y="248" width="42" height="20" rx="3" fill="var(--dia-neg, #cf3a26)" fill-opacity="0.05" stroke="var(--dia-neg, #cf3a26)" stroke-width="1" stroke-dasharray="3,2"></rect>
+  <text x="273" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-neg, #cf3a26)">A R→L</text>
+
+  <!-- Arrow to Ball -->
+  <line x1="294" y1="258" x2="340" y2="258" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" marker-end="url(#d0-arr)"></line>
+
+  <!-- Ball end -->
+  <circle cx="352" cy="258" r="8" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2"></circle>
+  <text x="352" y="261" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-cord, #1f57c4)">Ball</text>
+
+  <!-- Generator labels below (color-coded) -->
+  <text x="78" y="285" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-neg, #cf3a26)" font-weight="bold" font-style="italic">a</text>
+  <text x="174" y="285" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-cord, #1f57c4)" font-weight="bold" font-style="italic">b</text>
+  <text x="273" y="285" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-neg, #cf3a26)" font-style="italic">a⁻¹</text>
+
+  <!-- Summary -->
+  <text x="200" y="315" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">Ball → enters A from LEFT → exits A RIGHT → loops outside</text>
+  <text x="200" y="330" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">→ enters B from FRONT → exits B BACK → loops outside → enters A from RIGHT → exits A LEFT → Ball</text>
+
+  <defs>
+    <marker id="d0-arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="var(--dia-rigid, #8a8275)"></path>
+    </marker>
+  </defs>
+</svg><figcaption>Top view of acrylic block with two crossing tunnels (A and B) and cord path schematic</figcaption></figure></p>
+<p>The top-down view above can be misleading — the tunnels appear to intersect at the center. They don't. The two elevations below show their vertical separation:</p>
+<p><figure class="dia-figure"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" class="dia">
+  <title>Genus Trap - Side and Front Elevations</title>
+  <desc>Two elevation views of the acrylic block showing the vertical separation between Tunnel A (25mm) and Tunnel B (35mm). The tunnels appear to cross in the top-down view but are 10mm apart vertically.</desc>
+
+  
+
+  <!-- Title -->
+  <text x="240" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-ink, #24211a)" font-weight="bold">The tunnels do not intersect — they pass at different heights</text>
+
+  <!-- ===== LEFT: SIDE VIEW (looking from the right side; X axis into page) ===== -->
+  <text x="120" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Side view (looking from the right)</text>
+
+  <!-- Block outline -->
+  <rect x="40" y="60" width="160" height="120" fill="var(--dia-wash, #ece3d0)" fill-opacity="0.10" stroke="var(--dia-ink, #24211a)" stroke-width="2"></rect>
+
+  <!-- Y-axis ruler (height) -->
+  <line x1="30" y1="60" x2="30" y2="180" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <line x1="27" y1="60" x2="33" y2="60" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <line x1="27" y1="180" x2="33" y2="180" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="22" y="64" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">60mm</text>
+  <text x="22" y="184" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">0</text>
+
+  <!-- Front/back labels -->
+  <text x="40" y="195" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">FRONT</text>
+  <text x="200" y="195" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">BACK</text>
+
+  <!-- Tunnel A: appears as a circle (cut by side view, since A runs left-right) -->
+  <!-- Position: at height 25mm from bottom = 180-50 = 130 in svg, centered at x=120 -->
+  <circle cx="120" cy="130" r="12" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="2"></circle>
+  <text x="120" y="134" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">A</text>
+  <!-- Height label for A -->
+  <line x1="148" y1="130" x2="220" y2="130" stroke="var(--dia-neg, #cf3a26)" stroke-width="0.5" stroke-dasharray="2,2"></line>
+  <text x="225" y="133" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)">25mm (Tunnel A height)</text>
+
+  <!-- Tunnel B: appears as a horizontal line (B runs front-back, so seen from the side it's a line) -->
+  <!-- Position: at height 35mm from bottom = 180-70 = 110 -->
+  <line x1="40" y1="110" x2="200" y2="110" stroke="var(--dia-cord, #1f57c4)" stroke-width="3"></line>
+  <line x1="40" y1="110" x2="200" y2="110" stroke="var(--dia-surface, #fbf7ee)" stroke-width="1.5" stroke-dasharray="4,3"></line>
+  <text x="120" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-cord, #1f57c4)" font-weight="bold">B</text>
+  <!-- Height label for B -->
+  <line x1="200" y1="110" x2="220" y2="110" stroke="var(--dia-cord, #1f57c4)" stroke-width="0.5" stroke-dasharray="2,2"></line>
+  <text x="225" y="113" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">35mm (Tunnel B height)</text>
+
+  <!-- 10mm gap annotation -->
+  <line x1="60" y1="110" x2="60" y2="130" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5"></line>
+  <line x1="56" y1="110" x2="64" y2="110" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5"></line>
+  <line x1="56" y1="130" x2="64" y2="130" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5"></line>
+  <text x="68" y="123" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-pos, #2f8f43)" font-weight="bold">10mm</text>
+  <text x="68" y="135" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-pos, #2f8f43)">gap</text>
+
+  <!-- ===== RIGHT: FRONT VIEW (looking from the front; Z axis into page) ===== -->
+  <text x="360" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Front view (looking from the front)</text>
+
+  <!-- Block outline (wider in this view; block is 120 wide x 60 tall) -->
+  <rect x="260" y="80" width="200" height="100" fill="var(--dia-wash, #ece3d0)" fill-opacity="0.10" stroke="var(--dia-ink, #24211a)" stroke-width="2"></rect>
+
+  <!-- Left/Right labels -->
+  <text x="260" y="195" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">LEFT</text>
+  <text x="460" y="195" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">RIGHT</text>
+
+  <!-- Tunnel A: horizontal line (A runs left-right) seen from front -->
+  <!-- Height 25mm from bottom = 180-(25/60)*100 = 180-41.7 ≈ 138 -->
+  <line x1="260" y1="138" x2="460" y2="138" stroke="var(--dia-neg, #cf3a26)" stroke-width="3"></line>
+  <line x1="260" y1="138" x2="460" y2="138" stroke="var(--dia-surface, #fbf7ee)" stroke-width="1.5" stroke-dasharray="4,3"></line>
+  <text x="360" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">Tunnel A (left ↔ right)</text>
+
+  <!-- Tunnel B: appears as circle (B runs front-back, seen from front it's a circle) -->
+  <!-- Height 35mm = 180-58.3 ≈ 122, centered horizontally -->
+  <circle cx="360" cy="122" r="12" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-cord, #1f57c4)" stroke-width="2"></circle>
+  <text x="360" y="126" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-cord, #1f57c4)" font-weight="bold">B</text>
+
+  <!-- Height annotations -->
+  <line x1="248" y1="80" x2="248" y2="180" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <line x1="245" y1="80" x2="251" y2="80" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <line x1="245" y1="180" x2="251" y2="180" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="240" y="84" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">60mm</text>
+  <text x="240" y="184" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">0</text>
+
+  <!-- Caption -->
+  <text x="240" y="240" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)" font-weight="bold">Why this matters:</text>
+  <text x="240" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">In the top-down view the tunnels appear to cross at the center of the block.</text>
+  <text x="240" y="272" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">The elevations show they are 10mm apart in height — they pass over/under without touching.</text>
+  <text x="240" y="290" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">This vertical separation is what makes the block a genus-2 handlebody (two independent tunnels).</text>
+
+  <!-- Color legend -->
+  <rect x="160" y="316" width="14" height="3" fill="var(--dia-neg, #cf3a26)"></rect>
+  <text x="178" y="320" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-ink, #24211a)">Tunnel A (left↔right at 25mm)</text>
+  <rect x="160" y="332" width="14" height="3" fill="var(--dia-cord, #1f57c4)"></rect>
+  <text x="178" y="336" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-ink, #24211a)">Tunnel B (front↔back at 35mm)</text>
+</svg><figcaption>Side and front elevations showing 10mm vertical gap between Tunnel A (25mm height) and Tunnel B (35mm height)</figcaption></figure></p>
+<h3 id="cord-path-in-detail">Cord path in detail <a href="#cord-path-in-detail" class="anchor-link" aria-hidden="true">#</a></h3>
+<ol>
+<li>Left ball-stop → cord enters <strong>Tunnel A</strong> from the left face</li>
+<li>Cord exits Tunnel A on the right face</li>
+<li>Cord loops around the outside of the block (right → front)</li>
+<li><strong>Ring 1</strong> is on this external section of cord</li>
+<li>Cord enters <strong>Tunnel B</strong> from the front face</li>
+<li>Cord exits Tunnel B on the back face</li>
+<li>Cord loops around the outside of the block (back → left → right)</li>
+<li><strong>Ring 2</strong> is on this external section of cord</li>
+<li>Cord enters <strong>Tunnel A</strong> from the right face (re-entering the same tunnel from the opposite end)</li>
+<li>Cord exits Tunnel A on the left face</li>
+<li>Right ball-stop</li>
+</ol>
+<p>The ball-stops (30mm) are too large to pass through the tunnels (15mm).</p>
+<h2 id="objective">Objective <a href="#objective" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>Free both rings from the cord-and-block assembly. The cord remains threaded through the block. Nothing is cut or broken.</p>
+<h2 id="the-topology">The Topology <a href="#the-topology" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>The acrylic block with two non-intersecting through-tunnels is topologically a <strong>genus-2 handlebody</strong> — a solid body with two handles. Each tunnel contributes one handle.</p>
+<h3 id="what-is-a-genus-2-handlebody">What Is a Genus-2 Handlebody? <a href="#what-is-a-genus-2-handlebody" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>A <strong>handlebody</strong> is a solid body with tunnel-handles drilled through it. The <strong>genus</strong> counts the number of tunnels:</p>
+<ul>
+<li><strong>Genus 0:</strong> A solid ball. No tunnels. Any loop on the surface can be shrunk to a point.</li>
+<li><strong>Genus 1:</strong> A solid donut (torus). One tunnel. A loop going through the tunnel cannot be shrunk.</li>
+<li><strong>Genus 2:</strong> A solid body with two tunnels. Two independent families of non-shrinkable loops.</li>
+</ul>
+<p><figure class="dia-figure dia-wide"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 200" class="dia">
+  <title>Genus Trap - Genus Comparison</title>
+  <desc>Three shapes side by side comparing genus 0 (ball, no tunnels), genus 1 (donut, one tunnel), and genus 2 (double torus, two tunnels).</desc>
+
+  <defs>
+    <!-- Sphere gradient: top-left highlight to bottom-right shadow -->
+    <linearGradient id="d2-sphereGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--dia-faint, #c9bda7)"></stop>
+      <stop offset="100%" stop-color="var(--dia-faint, #c9bda7)"></stop>
+    </linearGradient>
+
+    <!-- Torus gradient: left highlight to right shadow -->
+    <linearGradient id="d2-torusGrad" x1="0%" y1="20%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="var(--dia-faint, #c9bda7)"></stop>
+      <stop offset="100%" stop-color="var(--dia-faint, #c9bda7)"></stop>
+    </linearGradient>
+
+    <!-- Double torus gradient -->
+    <linearGradient id="d2-dtorusGrad" x1="0%" y1="20%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="var(--dia-faint, #c9bda7)"></stop>
+      <stop offset="100%" stop-color="var(--dia-faint, #c9bda7)"></stop>
+    </linearGradient>
+
+    <!-- Neck shadow gradient for double torus junction -->
+    <linearGradient id="d2-neckShadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="var(--dia-rigid, #8a8275)" stop-opacity="0.35"></stop>
+      <stop offset="50%" stop-color="var(--dia-rigid, #8a8275)" stop-opacity="0.5"></stop>
+      <stop offset="100%" stop-color="var(--dia-rigid, #8a8275)" stop-opacity="0.35"></stop>
+    </linearGradient>
+
+    <marker id="d2-garr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="var(--dia-faint, #c9bda7)"></path>
+    </marker>
+  </defs>
+
+  
+
+  <!-- Section title -->
+  <text x="275" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Genus Comparison for Puzzle Context</text>
+
+  <!-- Genus 0: Ball / Sphere -->
+  <g transform="translate(95, 90)">
+    <!-- Sphere body with gradient -->
+    <circle cx="0" cy="0" r="45" fill="url(#d2-sphereGrad)" stroke="var(--dia-ink, #24211a)" stroke-width="2"></circle>
+    <!-- Dashed equator ellipse for 3D depth -->
+    <ellipse cx="0" cy="0" rx="45" ry="12" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"></ellipse>
+    <!-- Highlight arc for specular hint -->
+    <path d="M -20 -26 Q -14 -36, -4 -38" fill="none" stroke="var(--dia-surface, #fbf7ee)" stroke-width="2" opacity="0.6"></path>
+
+    <text x="0" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Genus 0</text>
+    <text x="0" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">No tunnels</text>
+    <text x="0" y="98" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)" font-style="italic">π₁ = {e}</text>
+  </g>
+
+  <!-- Arrow: Genus 0 -> Genus 1 -->
+  <line x1="148" y1="90" x2="188" y2="90" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.5" marker-end="url(#d2-garr)"></line>
+  <text x="168" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">+1 hole</text>
+
+  <!-- Genus 1: Torus / Donut -->
+  <g transform="translate(275, 87)">
+    <!-- Outer torus body with gradient -->
+    <ellipse cx="0" cy="0" rx="60" ry="38" fill="url(#d2-torusGrad)" stroke="var(--dia-ink, #24211a)" stroke-width="2"></ellipse>
+    <!-- Dashed equator curve on upper surface -->
+    <path d="M -50 -12 Q -25 -28, 0 -30 Q 25 -28, 50 -12" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"></path>
+    <!-- Surface hint path (bottom curvature) -->
+    <path d="M -48 15 Q -25 30, 0 32 Q 25 30, 48 15" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1" opacity="0.4"></path>
+    <!-- Inner hole -->
+    <ellipse cx="0" cy="0" rx="20" ry="10" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-ink, #24211a)" stroke-width="2"></ellipse>
+
+    <text x="0" y="58" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Genus 1</text>
+    <text x="0" y="73" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">One tunnel</text>
+    <text x="0" y="91" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)" font-style="italic">π₁ = ℤ</text>
+  </g>
+
+  <!-- Arrow: Genus 1 -> Genus 2 -->
+  <line x1="342" y1="87" x2="372" y2="87" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.5" marker-end="url(#d2-garr)"></line>
+  <text x="357" y="79" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">+1 hole</text>
+
+  <!-- Genus 2: Double torus / Two tunnels -->
+  <g transform="translate(455, 87)">
+    <!-- Double torus outer shape: figure-8 with pronounced pinch -->
+    <path d="M -65 0
+             Q -65 -38, -38 -44
+             Q -16 -48, -5 -26
+             Q 0 -16, 0 -12
+             Q 0 -16, 5 -26
+             Q 16 -48, 38 -44
+             Q 65 -38, 65 0
+             Q 65 38, 38 44
+             Q 16 48, 5 26
+             Q 0 16, 0 12
+             Q 0 16, -5 26
+             Q -16 48, -38 44
+             Q -65 38, -65 0 Z" fill="url(#d2-dtorusGrad)" stroke="var(--dia-ink, #24211a)" stroke-width="2"></path>
+
+    <!-- Neck junction shadow for 3D depth -->
+    <rect x="-4" y="-12" width="8" height="24" fill="url(#d2-neckShadow)" rx="3" opacity="0.6"></rect>
+
+    <!-- Left hole -->
+    <ellipse cx="-30" cy="0" rx="14" ry="7" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-ink, #24211a)" stroke-width="1.5"></ellipse>
+
+    <!-- Right hole -->
+    <ellipse cx="30" cy="0" rx="14" ry="7" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-ink, #24211a)" stroke-width="1.5"></ellipse>
+
+    <!-- Dashed equator curve on left lobe -->
+    <path d="M -54 -12 Q -42 -24, -30 -26 Q -18 -24, -6 -14" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"></path>
+
+    <!-- Dashed equator curve on right lobe -->
+    <path d="M 6 -14 Q 18 -24, 30 -26 Q 42 -24, 54 -12" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"></path>
+
+    <text x="0" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Genus 2</text>
+    <text x="0" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">Two tunnels</text>
+    <text x="0" y="98" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)" font-style="italic">π₁ = F₂</text>
+  </g>
+</svg><figcaption>Genus 0 (no tunnels), genus 1 (one tunnel), genus 2 (two tunnels)</figcaption></figure></p>
+<p>The acrylic block in this puzzle — with Tunnel A (left↔right) and Tunnel B (front↔back) — is topologically a genus-2 handlebody. Each tunnel contributes one 'handle' to the topology.</p>
+<p>The <strong>fundamental group</strong> of a genus-2 handlebody is the <strong>free group on two generators</strong>, F(a, b), where:</p>
+<ul>
+<li>Generator <strong>a</strong> = a path through Tunnel A</li>
+<li>Generator <strong>b</strong> = a path through Tunnel B</li>
+</ul>
+<p>The cord's path traces the word <strong>a b a⁻¹</strong> in this fundamental group:</p>
+<ol>
+<li>Through Tunnel A left→right = <strong>a</strong></li>
+<li>Through Tunnel B front→back = <strong>b</strong></li>
+<li>Through Tunnel A right→left = <strong>a⁻¹</strong> (same tunnel, opposite direction)</li>
+</ol>
+<p>The word <strong>aba⁻¹</strong> is <strong>non-trivial</strong> in the free group — it cannot be simplified to the identity. This is why the rings are trapped: the cord's topology in the region where the rings sit is non-trivially linked with the block's handle structure.</p>
+<h3 id="what-is-the-fundamental-group">What Is the Fundamental Group? <a href="#what-is-the-fundamental-group" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>The <strong>fundamental group</strong> of a space is the set of all loops you can draw in it, where two loops are considered 'the same' if one can be continuously deformed into the other (without cutting or leaving the space).</p>
+<p>On a genus-2 handlebody, some loops can be shrunk to a point — they're <strong>trivial</strong> (they don't go through any tunnel). Others cannot be shrunk because they go through a tunnel. The loops that go through Tunnel A are called <strong>a</strong>, and through Tunnel B are called <strong>b</strong>.</p>
+<p>The fundamental group of a genus-2 handlebody is the <strong>free group on two generators</strong>, written F(a, b). 'Free' means there are no relations between a and b — the only simplification rule is that a path and its reverse cancel: <strong>aa⁻¹ = identity</strong> (going through a tunnel and immediately coming back is the same as not going at all).</p>
+<h3 id="worked-example-why-aba-identity">Worked Example: Why aba⁻¹ ≠ Identity <a href="#worked-example-why-aba-identity" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>The cord path in this puzzle traces the word <strong>aba⁻¹</strong>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Path</th>
+<th>Generator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Through Tunnel A left→right</td>
+<td><strong>a</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Through Tunnel B front→back</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Through Tunnel A right→left</td>
+<td><strong>a⁻¹</strong> (reverse of a)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Full word:</strong></td>
+<td><strong>aba⁻¹</strong></td>
+</tr>
+</tbody></table></div>
+<p>Can this simplify to the identity (trivial loop)? Let's check:</p>
+<ul>
+<li><strong>aba⁻¹</strong>: The 'a' and 'a⁻¹' CANNOT cancel because <strong>b</strong> is between them. In a free group, only adjacent inverse pairs cancel. The b blocks the cancellation like a wall between them.</li>
+<li>Compare with <strong>aa⁻¹b</strong>: Here a and a⁻¹ ARE adjacent, so this simplifies to <strong>b</strong>. Not the identity either, but simpler.</li>
+<li>Compare with <strong>aa⁻¹</strong>: Adjacent inverses cancel → <strong>identity</strong>. The rings would be free.</li>
+</ul>
+<p><strong>The solution strategy:</strong> Transform the cord's word from <strong>aba⁻¹</strong> (non-trivial) to something where the generators cancel to the <strong>identity</strong>. This means physically rerouting the cord to eliminate the <strong>b</strong> generator from the region where the rings sit.</p>
+<h3 id="cord-path-with-generators-labeled">Cord Path with Generators Labeled <a href="#cord-path-with-generators-labeled" class="anchor-link" aria-hidden="true">#</a></h3>
+<p><figure class="dia-figure dia-wide"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 200" class="dia">
+  <title>Genus Trap - Cord Path Generators</title>
+  <desc>Schematic of the cord path through the genus-2 block, with algebraic generator labels showing the word a, b, a-inverse in the fundamental group.</desc>
+
+  
+
+  <!-- Title -->
+  <text x="275" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Cord Path with Fundamental Group Generators</text>
+
+  <!-- Flow diagram: Ball -> [A L->R] -> outside -> Ring 1 -> [B F->B] -> outside -> Ring 2 -> [A R->L] -> Ball -->
+
+  <!-- Ball (start, blue cord) -->
+  <circle cx="30" cy="80" r="14" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2"></circle>
+  <text x="30" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-cord, #1f57c4)">Ball</text>
+
+  <!-- Arrow to tunnel A -->
+  <line x1="44" y1="80" x2="68" y2="80" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" marker-end="url(#d3-cpArr)"></line>
+
+  <!-- Tunnel A passage (left to right, red-tinted) -->
+  <rect x="70" y="62" width="80" height="36" rx="5" fill="var(--dia-neg, #cf3a26)" fill-opacity="0.08" stroke="var(--dia-neg, #cf3a26)" stroke-width="2"></rect>
+  <text x="110" y="76" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-neg, #cf3a26)" font-weight="bold">[A]</text>
+  <text x="110" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">left → right</text>
+
+  <!-- Arrow to outside -->
+  <line x1="150" y1="80" x2="168" y2="80" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" marker-end="url(#d3-cpArr)"></line>
+
+  <!-- Outside + Ring 1 (brass) -->
+  <text x="184" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">outside</text>
+  <circle cx="184" cy="87" r="7" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="1.5"></circle>
+  <text x="184" y="108" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-ring, #b97d12)">Ring 1</text>
+
+  <!-- Arrow to tunnel B -->
+  <line x1="191" y1="80" x2="218" y2="80" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" marker-end="url(#d3-cpArr)"></line>
+
+  <!-- Tunnel B passage (front to back, blue-tinted) -->
+  <rect x="220" y="62" width="80" height="36" rx="5" fill="var(--dia-cord, #1f57c4)" fill-opacity="0.08" stroke="var(--dia-cord, #1f57c4)" stroke-width="2"></rect>
+  <text x="260" y="76" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-cord, #1f57c4)" font-weight="bold">[B]</text>
+  <text x="260" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">front → back</text>
+
+  <!-- Arrow to outside -->
+  <line x1="300" y1="80" x2="318" y2="80" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" marker-end="url(#d3-cpArr)"></line>
+
+  <!-- Outside + Ring 2 (brass) -->
+  <text x="334" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">outside</text>
+  <circle cx="334" cy="87" r="7" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="1.5"></circle>
+  <text x="334" y="108" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-ring, #b97d12)">Ring 2</text>
+
+  <!-- Arrow to tunnel A reverse -->
+  <line x1="341" y1="80" x2="368" y2="80" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" marker-end="url(#d3-cpArr)"></line>
+
+  <!-- Tunnel A passage (right to left, red-tinted, lighter for inverse) -->
+  <rect x="370" y="62" width="80" height="36" rx="5" fill="var(--dia-neg, #cf3a26)" fill-opacity="0.05" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,2"></rect>
+  <text x="410" y="76" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-neg, #cf3a26)">[A]</text>
+  <text x="410" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">right → left</text>
+
+  <!-- Arrow to Ball (end) -->
+  <line x1="450" y1="80" x2="496" y2="80" stroke="var(--dia-rigid, #8a8275)" stroke-width="1" marker-end="url(#d3-cpArr)"></line>
+
+  <!-- Ball (end, blue cord) -->
+  <circle cx="510" cy="80" r="14" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2"></circle>
+  <text x="510" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-cord, #1f57c4)">Ball</text>
+
+  <!-- Generator labels below each tunnel segment (color-coded) -->
+  <!-- Bracket under A (first pass) -->
+  <line x1="75" y1="105" x2="145" y2="105" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"></line>
+  <line x1="75" y1="100" x2="75" y2="105" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"></line>
+  <line x1="145" y1="100" x2="145" y2="105" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"></line>
+  <text x="110" y="122" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="var(--dia-neg, #cf3a26)" font-weight="bold" font-style="italic">a</text>
+
+  <!-- Bracket under B -->
+  <line x1="225" y1="105" x2="295" y2="105" stroke="var(--dia-cord, #1f57c4)" stroke-width="1"></line>
+  <line x1="225" y1="100" x2="225" y2="105" stroke="var(--dia-cord, #1f57c4)" stroke-width="1"></line>
+  <line x1="295" y1="100" x2="295" y2="105" stroke="var(--dia-cord, #1f57c4)" stroke-width="1"></line>
+  <text x="260" y="122" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="var(--dia-cord, #1f57c4)" font-weight="bold" font-style="italic">b</text>
+
+  <!-- Bracket under A (reverse pass, lighter red) -->
+  <line x1="375" y1="105" x2="445" y2="105" stroke="var(--dia-neg, #cf3a26)" stroke-width="1" opacity="0.6"></line>
+  <line x1="375" y1="100" x2="375" y2="105" stroke="var(--dia-neg, #cf3a26)" stroke-width="1" opacity="0.6"></line>
+  <line x1="445" y1="100" x2="445" y2="105" stroke="var(--dia-neg, #cf3a26)" stroke-width="1" opacity="0.6"></line>
+  <text x="410" y="122" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="var(--dia-neg, #cf3a26)" font-weight="bold" font-style="italic" opacity="0.7">a⁻¹</text>
+
+  <!-- Dividing line -->
+  <line x1="40" y1="140" x2="510" y2="140" stroke="var(--dia-rigid, #8a8275)" stroke-width="0.5" stroke-dasharray="3,3"></line>
+
+  <!-- Summary: word in fundamental group -->
+  <text x="275" y="162" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)">Word in fundamental group:</text>
+  <text x="275" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="var(--dia-ink, #24211a)" font-weight="bold" font-style="italic">a · b · a⁻¹</text>
+
+  <defs>
+    <marker id="d3-cpArr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="var(--dia-rigid, #8a8275)"></path>
+    </marker>
+  </defs>
+</svg><figcaption>Cord path through tunnels with generator labels: a (Tunnel A L→R), b (Tunnel B F→B), a⁻¹ (Tunnel A R→L). Word: a·b·a⁻¹</figcaption></figure></p>
+<p>What you feel in your hands: the cord is tight. There's very little slack to work with, and every inch must be managed carefully. When you pull a bight out of Tunnel B, you feel the cord resisting — it has to come from somewhere, and that somewhere is the external sections where the rings sit. The moment the bight clears the tunnel and you reroute it through Tunnel A instead, the tension changes. The region between the tunnels where the rings hang goes slack. That slack IS the algebraic cancellation — the word has simplified, and the rings can slide free.</p>
+<p><em>For the complete treatment of fundamental groups and free groups, see <a href="../theory/topology-primer.html#the-fundamental-group">Topology Primer: The Fundamental Group</a>.</em></p>
+<h3 id="the-solution-algebraic-cancellation">The solution: algebraic cancellation <a href="#the-solution-algebraic-cancellation" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>To free the rings, the cord's path in the ring-bearing region must be changed to the <strong>trivial word</strong> (identity element). This is achieved by:</p>
+<ol>
+<li>Canceling the <strong>b</strong> generator: reroute the cord so it no longer passes through Tunnel B in the ring region</li>
+<li>This leaves <strong>a a⁻¹ = identity</strong> — the cord is trivially wound and the rings are free</li>
+</ol>
+<p>Physically: pull a loop (bight) of the cord backward out of Tunnel B from the front face. The cord will resist — the slack must come from the external sections, so first slide both rings toward Tunnel A to release tension. Once the bight clears the front of Tunnel B, route it horizontally around the block's left side and feed it into Tunnel A from the left face. The cord now traces a different word: where it previously went <code>... b a⁻¹</code> it now traces <code>... (aa⁻¹) a⁻¹</code>. The new <code>aa⁻¹</code> pair is adjacent and cancels, leaving only <code>a⁻¹</code>. Combined with the earlier <code>a</code>, the entire ring-region word collapses to <code>aa⁻¹ = identity</code>. The slack that suddenly appears between the rings IS that algebraic cancellation — and it is exactly the slack the rings need to slide off.</p>
+<h2 id="solution">Solution <a href="#solution" class="anchor-link" aria-hidden="true">#</a></h2>
+<ol>
+<li><p><strong>Create slack</strong> in the cord near Tunnel B by sliding both rings to one side and pulling cord through the tunnels.</p>
+</li>
+<li><p><strong>Pull a bight</strong> of cord out of Tunnel B (from the front face). This requires working slack from the external sections into the tunnel.</p>
+</li>
+<li><p><strong>Pass the bight</strong> around the outside of the block — specifically, route it so that it reaches Tunnel A.</p>
+</li>
+<li><p><strong>Thread the bight through Tunnel A.</strong> This reroutes the cord: where it previously went through Tunnel B, it now goes through Tunnel A (in addition to the existing Tunnel A paths).</p>
+</li>
+<li><p><strong>The algebraic result:</strong> The cord path in the ring region is now <strong>a a a⁻¹</strong> — but wait, the bight creates a loop that cancels with the original <strong>a⁻¹</strong> passage, simplifying the word to <strong>a</strong> — no, more precisely:</p>
+<p>The actual process: by pulling the Tunnel B segment out and rerouting through Tunnel A, you change the word from <strong>aba⁻¹</strong> to <strong>a(aa⁻¹)a⁻¹ = aa⁻¹ = identity</strong> in the region where the rings sit.</p>
+</li>
+<li><p><strong>The rings are now on a section of cord</strong> that is topologically trivial (not linked with the block). Slide them off.</p>
+</li>
+</ol>
+<p>This takes approximately 6-8 sequential manipulations of the cord, each requiring careful slack management.</p>
+<h2 id="solved-state">Solved State <a href="#solved-state" class="anchor-link" aria-hidden="true">#</a></h2>
+<p><figure class="dia-figure"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" class="dia">
+  <title>Genus Trap - Solved</title>
+  <desc>The acrylic block with its two tunnel labels, and two rings shown separately below, free from the block. The cord remains threaded but its path has changed.</desc>
+
+  
+
+  <!-- Green "Solved" indicator (upper-right) -->
+  <circle cx="375" cy="22" r="16" fill="var(--dia-pos, #2f8f43)" opacity="0.12" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5"></circle>
+  <path d="M367,22 L373,28 L385,16" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <!-- Acrylic block -->
+  <rect x="100" y="20" width="200" height="100" rx="4" fill="var(--dia-wash, #ece3d0)" fill-opacity="0.08" stroke="var(--dia-ink, #24211a)" stroke-width="2"></rect>
+
+  <!-- Tunnel A (horizontal, red) -->
+  <line x1="100" y1="80" x2="300" y2="80" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="5,3"></line>
+  <circle cx="100" cy="80" r="3" fill="var(--dia-neg, #cf3a26)"></circle>
+  <circle cx="300" cy="80" r="3" fill="var(--dia-neg, #cf3a26)"></circle>
+  <text x="115" y="95" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-neg, #cf3a26)" font-weight="bold">[A]</text>
+
+  <!-- Tunnel B (vertical, blue) -->
+  <line x1="200" y1="20" x2="200" y2="120" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"></line>
+  <circle cx="200" cy="20" r="3" fill="var(--dia-cord, #1f57c4)"></circle>
+  <circle cx="200" cy="120" r="3" fill="var(--dia-cord, #1f57c4)"></circle>
+  <text x="210" y="40" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-cord, #1f57c4)" font-weight="bold">[B]</text>
+
+  <!-- Edge labels -->
+  <text x="200" y="14" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">FRONT</text>
+  <text x="200" y="137" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">BACK</text>
+  <text x="90" y="55" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">LEFT</text>
+  <text x="310" y="55" text-anchor="start" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">RIGHT</text>
+
+  <!-- Cord still threaded through block (blue, subtle dashed line) -->
+  <path d="M 95,80 L 305,80" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="1.5" stroke-dasharray="3,2"></path>
+  <text x="350" y="82" text-anchor="start" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-cord, #1f57c4)">cord</text>
+
+  <!-- Separation indicator (green) -->
+  <path d="M 150,148 L 150,162" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5" marker-end="url(#d4-sArr)"></path>
+  <path d="M 250,148 L 250,162" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5" marker-end="url(#d4-sArr)"></path>
+  <text x="200" y="158" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-pos, #2f8f43)" font-weight="bold">freed</text>
+
+  <!-- Ring 1 (free, below left, brass) -->
+  <circle cx="140" cy="190" r="18" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+  <text x="140" y="194" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-ring, #b97d12)">Ring 1</text>
+
+  <!-- Ring 2 (free, below right, brass) -->
+  <circle cx="260" cy="190" r="18" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+  <text x="260" y="194" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-ring, #b97d12)">Ring 2</text>
+
+  <!-- Labels -->
+  <text x="200" y="230" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-pos, #2f8f43)" font-weight="bold">Both rings free</text>
+  <text x="200" y="245" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">Cord remains threaded (path has changed)</text>
+
+  <defs>
+    <marker id="d4-sArr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="var(--dia-pos, #2f8f43)"></path>
+    </marker>
+  </defs>
+</svg><figcaption>Solved: both rings free, cord remains threaded through the block</figcaption></figure></p>
+<h2 id="common-mistakes">Common Mistakes <a href="#common-mistakes" class="anchor-link" aria-hidden="true">#</a></h2>
+<ol>
+<li><p><strong>Random rethreading.</strong> Without understanding the algebraic structure, solvers try pulling cord through tunnels at random. This typically makes the word LONGER (e.g., from aba⁻¹ to aba⁻¹ba or worse), adding generators instead of canceling them. Each random move is equally likely to help or harm, and the state space is large enough that random exploration almost never converges.</p>
+</li>
+<li><p><strong>Trying to slide the rings off without changing the cord path.</strong> The rings are on a non-trivial section of cord (the aba⁻¹ region). They cannot be removed without simplifying the word to the identity. No amount of sliding, twisting, or forcing will free them while the cord topology remains unchanged.</p>
+</li>
+<li><p><strong>Losing track of the cord path.</strong> The cord passes through tunnels twice, loops around the outside, and has rings and ball-stops. It's easy to lose track of which section goes where. Before attempting any manipulation, trace the entire cord path from one ball-stop to the other and verify it matches the aba⁻¹ pattern described above.</p>
+</li>
+<li><p><strong>Forgetting which direction is a vs. a⁻¹.</strong> Direction matters: left→right through Tunnel A is 'a', but right→left is 'a⁻¹'. Rerouting cord through a tunnel in the wrong direction can change the word to aa instead of canceling.</p>
+</li>
+</ol>
+<h2 id="why-its-tricky">Why It's Tricky <a href="#why-its-tricky" class="anchor-link" aria-hidden="true">#</a></h2>
+<p><strong>Invisible internal geometry.</strong> Even with clear acrylic, the tunnel crossing inside the block is hard to reason about spatially. The solver must build a mental model of how the two tunnels relate in 3D and track the cord's path through this model.</p>
+<p><strong>Algebraic thinking required.</strong> The solution is fundamentally algebraic: it requires recognizing that the cord path encodes a word in a group, and that the right manipulation performs a group-theoretic cancellation. Solvers without this framework try random threading, which typically makes the configuration more complex (introduces additional generators rather than canceling them).</p>
+<p><strong>High-dimensional moves.</strong> Unlike earlier puzzles where the key move is a single insight, this puzzle requires a multi-step cord rerouting. Each step must preserve the ability to complete subsequent steps. One wrong rerouting can create a word that is harder to simplify than the starting configuration.</p>
+<p><strong>Working memory overload.</strong> Tracking the cord's path (which sections are in which tunnels, which direction they go, where the rings are) exceeds most people's spatial working memory. The puzzle rewards solvers who draw diagrams or develop a systematic notation for the cord state.</p>
+<div class="callout callout--lesson"><span class="callout-label">Lesson</span><p>When the topology is invisible, you must build mental models. Algebraic descriptions of topology (fundamental groups, words, generators) are not just abstractions — they are practical tools for solving physical puzzles.</p></div>
+<h2 id="construction-notes">Construction Notes <a href="#construction-notes" class="anchor-link" aria-hidden="true">#</a></h2>
+<h3 id="block-fabrication">Block fabrication <a href="#block-fabrication" class="anchor-link" aria-hidden="true">#</a></h3>
+<ul>
+<li>Use <strong>cast acrylic</strong> (not extruded) for optical clarity</li>
+<li>Drill tunnels with a <strong>15mm Forstner bit</strong> on a drill press at slow speed</li>
+<li>Use cutting fluid / coolant to prevent acrylic from melting and becoming opaque</li>
+<li>Tunnel A (left↔right) at height 25mm from bottom</li>
+<li>Tunnel B (front↔back) at height 35mm from bottom</li>
+<li>The tunnels' centers must be separated by at least 12mm vertically (10mm + 2×radius would mean they just touch; 10mm separation between 15mm-diameter tunnels means 2.5mm clearance — verify this is sufficient)</li>
+<li><strong>Alternative fabrication:</strong> Laminate acrylic sheets. Route channels in middle sheets, then bond with acrylic cement. This allows more precise tunnel placement.</li>
+<li>Polish tunnel interiors: 400 → 800 → 1200 grit sandpaper, then flame polish or apply plastic polish</li>
+</ul>
+<h3 id="cord-and-rings">Cord and rings <a href="#cord-and-rings" class="anchor-link" aria-hidden="true">#</a></h3>
+<ul>
+<li>The cord must slide freely through the tunnels — test with prototypes</li>
+<li>Rings (40mm OD) must slide freely on the cord but must NOT fit through the tunnels (40mm &gt; 15mm — satisfied)</li>
+<li>Ball-stops (30mm) must not fit through the tunnels (30mm &gt; 15mm — satisfied)</li>
+<li>Attach ball-stops by drilling a 6mm hole through the ball, threading the cord through, and tying a stopper knot on the far side</li>
+</ul>
+<h3 id="included-materials">Included materials <a href="#included-materials" class="anchor-link" aria-hidden="true">#</a></h3>
+<ul>
+<li>A <strong>topology map</strong> card showing the tunnel layout from a cutaway perspective (cross-section views from top, front, and side)</li>
+<li>A <strong>hint card</strong> (sealed envelope) stating: "The cord path encodes the word aba⁻¹. To free the rings, cancel the b."</li>
+</ul>
+<nav class="prevnext" aria-label="Puzzle navigation"><a class="pn-prev" href="../puzzles/08-ouroboros-chain.html"><span class="pn-k">← Previous</span><span class="pn-name">10. Ouroboros Chain</span></a><a class="pn-next" href="../puzzles/10-the-hopf-paradox.html"><span class="pn-k">Next →</span><span class="pn-name">12. The Hopf Paradox</span></a></nav></div><aside class="toc" aria-label="On this page"><span class="eyebrow">On this page</span><ol><li><a class="lvl-2" href="#overview">Overview</a></li><li><a class="lvl-2" href="#components">Components</a></li><li><a class="lvl-2" href="#setup">Setup</a></li><li><a class="lvl-2" href="#objective">Objective</a></li><li><a class="lvl-2" href="#the-topology">The Topology</a></li><li><a class="lvl-2" href="#solution">Solution</a></li><li><a class="lvl-2" href="#solved-state">Solved State</a></li><li><a class="lvl-2" href="#common-mistakes">Common Mistakes</a></li><li><a class="lvl-2" href="#why-its-tricky">Why It's Tricky</a></li><li><a class="lvl-2" href="#construction-notes">Construction Notes</a></li></ol></aside></div></div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../index.html" style="color:#ece5d6"><svg class="logomark" viewBox="0 0 100 100" role="img" aria-label="EXKNOTS" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
+  <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
+</svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
+        <p style="margin:.8rem 0 0;max-width:30ch;font-size:.92rem">Topology you solve with your hands — 17 puzzles, their solutions, and the mathematics behind them.</p>
+      </div>
+      <div><h4>Arc 1</h4><ul><li><a href="../puzzles/01-the-gatekeeper.html">1. The Gatekeeper</a></li><li><a href="../puzzles/02-shepherds-yoke.html">2. Shepherd's Yoke</a></li><li><a href="../puzzles/03-the-prisoners-ring.html">3. The Prisoner's Ring</a></li><li><a href="../puzzles/04-mobius-snare.html">4. Mobius Snare</a></li><li><a href="../puzzles/11-the-mirror-gate.html">5. The Mirror Gate</a></li></ul></div><div><h4>Arc 2</h4><ul><li><a href="../puzzles/05-trinity-lock.html">6. Trinity Lock</a></li><li><a href="../puzzles/06-devils-pitchfork.html">7. Devil's Pitchfork</a></li><li><a href="../puzzles/07-the-ferrymans-knot.html">8. The Ferryman's Knot</a></li><li><a href="../puzzles/16-the-crossing-number.html">9. The Crossing Number</a></li></ul></div><div><h4>Arc 3</h4><ul><li><a href="../puzzles/08-ouroboros-chain.html">10. Ouroboros Chain</a></li><li><a href="../puzzles/09-genus-trap.html">11. Genus Trap</a></li><li><a href="../puzzles/10-the-hopf-paradox.html">12. The Hopf Paradox</a></li></ul></div><div><h4>Arc 4</h4><ul><li><a href="../puzzles/12-the-braid-cage.html">13. The Braid Cage</a></li><li><a href="../puzzles/13-the-torus-winder.html">14. The Torus Winder</a></li><li><a href="../puzzles/14-the-tricolor-lock.html">15. The Tricolor Lock</a></li><li><a href="../puzzles/15-the-seifert-sail.html">16. The Seifert Sail</a></li><li><a href="../puzzles/17-the-satellite-trap.html">17. The Satellite Trap</a></li></ul></div>
+    </div>
+    <div class="foot-fine">
+      <span>EXKNOTS · MIT License</span>
+      <span><a href="../theory/topology-primer.html">Topology Primer</a> · <a href="../construction/materials.html">Build Guide</a> · <a href="https://github.com/sonoransun/knotgames">Source ↗</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/docs.js" defer></script>
+</body>
+</html>

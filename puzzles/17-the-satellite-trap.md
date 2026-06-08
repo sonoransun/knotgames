@@ -76,7 +76,7 @@ The inner ring, by contrast, is on a section of cord that passes through the tre
 
 **Physical Intuition:** What you feel in your hands: the torus is smooth and heavy. The cord emerges from ports and dives back in, and you can trace its path by feel. The outer ring is on an external arc — push a finger under the cord near a port and you can feel the cord slide through the port channel. Pull a bight of cord through the port, reroute it around the ring, and feed it back in. The outer ring falls free. Now try the same with the inner ring — the cord goes into the tunnel and you cannot reach it. No amount of manipulation at the surface changes what happens inside. That impenetrability IS the companion knot — the topology you cannot touch.
 
-*For the complete treatment of satellite knots and decomposition, see [Topology Primer: Satellite Knots and JSJ Decomposition](../theory/topology-primer.md#satellite-knots-and-jss-decomposition).*
+*For the complete treatment of satellite knots and decomposition, see [Topology Primer: Satellite Knots and JSJ Decomposition](../theory/topology-primer.md#satellite-knots-and-jsj-decomposition).*
 
 ## Solution
 

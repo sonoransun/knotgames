@@ -25,7 +25,7 @@ If you can tie your shoes and follow an argument, you can read this document.
 15. [Knot Coloring and Tricolorability](#15-knot-coloring-and-tricolorability)
 16. [Seifert Surfaces](#16-seifert-surfaces)
 17. [Unknotting Number](#17-unknotting-number)
-18. [Satellite Knots and JSJ Decomposition](#18-satellite-knots-and-jss-decomposition)
+18. [Satellite Knots and JSJ Decomposition](#18-satellite-knots-and-jsj-decomposition)
 19. [Glossary](#19-glossary)
 
 ---

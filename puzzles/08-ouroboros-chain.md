@@ -135,6 +135,8 @@ The recursive pattern:
 
 **Key insight:** Trust the algorithm. The solution requires what feels like "going backwards" (replacing loops you already removed). This is not a mistake — it's the necessary setup for removing the next loop. Resist the urge to look for shortcuts; none exist.
 
+![Key move: only one loop is ever free to leave the shuttle bar; freeing it unlocks the next, a recursive Gray-code sequence](../diagrams/puzzles/08-ouroboros-chain/key-move.svg)
+
 ## Why It's Tricky
 
 **Length, not complexity.** Each individual move is simple. The difficulty is executing 42 precise moves in sequence without error. One wrong move adds more moves to recover from.

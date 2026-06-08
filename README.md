@@ -1,5 +1,7 @@
 # EXKNOTS
 
+**Live site → [sonoransun.github.io/knotgames](https://sonoransun.github.io/knotgames/)** — landing page, the full primer, all 17 puzzle write-ups, and the interactive 3D explorer.
+
 A series of 17 hand dexterity topological puzzles — physical manipulation challenges where you must transform, thread, and disentangle objects through non-obvious permutations to free or resolve each puzzle.
 
 Inspired by classic carnival and tavern puzzles, each puzzle in the series isolates a specific topological principle. Working through them in order builds genuine topological intuition: you learn to see genus, linking numbers, homotopy classes, chirality, braid relations, knot invariants, and the difference between topological and geometric constraints — all through your hands.

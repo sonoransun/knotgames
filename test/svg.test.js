@@ -50,7 +50,7 @@ describe('SVG helpers', () => {
     it('uses default stroke and width', () => {
       const svg = createSVG(container);
       const el = line(svg, 0, 0, 10, 10);
-      expect(el.getAttribute('stroke')).toBe('#333');
+      expect(el.getAttribute('stroke')).toBe('var(--dia-ink, #24211a)');
       expect(el.getAttribute('stroke-width')).toBe('2');
     });
 
@@ -159,11 +159,11 @@ describe('SVG helpers', () => {
   });
 
   describe('crossingGap', () => {
-    it('creates a white line at crossing point', () => {
+    it('creates a surface-colored gap line at the crossing point', () => {
       const svg = createSVG(container);
       const el = crossingGap(svg, 50, 50, Math.PI / 4);
       expect(el.tagName).toBe('line');
-      expect(el.getAttribute('stroke')).toBe('#fdf8f0');
+      expect(el.getAttribute('stroke')).toBe('var(--dia-surface, #fbf7ee)');
       expect(el.getAttribute('stroke-linecap')).toBe('round');
     });
   });

@@ -1,0 +1,42 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250">
+  <title>Ouroboros Chain - Key Move</title>
+  <desc>The recursive Gray-code rule: at any moment only one loop can legally leave the shuttle bar. Here the rightmost free loop (post 6) is lifted off the end of the bar; every other loop is still locked by its neighbour, so this is the single available move.</desc>
+
+  <defs>
+    <marker id="mv8" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="var(--dia-neg, #cf3a26)"/>
+    </marker>
+  </defs>
+
+  <text x="250" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-ink, #24211a)" font-weight="bold">Key move: only one loop is ever free</text>
+
+  <!-- Base + posts (wood) -->
+  <rect x="30" y="170" width="440" height="18" rx="3" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"/>
+  <g stroke="var(--dia-wood, #b07d52)" stroke-width="2.5">
+    <line x1="75" y1="60" x2="75" y2="170"/><line x1="150" y1="60" x2="150" y2="170"/>
+    <line x1="225" y1="60" x2="225" y2="170"/><line x1="300" y1="60" x2="300" y2="170"/>
+    <line x1="375" y1="60" x2="375" y2="170"/><line x1="450" y1="60" x2="450" y2="170"/>
+  </g>
+
+  <!-- Locked loops 1-5 (faded: cannot move) -->
+  <g fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="2.5" stroke-dasharray="5,3">
+    <ellipse cx="75" cy="110" rx="22" ry="40"/><ellipse cx="150" cy="110" rx="22" ry="40"/>
+    <ellipse cx="225" cy="110" rx="22" ry="40"/><ellipse cx="300" cy="110" rx="22" ry="40"/>
+    <ellipse cx="375" cy="110" rx="22" ry="40"/>
+  </g>
+  <text x="225" y="232" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-faint, #c9bda7)">loops 1-5 still locked by their neighbours</text>
+
+  <!-- Free loop 6 being lifted off the bar end (highlighted blue) -->
+  <ellipse cx="450" cy="86" rx="22" ry="40" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="3"/>
+  <text x="450" y="44" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-cord, #1f57c4)" font-weight="bold">loop 6 free</text>
+
+  <!-- Shuttle bar (steel) -->
+  <line x1="45" y1="120" x2="480" y2="120" stroke="var(--dia-rigid, #8a8275)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="45" cy="120" r="4" fill="var(--dia-rigid, #8a8275)"/>
+  <circle cx="480" cy="120" r="4" fill="var(--dia-rigid, #8a8275)"/>
+
+  <!-- Lift-off arrow -->
+  <path d="M450,118 C 470,108 472,92 458,72" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" marker-end="url(#mv8)"/>
+
+  <text x="250" y="246" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">Each freed loop unlocks the next — a recursive (Gray-code) sequence, not a single tug.</text>
+</svg>
