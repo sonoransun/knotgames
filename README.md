@@ -1,6 +1,6 @@
 # EXKNOTS
 
-**Live site → [sonoransun.github.io/knotgames](https://sonoransun.github.io/knotgames/)** — landing page, the full primer, all 17 puzzle write-ups, and the interactive 3D explorer.
+**Live site → [KnotGames.org](https://knotgames.org)** — landing page, the full primer, all 17 puzzle write-ups, and the interactive 3D explorer.
 
 A series of 17 hand dexterity topological puzzles — physical manipulation challenges where you must transform, thread, and disentangle objects through non-obvious permutations to free or resolve each puzzle.
 
