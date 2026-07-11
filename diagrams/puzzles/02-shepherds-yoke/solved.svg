@@ -1,0 +1,48 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 270">
+  <title>Shepherd's Yoke - Solved</title>
+  <desc>The paddle with its hole empty and the freed cord loop hanging beside it, completely separated from the paddle.</desc>
+
+  <defs>
+    <marker id="arrowNoteSolved02" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="var(--dia-rigid, #8a8275)"/>
+    </marker>
+  </defs>
+
+  <!-- Green "Solved" indicator (upper-right) -->
+  <circle cx="322" cy="26" r="15" fill="var(--dia-pos, #2f8f43)" opacity="0.12" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5"/>
+  <path d="M314,26 L320,32 L332,20" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Paddle body -->
+  <rect x="35" y="70" width="180" height="90" rx="4" ry="4"
+        fill="none" stroke="var(--dia-wood, #b07d52)" stroke-width="2"/>
+
+  <!-- Hole in center - empty -->
+  <circle cx="125" cy="115" r="12" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-wood, #b07d52)" stroke-width="2"/>
+
+  <!-- "hole is empty" annotation -->
+  <line x1="125" y1="58" x2="125" y2="100" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"
+        marker-end="url(#arrowNoteSolved02)"/>
+  <text x="125" y="52" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="var(--dia-rigid, #8a8275)">hole is empty</text>
+
+  <!-- Paddle label -->
+  <text x="125" y="177" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="var(--dia-inksoft, #6a6151)">paddle</text>
+
+  <!-- Cord loop hanging free beside the paddle (fully separated) -->
+  <path d="M 277,88
+           C 258,95 252,120 257,150
+           C 261,178 265,200 277,208
+           C 289,200 293,178 297,150
+           C 302,120 296,95 277,88 Z"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"
+        stroke-linejoin="round"/>
+
+  <!-- Cord loop label -->
+  <text x="277" y="228" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="var(--dia-inksoft, #6a6151)">cord loop (free)</text>
+
+  <!-- Caption -->
+  <text x="175" y="258" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="11" fill="var(--dia-inksoft, #6a6151)"><tspan fill="var(--dia-pos, #2f8f43)" font-weight="bold">&#x2713; </tspan>cord free &#x2014; the loop came back through its own path</text>
+</svg>

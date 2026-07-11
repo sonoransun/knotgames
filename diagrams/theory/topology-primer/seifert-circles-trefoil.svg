@@ -1,0 +1,194 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 285">
+  <title>Seifert Circles of the Trefoil</title>
+  <desc>Seifert's algorithm applied to the trefoil knot in three panels: an oriented trefoil with three crossings, the two nested Seifert circles produced by smoothing every crossing according to orientation, and the resulting Seifert surface built from two filled disks joined by three half-twist bands, giving genus 1.</desc>
+
+  <defs>
+    <marker id="stepArrow" markerWidth="8" markerHeight="6" refX="4" refY="3"
+            orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="var(--dia-rigid, #8a8275)"/>
+    </marker>
+  </defs>
+
+  <!-- ===== Panel headers ===== -->
+  <text x="110" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-ink, #24211a)" font-weight="bold">1. Orient the trefoil</text>
+  <text x="320" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-ink, #24211a)" font-weight="bold">2. Smooth the crossings</text>
+  <text x="530" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-ink, #24211a)" font-weight="bold">3. Disks + twisted bands</text>
+
+  <!-- ===== Step arrows between panels ===== -->
+  <line x1="178" y1="138" x2="258" y2="138" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5" marker-end="url(#stepArrow)"/>
+  <text x="218" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">smooth</text>
+
+  <line x1="380" y1="138" x2="464" y2="138" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5" marker-end="url(#stepArrow)"/>
+  <text x="422" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">fill + band</text>
+
+  <!-- ================================================== -->
+  <!-- PANEL 1: Oriented trefoil.                          -->
+  <!-- Geometry: (2,3) torus knot projection               -->
+  <!--   x = 17(sin t + 2 sin 2t), y = 17(cos t - 2 cos 2t)-->
+  <!-- Lobe tips at radius 51 (top, lower right, lower     -->
+  <!-- left); the three crossings sit at radius 25.5 at    -->
+  <!-- -30, 90 and -150 degrees. Occlusion idiom: the full -->
+  <!-- curve is the continuous under strand; at each       -->
+  <!-- crossing a surface-colored capsule lies along the   -->
+  <!-- over strand's tangent, then the exact over subpath  -->
+  <!-- is redrawn on top. Over/under alternates along the  -->
+  <!-- curve.                                              -->
+  <!-- ================================================== -->
+  <g transform="translate(110,138)">
+    <!-- Layer 1: full knot curve (continuous under strand) -->
+    <path d="M 0.0,-17.0 L 5.5,-16.7 L 11.0,-16.0 L 16.3,-14.7 L 21.4,-13.0 L 26.2,-10.9 L 30.5,-8.3 L 34.5,-5.5 L 37.9,-2.3 L 40.9,1.1 L 43.2,4.7 L 44.9,8.3 L 46.0,12.0 L 46.5,15.6 L 46.3,19.1 L 45.5,22.5 L 44.2,25.5 L 42.2,28.2 L 39.7,30.5 L 36.8,32.4 L 33.4,33.8 L 29.7,34.7 L 25.7,35.1 L 21.4,34.8 L 17.0,34.0 L 12.5,32.6 L 8.1,30.6 L 3.7,28.1 L -0.6,25.0 L -4.6,21.5 L -8.3,17.5 L -11.7,13.2 L -14.7,8.5 L -17.3,3.6 L -19.4,-1.5 L -20.9,-6.8 L -22.0,-12.0 L -22.5,-17.2 L -22.5,-22.3 L -22.0,-27.1 L -20.9,-31.7 L -19.5,-35.9 L -17.5,-39.7 L -15.2,-43.1 L -12.6,-45.9 L -9.7,-48.1 L -6.6,-49.7 L -3.3,-50.7 L 0.0,-51.0 L 3.3,-50.7 L 6.6,-49.7 L 9.7,-48.1 L 12.6,-45.9 L 15.2,-43.1 L 17.5,-39.7 L 19.5,-35.9 L 20.9,-31.7 L 22.0,-27.1 L 22.5,-22.3 L 22.5,-17.2 L 22.0,-12.0 L 20.9,-6.8 L 19.4,-1.5 L 17.3,3.6 L 14.7,8.5 L 11.7,13.2 L 8.3,17.5 L 4.6,21.5 L 0.6,25.0 L -3.7,28.1 L -8.1,30.6 L -12.5,32.6 L -17.0,34.0 L -21.4,34.8 L -25.7,35.1 L -29.7,34.7 L -33.4,33.8 L -36.8,32.4 L -39.7,30.5 L -42.2,28.2 L -44.2,25.5 L -45.5,22.5 L -46.3,19.1 L -46.5,15.6 L -46.0,12.0 L -44.9,8.3 L -43.2,4.7 L -40.9,1.1 L -37.9,-2.3 L -34.5,-5.5 L -30.5,-8.3 L -26.2,-10.9 L -21.4,-13.0 L -16.3,-14.7 L -11.0,-16.0 L -5.5,-16.7 Z"
+          fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Crossing at (22.1,-12.8) (upper right): occlusion capsule + over subpath -->
+    <line x1="16.5" y1="-15.0" x2="27.6" y2="-10.5"
+          stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+    <path d="M -9.2,-16.3 L -2.8,-16.9 L 3.6,-16.9 L 10.0,-16.2 L 16.2,-14.8 L 22.1,-12.8 L 27.5,-10.2 L 32.4,-7.0 L 36.7,-3.5 L 40.3,0.4 L 43.1,4.5"
+          fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Crossing at (-22.1,-12.7) (upper left): occlusion capsule + over subpath -->
+    <line x1="-21.3" y1="-6.8" x2="-22.9" y2="-18.7"
+          stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+    <path d="M -9.5,16.1 L -13.3,10.9 L -16.4,5.3 L -19.0,-0.6 L -20.9,-6.7 L -22.1,-12.7 L -22.6,-18.8 L -22.3,-24.6 L -21.4,-30.0 L -19.8,-35.1 L -17.7,-39.6"
+          fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Crossing at (0,25.5) (bottom): occlusion capsule + over subpath -->
+    <line x1="4.7" y1="21.8" x2="-4.7" y2="29.2"
+          stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+    <path d="M 18.7,0.2 L 16.1,6.0 L 12.8,11.6 L 9.0,16.8 L 4.7,21.4 L 0.0,25.5 L -5.0,28.9 L -10.1,31.6 L -15.3,33.5 L -20.5,34.7 L -25.4,35.1"
+          fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Orientation arrowheads at the three lobe tips -->
+    <g transform="translate(0,-51)">
+      <polygon points="6,0 -5,-4.5 -5,4.5" fill="var(--dia-cord, #1f57c4)"/>
+    </g>
+    <g transform="translate(44.2,25.5) rotate(120)">
+      <polygon points="6,0 -5,-4.5 -5,4.5" fill="var(--dia-cord, #1f57c4)"/>
+    </g>
+    <g transform="translate(-44.2,25.5) rotate(-120)">
+      <polygon points="6,0 -5,-4.5 -5,4.5" fill="var(--dia-cord, #1f57c4)"/>
+    </g>
+  </g>
+
+  <!-- Panel 1 annotation -->
+  <text x="110" y="222" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)" font-weight="bold">c = 3 crossings</text>
+
+  <!-- ================================================== -->
+  <!-- PANEL 2: Two nested Seifert circles after smoothing  -->
+  <!-- Both circles inherit the clockwise orientation.      -->
+  <!-- Paired dashed arrows at the three former crossing    -->
+  <!-- sites (-30, -150 and 90 degrees, matching panel 1)   -->
+  <!-- show the strands pulled apart by the                 -->
+  <!-- orientation-respecting smoothing.                    -->
+  <!-- ================================================== -->
+  <g transform="translate(320,138)">
+    <!-- Outer Seifert circle S1 -->
+    <circle cx="0" cy="0" r="45" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+    <!-- Inner Seifert circle S2 -->
+    <circle cx="0" cy="0" r="18" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+
+    <!-- Orientation arrowheads (both clockwise: rightward at top of each circle) -->
+    <g transform="translate(0,-45)">
+      <polygon points="6,0 -5,-4.5 -5,4.5" fill="var(--dia-cord, #1f57c4)"/>
+    </g>
+    <g transform="translate(0,-18)">
+      <polygon points="6,0 -5,-4.5 -5,4.5" fill="var(--dia-cord, #1f57c4)"/>
+    </g>
+
+    <!-- Smoothing site: upper right (former crossing at -30 degrees) -->
+    <g transform="rotate(-30)">
+      <line x1="32" y1="0" x2="36.5" y2="0" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <polygon points="42,0 35.5,-3.5 35.5,3.5" fill="var(--dia-rigid, #8a8275)"/>
+      <line x1="29" y1="0" x2="25" y2="0" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <polygon points="19.5,0 26,-3.5 26,3.5" fill="var(--dia-rigid, #8a8275)"/>
+    </g>
+    <!-- Smoothing site: upper left (former crossing at -150 degrees) -->
+    <g transform="rotate(-150)">
+      <line x1="32" y1="0" x2="36.5" y2="0" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <polygon points="42,0 35.5,-3.5 35.5,3.5" fill="var(--dia-rigid, #8a8275)"/>
+      <line x1="29" y1="0" x2="25" y2="0" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <polygon points="19.5,0 26,-3.5 26,3.5" fill="var(--dia-rigid, #8a8275)"/>
+    </g>
+    <!-- Smoothing site: bottom (former crossing at 90 degrees) -->
+    <g transform="rotate(90)">
+      <line x1="32" y1="0" x2="36.5" y2="0" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <polygon points="42,0 35.5,-3.5 35.5,3.5" fill="var(--dia-rigid, #8a8275)"/>
+      <line x1="29" y1="0" x2="25" y2="0" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <polygon points="19.5,0 26,-3.5 26,3.5" fill="var(--dia-rigid, #8a8275)"/>
+    </g>
+
+    <!-- Circle labels -->
+    <text x="36" y="48" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">S1</text>
+    <text x="0" y="3" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">S2</text>
+  </g>
+
+  <!-- Panel 2 annotation -->
+  <text x="320" y="222" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)" font-weight="bold">s = 2 circles</text>
+
+  <!-- ================================================== -->
+  <!-- PANEL 3: Seifert surface, side view. The inner       -->
+  <!-- circle's disk (S2) floats above the outer circle's   -->
+  <!-- disk (S1); three narrow ribbons, each with one       -->
+  <!-- visible half-twist (the ribbon edges swap sides once -->
+  <!-- through an over/under crossing at the waist), join   -->
+  <!-- them at the former crossing sites. Bands are drawn   -->
+  <!-- first so their ends tuck behind the disks. Each band -->
+  <!-- twist uses the occlusion idiom: continuous under     -->
+  <!-- edge, surface capsule along the over edge's tangent, -->
+  <!-- over edge redrawn on top.                            -->
+  <!-- ================================================== -->
+
+  <!-- Band 1 (left, x = 500) -->
+  <path d="M 495,104 L 505,104 L 505,132 L 495,132 Z" fill="var(--dia-ring, #b97d12)" fill-opacity="0.18"/>
+  <path d="M 495,152 L 505,152 L 505,180 L 495,180 Z" fill="var(--dia-ring, #b97d12)" fill-opacity="0.18"/>
+  <path d="M 505,104 L 505,132 C 505,140 495,144 495,152 L 495,180"
+        fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2"/>
+  <line x1="496.2" y1="137.4" x2="503.8" y2="146.6"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 495,104 L 495,132 C 495,140 505,144 505,152 L 505,180"
+        fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2"/>
+
+  <!-- Band 2 (middle, x = 530) -->
+  <path d="M 525,104 L 535,104 L 535,132 L 525,132 Z" fill="var(--dia-ring, #b97d12)" fill-opacity="0.18"/>
+  <path d="M 525,152 L 535,152 L 535,180 L 525,180 Z" fill="var(--dia-ring, #b97d12)" fill-opacity="0.18"/>
+  <path d="M 535,104 L 535,132 C 535,140 525,144 525,152 L 525,180"
+        fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2"/>
+  <line x1="526.2" y1="137.4" x2="533.8" y2="146.6"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 525,104 L 525,132 C 525,140 535,144 535,152 L 535,180"
+        fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2"/>
+
+  <!-- Band 3 (right, x = 560) -->
+  <path d="M 555,104 L 565,104 L 565,132 L 555,132 Z" fill="var(--dia-ring, #b97d12)" fill-opacity="0.18"/>
+  <path d="M 555,152 L 565,152 L 565,180 L 555,180 Z" fill="var(--dia-ring, #b97d12)" fill-opacity="0.18"/>
+  <path d="M 565,104 L 565,132 C 565,140 555,144 555,152 L 555,180"
+        fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2"/>
+  <line x1="556.2" y1="137.4" x2="563.8" y2="146.6"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 555,104 L 555,132 C 555,140 565,144 565,152 L 565,180"
+        fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2"/>
+
+  <!-- Upper disk (from inner circle S2) -->
+  <ellipse cx="530" cy="102" rx="38" ry="12"
+           fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+  <!-- Lower disk (from outer circle S1) -->
+  <ellipse cx="530" cy="186" rx="48" ry="14"
+           fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+
+  <!-- Disk labels -->
+  <text x="530" y="106" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">S2</text>
+  <text x="530" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">S1</text>
+
+  <!-- Half-twist callout -->
+  <line x1="598" y1="140" x2="569" y2="142" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"/>
+  <text x="612" y="136" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">half-twist</text>
+
+  <!-- Panel 3 annotation -->
+  <text x="530" y="222" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)" font-weight="bold">c = 3 bands</text>
+
+  <!-- ===== Genus formula ===== -->
+  <text x="320" y="262" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-rigid, #8a8275)">genus = (c &#x2212; s + 1)/2 = (3 &#x2212; 2 + 1)/2 = 1</text>
+</svg>

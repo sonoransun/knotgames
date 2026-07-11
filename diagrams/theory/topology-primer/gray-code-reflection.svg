@@ -1,0 +1,101 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340">
+  <title>Reflected-Binary Gray Code Construction</title>
+  <desc>Three columns show the reflected-binary Gray code construction: the 1-bit list (0, 1) is copied forward with prefix 0 and reflected with prefix 1 to build the 2-bit list (00, 01, 11, 10), which is reflected again to build the 3-bit list (000, 001, 011, 010, 110, 111, 101, 100); dashed mirror lines mark each reflection, arrows between consecutive 3-bit entries show that exactly one bit flips per step, and the flipped bit is highlighted in gold in several rows.</desc>
+
+  <defs>
+    <!-- Arrowheads (userSpaceOnUse so size is independent of stroke width) -->
+    <marker id="arrow-cord" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0.8 L8,4.5 L0,8.2 Z" fill="var(--dia-cord, #1f57c4)"/>
+    </marker>
+    <marker id="arrow-neg" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0.8 L8,4.5 L0,8.2 Z" fill="var(--dia-neg, #cf3a26)"/>
+    </marker>
+    <marker id="arrow-step" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto">
+      <path d="M0,0.6 L6.5,3.5 L0,6.4 Z" fill="var(--dia-inksoft, #6a6151)"/>
+    </marker>
+  </defs>
+
+  <!-- ===== Figure title ===== -->
+  <text x="320" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="var(--dia-ink, #24211a)">Building the reflected-binary Gray code</text>
+
+  <!-- ===== Column headers (each sits just above its own list) ===== -->
+  <g font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="var(--dia-ink, #24211a)">
+    <text x="78" y="140">1-bit</text>
+    <text x="248" y="112">2-bit</text>
+    <text x="428" y="56">3-bit</text>
+  </g>
+
+  <!-- ===== Column 1: 1-bit list (0, 1) ===== -->
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" text-anchor="middle" fill="var(--dia-ink, #24211a)">
+    <text x="78" y="166">0</text>
+    <text x="78" y="194">1</text>
+  </g>
+
+  <!-- ===== Construction arrows: 1-bit to 2-bit ===== -->
+  <!-- Copy the list forward with prefix 0 (blue), reflect it with prefix 1 (red) -->
+  <path d="M92,180 Q152,148 220,152" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="1.5" marker-end="url(#arrow-cord)"/>
+  <text x="152" y="138" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">forward, prefix 0</text>
+  <path d="M92,180 Q152,212 220,208" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5" marker-end="url(#arrow-neg)"/>
+  <text x="152" y="228" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)">reflected, prefix 1</text>
+
+  <!-- ===== Column 2: 2-bit list (00, 01 | mirror | 11, 10) ===== -->
+  <!-- Half brackets: 0-prefixed half in cord blue, 1-prefixed half in neg red -->
+  <line x1="230" y1="128" x2="230" y2="170" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="230" y1="184" x2="230" y2="226" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-linecap="round"/>
+
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" text-anchor="middle">
+    <text x="248" y="138" fill="var(--dia-cord, #1f57c4)"><tspan font-weight="bold">0</tspan>0</text>
+    <text x="248" y="166" fill="var(--dia-cord, #1f57c4)"><tspan font-weight="bold">0</tspan>1</text>
+    <text x="248" y="194" fill="var(--dia-neg, #cf3a26)"><tspan font-weight="bold">1</tspan>1</text>
+    <text x="248" y="222" fill="var(--dia-neg, #cf3a26)"><tspan font-weight="bold">1</tspan>0</text>
+  </g>
+
+  <!-- Mirror line of the 2-bit reflection -->
+  <line x1="224" y1="180" x2="272" y2="180" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="216" y="183" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" font-style="italic" fill="var(--dia-rigid, #8a8275)">mirror</text>
+
+  <!-- ===== Construction arrows: 2-bit to 3-bit ===== -->
+  <path d="M268,180 Q332,116 398,124" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="1.5" marker-end="url(#arrow-cord)"/>
+  <text x="332" y="106" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">forward, prefix 0</text>
+  <path d="M268,180 Q332,244 398,236" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5" marker-end="url(#arrow-neg)"/>
+  <text x="332" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)">reflected, prefix 1</text>
+
+  <!-- ===== Column 3: 3-bit list (000..100), gold marks the bit that flipped ===== -->
+  <!-- Half brackets -->
+  <line x1="408" y1="72" x2="408" y2="170" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="408" y1="184" x2="408" y2="282" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-linecap="round"/>
+
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" text-anchor="middle">
+    <text x="428" y="82" fill="var(--dia-cord, #1f57c4)"><tspan font-weight="bold">0</tspan>00</text>
+    <text x="428" y="110" fill="var(--dia-cord, #1f57c4)"><tspan font-weight="bold">0</tspan>0<tspan font-weight="bold" fill="var(--dia-gold, #c79a22)">1</tspan></text>
+    <text x="428" y="138" fill="var(--dia-cord, #1f57c4)"><tspan font-weight="bold">0</tspan><tspan font-weight="bold" fill="var(--dia-gold, #c79a22)">1</tspan>1</text>
+    <text x="428" y="166" fill="var(--dia-cord, #1f57c4)"><tspan font-weight="bold">0</tspan>10</text>
+    <text x="428" y="194" fill="var(--dia-neg, #cf3a26)"><tspan font-weight="bold" fill="var(--dia-gold, #c79a22)">1</tspan>10</text>
+    <text x="428" y="222" fill="var(--dia-neg, #cf3a26)"><tspan font-weight="bold">1</tspan>11</text>
+    <text x="428" y="250" fill="var(--dia-neg, #cf3a26)"><tspan font-weight="bold">1</tspan>01</text>
+    <text x="428" y="278" fill="var(--dia-neg, #cf3a26)"><tspan font-weight="bold">1</tspan>00</text>
+  </g>
+
+  <!-- Mirror line of the 3-bit reflection -->
+  <line x1="402" y1="180" x2="450" y2="180" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="394" y="183" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" font-style="italic" fill="var(--dia-rigid, #8a8275)">mirror</text>
+
+  <!-- Step arrows: one between each pair of consecutive 3-bit entries -->
+  <g stroke="var(--dia-inksoft, #6a6151)" stroke-width="1.5">
+    <line x1="456" y1="87" x2="456" y2="97" marker-end="url(#arrow-step)"/>
+    <line x1="456" y1="115" x2="456" y2="125" marker-end="url(#arrow-step)"/>
+    <line x1="456" y1="143" x2="456" y2="153" marker-end="url(#arrow-step)"/>
+    <line x1="456" y1="171" x2="456" y2="181" marker-end="url(#arrow-step)"/>
+    <line x1="456" y1="199" x2="456" y2="209" marker-end="url(#arrow-step)"/>
+    <line x1="456" y1="227" x2="456" y2="237" marker-end="url(#arrow-step)"/>
+    <line x1="456" y1="255" x2="456" y2="265" marker-end="url(#arrow-step)"/>
+  </g>
+
+  <!-- Step annotation with leader to the first step arrow -->
+  <line x1="462" y1="92" x2="484" y2="92" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1"/>
+  <text x="490" y="96" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">one bit flips per step</text>
+  <text x="490" y="112" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">(<tspan font-weight="bold" fill="var(--dia-gold, #c79a22)">gold</tspan> = the flipped bit)</text>
+
+  <!-- ===== Caption ===== -->
+  <text x="320" y="324" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-inksoft, #6a6151)">The Ouroboros Chain&#8217;s 42-move solution walks this sequence (extended to 6 bits), one bit-flip at a time.</text>
+</svg>

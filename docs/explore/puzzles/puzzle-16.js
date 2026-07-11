@@ -11,7 +11,7 @@ export const metadata = {
   difficulty: 'Beginner-Intermediate',
   principle: 'Unknotting number (crossing changes)',
   type: 'Transformation',
-  description: 'A figure-eight knot frame has 4 crossings controlled by flippable pins. Flip exactly one crossing to convert it to the unknot and free a trapped ring. The figure-eight has unknotting number 1 — but which crossing?',
+  description: 'A figure-eight knot frame has 4 crossings controlled by flippable pins. On this minimal diagram flipping any one pin converts the knot to the unknot (u = 1) and frees the trapped ring — the real task is predicting which Reidemeister moves a flip unlocks before touching it.',
   cameraPosition: [0, 60, 200],
 };
 
@@ -41,7 +41,7 @@ function fig8Points(scale, segments = 80) {
 const CROSSING_POSITIONS = [
   { pos: [0, FIG8_SCALE * 0.5, 0], label: 'A' },
   { pos: [FIG8_SCALE * 0.4, 0, 0], label: 'B' },
-  { pos: [0, -FIG8_SCALE * 0.5, 0], label: 'C' },  // This is the one to flip
+  { pos: [0, -FIG8_SCALE * 0.5, 0], label: 'C' },  // The worked-example flip (any of the four unknots this diagram)
   { pos: [-FIG8_SCALE * 0.4, 0, 0], label: 'D' },
 ];
 
@@ -143,25 +143,25 @@ let highlightMat = null;
 
 export const animationSteps = [
   {
-    label: 'Look: the figure-eight knot has four crossing pins — ring is trapped',
+    label: 'Study the diagram: four crossings pair into two clasps — ring is trapped',
     duration: 2.0,
     ringPos: [0, 0, FIG8_SCALE * 0.3],
     pinFlipped: false,
   },
   {
-    label: 'Find the green pin at crossing C — this is the one to flip',
+    label: 'Predict: flipping C (green, our pick — any pin works) opens its clasp for an R-II slide',
     duration: 2.0,
     ringPos: [0, 0, FIG8_SCALE * 0.3],
     pinFlipped: false,
   },
   {
-    label: 'Flip pin C to swap the over-under — the knot unravels!',
+    label: 'Flip pin C to swap the over-under — the predicted moves unlock and the knot dissolves',
     duration: 2.5,
     ringPos: [0, 0, FIG8_SCALE * 0.3],
     pinFlipped: true,
   },
   {
-    label: 'Slide the ring off — one flip was all it took',
+    label: 'Slide the ring off — right on schedule; the skill was seeing it coming',
     duration: 2.5,
     ringPos: [FIG8_SCALE * 1.5, -FIG8_SCALE, FIG8_SCALE],
     pinFlipped: true,
@@ -207,103 +207,182 @@ export function updateAnimation(objects, state) {
   );
 }
 
+// ---------------------------------------------------------------------------
+// 2D diagram
+//
+// Screen-space projection of the same figure-eight parametrization the 3D
+// frame uses: x = (2 + cos 2t) cos 3t, y = (2 + cos 2t) sin 3t (screen y
+// flipped). This is the standard alternating 4_1 diagram, identical to the
+// hand-authored diagrams/puzzles/16-the-crossing-number/setup.svg. The four
+// crossings sit at the compass points; z = sin 4t decides over/under
+// (Gauss code OA UD OB UA OC UB OD UC):
+//   A north: strands at t = pi/6 (over) and 5pi/6 (under)
+//   B east:  strands at t = 2pi/3 (over) and 4pi/3 (under)
+//   C south: strands at t = 7pi/6 (over) and 11pi/6 (under)  <- the flip
+//   D west:  strands at t = pi/3 (under) and 5pi/3 (over)
+
+const SVG_NS = 'http://www.w3.org/2000/svg';
+
+function fig8Screen(t, cx, cy, scale) {
+  const r = 2 + Math.cos(2 * t);
+  return [cx + scale * r * Math.cos(3 * t), cy - scale * r * Math.sin(3 * t)];
+}
+
+function fig8ScreenTangent(t, cx, cy, scale) {
+  const [x0, y0] = fig8Screen(t - 0.01, cx, cy, scale);
+  const [x1, y1] = fig8Screen(t + 0.01, cx, cy, scale);
+  return Math.atan2(y1 - y0, x1 - x0);
+}
+
+function fig8PathD(t0, t1, cx, cy, scale, segments, close = false) {
+  const pts = [];
+  for (let i = 0; i <= segments; i++) {
+    const [x, y] = fig8Screen(t0 + ((t1 - t0) * i) / segments, cx, cy, scale);
+    pts.push(`${x.toFixed(1)} ${y.toFixed(1)}`);
+  }
+  return `M ${pts.join(' L ')}${close ? ' Z' : ''}`;
+}
+
 export function createSVGDiagram(container) {
   const s = svg.createSVG(container, 500, 400);
   const RIGID = 'var(--dia-rigid, #8a8275)';
   const RING = 'var(--dia-ring, #b97d12)';
   const POS = 'var(--dia-pos, #2f8f43)';
+  const NEG = 'var(--dia-neg, #cf3a26)';
+  const FAINT = 'var(--dia-faint, #c9bda7)';
+  const SURFACE = 'var(--dia-surface, #fbf7ee)';
 
   svg.text(s, 250, 25, 'The Crossing Number — Figure-Eight Knot', {
     fontSize: 14, anchor: 'middle', fontWeight: 'bold',
   });
 
-  const cx = 250, cy = 160;
+  const cx = 250, cy = 150, SC = 21, WIRE = 2.5;
 
-  // Figure-eight knot diagram (simplified 2D projection)
-  svg.path(s, `M ${cx} ${cy - 30} C ${cx + 50} ${cy - 60}, ${cx + 60} ${cy - 10}, ${cx + 20} ${cy + 10}`, { stroke: RIGID, strokeWidth: 3, fill: 'none' });
-  svg.path(s, `M ${cx} ${cy + 30} C ${cx - 50} ${cy + 60}, ${cx - 60} ${cy + 10}, ${cx - 20} ${cy - 10}`, { stroke: RIGID, strokeWidth: 3, fill: 'none' });
-  svg.path(s, `M ${cx + 20} ${cy + 10} C ${cx + 10} ${cy + 20}, ${cx - 10} ${cy + 20}, ${cx - 20} ${cy + 10}`, { stroke: RIGID, strokeWidth: 3, fill: 'none' });
-  svg.path(s, `M ${cx - 20} ${cy - 10} C ${cx - 10} ${cy - 20}, ${cx + 10} ${cy - 20}, ${cx + 20} ${cy - 10}`, { stroke: RIGID, strokeWidth: 3, fill: 'none' });
+  // One visually continuous figure-eight wire (the under strand everywhere)
+  svg.path(s, fig8PathD(0, 2 * Math.PI, cx, cy, SC, 240, true), {
+    stroke: RIGID, strokeWidth: WIRE, strokeLinecap: 'round',
+  });
 
-  // Crossing pins (labeled A, B, C, D); capture the highlighted pin C group
-  const crossSVG = [
-    { x: cx, y: cy - 30, label: 'A' },
-    { x: cx + 25, y: cy, label: 'B' },
-    { x: cx, y: cy + 30, label: 'C', highlight: true },
-    { x: cx - 25, y: cy, label: 'D' },
-  ];
-  let pinC = null;
-  for (const c of crossSVG) {
-    const color = c.highlight ? POS : RING;
-    const circ = svg.circle(s, c.x, c.y, 8, {
-      fill: c.highlight ? 'var(--dia-wash, #ece3d0)' : 'var(--dia-surface, #fbf7ee)',
-      stroke: color, strokeWidth: 2,
+  // Occlusion idiom (see crossingGap in lib/svg.js): break the base curve
+  // with a surface-colored stroke along the over strand's tangent, then
+  // redraw the over segment on top. tOver picks which strand wins.
+  const overSegment = (parent, tOver) => {
+    const g = document.createElementNS(SVG_NS, 'g');
+    const [px, py] = fig8Screen(tOver, cx, cy, SC);
+    svg.crossingGap(g, px, py, fig8ScreenTangent(tOver, cx, cy, SC), 19);
+    const r = 2 + Math.cos(2 * tOver);
+    const dt = 17 / (SC * Math.sqrt(4 * Math.sin(2 * tOver) ** 2 + 9 * r * r));
+    svg.path(g, fig8PathD(tOver - dt, tOver + dt, cx, cy, SC, 12), {
+      stroke: RIGID, strokeWidth: WIRE, strokeLinecap: 'round',
     });
-    svg.text(s, c.x, c.y + 1, c.label, {
-      fontSize: 10, anchor: 'middle', fill: color, fontWeight: 'bold', dominantBaseline: 'central',
-    });
-    if (c.highlight) pinC = circ;
-  }
+    parent.appendChild(g);
+    return g;
+  };
 
-  // Ring (animatable — slides off during the final step)
-  const ring = svg.ellipse(s, cx + 40, cy, 15, 12, { stroke: RING, strokeWidth: 2.5, fill: 'none' });
+  // Static crossings — over/under senses match setup.svg exactly
+  overSegment(s, Math.PI / 6);        // A: north
+  overSegment(s, (2 * Math.PI) / 3);  // B: east
+  overSegment(s, (5 * Math.PI) / 3);  // D: west
+  // Crossing C is prebuilt in BOTH senses; the updater crossfades them
+  // during the flip step and swaps which one renders on top at p >= 0.5.
+  const cWrap = document.createElementNS(SVG_NS, 'g');
+  s.appendChild(cWrap);
+  const cUnder = overSegment(cWrap, (11 * Math.PI) / 6); // flipped sense
+  const cOver = overSegment(cWrap, (7 * Math.PI) / 6);   // original sense (starts on top)
+  cUnder.style.opacity = '0';
+
+  // Trapped ring threaded on the upper-left arc (wire passes back over it)
+  const tRing = 2.903;
+  const [rx0, ry0] = fig8Screen(tRing, cx, cy, SC);
+  const ring = svg.circle(s, rx0, ry0, 8, { stroke: RING, strokeWidth: 2.5 });
   ring.style.transition = 'cx .12s linear, cy .12s linear';
-  svg.label(s, cx + 80, cy - 15, cx + 55, cy, 'Ring');
+  // Occlusion sized for the ring's small rim (setup.svg proportions: 7 wide,
+  // 10 long — crossingGap's fixed 8-wide stroke bites too much of an r=8
+  // ring), then the wire redrawn from the upstream rim crossing through it.
+  const tOccl = tRing + 0.044; // downstream rim crossing
+  const [ox, oy] = fig8Screen(tOccl, cx, cy, SC);
+  const oang = fig8ScreenTangent(tOccl, cx, cy, SC);
+  const occl = svg.line(s,
+    ox - 5 * Math.cos(oang), oy - 5 * Math.sin(oang),
+    ox + 5 * Math.cos(oang), oy + 5 * Math.sin(oang),
+    { stroke: SURFACE, strokeWidth: 7 });
+  occl.setAttribute('stroke-linecap', 'round');
+  svg.path(s, fig8PathD(tRing - 0.042, tRing + 0.1, cx, cy, SC, 10), {
+    stroke: RIGID, strokeWidth: WIRE, strokeLinecap: 'round',
+  });
+  svg.label(s, 150, 104, 196, 109, 'Ring');
 
-  // Motion arrows (toggled per step)
-  const arrowFlip = svg.motionArrow(s, cx, cy + 35, cx, cy + 55, { label: 'Flip pin C', curvature: 0.2 });
-  const arrowExit = svg.motionArrow(s, cx + 15, cy, cx + 60, cy - 20, { label: 'Ring slides out', curvature: 0.3 });
+  // Crossing pins: small offset labeled circles with dashed leader lines
+  // (never drawn on the crossings themselves — those use the occlusion idiom)
+  const pin = (fx, fy, tx, ty, px, py, letter, color) => {
+    const g = document.createElementNS(SVG_NS, 'g');
+    svg.line(g, fx, fy, tx, ty, { stroke: FAINT, strokeWidth: 0.75, dashArray: '2.5,2' });
+    svg.circle(g, px, py, 8, { fill: SURFACE, stroke: color, strokeWidth: 1.5 });
+    svg.text(g, px, py, letter, {
+      fontSize: 9.5, anchor: 'middle', fill: color, fontWeight: 'bold', dominantBaseline: 'central',
+    });
+    s.appendChild(g);
+    return g;
+  };
+  pin(250, 87.5, 250, 79, 250, 70, 'A', NEG);
+  pin(291.5, 150, 321.5, 150, 331, 150, 'B', NEG);
+  const pinC = pin(250, 212.5, 250, 221, 250, 230, 'C', POS);
+  pin(208.5, 150, 178.5, 150, 169, 150, 'D', NEG);
 
-  svg.handIcon(s, cx + 25, cy + 35, { scale: 0.6, rotation: 0 });
+  // Motion arrows (revealed per step by the updater)
+  const arrowFlip = svg.motionArrow(s, 280, 212, 280, 242, { label: 'Flip pin C', curvature: -0.3 });
+  const arrowExit = svg.motionArrow(s, 192, 100, 152, 72, { label: 'Ring slides out', curvature: 0.3 });
+  svg.handIcon(s, 303, 234, { scale: 0.5 });
 
   // Explanation
-  svg.rect(s, 40, 240, 420, 50, { fill: 'var(--dia-wash, #ece3d0)', stroke: 'var(--dia-faint, #c9bda7)', strokeWidth: 1, rx: 4 });
-  svg.text(s, 250, 258, 'How it works:', { fontSize: 11, anchor: 'middle', fontWeight: 'bold', fill: 'var(--dia-ink, #24211a)' });
-  svg.text(s, 250, 274, 'Flipping one crossing pin swaps which strand goes over and under', {
+  svg.rect(s, 40, 252, 420, 46, { fill: 'var(--dia-wash, #ece3d0)', stroke: FAINT, strokeWidth: 1, rx: 4 });
+  svg.text(s, 250, 268, 'How it works:', { fontSize: 11, anchor: 'middle', fontWeight: 'bold', fill: 'var(--dia-ink, #24211a)' });
+  svg.text(s, 250, 283, 'Flipping one crossing pin swaps which strand goes over and under', {
     fontSize: 10, anchor: 'middle', fill: 'var(--dia-inksoft, #6a6151)',
   });
-  svg.text(s, 250, 288, 'Only pin C turns this knot into a simple loop — the ring can escape', {
+  svg.text(s, 250, 295, 'Any one flip unknots this diagram — predict the route, then flip C', {
     fontSize: 10, anchor: 'middle', fill: POS, fontWeight: 'bold',
   });
 
   // Step badges
-  const badge1 = svg.stepBadge(s, 50, 310, 1, 3, { radius: 11 });
-  svg.actionLabel(s, 115, 310, 'Find the green pin (C)');
-  const badge2 = svg.stepBadge(s, 50, 335, 2, 3, { radius: 11 });
-  svg.actionLabel(s, 115, 335, 'Flip pin C over');
-  const badge3 = svg.stepBadge(s, 50, 360, 3, 3, { radius: 11 });
-  svg.actionLabel(s, 115, 360, 'Slide ring free');
+  const badge1 = svg.stepBadge(s, 50, 312, 1, null, { radius: 11 });
+  svg.actionLabel(s, 150, 312, 'Predict C’s route (R-II)');
+  const badge2 = svg.stepBadge(s, 50, 336, 2, null, { radius: 11 });
+  svg.actionLabel(s, 150, 336, 'Flip pin C over');
+  const badge3 = svg.stepBadge(s, 50, 360, 3, null, { radius: 11 });
+  svg.actionLabel(s, 150, 360, 'Slide ring free');
   const badges = [badge1, badge2, badge3];
 
-  const calloutRect = svg.rect(s, 30, 375, 440, 25, { fill: 'var(--dia-wash, #ece3d0)', stroke: 'var(--dia-ring, #b97d12)', strokeWidth: 1, rx: 4 });
-  calloutRect.classList.add('callout-box');
-  svg.text(s, 250, 392, 'One crossing flip is all it takes — but only the right one works!', {
-    fontSize: 10, anchor: 'middle', fill: 'var(--dia-ring, #b97d12)',
-  });
+  // Mini legend: how to read a crossing
+  svg.line(s, 300, 341, 318, 331, { stroke: RIGID, strokeWidth: 2 });
+  svg.crossingGap(s, 309, 336, Math.atan2(10, 18), 11);
+  svg.line(s, 300, 331, 318, 341, { stroke: RIGID, strokeWidth: 2 });
+  svg.text(s, 326, 339, 'break = strand passes under', { fontSize: 9, fill: 'var(--dia-inksoft, #6a6151)' });
 
-  let styleEl = s.querySelector('style[data-anim]');
-  if (!styleEl) {
-    styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
-    styleEl.setAttribute('data-anim', '1');
-    s.insertBefore(styleEl, s.firstChild);
-  }
-  styleEl.textContent += `
-    @keyframes calloutPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
-    .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
-  `;
+  svg.calloutBox(s, 30, 374, 440, 25, 'One flip is all it takes — every pin works here; the skill is seeing it coming!');
 
-  // ---- Timeline updater: highlight pin C, flip it, then slide the ring free
+  // ---- Timeline updater: predict at pin C, crossfade the crossing flip, slide free
   return function update(state) {
     const i = state.stepIndex | 0;
     const p = state.stepProgress ?? 0;
+
     // ring slides out only on the last step
     const slide = i >= 3 ? p : 0;
-    ring.setAttribute('cx', cx + 40 + 55 * slide);
-    ring.setAttribute('cy', cy - 34 * slide);
-    // emphasize pin C through the find/flip steps; "flip" shrinks it horizontally then back
-    svg.highlight(pinC, i >= 1 && i <= 2, { color: POS });
-    if (i === 2) pinC.setAttribute('transform', `translate(${cx} ${cy + 30}) scale(${Math.cos(p * Math.PI) * 0.5 + 0.5} 1) translate(${-cx} ${-(cy + 30)})`);
-    else pinC.removeAttribute('transform');
+    ring.setAttribute('cx', (rx0 - 55 * slide).toFixed(1));
+    ring.setAttribute('cy', (ry0 - 38 * slide).toFixed(1));
+
+    // crossing C: crossfade original sense -> flipped sense during the flip
+    // step; whichever sense holds the majority renders on top
+    const flip = i < 2 ? 0 : i === 2 ? Math.min(Math.max(p, 0), 1) : 1;
+    cOver.style.opacity = String(1 - flip);
+    cUnder.style.opacity = String(flip);
+    const top = flip >= 0.5 ? cUnder : cOver;
+    if (cWrap.lastChild !== top) cWrap.appendChild(top);
+
+    // emphasize pin C through the predict/flip steps (dim floor keeps it
+    // legible in the other steps — step 0 presents all four pins)
+    svg.highlight(pinC, i >= 1 && i <= 2, { color: POS, dim: 0.45 });
+
     const phase = i <= 1 ? 0 : i === 2 ? 1 : 2;
     badges.forEach((b, k) => svg.highlight(b, k === phase, { dim: 0.3, color: POS }));
     svg.highlight(arrowFlip, i === 2, { glow: false, dim: 0 });

@@ -1,8 +1,8 @@
 # EXKNOTS
 
-**Live site → [KnotGames.org](https://knotgames.org)** — View the full primer, all 17 puzzle write-ups, and the interactive 3D explorer.
+**Live site → [KnotGames.org](https://knotgames.org)** — View the full primer, all 20 puzzle write-ups, and the interactive 3D explorer.
 
-A series of 17 hand dexterity topological puzzles — physical manipulation challenges where you must transform, thread, and disentangle objects through non-obvious permutations to free or resolve each puzzle.
+A series of 20 hand dexterity topological puzzles — physical manipulation challenges where you must transform, thread, and disentangle objects through non-obvious permutations to free or resolve each puzzle.
 
 Inspired by classic carnival and tavern puzzles, each puzzle in the series isolates a specific topological principle. Working through them in order builds genuine topological intuition: you learn to see genus, linking numbers, homotopy classes, chirality, braid relations, knot invariants, and the difference between topological and geometric constraints — all through your hands.
 
@@ -29,6 +29,9 @@ The order below is the recommended **learning sequence**. Markdown filenames pre
 | 15 | [The Tricolor Lock](puzzles/14-the-tricolor-lock.md) | Intermediate | Fox tricolorability | Assembly |
 | 16 | [The Seifert Sail](puzzles/15-the-seifert-sail.md) | Advanced | Seifert surfaces | Assembly |
 | 17 | [The Satellite Trap](puzzles/17-the-satellite-trap.md) | Expert | Satellite knots (JSJ decomposition) | Extraction |
+| 18 | [The Whitehead Waltz](puzzles/18-the-whitehead-waltz.md) | Advanced | Whitehead link — linking number 0 without splittability | Identification/Disentanglement |
+| 19 | [The Tangle Dance](puzzles/19-the-tangle-dance.md) | Intermediate-Advanced | Conway rational tangles | Sequential transformation |
+| 20 | [The Granny's Downfall](puzzles/20-the-grannys-downfall.md) | Advanced | Connected sums — composite knots | Identification/Assembly |
 
 ### A note on puzzle ordering
 
@@ -37,11 +40,11 @@ The series was reordered after pedagogical review. Two puzzles were moved to fix
 - **The Mirror Gate** (chirality) moved from position 11 → **5**, joining the "things are not what they seem" arc where its lesson — *visual similarity does not imply topological equivalence* — naturally extends Puzzles 1-4.
 - **The Crossing Number** (unknotting number) moved from position 16 → **9**, placing it adjacent to its prerequisite (Puzzle 8, Ferryman's Knot — the trefoil) and providing a lighter palate cleanser before the expert arc.
 
-Markdown filenames keep their original numeric prefixes as stable identifiers. The display number above is the new pedagogical position.
+Markdown filenames keep their original numeric prefixes as stable identifiers. The display number above is the new pedagogical position. Puzzles 18-20 (Arc 5) were authored after the reorder, so for them filename number and display number coincide.
 
 ## What You Learn
 
-The series teaches you to think topologically, one puzzle at a time. Four arcs build cumulatively:
+The series teaches you to think topologically, one puzzle at a time. Five arcs build cumulatively:
 
 **Arc 1 — "Things Are Not What They Seem" (Puzzles 1-5)**
 1. **Gatekeeper:** Visual complexity does not equal topological complexity — open arcs can't link
@@ -54,7 +57,7 @@ The series teaches you to think topologically, one puzzle at a time. Four arcs b
 6. **Trinity Lock:** Linkage can be collective and irreducible — three rings hold each other when no two are linked
 7. **Devil's Pitchfork:** Configuration space has its own topology — reconfigure constraints before moving pieces
 8. **Ferryman's Knot:** Open arcs on fixed axes follow different rules than closed knots
-9. **Crossing Number:** Distance to the unknot is measured in crossing changes — one flip, the right one, undoes the figure-eight
+9. **Crossing Number:** Distance to the unknot is measured in crossing changes — one flip undoes the figure-eight; predict the unravelling before you flip
 
 **Arc 3 — "Deep Mathematics Is Physical" (Puzzles 10-12)**
 10. **Ouroboros Chain:** Some puzzles have no shortcut — recursive structure (Gray code) demands trust through 42 moves
@@ -67,6 +70,11 @@ The series teaches you to think topologically, one puzzle at a time. Four arcs b
 15. **Tricolor Lock:** Coloring rules distinguish knot types — tricolorability is a computable invariant
 16. **Seifert Sail:** Every knot bounds an orientable surface — Seifert surfaces make this physical
 17. **Satellite Trap:** Complex knots decompose into independent layers (JSJ) — solve each layer separately
+
+**Arc 5 — "The Limits and Language of Invariants" (Puzzles 18-20)**
+18. **Whitehead Waltz:** Linking number 0 can still be inseparable — the invariant you trusted is incomplete
+19. **Tangle Dance:** A COMPLETE invariant exists — Conway's fraction, and you can operate it by hand
+20. **Granny's Downfall:** Knots compose; most invariants can't tell square from granny — pick the right one
 
 ## Interactive Visualizations
 
@@ -89,7 +97,7 @@ Requires a modern browser with ES module and WebGL support.
 
 ## 3D Printing (FDM)
 
-All 17 puzzles have parametric OpenSCAD models in `scad/` designed for FDM 3D printing. Key adaptations:
+The original 17 puzzles have parametric OpenSCAD models in `scad/`, designed for FDM 3D printing; print models for Arc 5 (Puzzles 18-20) are forthcoming. Key adaptations:
 
 - **Thickened features**: 4mm steel rods → 6mm printed, 8mm ball-stops → 12mm
 - **Material substitution**: Leather → TPU strip, clear acrylic → split PETG with color-coded tunnel liners
@@ -128,12 +136,15 @@ A comprehensive **[Topology Primer](theory/topology-primer.md)** covers every co
 - **Fox tricolorability** as a computable knot invariant (Puzzle 15)
 - **Seifert surfaces** and knot genus (Puzzle 16)
 - **Satellite knots** and JSJ decomposition (Puzzle 17)
+- **Whitehead link** and higher-order linking (Puzzle 18)
+- **Rational tangles** and the Conway fraction (Puzzle 19)
+- **Connected sums** and composite knots (Puzzle 20)
 
 The primer is designed for readers with no formal topology background. Each concept includes plain-language definitions, SVG diagrams, physical intuition, and a one-paragraph rigorous statement.
 
 ## How to Use This Series
 
-**Solve in order.** Each puzzle introduces one new topological concept while building on ideas from earlier puzzles. Skipping ahead is possible but means missing the conceptual scaffolding that makes later puzzles approachable. The four arcs are cumulative: Arc 1 (1-5) builds visual skepticism, Arc 2 (6-9) introduces structural reasoning, Arc 3 (10-12) demands algebraic and higher-dimensional thinking, and Arc 4 (13-17) puts those skills to work computing invariants and decomposing complex knots.
+**Solve in order.** Each puzzle introduces one new topological concept while building on ideas from earlier puzzles. Skipping ahead is possible but means missing the conceptual scaffolding that makes later puzzles approachable. The five arcs are cumulative: Arc 1 (1-5) builds visual skepticism, Arc 2 (6-9) introduces structural reasoning, Arc 3 (10-12) demands algebraic and higher-dimensional thinking, Arc 4 (13-17) puts those skills to work computing invariants and decomposing complex knots, and Arc 5 (18-20) turns a critical eye on the invariants themselves — where they fail, where one is complete, and how to choose the right question to ask a knot.
 
 **Read theory alongside solving.** After solving (or getting stuck on) each puzzle, read the corresponding section of the [Topology Primer](theory/topology-primer.md). The physical experience of manipulation makes the abstract concepts click in a way that textbook definitions cannot.
 
@@ -146,7 +157,7 @@ For educators: see the **[Pedagogical Arc](theory/pedagogical-arc.md)** for guid
 | # | Puzzle | Difficulty | Novice | Experienced | Key Concept |
 |---|--------|-----------|--------|-------------|-------------|
 | 1 | The Gatekeeper | Beginner | 5-15 min | < 1 min | Unknot recognition |
-| 2 | Shepherd's Yoke | Beginner | 10-30 min | 1-2 min | Genus / buttonhole |
+| 2 | Shepherd's Yoke | Beginner | 10-30 min | 1-2 min | Buttonhole homotopy |
 | 3 | The Prisoner's Ring | Beginner-Intermediate | 15-45 min | 2-5 min | Linking number |
 | 4 | Mobius Snare | Intermediate | 20-60 min | 3-5 min | Non-orientability |
 | 5 | The Mirror Gate | Intermediate | 15-45 min | 5-15 min | Chirality |
@@ -162,6 +173,9 @@ For educators: see the **[Pedagogical Arc](theory/pedagogical-arc.md)** for guid
 | 15 | The Tricolor Lock | Intermediate | 20-60 min | 10-25 min | Fox tricolorability |
 | 16 | The Seifert Sail | Advanced | 45-150 min | 20-60 min | Seifert surfaces |
 | 17 | The Satellite Trap | Expert | 90-300 min | 45-150 min | Satellite knots / JSJ |
+| 18 | The Whitehead Waltz | Advanced | 1-3 hrs | 20-45 min | Whitehead link / lk=0 trap |
+| 19 | The Tangle Dance | Intermediate-Advanced | 45-120 min | 15-40 min | Rational tangles / Conway fraction |
+| 20 | The Granny's Downfall | Advanced | 1-3 hrs | 20-50 min | Connected sums / signature |
 
 *Novice = first encounter, no hints. Experienced = has seen the topological principle before.*
 

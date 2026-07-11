@@ -4,6 +4,7 @@ import {
   createSVG, line, path, circle, ellipse, rect, text,
   dimensionArrow, label, crossingGap,
   gradient, crossingWithColor, stepBadge,
+  lerpFrames, calloutBox,
 } from '../lib/svg.js';
 
 describe('SVG helpers', () => {
@@ -245,6 +246,52 @@ describe('SVG helpers', () => {
       const g = stepBadge(svg, 100, 100, 1);
       const texts = g.querySelectorAll('text');
       expect(texts).toHaveLength(1);
+    });
+  });
+
+  describe('lerpFrames', () => {
+    const frames = [[0, 0], [10, 20], [30, 20]];
+
+    it('holds the rest pose during step 0', () => {
+      expect(lerpFrames(frames, 0, 0.5)).toEqual([0, 0]);
+    });
+
+    it('interpolates from the previous frame within a step', () => {
+      expect(lerpFrames(frames, 1, 0.5)).toEqual([5, 10]);
+      expect(lerpFrames(frames, 2, 0.25)).toEqual([15, 20]);
+    });
+
+    it('clamps stepIndex and stepProgress out of range', () => {
+      expect(lerpFrames(frames, 99, 1)).toEqual([30, 20]);
+      expect(lerpFrames(frames, 1, 2)).toEqual([10, 20]);
+      expect(lerpFrames(frames, undefined, undefined)).toEqual([0, 0]);
+    });
+
+    it('handles arbitrary-length numeric arrays', () => {
+      const f = [[0, 0, 0, 0], [4, 8, 12, 16]];
+      expect(lerpFrames(f, 1, 0.5)).toEqual([2, 4, 6, 8]);
+    });
+  });
+
+  describe('calloutBox', () => {
+    it('draws a box with the message text', () => {
+      const svg = createSVG(container);
+      calloutBox(svg, 20, 360, 460, 30, 'Key: insight here');
+      const texts = [...svg.querySelectorAll('text')].map((t) => t.textContent);
+      expect(texts).toContain('Key: insight here');
+      const box = svg.querySelector('rect.callout-box');
+      expect(box).not.toBeNull();
+      expect(box.getAttribute('width')).toBe('460');
+    });
+
+    it('installs the pulse keyframes once per SVG', () => {
+      const svg = createSVG(container);
+      calloutBox(svg, 0, 0, 100, 20, 'one');
+      calloutBox(svg, 0, 40, 100, 20, 'two');
+      const styles = svg.querySelectorAll('style[data-anim]');
+      expect(styles).toHaveLength(1);
+      const occurrences = styles[0].textContent.split('@keyframes calloutPulse').length - 1;
+      expect(occurrences).toBe(1);
     });
   });
 });

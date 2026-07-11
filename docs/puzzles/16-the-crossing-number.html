@@ -56,7 +56,7 @@
   <div class="doc-actions"><a class="btn btn--primary" href="../explore/#9">▶ Open in Interactive Explorer</a></div>
 </div></header>
 <div class="wrap band" style="padding-top:1.4rem"><div class="doc-layout"><div class="prose"><h2 id="overview">Overview <a href="#overview" class="anchor-link" aria-hidden="true">#</a></h2>
-<p>A figure-eight knot wire frame has 4 crossings, each controlled by a removable steel pin. Flipping a pin swaps which strand goes over and which goes under at that crossing. The figure-eight knot has unknotting number 1 — exactly one crossing flip converts it to the unknot, freeing a trapped ring. But which of the 4 crossings?</p>
+<p>A figure-eight knot wire frame has 4 crossings, each controlled by a removable steel pin. Flipping a pin swaps which strand goes over and which goes under at that crossing. The figure-eight knot has unknotting number 1 — a single crossing flip converts it to the unknot and frees the trapped ring. And on this diagram the situation is friendlier than the definition promises: <strong>every one of the four flips works.</strong> The puzzle is not a hunt for a magic crossing. It is a test of foresight: study the diagram, predict exactly which simplifying moves a flip will unlock, then flip and watch the frame dissolve on schedule.</p>
 <h2 id="components">Components <a href="#components" class="anchor-link" aria-hidden="true">#</a></h2>
 <div class="table-wrap"><table>
 <thead>
@@ -96,84 +96,81 @@
 <h2 id="setup">Setup <a href="#setup" class="anchor-link" aria-hidden="true">#</a></h2>
 <p><figure class="dia-figure dia-narrow"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350" class="dia">
   <title>The Crossing Number - Setup</title>
-  <desc>Figure-eight knot diagram with 4 crossings. Each crossing has a labeled pin (A, B, C, D). Ring trapped on the frame. Base visible.</desc>
+  <desc>Standard alternating figure-eight knot diagram made of steel rod, with 4 crossings at the north, east, south and west of the knot. Breaks in the strand show which strand passes under at each crossing, and the crossings alternate over-under along the wire. Each crossing has a removable pin, shown as a labeled circle (A, B, C, D) offset from the crossing and connected by a thin leader line. A ring is threaded on the upper-left arc of the wire. Wooden base below. Caption: one flip will unknot this; predict the moves it unlocks first.</desc>
 
-  
+  <!--
+    Geometry: standard alternating figure-eight (4_1) diagram from the
+    parametrization  x = (2 + cos 2t) cos 3t,  y = (2 + cos 2t) sin 3t,
+    z = sin 4t  (same construction as theory/topology-primer/
+    unknotting-crossing-change.svg). Scale 23, center (150,145).
+    Crossings sit at the compass points: A = north, B = east, C = south,
+    D = west. Tracing the strand gives the alternating Gauss code
+    OA UD OB UA OC UB OD UC.
+    Every crossing uses the occlusion idiom (see crossingGap in lib/svg.js):
+    continuous base curve, then a surface-colored round-linecap stroke laid
+    along the over strand's tangent, then the over-segment redrawn on top.
+  -->
 
   <!-- Title -->
   <text x="150" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">The Crossing Number — Setup</text>
-  <text x="150" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">figure-eight knot, 4 crossings</text>
+  <text x="150" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">figure-eight knot, 4 crossings, alternating</text>
 
   <!-- Wooden base -->
   <rect x="40" y="255" width="220" height="20" rx="3" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></rect>
 
-  <!-- Figure-eight knot diagram -->
-  <!-- Main knot path: figure-eight shape with 4 crossings -->
+  <!-- Figure-eight knot: one continuous closed strand -->
+  <path d="M 219,145 C 219,142.6 218.9,140.2 218.6,137.8 C 218.3,135.4 217.8,133 217.3,130.7 C 216.7,128.4 216,126.1 215.1,123.8 C 214.3,121.6 213.3,119.4 212.2,117.3 C 211.1,115.2 209.9,113.1 208.6,111.2 C 207.2,109.2 205.8,107.4 204.2,105.6 C 202.7,103.9 201,102.2 199.3,100.6 C 197.5,99.1 195.7,97.6 193.8,96.3 C 191.9,95 190,93.8 188,92.7 C 186,91.7 183.9,90.7 181.8,89.9 C 179.7,89.1 177.6,88.4 175.4,87.9 C 173.3,87.3 171.1,86.9 169,86.6 C 166.8,86.3 164.6,86.2 162.5,86.2 C 160.4,86.1 158.2,86.2 156.2,86.5 C 154.1,86.7 152,87 150,87.5 C 148,88 146,88.5 144.1,89.2 C 142.2,89.9 140.4,90.7 138.6,91.6 C 136.9,92.5 135.2,93.4 133.6,94.5 C 132,95.5 130.5,96.7 129,97.9 C 127.6,99.1 126.2,100.4 125,101.7 C 123.8,103 122.6,104.4 121.5,105.8 C 120.5,107.3 119.5,108.7 118.7,110.2 C 117.8,111.7 117.1,113.2 116.4,114.8 C 115.8,116.3 115.2,117.8 114.7,119.4 C 114.3,120.9 113.9,122.5 113.6,124 C 113.3,125.5 113.2,127.1 113.1,128.6 C 113,130.1 112.9,131.5 113,133 C 113.1,134.4 113.2,135.9 113.4,137.2 C 113.6,138.6 113.9,140 114.3,141.2 C 114.6,142.5 115,143.8 115.5,145 C 116,146.2 116.5,147.4 117,148.5 C 117.6,149.6 118.2,150.6 118.9,151.6 C 119.5,152.6 120.2,153.6 120.9,154.5 C 121.6,155.4 122.3,156.2 123.1,157 C 123.8,157.8 124.6,158.5 125.4,159.2 C 126.2,159.9 127,160.5 127.8,161.1 C 128.7,161.7 129.5,162.2 130.3,162.7 C 131.1,163.2 132,163.7 132.8,164.1 C 133.6,164.5 134.5,164.9 135.3,165.2 C 136.1,165.6 137,165.9 137.8,166.1 C 138.6,166.4 139.5,166.6 140.3,166.8 C 141.1,167 141.9,167.2 142.7,167.4 C 143.6,167.5 144.4,167.6 145.2,167.7 C 146,167.8 146.8,167.9 147.6,167.9 C 148.4,168 149.2,168 150,168 C 150.8,168 151.6,168 152.4,167.9 C 153.2,167.9 154,167.8 154.8,167.7 C 155.6,167.6 156.4,167.5 157.3,167.4 C 158.1,167.2 158.9,167 159.7,166.8 C 160.5,166.6 161.4,166.4 162.2,166.1 C 163,165.9 163.9,165.6 164.7,165.2 C 165.5,164.9 166.4,164.5 167.2,164.1 C 168,163.7 168.9,163.2 169.7,162.7 C 170.5,162.2 171.3,161.7 172.2,161.1 C 173,160.5 173.8,159.9 174.6,159.2 C 175.4,158.5 176.2,157.8 176.9,157 C 177.7,156.2 178.4,155.4 179.1,154.5 C 179.8,153.6 180.5,152.6 181.1,151.6 C 181.8,150.6 182.4,149.6 183,148.5 C 183.5,147.4 184,146.2 184.5,145 C 185,143.8 185.4,142.5 185.7,141.2 C 186.1,140 186.4,138.6 186.6,137.2 C 186.8,135.9 186.9,134.4 187,133 C 187.1,131.5 187,130.1 186.9,128.6 C 186.8,127.1 186.7,125.5 186.4,124 C 186.1,122.5 185.7,120.9 185.3,119.4 C 184.8,117.8 184.2,116.3 183.6,114.8 C 182.9,113.2 182.2,111.7 181.3,110.2 C 180.5,108.7 179.5,107.3 178.5,105.8 C 177.4,104.4 176.2,103 175,101.7 C 173.8,100.4 172.4,99.1 171,97.9 C 169.5,96.7 168,95.5 166.4,94.5 C 164.8,93.4 163.1,92.5 161.4,91.6 C 159.6,90.7 157.8,89.9 155.9,89.2 C 154,88.5 152,88 150,87.5 C 148,87 145.9,86.7 143.8,86.5 C 141.8,86.2 139.6,86.1 137.5,86.2 C 135.4,86.2 133.2,86.3 131,86.6 C 128.9,86.9 126.7,87.3 124.6,87.9 C 122.4,88.4 120.3,89.1 118.2,89.9 C 116.1,90.7 114,91.7 112,92.7 C 110,93.8 108.1,95 106.2,96.3 C 104.3,97.6 102.5,99.1 100.7,100.6 C 99,102.2 97.3,103.9 95.8,105.6 C 94.2,107.4 92.8,109.2 91.4,111.2 C 90.1,113.1 88.9,115.2 87.8,117.3 C 86.7,119.4 85.7,121.6 84.9,123.8 C 84,126.1 83.3,128.4 82.7,130.7 C 82.2,133 81.7,135.4 81.4,137.8 C 81.1,140.2 81,142.6 81,145 C 81,147.4 81.1,149.8 81.4,152.2 C 81.7,154.6 82.2,157 82.7,159.3 C 83.3,161.6 84,163.9 84.9,166.2 C 85.7,168.4 86.7,170.6 87.8,172.7 C 88.9,174.8 90.1,176.9 91.4,178.8 C 92.8,180.8 94.2,182.6 95.8,184.4 C 97.3,186.1 99,187.8 100.7,189.4 C 102.5,190.9 104.3,192.4 106.2,193.7 C 108.1,195 110,196.2 112,197.3 C 114,198.3 116.1,199.3 118.2,200.1 C 120.3,200.9 122.4,201.6 124.6,202.1 C 126.7,202.7 128.9,203.1 131,203.4 C 133.2,203.7 135.4,203.8 137.5,203.8 C 139.6,203.9 141.8,203.8 143.8,203.5 C 145.9,203.3 148,203 150,202.5 C 152,202 154,201.5 155.9,200.8 C 157.8,200.1 159.6,199.3 161.4,198.4 C 163.1,197.5 164.8,196.6 166.4,195.5 C 168,194.5 169.5,193.3 171,192.1 C 172.4,190.9 173.8,189.6 175,188.3 C 176.2,187 177.4,185.6 178.5,184.2 C 179.5,182.7 180.5,181.3 181.3,179.8 C 182.2,178.3 182.9,176.8 183.6,175.2 C 184.2,173.7 184.8,172.2 185.3,170.6 C 185.7,169.1 186.1,167.5 186.4,166 C 186.7,164.5 186.8,162.9 186.9,161.4 C 187,159.9 187.1,158.5 187,157 C 186.9,155.6 186.8,154.1 186.6,152.8 C 186.4,151.4 186.1,150 185.7,148.8 C 185.4,147.5 185,146.2 184.5,145 C 184,143.8 183.5,142.6 183,141.5 C 182.4,140.4 181.8,139.4 181.1,138.4 C 180.5,137.4 179.8,136.4 179.1,135.5 C 178.4,134.6 177.7,133.8 176.9,133 C 176.2,132.2 175.4,131.5 174.6,130.8 C 173.8,130.1 173,129.5 172.2,128.9 C 171.3,128.3 170.5,127.8 169.7,127.3 C 168.9,126.8 168,126.3 167.2,125.9 C 166.4,125.5 165.5,125.1 164.7,124.8 C 163.9,124.4 163,124.1 162.2,123.9 C 161.4,123.6 160.5,123.4 159.7,123.2 C 158.9,123 158.1,122.8 157.3,122.6 C 156.4,122.5 155.6,122.4 154.8,122.3 C 154,122.2 153.2,122.1 152.4,122.1 C 151.6,122 150.8,122 150,122 C 149.2,122 148.4,122 147.6,122.1 C 146.8,122.1 146,122.2 145.2,122.3 C 144.4,122.4 143.6,122.5 142.7,122.6 C 141.9,122.8 141.1,123 140.3,123.2 C 139.5,123.4 138.6,123.6 137.8,123.9 C 137,124.1 136.1,124.4 135.3,124.8 C 134.5,125.1 133.6,125.5 132.8,125.9 C 132,126.3 131.1,126.8 130.3,127.3 C 129.5,127.8 128.7,128.3 127.8,128.9 C 127,129.5 126.2,130.1 125.4,130.8 C 124.6,131.5 123.8,132.2 123.1,133 C 122.3,133.8 121.6,134.6 120.9,135.5 C 120.2,136.4 119.5,137.4 118.9,138.4 C 118.2,139.4 117.6,140.4 117,141.5 C 116.5,142.6 116,143.8 115.5,145 C 115,146.2 114.6,147.5 114.3,148.8 C 113.9,150 113.6,151.4 113.4,152.8 C 113.2,154.1 113.1,155.6 113,157 C 112.9,158.5 113,159.9 113.1,161.4 C 113.2,162.9 113.3,164.5 113.6,166 C 113.9,167.5 114.3,169.1 114.7,170.6 C 115.2,172.2 115.8,173.7 116.4,175.2 C 117.1,176.8 117.8,178.3 118.7,179.8 C 119.5,181.3 120.5,182.7 121.5,184.2 C 122.6,185.6 123.8,187 125,188.3 C 126.2,189.6 127.6,190.9 129,192.1 C 130.5,193.3 132,194.5 133.6,195.5 C 135.2,196.6 136.9,197.5 138.6,198.4 C 140.4,199.3 142.2,200.1 144.1,200.8 C 146,201.5 148,202 150,202.5 C 152,203 154.1,203.3 156.2,203.5 C 158.2,203.8 160.4,203.9 162.5,203.8 C 164.6,203.8 166.8,203.7 169,203.4 C 171.1,203.1 173.3,202.7 175.4,202.1 C 177.6,201.6 179.7,200.9 181.8,200.1 C 183.9,199.3 186,198.3 188,197.3 C 190,196.2 191.9,195 193.8,193.7 C 195.7,192.4 197.5,190.9 199.3,189.4 C 201,187.8 202.7,186.1 204.2,184.4 C 205.8,182.6 207.2,180.8 208.6,178.8 C 209.9,176.9 211.1,174.8 212.2,172.7 C 213.3,170.6 214.3,168.4 215.1,166.2 C 216,163.9 216.7,161.6 217.3,159.3 C 217.8,157 218.3,154.6 218.6,152.2 C 218.9,149.8 219,147.4 219,145 Z" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
 
-  <!-- Segment 1: top loop going right -->
-  <path d="M 100,80 Q 80,65 90,55 Q 110,40 140,50 Q 165,58 180,80" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
-
-  <!-- Segment 2: right side going down through crossing A -->
-  <path d="M 180,80 Q 195,105 185,130" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
-
-  <!-- Segment 3: crossing over, going left through crossing B -->
-  <path d="M 185,130 Q 170,155 145,160" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
-
-  <!-- Segment 4: continuing left, going down through crossing C -->
-  <path d="M 145,160 Q 120,165 110,180" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
-
-  <!-- Segment 5: bottom loop going left and up -->
-  <path d="M 110,180 Q 95,210 110,230 Q 130,245 155,230 Q 175,215 185,195" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
-
-  <!-- Segment 6: going up through crossing D -->
-  <path d="M 185,195 Q 195,170 190,150" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
-
-  <!-- Segment 7: back to crossing and closing the loop -->
-  <path d="M 190,150 Q 180,125 160,110 Q 135,95 110,100 Q 90,105 100,80" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
-
-  <!-- Crossing gaps (white breaks for under-strand) -->
   <!-- Crossing A -->
-  <circle cx="175" cy="95" r="3" fill="var(--dia-surface, #fbf7ee)" stroke="none"></circle>
+  <line x1="159.3" y1="85.4" x2="140.7" y2="89.6" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+  <path d="M 169,86.6 C 166.8,86.3 164.6,86.2 162.5,86.2 C 160.4,86.1 158.2,86.2 156.2,86.5 C 154.1,86.7 152,87 150,87.5 C 148,88 146,88.5 144.1,89.2 C 142.2,89.9 140.4,90.7 138.6,91.6 C 136.9,92.5 135.2,93.4 133.6,94.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
   <!-- Crossing B -->
-  <circle cx="165" cy="145" r="3" fill="var(--dia-surface, #fbf7ee)" stroke="none"></circle>
+  <line x1="181.1" y1="153.9" x2="187.9" y2="136.1" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+  <path d="M 174.6,159.2 C 175.4,158.5 176.2,157.8 176.9,157 C 177.7,156.2 178.4,155.4 179.1,154.5 C 179.8,153.6 180.5,152.6 181.1,151.6 C 181.8,150.6 182.4,149.6 183,148.5 C 183.5,147.4 184,146.2 184.5,145 C 185,143.8 185.4,142.5 185.7,141.2 C 186.1,140 186.4,138.6 186.6,137.2 C 186.8,135.9 186.9,134.4 187,133 C 187.1,131.5 187,130.1 186.9,128.6" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
   <!-- Crossing C -->
-  <circle cx="120" cy="175" r="3" fill="var(--dia-surface, #fbf7ee)" stroke="none"></circle>
+  <line x1="140.7" y1="204.6" x2="159.3" y2="200.4" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+  <path d="M 131,203.4 C 133.2,203.7 135.4,203.8 137.5,203.8 C 139.6,203.9 141.8,203.8 143.8,203.5 C 145.9,203.3 148,203 150,202.5 C 152,202 154,201.5 155.9,200.8 C 157.8,200.1 159.6,199.3 161.4,198.4 C 163.1,197.5 164.8,196.6 166.4,195.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
   <!-- Crossing D -->
-  <circle cx="188" cy="170" r="3" fill="var(--dia-surface, #fbf7ee)" stroke="none"></circle>
+  <line x1="118.9" y1="136.1" x2="112.1" y2="153.9" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+  <path d="M 125.4,130.8 C 124.6,131.5 123.8,132.2 123.1,133 C 122.3,133.8 121.6,134.6 120.9,135.5 C 120.2,136.4 119.5,137.4 118.9,138.4 C 118.2,139.4 117.6,140.4 117,141.5 C 116.5,142.6 116,143.8 115.5,145 C 115,146.2 114.6,147.5 114.3,148.8 C 113.9,150 113.6,151.4 113.4,152.8 C 113.2,154.1 113.1,155.6 113,157 C 112.9,158.5 113,159.9 113.1,161.4" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
 
-  <!-- Crossing pins (labeled circles) -->
-  <!-- Pin A -->
-  <circle cx="175" cy="95" r="10" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5"></circle>
-  <text x="175" y="99" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)" font-weight="bold">A</text>
+  <!-- Crossing pins (offset from the crossings, thin leader lines) -->
+  <line x1="150" y1="77.5" x2="150" y2="69.5" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+  <circle cx="150" cy="60.5" r="8" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5"></circle>
+  <text x="150" y="63.9" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-neg, #cf3a26)" font-weight="bold">A</text>
+  <line x1="194.5" y1="145" x2="230" y2="145" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+  <circle cx="239" cy="145" r="8" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5"></circle>
+  <text x="239" y="148.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-neg, #cf3a26)" font-weight="bold">B</text>
+  <line x1="150" y1="212.5" x2="150" y2="220.5" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+  <circle cx="150" cy="229.5" r="8" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5"></circle>
+  <text x="150" y="232.9" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-neg, #cf3a26)" font-weight="bold">C</text>
+  <line x1="105.5" y1="145" x2="70" y2="145" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+  <circle cx="61" cy="145" r="8" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5"></circle>
+  <text x="61" y="148.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-neg, #cf3a26)" font-weight="bold">D</text>
 
-  <!-- Pin B -->
-  <circle cx="165" cy="145" r="10" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5"></circle>
-  <text x="165" y="149" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)" font-weight="bold">B</text>
-
-  <!-- Pin C -->
-  <circle cx="120" cy="175" r="10" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5"></circle>
-  <text x="120" y="179" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)" font-weight="bold">C</text>
-
-  <!-- Pin D -->
-  <circle cx="188" cy="170" r="10" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5"></circle>
-  <text x="188" y="174" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)" font-weight="bold">D</text>
-
-  <!-- Ring trapped on the frame -->
-  <circle cx="110" cy="55" r="10" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
-  <text x="110" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-ring, #b97d12)">ring</text>
+  <!-- Ring threaded on the wire (wire passes over the ring on one side) -->
+  <circle cx="99.9" cy="101.4" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+  <line x1="97.5" y1="103.5" x2="91.2" y2="111.2" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M 102.5,99.1 C 101.9,99.6 101.3,100.1 100.7,100.6 C 99,102.2 97.3,103.9 95.8,105.6 C 94.2,107.4 92.8,109.2 91.4,111.2 C 90.1,113.1 88.9,115.2 87.8,117.3" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
+  <text x="85.9" y="87.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-ring, #b97d12)">ring</text>
 
   <!-- Info -->
-  <text x="150" y="245" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">Flip one crossing to unknot. Which one?</text>
+  <text x="150" y="247" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">One flip will unknot this. Predict the moves it unlocks first.</text>
 
   <!-- Legend -->
-  <line x1="20" y1="290" x2="50" y2="290" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"></line>
-  <text x="58" y="294" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">figure-eight wire frame</text>
+  <line x1="20" y1="288" x2="50" y2="288" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"></line>
+  <text x="58" y="292" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">figure-eight wire frame</text>
 
-  <circle cx="35" cy="305" r="8" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5"></circle>
-  <text x="58" y="309" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">crossing pin (flippable)</text>
+  <circle cx="35" cy="303" r="7" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5"></circle>
+  <text x="58" y="307" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">crossing pin (flippable)</text>
 
-  <circle cx="35" cy="322" r="6" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2"></circle>
-  <text x="58" y="326" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">ring (trapped)</text>
+  <circle cx="35" cy="319" r="6" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2"></circle>
+  <text x="58" y="323" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">ring (trapped)</text>
+
+  <line x1="26" y1="331" x2="44" y2="341" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></line>
+  <line x1="31.2" y1="338.9" x2="38.8" y2="333.1" stroke="var(--dia-surface, #fbf7ee)" stroke-width="6.5" stroke-linecap="round"></line>
+  <line x1="26" y1="341" x2="44" y2="331" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></line>
+  <text x="58" y="339" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">gap = strand passes under</text>
 </svg><figcaption>Figure-eight knot with 4 labeled crossing pins</figcaption></figure></p>
 <ol>
 <li>The figure-eight knot frame is mounted on the base</li>
@@ -182,7 +179,7 @@
 <li>The ring cannot be removed while the frame forms a genuine figure-eight knot</li>
 </ol>
 <h2 id="objective">Objective <a href="#objective" class="anchor-link" aria-hidden="true">#</a></h2>
-<p>Flip exactly one crossing pin to convert the figure-eight knot to the unknot, thereby freeing the ring. Identify which crossing to flip.</p>
+<p>Choose a crossing pin and, <strong>before touching it</strong>, predict the sequence of Reidemeister moves its flip will unlock. Then flip the pin and execute the simplification — trace the moves until the frame is an unknotted loop and the ring slides free. Flip first and you learn nothing: the puzzle is solved in your head before your hands move.</p>
 <h2 id="the-topology">The Topology <a href="#the-topology" class="anchor-link" aria-hidden="true">#</a></h2>
 <h3 id="the-figure-eight-knot">The Figure-Eight Knot <a href="#the-figure-eight-knot" class="anchor-link" aria-hidden="true">#</a></h3>
 <p>The figure-eight knot (also called the Listing knot or knot 4_1) is the second-simplest non-trivial knot, with exactly 4 crossings in its minimal diagram. Unlike the trefoil, the figure-eight is <strong>amphichiral</strong> — it is equivalent to its mirror image. This makes it the simplest amphichiral knot.</p>
@@ -194,110 +191,328 @@
 <li><strong>Trefoil</strong>: u = 1</li>
 <li><strong>Figure-eight</strong>: u = 1</li>
 <li><strong>5_1 knot</strong> (cinquefoil): u = 2</li>
-<li><strong>Granny knot</strong>: u = 1</li>
+<li><strong>Granny knot</strong> (trefoil # trefoil): u = 2</li>
 </ul>
-<p>The figure-eight's unknotting number of 1 means that a single crossing flip can convert it to the unknot — but only at the RIGHT crossing.</p>
-<h3 id="not-all-crossings-are-equal">Not All Crossings Are Equal <a href="#not-all-crossings-are-equal" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>The figure-eight's unknotting number of 1 means that <em>some</em> single crossing change, in <em>some</em> diagram, converts it to the unknot. On the minimal 4-crossing diagram this puzzle is built from, the promise is over-delivered: every single flip works.</p>
+<h3 id="every-flip-works-on-this-diagram">Every Flip Works on This Diagram <a href="#every-flip-works-on-this-diagram" class="anchor-link" aria-hidden="true">#</a></h3>
 <p><figure class="dia-figure"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" class="dia">
   <title>Crossing Options</title>
-  <desc>Table showing results of flipping each crossing: Flip A produces trefoil, Flip B produces 5_1 knot, Flip C produces unknot, Flip D produces trefoil. Crossing C highlighted in green.</desc>
+  <desc>Table showing the result of flipping each crossing of the figure-eight knot's minimal diagram: every one of the four flips (A, B, C, D) yields the unknot and frees the ring. Flipping A or C opens the outer-shell clasp whose corners are crossings A and C; flipping B or D opens the central-eye clasp whose corners are B and D. Each route is a Reidemeister II slide that removes the opened clasp's two crossings, followed by two Reidemeister I untwists. Row C is highlighted as the worked example used in the text. Caption: on this diagram every flip works, so predict the route before you flip.</desc>
 
-  
+  <!--
+    No result-knot minis needed anymore: every flip yields the unknot
+    (verified independently by Kauffman bracket and by the R-move structure
+    of the Gauss code OA UD OB UA OC UB OD UC). The diagram's two bigon
+    faces are the outer shell (corners A, C) and the central eye (corners
+    B, D); flipping either corner of a bigon opens that clasp for R-II,
+    after which the two surviving crossings untwist by R-I.
+  -->
 
   <!-- Title -->
   <text x="200" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Crossing Flip Options</text>
 
-  <!-- Table structure -->
   <!-- Header row -->
   <rect x="20" y="35" width="360" height="22" fill="var(--dia-faint, #c9bda7)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"></rect>
-  <text x="60" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Flip</text>
-  <text x="170" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Diagram</text>
-  <text x="290" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Result</text>
-  <text x="360" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Free?</text>
+  <text x="45" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Flip</text>
+  <text x="140" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Clasp it opens</text>
+  <text x="262" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Route</text>
+  <text x="352" y="50" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Result</text>
 
-  <!-- Row 1: Flip A → trefoil -->
-  <rect x="20" y="57" width="360" height="45" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"></rect>
-  <text x="60" y="83" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">A</text>
+  <!-- Row 1: Flip A -->
+  <rect x="20" y="57" width="360" height="38" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"></rect>
+  <text x="45" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">A</text>
+  <text x="140" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">outer shell (A–C)</text>
+  <text x="262" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">R-II, then R-I × 2</text>
+  <circle cx="323" cy="76" r="7" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.8"></circle>
+  <text x="358" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-pos, #2f8f43)">unknot ✓</text>
 
-  <!-- Small trefoil diagram -->
-  <path d="M 160,70 C 155,68 150,72 155,78 C 160,84 170,84 175,78 C 180,72 175,68 170,70" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></path>
-  <line x1="163" y1="73" x2="167" y2="73" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></line>
-  <line x1="157" y1="80" x2="161" y2="77" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></line>
-  <line x1="170" y1="80" x2="166" y2="77" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></line>
+  <!-- Row 2: Flip B -->
+  <rect x="20" y="95" width="360" height="38" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"></rect>
+  <text x="45" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">B</text>
+  <text x="140" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">central eye (B–D)</text>
+  <text x="262" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">R-II, then R-I × 2</text>
+  <circle cx="323" cy="114" r="7" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.8"></circle>
+  <text x="358" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-pos, #2f8f43)">unknot ✓</text>
 
-  <text x="290" y="83" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">trefoil (3 crossings)</text>
-  <text x="360" y="83" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="var(--dia-neg, #cf3a26)">✗</text>
+  <!-- Row 3: Flip C (the worked example in the text) -->
+  <rect x="20" y="133" width="360" height="38" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5"></rect>
+  <text x="45" y="156" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-pos, #2f8f43)" font-weight="bold">C</text>
+  <text x="140" y="156" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">outer shell (A–C)</text>
+  <text x="262" y="156" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">R-II, then R-I × 2</text>
+  <circle cx="323" cy="152" r="7" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.8"></circle>
+  <text x="358" y="156" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-pos, #2f8f43)" font-weight="bold">unknot ✓</text>
 
-  <!-- Row 2: Flip B → 5_1 knot -->
-  <rect x="20" y="102" width="360" height="45" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"></rect>
-  <text x="60" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">B</text>
-
-  <!-- Small complex knot diagram -->
-  <path d="M 155,115 Q 150,120 155,128 Q 162,135 170,128 Q 178,120 175,115 Q 170,110 162,112 Q 155,115 155,115" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></path>
-  <circle cx="160" cy="120" r="2" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-rigid, #8a8275)" stroke-width="0.5"></circle>
-  <circle cx="168" cy="122" r="2" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-rigid, #8a8275)" stroke-width="0.5"></circle>
-
-  <text x="290" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">5₁ knot (5 crossings)</text>
-  <text x="360" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="var(--dia-neg, #cf3a26)">✗</text>
-
-  <!-- Row 3: Flip C → unknot (WINNER) -->
-  <rect x="20" y="147" width="360" height="45" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5"></rect>
-  <text x="60" y="173" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-pos, #2f8f43)" font-weight="bold">C</text>
-
-  <!-- Simple circle for unknot -->
-  <circle cx="170" cy="170" r="12" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="2"></circle>
-
-  <text x="290" y="173" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-pos, #2f8f43)" font-weight="bold">unknot (0 crossings)</text>
-  <text x="360" y="173" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="var(--dia-pos, #2f8f43)">✓</text>
-
-  <!-- Row 4: Flip D → trefoil -->
-  <rect x="20" y="192" width="360" height="45" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"></rect>
-  <text x="60" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">D</text>
-
-  <!-- Small trefoil diagram -->
-  <path d="M 160,208 C 155,206 150,210 155,216 C 160,222 170,222 175,216 C 180,210 175,206 170,208" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></path>
-  <line x1="163" y1="211" x2="167" y2="211" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></line>
-  <line x1="157" y1="218" x2="161" y2="215" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></line>
-  <line x1="170" y1="218" x2="166" y2="215" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></line>
-
-  <text x="290" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">trefoil (3 crossings)</text>
-  <text x="360" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="var(--dia-neg, #cf3a26)">✗</text>
+  <!-- Row 4: Flip D -->
+  <rect x="20" y="171" width="360" height="38" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"></rect>
+  <text x="45" y="194" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">D</text>
+  <text x="140" y="194" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">central eye (B–D)</text>
+  <text x="262" y="194" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">R-II, then R-I × 2</text>
+  <circle cx="323" cy="190" r="7" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.8"></circle>
+  <text x="358" y="194" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-pos, #2f8f43)">unknot ✓</text>
 
   <!-- Conclusion box -->
-  <rect x="30" y="248" width="340" height="28" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"></rect>
-  <text x="200" y="266" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-inksoft, #6a6151)">Unknotting number of figure-eight = 1 (flip crossing C)</text>
+  <rect x="30" y="222" width="340" height="28" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"></rect>
+  <text x="200" y="240" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-inksoft, #6a6151)">u(figure-eight) = 1 — every flip of this diagram realizes it</text>
 
-  <!-- Legend -->
-  <text x="60" y="292" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-pos, #2f8f43)">Green row = correct choice (unknots the knot)</text>
-  <text x="60" y="298" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-rigid, #8a8275)">✓ = ring can be freed, ✗ = still knotted</text>
-</svg><figcaption>Results of flipping each crossing</figcaption></figure></p>
-<p>Flipping different crossings produces different knots:</p>
+  <!-- Lesson / legend -->
+  <text x="200" y="268" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-pos, #2f8f43)" font-weight="bold">On this diagram, every flip works — predict the route before you flip</text>
+  <text x="200" y="283" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="var(--dia-rigid, #8a8275)">highlighted row = the worked example (C); circle = the unknotted frame, ring free</text>
+  <text x="200" y="295" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="var(--dia-rigid, #8a8275)">flip A or C → the outer shell slides off; flip B or D → the central eye opens</text>
+</svg><figcaption>All four crossing flips lead to the unknot, by two different Reidemeister routes</figcaption></figure></p>
+<p>All four flips produce the unknot — what differs is the <em>route</em> the simplification takes:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Flip</th>
+<th>Clasp it opens</th>
+<th>Route to the unknot</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>A</strong></td>
+<td>outer shell (corners A, C)</td>
+<td>R-II across the outer bigon, then two R-I untwists</td>
+<td>unknot — ring free</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>central eye (corners B, D)</td>
+<td>R-II across the central bigon, then two R-I untwists</td>
+<td>unknot — ring free</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>outer shell (corners A, C)</td>
+<td>R-II across the outer bigon, then two R-I untwists</td>
+<td>unknot — ring free</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>central eye (corners B, D)</td>
+<td>R-II across the central bigon, then two R-I untwists</td>
+<td>unknot — ring free</td>
+</tr>
+</tbody></table></div>
+<p>The skill being tested is not choosing correctly — any choice is correct here — but <em>seeing the dissolution before touching the cord</em>: naming the clasp your flip opens and the moves that follow.</p>
+<h3 id="why-any-crossing-works-here">Why any crossing works here <a href="#why-any-crossing-works-here" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>The minimal figure-eight diagram is built from <strong>two clasps</strong>. Look at its faces: exactly two of them are bigons (two-sided regions). The <em>outer shell</em> is a bigon whose corners are crossings A and C — the two outermost arcs of the diagram cross each other there and nowhere else. The <em>central eye</em> is a bigon whose corners are B and D. Every crossing is a corner of exactly one bigon, so every crossing belongs to one clasp.</p>
+<p>In the alternating diagram each clasp is locked: each of its two arcs goes over at one corner and under at the other, so neither arc can slide past the other. Flip either corner and the lock opens — one arc of that bigon is now <em>over at both corners</em> and the other <em>under at both</em>. That is precisely the configuration a Reidemeister II move removes: the over-arc slides off, and both crossings of the clasp vanish at once. The two surviving crossings, orphaned by the disappearance of their neighbors, degenerate into bare kinks — each undone by a Reidemeister I untwist. Four crossings, two clasps, every crossing a corner of one: <strong>every flip unknots the frame.</strong></p>
+<h3 id="when-the-choice-matters">When the choice matters <a href="#when-the-choice-matters" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>The definition of u(K) minimizes over <em>all diagrams</em> of K and all choices of crossings — and that quantifier is where the difficulty of unknotting number lives:</p>
 <ul>
-<li><strong>Flip A</strong>: produces a trefoil (still knotted, u = 1)</li>
-<li><strong>Flip B</strong>: produces a 5_1 knot (more complex, u = 2)</li>
-<li><strong>Flip C</strong>: produces the unknot (ring goes free!)</li>
-<li><strong>Flip D</strong>: produces a trefoil (still knotted, u = 1)</li>
+<li><strong>This diagram's generosity is a fact about this diagram, not a law.</strong> On the cinquefoil (5_1, u = 2), no single flip of any diagram produces the unknot at all. On larger knots, different crossings of the same diagram genuinely lead to different knots, and choosing badly leaves you knotted.</li>
+<li><strong>No flip here — or anywhere — turns the figure-eight into a trefoil.</strong> On this diagram all four flips land on the unknot, and a 2012 theorem of Kawauchi shows that is no accident of the picture: no single crossing change in <em>any</em> diagram of the figure-eight yields a trefoil. The Gordian distance between the two knots is 2. Like unknotting number itself, distance between knots is a question about the knots, not about the diagram in front of you.</li>
+<li><strong>A knot where the choice genuinely decides the destination: 5_2.</strong> Its minimal diagram is a clasp plus a three-crossing twist region. Flip either clasp crossing and an R-II dissolves everything — the unknot. Flip a crossing in the twist region instead and two twists cancel, leaving a trefoil. Same diagram, different pins, different knots — the decisive-crossing hunt this puzzle spares you is waiting one knot up the table.</li>
 </ul>
-<p>Only crossing C works. The other three flips change the knot type but do not simplify it to the unknot. Some even make it more complex.</p>
-<div class="callout callout--intuition"><span class="callout-label">Physical Intuition</span><p>What you feel in your hands: pull a pin out, flip it, push it back in. The strands at that crossing swap — the strand that was on top is now on the bottom. Try sliding the ring: if it still catches at every turn, you flipped the wrong crossing. Put the pin back and try the next one. When you flip crossing C, the ring slides freely along the entire wire with no catch points. The absence of catch points IS the unknot — the wire no longer forms any barriers.</p></div>
+<p>That is exactly why unknotting number is hard to compute: the optimal crossing change may not be visible in the diagram in front of you, and no simple algorithm tells you which diagram to look at.</p>
+<div class="callout callout--intuition"><span class="callout-label">Physical Intuition</span><p>What you feel in your hands: pull a pin out, flip it, push it back in. The steel never moves, yet the knot type changes instantly — the strand that was on top is now on the bottom. Slide the ring: where it used to jam against the opened clasp's crossings, it now finds slack, because the over-arc of that bigon no longer bars the way. The ring glides past every former catch point and off the end of nothing at all. The absence of catch points IS the unknot — and if you predicted the route, you knew exactly where the slack would appear before you felt it.</p></div>
 <p><em>For the complete treatment of unknotting number and crossing changes, see <a href="../theory/topology-primer.html#unknotting-number">Topology Primer: Unknotting Number</a>.</em></p>
 <h2 id="solution">Solution <a href="#solution" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>The worked line below uses crossing C; the same method works from any pin.</p>
 <ol>
-<li>Start by examining the 4 crossing pins (A, B, C, D)</li>
-<li>Try flipping crossing A: remove pin, reinsert upside-down, test ring → still caught (trefoil)</li>
-<li>Restore crossing A. Try crossing C: remove pin, reinsert upside-down, test ring → ring slides free!</li>
+<li><strong>Examine.</strong> Find the diagram's two bigons: the outer shell (corners A and C) and the central eye (corners B and D). Note which clasp your chosen crossing belongs to — C is a corner of the outer shell.</li>
+<li><strong>Predict.</strong> Flipping C puts the right-hand shell arc on top at <em>both</em> of its corners. Foresee the moves: an R-II slides the shell arcs apart (crossings A and C vanish), leaving B and D as bare single twists; two R-I untwists dissolve those, leaving a plain loop.</li>
 </ol>
 <p><figure class="dia-figure dia-narrow"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350" class="dia">
-  <title>The Crossing Number - Solved</title>
-  <desc>Same figure-eight frame but crossing C is now flipped (highlighted green). Ring has been freed and sits to the side. Label: Unknotting number = 1.</desc>
+  <title>The Crossing Number - Checkpoint A: Predict</title>
+  <desc>The same alternating figure-eight diagram as the setup, annotated for the predict step. The outer face of the diagram is shaded: it is a bigon (a two-sided region) whose only corners are crossings A at the north and C at the south, where the two outermost arcs of the knot cross each other. Dashed circles mark those two corners. Pin C is highlighted green as the chosen flip, with the prediction written below: flipping C puts the right shell arc on top at both corners, so a Reidemeister II move slides the shell off, and the two remaining crossings B and D become single twists undone by Reidemeister I. The trapped ring still sits on the upper-left arc.</desc>
+
+  <!--
+    Geometry: identical to setup.svg — standard alternating figure-eight (4_1)
+    from x = (2 + cos 2t) cos 3t, y = (2 + cos 2t) sin 3t, z = sin 4t,
+    scale 23, center (150,145). Crossings at compass points A(N), B(E), C(S),
+    D(W); Gauss code OA UD OB UA OC UB OD UC. Crossings use the occlusion
+    idiom (see crossingGap in lib/svg.js).
+    The shaded outer bigon: the outer face of this diagram is bounded by the
+    two outermost arcs, t in [5pi/6, 7pi/6] (left shell, A to C) and
+    t in [11pi/6, 13pi/6] (right shell, C to A). It is drawn as a wash-filled
+    rounded rect (the outside) with the region inside the shell loop punched
+    back to surface color, so only the bigon band reads as shaded.
+  -->
+
+  <!-- Title -->
+  <text x="150" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">The Crossing Number — Predict</text>
+  <text x="150" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">read the route off the diagram before flipping</text>
+
+  <!-- Shaded outer bigon: wash outside, inside of the shell loop punched back -->
+  <rect x="68" y="72" width="164" height="146" rx="16" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="3,2.5"></rect>
+  <path d="M 150.0,87.5 L 144.9,86.6 L 139.6,86.2 L 134.3,86.3 L 128.9,86.9 L 123.5,88.1 L 118.2,89.9 L 113.0,92.2 L 108.1,95.0 L 103.4,98.4 L 99.0,102.2 L 95.0,106.5 L 91.4,111.2 L 88.3,116.2 L 85.7,121.6 L 83.7,127.2 L 82.2,133.0 L 81.3,139.0 L 81.0,145.0 L 81.3,151.0 L 82.2,157.0 L 83.7,162.8 L 85.7,168.4 L 88.3,173.8 L 91.4,178.8 L 95.0,183.5 L 99.0,187.8 L 103.4,191.6 L 108.1,195.0 L 113.0,197.8 L 118.2,200.1 L 123.5,201.9 L 128.9,203.1 L 134.3,203.7 L 139.6,203.8 L 144.9,203.4 L 150.0,202.5 L 155.1,203.4 L 160.4,203.8 L 165.7,203.7 L 171.1,203.1 L 176.5,201.9 L 181.8,200.1 L 187.0,197.8 L 191.9,195.0 L 196.6,191.6 L 201.0,187.8 L 205.0,183.5 L 208.6,178.8 L 211.7,173.8 L 214.3,168.4 L 216.3,162.8 L 217.8,157.0 L 218.7,151.0 L 219.0,145.0 L 218.7,139.0 L 217.8,133.0 L 216.3,127.2 L 214.3,121.6 L 211.7,116.2 L 208.6,111.2 L 205.0,106.5 L 201.0,102.2 L 196.6,98.4 L 191.9,95.0 L 187.0,92.2 L 181.8,89.9 L 176.5,88.1 L 171.1,86.9 L 165.7,86.3 L 160.4,86.2 L 155.1,86.6 Z" fill="var(--dia-surface, #fbf7ee)" stroke="none"></path>
+
+  <!-- Wooden base -->
+  <rect x="40" y="255" width="220" height="20" rx="3" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></rect>
+
+  <!-- Figure-eight knot: one continuous closed strand -->
+  <path d="M 219,145 C 219,142.6 218.9,140.2 218.6,137.8 C 218.3,135.4 217.8,133 217.3,130.7 C 216.7,128.4 216,126.1 215.1,123.8 C 214.3,121.6 213.3,119.4 212.2,117.3 C 211.1,115.2 209.9,113.1 208.6,111.2 C 207.2,109.2 205.8,107.4 204.2,105.6 C 202.7,103.9 201,102.2 199.3,100.6 C 197.5,99.1 195.7,97.6 193.8,96.3 C 191.9,95 190,93.8 188,92.7 C 186,91.7 183.9,90.7 181.8,89.9 C 179.7,89.1 177.6,88.4 175.4,87.9 C 173.3,87.3 171.1,86.9 169,86.6 C 166.8,86.3 164.6,86.2 162.5,86.2 C 160.4,86.1 158.2,86.2 156.2,86.5 C 154.1,86.7 152,87 150,87.5 C 148,88 146,88.5 144.1,89.2 C 142.2,89.9 140.4,90.7 138.6,91.6 C 136.9,92.5 135.2,93.4 133.6,94.5 C 132,95.5 130.5,96.7 129,97.9 C 127.6,99.1 126.2,100.4 125,101.7 C 123.8,103 122.6,104.4 121.5,105.8 C 120.5,107.3 119.5,108.7 118.7,110.2 C 117.8,111.7 117.1,113.2 116.4,114.8 C 115.8,116.3 115.2,117.8 114.7,119.4 C 114.3,120.9 113.9,122.5 113.6,124 C 113.3,125.5 113.2,127.1 113.1,128.6 C 113,130.1 112.9,131.5 113,133 C 113.1,134.4 113.2,135.9 113.4,137.2 C 113.6,138.6 113.9,140 114.3,141.2 C 114.6,142.5 115,143.8 115.5,145 C 116,146.2 116.5,147.4 117,148.5 C 117.6,149.6 118.2,150.6 118.9,151.6 C 119.5,152.6 120.2,153.6 120.9,154.5 C 121.6,155.4 122.3,156.2 123.1,157 C 123.8,157.8 124.6,158.5 125.4,159.2 C 126.2,159.9 127,160.5 127.8,161.1 C 128.7,161.7 129.5,162.2 130.3,162.7 C 131.1,163.2 132,163.7 132.8,164.1 C 133.6,164.5 134.5,164.9 135.3,165.2 C 136.1,165.6 137,165.9 137.8,166.1 C 138.6,166.4 139.5,166.6 140.3,166.8 C 141.1,167 141.9,167.2 142.7,167.4 C 143.6,167.5 144.4,167.6 145.2,167.7 C 146,167.8 146.8,167.9 147.6,167.9 C 148.4,168 149.2,168 150,168 C 150.8,168 151.6,168 152.4,167.9 C 153.2,167.9 154,167.8 154.8,167.7 C 155.6,167.6 156.4,167.5 157.3,167.4 C 158.1,167.2 158.9,167 159.7,166.8 C 160.5,166.6 161.4,166.4 162.2,166.1 C 163,165.9 163.9,165.6 164.7,165.2 C 165.5,164.9 166.4,164.5 167.2,164.1 C 168,163.7 168.9,163.2 169.7,162.7 C 170.5,162.2 171.3,161.7 172.2,161.1 C 173,160.5 173.8,159.9 174.6,159.2 C 175.4,158.5 176.2,157.8 176.9,157 C 177.7,156.2 178.4,155.4 179.1,154.5 C 179.8,153.6 180.5,152.6 181.1,151.6 C 181.8,150.6 182.4,149.6 183,148.5 C 183.5,147.4 184,146.2 184.5,145 C 185,143.8 185.4,142.5 185.7,141.2 C 186.1,140 186.4,138.6 186.6,137.2 C 186.8,135.9 186.9,134.4 187,133 C 187.1,131.5 187,130.1 186.9,128.6 C 186.8,127.1 186.7,125.5 186.4,124 C 186.1,122.5 185.7,120.9 185.3,119.4 C 184.8,117.8 184.2,116.3 183.6,114.8 C 182.9,113.2 182.2,111.7 181.3,110.2 C 180.5,108.7 179.5,107.3 178.5,105.8 C 177.4,104.4 176.2,103 175,101.7 C 173.8,100.4 172.4,99.1 171,97.9 C 169.5,96.7 168,95.5 166.4,94.5 C 164.8,93.4 163.1,92.5 161.4,91.6 C 159.6,90.7 157.8,89.9 155.9,89.2 C 154,88.5 152,88 150,87.5 C 148,87 145.9,86.7 143.8,86.5 C 141.8,86.2 139.6,86.1 137.5,86.2 C 135.4,86.2 133.2,86.3 131,86.6 C 128.9,86.9 126.7,87.3 124.6,87.9 C 122.4,88.4 120.3,89.1 118.2,89.9 C 116.1,90.7 114,91.7 112,92.7 C 110,93.8 108.1,95 106.2,96.3 C 104.3,97.6 102.5,99.1 100.7,100.6 C 99,102.2 97.3,103.9 95.8,105.6 C 94.2,107.4 92.8,109.2 91.4,111.2 C 90.1,113.1 88.9,115.2 87.8,117.3 C 86.7,119.4 85.7,121.6 84.9,123.8 C 84,126.1 83.3,128.4 82.7,130.7 C 82.2,133 81.7,135.4 81.4,137.8 C 81.1,140.2 81,142.6 81,145 C 81,147.4 81.1,149.8 81.4,152.2 C 81.7,154.6 82.2,157 82.7,159.3 C 83.3,161.6 84,163.9 84.9,166.2 C 85.7,168.4 86.7,170.6 87.8,172.7 C 88.9,174.8 90.1,176.9 91.4,178.8 C 92.8,180.8 94.2,182.6 95.8,184.4 C 97.3,186.1 99,187.8 100.7,189.4 C 102.5,190.9 104.3,192.4 106.2,193.7 C 108.1,195 110,196.2 112,197.3 C 114,198.3 116.1,199.3 118.2,200.1 C 120.3,200.9 122.4,201.6 124.6,202.1 C 126.7,202.7 128.9,203.1 131,203.4 C 133.2,203.7 135.4,203.8 137.5,203.8 C 139.6,203.9 141.8,203.8 143.8,203.5 C 145.9,203.3 148,203 150,202.5 C 152,202 154,201.5 155.9,200.8 C 157.8,200.1 159.6,199.3 161.4,198.4 C 163.1,197.5 164.8,196.6 166.4,195.5 C 168,194.5 169.5,193.3 171,192.1 C 172.4,190.9 173.8,189.6 175,188.3 C 176.2,187 177.4,185.6 178.5,184.2 C 179.5,182.7 180.5,181.3 181.3,179.8 C 182.2,178.3 182.9,176.8 183.6,175.2 C 184.2,173.7 184.8,172.2 185.3,170.6 C 185.7,169.1 186.1,167.5 186.4,166 C 186.7,164.5 186.8,162.9 186.9,161.4 C 187,159.9 187.1,158.5 187,157 C 186.9,155.6 186.8,154.1 186.6,152.8 C 186.4,151.4 186.1,150 185.7,148.8 C 185.4,147.5 185,146.2 184.5,145 C 184,143.8 183.5,142.6 183,141.5 C 182.4,140.4 181.8,139.4 181.1,138.4 C 180.5,137.4 179.8,136.4 179.1,135.5 C 178.4,134.6 177.7,133.8 176.9,133 C 176.2,132.2 175.4,131.5 174.6,130.8 C 173.8,130.1 173,129.5 172.2,128.9 C 171.3,128.3 170.5,127.8 169.7,127.3 C 168.9,126.8 168,126.3 167.2,125.9 C 166.4,125.5 165.5,125.1 164.7,124.8 C 163.9,124.4 163,124.1 162.2,123.9 C 161.4,123.6 160.5,123.4 159.7,123.2 C 158.9,123 158.1,122.8 157.3,122.6 C 156.4,122.5 155.6,122.4 154.8,122.3 C 154,122.2 153.2,122.1 152.4,122.1 C 151.6,122 150.8,122 150,122 C 149.2,122 148.4,122 147.6,122.1 C 146.8,122.1 146,122.2 145.2,122.3 C 144.4,122.4 143.6,122.5 142.7,122.6 C 141.9,122.8 141.1,123 140.3,123.2 C 139.5,123.4 138.6,123.6 137.8,123.9 C 137,124.1 136.1,124.4 135.3,124.8 C 134.5,125.1 133.6,125.5 132.8,125.9 C 132,126.3 131.1,126.8 130.3,127.3 C 129.5,127.8 128.7,128.3 127.8,128.9 C 127,129.5 126.2,130.1 125.4,130.8 C 124.6,131.5 123.8,132.2 123.1,133 C 122.3,133.8 121.6,134.6 120.9,135.5 C 120.2,136.4 119.5,137.4 118.9,138.4 C 118.2,139.4 117.6,140.4 117,141.5 C 116.5,142.6 116,143.8 115.5,145 C 115,146.2 114.6,147.5 114.3,148.8 C 113.9,150 113.6,151.4 113.4,152.8 C 113.2,154.1 113.1,155.6 113,157 C 112.9,158.5 113,159.9 113.1,161.4 C 113.2,162.9 113.3,164.5 113.6,166 C 113.9,167.5 114.3,169.1 114.7,170.6 C 115.2,172.2 115.8,173.7 116.4,175.2 C 117.1,176.8 117.8,178.3 118.7,179.8 C 119.5,181.3 120.5,182.7 121.5,184.2 C 122.6,185.6 123.8,187 125,188.3 C 126.2,189.6 127.6,190.9 129,192.1 C 130.5,193.3 132,194.5 133.6,195.5 C 135.2,196.6 136.9,197.5 138.6,198.4 C 140.4,199.3 142.2,200.1 144.1,200.8 C 146,201.5 148,202 150,202.5 C 152,203 154.1,203.3 156.2,203.5 C 158.2,203.8 160.4,203.9 162.5,203.8 C 164.6,203.8 166.8,203.7 169,203.4 C 171.1,203.1 173.3,202.7 175.4,202.1 C 177.6,201.6 179.7,200.9 181.8,200.1 C 183.9,199.3 186,198.3 188,197.3 C 190,196.2 191.9,195 193.8,193.7 C 195.7,192.4 197.5,190.9 199.3,189.4 C 201,187.8 202.7,186.1 204.2,184.4 C 205.8,182.6 207.2,180.8 208.6,178.8 C 209.9,176.9 211.1,174.8 212.2,172.7 C 213.3,170.6 214.3,168.4 215.1,166.2 C 216,163.9 216.7,161.6 217.3,159.3 C 217.8,157 218.3,154.6 218.6,152.2 C 218.9,149.8 219,147.4 219,145 Z" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Crossing A -->
+  <line x1="159.3" y1="85.4" x2="140.7" y2="89.6" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+  <path d="M 169,86.6 C 166.8,86.3 164.6,86.2 162.5,86.2 C 160.4,86.1 158.2,86.2 156.2,86.5 C 154.1,86.7 152,87 150,87.5 C 148,88 146,88.5 144.1,89.2 C 142.2,89.9 140.4,90.7 138.6,91.6 C 136.9,92.5 135.2,93.4 133.6,94.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
+  <!-- Crossing B -->
+  <line x1="181.1" y1="153.9" x2="187.9" y2="136.1" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+  <path d="M 174.6,159.2 C 175.4,158.5 176.2,157.8 176.9,157 C 177.7,156.2 178.4,155.4 179.1,154.5 C 179.8,153.6 180.5,152.6 181.1,151.6 C 181.8,150.6 182.4,149.6 183,148.5 C 183.5,147.4 184,146.2 184.5,145 C 185,143.8 185.4,142.5 185.7,141.2 C 186.1,140 186.4,138.6 186.6,137.2 C 186.8,135.9 186.9,134.4 187,133 C 187.1,131.5 187,130.1 186.9,128.6" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
+  <!-- Crossing C -->
+  <line x1="140.7" y1="204.6" x2="159.3" y2="200.4" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+  <path d="M 131,203.4 C 133.2,203.7 135.4,203.8 137.5,203.8 C 139.6,203.9 141.8,203.8 143.8,203.5 C 145.9,203.3 148,203 150,202.5 C 152,202 154,201.5 155.9,200.8 C 157.8,200.1 159.6,199.3 161.4,198.4 C 163.1,197.5 164.8,196.6 166.4,195.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
+  <!-- Crossing D -->
+  <line x1="118.9" y1="136.1" x2="112.1" y2="153.9" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+  <path d="M 125.4,130.8 C 124.6,131.5 123.8,132.2 123.1,133 C 122.3,133.8 121.6,134.6 120.9,135.5 C 120.2,136.4 119.5,137.4 118.9,138.4 C 118.2,139.4 117.6,140.4 117,141.5 C 116.5,142.6 116,143.8 115.5,145 C 115,146.2 114.6,147.5 114.3,148.8 C 113.9,150 113.6,151.4 113.4,152.8 C 113.2,154.1 113.1,155.6 113,157 C 112.9,158.5 113,159.9 113.1,161.4" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- The foreseen clasp: dashed rings on the bigon's two corners, A and C -->
+  <circle cx="150" cy="87.5" r="11" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="1.5" stroke-dasharray="3,2.5"></circle>
+  <circle cx="150" cy="202.5" r="11" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="1.5" stroke-dasharray="3,2.5"></circle>
+  <text x="192" y="79" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7.5" fill="var(--dia-cord, #1f57c4)">bigon corner</text>
+  <line x1="176.5" y1="81" x2="159" y2="85" stroke="var(--dia-cord, #1f57c4)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+  <text x="107" y="212.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7.5" fill="var(--dia-cord, #1f57c4)">bigon corner</text>
+  <line x1="124" y1="209" x2="141" y2="205" stroke="var(--dia-cord, #1f57c4)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+
+  <!-- Crossing pins: A, B, D neutral; C is the chosen flip (green) -->
+  <line x1="150" y1="77.5" x2="150" y2="69.5" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+  <circle cx="150" cy="60.5" r="8" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></circle>
+  <text x="150" y="63.9" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-rigid, #8a8275)">A</text>
+  <line x1="194.5" y1="145" x2="230" y2="145" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+  <circle cx="239" cy="145" r="8" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></circle>
+  <text x="239" y="148.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-rigid, #8a8275)">B</text>
+  <line x1="150" y1="212.5" x2="150" y2="220.5" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+  <circle cx="150" cy="229.5" r="8" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-pos, #2f8f43)" stroke-width="2"></circle>
+  <text x="150" y="232.9" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-pos, #2f8f43)" font-weight="bold">C</text>
+  <line x1="105.5" y1="145" x2="70" y2="145" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+  <circle cx="61" cy="145" r="8" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></circle>
+  <text x="61" y="148.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-rigid, #8a8275)">D</text>
+
+  <!-- Ring threaded on the wire (wire passes over the ring on one side) -->
+  <circle cx="99.9" cy="101.4" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+  <line x1="97.5" y1="103.5" x2="91.2" y2="111.2" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M 102.5,99.1 C 101.9,99.6 101.3,100.1 100.7,100.6 C 99,102.2 97.3,103.9 95.8,105.6 C 94.2,107.4 92.8,109.2 91.4,111.2 C 90.1,113.1 88.9,115.2 87.8,117.3" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
+  <text x="85.9" y="87.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-ring, #b97d12)">ring</text>
+
+  <!-- Prediction caption -->
+  <text x="150" y="247" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-pos, #2f8f43)" font-weight="bold">Predict: flipping C frees this bigon</text>
+
+  <!-- Legend -->
+  <rect x="22" y="284" width="26" height="10" rx="2" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="3,2.5"></rect>
+  <text x="58" y="292.5" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">outer bigon — its only corners are A and C</text>
+
+  <circle cx="35" cy="306" r="6" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="1.25" stroke-dasharray="3,2.5"></circle>
+  <text x="58" y="310" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">the clasp a flip of C (or A) unlocks</text>
+
+  <circle cx="35" cy="322" r="6" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5"></circle>
+  <text x="58" y="326" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">chosen pin (C) — not yet flipped</text>
+
+  <text x="22" y="342" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">foreseen: R-II removes A &amp; C, then B and D untwist (R-I)</text>
+</svg><figcaption>Predict: flipping C frees the outer bigon — the shell will slide off by R-II</figcaption></figure></p>
+<ol start="3">
+<li><strong>Flip.</strong> Remove pin C, invert it, reinsert. The frame is now — topologically, before anything visibly moves — the unknot.</li>
+<li><strong>Execute.</strong> Trace your predicted moves with the ring: slide it along the wire and it glides past both shell crossings (the R-II you foresaw), then past the two leftover twists (the R-I kinks). No catch points remain.</li>
+</ol>
+<p><figure class="dia-figure"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" class="dia">
+  <title>The Crossing Number - Checkpoint B: Execute</title>
+  <desc>Three panels showing the post-flip simplification, exactly as predicted. Panel 1: the figure-eight diagram with crossing C flipped (marked with a dashed green circle) - the right shell arc now rides over at both of the outer bigon's corners, so a Reidemeister II move slides the shell off, removing crossings A and C. Panel 2: the two surviving crossings B and D are now bare single twists, a loop with one small kink on each side, each undone by a Reidemeister I untwist. Panel 3: a plain unknotted loop; the ring is free beside it. Arrows labeled R-II and R-I x2 connect the panels. Caption: any pin ends the same way; flipping B or D opens the central eye first instead.</desc>
+
+  <!--
+    Panel 1 geometry: same figure-eight parametrization as setup.svg
+    (x = (2 + cos 2t) cos 3t, y = (2 + cos 2t) sin 3t, z = sin 4t) at scale 12,
+    center (72,142). Crossing senses: A, B, D as in the alternating diagram
+    (over at t = pi/6, 2pi/3, 5pi/3); C flipped (over at t = 11pi/6 instead of
+    7pi/6). All crossings use the occlusion idiom (see crossingGap in
+    lib/svg.js): continuous base curve, surface-colored stroke along the over
+    strand's tangent, over-segment redrawn on top.
+    Panel 2: hand-built bezier loop with one R-I kink bulging east (where B
+    was) and one bulging west (where D was), transversal self-crossings at
+    (224,142) and (176,142).
+  -->
 
   <defs>
-    <marker id="d2-exitArrow2" markerWidth="6" markerHeight="4" refX="3" refY="2" orient="auto" markerUnits="strokeWidth">
+    <marker id="d3-cbArrow" markerWidth="6" markerHeight="4" refX="3" refY="2" orient="auto" markerUnits="strokeWidth">
       <path d="M 0,0 L 6,2 L 0,4 Z" fill="var(--dia-pos, #2f8f43)"></path>
     </marker>
   </defs>
 
-  
+  <!-- Title -->
+  <text x="200" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">The Crossing Number — Execute</text>
+  <text x="200" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">the flip unlocks the moves you predicted</text>
+
+  <!-- Panel 1: figure-eight with C flipped -->
+  <path d="M 108.0,142.0 L 107.7,137.8 L 106.9,133.6 L 105.5,129.7 L 103.6,125.9 L 101.2,122.5 L 98.4,119.5 L 95.2,116.9 L 91.8,114.7 L 88.2,113.1 L 84.4,112.0 L 80.6,111.4 L 76.9,111.3 L 73.2,111.8 L 69.7,112.6 L 66.4,114.0 L 63.4,115.6 L 60.8,117.7 L 58.5,119.9 L 56.6,122.4 L 55.0,125.0 L 53.9,127.7 L 53.1,130.4 L 52.7,133.1 L 52.7,135.7 L 53.0,138.2 L 53.5,140.5 L 54.3,142.7 L 55.3,144.7 L 56.4,146.4 L 57.7,147.9 L 59.0,149.3 L 60.4,150.4 L 61.9,151.3 L 63.4,152.1 L 64.8,152.7 L 66.3,153.2 L 67.7,153.6 L 69.2,153.8 L 70.6,154.0 L 72.0,154.0 L 73.4,154.0 L 74.8,153.8 L 76.3,153.6 L 77.7,153.2 L 79.2,152.7 L 80.6,152.1 L 82.1,151.3 L 83.6,150.4 L 85.0,149.3 L 86.3,147.9 L 87.6,146.4 L 88.7,144.7 L 89.7,142.7 L 90.5,140.5 L 91.0,138.2 L 91.3,135.7 L 91.3,133.1 L 90.9,130.4 L 90.1,127.7 L 89.0,125.0 L 87.4,122.4 L 85.5,119.9 L 83.2,117.7 L 80.6,115.6 L 77.6,114.0 L 74.3,112.6 L 70.8,111.8 L 67.1,111.3 L 63.4,111.4 L 59.6,112.0 L 55.8,113.1 L 52.2,114.7 L 48.8,116.9 L 45.6,119.5 L 42.8,122.5 L 40.4,125.9 L 38.5,129.7 L 37.1,133.6 L 36.3,137.8 L 36.0,142.0 L 36.3,146.2 L 37.1,150.4 L 38.5,154.3 L 40.4,158.1 L 42.8,161.5 L 45.6,164.5 L 48.8,167.1 L 52.2,169.3 L 55.8,170.9 L 59.6,172.0 L 63.4,172.6 L 67.1,172.7 L 70.8,172.2 L 74.3,171.4 L 77.6,170.0 L 80.6,168.4 L 83.2,166.3 L 85.5,164.1 L 87.4,161.6 L 89.0,159.0 L 90.1,156.3 L 90.9,153.6 L 91.3,150.9 L 91.3,148.3 L 91.0,145.8 L 90.5,143.5 L 89.7,141.3 L 88.7,139.3 L 87.6,137.6 L 86.3,136.1 L 85.0,134.7 L 83.6,133.6 L 82.1,132.7 L 80.6,131.9 L 79.2,131.3 L 77.7,130.8 L 76.3,130.4 L 74.8,130.2 L 73.4,130.0 L 72.0,130.0 L 70.6,130.0 L 69.2,130.2 L 67.7,130.4 L 66.3,130.8 L 64.8,131.3 L 63.4,131.9 L 61.9,132.7 L 60.4,133.6 L 59.0,134.7 L 57.7,136.1 L 56.4,137.6 L 55.3,139.3 L 54.3,141.3 L 53.5,143.5 L 53.0,145.8 L 52.7,148.3 L 52.7,150.9 L 53.1,153.6 L 53.9,156.3 L 55.0,159.0 L 56.6,161.6 L 58.5,164.1 L 60.8,166.3 L 63.4,168.4 L 66.4,170.0 L 69.7,171.4 L 73.2,172.2 L 76.9,172.7 L 80.6,172.6 L 84.4,172.0 L 88.2,170.9 L 91.8,169.3 L 95.2,167.1 L 98.4,164.5 L 101.2,161.5 L 103.6,158.1 L 105.5,154.3 L 106.9,150.4 L 107.7,146.2 L 108.0,142.0 Z" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.8" stroke-linecap="round"></path>
+  <!-- Crossing A (over at t = pi/6) -->
+  <line x1="76.5" y1="111.0" x2="67.5" y2="113.0" stroke="var(--dia-surface, #fbf7ee)" stroke-width="6" stroke-linecap="round"></line>
+  <path d="M 80.7,111.4 L 78.9,111.3 L 77.1,111.3 L 75.4,111.4 L 73.7,111.7 L 72.0,112.0 L 70.4,112.4 L 68.8,113.0 L 67.2,113.6 L 65.8,114.3 L 64.4,115.1" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.8" stroke-linecap="round"></path>
+  <!-- Crossing B (over at t = 2pi/3) -->
+  <line x1="88.3" y1="146.3" x2="91.7" y2="137.7" stroke="var(--dia-surface, #fbf7ee)" stroke-width="6" stroke-linecap="round"></line>
+  <path d="M 85.8,148.5 L 86.8,147.4 L 87.7,146.3 L 88.6,145.0 L 89.3,143.5 L 90.0,142.0 L 90.5,140.4 L 91.0,138.6 L 91.2,136.8 L 91.3,134.9 L 91.2,132.9" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.8" stroke-linecap="round"></path>
+  <!-- Crossing D (over at t = 5pi/3) -->
+  <line x1="55.7" y1="137.7" x2="52.3" y2="146.3" stroke="var(--dia-surface, #fbf7ee)" stroke-width="6" stroke-linecap="round"></line>
+  <path d="M 58.2,135.5 L 57.2,136.6 L 56.3,137.7 L 55.4,139.0 L 54.7,140.5 L 54.0,142.0 L 53.5,143.6 L 53.0,145.4 L 52.8,147.2 L 52.7,149.1 L 52.8,151.1" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.8" stroke-linecap="round"></path>
+  <!-- Crossing C, FLIPPED (over at t = 11pi/6, drawn green) -->
+  <line x1="67.5" y1="171.0" x2="76.5" y2="173.0" stroke="var(--dia-surface, #fbf7ee)" stroke-width="6" stroke-linecap="round"></line>
+  <path d="M 64.4,168.9 L 65.8,169.7 L 67.2,170.4 L 68.8,171.0 L 70.4,171.6 L 72.0,172.0 L 73.7,172.3 L 75.4,172.6 L 77.1,172.7 L 78.9,172.7 L 80.7,172.6" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.8" stroke-linecap="round"></path>
+  <circle cx="72" cy="172" r="8" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.25" stroke-dasharray="3,2.5"></circle>
+  <text x="104" y="184" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7.5" fill="var(--dia-pos, #2f8f43)">C flipped</text>
+  <line x1="90" y1="181" x2="79" y2="175" stroke="var(--dia-pos, #2f8f43)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+
+  <!-- Arrow panel 1 -> 2 -->
+  <line x1="116" y1="142" x2="142" y2="142" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5" marker-end="url(#d3-cbArrow)"></line>
+  <text x="129" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="var(--dia-pos, #2f8f43)" font-weight="bold">R-II</text>
+
+  <!-- Panel 2: shell gone; B and D are now bare kinks (one each side) -->
+  <path d="M 200,122 C 214,122 214,132 224,142 C 240,158 250,152 250,142 C 250,132 240,126 224,142 C 214,152 214,162 200,162 C 186,162 186,152 176,142 C 160,126 150,132 150,142 C 150,152 160,158 176,142 C 186,132 186,122 200,122 Z" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.8" stroke-linecap="round"></path>
+  <!-- East kink crossing (former B) -->
+  <line x1="227.3" y1="138.7" x2="220.7" y2="145.3" stroke="var(--dia-surface, #fbf7ee)" stroke-width="6" stroke-linecap="round"></line>
+  <path d="M 232.8,134.9 L 228.6,137.8 L 224,142 L 221.3,145.0 L 219.0,147.9" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.8" stroke-linecap="round"></path>
+  <!-- West kink crossing (former D) -->
+  <line x1="172.7" y1="145.3" x2="179.3" y2="138.7" stroke="var(--dia-surface, #fbf7ee)" stroke-width="6" stroke-linecap="round"></line>
+  <path d="M 167.2,149.1 L 171.4,146.2 L 176,142 L 178.7,139.0 L 181.0,136.1" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.8" stroke-linecap="round"></path>
+
+  <!-- Arrow panel 2 -> 3 -->
+  <line x1="258" y1="142" x2="284" y2="142" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5" marker-end="url(#d3-cbArrow)"></line>
+  <text x="271" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="var(--dia-pos, #2f8f43)" font-weight="bold">R-I × 2</text>
+
+  <!-- Panel 3: bare loop, ring free -->
+  <circle cx="322" cy="142" r="24" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.2"></circle>
+  <circle cx="366" cy="114" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+  <text x="366" y="99" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-ring, #b97d12)">ring (free)</text>
+
+  <!-- Panel labels -->
+  <text x="72" y="203" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="var(--dia-inksoft, #6a6151)">1. flip C: clasp opens</text>
+  <text x="200" y="203" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="var(--dia-inksoft, #6a6151)">2. B, D are bare twists</text>
+  <text x="322" y="203" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="var(--dia-inksoft, #6a6151)">3. nothing catches</text>
+
+  <!-- Caption -->
+  <rect x="30" y="222" width="340" height="40" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"></rect>
+  <text x="200" y="238" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Execute the predicted route — each move was visible before the flip</text>
+  <text x="200" y="253" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">R-II slides the shell off, the two leftover kinks untwist, the ring falls free</text>
+
+  <text x="200" y="281" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="var(--dia-rigid, #8a8275)">any pin ends the same way — flipping B or D opens the central eye first instead</text>
+</svg><figcaption>Execute: the R-II slides the shell off, two R-I kinks untwist, ring free</figcaption></figure></p>
+<ol start="5">
+<li><strong>Free the ring.</strong> Slide it off the frame.</li>
+</ol>
+<p><figure class="dia-figure dia-narrow"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350" class="dia">
+  <title>The Crossing Number - Solved</title>
+  <desc>The same alternating figure-eight diagram but crossing C (south) is flipped: the strand that passed under now passes over, drawn in green with a dashed highlight ring and a FLIPPED label. Pins A, B and D are gray; pin C is highlighted green. The diagram is now the unknot, so the ring has been freed: it sits at the upper right with a dashed exit-path arrow leading to it. C was the predicted flip worked in the text; on this minimal diagram any of the four flips unknots the frame. Label: Unknotting number = 1.</desc>
+
+  <!--
+    Geometry: standard alternating figure-eight (4_1) diagram from the
+    parametrization  x = (2 + cos 2t) cos 3t,  y = (2 + cos 2t) sin 3t,
+    z = sin 4t  (same construction as theory/topology-primer/
+    unknotting-crossing-change.svg). Scale 23, center (150,145).
+    Crossings sit at the compass points: A = north, B = east, C = south,
+    D = west. Tracing the strand gives the alternating Gauss code
+    OA UD OB UA OC UB OD UC.
+    Every crossing uses the occlusion idiom (see crossingGap in lib/svg.js):
+    continuous base curve, then a surface-colored round-linecap stroke laid
+    along the over strand's tangent, then the over-segment redrawn on top.
+  -->
+  <!--
+    Crossing C is drawn with the opposite sense (the other strand's
+    over-segment, in green): one crossing change turns 4_1 into the unknot.
+  -->
+
+  <defs>
+    <marker id="d4-exitArrow2" markerWidth="6" markerHeight="4" refX="3" refY="2" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 6,2 L 0,4 Z" fill="var(--dia-pos, #2f8f43)"></path>
+    </marker>
+  </defs>
 
   <!-- Title -->
   <text x="150" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">The Crossing Number — Solved</text>
@@ -306,63 +521,57 @@
   <!-- Wooden base -->
   <rect x="40" y="255" width="220" height="20" rx="3" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></rect>
 
-  <!-- Figure-eight knot diagram (same as setup) -->
-  <!-- Segment 1: top loop -->
-  <path d="M 100,80 Q 80,65 90,55 Q 110,40 140,50 Q 165,58 180,80" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
+  <!-- Figure-eight frame: one continuous closed strand -->
+  <path d="M 219,145 C 219,142.6 218.9,140.2 218.6,137.8 C 218.3,135.4 217.8,133 217.3,130.7 C 216.7,128.4 216,126.1 215.1,123.8 C 214.3,121.6 213.3,119.4 212.2,117.3 C 211.1,115.2 209.9,113.1 208.6,111.2 C 207.2,109.2 205.8,107.4 204.2,105.6 C 202.7,103.9 201,102.2 199.3,100.6 C 197.5,99.1 195.7,97.6 193.8,96.3 C 191.9,95 190,93.8 188,92.7 C 186,91.7 183.9,90.7 181.8,89.9 C 179.7,89.1 177.6,88.4 175.4,87.9 C 173.3,87.3 171.1,86.9 169,86.6 C 166.8,86.3 164.6,86.2 162.5,86.2 C 160.4,86.1 158.2,86.2 156.2,86.5 C 154.1,86.7 152,87 150,87.5 C 148,88 146,88.5 144.1,89.2 C 142.2,89.9 140.4,90.7 138.6,91.6 C 136.9,92.5 135.2,93.4 133.6,94.5 C 132,95.5 130.5,96.7 129,97.9 C 127.6,99.1 126.2,100.4 125,101.7 C 123.8,103 122.6,104.4 121.5,105.8 C 120.5,107.3 119.5,108.7 118.7,110.2 C 117.8,111.7 117.1,113.2 116.4,114.8 C 115.8,116.3 115.2,117.8 114.7,119.4 C 114.3,120.9 113.9,122.5 113.6,124 C 113.3,125.5 113.2,127.1 113.1,128.6 C 113,130.1 112.9,131.5 113,133 C 113.1,134.4 113.2,135.9 113.4,137.2 C 113.6,138.6 113.9,140 114.3,141.2 C 114.6,142.5 115,143.8 115.5,145 C 116,146.2 116.5,147.4 117,148.5 C 117.6,149.6 118.2,150.6 118.9,151.6 C 119.5,152.6 120.2,153.6 120.9,154.5 C 121.6,155.4 122.3,156.2 123.1,157 C 123.8,157.8 124.6,158.5 125.4,159.2 C 126.2,159.9 127,160.5 127.8,161.1 C 128.7,161.7 129.5,162.2 130.3,162.7 C 131.1,163.2 132,163.7 132.8,164.1 C 133.6,164.5 134.5,164.9 135.3,165.2 C 136.1,165.6 137,165.9 137.8,166.1 C 138.6,166.4 139.5,166.6 140.3,166.8 C 141.1,167 141.9,167.2 142.7,167.4 C 143.6,167.5 144.4,167.6 145.2,167.7 C 146,167.8 146.8,167.9 147.6,167.9 C 148.4,168 149.2,168 150,168 C 150.8,168 151.6,168 152.4,167.9 C 153.2,167.9 154,167.8 154.8,167.7 C 155.6,167.6 156.4,167.5 157.3,167.4 C 158.1,167.2 158.9,167 159.7,166.8 C 160.5,166.6 161.4,166.4 162.2,166.1 C 163,165.9 163.9,165.6 164.7,165.2 C 165.5,164.9 166.4,164.5 167.2,164.1 C 168,163.7 168.9,163.2 169.7,162.7 C 170.5,162.2 171.3,161.7 172.2,161.1 C 173,160.5 173.8,159.9 174.6,159.2 C 175.4,158.5 176.2,157.8 176.9,157 C 177.7,156.2 178.4,155.4 179.1,154.5 C 179.8,153.6 180.5,152.6 181.1,151.6 C 181.8,150.6 182.4,149.6 183,148.5 C 183.5,147.4 184,146.2 184.5,145 C 185,143.8 185.4,142.5 185.7,141.2 C 186.1,140 186.4,138.6 186.6,137.2 C 186.8,135.9 186.9,134.4 187,133 C 187.1,131.5 187,130.1 186.9,128.6 C 186.8,127.1 186.7,125.5 186.4,124 C 186.1,122.5 185.7,120.9 185.3,119.4 C 184.8,117.8 184.2,116.3 183.6,114.8 C 182.9,113.2 182.2,111.7 181.3,110.2 C 180.5,108.7 179.5,107.3 178.5,105.8 C 177.4,104.4 176.2,103 175,101.7 C 173.8,100.4 172.4,99.1 171,97.9 C 169.5,96.7 168,95.5 166.4,94.5 C 164.8,93.4 163.1,92.5 161.4,91.6 C 159.6,90.7 157.8,89.9 155.9,89.2 C 154,88.5 152,88 150,87.5 C 148,87 145.9,86.7 143.8,86.5 C 141.8,86.2 139.6,86.1 137.5,86.2 C 135.4,86.2 133.2,86.3 131,86.6 C 128.9,86.9 126.7,87.3 124.6,87.9 C 122.4,88.4 120.3,89.1 118.2,89.9 C 116.1,90.7 114,91.7 112,92.7 C 110,93.8 108.1,95 106.2,96.3 C 104.3,97.6 102.5,99.1 100.7,100.6 C 99,102.2 97.3,103.9 95.8,105.6 C 94.2,107.4 92.8,109.2 91.4,111.2 C 90.1,113.1 88.9,115.2 87.8,117.3 C 86.7,119.4 85.7,121.6 84.9,123.8 C 84,126.1 83.3,128.4 82.7,130.7 C 82.2,133 81.7,135.4 81.4,137.8 C 81.1,140.2 81,142.6 81,145 C 81,147.4 81.1,149.8 81.4,152.2 C 81.7,154.6 82.2,157 82.7,159.3 C 83.3,161.6 84,163.9 84.9,166.2 C 85.7,168.4 86.7,170.6 87.8,172.7 C 88.9,174.8 90.1,176.9 91.4,178.8 C 92.8,180.8 94.2,182.6 95.8,184.4 C 97.3,186.1 99,187.8 100.7,189.4 C 102.5,190.9 104.3,192.4 106.2,193.7 C 108.1,195 110,196.2 112,197.3 C 114,198.3 116.1,199.3 118.2,200.1 C 120.3,200.9 122.4,201.6 124.6,202.1 C 126.7,202.7 128.9,203.1 131,203.4 C 133.2,203.7 135.4,203.8 137.5,203.8 C 139.6,203.9 141.8,203.8 143.8,203.5 C 145.9,203.3 148,203 150,202.5 C 152,202 154,201.5 155.9,200.8 C 157.8,200.1 159.6,199.3 161.4,198.4 C 163.1,197.5 164.8,196.6 166.4,195.5 C 168,194.5 169.5,193.3 171,192.1 C 172.4,190.9 173.8,189.6 175,188.3 C 176.2,187 177.4,185.6 178.5,184.2 C 179.5,182.7 180.5,181.3 181.3,179.8 C 182.2,178.3 182.9,176.8 183.6,175.2 C 184.2,173.7 184.8,172.2 185.3,170.6 C 185.7,169.1 186.1,167.5 186.4,166 C 186.7,164.5 186.8,162.9 186.9,161.4 C 187,159.9 187.1,158.5 187,157 C 186.9,155.6 186.8,154.1 186.6,152.8 C 186.4,151.4 186.1,150 185.7,148.8 C 185.4,147.5 185,146.2 184.5,145 C 184,143.8 183.5,142.6 183,141.5 C 182.4,140.4 181.8,139.4 181.1,138.4 C 180.5,137.4 179.8,136.4 179.1,135.5 C 178.4,134.6 177.7,133.8 176.9,133 C 176.2,132.2 175.4,131.5 174.6,130.8 C 173.8,130.1 173,129.5 172.2,128.9 C 171.3,128.3 170.5,127.8 169.7,127.3 C 168.9,126.8 168,126.3 167.2,125.9 C 166.4,125.5 165.5,125.1 164.7,124.8 C 163.9,124.4 163,124.1 162.2,123.9 C 161.4,123.6 160.5,123.4 159.7,123.2 C 158.9,123 158.1,122.8 157.3,122.6 C 156.4,122.5 155.6,122.4 154.8,122.3 C 154,122.2 153.2,122.1 152.4,122.1 C 151.6,122 150.8,122 150,122 C 149.2,122 148.4,122 147.6,122.1 C 146.8,122.1 146,122.2 145.2,122.3 C 144.4,122.4 143.6,122.5 142.7,122.6 C 141.9,122.8 141.1,123 140.3,123.2 C 139.5,123.4 138.6,123.6 137.8,123.9 C 137,124.1 136.1,124.4 135.3,124.8 C 134.5,125.1 133.6,125.5 132.8,125.9 C 132,126.3 131.1,126.8 130.3,127.3 C 129.5,127.8 128.7,128.3 127.8,128.9 C 127,129.5 126.2,130.1 125.4,130.8 C 124.6,131.5 123.8,132.2 123.1,133 C 122.3,133.8 121.6,134.6 120.9,135.5 C 120.2,136.4 119.5,137.4 118.9,138.4 C 118.2,139.4 117.6,140.4 117,141.5 C 116.5,142.6 116,143.8 115.5,145 C 115,146.2 114.6,147.5 114.3,148.8 C 113.9,150 113.6,151.4 113.4,152.8 C 113.2,154.1 113.1,155.6 113,157 C 112.9,158.5 113,159.9 113.1,161.4 C 113.2,162.9 113.3,164.5 113.6,166 C 113.9,167.5 114.3,169.1 114.7,170.6 C 115.2,172.2 115.8,173.7 116.4,175.2 C 117.1,176.8 117.8,178.3 118.7,179.8 C 119.5,181.3 120.5,182.7 121.5,184.2 C 122.6,185.6 123.8,187 125,188.3 C 126.2,189.6 127.6,190.9 129,192.1 C 130.5,193.3 132,194.5 133.6,195.5 C 135.2,196.6 136.9,197.5 138.6,198.4 C 140.4,199.3 142.2,200.1 144.1,200.8 C 146,201.5 148,202 150,202.5 C 152,203 154.1,203.3 156.2,203.5 C 158.2,203.8 160.4,203.9 162.5,203.8 C 164.6,203.8 166.8,203.7 169,203.4 C 171.1,203.1 173.3,202.7 175.4,202.1 C 177.6,201.6 179.7,200.9 181.8,200.1 C 183.9,199.3 186,198.3 188,197.3 C 190,196.2 191.9,195 193.8,193.7 C 195.7,192.4 197.5,190.9 199.3,189.4 C 201,187.8 202.7,186.1 204.2,184.4 C 205.8,182.6 207.2,180.8 208.6,178.8 C 209.9,176.9 211.1,174.8 212.2,172.7 C 213.3,170.6 214.3,168.4 215.1,166.2 C 216,163.9 216.7,161.6 217.3,159.3 C 217.8,157 218.3,154.6 218.6,152.2 C 218.9,149.8 219,147.4 219,145 Z" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
 
-  <!-- Segment 2 -->
-  <path d="M 180,80 Q 195,105 185,130" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
+  <!-- Crossing A -->
+  <line x1="159.3" y1="85.4" x2="140.7" y2="89.6" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+  <path d="M 169,86.6 C 166.8,86.3 164.6,86.2 162.5,86.2 C 160.4,86.1 158.2,86.2 156.2,86.5 C 154.1,86.7 152,87 150,87.5 C 148,88 146,88.5 144.1,89.2 C 142.2,89.9 140.4,90.7 138.6,91.6 C 136.9,92.5 135.2,93.4 133.6,94.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
+  <!-- Crossing B -->
+  <line x1="181.1" y1="153.9" x2="187.9" y2="136.1" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+  <path d="M 174.6,159.2 C 175.4,158.5 176.2,157.8 176.9,157 C 177.7,156.2 178.4,155.4 179.1,154.5 C 179.8,153.6 180.5,152.6 181.1,151.6 C 181.8,150.6 182.4,149.6 183,148.5 C 183.5,147.4 184,146.2 184.5,145 C 185,143.8 185.4,142.5 185.7,141.2 C 186.1,140 186.4,138.6 186.6,137.2 C 186.8,135.9 186.9,134.4 187,133 C 187.1,131.5 187,130.1 186.9,128.6" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
+  <!-- Crossing C (FLIPPED: the other strand now passes over) -->
+  <line x1="140.7" y1="200.4" x2="159.3" y2="204.6" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+  <path d="M 133.6,195.5 C 135.2,196.6 136.9,197.5 138.6,198.4 C 140.4,199.3 142.2,200.1 144.1,200.8 C 146,201.5 148,202 150,202.5 C 152,203 154.1,203.3 156.2,203.5 C 158.2,203.8 160.4,203.9 162.5,203.8 C 164.6,203.8 166.8,203.7 169,203.4" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="2.5" stroke-linecap="round"></path>
+  <!-- Crossing D -->
+  <line x1="118.9" y1="136.1" x2="112.1" y2="153.9" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+  <path d="M 125.4,130.8 C 124.6,131.5 123.8,132.2 123.1,133 C 122.3,133.8 121.6,134.6 120.9,135.5 C 120.2,136.4 119.5,137.4 118.9,138.4 C 118.2,139.4 117.6,140.4 117,141.5 C 116.5,142.6 116,143.8 115.5,145 C 115,146.2 114.6,147.5 114.3,148.8 C 113.9,150 113.6,151.4 113.4,152.8 C 113.2,154.1 113.1,155.6 113,157 C 112.9,158.5 113,159.9 113.1,161.4" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
 
-  <!-- Segment 3 -->
-  <path d="M 185,130 Q 170,155 145,160" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
+  <!-- Highlight ring around the flipped crossing -->
+  <circle cx="150" cy="202.5" r="12" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5" stroke-dasharray="3,2.5"></circle>
+  <text x="132" y="234.5" text-anchor="end" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-pos, #2f8f43)">FLIPPED</text>
 
-  <!-- Segment 4 -->
-  <path d="M 145,160 Q 120,165 110,180" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
+  <!-- Crossing pins: A, B, D unchanged (gray); C flipped (green) -->
+  <line x1="150" y1="77.5" x2="150" y2="69.5" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+  <circle cx="150" cy="60.5" r="8" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></circle>
+  <text x="150" y="63.9" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-rigid, #8a8275)">A</text>
+  <line x1="194.5" y1="145" x2="230" y2="145" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+  <circle cx="239" cy="145" r="8" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></circle>
+  <text x="239" y="148.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-rigid, #8a8275)">B</text>
+  <line x1="105.5" y1="145" x2="70" y2="145" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+  <circle cx="61" cy="145" r="8" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></circle>
+  <text x="61" y="148.4" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-rigid, #8a8275)">D</text>
+  <line x1="150" y1="212.5" x2="150" y2="220.5" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="2.5,2"></line>
+  <circle cx="150" cy="229.5" r="8" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-pos, #2f8f43)" stroke-width="2"></circle>
+  <text x="150" y="232.9" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-pos, #2f8f43)" font-weight="bold">C</text>
 
-  <!-- Segment 5 -->
-  <path d="M 110,180 Q 95,210 110,230 Q 130,245 155,230 Q 175,215 185,195" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
-
-  <!-- Segment 6 -->
-  <path d="M 185,195 Q 195,170 190,150" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
-
-  <!-- Segment 7 -->
-  <path d="M 190,150 Q 180,125 160,110 Q 135,95 110,100 Q 90,105 100,80" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" stroke-linecap="round"></path>
-
-  <!-- Crossing pins A, B, D (unchanged, gray) -->
-  <circle cx="175" cy="95" r="10" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></circle>
-  <text x="175" y="99" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">A</text>
-
-  <circle cx="165" cy="145" r="10" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></circle>
-  <text x="165" y="149" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">B</text>
-
-  <circle cx="188" cy="170" r="10" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></circle>
-  <text x="188" y="174" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">D</text>
-
-  <!-- Crossing C (FLIPPED — highlighted green) -->
-  <circle cx="120" cy="175" r="12" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-pos, #2f8f43)" stroke-width="2"></circle>
-  <text x="120" y="179" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-pos, #2f8f43)" font-weight="bold">C</text>
-
-  <!-- "FLIPPED" label for crossing C -->
-  <text x="95" y="195" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-pos, #2f8f43)">FLIPPED</text>
-
-  <!-- Ring freed — sitting to the right -->
-  <circle cx="255" cy="100" r="12" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
-  <text x="255" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-ring, #b97d12)">ring (free)</text>
+  <!-- Ring freed, sitting off the frame -->
+  <circle cx="253" cy="95" r="12" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"></circle>
+  <text x="253" y="120" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-ring, #b97d12)">ring (free)</text>
 
   <!-- Exit path arrow -->
-  <path d="M 132,65 Q 180,55 240,88" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#d2-exitArrow2)"></path>
-  <text x="185" y="52" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-pos, #2f8f43)">exit path</text>
+  <path d="M 97.9,92.4 C 118,36 195,32 244,82" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#d4-exitArrow2)"></path>
+  <text x="88" y="66" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-pos, #2f8f43)">exit path</text>
 
-  <!-- Unknotting number label -->
-  <rect x="60" y="230" width="180" height="22" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"></rect>
-  <text x="150" y="245" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Unknotting number = 1</text>
+  <!-- Unknotting number message -->
+  <text x="150" y="249" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Unknotting number = 1</text>
 
   <!-- Legend -->
   <line x1="20" y1="290" x2="50" y2="290" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"></line>
-  <text x="58" y="294" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">figure-eight wire frame</text>
+  <text x="58" y="294" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">figure-eight wire frame (now unknotted)</text>
 
-  <circle cx="35" cy="307" r="8" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-pos, #2f8f43)" stroke-width="2"></circle>
-  <text x="58" y="311" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">flipped crossing (C)</text>
+  <circle cx="35" cy="307" r="7" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-pos, #2f8f43)" stroke-width="2"></circle>
+  <text x="58" y="311" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">flipped crossing pin (C)</text>
 
   <circle cx="35" cy="325" r="6" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2"></circle>
   <text x="58" y="329" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">ring (freed)</text>
@@ -370,22 +579,23 @@
   <line x1="20" y1="340" x2="50" y2="340" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5" stroke-dasharray="4,2"></line>
   <text x="58" y="344" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">exit path</text>
 </svg><figcaption>Solved: crossing C flipped, ring freed</figcaption></figure></p>
-<ol start="4">
-<li>The figure-eight is now the unknot. Slide the ring off.</li>
+<ol start="6">
+<li>Restore pin C and repeat from another pin if you like: A opens the same outer shell; B or D opens the central eye instead. Every route ends at the unknot — predicting <em>which</em> route is the whole game.</li>
 </ol>
-<p>At most 4 attempts are needed (fewer if the solver reasons about which crossings are load-bearing).</p>
+<p>If your prediction was right, the dissolution feels anticlimactic. That is the point.</p>
 <h2 id="why-its-tricky">Why It's Tricky <a href="#why-its-tricky" class="anchor-link" aria-hidden="true">#</a></h2>
-<p>The puzzle exploits a natural assumption: "all crossings are equivalent, so any one should work." In fact, each crossing has a different structural role in the knot. Flipping the wrong crossing changes the knot type — sometimes making it simpler, sometimes more complex — but only one specific crossing leads to the unknot.</p>
-<div class="callout callout--lesson"><span class="callout-label">Lesson</span><p>Unknotting number measures a knot's intrinsic distance from the unknot. This distance is well-defined (it is a topological invariant), but the <em>path</em> to the unknot — which crossing to change — is not obvious from the diagram alone. The puzzle introduces the concept of crossing changes as a fundamental operation in knot theory.</p></div>
+<p>The trap is behavioral, not structural. The puzzle <em>looks</em> like a search — four pins, one ring, surely one right answer — and that framing sends solvers into flip-and-test loops. But on this diagram every answer is "correct," so random flipping succeeds immediately and teaches nothing: the frame dissolves and the solver cannot say why.</p>
+<p>The real challenge is to earn the flip: to look at a locked clasp and see, in advance, the R-II that isn't there yet. Solvers who do this discover something the flip-and-test solver never notices — that the four crossings pair into two clasps, and that a crossing change is not magic but simply the key that turns one clasp's lock.</p>
+<div class="callout callout--lesson"><span class="callout-label">Lesson</span><p>Unknotting number measures a knot's intrinsic distance from the unknot, minimized over <em>all</em> diagrams. This diagram makes u(4_1) = 1 visible four ways at once — and what it <em>cannot</em> show is just as instructive: no flip here produces a trefoil, and by a 2012 theorem of Kawauchi no flip in any other figure-eight diagram does either — the Gordian distance from figure-eight to trefoil is 2. Distances measured in crossing changes are invariants of the knots themselves, settled by no single picture of them. That is what makes crossing changes a fundamental — and genuinely difficult — operation in knot theory.</p></div>
 <h2 id="common-mistakes">Common Mistakes <a href="#common-mistakes" class="anchor-link" aria-hidden="true">#</a></h2>
 <ol>
-<li><p><strong>Flipping multiple crossings simultaneously.</strong> The unknotting number is 1, so only one flip is needed. Flipping two crossings typically produces a new knot rather than the unknot.</p>
+<li><p><strong>Flipping before predicting.</strong> The flip will succeed — every flip here does — but you learn nothing. Restore the pin, and this time say out loud which bigon opens and which moves follow before you touch it.</p>
 </li>
-<li><p><strong>Forgetting to test after each flip.</strong> Solvers who flip a pin and then immediately move to the next without testing miss the solution when they correctly flip C.</p>
+<li><p><strong>Predicting the wrong bigon.</strong> Each pin opens only its own clasp: flipping C opens the outer shell (A–C), not the central eye (B–D). If you foresee the wrong bigon, the moves you expect won't appear — the slack shows up at the other pair of crossings.</p>
 </li>
-<li><p><strong>Assuming the puzzle is solved because the knot "looks simpler."</strong> Flipping A or D produces a trefoil, which has fewer crossings than the figure-eight but is still knotted. Visual simplification is not the same as unknotting.</p>
+<li><p><strong>Assuming this diagram's generosity generalizes.</strong> "Any crossing works" is a fact about the minimal figure-eight diagram, not about knots. On the cinquefoil no single flip works at all (u = 2), and on larger diagrams different flips lead to genuinely different knots.</p>
 </li>
-<li><p><strong>Not restoring incorrect flips before trying the next.</strong> The puzzle assumes only one crossing is flipped at a time. If the solver leaves A flipped while flipping C, the result is a different knot entirely.</p>
+<li><p><strong>Confusing the wire's shape with the knot type.</strong> After the flip the frame still <em>looks</em> like a figure-eight — the steel hasn't moved. The knot type changed, not the geometry: the Reidemeister moves happen in your model (and in the ring's newfound freedom), not in the rod. Trust the ring, not your eyes.</p>
 </li>
 </ol>
 <h2 id="construction-notes">Construction Notes <a href="#construction-notes" class="anchor-link" aria-hidden="true">#</a></h2>
@@ -410,9 +620,9 @@
   <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
   <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
 </svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
-        <p style="margin:.8rem 0 0;max-width:30ch;font-size:.92rem">Topology you solve with your hands — 17 puzzles, their solutions, and the mathematics behind them.</p>
+        <p style="margin:.8rem 0 0;max-width:30ch;font-size:.92rem">Topology you solve with your hands — 20 puzzles, their solutions, and the mathematics behind them.</p>
       </div>
-      <div><h4>Arc 1</h4><ul><li><a href="../puzzles/01-the-gatekeeper.html">1. The Gatekeeper</a></li><li><a href="../puzzles/02-shepherds-yoke.html">2. Shepherd's Yoke</a></li><li><a href="../puzzles/03-the-prisoners-ring.html">3. The Prisoner's Ring</a></li><li><a href="../puzzles/04-mobius-snare.html">4. Mobius Snare</a></li><li><a href="../puzzles/11-the-mirror-gate.html">5. The Mirror Gate</a></li></ul></div><div><h4>Arc 2</h4><ul><li><a href="../puzzles/05-trinity-lock.html">6. Trinity Lock</a></li><li><a href="../puzzles/06-devils-pitchfork.html">7. Devil's Pitchfork</a></li><li><a href="../puzzles/07-the-ferrymans-knot.html">8. The Ferryman's Knot</a></li><li><a href="../puzzles/16-the-crossing-number.html">9. The Crossing Number</a></li></ul></div><div><h4>Arc 3</h4><ul><li><a href="../puzzles/08-ouroboros-chain.html">10. Ouroboros Chain</a></li><li><a href="../puzzles/09-genus-trap.html">11. Genus Trap</a></li><li><a href="../puzzles/10-the-hopf-paradox.html">12. The Hopf Paradox</a></li></ul></div><div><h4>Arc 4</h4><ul><li><a href="../puzzles/12-the-braid-cage.html">13. The Braid Cage</a></li><li><a href="../puzzles/13-the-torus-winder.html">14. The Torus Winder</a></li><li><a href="../puzzles/14-the-tricolor-lock.html">15. The Tricolor Lock</a></li><li><a href="../puzzles/15-the-seifert-sail.html">16. The Seifert Sail</a></li><li><a href="../puzzles/17-the-satellite-trap.html">17. The Satellite Trap</a></li></ul></div>
+      <div><h4>Arc 1</h4><ul><li><a href="../puzzles/01-the-gatekeeper.html">1. The Gatekeeper</a></li><li><a href="../puzzles/02-shepherds-yoke.html">2. Shepherd's Yoke</a></li><li><a href="../puzzles/03-the-prisoners-ring.html">3. The Prisoner's Ring</a></li><li><a href="../puzzles/04-mobius-snare.html">4. Mobius Snare</a></li><li><a href="../puzzles/11-the-mirror-gate.html">5. The Mirror Gate</a></li></ul></div><div><h4>Arc 2</h4><ul><li><a href="../puzzles/05-trinity-lock.html">6. Trinity Lock</a></li><li><a href="../puzzles/06-devils-pitchfork.html">7. Devil's Pitchfork</a></li><li><a href="../puzzles/07-the-ferrymans-knot.html">8. The Ferryman's Knot</a></li><li><a href="../puzzles/16-the-crossing-number.html">9. The Crossing Number</a></li></ul></div><div><h4>Arc 3</h4><ul><li><a href="../puzzles/08-ouroboros-chain.html">10. Ouroboros Chain</a></li><li><a href="../puzzles/09-genus-trap.html">11. Genus Trap</a></li><li><a href="../puzzles/10-the-hopf-paradox.html">12. The Hopf Paradox</a></li></ul></div><div><h4>Arc 4</h4><ul><li><a href="../puzzles/12-the-braid-cage.html">13. The Braid Cage</a></li><li><a href="../puzzles/13-the-torus-winder.html">14. The Torus Winder</a></li><li><a href="../puzzles/14-the-tricolor-lock.html">15. The Tricolor Lock</a></li><li><a href="../puzzles/15-the-seifert-sail.html">16. The Seifert Sail</a></li><li><a href="../puzzles/17-the-satellite-trap.html">17. The Satellite Trap</a></li></ul></div><div><h4>Arc 5</h4><ul><li><a href="../puzzles/18-the-whitehead-waltz.html">18. The Whitehead Waltz</a></li><li><a href="../puzzles/19-the-tangle-dance.html">19. The Tangle Dance</a></li><li><a href="../puzzles/20-the-grannys-downfall.html">20. The Granny's Downfall</a></li></ul></div>
     </div>
     <div class="foot-fine">
       <span>EXKNOTS · MIT License</span>

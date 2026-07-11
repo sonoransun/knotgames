@@ -1,0 +1,86 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 372">
+  <title>Puzzle 18: True Clasp vs. False Clasp</title>
+  <desc>Two magnified views of the clasp below the ring. On Station A the strand rising from lobe 1 passes over the strand rising from lobe 2 — the lobes hook, forming the Whitehead link. On Station B the same crossing is flipped — the lobes merely overlap, and the assembly is the unlink. The single differing crossing is circled in each panel.</desc>
+
+  <!-- Title -->
+  <text x="290" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13"
+        fill="var(--dia-ink, #24211a)" font-weight="bold">The clasp, magnified</text>
+
+  <!-- ============ PANEL A: TRUE CLASP ============ -->
+  <g transform="translate(15,46)">
+    <text x="140" y="10" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12"
+          font-weight="bold" fill="var(--dia-inksoft, #6a6151)">STATION A — TRUE CLASP</text>
+    <text x="140" y="26" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10"
+          fill="var(--dia-inksoft, #6a6151)">the back lobe reaches in front: the lobes hook</text>
+
+    <!-- Strand end labels -->
+    <text x="60" y="54" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5"
+          fill="var(--dia-inksoft, #6a6151)">up to the ring</text>
+    <text x="220" y="54" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5"
+          fill="var(--dia-inksoft, #6a6151)">up to the ring</text>
+    <text x="60" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5"
+          fill="var(--dia-inksoft, #6a6151)">from lobe 1</text>
+    <text x="220" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5"
+          fill="var(--dia-inksoft, #6a6151)">from lobe 2</text>
+
+    <!-- Under strand (lobe 2 → up-left), continuous -->
+    <path d="M 220 235 C 185 205 160 180 140 150 C 120 120 95 95 60 65"
+          fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="3.5"/>
+    <!-- Occlusion along the OVER strand's tangent at the crossing (140,150) -->
+    <line x1="133.9" y1="159.1" x2="146.1" y2="140.9"
+          stroke="var(--dia-surface, #fbf7ee)" stroke-width="12" stroke-linecap="round"/>
+    <!-- Over strand (lobe 1 → up-right), drawn last -->
+    <path d="M 60 235 C 95 205 120 180 140 150 C 160 120 185 95 220 65"
+          fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="3.5"/>
+    <text x="168" y="124" font-family="system-ui, sans-serif" font-size="9"
+          fill="var(--dia-inksoft, #6a6151)">over</text>
+
+    <!-- The differing crossing, circled -->
+    <circle cx="140" cy="150" r="30" fill="none" stroke="var(--dia-gold, #c79a22)"
+            stroke-width="1.5" stroke-dasharray="5,4"/>
+
+    <text x="140" y="290" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10"
+          fill="var(--dia-inksoft, #6a6151)">hooked — pulling either lobe out drags the other</text>
+  </g>
+
+  <!-- ============ PANEL B: FALSE CLASP ============ -->
+  <g transform="translate(305,46)">
+    <text x="140" y="10" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12"
+          font-weight="bold" fill="var(--dia-inksoft, #6a6151)">STATION B — FALSE CLASP</text>
+    <text x="140" y="26" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10"
+          fill="var(--dia-inksoft, #6a6151)">the back lobe stays behind: the lobes merely overlap</text>
+
+    <!-- Strand end labels -->
+    <text x="60" y="54" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5"
+          fill="var(--dia-inksoft, #6a6151)">up to the ring</text>
+    <text x="220" y="54" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5"
+          fill="var(--dia-inksoft, #6a6151)">up to the ring</text>
+    <text x="60" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5"
+          fill="var(--dia-inksoft, #6a6151)">from lobe 1</text>
+    <text x="220" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5"
+          fill="var(--dia-inksoft, #6a6151)">from lobe 2</text>
+
+    <!-- Under strand (lobe 1 → up-right), continuous -->
+    <path d="M 60 235 C 95 205 120 180 140 150 C 160 120 185 95 220 65"
+          fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="3.5"/>
+    <!-- Occlusion along the OVER strand's tangent at the crossing (140,150) -->
+    <line x1="146.1" y1="159.1" x2="133.9" y2="140.9"
+          stroke="var(--dia-surface, #fbf7ee)" stroke-width="12" stroke-linecap="round"/>
+    <!-- Over strand (lobe 2 → up-left), drawn last -->
+    <path d="M 220 235 C 185 205 160 180 140 150 C 120 120 95 95 60 65"
+          fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="3.5"/>
+    <text x="112" y="124" text-anchor="end" font-family="system-ui, sans-serif" font-size="9"
+          fill="var(--dia-inksoft, #6a6151)">over</text>
+
+    <!-- The differing crossing, circled -->
+    <circle cx="140" cy="150" r="30" fill="none" stroke="var(--dia-gold, #c79a22)"
+            stroke-width="1.5" stroke-dasharray="5,4"/>
+
+    <text x="140" y="290" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10"
+          fill="var(--dia-inksoft, #6a6151)">overlapping — the lobes part with a Reidemeister II move</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="290" y="364" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10"
+        fill="var(--dia-rigid, #8a8275)">The circled crossing is the only difference between the two stations — one over-under, flipped.</text>
+</svg>

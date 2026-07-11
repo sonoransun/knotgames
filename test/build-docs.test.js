@@ -7,6 +7,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
 import { ghSlug, numberlessAlias, loadPuzzles } from '../scripts/build-docs.js';
+import { puzzleRegistry } from '../puzzles/registry.js';
+
+const N = puzzleRegistry.length;
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DOCS = path.join(ROOT, 'docs');
@@ -29,9 +32,9 @@ describe('ghSlug (GitHub-compatible heading anchors)', () => {
 
 describe('registry → puzzles', () => {
   const puzzles = loadPuzzles();
-  it('has exactly 17 puzzles with contiguous display ids 1..17', () => {
-    expect(puzzles).toHaveLength(17);
-    expect(puzzles.map((p) => p.id).sort((a, b) => a - b)).toEqual([...Array(17)].map((_, i) => i + 1));
+  it('has one record per registry entry with contiguous display ids 1..N', () => {
+    expect(puzzles).toHaveLength(N);
+    expect(puzzles.map((p) => p.id).sort((a, b) => a - b)).toEqual([...Array(N)].map((_, i) => i + 1));
   });
   it('maps every puzzle to an existing markdown source', () => {
     for (const p of puzzles) expect(existsSync(path.join(ROOT, p.mdPath)), p.mdPath).toBe(true);
@@ -57,13 +60,13 @@ describe.skipIf(!hasDocs)('docs/ integrity (run `npm run build:docs` first)', ()
     return idCache.get(f);
   };
 
-  it('renders the landing, all 17 puzzles, references, and the explorer', () => {
+  it('renders the landing, every puzzle, references, and the explorer', () => {
     expect(existsSync(path.join(DOCS, 'index.html'))).toBe(true);
     expect(existsSync(path.join(DOCS, 'explore/index.html'))).toBe(true);
     expect(existsSync(path.join(DOCS, 'theory/topology-primer.html'))).toBe(true);
     expect(existsSync(path.join(DOCS, 'construction/materials.html'))).toBe(true);
     expect(existsSync(path.join(DOCS, '.nojekyll'))).toBe(true);
-    expect(pages.filter((f) => /\/puzzles\/\d\d-/.test(f))).toHaveLength(17);
+    expect(pages.filter((f) => /\/puzzles\/\d\d-/.test(f))).toHaveLength(N);
   });
 
   it('has no absolute-root links (they 404 under the /knotgames/ base path)', () => {

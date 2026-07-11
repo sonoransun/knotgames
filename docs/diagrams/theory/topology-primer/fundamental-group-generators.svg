@@ -1,0 +1,94 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340">
+  <title>Fundamental Group Generators</title>
+  <desc>Top view of a genus-2 block drawn as two posts: generator loop a in red encircles the left post and loop b in blue encircles the right post, both based at x0; a small green loop enclosing neither post shrinks to the identity, and a second panel shows the composite loop spelling the word a b a-inverse.</desc>
+
+  <!-- ===== Title ===== -->
+  <text x="350" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-ink, #24211a)" font-weight="bold">The Fundamental Group of a Two-Post Block (top view)</text>
+
+  <!-- Faint divider between the two panels -->
+  <line x1="350" y1="60" x2="350" y2="280" stroke="var(--dia-faint, #c9bda7)" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- ===================================================== -->
+  <!-- PANEL 1: generators a, b and a contractible loop      -->
+  <!-- ===================================================== -->
+
+  <!-- Block (genus-2 handlebody seen from above) -->
+  <rect x="22" y="55" width="316" height="190" rx="10" fill="var(--dia-wash, #ece3d0)" fill-opacity="0.45" stroke="var(--dia-ink, #24211a)" stroke-width="2"/>
+
+  <!-- Posts (the solid material around each tunnel) -->
+  <circle cx="105" cy="120" r="17" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-ink, #24211a)" stroke-width="1"/>
+  <circle cx="255" cy="120" r="17" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-ink, #24211a)" stroke-width="1"/>
+  <text x="105" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-surface, #fbf7ee)" font-weight="bold">A</text>
+  <text x="255" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-surface, #fbf7ee)" font-weight="bold">B</text>
+
+  <!-- Generator loop a: encircles the left post, based at x0 (red, matching Tunnel A in the genus-trap figures) -->
+  <path d="M180,205 C150,190 80,175 65,140 C52,110 62,82 95,78 C130,74 148,95 147,125 C146,155 165,180 180,205"
+        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
+  <polygon points="0,0 -10,-4.5 -10,4.5" transform="translate(122,81) rotate(17)" fill="var(--dia-neg, #cf3a26)"/>
+  <text x="42" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="var(--dia-neg, #cf3a26)" font-weight="bold" font-style="italic">a</text>
+
+  <!-- Generator loop b: encircles the right post, based at x0 (blue, matching Tunnel B) -->
+  <path d="M180,205 C195,180 214,155 213,125 C212,95 230,74 265,78 C298,82 308,110 295,140 C280,175 210,190 180,205"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+  <polygon points="0,0 -10,-4.5 -10,4.5" transform="translate(242,79.5) rotate(-16)" fill="var(--dia-cord, #1f57c4)"/>
+  <text x="318" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="var(--dia-cord, #1f57c4)" font-weight="bold" font-style="italic">b</text>
+
+  <!-- Contractible loop: touches neither post -->
+  <ellipse cx="180" cy="92" rx="16" ry="10" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="2" stroke-dasharray="4,3"/>
+  <polygon points="0,0 -10,-4.5 -10,4.5" transform="translate(172,100.7) rotate(200)" fill="var(--dia-pos, #2f8f43)"/>
+  <line x1="180" y1="52" x2="180" y2="78" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.75" stroke-dasharray="3,2"/>
+  <text x="180" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-pos, #2f8f43)">shrinks to a point &#x2014; identity</text>
+
+  <!-- Basepoint -->
+  <circle cx="180" cy="205" r="4" fill="var(--dia-ink, #24211a)"/>
+  <text x="180" y="220" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)" font-weight="bold" font-style="italic">x&#x2080;</text>
+  <text x="180" y="233" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">basepoint</text>
+
+  <!-- Panel 1 caption -->
+  <text x="180" y="263" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Generator loops <tspan font-style="italic" fill="var(--dia-neg, #cf3a26)">a</tspan> and <tspan font-style="italic" fill="var(--dia-cord, #1f57c4)">b</tspan></text>
+  <text x="180" y="277" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">each circle is a tunnel/post the loop cannot cross</text>
+
+  <!-- ===================================================== -->
+  <!-- PANEL 2: the composite loop a . b . a^-1               -->
+  <!-- ===================================================== -->
+
+  <!-- Block -->
+  <rect x="362" y="55" width="316" height="190" rx="10" fill="var(--dia-wash, #ece3d0)" fill-opacity="0.45" stroke="var(--dia-ink, #24211a)" stroke-width="2"/>
+
+  <!-- Posts -->
+  <circle cx="445" cy="120" r="17" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-ink, #24211a)" stroke-width="1"/>
+  <circle cx="595" cy="120" r="17" fill="var(--dia-wood, #b07d52)" stroke="var(--dia-ink, #24211a)" stroke-width="1"/>
+  <text x="445" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-surface, #fbf7ee)" font-weight="bold">A</text>
+  <text x="595" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-surface, #fbf7ee)" font-weight="bold">B</text>
+
+  <!-- Lobe 1: a (around post A, forward; red) -->
+  <path d="M520,205 C490,190 420,175 405,140 C392,110 402,82 435,78 C470,74 488,95 487,125 C486,155 505,180 520,205"
+        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
+  <polygon points="0,0 -10,-4.5 -10,4.5" transform="translate(462,81) rotate(17)" fill="var(--dia-neg, #cf3a26)"/>
+  <text x="415" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-neg, #cf3a26)" font-weight="bold" font-style="italic">a</text>
+
+  <!-- Lobe 2: b (around post B; blue) -->
+  <path d="M520,205 C535,180 554,155 553,125 C552,95 570,74 605,78 C638,82 648,110 635,140 C620,175 550,190 520,205"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+  <polygon points="0,0 -10,-4.5 -10,4.5" transform="translate(582,79.5) rotate(-16)" fill="var(--dia-cord, #1f57c4)"/>
+  <text x="655" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-cord, #1f57c4)" font-weight="bold" font-style="italic">b</text>
+
+  <!-- Lobe 3: a^-1 (around post A again, traversed in reverse; dashed red) -->
+  <path d="M520,205 C480,195 400,185 385,145 C370,105 385,66 432,62 C480,58 505,88 503,125 C501,160 508,182 520,205"
+        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.85"/>
+  <polygon points="0,0 -10,-4.5 -10,4.5" transform="translate(391,81) rotate(130)" fill="var(--dia-neg, #cf3a26)" opacity="0.85"/>
+  <text x="438" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-neg, #cf3a26)" font-weight="bold" font-style="italic" opacity="0.85">a&#x207B;&#xB9;</text>
+
+  <!-- Basepoint and word label -->
+  <circle cx="520" cy="205" r="4" fill="var(--dia-ink, #24211a)"/>
+  <text x="520" y="220" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)" font-weight="bold" font-style="italic">x&#x2080;</text>
+  <text x="520" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-ink, #24211a)" font-weight="bold" font-style="italic">a &#xB7; b &#xB7; a&#x207B;&#xB9;</text>
+
+  <!-- Panel 2 caption -->
+  <text x="520" y="263" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Composite loop <tspan font-style="italic">a &#xB7; b &#xB7; a&#x207B;&#xB9;</tspan></text>
+  <text x="520" y="277" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">follow a, then b, then a in reverse &#x2014; all from x&#x2080;</text>
+
+  <!-- ===== Caption ===== -->
+  <text x="350" y="310" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-inksoft, #6a6151)">Loops that enclose a post cannot shrink; a loop that encloses nothing shrinks to a point &#x2014; the identity.</text>
+  <text x="350" y="326" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-inksoft, #6a6151)">The group operation is 'follow one loop, then the other': a &#xB7; b means walk loop a, then walk loop b.</text>
+</svg>

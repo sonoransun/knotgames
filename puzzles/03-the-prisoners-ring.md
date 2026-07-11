@@ -39,20 +39,29 @@ Free the ring from the frame-and-cord assembly. The cord loop will remain on the
 
 The cord's path over the crossbar creates two crossings:
 
-- **Crossing 1** (top window to crossbar): the cord crosses the crossbar with sign **+1**
-- **Crossing 2** (crossbar to bottom window): the cord crosses the crossbar with sign **-1**
+- **Crossing 1** (top window to crossbar): the cord crosses the crossbar with sign **-1**
+- **Crossing 2** (crossbar to bottom window): the cord crosses the crossbar with sign **+1**
 
-The **linking number** of the cord loop with the crossbar = (+1) + (-1) = **0**.
+The **linking number** of the cord loop with the crossbar = (-1) + (+1) = **0**.
 
 A linking number of zero means the curves are **not linked** — they can be separated. The visual impression of encirclement is an artifact of the specific embedding, not a topological invariant.
 
-### Worked Example: Crossing Signs
+### Worked Example: computing the crossing signs
 
-To compute the linking number, orient the cord loop (pick a direction of travel) and orient the crossbar (pick left-to-right). At each crossing, determine the sign:
+The sign computation is mechanical once both curves carry arrows. Orient the cord loop in its direction of travel (the blue arrows in the figure) and orient the crossbar **left to right** (the gray arrowheads). Then, at each crossing, apply the right-hand rule:
 
-![Crossing signs: +1 at top window, −1 at bottom window, linking number = 0](../diagrams/puzzles/03-the-prisoners-ring/crossing-signs.svg)
+**Right-hand rule:** take the arrow of the strand on top — here the cord, which passes over the crossbar at both crossings — and rotate it onto the under-strand's arrow, turning through less than 180 degrees. If that rotation is **counterclockwise**, the sign is **+1**. If it is **clockwise**, the sign is **-1**.
 
-**Linking number** = (+1) + (-1) = **0**
+![Crossing signs: −1 at top window, +1 at bottom window, linking number = 0](../diagrams/puzzles/03-the-prisoners-ring/crossing-signs.svg)
+
+Now apply it arrow by arrow, reading direction vectors with x to the right and y upward:
+
+- **Crossing 1 (top window):** the cord passes over the crossbar heading up and to the right — unit direction (0.63, 0.78). The crossbar heads (1, 0). To bring the cord's arrow onto the crossbar's arrow, you swing it **clockwise**, downward through about 51 degrees. Clockwise means sign **-1**. Determinant check, with the over-strand direction in the first row and the under-strand direction in the second: (0.63)(0) - (0.78)(1) = **-0.78** < 0, confirming **-1**.
+- **Crossing 2 (bottom window):** the cord passes over the crossbar heading down and to the right — unit direction (0.63, -0.78). The crossbar again heads (1, 0). Now the shortest rotation onto the crossbar's arrow is **counterclockwise**, upward through the same 51 degrees, so the sign is **+1**. Determinant check: (0.63)(0) - (-0.78)(1) = **+0.78** > 0, confirming **+1**.
+
+**Linking number** = (-1) + (+1) = **0**
+
+The two rotations are mirror images of each other — one clockwise, one counterclockwise — so the signs cancel no matter how the diagram is stretched or redrawn.
 
 A linking number of zero is necessary (though not always sufficient) for separation. In this case, it is also sufficient — the cord can be physically separated from the crossbar.
 
@@ -74,6 +83,8 @@ A linking number of zero is necessary (though not always sufficient) for separat
 7. (Optional) Re-thread the cord back to the starting position
 
 The critical move is step 3: pulling the cord over the end of the crossbar. The crossbar is 100mm wide, and the 400mm cord loop provides ample slack for this maneuver.
+
+![Solved: the cord hangs as a simple loop and the ring is free](../diagrams/puzzles/03-the-prisoners-ring/solved.svg)
 
 ## Why It's Tricky
 

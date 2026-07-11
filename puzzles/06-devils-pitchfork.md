@@ -90,6 +90,16 @@ The key is that the cord loop over the center prong creates a **pulley-like** re
 
 ![Solved: cord looped over the center prong, ring transferred from the left prong to the right prong](../diagrams/puzzles/06-devils-pitchfork/solved.svg)
 
+### Why the loop creates reach
+
+The pulley claim is worth checking against the puzzle's own dimensions. The cord is a 300mm closed loop threaded through the ring and through the hole at the center prong's base, so it always doubles back on itself — its effective reach from anchor to ring is half the circumference, 150mm.
+
+**Before the move,** the anchor sits at the bottom of the fork. For the ring to reach the ball-stop position on the right prong, the cord would have to round the center prong's base, cross the right channel (~60mm — the same channel run the Construction Notes measure on the left side), and then climb the full 100mm right prong: about 160mm of required run against 150mm of available half-loop. The cord goes taut roughly 10mm short of the goal. That missing 10mm is the invisible wall.
+
+**After the move,** the geometry inverts. Looping the bight over the center prong's ball-stop spends about 160-170mm of cord going up and over (80mm up, around the 8mm ball, 80mm back down) — which is why the 180mm of slack available with the ring parked at the base is only just enough. But that expenditure buys position, not length: the cord now effectively re-anchors at the *tip*, 80mm in the air and only 20mm below the right prong's ball-stop. The 130-140mm of loop that remains doubles back from the tip to give the ring 65-70mm of reach, and the goal is now a short diagonal across one channel — on the order of 60-65mm — rather than a 160mm run from the ground. The pulley-like redirection doesn't add a single millimeter of cord; it relocates the anchor so that most of the journey is already paid for.
+
+In configuration-space terms, this is exactly the change described in The Topology: the loop move shifts the cord's homotopy class from *left of the center prong* to *over the center prong*, and that discrete change of class — not any change in cord length — is what the configuration-space topology permits and the transfer requires.
+
 ## Why It's Tricky
 
 **The height difference is dismissed.** The center prong being 20mm shorter looks like an imprecision or aesthetic choice. Solvers do not recognize it as the critical functional feature. It is, in puzzle design terms, a "hidden in plain sight" element.

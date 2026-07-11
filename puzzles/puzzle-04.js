@@ -1,9 +1,10 @@
 import * as THREE from 'three';
-import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
+import { createMaterials } from '../lib/materials.js';
 import { createRing } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
 import { enableShadowsOnGroup } from '../lib/scene.js';
 import { StepArrowManager } from '../lib/arrow-helpers.js';
+import { resolveStep, applyStepTransforms, HighlightCache } from '../lib/puzzle-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -23,9 +24,9 @@ function createMobiusBand(material) {
   const R = BAND_R;
   const w = BAND_W;
 
-  const geometry = new THREE.ParametricBufferGeometry
-    ? new THREE.BufferGeometry()
-    : new THREE.BufferGeometry();
+  // Built by hand rather than with ParametricGeometry (removed from three
+  // core; lives in examples/jsm) — we need the custom normals anyway.
+  const geometry = new THREE.BufferGeometry();
 
   const uSteps = 120;
   const vSteps = 10;
@@ -86,14 +87,26 @@ function createMobiusBand(material) {
   return mesh;
 }
 
-// Cord wraps around the band
+// Every cord keyframe below samples the same 25 control points (i = 0..24)
+// at the same u angles — CordPath.interpolatePoints silently truncates to the
+// shorter array, so all keyframes must keep this count in lockstep.
+const CORD_SEGMENTS = 24;
+
+// Weight peaking at the half-twist (u = 0 ≡ 2π, where the rivet join sits)
+// and fading to 0 on the far side of the band.
+function twistProximity(u) {
+  const c = Math.cos(u / 2);
+  return c * c;
+}
+
+// Cord wraps around the band, hanging below (rest pose).
 function initialCordPath() {
   const R = BAND_R;
   const pts = [];
   // Cord goes around the band at a position slightly offset from center
   const cordOffset = 3;
-  for (let i = 0; i <= 24; i++) {
-    const u = (i / 24) * Math.PI * 2;
+  for (let i = 0; i <= CORD_SEGMENTS; i++) {
+    const u = (i / CORD_SEGMENTS) * Math.PI * 2;
     const v = cordOffset * Math.cos(u / 2);
     const x = (R + v * Math.cos(u / 2) + 2) * Math.cos(u);
     const y = v * Math.sin(u / 2) - 25;
@@ -103,33 +116,102 @@ function initialCordPath() {
   return pts;
 }
 
-function solvedCordPath() {
-  // Cord is free, hanging below as a simple loop
+// Step 1 end: the loop is flattened against the underside face and slid up
+// toward the twist — the section nearest the rivets leads the way.
+function towardTwistCordPath() {
+  const R = BAND_R;
   const pts = [];
-  for (let i = 0; i <= 24; i++) {
-    const t = i / 24;
+  for (let i = 0; i <= CORD_SEGMENTS; i++) {
+    const u = (i / CORD_SEGMENTS) * Math.PI * 2;
+    const near = twistProximity(u);
+    const v = 3 * Math.cos(u / 2);
+    const radial = R + v * Math.cos(u / 2) + 3 + near * 3;
+    pts.push([
+      radial * Math.cos(u),
+      v * Math.sin(u / 2) - 10 + near * 4,
+      radial * Math.sin(u),
+    ]);
+  }
+  return pts;
+}
+
+// Step 2 end: the leading section arcs across the twist point, just outside
+// the rivet join — it now appears to sit on 'the other face' (same face!).
+// Base radial offset is +5 (not +3): the low section (u ≈ π..1.7π, y ≈ -4)
+// otherwise skims the strip's tilted lower half mid-interpolation.
+function crossTwistCordPath() {
+  const R = BAND_R;
+  const pts = [];
+  for (let i = 0; i <= CORD_SEGMENTS; i++) {
+    const u = (i / CORD_SEGMENTS) * Math.PI * 2;
+    const near = twistProximity(u);
+    const v = 3 * Math.cos(u / 2);
+    const radial = R + v * Math.cos(u / 2) + 5 + near * 6;
+    pts.push([
+      radial * Math.cos(u),
+      v * Math.sin(u / 2) - 4 + near * 9,
+      radial * Math.sin(u),
+    ]);
+  }
+  return pts;
+}
+
+// Step 3 end: the second circuit — the loop rides just above the apparent
+// top face (the same one-sided surface, one half-twist later); the crossing
+// point at the rivets stays anchored (y ≈ +5 here and in crossTwistCordPath).
+// Offsets (+4 radial, +9 height) keep the whole spline clear of the twisting
+// strip — this pose is also the launch point for the edge-clear escape below.
+function secondCircuitCordPath() {
+  const R = BAND_R;
+  const pts = [];
+  for (let i = 0; i <= CORD_SEGMENTS; i++) {
+    const u = (i / CORD_SEGMENTS) * Math.PI * 2;
+    const near = twistProximity(u);
+    const v = 3 * Math.cos(u / 2);
+    const radial = R + v * Math.cos(u / 2) + 4 + near * 4;
+    pts.push([
+      radial * Math.cos(u),
+      -(v * Math.sin(u / 2)) + 9 - near * 4,
+      radial * Math.sin(u),
+    ]);
+  }
+  return pts;
+}
+
+// Mid-escape keyframe, applied INSIDE the final step by updateAnimation (not
+// a sixth animation step): from the second-circuit pose the loop slides
+// straight off the band's single edge, radially outward past the outer
+// boundary (max band radius is BAND_R + BAND_W/2 = 56). The heights match
+// secondCircuitCordPath exactly, so the first half of the escape is a pure
+// radial expansion — the cord moves away from the surface at every point and
+// can never sweep through the strip. Only after clearing the edge does it
+// drop to the solved pose, entirely outside and below the band.
+function edgeClearCordPath() {
+  const pts = [];
+  for (let i = 0; i <= CORD_SEGMENTS; i++) {
+    const u = (i / CORD_SEGMENTS) * Math.PI * 2;
+    const near = twistProximity(u);
+    const v = 3 * Math.cos(u / 2);
+    pts.push([
+      68 * Math.cos(u),
+      -(v * Math.sin(u / 2)) + 9 - near * 4,
+      68 * Math.sin(u),
+    ]);
+  }
+  return pts;
+}
+
+// Step 4 end: cord is free, hanging below as a simple loop.
+function solvedCordPath() {
+  const pts = [];
+  for (let i = 0; i <= CORD_SEGMENTS; i++) {
+    const t = i / CORD_SEGMENTS;
     const angle = t * Math.PI * 2;
     pts.push([
       Math.cos(angle) * 25,
       -80 - Math.sin(angle) * 15,
       Math.sin(angle) * 25,
     ]);
-  }
-  return pts;
-}
-
-function midCordPath1() {
-  const R = BAND_R;
-  const pts = [];
-  for (let i = 0; i <= 24; i++) {
-    const u = (i / 24) * Math.PI * 2;
-    const progress = i / 24;
-    const lift = progress > 0.4 && progress < 0.7 ? 15 : 0;
-    const v = 3 * Math.cos(u / 2);
-    const x = (R + v * Math.cos(u / 2) + 3 + lift * 0.3) * Math.cos(u);
-    const y = v * Math.sin(u / 2) - 25 - lift;
-    const z = (R + v * Math.cos(u / 2) + 3 + lift * 0.3) * Math.sin(u);
-    pts.push([x, y, z]);
   }
   return pts;
 }
@@ -191,71 +273,109 @@ export function createAnimScene() {
   return { group, objects: { ring, cord, arrowManager } };
 }
 
+// Yellow = slide along the surface; green = cross the twist / come away free.
 const arrowConfigs = {
-  1: { arrows: [{ from: [52, -25, 0], to: [40, -40, 15], opts: { color: 0x44cc44 } }] },
-  2: { arrows: [{ from: [40, -40, 15], to: [0, -80, 0], opts: { color: 0x44cc44 } }] },
+  1: { arrows: [
+    { from: [15, -14, 50], to: [48, -8, 22], opts: { color: 0xffcc44 } },
+  ]},
+  2: { arrows: [
+    { from: [56, -8, 12], to: [60, 8, -12], opts: { color: 0x44cc44 } },
+  ]},
+  3: { arrows: [
+    { type: 'curved', points: [[55, 10, -10], [35, 12, -40], [0, 12, -58]], opts: { color: 0xffcc44 } },
+  ]},
+  4: { arrows: [
+    { from: [58, 9, -14], to: [74, 7, -18], opts: { color: 0x44cc44 } },
+    { from: [0, -55, 0], to: [0, -88, 0], opts: { color: 0x44cc44 } },
+  ]},
 };
-let highlightMat = null;
 
+// Five beats, following the md's solution: flatten the loop and slide it to
+// the twist, cross the twist point (checkpoint: the 'other face' is the same
+// face — halfway done), continue the second circuit on the same face (the
+// boundary makes two trips around before it closes), then lift off the
+// single edge. The final beat interpolates through an extra mid-step
+// keyframe (edgeClearCordPath, see updateAnimation) so the cord slides off
+// the edge radially before dropping — a straight lerp to the solved pose
+// would sweep the cord through the band's interior, the exact move the
+// puzzle declares impossible.
 export const animationSteps = [
   {
     label: 'Look: the cord loop wraps around the twisted band',
-    duration: 2.0,
+    duration: 2.5,
     cord: initialCordPath(),
     ring: { position: [0, -60, 0] },
   },
   {
-    label: 'Slide the cord along the surface, following the half-twist',
-    duration: 3.0,
+    label: 'Flatten the loop against the surface and slide it toward the twist',
+    duration: 2.0,
     easing: 'easeInOut',
-    cord: midCordPath1(),
-    ring: { position: [0, -65, 0] },
+    cord: towardTwistCordPath(),
+    ring: { position: [0, -54, 0] },
   },
   {
-    label: 'Pull the cord off the single edge — the twist lets it escape!',
+    label: 'Cross the twist point — checkpoint: the "other face" is the same face',
     duration: 2.5,
+    easing: 'easeInOut',
+    cord: crossTwistCordPath(),
+    ring: { position: [0, -50, 0] },
+  },
+  {
+    label: 'Keep sliding on the same face — the second trip around the band',
+    duration: 2.5,
+    easing: 'easeInOut',
+    cord: secondCircuitCordPath(),
+    ring: { position: [0, -48, 0] },
+  },
+  {
+    label: 'The cord clears the single edge and comes away — free!',
+    duration: 2.75,
     easing: 'easeOut',
     cord: solvedCordPath(),
     ring: { position: [0, -80, 0] },
   },
 ];
 
+const highlights = new HighlightCache();
+
+// The escape (last step) routes through this intermediate keyframe: first
+// slide the loop off the single edge, radially outward (t < SPLIT), then
+// drop it clear below the band (t >= SPLIT). Same 25 control points at the
+// same u angles as every other cord keyframe.
+const EDGE_CLEAR_CORD = edgeClearCordPath();
+const EDGE_CLEAR_SPLIT = 0.45;
+
 export function updateAnimation(objects, state) {
-  const { stepIndex, stepProgress } = state;
+  const { step, prevStep, t, stepIndex } = resolveStep(animationSteps, state, {
+    arrowManager: objects.arrowManager,
+    arrowConfigs,
+  });
 
-  // Direction arrows
-  if (objects.arrowManager) {
-    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
-    objects.arrowManager.updateOpacity(stepProgress);
-  }
+  // Highlight the cord while it is being worked (every step after the look)
+  highlights.set(objects.cord.mesh, stepIndex >= 1, 0x4488ff, 0.3);
 
-  // Highlight active cord
-  if (stepIndex >= 1) {
-    if (!highlightMat) {
-      highlightMat = createHighlightMaterial(objects.cord.mesh.material, 0x4488ff, 0.3);
+  // Cord is interpolated by hand (not via applyStepTransforms) because the
+  // final step is two-phase: second circuit -> edge-clear -> solved. A
+  // single lerp would drag the cord through the band's interior.
+  let cordFrom = prevStep.cord;
+  let cordTo = step.cord;
+  let cordT = t;
+  if (stepIndex === animationSteps.length - 1) {
+    if (t < EDGE_CLEAR_SPLIT) {
+      cordTo = EDGE_CLEAR_CORD;
+      cordT = t / EDGE_CLEAR_SPLIT;
+    } else {
+      cordFrom = EDGE_CLEAR_CORD;
+      cordT = (t - EDGE_CLEAR_SPLIT) / (1 - EDGE_CLEAR_SPLIT);
     }
-    applyHighlight(objects.cord.mesh, highlightMat);
-  } else {
-    removeHighlight(objects.cord.mesh);
+  }
+  if (cordFrom && cordTo) {
+    objects.cord.update(CordPath.interpolatePoints(cordFrom, cordTo, cordT));
   }
 
-  const step = animationSteps[stepIndex];
-  const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
-
-  if (step.cord && prevStep.cord) {
-    const interpolated = CordPath.interpolatePoints(prevStep.cord, step.cord, stepProgress);
-    objects.cord.update(interpolated);
-  }
-
-  if (step.ring && prevStep.ring) {
-    const f = prevStep.ring.position;
-    const t = step.ring.position;
-    objects.ring.position.set(
-      f[0] + (t[0] - f[0]) * stepProgress,
-      f[1] + (t[1] - f[1]) * stepProgress,
-      f[2] + (t[2] - f[2]) * stepProgress,
-    );
-  }
+  applyStepTransforms(objects, prevStep, step, t, {
+    ring: { target: 'ring', kind: 'position' },
+  });
 }
 
 export function createSVGDiagram(container) {
@@ -305,6 +425,9 @@ export function createSVGDiagram(container) {
   svg.label(s, 370, 275, 268, 275, 'Ring');
   svg.label(s, 380, 200, 300, 195, 'Cord loop');
 
+  // Checkpoint annotation for the twist crossing (lit during that step)
+  const checkpoint = svg.label(s, 400, 90, 352, 118, '"Other face" = same face');
+
   // Motion arrows showing key movements (toggled per step by the updater)
   const arrow1 = svg.motionArrow(s, 230, 175, 300, 195, { label: 'Slide along surface', curvature: 0.3 });
   const arrow2 = svg.motionArrow(s, 250, 260, 250, 305, { label: 'Pull free', curvature: 0.2 });
@@ -313,11 +436,13 @@ export function createSVGDiagram(container) {
   svg.handIcon(s, 200, 220, { scale: 0.6, rotation: 15 });
 
   // Step badges (highlighted per phase by the updater)
-  const badge1 = svg.stepBadge(s, 130, 200, 1, 2);
-  svg.actionLabel(s, 130, 213, 'Slide cord through twist');
-  const badge2 = svg.stepBadge(s, 300, 260, 2, 2);
-  svg.actionLabel(s, 300, 273, 'Pull cord off edge');
-  const badges = [badge1, badge2];
+  const badge1 = svg.stepBadge(s, 130, 200, 1, 3);
+  svg.actionLabel(s, 130, 213, 'Slide loop along the surface');
+  const badge2 = svg.stepBadge(s, 130, 232, 2, 3);
+  svg.actionLabel(s, 130, 245, 'Cross the twist — same face');
+  const badge3 = svg.stepBadge(s, 300, 260, 3, 3);
+  svg.actionLabel(s, 300, 273, 'Lift off the single edge');
+  const badges = [badge1, badge2, badge3];
 
   // Key insight
   const calloutRect = svg.rect(s, 20, 330, 460, 40, { fill: 'var(--dia-wash, #ece3d0)', stroke: 'var(--dia-ring, #b97d12)', strokeWidth: 1, rx: 4 });
@@ -325,7 +450,7 @@ export function createSVGDiagram(container) {
   svg.text(s, 250, 348, 'Key: The band has only ONE edge because of the twist.', {
     fontSize: 11, anchor: 'middle', fill: 'var(--dia-ring, #b97d12)', fontWeight: 'bold',
   });
-  svg.text(s, 250, 362, 'Slide the cord along the surface and it can slip right off.', {
+  svg.text(s, 250, 362, 'Slide flat along the surface — two full trips — and it lifts right off.', {
     fontSize: 10, anchor: 'middle', fill: 'var(--dia-ring, #b97d12)',
   });
 
@@ -344,40 +469,46 @@ export function createSVGDiagram(container) {
     .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
   `;
 
-  // ---- Timeline updater: sync the 2D cord + ring + badges + arrows to the solution.
-  // Three animation steps: 0 = look (rest), 1 = slide cord along surface,
-  // 2 = pull cord off the single edge (cord + ring drop free downward).
-  // Ring keyframes mirror the 3D ring motion (hangs below, then sinks away).
-  const ringKeys = [[250, 275], [250, 282], [250, 330]];
-  // Cord drops downward as it slips off the edge in the final step.
-  const cordDrop = [0, 6, 60];
+  // ---- Timeline updater: sync the 2D cord + ring + badges + arrows to the
+  // five-step solution: 0 = look (rest), 1 = slide the loop toward the twist,
+  // 2 = cross the twist point (checkpoint: 'other face' = same face),
+  // 3 = second trip around on the same face, 4 = clear the single edge, free.
+  // Cord frames are [dx, dy] translations of the wrap assembly: toward the
+  // rivet join, across it, back around, then dropping free below the band.
+  const cordFrames = [[0, 0], [-30, -14], [-52, -26], [12, -20], [0, 60]];
+  // Ring keyframes mirror the 3D ring motion (rides up a little while the
+  // loop is worked along the surface, then sinks away free).
+  const ringFrames = [[250, 275], [235, 268], [220, 262], [248, 258], [250, 330]];
+  const LAST_STEP = cordFrames.length - 1;
   return function update(state) {
-    const i = Math.max(0, Math.min(state.stepIndex ?? 0, ringKeys.length - 1));
+    const i = Math.max(0, Math.min(state.stepIndex ?? 0, LAST_STEP));
     const p = Math.max(0, Math.min(state.stepProgress ?? 0, 1));
 
     // Ring position interpolated along keyframes
-    const rFrom = i === 0 ? ringKeys[0] : ringKeys[i - 1];
-    const rTo = ringKeys[i];
-    ring.setAttribute('cx', rFrom[0] + (rTo[0] - rFrom[0]) * p);
-    ring.setAttribute('cy', rFrom[1] + (rTo[1] - rFrom[1]) * p);
+    const [cx, cy] = svg.lerpFrames(ringFrames, i, p);
+    ring.setAttribute('cx', cx);
+    ring.setAttribute('cy', cy);
 
-    // Cord assembly slides down with the ring as it escapes the band
-    const dFrom = i === 0 ? cordDrop[0] : cordDrop[i - 1];
-    const dTo = cordDrop[i];
-    const dy = dFrom + (dTo - dFrom) * p;
-    const xf = `translate(0px, ${dy}px)`;
+    // Cord assembly slides along the band, then drops as it escapes
+    const [dx, dy] = svg.lerpFrames(cordFrames, i, p);
+    const xf = `translate(${dx}px, ${dy}px)`;
     if (cordWrap) cordWrap.style.transform = xf;
     if (cordDropL) cordDropL.style.transform = xf;
     if (cordDropR) cordDropR.style.transform = xf;
 
-    // Badge highlight: badge1 for the slide phase, badge2 for the pull-free phase
-    const phase = i <= 1 ? 0 : 1;
+    // Badges: 0 = slide (both trips), 1 = cross the twist, 2 = lift off free
+    const phase = i === 2 ? 1 : i === LAST_STEP ? 2 : 0;
     badges.forEach((b, k) => svg.highlight(b, k === phase, { dim: 0.3, color: CORD }));
 
-    // Motion arrows: arrow1 during the slide, arrow2 during the pull-off
-    svg.highlight(arrow1, i === 1, { glow: false, dim: 0 });
-    svg.highlight(arrow2, i === 2, { glow: false, dim: 0 });
+    // Checkpoint callout lights up while the cord crosses the twist point
+    svg.highlight(checkpoint, i === 2, { color: CORD, dim: 0.25 });
+
+    // Motion arrows: slide arrow on both trips, pull-free arrow at the end
+    svg.highlight(arrow1, i === 1 || i === 3, { glow: false, dim: 0 });
+    svg.highlight(arrow2, i === LAST_STEP, { glow: false, dim: 0 });
   };
 }
 
-export function dispose() {}
+export function dispose() {
+  highlights.dispose();
+}

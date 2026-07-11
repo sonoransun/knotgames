@@ -1,0 +1,72 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360">
+  <title>Puzzle 19: The Tangle Dance — Setup (fraction 3/2)</title>
+  <desc>A square printed frame with a cup socket at each corner. The red cord occupies the two left sockets (NW and SW) and the blue cord the two right sockets (NE and SE). Inside the opening the cords form the 3/2 rational tangle: a vertical region of two twists (fraction 1/2) plus one right-side twist (+1), so F = 1 + 1/2 = 3/2. Ball handles are seated in all four sockets.</desc>
+
+  <!-- Frame plate: outer square with open interior (evenodd hole) -->
+  <path d="M40,40 H300 V300 H40 Z M75,75 V265 H265 V75 Z"
+        fill="var(--dia-wash, #ece3d0)" fill-rule="evenodd"
+        stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+
+  <!-- Corner names embossed on the plate border -->
+  <text x="57" y="61" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">NW</text>
+  <text x="282" y="61" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">NE</text>
+  <text x="57" y="288" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">SW</text>
+  <text x="282" y="288" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">SE</text>
+
+  <!-- Embossed move glyphs: R arrow on top border, T on the current twist (right) edge -->
+  <text x="170" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">R ↻</text>
+  <text x="282" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">T</text>
+
+  <!-- Cup sockets (17mm cups) at the four opening corners -->
+  <circle cx="80" cy="80" r="11" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
+  <circle cx="260" cy="80" r="11" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
+  <circle cx="80" cy="260" r="11" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
+  <circle cx="260" cy="260" r="11" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
+
+  <!-- === The 3/2 tangle === -->
+  <!-- Red cord (continuous under layer): NW down through the vertical twist region to SW -->
+  <path d="M80,80 L140,115 L170,170 L140,225 L80,260"
+        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Blue cord (continuous under layer): NE down through the right twist, the vertical
+       region, and back out to SE -->
+  <path d="M260,80 L170,225 L140,170 L170,115 L260,260"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Crossing v1 (155,142.5): red over blue. Occlusion along the over tangent, then over-segment. -->
+  <line x1="151.6" y1="136.3" x2="158.4" y2="148.7"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M140,115 L170,170" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Crossing v2 (155,197.5): blue over red -->
+  <line x1="151.6" y1="191.3" x2="158.4" y2="203.7"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M140,170 L170,225" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Crossing h1 (204.1,170): the +1 right twist, blue over blue -->
+  <line x1="199.9" y1="163.2" x2="208.3" y2="176.8"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M170,115 L260,260" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Ball handles seated in the sockets (color-matched to their cord) -->
+  <circle cx="80" cy="80" r="7" fill="var(--dia-neg, #cf3a26)"/>
+  <circle cx="80" cy="260" r="7" fill="var(--dia-neg, #cf3a26)"/>
+  <circle cx="260" cy="80" r="7" fill="var(--dia-cord, #1f57c4)"/>
+  <circle cx="260" cy="260" r="7" fill="var(--dia-cord, #1f57c4)"/>
+
+  <!-- Labels -->
+  <line x1="268" y1="82" x2="310" y2="82" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"/>
+  <text x="313" y="85" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">ball handle (16 mm)</text>
+
+  <line x1="269" y1="254" x2="310" y2="248" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"/>
+  <text x="313" y="251" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">cup socket (×4)</text>
+
+  <line x1="301" y1="177" x2="310" y2="177" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"/>
+  <text x="313" y="180" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">TWIST edge</text>
+
+  <!-- Captions -->
+  <text x="170" y="324" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-ink, #24211a)">Preset: fraction 3/2</text>
+  <text x="170" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">two vertical twists (1/2) + one right twist (+1): F = 1 + 1/2 = 3/2</text>
+  <text x="170" y="354" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">set from 0 by the card sequence T, T, R, T, T</text>
+</svg>

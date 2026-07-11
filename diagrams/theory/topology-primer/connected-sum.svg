@@ -1,0 +1,116 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 430">
+  <title>Connected Sum: Square Knot versus Granny Knot</title>
+  <desc>Two composite knots, each formed by joining two trefoils at a two-strand neck circled by a dashed sum sphere. Top: the square knot is a left-handed trefoil (three negative crossings, signature +2) joined to a right-handed trefoil (three positive crossings, signature -2), so the signatures cancel and the square knot has signature 0. Bottom: the granny knot is two left-handed trefoils (three negative crossings each, signature +2 each), so the signatures add to +4. Crossing number, genus, tricolorability, and the Alexander polynomial agree for the two knots; only the signature distinguishes them.</desc>
+
+  <defs>
+    <!-- Reusable trefoil glyph, centered at the origin, drawn right-handed (all
+         crossings positive). Instance with scale(0.62) for right-handed, or
+         scale(-0.62,0.62) to mirror into a left-handed trefoil (all negative).
+         House occlusion idiom: continuous under-strand, surface-colored stroke
+         along the over tangent, over-segments last. -->
+    <g id="tref">
+      <path d="M 19.1,11 C 25.5,-0.1 29,-12.8 29.2,-24.5 C 29.4,-36.2 26.2,-46.9 20.8,-54.4
+               C 15.3,-61.8 7.7,-66 0,-66 C -7.7,-66 -15.3,-61.8 -20.8,-54.4
+               C -26.2,-46.9 -29.4,-36.2 -29.2,-24.5 C -29,-12.8 -25.5,-0.1 -19.1,11
+               C -12.7,22.1 -3.4,31.5 6.6,37.5 C 16.7,43.5 27.5,46.1 36.7,45.2
+               C 45.9,44.2 53.3,39.7 57.2,33 C 61,26.3 61.2,17.7 57.5,9.2
+               C 53.7,0.8 46.1,-7.3 35.8,-13 C 25.6,-18.7 12.8,-22 0,-22
+               C -12.8,-22 -25.6,-18.7 -35.8,-13 C -46.1,-7.3 -53.7,0.8 -57.5,9.2
+               C -61.2,17.7 -61,26.3 -57.2,33 C -53.3,39.7 -45.9,44.2 -36.7,45.2
+               C -27.5,46.1 -16.7,43.5 -6.6,37.5 C 3.4,31.5 12.7,22.1 19.1,11 Z"
+            fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="27.4" y1="-7.6" x2="29.8" y2="-25.4" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+      <line x1="-20.2" y1="-19.9" x2="-36.9" y2="-13.1" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+      <line x1="-7.1" y1="27.5" x2="7.1" y2="38.5" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+      <path d="M 12.3,20.9 C 16.6,15.5 20.3,9.4 23.1,3.1 C 25.8,-3.3 27.7,-10 28.6,-16.5
+               C 29.5,-23 29.4,-29.5 28.4,-35.4 C 27.4,-41.3 25.5,-46.7 22.8,-51.2"
+            fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 11.9,-21.1 C 5.1,-22.1 -2,-22.3 -8.9,-21.5 C -15.8,-20.7 -22.5,-19 -28.6,-16.5
+               C -34.7,-14 -40.2,-10.7 -44.8,-6.9 C -49.5,-3.1 -53.2,1.3 -55.7,5.8"
+            fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M -24.2,0.2 C -21.7,6.7 -18.3,12.9 -14.2,18.4 C -10.1,24 -5.2,29 0,33
+               C 5.2,37 10.8,40.2 16.5,42.3 C 22.1,44.4 27.7,45.4 32.9,45.4"
+            fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </defs>
+
+  <!-- ============================================================= -->
+  <!-- SQUARE KNOT:  left trefoil  #  right trefoil                    -->
+  <!-- ============================================================= -->
+  <text x="300" y="34" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5" font-weight="bold" fill="var(--dia-ink, #24211a)">Square knot = left trefoil # right trefoil</text>
+
+  <!-- two-strand neck (behind the glyphs) -->
+  <line x1="228" y1="113" x2="372" y2="113" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="228" y1="127" x2="372" y2="127" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- left factor: left-handed (mirrored) -->
+  <use href="#tref" transform="translate(228,120) scale(-0.62,0.62)"/>
+  <!-- right factor: right-handed -->
+  <use href="#tref" transform="translate(372,120) scale(0.62)"/>
+
+  <!-- sum sphere over the neck -->
+  <circle cx="300" cy="120" r="26" fill="none" stroke="var(--dia-ink, #24211a)" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="300" y="162" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">sum sphere</text>
+
+  <!-- left factor sign badges: all -1 -->
+  <g font-family="system-ui, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">
+    <circle cx="204" cy="106" r="8" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.3"/>
+    <text x="204" y="109.2" fill="var(--dia-neg, #cf3a26)">&#8722;</text>
+    <circle cx="252" cy="106" r="8" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.3"/>
+    <text x="252" y="109.2" fill="var(--dia-neg, #cf3a26)">&#8722;</text>
+    <circle cx="228" cy="150" r="8" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.3"/>
+    <text x="228" y="153.2" fill="var(--dia-neg, #cf3a26)">&#8722;</text>
+  </g>
+  <!-- right factor sign badges: all +1 -->
+  <g font-family="system-ui, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">
+    <circle cx="348" cy="106" r="8" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.3"/>
+    <text x="348" y="109.2" fill="var(--dia-pos, #2f8f43)">+</text>
+    <circle cx="396" cy="106" r="8" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.3"/>
+    <text x="396" y="109.2" fill="var(--dia-pos, #2f8f43)">+</text>
+    <circle cx="372" cy="150" r="8" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.3"/>
+    <text x="372" y="153.2" fill="var(--dia-pos, #2f8f43)">+</text>
+  </g>
+
+  <text x="150" y="182" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">left-handed: &#963; = +2</text>
+  <text x="450" y="182" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">right-handed: &#963; = &#8722;2</text>
+  <text x="300" y="202" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" fill="var(--dia-ink, #24211a)">&#963;(square) = (+2) + (&#8722;2) = 0  &#8212; mirror factors cancel</text>
+
+  <line x1="40" y1="222" x2="560" y2="222" stroke="var(--dia-faint, #c9bda7)" stroke-width="1"/>
+
+  <!-- ============================================================= -->
+  <!-- GRANNY KNOT:  left trefoil  #  left trefoil                     -->
+  <!-- ============================================================= -->
+  <text x="300" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5" font-weight="bold" fill="var(--dia-ink, #24211a)">Granny knot = left trefoil # left trefoil</text>
+
+  <line x1="228" y1="303" x2="372" y2="303" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="228" y1="317" x2="372" y2="317" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <use href="#tref" transform="translate(228,310) scale(-0.62,0.62)"/>
+  <use href="#tref" transform="translate(372,310) scale(-0.62,0.62)"/>
+
+  <circle cx="300" cy="310" r="26" fill="none" stroke="var(--dia-ink, #24211a)" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="300" y="352" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">sum sphere</text>
+
+  <!-- both factors left-handed: all -1 -->
+  <g font-family="system-ui, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">
+    <circle cx="204" cy="296" r="8" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.3"/>
+    <text x="204" y="299.2" fill="var(--dia-neg, #cf3a26)">&#8722;</text>
+    <circle cx="252" cy="296" r="8" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.3"/>
+    <text x="252" y="299.2" fill="var(--dia-neg, #cf3a26)">&#8722;</text>
+    <circle cx="228" cy="340" r="8" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.3"/>
+    <text x="228" y="343.2" fill="var(--dia-neg, #cf3a26)">&#8722;</text>
+    <circle cx="348" cy="296" r="8" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.3"/>
+    <text x="348" y="299.2" fill="var(--dia-neg, #cf3a26)">&#8722;</text>
+    <circle cx="396" cy="296" r="8" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.3"/>
+    <text x="396" y="299.2" fill="var(--dia-neg, #cf3a26)">&#8722;</text>
+    <circle cx="372" cy="340" r="8" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1.3"/>
+    <text x="372" y="343.2" fill="var(--dia-neg, #cf3a26)">&#8722;</text>
+  </g>
+
+  <text x="150" y="372" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">left-handed: &#963; = +2</text>
+  <text x="450" y="372" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">left-handed: &#963; = +2</text>
+  <text x="300" y="392" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold" fill="var(--dia-ink, #24211a)">&#963;(granny) = (+2) + (+2) = +4  &#8212; same hands add up</text>
+
+  <text x="300" y="418" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-style="italic" fill="var(--dia-inksoft, #6a6151)">crossing number, genus, tricolorability, Alexander polynomial all agree &#8212; only the signature differs</text>
+</svg>

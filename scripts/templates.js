@@ -10,6 +10,7 @@ export const ARCS = [
   { n: 2, title: 'Structure Matters',             range: [6, 9],  blurb: 'Brunnian links, Borromean rings, multi-step disentanglement, and the unknotting number.' },
   { n: 3, title: 'Deep Mathematics Is Physical',  range: [10, 12], blurb: 'The Hopf link, genus and handles, and the Hopf fibration made tactile.' },
   { n: 4, title: 'Classification and Construction', range: [13, 17], blurb: 'Braid groups, torus knots, tricolorability, Seifert surfaces, and satellite knots.' },
+  { n: 5, title: 'The Limits and Language of Invariants', range: [18, 20], blurb: 'Where linking number fails, where the Conway fraction succeeds, and what connected sums hide from your invariants.' },
 ];
 export const arcOf = (id) => ARCS.find((a) => id >= a.range[0] && id <= a.range[1]) || ARCS[0];
 
@@ -23,8 +24,8 @@ const wordmark = (cls = 'brand-word') => {
 };
 
 function head({ title, desc, rel, canonical }) {
-  const t = title ? `${esc(title)} · EXKNOTS` : 'EXKNOTS — 17 Topological Hand Puzzles';
-  const d = esc(desc || 'Seventeen topological hand-dexterity puzzles you solve with your fingers — each with a 2D diagram, a rotatable 3D model, an animated solution, and the mathematics behind it.');
+  const t = title ? `${esc(title)} · EXKNOTS` : 'EXKNOTS — 20 Topological Hand Puzzles';
+  const d = esc(desc || 'Twenty topological hand-dexterity puzzles you solve with your fingers — each with a 2D diagram, a rotatable 3D model, an animated solution, and the mathematics behind it.');
   const url = `${SITE}/${canonical || ''}`.replace(/\/$/, canonical ? '' : '/');
   return `<!doctype html>
 <html lang="en">
@@ -37,7 +38,7 @@ function head({ title, desc, rel, canonical }) {
 <meta name="theme-color" content="#0f1320">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EXKNOTS">
-<meta property="og:title" content="${esc(title || 'EXKNOTS — 17 Topological Hand Puzzles')}">
+<meta property="og:title" content="${esc(title || 'EXKNOTS — 20 Topological Hand Puzzles')}">
 <meta property="og:description" content="${d}">
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="${SITE}/assets/brand/og-image.png">
@@ -86,7 +87,7 @@ function footer({ rel, logomark, puzzles }) {
     <div class="foot-grid">
       <div>
         <a class="brand" href="${rel}/index.html" style="color:#ece5d6">${logomark}${wordmark()}</a>
-        <p style="margin:.8rem 0 0;max-width:30ch;font-size:.92rem">Topology you solve with your hands — 17 puzzles, their solutions, and the mathematics behind them.</p>
+        <p style="margin:.8rem 0 0;max-width:30ch;font-size:.92rem">Topology you solve with your hands — 20 puzzles, their solutions, and the mathematics behind them.</p>
       </div>
       ${cols}
     </div>
@@ -138,7 +139,7 @@ export function landingPage({ rel, logomark, puzzles }) {
   <div class="wrap">
     ${logomark}
     <h1 class="hero-word">E<span class="x">X</span>KNOTS</h1>
-    <p class="hero-tag">Seventeen topological puzzles you solve with your hands.</p>
+    <p class="hero-tag">Twenty topological puzzles you solve with your hands.</p>
     <div class="hero-cta">
       <a class="btn btn--primary" href="${rel}/explore/">▶ Open the Explorer</a>
       <a class="btn btn--ghost" href="${rel}/theory/topology-primer.html">Read the Primer</a>
@@ -154,13 +155,13 @@ export function landingPage({ rel, logomark, puzzles }) {
 
 <section class="band band--alt">
   <div class="wrap">
-    <div class="section-head"><h2>Four Arcs</h2><span class="count">A learning sequence</span></div>
+    <div class="section-head"><h2>Five Arcs</h2><span class="count">A learning sequence</span></div>
     <div class="arc-grid">${arcCards}</div>
   </div>
 </section>
 
 <section class="band wrap">
-  <div class="section-head"><h2>The Series</h2><span class="count">17 puzzles</span></div>
+  <div class="section-head"><h2>The Series</h2><span class="count">20 puzzles</span></div>
   ${groups}
 </section>
 
@@ -181,7 +182,7 @@ export function landingPage({ rel, logomark, puzzles }) {
 
   return pageShell({
     rel, current: 'home', logomark, puzzles, canonical: '',
-    title: '', desc: 'Seventeen topological hand-dexterity puzzles you solve with your fingers — diagrams, rotatable 3D models, animated solutions, and the mathematics behind them.',
+    title: '', desc: 'Twenty topological hand-dexterity puzzles you solve with your fingers — diagrams, rotatable 3D models, animated solutions, and the mathematics behind them.',
     content,
   });
 }
@@ -213,11 +214,11 @@ export function catalogPage({ rel, logomark, puzzles }) {
   const content = `
 <header class="doc-header"><div class="wrap">
   <span class="eyebrow">The Series</span>
-  <h1 class="doc-title">All 17 Puzzles</h1>
-  <p class="doc-lead">Ordered for learning, not difficulty alone. Numbers are display positions; the four arcs build on one another.</p>
+  <h1 class="doc-title">All 20 Puzzles</h1>
+  <p class="doc-lead">Ordered for learning, not difficulty alone. Numbers are display positions; the five arcs build on one another.</p>
 </div></header>
 <div class="wrap band" style="padding-top:1rem">${groups}</div>`;
-  return pageShell({ rel, current: 'puzzles', logomark, puzzles, canonical: 'puzzles/', title: 'All Puzzles', desc: 'The complete series of 17 topological puzzles, grouped into four learning arcs.', content });
+  return pageShell({ rel, current: 'puzzles', logomark, puzzles, canonical: 'puzzles/', title: 'All Puzzles', desc: 'The complete series of 20 topological puzzles, grouped into five learning arcs.', content });
 }
 
 export function theoryIndexPage({ rel, logomark, puzzles }) {
@@ -231,7 +232,7 @@ export function theoryIndexPage({ rel, logomark, puzzles }) {
 </div></header>
 <div class="wrap band" style="padding-top:1rem"><div class="cat-grid">
   ${card(`${rel}/theory/topology-primer.html`, 'Primer', 'Topology Primer', 'Every concept used in the series — linking number, genus, chirality, braid groups, Seifert surfaces, the Hopf fibration, and more.')}
-  ${card(`${rel}/theory/pedagogical-arc.html`, 'Pedagogy', 'The Pedagogical Arc', 'Why the puzzles are ordered as they are, with time estimates and a concept map across the four arcs.')}
+  ${card(`${rel}/theory/pedagogical-arc.html`, 'Pedagogy', 'The Pedagogical Arc', 'Why the puzzles are ordered as they are, with time estimates and a concept map across the five arcs.')}
   ${card(`${rel}/construction/materials.html`, 'Workshop', 'Build Guide', 'Shared materials, construction techniques, ring sizing, and prototyping advice.')}
 </div></div>`;
   return pageShell({ rel, current: 'theory', logomark, puzzles, canonical: 'theory/', title: 'Reference', desc: 'Theory primer, pedagogical arc, and the construction guide for the EXKNOTS series.', content });

@@ -1,0 +1,139 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <title>Unknotting the Figure-Eight Knot</title>
+  <desc>The alternating figure-eight knot with its four crossings labeled A to D; flipping crossing C (highlighted in red) gives a diagram that Reidemeister moves simplify to a plain unknotted circle, showing the unknotting number of the figure-eight knot is 1.</desc>
+
+  <!--
+    Geometry: standard figure-eight (4_1) projection from the parametrization
+      x = (2 + cos 2t) cos 3t,  y = (2 + cos 2t) sin 3t,  z = sin 4t
+    which has exactly 4 self-crossings, perfectly alternating (z decides
+    over/under). Crossings sit at compass points of each knot's center:
+      A = North, B = East, C = South, D = West.
+    Left knot: scale 27, center (130,140). Inset: scale 19, center (322,140).
+    Every crossing uses the occlusion idiom (see crossingGap in lib/svg.js):
+    continuous under-strand base path, then a surface-colored round-linecap
+    stroke along the over strand's tangent, then the over-segment on top.
+    Flipping ANY one crossing of this diagram yields the unknot (u(4_1) = 1);
+    the inset flips C, matching puzzle 16 (The Crossing Number).
+  -->
+
+  <!-- ================================================== -->
+  <!-- LEFT: figure-eight knot, alternating, crossings A-D -->
+  <!-- ================================================== -->
+
+  <!-- Base layer: the whole knot as one continuous closed curve -->
+  <path d="M 211,140 C 211,133 209.9,125.8 207.8,119.1 C 205.8,112.5 202.6,106 198.7,100.3 C 194.9,94.7 190,89.4 184.7,85.3 C 179.5,81.1 173.4,77.7 167.3,75.3 C 161.3,73 154.7,71.5 148.5,71.1 C 142.2,70.6 135.8,71.2 130,72.5 C 124.2,73.8 118.5,76.1 113.6,78.9 C 108.7,81.7 104.3,85.4 100.7,89.2 C 97,93 94,97.5 91.8,101.8 C 89.6,106.2 88.1,110.9 87.3,115.3 C 86.5,119.8 86.4,124.3 86.8,128.4 C 87.1,132.5 88.2,136.5 89.5,140 C 90.8,143.5 92.7,146.7 94.6,149.5 C 96.5,152.3 98.9,154.6 101.1,156.7 C 103.4,158.7 105.9,160.3 108.4,161.6 C 110.8,163 113.3,164 115.7,164.8 C 118.1,165.6 120.5,166.1 122.9,166.5 C 125.3,166.8 127.6,167 130,167 C 132.4,167 134.7,166.8 137.1,166.5 C 139.5,166.1 141.9,165.6 144.3,164.8 C 146.7,164 149.2,163 151.6,161.6 C 154.1,160.3 156.6,158.7 158.9,156.7 C 161.1,154.6 163.5,152.3 165.4,149.5 C 167.3,146.7 169.2,143.5 170.5,140 C 171.8,136.5 172.9,132.5 173.2,128.4 C 173.6,124.3 173.5,119.8 172.7,115.3 C 171.9,110.9 170.4,106.2 168.2,101.8 C 166,97.5 163,93 159.3,89.2 C 155.7,85.4 151.3,81.7 146.4,78.9 C 141.5,76.1 135.8,73.8 130,72.5 C 124.2,71.2 117.8,70.6 111.5,71.1 C 105.3,71.5 98.7,73 92.7,75.3 C 86.6,77.7 80.5,81.1 75.3,85.3 C 70,89.4 65.1,94.7 61.3,100.3 C 57.4,106 54.2,112.5 52.2,119.1 C 50.1,125.8 49,133 49,140 C 49,147 50.1,154.2 52.2,160.9 C 54.2,167.5 57.4,174 61.3,179.7 C 65.1,185.3 70,190.6 75.3,194.7 C 80.5,198.9 86.6,202.3 92.7,204.7 C 98.7,207 105.3,208.5 111.5,208.9 C 117.8,209.4 124.2,208.8 130,207.5 C 135.8,206.2 141.5,203.9 146.4,201.1 C 151.3,198.3 155.7,194.6 159.3,190.8 C 163,187 166,182.5 168.2,178.2 C 170.4,173.8 171.9,169.1 172.7,164.7 C 173.5,160.2 173.6,155.7 173.2,151.6 C 172.9,147.5 171.8,143.5 170.5,140 C 169.2,136.5 167.3,133.3 165.4,130.5 C 163.5,127.7 161.1,125.4 158.9,123.3 C 156.6,121.3 154.1,119.7 151.6,118.4 C 149.2,117 146.7,116 144.3,115.2 C 141.9,114.4 139.5,113.9 137.1,113.5 C 134.7,113.2 132.4,113 130,113 C 127.6,113 125.3,113.2 122.9,113.5 C 120.5,113.9 118.1,114.4 115.7,115.2 C 113.3,116 110.8,117 108.4,118.4 C 105.9,119.7 103.4,121.3 101.1,123.3 C 98.9,125.4 96.5,127.7 94.6,130.5 C 92.7,133.3 90.8,136.5 89.5,140 C 88.2,143.5 87.1,147.5 86.8,151.6 C 86.4,155.7 86.5,160.2 87.3,164.7 C 88.1,169.1 89.6,173.8 91.8,178.2 C 94,182.5 97,187 100.7,190.8 C 104.3,194.6 108.7,198.3 113.6,201.1 C 118.5,203.9 124.2,206.2 130,207.5 C 135.8,208.8 142.2,209.4 148.5,208.9 C 154.7,208.5 161.3,207 167.3,204.7 C 173.4,202.3 179.5,198.9 184.7,194.7 C 190,190.6 194.9,185.3 198.7,179.7 C 202.6,174 205.8,167.5 207.8,160.9 C 209.9,154.2 211,147 211,140 Z"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Crossing A (north): occlusion along over tangent, then over-segment -->
+  <line x1="119.3" y1="75" x2="140.7" y2="70"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+  <path d="M 148.3,71.1 C 147.3,71 144.1,70.9 142.1,70.9 C 140,71 138,71.2 136,71.4 C 133.9,71.7 131.9,72.1 130,72.5 C 128.1,72.9 126.1,73.5 124.3,74.1 C 122.4,74.7 120.6,75.5 118.8,76.3 C 117.1,77 114.6,78.4 113.7,78.9"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Crossing B (east) -->
+  <line x1="174.5" y1="129.7" x2="166.5" y2="150.3"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+  <path d="M 161.7,154 C 162.3,153.3 164,151.4 165.1,149.9 C 166.1,148.5 167.1,147 168,145.3 C 168.9,143.6 169.8,141.9 170.5,140 C 171.2,138.1 171.8,136.2 172.3,134.1 C 172.8,132.1 173.1,129.9 173.3,127.7 C 173.5,125.5 173.4,122 173.4,120.9"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Crossing C (south) — the one that gets flipped in the inset -->
+  <line x1="140.7" y1="205" x2="119.3" y2="210"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+  <path d="M 111.7,208.9 C 112.7,209 115.9,209.1 117.9,209.1 C 120,209 122,208.8 124,208.6 C 126.1,208.3 128.1,207.9 130,207.5 C 131.9,207.1 133.9,206.5 135.7,205.9 C 137.6,205.3 139.4,204.5 141.2,203.7 C 142.9,203 145.4,201.6 146.3,201.1"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Crossing D (west) -->
+  <line x1="85.5" y1="150.3" x2="93.5" y2="129.7"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+  <path d="M 98.3,126 C 97.7,126.7 96,128.6 94.9,130.1 C 93.9,131.5 92.9,133 92,134.7 C 91.1,136.4 90.2,138.1 89.5,140 C 88.8,141.9 88.2,143.8 87.7,145.9 C 87.2,147.9 86.9,150.1 86.7,152.3 C 86.5,154.5 86.6,158 86.6,159.1"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Crossing labels -->
+  <text x="130" y="60" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="11" fill="var(--dia-ink, #24211a)" font-weight="bold">A</text>
+  <text x="186" y="144" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="11" fill="var(--dia-ink, #24211a)" font-weight="bold">B</text>
+  <text x="130" y="227" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">C</text>
+  <text x="74" y="144" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="11" fill="var(--dia-ink, #24211a)" font-weight="bold">D</text>
+
+  <!-- Left figure label -->
+  <text x="130" y="247" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="12" fill="var(--dia-ink, #24211a)" font-weight="bold">figure-eight knot 4&#x2081;</text>
+  <text x="130" y="261" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9.5" fill="var(--dia-rigid, #8a8275)">(alternating, 4 crossings)</text>
+
+  <!-- ============================ -->
+  <!-- Arrow 1: flip crossing C     -->
+  <!-- ============================ -->
+  <line x1="219" y1="140" x2="250" y2="140" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1.5"/>
+  <polygon points="258,140 248,135.5 248,144.5" fill="var(--dia-inksoft, #6a6151)"/>
+  <text x="238" y="127" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10.5" fill="var(--dia-neg, #cf3a26)" font-weight="bold">flip C</text>
+
+  <!-- ====================================================== -->
+  <!-- INSET: same diagram with crossing C flipped (in red)   -->
+  <!-- ====================================================== -->
+
+  <!-- Base layer -->
+  <path d="M 379,140 C 379,135.1 378.2,130 376.8,125.3 C 375.3,120.7 373.1,116 370.4,112.1 C 367.7,108.1 364.2,104.4 360.5,101.5 C 356.8,98.6 352.5,96.2 348.3,94.5 C 344,92.8 339.4,91.8 335,91.5 C 330.6,91.2 326.1,91.6 322,92.5 C 317.9,93.4 313.9,95.1 310.5,97 C 307,99 303.9,101.5 301.4,104.2 C 298.8,106.9 296.7,110.1 295.1,113.1 C 293.6,116.2 292.5,119.5 291.9,122.6 C 291.4,125.8 291.3,129 291.6,131.8 C 291.8,134.7 292.6,137.5 293.5,140 C 294.4,142.5 295.7,144.7 297.1,146.7 C 298.5,148.6 300.1,150.3 301.7,151.7 C 303.3,153.1 305.1,154.3 306.8,155.2 C 308.5,156.2 310.2,156.9 311.9,157.4 C 313.6,158 315.3,158.4 317,158.6 C 318.7,158.9 320.3,159 322,159 C 323.7,159 325.3,158.9 327,158.6 C 328.7,158.4 330.4,158 332.1,157.4 C 333.8,156.9 335.5,156.2 337.2,155.2 C 338.9,154.3 340.7,153.1 342.3,151.7 C 343.9,150.3 345.5,148.6 346.9,146.7 C 348.3,144.7 349.6,142.5 350.5,140 C 351.4,137.5 352.2,134.7 352.4,131.8 C 352.7,129 352.6,125.8 352.1,122.6 C 351.5,119.5 350.4,116.2 348.9,113.1 C 347.3,110.1 345.2,106.9 342.6,104.2 C 340.1,101.5 337,99 333.5,97 C 330.1,95.1 326.1,93.4 322,92.5 C 317.9,91.6 313.4,91.2 309,91.5 C 304.6,91.8 300,92.8 295.7,94.5 C 291.5,96.2 287.2,98.6 283.5,101.5 C 279.8,104.4 276.3,108.1 273.6,112.1 C 270.9,116 268.7,120.7 267.2,125.3 C 265.8,130 265,135.1 265,140 C 265,144.9 265.8,150 267.2,154.7 C 268.7,159.3 270.9,164 273.6,167.9 C 276.3,171.9 279.8,175.6 283.5,178.5 C 287.2,181.4 291.5,183.8 295.7,185.5 C 300,187.2 304.6,188.2 309,188.5 C 313.4,188.8 317.9,188.4 322,187.5 C 326.1,186.6 330.1,184.9 333.5,183 C 337,181 340.1,178.5 342.6,175.8 C 345.2,173.1 347.3,169.9 348.9,166.9 C 350.4,163.8 351.5,160.5 352.1,157.4 C 352.6,154.2 352.7,151 352.4,148.2 C 352.2,145.3 351.4,142.5 350.5,140 C 349.6,137.5 348.3,135.3 346.9,133.3 C 345.5,131.4 343.9,129.7 342.3,128.3 C 340.7,126.9 338.9,125.7 337.2,124.8 C 335.5,123.8 333.8,123.1 332.1,122.6 C 330.4,122 328.7,121.6 327,121.4 C 325.3,121.1 323.7,121 322,121 C 320.3,121 318.7,121.1 317,121.4 C 315.3,121.6 313.6,122 311.9,122.6 C 310.2,123.1 308.5,123.8 306.8,124.8 C 305.1,125.7 303.3,126.9 301.7,128.3 C 300.1,129.7 298.5,131.4 297.1,133.3 C 295.7,135.3 294.4,137.5 293.5,140 C 292.6,142.5 291.8,145.3 291.6,148.2 C 291.3,151 291.4,154.2 291.9,157.4 C 292.5,160.5 293.6,163.8 295.1,166.9 C 296.7,169.9 298.8,173.1 301.4,175.8 C 303.9,178.5 307,181 310.5,183 C 313.9,184.9 317.9,186.6 322,187.5 C 326.1,188.4 330.6,188.8 335,188.5 C 339.4,188.2 344,187.2 348.3,185.5 C 352.5,183.8 356.8,181.4 360.5,178.5 C 364.2,175.6 367.7,171.9 370.4,167.9 C 373.1,164 375.3,159.3 376.8,154.7 C 378.2,150 379,144.9 379,140 Z"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- Crossing A: unchanged sense -->
+  <line x1="314.2" y1="94.3" x2="329.8" y2="90.7"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.2" stroke-linecap="round"/>
+  <path d="M 335.8,91.6 C 335,91.5 332.6,91.4 331.1,91.4 C 329.5,91.4 328,91.5 326.5,91.7 C 325,91.9 323.5,92.2 322,92.5 C 320.5,92.8 319.1,93.3 317.7,93.7 C 316.3,94.2 315,94.8 313.7,95.4 C 312.4,96 310.5,97 309.9,97.4"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- Crossing B: unchanged sense -->
+  <line x1="353.4" y1="132.5" x2="347.6" y2="147.5"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.2" stroke-linecap="round"/>
+  <path d="M 343.8,150.3 C 344.2,149.8 345.6,148.5 346.4,147.4 C 347.2,146.3 348,145.2 348.6,144 C 349.3,142.7 350,141.4 350.5,140 C 351,138.6 351.5,137.1 351.8,135.6 C 352.2,134 352.4,132.4 352.5,130.7 C 352.6,129.1 352.5,126.4 352.5,125.6"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- Crossing C: FLIPPED — the other strand now passes over (drawn in red) -->
+  <line x1="329.8" y1="189.3" x2="314.2" y2="185.7"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.2" stroke-linecap="round"/>
+  <path d="M 309.9,182.6 C 310.5,183 312.4,184 313.7,184.6 C 315,185.2 316.3,185.8 317.7,186.3 C 319.1,186.7 320.5,187.2 322,187.5 C 323.5,187.8 325,188.1 326.5,188.3 C 328,188.5 329.5,188.6 331.1,188.6 C 332.6,188.6 335,188.5 335.8,188.4"
+        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- Crossing D: unchanged sense -->
+  <line x1="290.6" y1="147.5" x2="296.4" y2="132.5"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.2" stroke-linecap="round"/>
+  <path d="M 300.2,129.7 C 299.8,130.2 298.4,131.5 297.6,132.6 C 296.8,133.7 296,134.8 295.4,136 C 294.7,137.3 294,138.6 293.5,140 C 293,141.4 292.5,142.9 292.2,144.4 C 291.8,146 291.6,147.6 291.5,149.3 C 291.4,150.9 291.5,153.6 291.5,154.4"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- Highlight ring around the flipped crossing -->
+  <circle cx="322" cy="187.5" r="12" fill="none"
+          stroke="var(--dia-neg, #cf3a26)" stroke-width="1.5" stroke-dasharray="3,2.5"/>
+  <text x="322" y="216" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="var(--dia-neg, #cf3a26)" font-weight="bold">crossing C flipped</text>
+
+  <!-- ================================== -->
+  <!-- Arrow 2: Reidemeister moves        -->
+  <!-- ================================== -->
+  <line x1="387" y1="140" x2="493" y2="140" stroke="var(--dia-inksoft, #6a6151)"
+        stroke-width="1.5" stroke-dasharray="6,4"/>
+  <polygon points="501,140 491,135.5 491,144.5" fill="var(--dia-inksoft, #6a6151)"/>
+  <text x="444" y="127" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10.5" fill="var(--dia-inksoft, #6a6151)">Reidemeister moves</text>
+
+  <!-- ============================ -->
+  <!-- RIGHT: the unknot            -->
+  <!-- ============================ -->
+  <circle cx="545" cy="140" r="36" fill="none"
+          stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+  <text x="545" y="198" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="12" fill="var(--dia-ink, #24211a)" font-weight="bold">unknot</text>
+  <text x="545" y="212" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9.5" fill="var(--dia-rigid, #8a8275)">(0 crossings)</text>
+
+  <!-- ============================ -->
+  <!-- Annotation and caption       -->
+  <!-- ============================ -->
+  <text x="430" y="247" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="12.5" fill="var(--dia-ink, #24211a)" font-weight="bold">one crossing change &#x2192; unknot: u(4&#x2081;) = 1</text>
+  <text x="320" y="280" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10.5" font-style="italic" fill="var(--dia-inksoft, #6a6151)">the unknotting number counts the minimum crossing changes over ALL diagrams &#x2014; not just the one you see</text>
+</svg>

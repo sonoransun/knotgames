@@ -96,7 +96,7 @@
 <h2 id="setup">Setup <a href="#setup" class="anchor-link" aria-hidden="true">#</a></h2>
 <p><figure class="dia-figure dia-narrow"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350" class="dia">
   <title>The Mirror Gate - Setup</title>
-  <desc>Two trefoil wire frames (one red, one blue) sitting on a wooden base. Left recess marked red, right marked blue. Both trefoils currently on wrong sides. Center post with cord visible.</desc>
+  <desc>Two mirror-image trefoil knots above a wooden base, drawn with over/under crossing gaps so their chirality is visible: a blue right-handed trefoil (all crossings positive) hovers over the left red L recess, and a red left-handed trefoil (all crossings negative) hovers over the right blue R recess - both on wrong sides. Center post with cord visible.</desc>
 
   <defs>
     <marker id="d0-cordArrow" markerWidth="6" markerHeight="4" refX="3" refY="2" orient="auto" markerUnits="strokeWidth">
@@ -104,7 +104,7 @@
     </marker>
   </defs>
 
-  
+
 
   <!-- Wooden base -->
   <rect x="20" y="240" width="260" height="30" rx="3" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></rect>
@@ -126,31 +126,43 @@
   <path d="M 100,210 Q 125,195 145,215" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"></path>
   <path d="M 155,215 Q 175,195 200,210" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"></path>
 
-  <!-- Blue trefoil (right-handed) on LEFT side (wrong position) -->
+  <!-- Blue trefoil (right-handed, all crossings positive) on LEFT side (wrong position).
+       Crossing idiom: continuous under-strand path, surface-colored occlusion stroke
+       along the over strand's tangent, then the local over-segment drawn on top. -->
   <g transform="translate(70,150)">
-    <!-- Trefoil knot shape — three lobes -->
-    <path d="M 0,-35 C 20,-35 30,-15 20,0 C 10,15 -10,15 -20,0 C -30,-15 -20,-35 0,-35" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
-    <!-- Crossing indicators -->
-    <line x1="-8" y1="-10" x2="8" y2="-20" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
-    <line x1="-12" y1="5" x2="0" y2="-8" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
-    <line x1="12" y1="5" x2="0" y2="-8" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
-    <text x="0" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">R-trefoil</text>
+    <!-- Continuous trefoil curve (under-strand everywhere) -->
+    <path d="M 0,-11 C -4.6,-11 -9.8,-10 -13.8,-8.4 C -17.9,-6.8 -21.9,-4.2 -24.6,-1.5 C -27.2,1.2 -29.1,4.8 -29.8,7.8 C -30.4,10.8 -29.9,14.1 -28.6,16.5 C -27.2,18.9 -24.6,21 -21.6,21.9 C -18.7,22.8 -14.7,22.9 -11,22 C -7.3,21.1 -3,19 0.4,16.2 C 3.8,13.5 7.2,9.5 9.5,5.5 C 11.8,1.5 13.6,-3.4 14.2,-7.8 C 14.9,-12.1 14.6,-16.9 13.6,-20.5 C 12.5,-24.2 10.4,-27.6 8.2,-29.7 C 5.9,-31.8 2.7,-33 0,-33 C -2.7,-33 -5.9,-31.8 -8.2,-29.7 C -10.4,-27.6 -12.5,-24.2 -13.6,-20.5 C -14.6,-16.9 -14.9,-12.1 -14.2,-7.8 C -13.6,-3.4 -11.8,1.5 -9.5,5.5 C -7.2,9.5 -3.8,13.5 -0.4,16.2 C 3,19 7.3,21.1 11,22 C 14.7,22.9 18.7,22.8 21.6,21.9 C 24.6,21 27.2,18.9 28.6,16.5 C 29.9,14.1 30.4,10.8 29.8,7.8 C 29.1,4.8 27.2,1.2 24.6,-1.5 C 21.9,-4.2 17.9,-6.8 13.8,-8.4 C 9.8,-10 4.6,-11 0,-11 Z" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+    <!-- Crossing 1 (upper-left) -->
+    <line x1="-8.3" y1="-10.7" x2="-20.3" y2="-5.8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+    <path d="M -1.8,-11 C -2.5,-10.9 -4.8,-10.7 -6.3,-10.5 C -7.8,-10.2 -9.3,-9.9 -10.7,-9.5 C -12.2,-9.1 -13.6,-8.6 -14.9,-8 C -16.2,-7.4 -17.5,-6.8 -18.7,-6.1 C -19.9,-5.4 -21,-4.6 -22.1,-3.7 C -23.1,-2.9 -24.4,-1.5 -24.9,-1.1" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+    <!-- Crossing 2 (bottom) -->
+    <line x1="-5.1" y1="12.5" x2="5.1" y2="20.5" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+    <path d="M -8.6,7 C -8.2,7.6 -6.9,9.6 -5.9,10.7 C -5,11.9 -3.9,13 -2.8,14 C -1.8,15.1 -0.6,16 0.5,16.9 C 1.7,17.8 2.9,18.5 4.1,19.2 C 5.3,19.9 6.6,20.5 7.8,21 C 9,21.5 10.9,21.9 11.5,22.1" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+    <!-- Crossing 3 (upper-right) -->
+    <line x1="13.4" y1="-1.8" x2="15.2" y2="-14.7" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+    <path d="M 10.4,3.9 C 10.7,3.3 11.7,1.2 12.2,-0.2 C 12.8,-1.7 13.2,-3.1 13.6,-4.6 C 13.9,-6 14.2,-7.5 14.4,-8.9 C 14.5,-10.3 14.6,-11.8 14.6,-13.2 C 14.6,-14.5 14.5,-15.9 14.3,-17.2 C 14.1,-18.5 13.6,-20.4 13.4,-21" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+    <text x="0" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">R-trefoil</text>
   </g>
 
-  <!-- Red trefoil (left-handed) on RIGHT side (wrong position) -->
+  <!-- Red trefoil (left-handed, all crossings negative) on RIGHT side (wrong position) -->
   <g transform="translate(230,150)">
-    <!-- Trefoil knot shape — three lobes (mirrored) -->
-    <path d="M 0,-35 C -20,-35 -30,-15 -20,0 C -10,15 10,15 20,0 C 30,-15 20,-35 0,-35" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></path>
-    <!-- Crossing indicators (mirrored) -->
-    <line x1="8" y1="-10" x2="-8" y2="-20" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
-    <line x1="12" y1="5" x2="0" y2="-8" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
-    <line x1="-12" y1="5" x2="0" y2="-8" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
-    <text x="0" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)">L-trefoil</text>
+    <!-- Continuous trefoil curve (under-strand everywhere) -->
+    <path d="M 0,-11 C 4.6,-11 9.8,-10 13.8,-8.4 C 17.9,-6.8 21.9,-4.2 24.6,-1.5 C 27.2,1.2 29.1,4.8 29.8,7.8 C 30.4,10.8 29.9,14.1 28.6,16.5 C 27.2,18.9 24.6,21 21.6,21.9 C 18.7,22.8 14.7,22.9 11,22 C 7.3,21.1 3,19 -0.4,16.2 C -3.8,13.5 -7.2,9.5 -9.5,5.5 C -11.8,1.5 -13.6,-3.4 -14.2,-7.8 C -14.9,-12.1 -14.6,-16.9 -13.6,-20.5 C -12.5,-24.2 -10.4,-27.6 -8.2,-29.7 C -5.9,-31.8 -2.7,-33 0,-33 C 2.7,-33 5.9,-31.8 8.2,-29.7 C 10.4,-27.6 12.5,-24.2 13.6,-20.5 C 14.6,-16.9 14.9,-12.1 14.2,-7.8 C 13.6,-3.4 11.8,1.5 9.5,5.5 C 7.2,9.5 3.8,13.5 0.4,16.2 C -3,19 -7.3,21.1 -11,22 C -14.7,22.9 -18.7,22.8 -21.6,21.9 C -24.6,21 -27.2,18.9 -28.6,16.5 C -29.9,14.1 -30.4,10.8 -29.8,7.8 C -29.1,4.8 -27.2,1.2 -24.6,-1.5 C -21.9,-4.2 -17.9,-6.8 -13.8,-8.4 C -9.8,-10 -4.6,-11 0,-11 Z" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></path>
+    <!-- Crossing 1 (upper-right) -->
+    <line x1="8.3" y1="-10.7" x2="20.3" y2="-5.8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+    <path d="M 1.8,-11 C 2.5,-10.9 4.8,-10.7 6.3,-10.5 C 7.8,-10.2 9.3,-9.9 10.7,-9.5 C 12.2,-9.1 13.6,-8.6 14.9,-8 C 16.2,-7.4 17.5,-6.8 18.7,-6.1 C 19.9,-5.4 21,-4.6 22.1,-3.7 C 23.1,-2.9 24.4,-1.5 24.9,-1.1" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></path>
+    <!-- Crossing 2 (bottom) -->
+    <line x1="5.1" y1="12.5" x2="-5.1" y2="20.5" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+    <path d="M 8.6,7 C 8.2,7.6 6.9,9.6 5.9,10.7 C 5,11.9 3.9,13 2.8,14 C 1.8,15.1 0.6,16 -0.5,16.9 C -1.7,17.8 -2.9,18.5 -4.1,19.2 C -5.3,19.9 -6.6,20.5 -7.8,21 C -9,21.5 -10.9,21.9 -11.5,22.1" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></path>
+    <!-- Crossing 3 (upper-left) -->
+    <line x1="-13.4" y1="-1.8" x2="-15.2" y2="-14.7" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+    <path d="M -10.4,3.9 C -10.7,3.3 -11.7,1.2 -12.2,-0.2 C -12.8,-1.7 -13.2,-3.1 -13.6,-4.6 C -13.9,-6 -14.2,-7.5 -14.4,-8.9 C -14.5,-10.3 -14.6,-11.8 -14.6,-13.2 C -14.6,-14.5 -14.5,-15.9 -14.3,-17.2 C -14.1,-18.5 -13.6,-20.4 -13.4,-21" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></path>
+    <text x="0" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)">L-trefoil</text>
   </g>
 
-  <!-- Arrows showing wrong placement -->
-  <path d="M 90,115 L 60,244" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="0.8" stroke-dasharray="2,2"></path>
-  <path d="M 210,115 L 240,244" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="0.8" stroke-dasharray="2,2"></path>
+  <!-- Leaders showing wrong placement -->
+  <path d="M 70,194 L 62,242" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="0.8" stroke-dasharray="2,2"></path>
+  <path d="M 230,194 L 238,242" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="0.8" stroke-dasharray="2,2"></path>
 
   <!-- Title label -->
   <text x="150" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">The Mirror Gate — Setup</text>
@@ -266,6 +278,14 @@
 <p>Some knots are <strong>amphichiral</strong> — they ARE equivalent to their mirror image. The figure-eight knot (Puzzle 9) is amphichiral. The trefoil is not. Chirality is a topological invariant: it depends on the knot type, not on the particular diagram or physical realization.</p>
 <h3 id="how-to-tell-them-apart">How to Tell Them Apart <a href="#how-to-tell-them-apart" class="anchor-link" aria-hidden="true">#</a></h3>
 <p>At each crossing of the trefoil, one strand passes over the other. If you follow the knot in a consistent direction and the overpasses spiral clockwise, the trefoil is right-handed. If they spiral counterclockwise, it is left-handed. The crossing pattern is the signature of handedness.</p>
+<p>The spiral test works at a glance, but there is a crossing-by-crossing version that leaves nothing to judgment. It uses the same right-hand rule that computes crossing signs in Puzzle 3, The Prisoner's Ring:</p>
+<ol>
+<li><strong>Orient the knot.</strong> Pick a direction of travel around the loop and imagine arrows along the wire pointing that way. Either direction works — reversing it flips both arrows at every crossing at once, and the turn from one arrow to the other keeps its sense, so every sign comes out the same.</li>
+<li><strong>Pick any crossing.</strong> Two arrows meet there: one on the strand on top, one on the strand passing underneath.</li>
+<li><strong>Read the sign.</strong> Rotate the top strand's arrow onto the under-strand's arrow, turning through less than 180 degrees. If the rotation is counterclockwise, the crossing is <strong>+1</strong>. If it is clockwise, the crossing is <strong>-1</strong>.</li>
+</ol>
+<p>Walk this through on the left panel of the comparison figure above. Read the figure for what it is — a shorthand: each panel draws the trefoil's outline as one unbroken loop and reduces each crossing to a short bar (horizontal at the top crossing, tilted at the two lower ones) that flags where one strand rides over the other, without drawing the full weave. Orient the loop counterclockwise — the direction its CCW arrow already indicates — and complete the top crossing in your mind's eye. Two strand segments pass through it, and under counterclockwise travel both head leftward, in step with the flow across the top of the loop: one descends toward the lower-left lobe while the other climbs toward the upper left. In the weave this panel stands for, the descending strand is the one on top. Now apply the rule: swing the top arrow onto the under arrow — from leftward-and-down to leftward-and-up, the short way sweeps clockwise, rising through due left. Clockwise means <strong>-1</strong>. The trefoil's three-fold symmetry repeats the same local picture at the lower-left and lower-right crossings, rotated by a third of a turn, so each of them also reads <strong>-1</strong>. Three crossings, all <strong>-1</strong>: left-handed, exactly as the panel is labeled. Mirror the walk-through onto the right panel's weave and every swing reverses — all three crossings read <strong>+1</strong>: right-handed.</p>
+<p>In practice you never need all three. In the trefoil's standard three-crossing form, every crossing carries the same sign, so one honest sign check at a single crossing settles the handedness of the whole frame: <strong>+1</strong> says right-handed, <strong>-1</strong> says left-handed.</p>
 <div class="callout callout--intuition"><span class="callout-label">Physical Intuition</span><p>What you feel in your hands: both trefoils feel the same weight, have the same dimensions, and look nearly identical when held at arm's length. But when you try to seat one in the wrong recess, it simply does not fit — the curves of the trefoil press against the recess walls at the wrong points. The physical mismatch IS the chirality. Your hands can feel the difference that your eyes initially cannot see.</p></div>
 <p><em>For more on chirality and knot invariants, see <a href="../theory/topology-primer.html#chirality-and-handedness">Topology Primer: Chirality and Handedness</a>.</em></p>
 <h2 id="solution">Solution <a href="#solution" class="anchor-link" aria-hidden="true">#</a></h2>
@@ -275,9 +295,9 @@
 </ol>
 <p><figure class="dia-figure dia-narrow"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350" class="dia">
   <title>The Mirror Gate - Solved</title>
-  <desc>Same base as setup, but each trefoil now seated in its matching recess: left-handed trefoil in the left red recess, right-handed trefoil in the right blue recess.</desc>
+  <desc>Same base as setup, but each trefoil now seated over its matching recess: the red left-handed trefoil (all crossings negative) at the left red L recess and the blue right-handed trefoil (all crossings positive) at the right blue R recess. Crossings drawn with over/under gaps so the mirror chirality is visible.</desc>
 
-  
+
 
   <!-- Wooden base -->
   <rect x="20" y="240" width="260" height="30" rx="3" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></rect>
@@ -299,22 +319,38 @@
   <path d="M 100,220 Q 125,210 145,220" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"></path>
   <path d="M 155,220 Q 175,210 200,220" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-dasharray="5,3"></path>
 
-  <!-- Red trefoil (left-handed) on LEFT side (correct!) -->
+  <!-- Red trefoil (left-handed, all crossings negative) on LEFT side (correct!).
+       Crossing idiom: continuous under-strand path, surface-colored occlusion stroke
+       along the over strand's tangent, then the local over-segment drawn on top. -->
   <g transform="translate(70,150)">
-    <path d="M 0,-35 C -20,-35 -30,-15 -20,0 C -10,15 10,15 20,0 C 30,-15 20,-35 0,-35" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></path>
-    <line x1="8" y1="-10" x2="-8" y2="-20" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
-    <line x1="12" y1="5" x2="0" y2="-8" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
-    <line x1="-12" y1="5" x2="0" y2="-8" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></line>
-    <text x="0" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)">L-trefoil</text>
+    <!-- Continuous trefoil curve (under-strand everywhere) -->
+    <path d="M 0,-11 C 4.6,-11 9.8,-10 13.8,-8.4 C 17.9,-6.8 21.9,-4.2 24.6,-1.5 C 27.2,1.2 29.1,4.8 29.8,7.8 C 30.4,10.8 29.9,14.1 28.6,16.5 C 27.2,18.9 24.6,21 21.6,21.9 C 18.7,22.8 14.7,22.9 11,22 C 7.3,21.1 3,19 -0.4,16.2 C -3.8,13.5 -7.2,9.5 -9.5,5.5 C -11.8,1.5 -13.6,-3.4 -14.2,-7.8 C -14.9,-12.1 -14.6,-16.9 -13.6,-20.5 C -12.5,-24.2 -10.4,-27.6 -8.2,-29.7 C -5.9,-31.8 -2.7,-33 0,-33 C 2.7,-33 5.9,-31.8 8.2,-29.7 C 10.4,-27.6 12.5,-24.2 13.6,-20.5 C 14.6,-16.9 14.9,-12.1 14.2,-7.8 C 13.6,-3.4 11.8,1.5 9.5,5.5 C 7.2,9.5 3.8,13.5 0.4,16.2 C -3,19 -7.3,21.1 -11,22 C -14.7,22.9 -18.7,22.8 -21.6,21.9 C -24.6,21 -27.2,18.9 -28.6,16.5 C -29.9,14.1 -30.4,10.8 -29.8,7.8 C -29.1,4.8 -27.2,1.2 -24.6,-1.5 C -21.9,-4.2 -17.9,-6.8 -13.8,-8.4 C -9.8,-10 -4.6,-11 0,-11 Z" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></path>
+    <!-- Crossing 1 (upper-right) -->
+    <line x1="8.3" y1="-10.7" x2="20.3" y2="-5.8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+    <path d="M 1.8,-11 C 2.5,-10.9 4.8,-10.7 6.3,-10.5 C 7.8,-10.2 9.3,-9.9 10.7,-9.5 C 12.2,-9.1 13.6,-8.6 14.9,-8 C 16.2,-7.4 17.5,-6.8 18.7,-6.1 C 19.9,-5.4 21,-4.6 22.1,-3.7 C 23.1,-2.9 24.4,-1.5 24.9,-1.1" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></path>
+    <!-- Crossing 2 (bottom) -->
+    <line x1="5.1" y1="12.5" x2="-5.1" y2="20.5" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+    <path d="M 8.6,7 C 8.2,7.6 6.9,9.6 5.9,10.7 C 5,11.9 3.9,13 2.8,14 C 1.8,15.1 0.6,16 -0.5,16.9 C -1.7,17.8 -2.9,18.5 -4.1,19.2 C -5.3,19.9 -6.6,20.5 -7.8,21 C -9,21.5 -10.9,21.9 -11.5,22.1" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></path>
+    <!-- Crossing 3 (upper-left) -->
+    <line x1="-13.4" y1="-1.8" x2="-15.2" y2="-14.7" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+    <path d="M -10.4,3.9 C -10.7,3.3 -11.7,1.2 -12.2,-0.2 C -12.8,-1.7 -13.2,-3.1 -13.6,-4.6 C -13.9,-6 -14.2,-7.5 -14.4,-8.9 C -14.5,-10.3 -14.6,-11.8 -14.6,-13.2 C -14.6,-14.5 -14.5,-15.9 -14.3,-17.2 C -14.1,-18.5 -13.6,-20.4 -13.4,-21" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"></path>
+    <text x="0" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-neg, #cf3a26)">L-trefoil</text>
   </g>
 
-  <!-- Blue trefoil (right-handed) on RIGHT side (correct!) -->
+  <!-- Blue trefoil (right-handed, all crossings positive) on RIGHT side (correct!) -->
   <g transform="translate(230,150)">
-    <path d="M 0,-35 C 20,-35 30,-15 20,0 C 10,15 -10,15 -20,0 C -30,-15 -20,-35 0,-35" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
-    <line x1="-8" y1="-10" x2="8" y2="-20" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
-    <line x1="-12" y1="5" x2="0" y2="-8" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
-    <line x1="12" y1="5" x2="0" y2="-8" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></line>
-    <text x="0" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">R-trefoil</text>
+    <!-- Continuous trefoil curve (under-strand everywhere) -->
+    <path d="M 0,-11 C -4.6,-11 -9.8,-10 -13.8,-8.4 C -17.9,-6.8 -21.9,-4.2 -24.6,-1.5 C -27.2,1.2 -29.1,4.8 -29.8,7.8 C -30.4,10.8 -29.9,14.1 -28.6,16.5 C -27.2,18.9 -24.6,21 -21.6,21.9 C -18.7,22.8 -14.7,22.9 -11,22 C -7.3,21.1 -3,19 0.4,16.2 C 3.8,13.5 7.2,9.5 9.5,5.5 C 11.8,1.5 13.6,-3.4 14.2,-7.8 C 14.9,-12.1 14.6,-16.9 13.6,-20.5 C 12.5,-24.2 10.4,-27.6 8.2,-29.7 C 5.9,-31.8 2.7,-33 0,-33 C -2.7,-33 -5.9,-31.8 -8.2,-29.7 C -10.4,-27.6 -12.5,-24.2 -13.6,-20.5 C -14.6,-16.9 -14.9,-12.1 -14.2,-7.8 C -13.6,-3.4 -11.8,1.5 -9.5,5.5 C -7.2,9.5 -3.8,13.5 -0.4,16.2 C 3,19 7.3,21.1 11,22 C 14.7,22.9 18.7,22.8 21.6,21.9 C 24.6,21 27.2,18.9 28.6,16.5 C 29.9,14.1 30.4,10.8 29.8,7.8 C 29.1,4.8 27.2,1.2 24.6,-1.5 C 21.9,-4.2 17.9,-6.8 13.8,-8.4 C 9.8,-10 4.6,-11 0,-11 Z" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+    <!-- Crossing 1 (upper-left) -->
+    <line x1="-8.3" y1="-10.7" x2="-20.3" y2="-5.8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+    <path d="M -1.8,-11 C -2.5,-10.9 -4.8,-10.7 -6.3,-10.5 C -7.8,-10.2 -9.3,-9.9 -10.7,-9.5 C -12.2,-9.1 -13.6,-8.6 -14.9,-8 C -16.2,-7.4 -17.5,-6.8 -18.7,-6.1 C -19.9,-5.4 -21,-4.6 -22.1,-3.7 C -23.1,-2.9 -24.4,-1.5 -24.9,-1.1" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+    <!-- Crossing 2 (bottom) -->
+    <line x1="-5.1" y1="12.5" x2="5.1" y2="20.5" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+    <path d="M -8.6,7 C -8.2,7.6 -6.9,9.6 -5.9,10.7 C -5,11.9 -3.9,13 -2.8,14 C -1.8,15.1 -0.6,16 0.5,16.9 C 1.7,17.8 2.9,18.5 4.1,19.2 C 5.3,19.9 6.6,20.5 7.8,21 C 9,21.5 10.9,21.9 11.5,22.1" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+    <!-- Crossing 3 (upper-right) -->
+    <line x1="13.4" y1="-1.8" x2="15.2" y2="-14.7" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"></line>
+    <path d="M 10.4,3.9 C 10.7,3.3 11.7,1.2 12.2,-0.2 C 12.8,-1.7 13.2,-3.1 13.6,-4.6 C 13.9,-6 14.2,-7.5 14.4,-8.9 C 14.5,-10.3 14.6,-11.8 14.6,-13.2 C 14.6,-14.5 14.5,-15.9 14.3,-17.2 C 14.1,-18.5 13.6,-20.4 13.4,-21" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+    <text x="0" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">R-trefoil</text>
   </g>
 
   <!-- Check marks -->
@@ -374,9 +410,9 @@
   <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
   <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
 </svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
-        <p style="margin:.8rem 0 0;max-width:30ch;font-size:.92rem">Topology you solve with your hands — 17 puzzles, their solutions, and the mathematics behind them.</p>
+        <p style="margin:.8rem 0 0;max-width:30ch;font-size:.92rem">Topology you solve with your hands — 20 puzzles, their solutions, and the mathematics behind them.</p>
       </div>
-      <div><h4>Arc 1</h4><ul><li><a href="../puzzles/01-the-gatekeeper.html">1. The Gatekeeper</a></li><li><a href="../puzzles/02-shepherds-yoke.html">2. Shepherd's Yoke</a></li><li><a href="../puzzles/03-the-prisoners-ring.html">3. The Prisoner's Ring</a></li><li><a href="../puzzles/04-mobius-snare.html">4. Mobius Snare</a></li><li><a href="../puzzles/11-the-mirror-gate.html">5. The Mirror Gate</a></li></ul></div><div><h4>Arc 2</h4><ul><li><a href="../puzzles/05-trinity-lock.html">6. Trinity Lock</a></li><li><a href="../puzzles/06-devils-pitchfork.html">7. Devil's Pitchfork</a></li><li><a href="../puzzles/07-the-ferrymans-knot.html">8. The Ferryman's Knot</a></li><li><a href="../puzzles/16-the-crossing-number.html">9. The Crossing Number</a></li></ul></div><div><h4>Arc 3</h4><ul><li><a href="../puzzles/08-ouroboros-chain.html">10. Ouroboros Chain</a></li><li><a href="../puzzles/09-genus-trap.html">11. Genus Trap</a></li><li><a href="../puzzles/10-the-hopf-paradox.html">12. The Hopf Paradox</a></li></ul></div><div><h4>Arc 4</h4><ul><li><a href="../puzzles/12-the-braid-cage.html">13. The Braid Cage</a></li><li><a href="../puzzles/13-the-torus-winder.html">14. The Torus Winder</a></li><li><a href="../puzzles/14-the-tricolor-lock.html">15. The Tricolor Lock</a></li><li><a href="../puzzles/15-the-seifert-sail.html">16. The Seifert Sail</a></li><li><a href="../puzzles/17-the-satellite-trap.html">17. The Satellite Trap</a></li></ul></div>
+      <div><h4>Arc 1</h4><ul><li><a href="../puzzles/01-the-gatekeeper.html">1. The Gatekeeper</a></li><li><a href="../puzzles/02-shepherds-yoke.html">2. Shepherd's Yoke</a></li><li><a href="../puzzles/03-the-prisoners-ring.html">3. The Prisoner's Ring</a></li><li><a href="../puzzles/04-mobius-snare.html">4. Mobius Snare</a></li><li><a href="../puzzles/11-the-mirror-gate.html">5. The Mirror Gate</a></li></ul></div><div><h4>Arc 2</h4><ul><li><a href="../puzzles/05-trinity-lock.html">6. Trinity Lock</a></li><li><a href="../puzzles/06-devils-pitchfork.html">7. Devil's Pitchfork</a></li><li><a href="../puzzles/07-the-ferrymans-knot.html">8. The Ferryman's Knot</a></li><li><a href="../puzzles/16-the-crossing-number.html">9. The Crossing Number</a></li></ul></div><div><h4>Arc 3</h4><ul><li><a href="../puzzles/08-ouroboros-chain.html">10. Ouroboros Chain</a></li><li><a href="../puzzles/09-genus-trap.html">11. Genus Trap</a></li><li><a href="../puzzles/10-the-hopf-paradox.html">12. The Hopf Paradox</a></li></ul></div><div><h4>Arc 4</h4><ul><li><a href="../puzzles/12-the-braid-cage.html">13. The Braid Cage</a></li><li><a href="../puzzles/13-the-torus-winder.html">14. The Torus Winder</a></li><li><a href="../puzzles/14-the-tricolor-lock.html">15. The Tricolor Lock</a></li><li><a href="../puzzles/15-the-seifert-sail.html">16. The Seifert Sail</a></li><li><a href="../puzzles/17-the-satellite-trap.html">17. The Satellite Trap</a></li></ul></div><div><h4>Arc 5</h4><ul><li><a href="../puzzles/18-the-whitehead-waltz.html">18. The Whitehead Waltz</a></li><li><a href="../puzzles/19-the-tangle-dance.html">19. The Tangle Dance</a></li><li><a href="../puzzles/20-the-grannys-downfall.html">20. The Granny's Downfall</a></li></ul></div>
     </div>
     <div class="foot-fine">
       <span>EXKNOTS · MIT License</span>

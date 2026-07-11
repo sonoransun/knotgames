@@ -29,7 +29,7 @@ Each panel has interlocking tabs and slots on its edges for connecting to adjace
 ![Trefoil frame with cord loop and unassembled panels](../diagrams/puzzles/15-the-seifert-sail/setup.svg)
 
 1. The trefoil wire frame stands vertically on the base
-2. The cord loop passes through the trefoil in a way that links it with the frame
+2. The cord loop passes through the trefoil in a way that appears to link it with the frame
 3. Three shaped panels lie beside the base, unassembled
 4. Each panel's edges are contoured to match a region of the trefoil's interior
 
@@ -66,23 +66,55 @@ For the trefoil:
 
 A genus-1 surface has one handle. The unknot bounds a genus-0 surface (a disk). The figure-eight knot bounds a genus-1 surface. The genus is a knot invariant — it provides a lower bound on the knot's complexity.
 
-**Physical Intuition:** What you feel in your hands: the panels are thin and flexible. As you slide them into position inside the trefoil frame, each panel curves to follow the frame's interior contour. At the crossing points, the tab-and-slot connections force a half-twist — you feel the panel resist slightly as it rotates 180 degrees. When all three panels are connected, you have a continuous sheet spanning the interior of the trefoil. Now push the cord: it slides across the surface, over the half-twist bands, and pops free on the other side. The surface you built IS the topological proof that the cord can escape.
+### Why the surface frees the cord
+
+Building the surface is only half the puzzle. The other half is knowing what the surface does for you.
+
+Start with a fact the setup conceals: the cord was never truly linked. It is threaded so that its **linking number with the trefoil is 0** — it looks captive, but no invariant holds it there (compare [Puzzle 3](03-the-prisoners-ring.md), where canceling crossing signs give the same verdict). Linking number 0 means an escape path exists. The problem is that in the open air of the frame, that path is invisible — every wiggle of the cord looks like every other. The Seifert surface makes the path visible, and countable.
+
+Here is how. The surface is orientable — that is what the half-twist connections buy you — so it has a consistent front face and back face. Every point where the cord passes through the sheet gets a sign: **+1** where it passes back-to-front, **−1** where it passes front-to-back. Because the cord is a closed loop, it must return to where it started, and the signed total of its passages through the sheet equals its linking number with the sheet's boundary — the trefoil. That total is 0. So the cord punctures **any** spanning surface — this panel construction or any other — an even number of times, in canceling ± pairs.
+
+The escape move is **puncture-pair cancellation**:
+
+1. Find two punctures of opposite sign that are adjacent along the cord. The sub-arc of cord between them is a hairpin through the sheet: in at the +, back out at the −.
+2. Push that sub-arc across the sheet: slide the bight along the panel face so the two puncture points travel toward each other, feeding it over the half-twist band where its path crosses one. When the two points meet, the cord lies flat against the panel and lifts away — **both punctures vanish at once**.
+3. Repeat until no punctures remain. Each cancellation removes exactly one + and one −, and the pairing guarantees no lone puncture is ever stranded.
+
+With zero punctures, the loop lies entirely off the surface. Nothing passes through the sheet anymore, so nothing holds the loop: it slides across the outside of the surface, over the boundary wire, and off the frame.
+
+Opposite signs are essential. A same-sign pair is not a hairpin but a through-and-around wrap — push those two points together and the cord jams against the panel instead of lifting off. And the signs themselves only make sense because the surface is orientable: connect a tab without its half-twist and the sheet becomes one-sided, with no front, no back, no signs, and no pairing (see Common Mistake 2).
+
+**Physical Intuition:** What you feel in your hands: the panels are thin and flexible. As you slide them into position inside the trefoil frame, each panel curves to follow the frame's interior contour. At the crossing points, the tab-and-slot connections force a half-twist — you feel the panel resist slightly as it rotates 180 degrees. When all three panels are connected, you have a continuous sheet spanning the interior of the trefoil. Now look at the cord: it passes through the sheet at exactly two points. Pinch the bight between them and sweep it across the panel face — the two puncture points slide together, meet, and the cord pops off the sheet. The surface you built IS the escape mechanism: it turns an invisible deformation into two puncture points you can see, touch, and cancel.
 
 *For the complete treatment of Seifert surfaces and genus, see [Topology Primer: Seifert Surfaces](../theory/topology-primer.md#seifert-surfaces).*
 
 ## Solution
 
+**Phase 1 — build the surface:**
+
 1. Identify the three crossing regions of the trefoil frame
 2. At each crossing, determine which side is the "over" strand and which is "under"
 3. Slide Panel A into the upper region of the trefoil interior (between two crossings)
 4. Slide Panel B into the lower-left region
-5. Connect Panels A and B at the crossing using the interlocking tab (the connection creates a half-twist)
+5. Connect Panels A and B at the upper-left crossing using the interlocking tab (the connection creates a half-twist)
+
+![Checkpoint A: panels A and B seated, the half-twist connection made](../diagrams/puzzles/15-the-seifert-sail/checkpoint-a.svg)
+
+**Checkpoint A (after step 5):** Panels A and B should now read as one sheet — run a finger from the middle of A, across the half-twist connector, onto B without lifting it. The lower-right lobe is still open, and the cord still hangs through it, as linked-looking as ever. If the tab went in flat, with no twist, back it out and redo it (see Common Mistake 2).
+
+6. Slide Panel C into the lower-right region and connect it to both A and B — two more half-twist connections, one at each remaining crossing
+7. Verify: the three panels form a continuous surface whose edge follows the trefoil wire all the way around
+
+**Phase 2 — cancel the punctures:**
+
+8. **Count the punctures.** Find every point where the cord passes through the sheet. There are exactly two — the cord dips through panel C and comes back out — and they carry opposite signs: in at one (+), out at the other (−). This is not luck: the cord's linking number with the trefoil is 0, so it must puncture the surface in canceling ± pairs (see [Why the surface frees the cord](#why-the-surface-frees-the-cord)). If you count an odd number, a panel is not seated where you think it is — recheck step 7.
+
+![Checkpoint B: the finished surface — the cord punctures it in a canceling ± pair](../diagrams/puzzles/15-the-seifert-sail/checkpoint-b.svg)
+
+9. **Cancel the pair.** Pinch the bight of cord between the two punctures and push it across the sheet: slide it along the panel face so the two puncture points travel toward each other, feeding slack over the half-twist band if the path between them crosses one (here both punctures sit on panel C, so the push is one short sweep). When the points meet, the cord lies flat against the panel and lifts away — both punctures vanish together.
+10. **Slide the loop free.** Zero punctures remain, so the loop lies entirely off the surface. Sweep it across the outside of the sheet and over the boundary wire — it drops clear of the frame. Nothing is forced, nothing stretches.
 
 ![Completed Seifert surface with freed cord](../diagrams/puzzles/15-the-seifert-sail/solved.svg)
-
-6. Slide Panel C into the lower-right region and connect to both A and B
-7. Verify: the three panels form a continuous surface whose edge follows the trefoil wire
-8. Push the cord loop across the surface — it slides over the panels and off the frame
 
 ## Why It's Tricky
 
@@ -96,7 +128,7 @@ The trefoil looks like it cannot possibly bound any surface — it is too twiste
 
 2. **Connecting panels without the half-twist.** If the tabs are connected straight (no twist), the result is a non-orientable surface (like a Mobius band). The Seifert surface must be orientable — the half-twist ensures this.
 
-3. **Trying to free the cord without building the surface.** The cord is genuinely linked with the trefoil frame. Without the Seifert surface to "push across," there is no deformation path to free the cord.
+3. **Trying to free the cord without building the surface.** The cord's linking number with the frame is 0, so an escape path does exist — but freehand it is a blind search, and every wiggle looks like every other. The surface is what makes the path findable: it localizes the whole problem to two visible puncture points and one mechanical move. Skipping the build does not make the escape impossible; it makes it invisible.
 
 4. **Assembling the panels outside the frame.** The panels must be assembled INSIDE the frame, conforming to its interior. Assembling outside and then trying to insert the result will not work — the completed surface is topologically locked to the frame boundary.
 

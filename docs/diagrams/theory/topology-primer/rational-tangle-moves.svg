@@ -1,0 +1,114 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360">
+  <title>Rational Tangle Moves and the Fraction They Compute</title>
+  <desc>Top: the two generating moves of a rational tangle. TWIST (T) crosses the top-right strand over the bottom-right strand, adding one positive crossing, and acts on the fraction by x to x plus 1. ROTATE (R) turns the whole frame a quarter-turn clockwise without moving any cord relative to another, and acts on the fraction by x to minus one over x. Bottom: the descent ladder from fraction 3/2 to 0 in six moves, R then T then R then T then T then T, with the arithmetic on each arrow; positive fractions call for rotate, negative fractions for twist, and the descent always terminates at 0.</desc>
+
+  <!-- ================= TWIST panel ================= -->
+  <text x="140" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="var(--dia-ink, #24211a)">T &#8212; TWIST</text>
+  <text x="140" y="49" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-pos, #2f8f43)">x &#8594; x + 1</text>
+
+  <!-- frame with one positive crossing: blue (top-left to bottom-right) OVER red -->
+  <rect x="90" y="68" width="100" height="100" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="106" cy="84" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="174" cy="84" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="106" cy="152" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="174" cy="152" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <!-- under strand (red), continuous -->
+  <line x1="106" y1="152" x2="174" y2="84" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- occlusion along the over tangent at crossing (140,118), then over strand (blue) -->
+  <line x1="136.46" y1="114.46" x2="143.54" y2="121.54" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8" stroke-linecap="round"/>
+  <line x1="106" y1="84" x2="174" y2="152" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="106" cy="84" r="3.5" fill="var(--dia-cord, #1f57c4)"/>
+  <circle cx="174" cy="152" r="3.5" fill="var(--dia-cord, #1f57c4)"/>
+  <circle cx="106" cy="152" r="3.5" fill="var(--dia-neg, #cf3a26)"/>
+  <circle cx="174" cy="84" r="3.5" fill="var(--dia-neg, #cf3a26)"/>
+  <!-- +1 badge -->
+  <text x="163" y="112" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-pos, #2f8f43)">+1</text>
+
+  <text x="140" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">cross top-right OVER bottom-right &#8212;</text>
+  <text x="140" y="203" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">one new positive crossing</text>
+
+  <!-- divider -->
+  <line x1="280" y1="20" x2="280" y2="210" stroke="var(--dia-faint, #c9bda7)" stroke-width="1"/>
+
+  <!-- ================= ROTATE panel ================= -->
+  <text x="420" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="var(--dia-ink, #24211a)">R &#8212; ROTATE</text>
+  <text x="420" y="49" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-gold, #c79a22)">x &#8594; &#8722;1/x</text>
+
+  <!-- quarter-turn arrow above the frame (clockwise, top to right) -->
+  <path d="M 420,60 A 66 66 0 0 1 486,118" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1.6"/>
+  <polygon points="491,112 489,124 480,116" fill="var(--dia-inksoft, #6a6151)"/>
+
+  <!-- frame showing a crossing, indicating the object being turned -->
+  <rect x="370" y="68" width="100" height="100" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="386" cy="84" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="454" cy="84" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="386" cy="152" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="454" cy="152" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <line x1="386" y1="152" x2="454" y2="84" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="416.46" y1="114.46" x2="423.54" y2="121.54" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8" stroke-linecap="round"/>
+  <line x1="386" y1="84" x2="454" y2="152" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="386" cy="84" r="3.5" fill="var(--dia-cord, #1f57c4)"/>
+  <circle cx="454" cy="152" r="3.5" fill="var(--dia-cord, #1f57c4)"/>
+  <circle cx="386" cy="152" r="3.5" fill="var(--dia-neg, #cf3a26)"/>
+  <circle cx="454" cy="84" r="3.5" fill="var(--dia-neg, #cf3a26)"/>
+
+  <text x="420" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">turn the whole frame a quarter-turn &#8212;</text>
+  <text x="420" y="203" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">no cord moves, the fraction inverts</text>
+
+  <!-- ================= FRACTION LADDER ================= -->
+  <line x1="20" y1="224" x2="540" y2="224" stroke="var(--dia-faint, #c9bda7)" stroke-width="1"/>
+  <text x="280" y="248" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-ink, #24211a)">The descent 3/2 &#8594; 0: positive &#8594; rotate, negative &#8594; twist</text>
+
+  <!-- nodes at x = 40,123,207,290,373,457,540 (y baseline 288) -->
+  <text x="40"  y="292" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" fill="var(--dia-ink, #24211a)">3/2</text>
+  <text x="123" y="292" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" fill="var(--dia-ink, #24211a)">&#8722;2/3</text>
+  <text x="207" y="292" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" fill="var(--dia-ink, #24211a)">1/3</text>
+  <text x="290" y="292" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" fill="var(--dia-ink, #24211a)">&#8722;3</text>
+  <text x="373" y="292" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" fill="var(--dia-ink, #24211a)">&#8722;2</text>
+  <text x="457" y="292" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" fill="var(--dia-ink, #24211a)">&#8722;1</text>
+  <text x="540" y="292" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" fill="var(--dia-pos, #2f8f43)">0</text>
+
+  <!-- arrow 1: R  40->123 mid 81.5 -->
+  <line x1="60" y1="287" x2="103" y2="287" stroke="var(--dia-ink, #24211a)" stroke-width="1.4"/>
+  <polygon points="103,283 111,287 103,291" fill="var(--dia-ink, #24211a)"/>
+  <circle cx="81.5" cy="270" r="8.5" fill="var(--dia-gold, #c79a22)"/>
+  <text x="81.5" y="274" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">R</text>
+  <text x="81.5" y="308" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-inksoft, #6a6151)">&#8722;1/(3/2)=&#8722;2/3</text>
+
+  <!-- arrow 2: T  123->207 mid 165 -->
+  <line x1="145" y1="287" x2="187" y2="287" stroke="var(--dia-ink, #24211a)" stroke-width="1.4"/>
+  <polygon points="187,283 195,287 187,291" fill="var(--dia-ink, #24211a)"/>
+  <circle cx="165" cy="270" r="8.5" fill="var(--dia-pos, #2f8f43)"/>
+  <text x="165" y="274" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">T</text>
+  <text x="165" y="308" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-inksoft, #6a6151)">&#8722;2/3+1=1/3</text>
+
+  <!-- arrow 3: R  207->290 mid 248.5 -->
+  <line x1="227" y1="287" x2="270" y2="287" stroke="var(--dia-ink, #24211a)" stroke-width="1.4"/>
+  <polygon points="270,283 278,287 270,291" fill="var(--dia-ink, #24211a)"/>
+  <circle cx="248.5" cy="270" r="8.5" fill="var(--dia-gold, #c79a22)"/>
+  <text x="248.5" y="274" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">R</text>
+  <text x="248.5" y="308" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-inksoft, #6a6151)">&#8722;1/(1/3)=&#8722;3</text>
+
+  <!-- arrow 4: T  290->373 mid 331.5 -->
+  <line x1="310" y1="287" x2="353" y2="287" stroke="var(--dia-ink, #24211a)" stroke-width="1.4"/>
+  <polygon points="353,283 361,287 353,291" fill="var(--dia-ink, #24211a)"/>
+  <circle cx="331.5" cy="270" r="8.5" fill="var(--dia-pos, #2f8f43)"/>
+  <text x="331.5" y="274" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">T</text>
+  <text x="331.5" y="308" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-inksoft, #6a6151)">&#8722;3+1=&#8722;2</text>
+
+  <!-- arrow 5: T  373->457 mid 415 -->
+  <line x1="394" y1="287" x2="437" y2="287" stroke="var(--dia-ink, #24211a)" stroke-width="1.4"/>
+  <polygon points="437,283 445,287 437,291" fill="var(--dia-ink, #24211a)"/>
+  <circle cx="415" cy="270" r="8.5" fill="var(--dia-pos, #2f8f43)"/>
+  <text x="415" y="274" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">T</text>
+  <text x="415" y="308" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-inksoft, #6a6151)">&#8722;2+1=&#8722;1</text>
+
+  <!-- arrow 6: T  457->540 mid 498.5 -->
+  <line x1="477" y1="287" x2="520" y2="287" stroke="var(--dia-ink, #24211a)" stroke-width="1.4"/>
+  <polygon points="520,283 528,287 520,291" fill="var(--dia-ink, #24211a)"/>
+  <circle cx="498.5" cy="270" r="8.5" fill="var(--dia-pos, #2f8f43)"/>
+  <text x="498.5" y="274" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">T</text>
+  <text x="498.5" y="308" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-inksoft, #6a6151)">&#8722;1+1=0</text>
+
+  <text x="280" y="338" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">the fraction is a <tspan font-weight="bold">complete</tspan> invariant &#8212; equal fractions mean the same tangle (Conway)</text>
+</svg>

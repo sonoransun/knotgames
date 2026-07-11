@@ -1,6 +1,6 @@
 <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 400">
   <title>The Satellite Trap - Solved</title>
-  <desc>Same torus view. External cord rerouted (different path). Outer ring freed and moved away. Inner ring still trapped. Labels: Outer: FREE and Inner: TRAPPED.</desc>
+  <desc>Same torus view. Internal tunnel unchanged: a red dashed (2,3) torus-knot curve winding inside the shell wall with three over/under crossings drawn as breaks in the under strand. External cord rerouted (different path). Outer ring freed and moved away. Inner ring still trapped on the tunnel section between ports 3 and 4, inside the torus — on the tunnel's outer bottom wind, in the same spot as in the setup figure. Labels: Outer: FREE and Inner: TRAPPED.</desc>
 
   <defs>
     <marker id="freeArrow" markerWidth="6" markerHeight="4" refX="3" refY="2"
@@ -9,7 +9,7 @@
     </marker>
   </defs>
 
-  
+
 
   <!-- Title -->
   <text x="175" y="25" text-anchor="middle" font-family="system-ui, sans-serif"
@@ -23,22 +23,27 @@
   <!-- Torus shell: inner ellipse (hole) -->
   <ellipse cx="175" cy="200" rx="45" ry="30" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
 
-  <!-- Internal tunnel: trefoil pattern (red dashed — unchanged) -->
-  <path d="M 80,160 Q 60,180 80,205 Q 100,230 130,220"
-        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
-  <path d="M 130,220 Q 155,210 165,180 Q 175,150 200,150"
-        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
-  <path d="M 200,150 Q 230,150 250,175 Q 270,200 250,225"
-        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
-  <path d="M 250,225 Q 230,250 200,245 Q 170,240 155,220"
-        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
-  <path d="M 155,220 Q 140,200 120,185 Q 100,170 80,160"
+  <!-- Internal tunnel: (2,3) torus-knot path winding twice around the tube
+       wall (red dashed — unchanged). One continuous closed curve; at each of
+       the three crossings an occlusion gap breaks the under strand and the
+       over strand's segment is redrawn on top, keeping the dash pattern. -->
+  <path d="M 291.2,200 C 291.2,206.7 289.1,213.4 285.1,219.4 C 281.2,225.5 275.4,231 268.5,235.6 C 261.5,240.1 253.3,243.6 244.8,246 C 236.3,248.5 227.5,249.8 219,250.2 C 210.5,250.7 202.4,250.2 195,249.2 C 187.6,248.1 180.9,246.6 175,244.9 C 169.1,243.2 163.8,241.3 159,239.5 C 154.1,237.6 149.6,235.9 145.1,234.2 C 140.6,232.4 136,230.8 131.2,228.9 C 126.3,227 121.3,225 116,222.4 C 110.8,219.9 105.4,216.9 100.4,213.2 C 95.4,209.5 90.7,205.1 87,200 C 83.3,194.9 80.6,189.2 79.6,183.2 C 78.5,177.1 79.1,170.7 81.5,164.4 C 84,158.2 88.3,152.2 94.4,146.9 C 100.4,141.6 108.1,137 116.9,133.7 C 125.7,130.4 135.5,128.2 145.5,127.4 C 155.5,126.6 165.6,127.2 175,128.9 C 184.4,130.6 193.1,133.5 200.6,137.1 C 208,140.8 214.2,145.1 219,149.8 C 223.8,154.4 227.2,159.3 229.6,164 C 232,168.7 233.3,173.3 234,177.6 C 234.7,181.8 234.8,185.7 234.9,189.4 C 234.9,193.1 234.8,196.6 234.8,200 C 234.8,203.4 234.9,206.9 234.9,210.6 C 234.8,214.3 234.7,218.2 234,222.4 C 233.3,226.7 232,231.3 229.6,236 C 227.2,240.7 223.8,245.6 219,250.2 C 214.2,254.9 208,259.2 200.6,262.9 C 193.1,266.5 184.4,269.4 175,271.1 C 165.6,272.8 155.5,273.4 145.5,272.6 C 135.5,271.8 125.7,269.6 116.9,266.3 C 108.1,263 100.4,258.4 94.4,253.1 C 88.3,247.8 84,241.8 81.5,235.6 C 79.1,229.3 78.5,222.9 79.6,216.8 C 80.6,210.8 83.3,205.1 87,200 C 90.7,194.9 95.4,190.5 100.4,186.8 C 105.4,183.1 110.8,180.1 116,177.6 C 121.3,175 126.3,173 131.2,171.1 C 136,169.2 140.6,167.6 145.1,165.8 C 149.6,164.1 154.1,162.4 159,160.5 C 163.8,158.7 169.1,156.8 175,155.1 C 180.9,153.4 187.6,151.9 195,150.8 C 202.4,149.8 210.5,149.3 219,149.8 C 227.5,150.2 236.3,151.5 244.8,154 C 253.3,156.4 261.5,159.9 268.5,164.4 C 275.4,169 281.2,174.5 285.1,180.6 C 289.1,186.6 291.2,193.3 291.2,200 Z"
         fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
 
-  <!-- Tunnel crossings -->
-  <circle cx="145" cy="205" r="4" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"/>
-  <circle cx="185" cy="165" r="4" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"/>
-  <circle cx="225" cy="220" r="4" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"/>
+  <!-- Tunnel crossing: bottom-right (over strand's dashes preserved) -->
+  <line x1="226" y1="249.9" x2="212" y2="250.6" stroke="var(--dia-surface, #fbf7ee)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 234.2,248.5 C 229.1,249.4 224,250 219,250.2 C 214,250.5 209.1,250.4 204.5,250.1"
+        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- Tunnel crossing: left -->
+  <line x1="82.9" y1="205.7" x2="91.1" y2="194.3" stroke="var(--dia-surface, #fbf7ee)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 80.4,213.2 C 81.8,208.5 84.1,204 87,200 C 89.9,196 93.5,192.3 97.4,189.2"
+        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- Tunnel crossing: top-right -->
+  <line x1="214" y1="144.9" x2="224" y2="154.6" stroke="var(--dia-surface, #fbf7ee)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 205.9,140 C 211,143 215.4,146.3 219,149.8 C 222.6,153.2 225.4,156.9 227.6,160.4"
+        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
 
   <!-- Port markers -->
   <circle cx="75" cy="160" r="6" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
@@ -52,7 +57,7 @@
         fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
   <path d="M 256,155 Q 270,180 281,225"
         fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
-  <path d="M 275,231 Q 250,265 175,275 Q 110,278 94,255 Q 88,248 94,245"
+  <path d="M 275,231 Q 250,273 175,284 Q 110,287 94,259 Q 88,248 94,245"
         fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
   <path d="M 94,245 Q 70,230 60,200 Q 52,175 69,160"
         fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
@@ -63,12 +68,13 @@
   <text x="280" y="100" font-family="system-ui, sans-serif"
         font-size="8" fill="var(--dia-cord, #1f57c4)">path</text>
 
-  <!-- Inner ring (STILL TRAPPED inside torus) -->
-  <circle cx="160" cy="190" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"/>
+  <!-- Inner ring (STILL TRAPPED, on the tunnel section between ports 3 and 4
+       inside the torus — on the outer bottom wind, unchanged from setup) -->
+  <circle cx="175" cy="271" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"/>
 
   <!-- Inner ring label with TRAPPED indicator -->
-  <rect x="110" y="173" width="70" height="14" rx="2" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-neg, #cf3a26)" stroke-width="0.5"/>
-  <text x="145" y="183" text-anchor="middle" font-family="system-ui, sans-serif"
+  <rect x="140" y="214" width="70" height="14" rx="2" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-neg, #cf3a26)" stroke-width="0.5"/>
+  <text x="175" y="224" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="8" fill="var(--dia-neg, #cf3a26)" font-weight="bold">Inner: TRAPPED</text>
 
   <!-- Outer ring: FREED, moved away from torus -->

@@ -30,13 +30,13 @@ The torus shell is made from two half-shells that clip together. The internal tu
 
 1. The cord enters the torus at port 1 and follows the trefoil tunnel inside
 2. The cord exits at port 2, loops outside where the outer ring sits
-3. The cord re-enters at port 3, continues through the tunnel
-4. The cord exits at port 4, with the inner ring on this external section
+3. The cord re-enters at port 3 and continues through the tunnel — the inner ring rides this internal tunnel section between ports 3 and 4
+4. The cord exits at port 4
 5. Ball-stops on both cord ends prevent full extraction
 
 ### Cord path summary
-- **Internal (companion):** Through trefoil tunnel inside the torus shell
-- **External (pattern):** Two arcs on the torus surface connecting ports, with rings
+- **Internal (companion):** Through trefoil tunnel inside the torus shell, with the inner ring on the tunnel section between ports 3 and 4
+- **External (pattern):** Two arcs on the torus surface connecting ports, with the outer ring
 
 ## Objective
 
@@ -123,7 +123,7 @@ The puzzle has two layers of knotting that solvers must distinguish. Most solver
 ### Cord and rings
 
 - Thread cord through the tunnel before assembling the shell halves
-- The inner ring (22mm OD) goes on the cord between ports 3 and 4 (internal section)
+- The inner ring (22mm OD) goes on the cord between ports 3 and 4 (internal section); seat it around this tunnel section of cord before joining the half-shells — once the shell is assembled, the ring cannot pass the narrow 6mm ports. The tunnel midsection between ports 3 and 4 is molded with a widened ring chamber so the 22mm ring has room to live (and rattle) inside the closed shell
 - The outer ring (30mm OD) goes on the cord between ports 2 and 3 (external section)
 - Ball-stops: drill 4mm hole through 10mm wooden balls, thread cord, tie stopper knots
 - Ball-stops must be larger than the port channels (10mm > 6mm — satisfied)

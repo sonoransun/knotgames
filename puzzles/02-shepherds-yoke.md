@@ -26,6 +26,10 @@ The paddle perimeter is approximately 460mm. The loop circumference (200mm) is l
 
 The cord loop passes through the hole. One side hangs in front, one side behind. The loop is clearly too short to go around the paddle.
 
+## Solved State
+
+![Solved: the hole is empty and the cord loop hangs free](../diagrams/puzzles/02-shepherds-yoke/solved.svg)
+
 ## Objective
 
 Remove the cord loop from the paddle entirely. Nothing may be cut, untied, or broken.

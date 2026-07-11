@@ -5,10 +5,13 @@
 // "things are not what they seem" arc; Crossing Number (was 16) → 9 puts
 // the unknotting-number puzzle adjacent to its trefoil prerequisite (8).
 //
-// This is the single source of truth for display order, names, and difficulty.
-// It is data-only (no DOM, no imports) so both the browser app (app.js) and the
-// Node docs generator (scripts/build-docs.js) can consume it. When adding a
-// puzzle, append an entry with the next free `id` and a fresh module filename.
+// This is the single source of truth for display order and names. The
+// `difficulty` field is only the coarse CSS styling bucket (compound md
+// ratings like "Intermediate-Advanced" round up); the difficulty text shown
+// to users comes from each md's metadata. The registry is data-only (no DOM,
+// no imports) so both the browser app (app.js) and the Node docs generator
+// (scripts/build-docs.js) can consume it. When adding a puzzle, append an
+// entry with the next free `id` and a fresh module filename.
 export const puzzleRegistry = [
   { id: 1,  module: './puzzles/puzzle-01.js', name: 'The Gatekeeper',      difficulty: 'beginner' },
   { id: 2,  module: './puzzles/puzzle-02.js', name: "Shepherd's Yoke",     difficulty: 'beginner' },
@@ -22,9 +25,12 @@ export const puzzleRegistry = [
   { id: 10, module: './puzzles/puzzle-08.js', name: 'Ouroboros Chain',     difficulty: 'advanced' },
   { id: 11, module: './puzzles/puzzle-09.js', name: 'Genus Trap',          difficulty: 'expert' },
   { id: 12, module: './puzzles/puzzle-10.js', name: 'The Hopf Paradox',    difficulty: 'expert' },
-  { id: 13, module: './puzzles/puzzle-12.js', name: 'The Braid Cage',      difficulty: 'intermediate' },
+  { id: 13, module: './puzzles/puzzle-12.js', name: 'The Braid Cage',      difficulty: 'advanced' },
   { id: 14, module: './puzzles/puzzle-13.js', name: 'The Torus Winder',    difficulty: 'advanced' },
   { id: 15, module: './puzzles/puzzle-14.js', name: 'The Tricolor Lock',   difficulty: 'intermediate' },
   { id: 16, module: './puzzles/puzzle-15.js', name: 'The Seifert Sail',    difficulty: 'advanced' },
   { id: 17, module: './puzzles/puzzle-17.js', name: 'The Satellite Trap',  difficulty: 'expert' },
+  { id: 18, module: './puzzles/puzzle-18.js', name: 'The Whitehead Waltz',  difficulty: 'advanced' },
+  { id: 19, module: './puzzles/puzzle-19.js', name: 'The Tangle Dance',     difficulty: 'advanced' },
+  { id: 20, module: './puzzles/puzzle-20.js', name: "The Granny's Downfall", difficulty: 'advanced' },
 ];

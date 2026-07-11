@@ -50,11 +50,11 @@ Each loop is either ON the shuttle bar (1) or OFF (0). The state is a 6-bit bina
 
 These rules mirror the constraints of Gray code counting. The starting state is `111111` (all loops on) and the goal state is `000000` (all loops off).
 
-**Minimum moves:** For n loops, the minimum is:
-- n odd: (2^n + 1) / 3
-- n even: (2^n - 1) / 3
+**Minimum moves:** For n loops, the minimum number of moves is ceil(2(2^n - 1) / 3), which works out to:
+- n even: (2^(n+1) - 2) / 3
+- n odd: (2^(n+1) - 1) / 3
 
-For n = 6: (2^6 - 1) / 3 = **63/3 = 21** ... but each "move" involves lifting a loop off and then replacing preparatory loops, so the total physical manipulations is **42**.
+For n = 6: (2^7 - 2) / 3 = 126/3 = **42**. Every one of those 42 moves slides exactly one loop on or off the bar — the count already includes all the "backward" replacement moves, and no shorter path exists.
 
 ### What Is a Gray Code?
 
@@ -80,24 +80,24 @@ The puzzle state `111111` (all loops on) must reach `000000` (all loops off) by 
 | Move | Action | State | Notes |
 |------|--------|-------|-------|
 | 0 | (start) | 111111 | All loops ON shuttle bar |
-| 1 | Remove Loop 6 | 111110 | Rule 1: rightmost always free |
-| 2 | Remove Loop 5 | 111100 | Rule 2: Loop 6 OFF, so 5 free |
-| 3 | Replace Loop 6 | 111101 | Need Loop 6 ON to free Loop 4 |
-| 4 | Remove Loop 4 | 111001 | Rule 2: Loop 5 ON, 6 OFF → free |
-| 5 | Remove Loop 6 | 111000 | Rule 1: rightmost always free |
-| 6 | Remove Loop 5 | 110100 | Preparing to remove Loop 3 |
-| 7 | Replace Loop 6 | 110101 | |
-| 8 | Remove Loop 3 | 110001 | |
-| 9 | Remove Loop 6 | 110000 | |
-| 10 | Replace Loop 5 | 110010 | Rebuilding right side for Loop 2 |
-| 11 | Replace Loop 6 | 110011 | |
-| 12 | Remove Loop 4 | 110111 | **Backward steps!** |
-| 13 | Remove Loop 6 | 110110 | |
-| 14 | Remove Loop 5 | 110100 | |
-| 15 | Replace Loop 6 | 110101 | |
+| 1 | Remove Loop 5 | 111101 | Rule 2: Loop 6 ON, nothing to its right |
+| 2 | Remove Loop 6 | 111100 | Rule 1: Loop 6 always free |
+| 3 | Remove Loop 3 | 110100 | Rule 2: Loop 4 ON, Loops 5-6 OFF |
+| 4 | Replace Loop 6 | 110101 | Rule 1: Loop 6 always free |
+| 5 | Replace Loop 5 | 110111 | Rule 2: Loop 6 ON — **backward steps!** |
+| 6 | Remove Loop 6 | 110110 | Rule 1: Loop 6 always free |
+| 7 | Remove Loop 4 | 110010 | Rule 2: Loop 5 ON, Loop 6 OFF |
+| 8 | Replace Loop 6 | 110011 | Rule 1: Loop 6 always free |
+| 9 | Remove Loop 5 | 110001 | Rule 2: Loop 6 ON |
+| 10 | Remove Loop 6 | 110000 | Rule 1: Loop 6 always free |
+| 11 | Remove Loop 1 | 010000 | Rule 2: Loop 2 ON, Loops 3-6 OFF — the anchor comes off! |
+| 12 | Replace Loop 6 | 010001 | Rule 1: Loop 6 always free |
+| 13 | Replace Loop 5 | 010011 | Rule 2: Loop 6 ON |
+| 14 | Remove Loop 6 | 010010 | Rule 1: Loop 6 always free |
+| 15 | Replace Loop 4 | 010110 | Rule 2: Loop 5 ON, Loop 6 OFF |
 | ... | (continues) | ... | 42 moves total to reach 000000 |
 
-**Note:** This table illustrates the key frustration: moves 10-12 involve REPLACING loops that were already removed. This is not a mistake — it's the necessary setup for removing Loop 2. Trust the algorithm.
+**Note:** This table illustrates the key frustration: moves 4-5 REPLACE loops that were just removed — the necessary setup for freeing Loop 4 at move 7. And look at move 11: the anchor loop itself comes off with 31 moves still to go, after which the right side must be rebuilt almost from scratch. This is not a mistake — it's the recursive structure at work. Trust the algorithm.
 
 ### Why Recursion?
 
@@ -107,7 +107,7 @@ Think of it like a combination lock with a twist: to turn dial 3, you must first
 
 This is why 6 loops require 42 moves. Each added loop roughly doubles the solution length — the complexity is exponential: O(2^n).
 
-**Physical intuition:** What you feel in your hands is a rhythm: remove right, remove next, replace right, remove deeper. The same three-move pattern repeats at every level, but the 'depth' of recursion makes each cycle longer. By loop 3, you're doing a dozen moves just to prepare for one removal. Trust the pattern — if you've been following the rules, you ARE making progress even when it feels like backtracking.
+**Physical Intuition:** What you feel in your hands is a rhythm: remove right, remove next, replace right, remove deeper. The same three-move pattern repeats at every level, but the 'depth' of recursion makes each cycle longer. By loop 3, you're doing a dozen moves just to prepare for one removal. Trust the pattern — if you've been following the rules, you ARE making progress even when it feels like backtracking.
 
 *For the mathematical foundations of Gray codes, see [Topology Primer: Gray Codes and Recursive Complexity](../theory/topology-primer.md#gray-codes-and-recursive-complexity).*
 
@@ -117,15 +117,17 @@ The solution follows a recursive algorithm. Here is the pattern for the first se
 
 | Move | Action | State |
 |------|--------|-------|
-| 1 | Remove Loop 6 | 111110 |
-| 2 | Remove Loop 5 | 111100 |
-| 3 | Replace Loop 6 | 111101 |
-| 4 | Remove Loop 4 | 111001 |
-| 5 | Remove Loop 6 | 111000 |
-| 6 | Remove Loop 3 | 110000 |
-| 7 | Replace Loop 6 | 110001 |
-| 8 | Replace Loop 5 | 110011 |
+| 1 | Remove Loop 5 | 111101 |
+| 2 | Remove Loop 6 | 111100 |
+| 3 | Remove Loop 3 | 110100 |
+| 4 | Replace Loop 6 | 110101 |
+| 5 | Replace Loop 5 | 110111 |
+| 6 | Remove Loop 6 | 110110 |
+| 7 | Remove Loop 4 | 110010 |
+| 8 | Replace Loop 6 | 110011 |
 | ... | (continues recursively) | ... |
+
+Note the opening move: with an even number of loops, the minimal solution begins with **Loop 5**, not Loop 6. Removing Loop 6 first is legal (Rule 1 always allows it), but it steps *away* from the goal and lengthens the path.
 
 The recursive pattern:
 - To remove loop k, first ensure loop k+1 is ON and everything right of k+1 is OFF

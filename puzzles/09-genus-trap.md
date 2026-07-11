@@ -119,10 +119,10 @@ What you feel in your hands: the cord is tight. There's very little slack to wor
 
 To free the rings, the cord's path in the ring-bearing region must be changed to the **trivial word** (identity element). This is achieved by:
 
-1. Canceling the **b** generator: reroute the cord so it no longer passes through Tunnel B in the ring region
-2. This leaves **a a⁻¹ = identity** — the cord is trivially wound and the rings are free
+1. Replacing the **b** generator: reroute the cord so that instead of passing through Tunnel B, it enters Tunnel A and doubles back — tracing **aa⁻¹**, a trivial excursion, in place of **b**
+2. Two cancellations then collapse the ring-region word: **a·b·a⁻¹ → a·(aa⁻¹)·a⁻¹ → a·a⁻¹ → identity** — the cord is trivially wound and the rings are free
 
-Physically: pull a loop (bight) of the cord backward out of Tunnel B from the front face. The cord will resist — the slack must come from the external sections, so first slide both rings toward Tunnel A to release tension. Once the bight clears the front of Tunnel B, route it horizontally around the block's left side and feed it into Tunnel A from the left face. The cord now traces a different word: where it previously went `... b a⁻¹` it now traces `... (aa⁻¹) a⁻¹`. The new `aa⁻¹` pair is adjacent and cancels, leaving only `a⁻¹`. Combined with the earlier `a`, the entire ring-region word collapses to `aa⁻¹ = identity`. The slack that suddenly appears between the rings IS that algebraic cancellation — and it is exactly the slack the rings need to slide off.
+Physically: pull a loop (bight) of the cord backward out of Tunnel B from the front face. The cord will resist — the slack must come from the external sections, so first slide both rings toward Tunnel A to release tension. Once the bight clears the front of Tunnel B, route it horizontally around the block's left side and feed it into Tunnel A from the left face. The bight enters Tunnel A and doubles back, tracing **aa⁻¹** — a trivial excursion — in place of **b**. The ring-region word goes **a·b·a⁻¹ → a·(aa⁻¹)·a⁻¹ → a·a⁻¹ → identity**: the inner pair cancels first, then the outer pair. The slack that suddenly appears between the rings IS that algebraic cancellation — and it is exactly the slack the rings need to slide off.
 
 ## Solution
 
@@ -134,9 +134,7 @@ Physically: pull a loop (bight) of the cord backward out of Tunnel B from the fr
 
 4. **Thread the bight through Tunnel A.** This reroutes the cord: where it previously went through Tunnel B, it now goes through Tunnel A (in addition to the existing Tunnel A paths).
 
-5. **The algebraic result:** The cord path in the ring region is now **a a a⁻¹** — but wait, the bight creates a loop that cancels with the original **a⁻¹** passage, simplifying the word to **a** — no, more precisely:
-
-   The actual process: by pulling the Tunnel B segment out and rerouting through Tunnel A, you change the word from **aba⁻¹** to **a(aa⁻¹)a⁻¹ = aa⁻¹ = identity** in the region where the rings sit.
+5. **The algebraic result:** The bight enters Tunnel A and doubles back, tracing **aa⁻¹** — a trivial excursion — in place of **b**, so the ring-region word goes **a·b·a⁻¹ → a·(aa⁻¹)·a⁻¹ → a·a⁻¹ → identity**: the inner pair cancels first, then the outer pair.
 
 6. **The rings are now on a section of cord** that is topologically trivial (not linked with the block). Slide them off.
 

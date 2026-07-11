@@ -1,0 +1,56 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 350">
+  <title>The Hopf Paradox - Checkpoint A</title>
+  <desc>The wire cage with the ring rotated 90 degrees to vertical: it no longer encircles the equatorial hoop but is still inside the cage. A faint dashed ghost shows the ring's starting position around the equator, a curved arrow shows the 90-degree rotation, and the cord still runs from the ring out through a window to the handle.</desc>
+
+  <defs>
+    <marker id="ckaRot" markerWidth="8" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="var(--dia-cord, #1f57c4)"/>
+    </marker>
+  </defs>
+
+  <text x="175" y="18" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-ink, #24211a)" font-weight="bold">The Hopf Paradox - Checkpoint A</text>
+
+  <!-- Polar hoop: back (left) half faded, front (right) half full -->
+  <path d="M175,75 A100,100 0 0,0 175,275" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" opacity="0.4"/>
+  <path d="M175,75 A100,100 0 0,1 175,275" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"/>
+
+  <!-- Equatorial hoop: back half faded, front half full -->
+  <path d="M75,175 A100,30 0 0,0 275,175" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5" opacity="0.4"/>
+  <path d="M75,175 A100,30 0 0,1 275,175" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"/>
+
+  <!-- Pole welds -->
+  <circle cx="175" cy="75" r="5" fill="var(--dia-ink, #24211a)"/>
+  <text x="175" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">N</text>
+  <circle cx="175" cy="275" r="5" fill="var(--dia-ink, #24211a)"/>
+  <text x="175" y="296" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">S</text>
+
+  <!-- Ghost: the ring's start position, encircling the equatorial hoop -->
+  <ellipse cx="175" cy="175" rx="35" ry="14" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="136" y="171" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-faint, #c9bda7)" font-style="italic">start position</text>
+
+  <!-- Cord from the ring down through the SE window to the handle (dashed) -->
+  <path d="M 175,184 Q 205,215 245,228 Q 270,232 292,238" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <text x="218" y="208" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-cord, #1f57c4)">cord</text>
+  <rect x="288" y="232" width="26" height="14" rx="4" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
+  <text x="301" y="242" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-rigid, #8a8275)">handle</text>
+
+  <!-- Ring, now vertical: perpendicular to the equatorial hoop, still inside the cage -->
+  <ellipse cx="175" cy="148" rx="13" ry="35" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"/>
+  <!-- The ring is inside the cage, so it passes BEHIND the equatorial hoop's front strand.
+       Crossing idiom: surface-colored occlusion strokes along the hoop's tangent at both
+       crossings (~162,145 and ~188,145), then the covering front-arc segments redrawn on top. -->
+  <line x1="156" y1="145.4" x2="168" y2="145" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+  <line x1="182" y1="145" x2="194" y2="145.4" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+  <path d="M150,145.95 A100,30 0 0 1 174,145.02" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"/>
+  <path d="M176,145.02 A100,30 0 0 1 200,145.95" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"/>
+  <text x="194" y="151" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-ring, #b97d12)">ring</text>
+
+  <!-- Rotation arrow: 90-degree sweep from the ghost's tip up to the ring's top -->
+  <path d="M 214,170 A 42,42 0 0 0 182,110" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" marker-end="url(#ckaRot)"/>
+  <text x="226" y="146" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-cord, #1f57c4)">rotate</text>
+  <text x="226" y="158" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-cord, #1f57c4)">90&#176;</text>
+
+  <!-- Checkpoint label -->
+  <text x="175" y="322" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)" font-weight="bold">Checkpoint A: ring perpendicular &#8212; cleared the equator</text>
+  <text x="175" y="338" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">Next: slide the ring up to the N pole junction.</text>
+</svg>

@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Tangle Dance · EXKNOTS</title>
+<meta name="description" content="The Tangle Dance — Conway rational tangles — the fraction is a complete invariant. Setup, solution, topology, and construction.">
+<link rel="canonical" href="https://sonoransun.github.io/knotgames/puzzles/19-the-tangle-dance.html">
+<meta name="theme-color" content="#0f1320">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EXKNOTS">
+<meta property="og:title" content="The Tangle Dance">
+<meta property="og:description" content="The Tangle Dance — Conway rational tangles — the fraction is a complete invariant. Setup, solution, topology, and construction.">
+<meta property="og:url" content="https://sonoransun.github.io/knotgames/puzzles/19-the-tangle-dance.html">
+<meta property="og:image" content="https://sonoransun.github.io/knotgames/assets/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sonoransun.github.io/knotgames/assets/brand/og-image.png">
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/brand/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&display=swap">
+<link rel="stylesheet" href="../assets/css/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Primary">
+  <a class="brand" href="../index.html" aria-label="EXKNOTS home"><svg class="logomark" viewBox="0 0 100 100" role="img" aria-label="EXKNOTS" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
+  <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
+</svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
+  <button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="../explore/">Explore</a></li>
+    <li><a href="../puzzles/" aria-current="page">Puzzles</a></li>
+    <li><a href="../theory/">Theory</a></li>
+    <li><a href="../construction/materials.html">Build</a></li>
+    <li><a href="https://github.com/sonoransun/knotgames">GitHub ↗</a></li>
+    <li><a href="../explore/" class="cta">Open Explorer</a></li>
+  </ul>
+  <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle theme"><span class="sun">☀</span><span class="moon">☾</span></button>
+</nav>
+<div class="progress" role="presentation"></div>
+<main id="main">
+<header class="doc-header" style="--ac:var(--arc5)"><div class="wrap">
+  <span class="doc-num">19</span>
+  <h1 class="doc-title">The Tangle Dance</h1>
+  <div class="doc-meta">
+    <span class="pill advanced">Intermediate-Advanced</span>
+    <span class="pc-type">Sequential transformation</span>
+    <span class="pc-principle">Conway rational tangles — the fraction is a complete invariant</span>
+  </div>
+  <div class="doc-actions"><a class="btn btn--primary" href="../explore/#19">▶ Open in Interactive Explorer</a></div>
+</div></header>
+<div class="wrap band" style="padding-top:1.4rem"><div class="doc-layout"><div class="prose"><h2 id="overview">Overview <a href="#overview" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>Two cords span a square frame, and you are allowed exactly two moves: twist the right-hand ends, or rotate the whole frame a quarter-turn. Every state the puzzle can reach is described completely by a single fraction, and the two moves act on it as arithmetic — one adds 1, the other flips it to its negative reciprocal. Solving the tangle is not a search. It is a computation.</p>
+<p>Puzzle 18 showed an invariant that forgets: a linking number can read zero while the cords stay stuck. This puzzle is built on the rare opposite — an invariant that remembers everything.</p>
+<h2 id="components">Components <a href="#components" class="anchor-link" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Frame plate</td>
+<td>PETG print, 170mm square, 10mm thick, open 134mm interior</td>
+<td>Rigid boundary; both moves are defined by its edges</td>
+</tr>
+<tr>
+<td>Cup sockets (x4)</td>
+<td>17mm hemispherical cups printed into the corners</td>
+<td>Seat the handles; define the NW/NE/SW/SE endpoints</td>
+</tr>
+<tr>
+<td>Cords (x2)</td>
+<td>4mm braided nylon, one blue and one red, 500mm each</td>
+<td>The tangle strands</td>
+</tr>
+<tr>
+<td>Ball handles (x4)</td>
+<td>16mm printed ball on an 8mm stem, color-matched to its cord</td>
+<td>Grip for lifting, crossing, and re-seating cord ends</td>
+</tr>
+<tr>
+<td>Embossed glyphs</td>
+<td>Twist icon on all four edges, rotation arrow on the plate face</td>
+<td>On-board reminder of the two legal moves</td>
+</tr>
+<tr>
+<td>Setup card</td>
+<td>The preset sequence and the two move laws</td>
+<td>Resets the puzzle to fraction 3/2</td>
+</tr>
+</tbody></table></div>
+<h2 id="setup">Setup <a href="#setup" class="anchor-link" aria-hidden="true">#</a></h2>
+<ol>
+<li><strong>Zero the puzzle.</strong> Seat the blue handles in the top sockets (NW, NE), red in the bottom (SW, SE). Two parallel horizontal strands: the <strong>0 tangle</strong>.</li>
+<li><strong>Learn the moves.</strong> TWIST (T): lift the two right-side handles, cross the top-right strand OVER the bottom-right, re-seat swapped. ROTATE (R): turn the whole frame a quarter-turn clockwise.</li>
+<li><strong>Apply the card sequence:</strong> T, T, R, T, T.</li>
+<li><strong>Check with arithmetic</strong> (T adds 1, R gives the negative reciprocal): 0 → 1 → 2 → −1/2 → 1/2 → 3/2. The puzzle sits at <strong>3/2</strong>.</li>
+<li><strong>Compare with the diagram.</strong> Blue occupies both right sockets, red both left. The card leaves four crossings; settling relaxes them into the equivalent three-crossing form shown — same fraction, same tangle.</li>
+</ol>
+<p><figure class="dia-figure"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" class="dia">
+  <title>Puzzle 19: The Tangle Dance — Setup (fraction 3/2)</title>
+  <desc>A square printed frame with a cup socket at each corner. The red cord occupies the two left sockets (NW and SW) and the blue cord the two right sockets (NE and SE). Inside the opening the cords form the 3/2 rational tangle: a vertical region of two twists (fraction 1/2) plus one right-side twist (+1), so F = 1 + 1/2 = 3/2. Ball handles are seated in all four sockets.</desc>
+
+  <!-- Frame plate: outer square with open interior (evenodd hole) -->
+  <path d="M40,40 H300 V300 H40 Z M75,75 V265 H265 V75 Z" fill="var(--dia-wash, #ece3d0)" fill-rule="evenodd" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></path>
+
+  <!-- Corner names embossed on the plate border -->
+  <text x="57" y="61" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">NW</text>
+  <text x="282" y="61" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">NE</text>
+  <text x="57" y="288" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">SW</text>
+  <text x="282" y="288" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">SE</text>
+
+  <!-- Embossed move glyphs: R arrow on top border, T on the current twist (right) edge -->
+  <text x="170" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">R ↻</text>
+  <text x="282" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">T</text>
+
+  <!-- Cup sockets (17mm cups) at the four opening corners -->
+  <circle cx="80" cy="80" r="11" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></circle>
+  <circle cx="260" cy="80" r="11" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></circle>
+  <circle cx="80" cy="260" r="11" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></circle>
+  <circle cx="260" cy="260" r="11" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></circle>
+
+  <!-- === The 3/2 tangle === -->
+  <!-- Red cord (continuous under layer): NW down through the vertical twist region to SW -->
+  <path d="M80,80 L140,115 L170,170 L140,225 L80,260" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+  <!-- Blue cord (continuous under layer): NE down through the right twist, the vertical
+       region, and back out to SE -->
+  <path d="M260,80 L170,225 L140,170 L170,115 L260,260" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <!-- Crossing v1 (155,142.5): red over blue. Occlusion along the over tangent, then over-segment. -->
+  <line x1="151.6" y1="136.3" x2="158.4" y2="148.7" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+  <path d="M140,115 L170,170" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Crossing v2 (155,197.5): blue over red -->
+  <line x1="151.6" y1="191.3" x2="158.4" y2="203.7" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+  <path d="M140,170 L170,225" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Crossing h1 (204.1,170): the +1 right twist, blue over blue -->
+  <line x1="199.9" y1="163.2" x2="208.3" y2="176.8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+  <path d="M170,115 L260,260" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Ball handles seated in the sockets (color-matched to their cord) -->
+  <circle cx="80" cy="80" r="7" fill="var(--dia-neg, #cf3a26)"></circle>
+  <circle cx="80" cy="260" r="7" fill="var(--dia-neg, #cf3a26)"></circle>
+  <circle cx="260" cy="80" r="7" fill="var(--dia-cord, #1f57c4)"></circle>
+  <circle cx="260" cy="260" r="7" fill="var(--dia-cord, #1f57c4)"></circle>
+
+  <!-- Labels -->
+  <line x1="268" y1="82" x2="310" y2="82" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="313" y="85" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">ball handle (16 mm)</text>
+
+  <line x1="269" y1="254" x2="310" y2="248" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="313" y="251" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">cup socket (×4)</text>
+
+  <line x1="301" y1="177" x2="310" y2="177" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="313" y="180" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">TWIST edge</text>
+
+  <!-- Captions -->
+  <text x="170" y="324" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-ink, #24211a)">Preset: fraction 3/2</text>
+  <text x="170" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">two vertical twists (1/2) + one right twist (+1): F = 1 + 1/2 = 3/2</text>
+  <text x="170" y="354" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">set from 0 by the card sequence T, T, R, T, T</text>
+</svg><figcaption>Setup: square frame with corner sockets and ball handles; the cords form the 3/2 tangle — two vertical twists plus one right twist</figcaption></figure></p>
+<h2 id="objective">Objective <a href="#objective" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>Using only the two legal moves, return the cords to fraction <strong>0</strong>: two visibly parallel, uncrossed horizontal strands, all four handles seated.</p>
+<h2 id="the-topology">The Topology <a href="#the-topology" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>A <strong>rational tangle</strong> is a pair of strands in a disk with four fixed endpoints on the boundary, built from the trivial (parallel) tangle by twisting adjacent endpoints and rotating the disk a quarter-turn. Not every four-ended tangle is rational, but everything <em>this</em> puzzle can reach is: T and R are exactly the generating operations.</p>
+<h3 id="the-moves-are-arithmetic">The moves are arithmetic <a href="#the-moves-are-arithmetic" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>Assign the 0 tangle the number 0. Then:</p>
+<ul>
+<li><strong>T (twist):</strong> x → x + 1. A right-hand twist, top strand over bottom, adds one positive crossing.</li>
+<li><strong>R (rotate):</strong> x → −1/x. The quarter-turn moves no cord relative to any other — it changes only which ends face the twist edge.</li>
+</ul>
+<p><figure class="dia-figure dia-wide"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 285" class="dia">
+  <title>Puzzle 19: The Tangle Dance — The Two Legal Moves</title>
+  <desc>Two panels. Left, TWIST (T): before-frame shows two parallel strands (fraction 0); after-frame shows the top-right strand crossed over the bottom-right strand and re-seated swapped (fraction 1); law x → x + 1. Right, ROTATE (R): before-frame shows a single positive crossing (fraction 1); after-frame shows the same frame turned a quarter-turn clockwise, giving a single negative crossing (fraction −1); law x → −1/x.</desc>
+
+  <!-- ===== Left half: TWIST ===== -->
+  <text x="175" y="32" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="var(--dia-ink, #24211a)">T — TWIST</text>
+  <text x="175" y="52" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-pos, #2f8f43)">x → x + 1</text>
+
+  <!-- T before: the 0 tangle -->
+  <rect x="45" y="75" width="100" height="100" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></rect>
+  <circle cx="61" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <circle cx="129" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <circle cx="61" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <circle cx="129" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <line x1="61" y1="91" x2="129" y2="91" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.2" stroke-linecap="round"></line>
+  <line x1="61" y1="159" x2="129" y2="159" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.2" stroke-linecap="round"></line>
+  <circle cx="61" cy="91" r="3.5" fill="var(--dia-cord, #1f57c4)"></circle>
+  <circle cx="129" cy="91" r="3.5" fill="var(--dia-cord, #1f57c4)"></circle>
+  <circle cx="61" cy="159" r="3.5" fill="var(--dia-neg, #cf3a26)"></circle>
+  <circle cx="129" cy="159" r="3.5" fill="var(--dia-neg, #cf3a26)"></circle>
+
+  <!-- action arrow -->
+  <line x1="152" y1="125" x2="192" y2="125" stroke="var(--dia-ink, #24211a)" stroke-width="1.8"></line>
+  <polygon points="192,120 202,125 192,130" fill="var(--dia-ink, #24211a)"></polygon>
+  <text x="177" y="113" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-ink, #24211a)">T</text>
+
+  <!-- T after: the +1 tangle (blue crossed OVER red at the right side, ends re-seated swapped) -->
+  <rect x="205" y="75" width="100" height="100" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></rect>
+  <circle cx="221" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <circle cx="289" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <circle cx="221" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <circle cx="289" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <!-- under strand (red), continuous -->
+  <line x1="221" y1="159" x2="289" y2="91" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.2" stroke-linecap="round"></line>
+  <!-- occlusion along the over tangent at crossing (255,125), then over strand (blue) -->
+  <line x1="251.46" y1="121.46" x2="258.54" y2="128.54" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8" stroke-linecap="round"></line>
+  <line x1="221" y1="91" x2="289" y2="159" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.2" stroke-linecap="round"></line>
+  <circle cx="221" cy="91" r="3.5" fill="var(--dia-cord, #1f57c4)"></circle>
+  <circle cx="289" cy="159" r="3.5" fill="var(--dia-cord, #1f57c4)"></circle>
+  <circle cx="221" cy="159" r="3.5" fill="var(--dia-neg, #cf3a26)"></circle>
+  <circle cx="289" cy="91" r="3.5" fill="var(--dia-neg, #cf3a26)"></circle>
+
+  <text x="175" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">lift the two right handles, cross top-right OVER</text>
+  <text x="175" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">bottom-right, re-seat swapped</text>
+  <text x="175" y="242" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)">shown: 0 → 0 + 1 = 1</text>
+
+  <!-- divider -->
+  <line x1="330" y1="22" x2="330" y2="260" stroke="var(--dia-faint, #c9bda7)" stroke-width="1"></line>
+
+  <!-- ===== Right half: ROTATE ===== -->
+  <text x="485" y="32" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="var(--dia-ink, #24211a)">R — ROTATE</text>
+  <text x="485" y="52" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-gold, #c79a22)">x → −1/x</text>
+
+  <!-- R before: the +1 tangle -->
+  <rect x="375" y="75" width="100" height="100" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></rect>
+  <circle cx="391" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <circle cx="459" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <circle cx="391" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <circle cx="459" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <line x1="391" y1="159" x2="459" y2="91" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.2" stroke-linecap="round"></line>
+  <line x1="421.46" y1="121.46" x2="428.54" y2="128.54" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8" stroke-linecap="round"></line>
+  <line x1="391" y1="91" x2="459" y2="159" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.2" stroke-linecap="round"></line>
+  <circle cx="391" cy="91" r="3.5" fill="var(--dia-cord, #1f57c4)"></circle>
+  <circle cx="459" cy="159" r="3.5" fill="var(--dia-cord, #1f57c4)"></circle>
+  <circle cx="391" cy="159" r="3.5" fill="var(--dia-neg, #cf3a26)"></circle>
+  <circle cx="459" cy="91" r="3.5" fill="var(--dia-neg, #cf3a26)"></circle>
+
+  <!-- action arrow -->
+  <line x1="482" y1="125" x2="522" y2="125" stroke="var(--dia-ink, #24211a)" stroke-width="1.8"></line>
+  <polygon points="522,120 532,125 522,130" fill="var(--dia-ink, #24211a)"></polygon>
+  <text x="507" y="113" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-ink, #24211a)">R</text>
+
+  <!-- R after: the whole frame turned 90° clockwise — same crossing, now negative (−1) -->
+  <rect x="535" y="75" width="100" height="100" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></rect>
+  <!-- quarter-turn cue above the frame -->
+  <path d="M597,64 Q625,64 625,90" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1.5"></path>
+  <polygon points="620,86 630,86 625,96" fill="var(--dia-inksoft, #6a6151)"></polygon>
+  <circle cx="551" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <circle cx="619" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <circle cx="551" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <circle cx="619" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></circle>
+  <line x1="551" y1="91" x2="619" y2="159" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.2" stroke-linecap="round"></line>
+  <line x1="588.54" y1="121.46" x2="581.46" y2="128.54" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8" stroke-linecap="round"></line>
+  <line x1="619" y1="91" x2="551" y2="159" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.2" stroke-linecap="round"></line>
+  <circle cx="619" cy="91" r="3.5" fill="var(--dia-cord, #1f57c4)"></circle>
+  <circle cx="551" cy="159" r="3.5" fill="var(--dia-cord, #1f57c4)"></circle>
+  <circle cx="551" cy="91" r="3.5" fill="var(--dia-neg, #cf3a26)"></circle>
+  <circle cx="619" cy="159" r="3.5" fill="var(--dia-neg, #cf3a26)"></circle>
+
+  <text x="485" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">turn the whole frame a quarter-turn clockwise</text>
+  <text x="485" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">the cords do not move — the fraction inverts</text>
+  <text x="485" y="242" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)">shown: 1 → −1/1 = −1</text>
+</svg><figcaption>The two legal moves: TWIST crosses top-right over bottom-right (x becomes x plus 1); ROTATE turns the frame a quarter-turn clockwise (x becomes minus 1 over x)</figcaption></figure></p>
+<p>The states form the rationals plus one extra, ∞: strands parallel but <em>vertical</em>. R swaps 0 and ∞ — only one of the two trivial-looking states is the goal.</p>
+<h3 id="conways-theorem-a-number-that-forgets-nothing">Conway's theorem: a number that forgets nothing <a href="#conways-theorem-a-number-that-forgets-nothing" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>John Conway proved (1970) that the fraction is a <strong>complete invariant</strong>: two rational tangles convert into each other by strand motion with endpoints held fixed <strong>if and only if</strong> their fractions are equal. Half a meter of cord, any pile of crossings — the entire physical state compresses, losslessly, into one rational number.</p>
+<p>That is the hinge of this arc. Puzzle 18's linking number is a lossy summary — different configurations collapse onto one integer, so lk = 0 promised nothing. Equal fractions <em>mean</em> same tangle. A forgetful invariant can only prove impossibility; a complete one hands you an algorithm. (Completeness holds for rational tangles specifically — which is all this puzzle's grammar can build.)</p>
+<p>One caution: nothing here is geometrically trapped. The sockets enforce a grammar, not a prison — moves outside it void the theorem.</p>
+<h3 id="the-compass-continued-fractions">The compass: continued fractions <a href="#the-compass-continued-fractions" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>Write 3/2 as a continued fraction: 3/2 = 1 + 1/2 — one right twist stacked on two vertical twists, precisely the setup diagram. Unwinding a continued fraction from the outside in is Euclid's algorithm, and it dictates the solving rule:</p>
+<ul>
+<li><strong>Fraction positive?</strong> ROTATE.</li>
+<li><strong>Fraction negative?</strong> TWIST.</li>
+<li><strong>Zero?</strong> Stop — you have won.</li>
+</ul>
+<p>Each rotate-then-twist block is one division step of Euclid's algorithm on numerator and denominator (3/2 → −2/3 → 1/3 turns the pair (3,2) into (1,3)). Euclid always terminates, so the descent reaches 0 exactly, walking up from negative integers in unit steps — never skipping past.</p>
+<div class="callout callout--intuition"><span class="callout-label">Physical Intuition</span><p>What you feel in your hands: a twist is honest work — cords wrap, the tangle visibly thickens. A rotation is eerie. You turn the frame like a steering wheel and nothing between your hands changes — yet the number naming the state has flipped from 3/2 to −2/3, and a twist that was poison a moment ago is now medicine. At the very end, the last twist lands a crossing against its opposite — pull the handles gently apart and the pair annihilates. The cords fall parallel. You feel the zero.</p></div>
+<p><em>For the complete treatment of tangle arithmetic and the classification theorem, see <a href="../theory/topology-primer.html#rational-tangles-and-continued-fractions">Topology Primer: Rational Tangles and Continued Fractions</a>.</em></p>
+<h2 id="solution">Solution <a href="#solution" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>Six moves. Follow the compass — positive: rotate, negative: twist — and write each fraction down.</p>
+<ol>
+<li><strong>R</strong> — 3/2 is positive: rotate. −1/(3/2) = <strong>−2/3</strong>.</li>
+<li><strong>T</strong> — negative: twist. −2/3 + 1 = <strong>1/3</strong>.</li>
+<li><strong>R</strong> — positive: rotate. −1/(1/3) = <strong>−3</strong>.</li>
+<li><strong>T</strong> — −3 + 1 = <strong>−2</strong>.</li>
+<li><strong>T</strong> — −2 + 1 = <strong>−1</strong>.</li>
+<li><strong>T</strong> — −1 + 1 = <strong>0</strong>. The new positive crossing cancels the last negative one — a Reidemeister II pair, Puzzle 8's old friend — and the cords settle parallel.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Move</th>
+<th>Fraction</th>
+<th>What your hands do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>R</td>
+<td>3/2 → −2/3</td>
+<td>rotate 90° clockwise; touch nothing else</td>
+</tr>
+<tr>
+<td>T</td>
+<td>−2/3 → 1/3</td>
+<td>lift the right handles, cross top over bottom, re-seat swapped</td>
+</tr>
+<tr>
+<td>R</td>
+<td>1/3 → −3</td>
+<td>rotate 90° clockwise</td>
+</tr>
+<tr>
+<td>T</td>
+<td>−3 → −2</td>
+<td>right twist</td>
+</tr>
+<tr>
+<td>T</td>
+<td>−2 → −1</td>
+<td>right twist — one crossing left</td>
+</tr>
+<tr>
+<td>T</td>
+<td>−1 → 0</td>
+<td>right twist; the final crossing pair cancels</td>
+</tr>
+</tbody></table></div>
+<p><figure class="dia-figure"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 720" class="dia">
+  <title>Puzzle 19: The Tangle Dance — The Descent from 3/2 to 0</title>
+  <desc>A vertical ladder of seven tangle states with the move taken between each pair. From the top: 3/2 (rotate), −2/3 (twist), 1/3 (rotate), −3 (twist), −2 (twist), −1 (twist), 0. Each rung shows a small tangle diagram, its fraction, and the rule applied: positive means rotate, negative means twist. The arithmetic on each arrow is written out, for example −1/(3/2) = −2/3. Strand colors are omitted in the small diagrams; over and under crossings are drawn exactly.</desc>
+
+  <text x="230" y="26" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="var(--dia-ink, #24211a)">The descent from 3/2: positive → rotate, negative → twist</text>
+
+  <!-- ===== Rung 1: 3/2 ===== -->
+  <rect x="58" y="48" width="64" height="64" rx="6" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.2"></rect>
+  <path d="M63,53 L81,63.5 L90,80 L81,96.5 L63,107" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M117,53 L90,96.5 L81,80 L90,63.5 L117,107" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  <line x1="83.34" y1="67.79" x2="87.66" y2="75.71" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M81,63.5 L90,80" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <line x1="83.34" y1="84.29" x2="87.66" y2="92.21" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M81,80 L90,96.5" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <line x1="97.83" y1="76.18" x2="102.57" y2="83.82" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M90,63.5 L117,107" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <text x="170" y="86" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="var(--dia-ink, #24211a)">3/2</text>
+  <text x="240" y="85" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">positive → rotate</text>
+
+  <line x1="90" y1="116" x2="90" y2="133" stroke="var(--dia-ink, #24211a)" stroke-width="1.6"></line>
+  <polygon points="85,131 95,131 90,140" fill="var(--dia-ink, #24211a)"></polygon>
+  <circle cx="60" cy="127" r="10" fill="var(--dia-gold, #c79a22)"></circle>
+  <text x="60" y="131" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">R</text>
+  <text x="112" y="131" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">−1/(3/2) = −2/3</text>
+
+  <!-- ===== Rung 2: −2/3 (rung 1 turned a quarter-turn clockwise) ===== -->
+  <rect x="58" y="143" width="64" height="64" rx="6" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.2"></rect>
+  <path d="M117,148 L106.5,166 L90,175 L73.5,166 L63,148" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M117,202 L73.5,175 L90,166 L106.5,175 L63,202" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  <line x1="94.29" y1="172.66" x2="102.21" y2="168.34" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M106.5,166 L90,175" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <line x1="77.79" y1="172.66" x2="85.71" y2="168.34" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M90,166 L73.5,175" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <line x1="86.18" y1="187.57" x2="93.82" y2="182.83" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M106.5,175 L63,202" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <text x="170" y="181" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="var(--dia-ink, #24211a)">−2/3</text>
+  <text x="240" y="180" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">negative → twist</text>
+
+  <line x1="90" y1="211" x2="90" y2="228" stroke="var(--dia-ink, #24211a)" stroke-width="1.6"></line>
+  <polygon points="85,226 95,226 90,235" fill="var(--dia-ink, #24211a)"></polygon>
+  <circle cx="60" cy="222" r="10" fill="var(--dia-pos, #2f8f43)"></circle>
+  <text x="60" y="226" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">T</text>
+  <text x="112" y="226" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">−2/3 + 1 = 1/3</text>
+
+  <!-- ===== Rung 3: 1/3 (three vertical twists) ===== -->
+  <rect x="58" y="238" width="64" height="64" rx="6" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.2"></rect>
+  <path d="M79,246 L101,262 L79,278 L101,294" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M101,246 L79,262 L101,278 L79,294" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  <line x1="86.36" y1="251.35" x2="93.64" y2="256.65" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M79,246 L101,262" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <line x1="86.36" y1="267.35" x2="93.64" y2="272.65" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M79,262 L101,278" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <line x1="86.36" y1="283.35" x2="93.64" y2="288.65" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M79,278 L101,294" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <text x="170" y="276" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="var(--dia-ink, #24211a)">1/3</text>
+  <text x="240" y="275" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">positive → rotate</text>
+
+  <line x1="90" y1="306" x2="90" y2="323" stroke="var(--dia-ink, #24211a)" stroke-width="1.6"></line>
+  <polygon points="85,321 95,321 90,330" fill="var(--dia-ink, #24211a)"></polygon>
+  <circle cx="60" cy="317" r="10" fill="var(--dia-gold, #c79a22)"></circle>
+  <text x="60" y="321" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">R</text>
+  <text x="112" y="321" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">−1/(1/3) = −3</text>
+
+  <!-- ===== Rung 4: −3 (rung 3 turned a quarter-turn clockwise) ===== -->
+  <rect x="58" y="333" width="64" height="64" rx="6" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.2"></rect>
+  <path d="M114,354 L98,376 L82,354 L66,376" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M114,376 L98,354 L82,376 L66,354" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  <line x1="108.65" y1="361.36" x2="103.35" y2="368.64" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M114,354 L98,376" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <line x1="92.65" y1="361.36" x2="87.35" y2="368.64" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M98,354 L82,376" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <line x1="76.65" y1="361.36" x2="71.35" y2="368.64" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M82,354 L66,376" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <text x="170" y="371" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="var(--dia-ink, #24211a)">−3</text>
+  <text x="240" y="370" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">negative → twist</text>
+
+  <line x1="90" y1="401" x2="90" y2="418" stroke="var(--dia-ink, #24211a)" stroke-width="1.6"></line>
+  <polygon points="85,416 95,416 90,425" fill="var(--dia-ink, #24211a)"></polygon>
+  <circle cx="60" cy="412" r="10" fill="var(--dia-pos, #2f8f43)"></circle>
+  <text x="60" y="416" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">T</text>
+  <text x="112" y="416" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">−3 + 1 = −2</text>
+
+  <!-- ===== Rung 5: −2 (two negative twists) ===== -->
+  <rect x="58" y="428" width="64" height="64" rx="6" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.2"></rect>
+  <path d="M62,446 L90,474 L118,446" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M62,474 L90,446 L118,474" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  <line x1="72.82" y1="463.18" x2="79.18" y2="456.82" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M62,474 L90,446" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <line x1="100.82" y1="463.18" x2="107.18" y2="456.82" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M90,474 L118,446" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <text x="170" y="466" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="var(--dia-ink, #24211a)">−2</text>
+  <text x="240" y="465" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">negative → twist</text>
+
+  <line x1="90" y1="496" x2="90" y2="513" stroke="var(--dia-ink, #24211a)" stroke-width="1.6"></line>
+  <polygon points="85,511 95,511 90,520" fill="var(--dia-ink, #24211a)"></polygon>
+  <circle cx="60" cy="507" r="10" fill="var(--dia-pos, #2f8f43)"></circle>
+  <text x="60" y="511" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">T</text>
+  <text x="112" y="511" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">−2 + 1 = −1</text>
+
+  <!-- ===== Rung 6: −1 (one negative crossing) ===== -->
+  <rect x="58" y="523" width="64" height="64" rx="6" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.2"></rect>
+  <path d="M66,537 L114,573" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <line x1="86" y1="558" x2="94" y2="552" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"></line>
+  <path d="M66,573 L114,537" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></path>
+  <text x="170" y="561" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="var(--dia-ink, #24211a)">−1</text>
+  <text x="240" y="560" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">negative → twist</text>
+
+  <line x1="90" y1="591" x2="90" y2="608" stroke="var(--dia-ink, #24211a)" stroke-width="1.6"></line>
+  <polygon points="85,606 95,606 90,615" fill="var(--dia-ink, #24211a)"></polygon>
+  <circle cx="60" cy="602" r="10" fill="var(--dia-pos, #2f8f43)"></circle>
+  <text x="60" y="606" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">T</text>
+  <text x="112" y="606" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">−1 + 1 = 0</text>
+
+  <!-- ===== Rung 7: 0 (two parallel strands) ===== -->
+  <rect x="58" y="618" width="64" height="64" rx="6" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.2"></rect>
+  <line x1="64" y1="640" x2="116" y2="640" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></line>
+  <line x1="64" y1="660" x2="116" y2="660" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"></line>
+  <text x="170" y="656" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="var(--dia-ink, #24211a)">0</text>
+  <text x="240" y="655" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">solved — two parallel strands</text>
+
+  <text x="230" y="704" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">each rotate–twist block runs one division step of Euclid's algorithm — the descent must reach 0</text>
+</svg><figcaption>The descent from 3/2 to 0: seven states connected by six moves, with the arithmetic written on every arrow</figcaption></figure></p>
+<p>The picture does not get simpler on every move — step 3 turns a tidy 1/3 into three stacked crossings. The <em>number</em> gets simpler, and the picture catches up at the integers. Verify: strands horizontal, no crossings, blue back on top — exactly where the card began. With the ledger written, the dance takes under a minute.</p>
+<p><figure class="dia-figure"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" class="dia">
+  <title>Puzzle 19: The Tangle Dance — Solved (fraction 0)</title>
+  <desc>The square frame with all four ball handles seated. The blue cord runs straight across the top from NW to NE, the red cord straight across the bottom from SW to SE. The two strands are parallel with no crossings: the 0 tangle, exactly the state the setup card started from.</desc>
+
+  <!-- Frame plate: outer square with open interior (evenodd hole) -->
+  <path d="M40,40 H300 V300 H40 Z M75,75 V265 H265 V75 Z" fill="var(--dia-wash, #ece3d0)" fill-rule="evenodd" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></path>
+
+  <!-- Corner names embossed on the plate border -->
+  <text x="57" y="61" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">NW</text>
+  <text x="282" y="61" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">NE</text>
+  <text x="57" y="288" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">SW</text>
+  <text x="282" y="288" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">SE</text>
+
+  <!-- Embossed move glyphs -->
+  <text x="170" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">R ↻</text>
+  <text x="282" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">T</text>
+
+  <!-- Cup sockets -->
+  <circle cx="80" cy="80" r="11" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></circle>
+  <circle cx="260" cy="80" r="11" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></circle>
+  <circle cx="80" cy="260" r="11" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></circle>
+  <circle cx="260" cy="260" r="11" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></circle>
+
+  <!-- The 0 tangle: two parallel strands, no crossings -->
+  <line x1="80" y1="80" x2="260" y2="80" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"></line>
+  <line x1="80" y1="260" x2="260" y2="260" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5" stroke-linecap="round"></line>
+
+  <!-- Ball handles seated (blue on top, red on the bottom) -->
+  <circle cx="80" cy="80" r="7" fill="var(--dia-cord, #1f57c4)"></circle>
+  <circle cx="260" cy="80" r="7" fill="var(--dia-cord, #1f57c4)"></circle>
+  <circle cx="80" cy="260" r="7" fill="var(--dia-neg, #cf3a26)"></circle>
+  <circle cx="260" cy="260" r="7" fill="var(--dia-neg, #cf3a26)"></circle>
+
+  <!-- Labels -->
+  <line x1="268" y1="82" x2="310" y2="82" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="313" y="85" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">all four handles seated</text>
+
+  <line x1="170" y1="83" x2="170" y2="160" stroke="var(--dia-rigid, #8a8275)" stroke-width="1"></line>
+  <text x="170" y="174" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">no crossings — the strands are visibly parallel</text>
+
+  <!-- Captions -->
+  <text x="170" y="324" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-ink, #24211a)">Solved: fraction 0 — the identity tangle</text>
+  <text x="170" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">blue back on top: exactly where the setup card began</text>
+  <text x="170" y="354" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">parallel but vertical? that is ∞, not 0 — one more quarter-turn</text>
+</svg><figcaption>Solved: two parallel strands across the frame, fraction 0, all handles seated</figcaption></figure></p>
+<h2 id="why-its-tricky">Why It's Tricky <a href="#why-its-tricky" class="anchor-link" aria-hidden="true">#</a></h2>
+<p><strong>The most important move looks like doing nothing.</strong> Rotation leaves every crossing untouched, so solvers dismiss it and grind away at twists — which, from a positive fraction, only climb: 3/2 → 5/2 → 7/2. The state you must change is not in the cords; it is their relationship to the twist edge.</p>
+<p><strong>Progress feels like regress.</strong> The path from 3/2 passes through −3, which looks worse than where you started. Solvers who judge by eye backtrack at exactly the moment the algorithm is about to win. Distance to solved is continued-fraction depth, not absolute value or crossing count.</p>
+<p><strong>A wrong-handed twist is silent.</strong> Cross bottom-right over top-right and you have computed x − 1. Nothing snags, nothing looks wrong — but the ledger now describes a tangle you are not holding, and every calculated move afterward deepens the divergence.</p>
+<div class="callout callout--lesson"><span class="callout-label">Lesson</span><p>an invariant that only obstructs (Puzzle 18) tells you when to stop trying; a complete invariant tells you what to do next. The fraction is not a grade on the tangle — it <em>is</em> the tangle.</p></div>
+<h2 id="common-mistakes">Common Mistakes <a href="#common-mistakes" class="anchor-link" aria-hidden="true">#</a></h2>
+<ol>
+<li><p><strong>Twisting the left-side handles.</strong> The calculus is stated for the right edge; a left twist changes the fraction, but not by +1 — the ledger becomes fiction. After an R, whichever edge faces right <em>is</em> the twist edge; that is why the glyph appears on all four edges.</p>
+</li>
+<li><p><strong>Losing count.</strong> Memory fails four moves in, and a five-crossing tangle offers few cues. Write the ledger (the plate border takes a wet-erase pen); if lost, read the twist regions off the settled cords and rebuild the fraction — or reset with the card.</p>
+</li>
+<li><p><strong>Un-rotating out of a negative.</strong> Landing on −2/3 invites turning the frame back — but R is its own inverse (−1/(−1/x) = x), so that only returns you to 3/2. The way down from a negative is T, the move that looks like adding to the mess.</p>
+</li>
+<li><p><strong>Stopping at parallel-but-vertical.</strong> Two uncrossed strands running top-to-bottom is ∞, not 0 — one quarter-turn from victory, and not victory. The goal is horizontal.</p>
+</li>
+</ol>
+<h2 id="construction-notes">Construction Notes <a href="#construction-notes" class="anchor-link" aria-hidden="true">#</a></h2>
+<ul>
+<li><strong>Socket fit is the feel of the puzzle.</strong> Cups print at 17.0mm for the 16mm balls: handles must lift out with two fingers yet never fall out during a rotation. FDM holes shrink — test one corner first.</li>
+<li><strong>Handle assembly:</strong> bore the 8mm stem 5mm (threads the 4mm cord, leaving a 1.5mm wall — at or above the minimum printable thickness), thread the cord, knot a stopper, add a drop of CA. The stem keeps the ball proud of the cup. (Final print dimensions in the forthcoming CAD model.)</li>
+<li><strong>Emboss the twist glyph on all four edges</strong> (0.6mm relief): top-right strand passing OVER bottom-right, marked "+1". The over/under sense is load-bearing — a mirrored glyph teaches x − 1. The rotation arrow "−1/x" goes once, on the bottom bar.</li>
+<li><strong>Color coding:</strong> handles match their cord — in the preset both blue handles sit on one side; mismatches make the card unverifiable.</li>
+<li><strong>Cord length:</strong> interior diagonal ~190mm; each crossing eats ~35mm of slack. 500mm supports seven or eight crossings — the preset uses four, the solution needs no more.</li>
+<li><strong>Rotation direction:</strong> the card says clockwise so ledgers match; counter-clockwise reaches the same tangle (rational tangles survive 180° flips unchanged). Pick the convention once and keep it.</li>
+<li>Print the plate flat, 25% infill; 10mm keeps it stiff through twists.</li>
+</ul>
+<nav class="prevnext" aria-label="Puzzle navigation"><a class="pn-prev" href="../puzzles/18-the-whitehead-waltz.html"><span class="pn-k">← Previous</span><span class="pn-name">18. The Whitehead Waltz</span></a><a class="pn-next" href="../puzzles/20-the-grannys-downfall.html"><span class="pn-k">Next →</span><span class="pn-name">20. The Granny's Downfall</span></a></nav></div><aside class="toc" aria-label="On this page"><span class="eyebrow">On this page</span><ol><li><a class="lvl-2" href="#overview">Overview</a></li><li><a class="lvl-2" href="#components">Components</a></li><li><a class="lvl-2" href="#setup">Setup</a></li><li><a class="lvl-2" href="#objective">Objective</a></li><li><a class="lvl-2" href="#the-topology">The Topology</a></li><li><a class="lvl-2" href="#solution">Solution</a></li><li><a class="lvl-2" href="#why-its-tricky">Why It's Tricky</a></li><li><a class="lvl-2" href="#common-mistakes">Common Mistakes</a></li><li><a class="lvl-2" href="#construction-notes">Construction Notes</a></li></ol></aside></div></div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../index.html" style="color:#ece5d6"><svg class="logomark" viewBox="0 0 100 100" role="img" aria-label="EXKNOTS" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
+  <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
+</svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
+        <p style="margin:.8rem 0 0;max-width:30ch;font-size:.92rem">Topology you solve with your hands — 20 puzzles, their solutions, and the mathematics behind them.</p>
+      </div>
+      <div><h4>Arc 1</h4><ul><li><a href="../puzzles/01-the-gatekeeper.html">1. The Gatekeeper</a></li><li><a href="../puzzles/02-shepherds-yoke.html">2. Shepherd's Yoke</a></li><li><a href="../puzzles/03-the-prisoners-ring.html">3. The Prisoner's Ring</a></li><li><a href="../puzzles/04-mobius-snare.html">4. Mobius Snare</a></li><li><a href="../puzzles/11-the-mirror-gate.html">5. The Mirror Gate</a></li></ul></div><div><h4>Arc 2</h4><ul><li><a href="../puzzles/05-trinity-lock.html">6. Trinity Lock</a></li><li><a href="../puzzles/06-devils-pitchfork.html">7. Devil's Pitchfork</a></li><li><a href="../puzzles/07-the-ferrymans-knot.html">8. The Ferryman's Knot</a></li><li><a href="../puzzles/16-the-crossing-number.html">9. The Crossing Number</a></li></ul></div><div><h4>Arc 3</h4><ul><li><a href="../puzzles/08-ouroboros-chain.html">10. Ouroboros Chain</a></li><li><a href="../puzzles/09-genus-trap.html">11. Genus Trap</a></li><li><a href="../puzzles/10-the-hopf-paradox.html">12. The Hopf Paradox</a></li></ul></div><div><h4>Arc 4</h4><ul><li><a href="../puzzles/12-the-braid-cage.html">13. The Braid Cage</a></li><li><a href="../puzzles/13-the-torus-winder.html">14. The Torus Winder</a></li><li><a href="../puzzles/14-the-tricolor-lock.html">15. The Tricolor Lock</a></li><li><a href="../puzzles/15-the-seifert-sail.html">16. The Seifert Sail</a></li><li><a href="../puzzles/17-the-satellite-trap.html">17. The Satellite Trap</a></li></ul></div><div><h4>Arc 5</h4><ul><li><a href="../puzzles/18-the-whitehead-waltz.html">18. The Whitehead Waltz</a></li><li><a href="../puzzles/19-the-tangle-dance.html">19. The Tangle Dance</a></li><li><a href="../puzzles/20-the-grannys-downfall.html">20. The Granny's Downfall</a></li></ul></div>
+    </div>
+    <div class="foot-fine">
+      <span>EXKNOTS · MIT License</span>
+      <span><a href="../theory/topology-primer.html">Topology Primer</a> · <a href="../construction/materials.html">Build Guide</a> · <a href="https://github.com/sonoransun/knotgames">Source ↗</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/docs.js" defer></script>
+</body>
+</html>

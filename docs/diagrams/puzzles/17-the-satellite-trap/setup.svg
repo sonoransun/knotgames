@@ -1,8 +1,8 @@
 <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 400">
   <title>The Satellite Trap - Setup</title>
-  <desc>Top-down view of torus shell (two concentric ellipses). Internal tunnel shown as red dashed path (trefoil pattern). External cord shown as blue path. Port markers (yellow circles) where cord exits. Inner ring inside torus, outer ring on external cord.</desc>
+  <desc>Top-down view of torus shell (two concentric ellipses). Internal tunnel shown as a red dashed (2,3) torus-knot curve winding inside the shell wall, with three over/under crossings drawn as breaks in the under strand. External cord shown as blue path. Numbered port markers 1 to 4 (yellow circles) where the cord passes through the surface. Inner ring sits on the tunnel section between ports 3 and 4, inside the torus; outer ring rides the external cord arc that loops out between ports 2 and 3, to the right of the shell.</desc>
 
-  
+
 
   <!-- Title -->
   <text x="175" y="25" text-anchor="middle" font-family="system-ui, sans-serif"
@@ -16,66 +16,73 @@
   <!-- Torus shell: inner ellipse (hole) -->
   <ellipse cx="175" cy="190" rx="45" ry="30" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
 
-  <!-- Internal tunnel: trefoil pattern (red dashed) -->
-  <!-- The companion knot lives inside the torus shell -->
-  <path d="M 80,150 Q 60,170 80,195 Q 100,220 130,210"
-        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
-  <path d="M 130,210 Q 155,200 165,170 Q 175,140 200,140"
-        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
-  <path d="M 200,140 Q 230,140 250,165 Q 270,190 250,215"
-        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
-  <path d="M 250,215 Q 230,240 200,235 Q 170,230 155,210"
-        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
-  <path d="M 155,210 Q 140,190 120,175 Q 100,160 80,150"
+  <!-- Internal tunnel: (2,3) torus-knot path winding twice around the tube
+       wall (red dashed). Drawn as one continuous closed curve; at each of the
+       three crossings an occlusion gap breaks the under strand and the over
+       strand's segment is redrawn on top, keeping the dash pattern. -->
+  <path d="M 291.2,190 C 291.2,196.7 289.1,203.4 285.1,209.4 C 281.2,215.5 275.4,221 268.5,225.6 C 261.5,230.1 253.3,233.6 244.8,236 C 236.3,238.5 227.5,239.8 219,240.2 C 210.5,240.7 202.4,240.2 195,239.2 C 187.6,238.1 180.9,236.6 175,234.9 C 169.1,233.2 163.8,231.3 159,229.5 C 154.1,227.6 149.6,225.9 145.1,224.2 C 140.6,222.4 136,220.8 131.2,218.9 C 126.3,217 121.3,215 116,212.4 C 110.8,209.9 105.4,206.9 100.4,203.2 C 95.4,199.5 90.7,195.1 87,190 C 83.3,184.9 80.6,179.2 79.6,173.2 C 78.5,167.1 79.1,160.7 81.5,154.4 C 84,148.2 88.3,142.2 94.4,136.9 C 100.4,131.6 108.1,127 116.9,123.7 C 125.7,120.4 135.5,118.2 145.5,117.4 C 155.5,116.6 165.6,117.2 175,118.9 C 184.4,120.6 193.1,123.5 200.6,127.1 C 208,130.8 214.2,135.1 219,139.8 C 223.8,144.4 227.2,149.3 229.6,154 C 232,158.7 233.3,163.3 234,167.6 C 234.7,171.8 234.8,175.7 234.9,179.4 C 234.9,183.1 234.8,186.6 234.8,190 C 234.8,193.4 234.9,196.9 234.9,200.6 C 234.8,204.3 234.7,208.2 234,212.4 C 233.3,216.7 232,221.3 229.6,226 C 227.2,230.7 223.8,235.6 219,240.2 C 214.2,244.9 208,249.2 200.6,252.9 C 193.1,256.5 184.4,259.4 175,261.1 C 165.6,262.8 155.5,263.4 145.5,262.6 C 135.5,261.8 125.7,259.6 116.9,256.3 C 108.1,253 100.4,248.4 94.4,243.1 C 88.3,237.8 84,231.8 81.5,225.6 C 79.1,219.3 78.5,212.9 79.6,206.8 C 80.6,200.8 83.3,195.1 87,190 C 90.7,184.9 95.4,180.5 100.4,176.8 C 105.4,173.1 110.8,170.1 116,167.6 C 121.3,165 126.3,163 131.2,161.1 C 136,159.2 140.6,157.6 145.1,155.8 C 149.6,154.1 154.1,152.4 159,150.5 C 163.8,148.7 169.1,146.8 175,145.1 C 180.9,143.4 187.6,141.9 195,140.8 C 202.4,139.8 210.5,139.3 219,139.8 C 227.5,140.2 236.3,141.5 244.8,144 C 253.3,146.4 261.5,149.9 268.5,154.4 C 275.4,159 281.2,164.5 285.1,170.6 C 289.1,176.6 291.2,183.3 291.2,190 Z"
         fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
 
-  <!-- Tunnel crossing indicators -->
-  <circle cx="145" cy="195" r="4" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"/>
-  <circle cx="185" cy="155" r="4" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"/>
-  <circle cx="225" cy="210" r="4" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-neg, #cf3a26)" stroke-width="1"/>
+  <!-- Tunnel crossing: bottom-right (over strand's dashes preserved) -->
+  <line x1="226" y1="239.9" x2="212" y2="240.6" stroke="var(--dia-surface, #fbf7ee)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 234.2,238.5 C 229.1,239.4 224,240 219,240.2 C 214,240.5 209.1,240.4 204.5,240.1"
+        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- Tunnel crossing: left -->
+  <line x1="82.9" y1="195.7" x2="91.1" y2="184.3" stroke="var(--dia-surface, #fbf7ee)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 80.4,203.2 C 81.8,198.5 84.1,194 87,190 C 89.9,186 93.5,182.3 97.4,179.2"
+        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- Tunnel crossing: top-right -->
+  <line x1="214" y1="134.9" x2="224" y2="144.6" stroke="var(--dia-surface, #fbf7ee)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 205.9,130 C 211,133 215.4,136.3 219,139.8 C 222.6,143.2 225.4,146.9 227.6,150.4"
+        fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="4,3"/>
 
   <!-- Port markers (yellow circles where cord enters/exits torus) -->
   <circle cx="75" cy="150" r="6" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
   <text x="58" y="145" text-anchor="end" font-family="system-ui, sans-serif"
-        font-size="7" fill="var(--dia-gold, #c79a22)">port A</text>
+        font-size="7" fill="var(--dia-gold, #c79a22)">port 1</text>
 
   <circle cx="250" cy="145" r="6" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
   <text x="268" y="140" font-family="system-ui, sans-serif"
-        font-size="7" fill="var(--dia-gold, #c79a22)">port B</text>
+        font-size="7" fill="var(--dia-gold, #c79a22)">port 2</text>
 
   <circle cx="275" cy="215" r="6" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
-  <text x="290" y="212" font-family="system-ui, sans-serif"
-        font-size="7" fill="var(--dia-gold, #c79a22)">port C</text>
+  <text x="266" y="212" text-anchor="end" font-family="system-ui, sans-serif"
+        font-size="7" fill="var(--dia-gold, #c79a22)">port 3</text>
 
   <circle cx="100" cy="235" r="6" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
   <text x="83" y="240" text-anchor="end" font-family="system-ui, sans-serif"
-        font-size="7" fill="var(--dia-gold, #c79a22)">port D</text>
+        font-size="7" fill="var(--dia-gold, #c79a22)">port 4</text>
 
   <!-- External cord (blue, solid — satellite pattern) -->
-  <!-- Cord exits port A, loops externally, enters port B -->
+  <!-- Cord exits port 1, loops externally, enters port 2 -->
   <path d="M 69,150 Q 40,120 60,90 Q 90,65 150,60 Q 220,55 260,80 Q 285,100 256,145"
         fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
 
-  <!-- Cord exits port B, goes to port C externally -->
-  <path d="M 256,145 Q 290,160 281,215"
+  <!-- Cord exits port 2, loops outside to the right (the outer ring rides
+       this arc), re-enters at port 3. The loop bulges past the shell edge so
+       the ring sits clear of the tunnel's right outer wind. -->
+  <path d="M 256,145 Q 368,180 281,215"
         fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
 
-  <!-- Cord exits port C, loops to port D -->
+  <!-- Cord exits port 3, loops to port 4 -->
   <path d="M 275,221 Q 260,270 200,285 Q 140,295 100,270 Q 80,255 94,235"
         fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
 
-  <!-- Cord exits port D back to port A -->
+  <!-- Cord exits port 4 back to port 1 -->
   <path d="M 94,235 Q 65,220 60,190 Q 55,165 69,150"
         fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
 
-  <!-- Inner ring (inside torus, on the tunnel) -->
-  <circle cx="160" cy="180" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"/>
-  <text x="160" y="170" text-anchor="middle" font-family="system-ui, sans-serif"
+  <!-- Inner ring (inside torus, on the tunnel section between ports 3 and 4) -->
+  <circle cx="175" cy="261" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"/>
+  <text x="175" y="247" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="7" fill="var(--dia-ring, #b97d12)">inner ring</text>
 
-  <!-- Outer ring (on external cord) -->
-  <circle cx="150" cy="65" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"/>
-  <text x="150" y="55" text-anchor="middle" font-family="system-ui, sans-serif"
+  <!-- Outer ring (on the external arc between ports 2 and 3, at the loop's
+       apex — clear of the red tunnel wind and the shell silhouette) -->
+  <circle cx="319" cy="184.5" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"/>
+  <text x="322" y="162" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="7" fill="var(--dia-ring, #b97d12)">outer ring</text>
 
   <!-- Labels -->

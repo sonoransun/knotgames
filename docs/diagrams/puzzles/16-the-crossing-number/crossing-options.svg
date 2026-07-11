@@ -1,94 +1,89 @@
 <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
   <title>Crossing Options</title>
-  <desc>Table showing results of flipping each crossing: Flip A produces trefoil, Flip B produces 5_1 knot, Flip C produces unknot, Flip D produces trefoil. Crossing C highlighted in green.</desc>
+  <desc>Table showing the result of flipping each crossing of the figure-eight knot's minimal diagram: every one of the four flips (A, B, C, D) yields the unknot and frees the ring. Flipping A or C opens the outer-shell clasp whose corners are crossings A and C; flipping B or D opens the central-eye clasp whose corners are B and D. Each route is a Reidemeister II slide that removes the opened clasp's two crossings, followed by two Reidemeister I untwists. Row C is highlighted as the worked example used in the text. Caption: on this diagram every flip works, so predict the route before you flip.</desc>
 
-  
+  <!--
+    No result-knot minis needed anymore: every flip yields the unknot
+    (verified independently by Kauffman bracket and by the R-move structure
+    of the Gauss code OA UD OB UA OC UB OD UC). The diagram's two bigon
+    faces are the outer shell (corners A, C) and the central eye (corners
+    B, D); flipping either corner of a bigon opens that clasp for R-II,
+    after which the two surviving crossings untwist by R-I.
+  -->
 
   <!-- Title -->
   <text x="200" y="22" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Crossing Flip Options</text>
 
-  <!-- Table structure -->
   <!-- Header row -->
   <rect x="20" y="35" width="360" height="22" fill="var(--dia-faint, #c9bda7)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
-  <text x="60" y="50" text-anchor="middle" font-family="system-ui, sans-serif"
+  <text x="45" y="50" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Flip</text>
-  <text x="170" y="50" text-anchor="middle" font-family="system-ui, sans-serif"
-        font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Diagram</text>
-  <text x="290" y="50" text-anchor="middle" font-family="system-ui, sans-serif"
+  <text x="140" y="50" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Clasp it opens</text>
+  <text x="262" y="50" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Route</text>
+  <text x="352" y="50" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Result</text>
-  <text x="360" y="50" text-anchor="middle" font-family="system-ui, sans-serif"
-        font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Free?</text>
 
-  <!-- Row 1: Flip A → trefoil -->
-  <rect x="20" y="57" width="360" height="45" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
-  <text x="60" y="83" text-anchor="middle" font-family="system-ui, sans-serif"
+  <!-- Row 1: Flip A -->
+  <rect x="20" y="57" width="360" height="38" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
+  <text x="45" y="80" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">A</text>
+  <text x="140" y="80" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9.5" fill="var(--dia-inksoft, #6a6151)">outer shell (A&#x2013;C)</text>
+  <text x="262" y="80" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9.5" fill="var(--dia-inksoft, #6a6151)">R-II, then R-I &#xD7; 2</text>
+  <circle cx="323" cy="76" r="7" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.8"/>
+  <text x="358" y="80" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9.5" fill="var(--dia-pos, #2f8f43)">unknot &#x2713;</text>
 
-  <!-- Small trefoil diagram -->
-  <path d="M 160,70 C 155,68 150,72 155,78 C 160,84 170,84 175,78 C 180,72 175,68 170,70"
-        fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
-  <line x1="163" y1="73" x2="167" y2="73" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
-  <line x1="157" y1="80" x2="161" y2="77" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
-  <line x1="170" y1="80" x2="166" y2="77" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
-
-  <text x="290" y="83" text-anchor="middle" font-family="system-ui, sans-serif"
-        font-size="10" fill="var(--dia-inksoft, #6a6151)">trefoil (3 crossings)</text>
-  <text x="360" y="83" text-anchor="middle" font-family="system-ui, sans-serif"
-        font-size="14" fill="var(--dia-neg, #cf3a26)">&#x2717;</text>
-
-  <!-- Row 2: Flip B → 5_1 knot -->
-  <rect x="20" y="102" width="360" height="45" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
-  <text x="60" y="128" text-anchor="middle" font-family="system-ui, sans-serif"
+  <!-- Row 2: Flip B -->
+  <rect x="20" y="95" width="360" height="38" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
+  <text x="45" y="118" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">B</text>
+  <text x="140" y="118" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9.5" fill="var(--dia-inksoft, #6a6151)">central eye (B&#x2013;D)</text>
+  <text x="262" y="118" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9.5" fill="var(--dia-inksoft, #6a6151)">R-II, then R-I &#xD7; 2</text>
+  <circle cx="323" cy="114" r="7" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.8"/>
+  <text x="358" y="118" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9.5" fill="var(--dia-pos, #2f8f43)">unknot &#x2713;</text>
 
-  <!-- Small complex knot diagram -->
-  <path d="M 155,115 Q 150,120 155,128 Q 162,135 170,128 Q 178,120 175,115 Q 170,110 162,112 Q 155,115 155,115"
-        fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
-  <circle cx="160" cy="120" r="2" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-rigid, #8a8275)" stroke-width="0.5"/>
-  <circle cx="168" cy="122" r="2" fill="var(--dia-surface, #fbf7ee)" stroke="var(--dia-rigid, #8a8275)" stroke-width="0.5"/>
-
-  <text x="290" y="128" text-anchor="middle" font-family="system-ui, sans-serif"
-        font-size="10" fill="var(--dia-inksoft, #6a6151)">5&#x2081; knot (5 crossings)</text>
-  <text x="360" y="128" text-anchor="middle" font-family="system-ui, sans-serif"
-        font-size="14" fill="var(--dia-neg, #cf3a26)">&#x2717;</text>
-
-  <!-- Row 3: Flip C → unknot (WINNER) -->
-  <rect x="20" y="147" width="360" height="45" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5"/>
-  <text x="60" y="173" text-anchor="middle" font-family="system-ui, sans-serif"
+  <!-- Row 3: Flip C (the worked example in the text) -->
+  <rect x="20" y="133" width="360" height="38" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.5"/>
+  <text x="45" y="156" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="11" fill="var(--dia-pos, #2f8f43)" font-weight="bold">C</text>
+  <text x="140" y="156" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9.5" fill="var(--dia-inksoft, #6a6151)">outer shell (A&#x2013;C)</text>
+  <text x="262" y="156" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9.5" fill="var(--dia-inksoft, #6a6151)">R-II, then R-I &#xD7; 2</text>
+  <circle cx="323" cy="152" r="7" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.8"/>
+  <text x="358" y="156" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9.5" fill="var(--dia-pos, #2f8f43)" font-weight="bold">unknot &#x2713;</text>
 
-  <!-- Simple circle for unknot -->
-  <circle cx="170" cy="170" r="12" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="2"/>
-
-  <text x="290" y="173" text-anchor="middle" font-family="system-ui, sans-serif"
-        font-size="10" fill="var(--dia-pos, #2f8f43)" font-weight="bold">unknot (0 crossings)</text>
-  <text x="360" y="173" text-anchor="middle" font-family="system-ui, sans-serif"
-        font-size="14" fill="var(--dia-pos, #2f8f43)">&#x2713;</text>
-
-  <!-- Row 4: Flip D → trefoil -->
-  <rect x="20" y="192" width="360" height="45" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
-  <text x="60" y="218" text-anchor="middle" font-family="system-ui, sans-serif"
+  <!-- Row 4: Flip D -->
+  <rect x="20" y="171" width="360" height="38" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
+  <text x="45" y="194" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="11" fill="var(--dia-neg, #cf3a26)" font-weight="bold">D</text>
-
-  <!-- Small trefoil diagram -->
-  <path d="M 160,208 C 155,206 150,210 155,216 C 160,222 170,222 175,216 C 180,210 175,206 170,208"
-        fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
-  <line x1="163" y1="211" x2="167" y2="211" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
-  <line x1="157" y1="218" x2="161" y2="215" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
-  <line x1="170" y1="218" x2="166" y2="215" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
-
-  <text x="290" y="218" text-anchor="middle" font-family="system-ui, sans-serif"
-        font-size="10" fill="var(--dia-inksoft, #6a6151)">trefoil (3 crossings)</text>
-  <text x="360" y="218" text-anchor="middle" font-family="system-ui, sans-serif"
-        font-size="14" fill="var(--dia-neg, #cf3a26)">&#x2717;</text>
+  <text x="140" y="194" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9.5" fill="var(--dia-inksoft, #6a6151)">central eye (B&#x2013;D)</text>
+  <text x="262" y="194" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9.5" fill="var(--dia-inksoft, #6a6151)">R-II, then R-I &#xD7; 2</text>
+  <circle cx="323" cy="190" r="7" fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.8"/>
+  <text x="358" y="194" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9.5" fill="var(--dia-pos, #2f8f43)">unknot &#x2713;</text>
 
   <!-- Conclusion box -->
-  <rect x="30" y="248" width="340" height="28" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
-  <text x="200" y="266" text-anchor="middle" font-family="system-ui, sans-serif"
-        font-size="11" fill="var(--dia-inksoft, #6a6151)">Unknotting number of figure-eight = 1 (flip crossing C)</text>
+  <rect x="30" y="222" width="340" height="28" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
+  <text x="200" y="240" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="11" fill="var(--dia-inksoft, #6a6151)">u(figure-eight) = 1 &#x2014; every flip of this diagram realizes it</text>
 
-  <!-- Legend -->
-  <text x="60" y="292" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-pos, #2f8f43)">Green row = correct choice (unknots the knot)</text>
-  <text x="60" y="298" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-rigid, #8a8275)">&#x2713; = ring can be freed, &#x2717; = still knotted</text>
+  <!-- Lesson / legend -->
+  <text x="200" y="268" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="var(--dia-pos, #2f8f43)" font-weight="bold">On this diagram, every flip works &#x2014; predict the route before you flip</text>
+  <text x="200" y="283" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8.5" fill="var(--dia-rigid, #8a8275)">highlighted row = the worked example (C); circle = the unknotted frame, ring free</text>
+  <text x="200" y="295" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8.5" fill="var(--dia-rigid, #8a8275)">flip A or C &#x2192; the outer shell slides off; flip B or D &#x2192; the central eye opens</text>
 </svg>

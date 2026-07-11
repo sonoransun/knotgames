@@ -60,18 +60,30 @@ On a Mobius band, there is only **one boundary curve**. The cord can follow this
 ## Solution
 
 1. Identify the half-twist in the leather band (where the rivet join is)
-2. Slide the cord along the band's surface toward the half-twist
-3. At the twist, feed the cord through: pass it along the surface, following the twist to what *appears* to be the "other side" of the leather — but is actually the same side
+2. **Flatten the cord's loop against one face of the band.** Pinch the loop so it lies flat on the leather — snug against the surface like a flat rubber band pressed onto the strip, not hanging down through the band's central hole. Keep it flat for the entire procedure: the escape depends on the cord never leaving the surface.
+3. **Slide the flattened loop along the band, straight across the half-twist.** At the riveted join, pinch the leather flat and pass the cord over the twist point without lifting it off the surface. This completes the first full circuit around the band.
 
 **Checkpoint (after step 3):**
-The cord has followed the twist and is now on what appears to be
-the "other face" of the leather. But it's the same face — the
-Mobius property in action. Continue sliding in the same direction.
+It feels like the cord has arrived on the "other face" of the
+leather. It has not: run a finger along the surface from your
+starting point and you reach the cord without ever crossing an
+edge. This is the SAME face — one-sidedness made tangible. You
+are halfway done. Keep sliding in the same direction.
 
-4. Continue working the cord along the band, now on the "opposite face" (same face, topologically)
-5. The cord eventually reaches the point where it can slide off the band's single edge
+4. **Continue a second full circuit, following the single boundary edge.** The band's boundary is one closed curve, but that curve makes two trips around the band before it closes. The cord must follow it for both trips. The first circuit only exchanges apparent faces; the second circuit is what actually carries the loop off the band.
 
-The key physical move: at the half-twist, pinch the leather flat and slide the cord across the twist point. This transfers the cord from one "face" to the other (same face). Repeat the sliding motion around the band until the cord clears the edge.
+**Stop-test (after step 4):**
+Look through the band's central hole. If the cord still passes
+through the hole, you have completed only one circuit — keep
+sliding. When the second circuit is done, the cord no longer
+passes through the hole at all: the entire loop hangs outside
+the band's single edge.
+
+5. **Lift the loop off the edge.** It comes away freely — nothing to force, nothing to stretch. The ring and cord drop clear of the band.
+
+The key physical move: at the half-twist, pinch the leather flat and slide the cord straight across the twist point, keeping the loop flat on the surface. You will make this move twice — once per circuit — because the band's boundary is a single curve of two circuits, and the cord must follow it around both before the edge "closes" behind it.
+
+Why the escape is possible at all: kept flat against the surface, the cord's loop is being deformed continuously — a homotopy — from a loop that encircles the band into a loop that never encircles it. After the first circuit the loop has merely traded apparent faces; after the second, the deformation is complete and the loop lies entirely outside the single edge, encircling nothing. On an untwisted band no such deformation exists: the two separate boundary circles fence the cord in, and every flat slide leaves it encircling the strip. The half-twist welds those two circles into one continuous edge — and that edge is the path the cord rides out.
 
 ## Why It's Tricky
 

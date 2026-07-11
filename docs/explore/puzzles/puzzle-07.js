@@ -1,9 +1,10 @@
 import * as THREE from 'three';
-import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
+import { createMaterials } from '../lib/materials.js';
 import { createPost, createRing, createBall } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
 import { enableShadowsOnGroup } from '../lib/scene.js';
 import { StepArrowManager } from '../lib/arrow-helpers.js';
+import { resolveStep, applyStepTransforms, HighlightCache } from '../lib/puzzle-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -20,112 +21,84 @@ const POST_H = 200;
 const POST_R = 10;
 const FINIAL_R = 15;
 const RING_Y = 40;
+const WRAP_R = POST_R + 8;
 
-// Three wraps around the post (trefoil-like)
+// Every cord keyframe must have exactly this many control points —
+// CordPath.interpolatePoints silently truncates to the shorter array.
+const CORD_POINTS = 16;
+
+// One helical wrap around the post (4 control points). wrap 0 is the lowest;
+// the highest wrap sits nearest the finial: it is the outermost wrap and is
+// the one lifted off first (see the md's checkpoint-a/b diagrams).
+function wrapPoints(wrap, radius) {
+  const baseY = 30 + wrap * 50;
+  const dir = wrap % 2 === 0 ? 1 : -1;
+  return [
+    [radius * dir, baseY, radius],
+    [-radius * dir, baseY + 15, -radius],
+    [radius * dir, baseY + 30, radius * 0.5],
+    [0, baseY + 40, -radius * dir],
+  ];
+}
+
+// Build a CORD_POINTS-length keyframe: hook lead-in, one helix per entry in
+// wrapRadii (index 0 = lowest wrap), then a tail padded up the post so every
+// keyframe interpolates 1:1. Larger radii read as slack gathered in a wrap.
+function cordKeyframe(wrapRadii) {
+  const pts = [
+    [30, 0, 0], // at the hook
+    [25, 10, 5],
+  ];
+  wrapRadii.forEach((r, w) => pts.push(...wrapPoints(w, r)));
+  const startY = 30 + wrapRadii.length * 50 - 10; // y of the last wrap point
+  const tail = CORD_POINTS - pts.length;
+  for (let k = 1; k <= tail; k++) {
+    const f = k / tail;
+    const xz = 5 * (1 - f);
+    pts.push([xz, startY + (180 - startY) * f, xz]);
+  }
+  return pts;
+}
+
+// Three tight wraps around the post (trefoil-like)
 function initialCordPath() {
-  const pts = [];
-  const R = POST_R + 8;
-  // From hook at base
-  pts.push([30, 0, 0]);    // hook position
-  pts.push([25, 10, 5]);
-
-  // Three helical wraps with crossings
-  for (let wrap = 0; wrap < 3; wrap++) {
-    const baseY = 30 + wrap * 50;
-    const dir = wrap % 2 === 0 ? 1 : -1;
-    pts.push([R * dir, baseY, R]);
-    pts.push([-R * dir, baseY + 15, -R]);
-    pts.push([R * dir, baseY + 30, R * 0.5]);
-    pts.push([0, baseY + 40, -R * dir]);
-  }
-
-  // Up to ring
-  pts.push([5, RING_Y + 140, 5]);
-  pts.push([0, RING_Y + 150, 0]);
-
-  return pts;
+  return cordKeyframe([WRAP_R, WRAP_R, WRAP_R]);
 }
 
-// Two wraps remaining
-function midCordPath1() {
-  const pts = [];
-  const R = POST_R + 8;
-  pts.push([30, 0, 0]);
-  pts.push([25, 10, 5]);
-
-  for (let wrap = 0; wrap < 2; wrap++) {
-    const baseY = 30 + wrap * 50;
-    const dir = wrap % 2 === 0 ? 1 : -1;
-    pts.push([R * dir, baseY, R]);
-    pts.push([-R * dir, baseY + 15, -R]);
-    pts.push([R * dir, baseY + 30, R * 0.5]);
-    pts.push([0, baseY + 40, -R * dir]);
-  }
-
-  // Straight up to ring (no third wrap)
-  pts.push([5, 130, 5]);
-  pts.push([3, 150, 3]);
-  pts.push([0, 170, 0]);
-  pts.push([0, 180, 0]);
-
-  return pts;
-}
-
-// One wrap remaining
-function midCordPath2() {
-  const pts = [];
-  const R = POST_R + 8;
-  pts.push([30, 0, 0]);
-  pts.push([25, 10, 5]);
-
-  const baseY = 30;
-  pts.push([R, baseY, R]);
-  pts.push([-R, baseY + 15, -R]);
-  pts.push([R, baseY + 30, R * 0.5]);
-  pts.push([0, baseY + 40, -R]);
-
-  pts.push([5, 80, 5]);
-  pts.push([3, 110, 3]);
-  pts.push([2, 140, 2]);
-  pts.push([0, 170, 0]);
-  pts.push([0, 180, 0]);
-  pts.push([0, 180, 0]);
-
-  return pts;
-}
-
-// Fully unwound
+// Fully unwound: the cord drapes alongside the post from hook to top end.
 function solvedCordPath() {
   return [
     [30, 0, 0],
     [25, 10, 5],
     [20, 30, 8],
+    [17, 45, 9],
     [15, 60, 10],
+    [13, 75, 9],
     [12, 90, 8],
+    [10, 105, 6],
     [8, 120, 5],
+    [6, 130, 4],
     [5, 140, 3],
     [3, 155, 2],
     [2, 165, 1],
-    [0, 175, 0],
-    [0, 180, 0],
+    [1, 172, 1],
+    [0, 178, 0],
     [0, 180, 0],
   ];
 }
 
-export function create3DScene() {
+// Post, finial, base, ring, hook, cord — shared by both scenes.
+function buildScene() {
   const mats = createMaterials();
   const group = new THREE.Group();
 
-  // Post
   const post = createPost(POST_R * 2, POST_H, mats.wood);
   group.add(post);
 
-  // Ball finial
   const finial = createBall(FINIAL_R * 2, mats.wood);
   finial.position.set(0, POST_H, 0);
   group.add(finial);
 
-  // Base
   const base = new THREE.Mesh(
     new THREE.BoxGeometry(80, 15, 80),
     mats.darkWood
@@ -133,12 +106,10 @@ export function create3DScene() {
   base.position.y = -7.5;
   group.add(base);
 
-  // Ring around post
   const ring = createRing(50, 4, mats.brass);
   ring.position.set(0, RING_Y, 0);
   group.add(ring);
 
-  // Hook in base
   const hook = new THREE.Mesh(
     new THREE.TorusGeometry(5, 1.5, 8, 16, Math.PI),
     mats.steel
@@ -147,7 +118,6 @@ export function create3DScene() {
   hook.rotation.x = Math.PI / 2;
   group.add(hook);
 
-  // Cord
   const cord = new CordPath(initialCordPath(), {
     radius: 2.5,
     material: mats.cord,
@@ -155,66 +125,43 @@ export function create3DScene() {
   cord.addTo(group);
 
   enableShadowsOnGroup(group);
-  return group;
+  return { group, ring, cord };
+}
+
+export function create3DScene() {
+  return buildScene().group;
 }
 
 export function createAnimScene() {
-  const mats = createMaterials();
-  const group = new THREE.Group();
-
-  const post = createPost(POST_R * 2, POST_H, mats.wood);
-  group.add(post);
-
-  const finial = createBall(FINIAL_R * 2, mats.wood);
-  finial.position.set(0, POST_H, 0);
-  group.add(finial);
-
-  const base = new THREE.Mesh(
-    new THREE.BoxGeometry(80, 15, 80),
-    mats.darkWood
-  );
-  base.position.y = -7.5;
-  group.add(base);
-
-  const ring = createRing(50, 4, mats.brass);
-  ring.position.set(0, RING_Y, 0);
-  group.add(ring);
-
-  const hook = new THREE.Mesh(
-    new THREE.TorusGeometry(5, 1.5, 8, 16, Math.PI),
-    mats.steel
-  );
-  hook.position.set(30, 2, 0);
-  hook.rotation.x = Math.PI / 2;
-  group.add(hook);
-
-  const cord = new CordPath(initialCordPath(), {
-    radius: 2.5,
-    material: mats.cord,
-  });
-  cord.addTo(group);
-
-  enableShadowsOnGroup(group);
+  const { group, ring, cord } = buildScene();
   const arrowManager = new StepArrowManager(group);
-
   return { group, objects: { ring, cord, arrowManager } };
 }
 
+// Yellow = slide the ring down the post; green = lift a wrap over the finial.
 const arrowConfigs = {
   1: { arrows: [
-    { from: [0, RING_Y, 0], to: [0, 20, 0], opts: { color: 0xffcc44 } },
-    { from: [0, 180, 0], to: [20, 210, 10], opts: { color: 0x44cc44 } },
+    { from: [0, RING_Y, 0], to: [0, 10, 0], opts: { color: 0xffcc44 } },
   ]},
   2: { arrows: [
     { from: [0, 180, 0], to: [20, 210, 10], opts: { color: 0x44cc44 } },
   ]},
   3: { arrows: [
+    { from: [0, 30, 0], to: [0, 10, 0], opts: { color: 0xffcc44 } },
+  ]},
+  4: { arrows: [
+    { from: [0, 180, 0], to: [20, 210, 10], opts: { color: 0x44cc44 } },
+  ]},
+  5: { arrows: [
     { from: [0, 180, 0], to: [20, 210, 10], opts: { color: 0x44cc44 } },
   ]},
 };
 
-let highlightMat = null;
-
+// Six beats, following the md's solution: slide the ring down for slack
+// before the first two lifts (common mistake #3), then lift the outermost
+// wrap over the finial; the last wrap comes off in a single pull with no
+// separate slack beat. Checkpoints: after step 2 two wraps remain (a),
+// after step 4 one wrap remains (b), after step 5 the cord hangs free (c).
 export const animationSteps = [
   {
     label: 'Look: the cord wraps three times around the post like a knot',
@@ -223,64 +170,58 @@ export const animationSteps = [
     ring: { position: [0, RING_Y, 0] },
   },
   {
-    label: 'Slide the ring down, then lift the top wrap over the ball finial',
-    duration: 3.0,
+    label: 'Slide the ring down to the base — slack gathers by the finial',
+    duration: 2.0,
     easing: 'easeOut',
-    cord: midCordPath1(),
-    ring: { position: [0, 20, 0] },
+    // Wraps loosen as slack arrives; the outermost (top) wrap loosens most.
+    cord: cordKeyframe([WRAP_R + 2, WRAP_R + 5, WRAP_R + 9]),
+    ring: { position: [0, 14, 0] },
   },
   {
-    label: 'Lift the second wrap over the finial — one wrap left',
-    duration: 3.0,
+    label: 'Lift the outermost wrap over the ball finial — two wraps remain',
+    duration: 2.5,
     easing: 'easeOut',
-    cord: midCordPath2(),
-    ring: { position: [0, 15, 0] },
+    cord: cordKeyframe([WRAP_R, WRAP_R]),
+    ring: { position: [0, 26, 0] }, // pulling the loop through tugs the ring back up
+  },
+  {
+    label: 'Slide the ring down again for fresh slack',
+    duration: 2.0,
+    easing: 'easeOut',
+    cord: cordKeyframe([WRAP_R + 2, WRAP_R + 8]),
+    ring: { position: [0, 14, 0] },
+  },
+  {
+    label: 'Lift the next wrap over the finial — one wrap remains',
+    duration: 2.5,
+    easing: 'easeOut',
+    cord: cordKeyframe([WRAP_R]),
+    ring: { position: [0, 24, 0] },
   },
   {
     label: 'Pull the last wrap over the finial — cord hangs free!',
-    duration: 2.5,
+    duration: 2.75,
     easing: 'easeOut',
     cord: solvedCordPath(),
     ring: { position: [0, RING_Y, 0] },
   },
 ];
 
+const highlights = new HighlightCache();
+
 export function updateAnimation(objects, state) {
-  const { stepIndex, stepProgress } = state;
+  const { step, prevStep, t, stepIndex } = resolveStep(animationSteps, state, {
+    arrowManager: objects.arrowManager,
+    arrowConfigs,
+  });
 
-  // Direction arrows
-  if (objects.arrowManager) {
-    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
-    objects.arrowManager.updateOpacity(stepProgress);
-  }
+  // Highlight the cord while it is being worked (every step after the look)
+  highlights.set(objects.cord.mesh, stepIndex >= 1, 0x4488ff, 0.3);
 
-  // Highlight active cord during movement steps
-  if (stepIndex >= 1) {
-    if (!highlightMat) {
-      highlightMat = createHighlightMaterial(objects.cord.mesh.material, 0x4488ff, 0.3);
-    }
-    applyHighlight(objects.cord.mesh, highlightMat);
-  } else {
-    removeHighlight(objects.cord.mesh);
-  }
-
-  const step = animationSteps[stepIndex];
-  const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
-
-  if (step.cord && prevStep.cord) {
-    const interpolated = CordPath.interpolatePoints(prevStep.cord, step.cord, stepProgress);
-    objects.cord.update(interpolated);
-  }
-
-  if (step.ring && prevStep.ring) {
-    const f = prevStep.ring.position;
-    const t = step.ring.position;
-    objects.ring.position.set(
-      f[0] + (t[0] - f[0]) * stepProgress,
-      f[1] + (t[1] - f[1]) * stepProgress,
-      f[2] + (t[2] - f[2]) * stepProgress,
-    );
-  }
+  applyStepTransforms(objects, prevStep, step, t, {
+    cord: { target: 'cord', kind: 'cordPoints' },
+    ring: { target: 'ring', kind: 'position' },
+  });
 }
 
 export function createSVGDiagram(container) {
@@ -384,9 +325,12 @@ export function createSVGDiagram(container) {
   calloutRect.classList.add('callout-box');
 
   // ---- Timeline updater: sync 2D ring + wraps + badges + arrows to the solution.
-  // Steps (0-based): 0 look, 1 slide ring + lift top wrap, 2 lift second wrap, 3 last wrap free.
-  // Ring slides down the post in step 1, then stays low (matches the 3D ring motion).
-  const ringY = [305, 312, 312, 312];
+  // Steps (0-based): 0 look, 1 slide ring down, 2 lift outermost wrap (2 left),
+  // 3 slide ring down again, 4 lift second wrap (1 left), 5 last wrap pulls free.
+  // Ring cy at the END of each step: rest, at base, tugged up by the pull-through,
+  // back down for fresh slack, tugged up, rest (matches the 3D ring motion).
+  const ringFrames = [[305], [315], [309], [315], [309], [305]];
+  const LAST_STEP = ringFrames.length - 1;
   const setWrapVisible = (wrap, on) => {
     if (!wrap) return;
     svg.highlight(wrap.front, on, { glow: false, dim: 0 });
@@ -394,32 +338,29 @@ export function createSVGDiagram(container) {
     if (wrap.gap) svg.highlight(wrap.gap, on, { glow: false, dim: 0 });
   };
   return function update(state) {
-    const last = ringY.length - 1;
-    const i = Math.max(0, Math.min(state.stepIndex ?? 0, last));
+    const i = Math.max(0, Math.min(state.stepIndex ?? 0, LAST_STEP));
     const p = Math.max(0, Math.min(state.stepProgress ?? 0, 1));
 
-    // Ring vertical slide
-    const from = i === 0 ? ringY[0] : ringY[i - 1];
-    const to = ringY[i];
-    ring.setAttribute('cy', from + (to - from) * p);
+    // Ring vertical slide (down for slack before each lift, per the md)
+    const [cy] = svg.lerpFrames(ringFrames, i, p);
+    ring.setAttribute('cy', cy);
 
-    // Lift wraps off one at a time as the solution progresses.
-    // After step 1 the top wrap is gone, after step 2 the second, after step 3 all gone.
-    const wrapsRemaining = i <= 0 ? 3 : i === 1 ? 2 : i === 2 ? 1 : 0;
-    wraps.forEach((w, k) => {
-      // wraps[2] is the topmost (highest y index => lowest on screen). Lift from the top:
-      // remaining count keeps the lowest-indexed wraps; index 0 is top crossing on screen.
-      setWrapVisible(w, k < wrapsRemaining);
-    });
+    // Wraps lift off one per lift step. wraps[0] is the top crossing on
+    // screen — the outermost wrap, nearest the finial — and goes first
+    // (matches the checkpoint-a/b diagrams: removed ghost at the top).
+    const wrapsRemaining = i <= 1 ? 3 : i <= 3 ? 2 : i === 4 ? 1 : 0;
+    wraps.forEach((w, k) => setWrapVisible(w, k >= wraps.length - wrapsRemaining));
 
-    // Badges: phase 0 = slide ring, phase 1 = lift wraps, phase 2 = pull free
-    const phase = i <= 1 ? 0 : i === 2 ? 1 : 2;
+    // Badges: 0 = slide ring down, 1 = lift wrap over ball, 2 = pull free
+    const phase = i === 5 ? 2 : (i === 2 || i === 4) ? 1 : 0;
     badges.forEach((b, k) => svg.highlight(b, k === phase, { dim: 0.3, color: CORD }));
 
-    // Arrows: slide arrow during the slide-down step, lift arrow during the lift steps
-    svg.highlight(arrowSlide, i === 1, { glow: false, dim: 0 });
-    svg.highlight(arrowLift, i === 1 || i === 2 || i === 3, { glow: false, dim: 0 });
+    // Arrows: slide arrow on the slack beats, lift arrow on the lift beats
+    svg.highlight(arrowSlide, i === 1 || i === 3, { glow: false, dim: 0 });
+    svg.highlight(arrowLift, i === 2 || i === 4 || i === 5, { glow: false, dim: 0 });
   };
 }
 
-export function dispose() {}
+export function dispose() {
+  highlights.dispose();
+}

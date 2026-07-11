@@ -1,0 +1,102 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 392">
+  <title>Puzzle 18: The Whitehead Waltz — Setup</title>
+  <desc>Two near-identical stations side by side. Each has a rigid ring standing upright in a printed stand saddle, with a closed cord loop woven through the ring twice — four ring-cord crossings — and the loop's two lobes meeting in a single clasp crossing below the ring. Station A's clasp hooks (Whitehead link); Station B's clasp crossing is flipped so the lobes merely overlap (unlink).</desc>
+
+  <defs>
+    <!-- One station, minus the clasp patch (the clasp over/under differs per station).
+         Ring center (150,140), r=45. Ring-cord crossings on the lower arc:
+         c1 (115,168.3) ring over cord;  c2 (138,183.4) cord over ring;
+         c3 (162,183.4) ring over cord;  c4 (185,168.3) cord over ring.
+         Cord self-crossing (clasp) at W (150,215), drawn per station. -->
+    <g id="ww-setup-station">
+      <!-- Printed stand: base and saddle pedestal (outline, cord hangs in front) -->
+      <rect x="95" y="300" width="110" height="16" rx="3"
+            fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+      <path d="M141,300 L141,196 Q141,190 146,191 L150,187 L154,191 Q159,190 159,196 L159,300"
+            fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
+
+      <!-- Ring (under-strand at c2/c4, drawn first, continuous) -->
+      <circle cx="150" cy="140" r="45" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"/>
+
+      <!-- Occlusion strokes along the cord's tangent where the cord passes OVER the ring (c2, c4) -->
+      <line x1="139" y1="193" x2="137" y2="173"
+            stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"/>
+      <line x1="185" y1="159" x2="185" y2="178"
+            stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"/>
+
+      <!-- Cord: one closed loop. Route: lobe-1 bottom, up through clasp point W to c3,
+           rise inside aperture, cap, down through c4, lobe-2 bottom, back through W to c2,
+           rise, cap, down through c1, close. -->
+      <path d="M 120 248
+               C 130 252 141 228 150 215
+               C 156 206 160 195 162 183.4
+               C 164 160 167 136 168 118
+               C 169 106 180 106 181 118
+               C 182 134 185 150 185 168.3
+               C 186 195 190 225 180 246
+               C 168 250 158 232 150 215
+               C 143 204 139 194 138 183.4
+               C 136 160 133 136 132 118
+               C 131 106 120 106 119 118
+               C 118 134 115 150 115 168.3
+               C 112 192 108 228 120 248 Z"
+            fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+
+      <!-- Where the ring passes OVER the cord (c1, c3): occlusion along the ring's tangent,
+           then a short ring arc redrawn on top -->
+      <line x1="111.2" y1="163.3" x2="118.8" y2="172.7"
+            stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"/>
+      <path d="M 106 149.4 A 45 45 0 0 0 126 178.1"
+            fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"/>
+      <line x1="156.2" y1="185" x2="167.8" y2="181.8"
+            stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"/>
+      <path d="M 150 185 A 45 45 0 0 0 176 176.7"
+            fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"/>
+    </g>
+  </defs>
+
+  <!-- Title -->
+  <text x="280" y="18" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13"
+        fill="var(--dia-ink, #24211a)" font-weight="bold">The Whitehead Waltz — two stations, one prisoner</text>
+
+  <!-- ================= STATION A (true Whitehead: the clasp hooks) ================= -->
+  <g transform="translate(10,26)">
+    <use href="#ww-setup-station"/>
+    <!-- Clasp at W (150,215): back lobe's connector passes OVER (lower-left to upper-right on top) -->
+    <line x1="144.6" y1="222.2" x2="155.4" y2="207.8"
+          stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 142 226 C 146 220 148 218 150 215 C 153 210 155 206 158 200"
+          fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+
+    <!-- Annotations -->
+    <line x1="107" y1="128" x2="74" y2="106" stroke="var(--dia-faint, #c9bda7)" stroke-width="1"/>
+    <text x="72" y="98" text-anchor="end" font-family="system-ui, sans-serif" font-size="10"
+          fill="var(--dia-inksoft, #6a6151)">80 mm ring</text>
+    <text x="72" y="110" text-anchor="end" font-family="system-ui, sans-serif" font-size="10"
+          fill="var(--dia-inksoft, #6a6151)">68 mm aperture</text>
+    <line x1="188" y1="212" x2="224" y2="192" stroke="var(--dia-faint, #c9bda7)" stroke-width="1"/>
+    <text x="228" y="188" font-family="system-ui, sans-serif" font-size="10"
+          fill="var(--dia-inksoft, #6a6151)">4 mm cord loop,</text>
+    <text x="228" y="200" font-family="system-ui, sans-serif" font-size="10"
+          fill="var(--dia-inksoft, #6a6151)">spliced closed</text>
+    <text x="150" y="336" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12"
+          fill="var(--dia-inksoft, #6a6151)" font-weight="bold">STATION A</text>
+  </g>
+
+  <!-- ================= STATION B (decoy: the clasp crossing is flipped) ================= -->
+  <g transform="translate(300,26)">
+    <use href="#ww-setup-station"/>
+    <!-- Clasp at W (150,215): front lobe's connector passes OVER (lower-right to upper-left on top) -->
+    <line x1="153.9" y1="223.1" x2="146.1" y2="206.9"
+          stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 158 228 C 154 222 152 219 150 215 C 148 211 145 207 142 202"
+          fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+
+    <text x="150" y="336" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12"
+          fill="var(--dia-inksoft, #6a6151)" font-weight="bold">STATION B</text>
+  </g>
+
+  <!-- Footer note -->
+  <text x="280" y="384" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10"
+        fill="var(--dia-rigid, #8a8275)">Five crossings each: four on the ring, one clasp below. Compare the clasps.</text>
+</svg>

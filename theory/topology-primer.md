@@ -26,7 +26,10 @@ If you can tie your shoes and follow an argument, you can read this document.
 16. [Seifert Surfaces](#16-seifert-surfaces)
 17. [Unknotting Number](#17-unknotting-number)
 18. [Satellite Knots and JSJ Decomposition](#18-satellite-knots-and-jsj-decomposition)
-19. [Glossary](#19-glossary)
+19. [The Whitehead Link and Higher-Order Linking](#19-the-whitehead-link-and-higher-order-linking)
+20. [Rational Tangles and Continued Fractions](#20-rational-tangles-and-continued-fractions)
+21. [Connected Sums and Composite Knots](#21-connected-sums-and-composite-knots)
+22. [Glossary](#22-glossary)
 
 ---
 
@@ -163,6 +166,30 @@ Consider Puzzle 3, The Prisoner's Ring. A cord loop drapes over a crossbar,
 creating two visible crossings:
 
 ![Crossing signs: +1 and −1 cancel, giving linking number 0](../diagrams/theory/topology-primer/crossing-signs.svg)
+
+#### Computing a crossing sign
+
+Here is the recipe the figure is applying:
+
+1. **Orient both curves.** Draw a travel arrow on the cord and a travel
+   arrow on the crossbar. (Which directions you pick does not matter, as
+   long as you keep them fixed while you count.)
+2. **At each crossing, look only at the two arrows.** Pivot the
+   under-strand's arrow about the crossing point, through the smaller
+   angle (always less than 180 degrees), until it points the same way as
+   the over-strand's arrow.
+3. **Read off the sign.** If that pivot was clockwise, the crossing is
+   +1. If it was counterclockwise, the crossing is -1. (This is the
+   right-hand rule in disguise — equivalently, rotating the over-strand's
+   arrow counterclockwise onto the under-strand's arrow marks the
+   crossing +1.)
+
+Apply it to the figure. At the left crossing, the crossbar's arrow points
+right and the cord's arrow points down-and-right: aligning the crossbar's
+arrow with the cord's arrow is a short **clockwise** pivot, so the sign
+is +1. At the right crossing, the crossbar's arrow points left and the
+cord's arrow points down-and-left: the pivot is **counterclockwise**, so
+the sign is -1. Sum of signs: +1 + (-1) = 0, and half of that is still 0.
 
 The two crossings cancel perfectly. Despite the visual impression that the
 cord "wraps around" the crossbar, the linking number is zero. The cord and
@@ -376,6 +403,13 @@ When the generators obey NO relations (no equations between them other than
 the trivial ones like aa^{-1} = identity), the fundamental group is called
 a **free group**. The free group on two generators, F(a, b), is the
 fundamental group of a genus-2 handlebody (a solid block with two tunnels).
+
+![Generators of the fundamental group on a two-post handlebody](../diagrams/theory/topology-primer/fundamental-group-generators.svg)
+
+In the figure, generator **a** (red) circles the left post and generator
+**b** (blue) circles the right post — the same colors the Genus Trap
+diagrams use for Tunnel A and Tunnel B. A loop that encircles neither
+post (green) shrinks to a point: it is the identity.
 
 In a free group, the only way a word simplifies is by **cancellation of
 adjacent inverses**:
@@ -591,6 +625,8 @@ space) cannot be contracted to a point. This means some rearrangements
 require the system to pass through specific intermediate states — there are
 no shortcuts.
 
+![Configuration space: the straight path is blocked, the winding path succeeds](../diagrams/theory/topology-primer/configuration-space-path.svg)
+
 ### Which puzzle uses this
 
 - **Puzzle 7, Devil's Pitchfork:** A ring sits on the left prong of a
@@ -667,6 +703,8 @@ Gray code from the (n-1)-bit Gray code:
 2. Write it forward, prefixing each entry with 0
 3. Write it backward, prefixing each entry with 1
 4. Concatenate
+
+![The reflected-binary construction of the Gray code](../diagrams/theory/topology-primer/gray-code-reflection.svg)
 
 This recursion mirrors the structure of the Chinese Rings puzzle: to remove
 ring k, you must first set up a specific configuration of rings k+1 through
@@ -765,6 +803,8 @@ specific, beautiful way:
   fiber
 - The fibers twist around each other as you move across S^2
 
+![Hopf fibration: every point of the base sphere is a circle, and any two fibers link once](../diagrams/theory/topology-primer/hopf-fibration-fibers.svg)
+
 This structure makes S^3 a non-trivial fiber bundle: S^1 fibers over S^2
 base, but the total space is NOT the simple product S^2 x S^1 (which would
 be a different space entirely). The twist is essential.
@@ -791,10 +831,16 @@ twist at all.
 
 ![360° twist cannot be undone; 720° twist can be undone by looping around (the belt trick)](../diagrams/theory/topology-primer/belt-trick-360-720.svg)
 
-This is the same mathematics as the Hopf fibration: the space of 3D
-rotations has a "double cover" structure (SU(2) / SO(3)), which means a
-360-degree rotation is topologically non-trivial but a 720-degree rotation
-is trivial. The belt trick is a physical demonstration of this fact.
+The belt trick is a physical demonstration that the space of 3D rotations
+is not simply connected: pi_1(SO(3)) = Z/2, realized by the double cover
+SU(2) -> SO(3). A 360-degree rotation traces a loop in SO(3) that cannot
+be contracted, but traversing it twice (720 degrees) gives a contractible
+loop. The connection to the Hopf fibration is close but not identical:
+SU(2) is the same 3-sphere S^3 the Hopf fibration lives on, but the
+fibration (S^3 -> S^2, with circle fibers) and the double cover
+(S^3 -> SO(3), with two-point fibers) are different maps — the belt trick
+illustrates the double cover, and serves as an analogy for the puzzle's
+coupled motion rather than an instance of the Hopf map.
 
 The **plate trick** is similar: hold a plate flat on your palm. Rotate it
 360 degrees (keeping it level) by twisting your arm — your arm is now
@@ -947,9 +993,53 @@ A knot is **chiral** if it is not equivalent to its mirror image. The simplest e
 
 A knot that IS equivalent to its mirror image is called **amphichiral** (or achiral). The figure-eight knot is amphichiral — its mirror image can be deformed back to the original.
 
+![The left- and right-handed trefoils are mirror images: every crossing sign flips](../diagrams/theory/topology-primer/chirality-mirror-trefoils.svg)
+
 ### How to detect chirality
 
 At each crossing, follow the knot in a consistent direction. If the overpasses spiral clockwise, the trefoil is right-handed. If counterclockwise, left-handed. More formally, chirality can be detected by knot polynomials: the Jones polynomial of a chiral knot differs from the Jones polynomial of its mirror image.
+
+### Worked example: reading handedness crossing by crossing
+
+The crossing-sign rule from Section 3 turns "which hand is this?" into
+arithmetic. Orient the knot: pick a starting point and draw a travel
+arrow along the curve. Then visit each of the trefoil's three crossings
+and apply the sign rule — pivot the under-strand's arrow through the
+smaller angle onto the over-strand's arrow; clockwise means +1,
+counterclockwise means -1 (equivalently, as the figure's inset shows,
+over-strand arrow rotated counterclockwise onto the under-strand arrow
+means +1).
+
+On the right-handed trefoil every crossing comes out +1: the read-off is
++ + +, and the sum of signs — called the **writhe** of the diagram — is
++3. Reflect the diagram in a mirror and every over-strand becomes an
+under-strand: each sign flips, the read-off is - - -, and the writhe is
+-3. Reversing the travel arrow does NOT change the answer: both arrows
+at a crossing reverse together, and the pivot direction survives. So the
+read-off is independent of the orientation you happened to choose.
+
+One honest caveat: writhe is a property of the *diagram*, not of the
+knot — a Type I Reidemeister move adds a kink and changes the writhe by
+1. But for *reduced alternating* diagrams like these minimal 3-crossing
+trefoil diagrams, the writhe is the same in every such diagram (one of
+the Tait conjectures, proved in the 1980s). So +3 versus -3 is a
+genuine, checkable difference between the two trefoils' standard
+diagrams — it is the number your hands compute when you trace a wire
+frame in Puzzle 5.
+
+### Detection by the Jones polynomial
+
+The **Jones polynomial** V_K(t) converts mirror reflection into an
+algebraic substitution: the mirror image m(K) satisfies V_{m(K)}(t) =
+V_K(t^{-1}). So if V_K is not symmetric under swapping t and t^{-1},
+the knot cannot equal its mirror image. For the right-handed trefoil,
+V(t) = -t^4 + t^3 + t; substituting t -> t^{-1} gives
+-t^{-4} + t^{-3} + t^{-1}, the left-handed trefoil's polynomial. The
+two are different, so the trefoil is chiral — a three-line proof of a
+fact that resisted proof until Max Dehn's 1914 argument. The
+figure-eight knot's polynomial, V(t) = t^2 - t + 1 - t^{-1} + t^{-2},
+is palindromic (unchanged by t -> t^{-1}), exactly as an amphichiral
+knot's must be.
 
 ### Which puzzles use this
 
@@ -958,6 +1048,22 @@ At each crossing, follow the knot in a consistent direction. If the overpasses s
 ### Physical intuition
 
 Hold both trefoils side by side. They look identical until you try to seat one in the other's recess — it simply does not fit. The physical mismatch at the crossing points IS the chirality. Your hands can feel the difference that your eyes initially miss. This is exactly the situation in chemistry, where chiral molecules (enantiomers) have identical properties in isolation but interact differently with other chiral structures.
+
+### Rigorous statement
+
+A knot K in S^3 is **chiral** if there is no ambient isotopy carrying K
+to its mirror image m(K), where m is any orientation-reversing
+homeomorphism of S^3 — concretely, reflection through a plane,
+(x, y, z) -> (x, y, -z). K is **amphichiral** if K and m(K) are
+ambient-isotopic. The trefoil is chiral (Dehn, 1914); the figure-eight
+knot is amphichiral — an explicit sequence of Reidemeister moves carries
+its mirror diagram back to the original. Mirror reflection reverses the
+sign of every crossing, so it negates the writhe of a diagram; by the
+Tait writhe theorem this already distinguishes the two trefoils'
+reduced alternating diagrams. In general, chirality is certified by the
+Jones polynomial via V_{m(K)}(t) = V_K(t^{-1}): asymmetry of V_K under
+t -> t^{-1} implies chirality (the converse fails — some chiral knots
+have symmetric Jones polynomials, so a symmetric V proves nothing).
 
 ---
 
@@ -973,9 +1079,71 @@ For three strands (B_3), the two generators are:
 
 These generators do NOT commute: sigma_1 * sigma_2 ≠ sigma_2 * sigma_1.
 
+![The braid generators and the Yang-Baxter relation](../diagrams/theory/topology-primer/braid-generators.svg)
+
+### The Artin presentation
+
+Emil Artin showed in 1925 that B_n is completely described by n-1
+generators and just two families of relations. The generators are
+sigma_1, ..., sigma_{n-1}, where sigma_i crosses strand i over strand
+i+1. The relations:
+
+- **Far commutation:** sigma_i * sigma_j = sigma_j * sigma_i whenever
+  |i - j| >= 2. Swaps involving disjoint pairs of strands do not
+  interfere — swapping strands 1-2 and swapping strands 3-4 can happen
+  in either order.
+- **Braid relation:** sigma_i * sigma_{i+1} * sigma_i =
+  sigma_{i+1} * sigma_i * sigma_{i+1}. Adjacent swaps that share a
+  strand obey exactly one exchange law — the Yang-Baxter relation
+  discussed next.
+
+Everything true about braids follows from these two rules. Notice what
+is *missing*: there is no relation sigma_i * sigma_i = identity.
+Swapping the same pair of strands twice does not undo the swap — it
+adds a full twist to the cords. This is precisely where B_n parts ways
+with the group of mere permutations, and it is why B_n is an infinite
+group.
+
 ### The Yang-Baxter relation
 
 The key algebraic relation in B_3 is: **sigma_1 * sigma_2 * sigma_1 = sigma_2 * sigma_1 * sigma_2**. This is the braid relation (Yang-Baxter equation). It says that two specific three-step sequences of swaps produce the same braid.
+
+### Worked example: sigma_2-then-sigma_1 vs sigma_1-then-sigma_2
+
+Puzzle 13, The Braid Cage, starts with rings Blue - Yellow - Red on
+posts 1-2-3 and asks for Red - Blue - Yellow. Compare the two shortest
+candidate words, applying the left factor first (sigma_1 swaps the
+rings on posts 1 and 2; sigma_2 swaps posts 2 and 3):
+
+| Word | Start | After first swap | After second swap |
+|------|-------|------------------|-------------------|
+| sigma_2 then sigma_1 | Blue · Yellow · Red | Blue · Red · Yellow | **Red · Blue · Yellow** ✓ |
+| sigma_1 then sigma_2 | Blue · Yellow · Red | Yellow · Blue · Red | Yellow · Red · Blue ✗ |
+
+The same two generators, applied in opposite orders, land the rings on
+different posts. This is non-commutativity at the coarsest possible
+level: the two words do not even agree as permutations, let alone as
+braids.
+
+### From braids to permutations
+
+Forgetting which strand crossed *over* which turns a braid into a plain
+permutation of the n positions. This forgetting map B_n -> S_n is a
+surjective group homomorphism: every permutation is achievable by some
+braid. Its kernel — the braids that permute nothing, yet are not
+trivial — is the **pure braid group** P_n. A non-trivial pure braid is
+exactly the Braid Cage's characteristic failure mode: every ring back
+on its target post, but the cords wound around each other. The rings
+see only the permutation; the cords remember the whole braid.
+
+### From braids to knots
+
+Joining the top of each strand to the bottom of the same position
+closes a braid into a knot or link. Torus knots arise this way: T(p, q)
+is the closure of the word (sigma_1 * sigma_2 * ... * sigma_{p-1})^q.
+The trefoil T(2, 3) is the closure of sigma_1^3 in B_2 — three
+identical swaps of two strands, sealed shut. Section 14 picks up this
+thread.
 
 ### Which puzzles use this
 
@@ -985,13 +1153,28 @@ The key algebraic relation in B_3 is: **sigma_1 * sigma_2 * sigma_1 = sigma_2 * 
 
 When you swap two rings by lifting one over a post finial, the connecting cord records the swap as a braid generator. Swapping in a different order produces a different braid — and different braids leave the cords in different states (tangled vs. untangled). The order of operations has physical consequences.
 
+### Rigorous statement
+
+The **braid group** B_n is the group with the Artin presentation:
+generators sigma_1, ..., sigma_{n-1}, subject to sigma_i sigma_j =
+sigma_j sigma_i for |i - j| >= 2 and sigma_i sigma_{i+1} sigma_i =
+sigma_{i+1} sigma_i sigma_{i+1} for 1 <= i <= n-2. Equivalently, B_n is
+the fundamental group of the configuration space of n unordered points
+in the plane (Section 8 again: a braid is a loop of point
+configurations, traced out in time). Imposing the extra relations
+sigma_i^2 = 1 collapses B_n onto the symmetric group S_n; the quotient
+map B_n -> S_n sends each braid to its endpoint permutation, and its
+kernel is the pure braid group P_n, giving the short exact sequence
+1 -> P_n -> B_n -> S_n -> 1. By Alexander's theorem (1923), every knot
+and link in R^3 is the closure of some braid.
+
 ---
 
 ## 14. Torus Knots
 
 ### Plain-language definition
 
-A **(p,q) torus knot** lies on the surface of a torus, winding p times through the torus hole and q times around the tube. The curve closes up into a single connected knot when gcd(p,q) = 1.
+A **(p,q) torus knot** lies on the surface of a torus, winding p times around the central axis (the long way) and q times around the tube — each tube wrap passes through the hole. The curve closes up into a single connected knot when gcd(p,q) = 1.
 
 Key examples:
 - (1, q) for any q → unknot
@@ -1002,6 +1185,58 @@ Key examples:
 
 The rule: (p,q) with gcd(p,q) = 1 and p,q ≥ 2 produces a genuine knot.
 
+### Parametrization on the standard torus
+
+Put the torus in standard position: a tube of radius r whose center
+circle has radius R. The (p,q) torus knot is traced by a point that
+circles the hole p times while circling the tube q times, both at
+constant rates:
+
+x(t) = (R + r cos qt) cos pt, y(t) = (R + r cos qt) sin pt,
+z(t) = r sin qt, for t from 0 to 2 pi.
+
+The curve lives entirely on the torus surface — it never tunnels
+through the solid part. A surprising symmetry: **T(p,q) and T(q,p) are
+the same knot.** The (2,3) curve and the (3,2) curve look different on
+the torus (their standard flat projections show 3 and 4 crossings
+respectively), yet an isotopy of the ambient space — turning the torus
+inside out through its own hole, so that hole-circles and tube-circles
+trade roles — carries one onto the other. Both are the trefoil.
+
+### Worked example: tracing the (2,3) winding
+
+Follow the cord of Puzzle 14, The Torus Winder, condensed to its
+topological skeleton:
+
+![Tracing the (2,3) curve around the torus](../diagrams/theory/topology-primer/torus-knot-2-3-trace.svg)
+
+1. Circle the central axis once, the long way around (first of p = 2),
+   wrapping around the tube as you go — each tube wrap passes through
+   the hole.
+2. Circle the axis again (second of p = 2), still wrapping the tube.
+3. Complete the third tube wrap (q = 3) — and the cord arrives back at
+   its starting point, pointing the way it began.
+
+The cord closes into a **single** curve because gcd(2,3) = 1: since 2
+and 3 share no common factor, the strand cannot return to its start
+until it has spent all of its winding in both directions at once. Wind
+(2,2) instead and the curve closes early, after half the journey,
+leaving two separate loops — a link, and the ring escapes between them.
+Now count the crossings of the completed (2,3) winding: exactly 3, all
+of the same handedness. That matches the general formula below: the
+crossing number of T(p,q) is min(p(q-1), q(p-1)) = min(4, 3) = 3. The
+trefoil again — built this time by winding rather than knotting.
+
+### Two more numbers the winding determines
+
+The pair (p,q) does not just decide *whether* the curve is knotted; it
+determines the knot's key invariants by closed formulas:
+
+- **Genus** (Section 16): (p-1)(q-1)/2. For (2,3): 1.
+- **Crossing number**: min(p(q-1), q(p-1)). For (2,3): 3.
+- **Unknotting number** (Section 17): (p-1)(q-1)/2 — the same number as
+  the genus. For (2,3): 1.
+
 ### Which puzzles use this
 
 - **Puzzle 14, The Torus Winder:** A cord must be wound around a torus following guide notches to create the (2,3) torus knot. Most windings fail to trap a sliding ring — only the correct (p,q) pair produces a genuine knot.
@@ -1010,7 +1245,24 @@ The rule: (p,q) with gcd(p,q) = 1 and p,q ≥ 2 produces a genuine knot.
 
 ### Physical intuition
 
-Wind a cord around a donut-shaped ring. If you go through the hole twice and around the tube three times, the cord crosses itself exactly three times and cannot be unwound without cutting. Change the numbers and the knot either simplifies to a circle or splits into multiple loops. The relationship between the two winding numbers is what determines knottedness.
+Wind a cord around a donut-shaped ring. If you go around the central axis twice (the long way) while wrapping around the tube three times — each tube wrap passing through the hole — the cord crosses itself exactly three times and cannot be unwound without cutting. Change the numbers and the knot either simplifies to a circle or splits into multiple loops. The relationship between the two winding numbers is what determines knottedness.
+
+### Rigorous statement
+
+For integers p, q, the **torus knot/link** T(p,q) is the image of the
+curve t -> ((R + r cos qt) cos pt, (R + r cos qt) sin pt, r sin qt) on
+the standard torus in R^3 — equivalently, the image of
+t -> (e^{ipt}, e^{iqt}) on the Clifford torus in S^3. T(p,q) is
+ambient-isotopic to T(q,p). If gcd(p,q) = d > 1 the curve closes into a
+link of d parallel copies of T(p/d, q/d) rather than a knot; if
+gcd(p,q) = 1 it is a knot, and it is the unknot exactly when |p| <= 1
+or |q| <= 1. For coprime p, q >= 2: the genus is g(T(p,q)) =
+(p-1)(q-1)/2, realized by Seifert's algorithm on the standard diagram
+(Section 16); the crossing number is c(T(p,q)) = min(p(q-1), q(p-1))
+(Murasugi, 1991); and the unknotting number is u(T(p,q)) =
+(p-1)(q-1)/2 — the Milnor conjecture, proved by Kronheimer and Mrowka
+in 1993 (Section 17). T(p,q) is the closure of the braid word
+(sigma_1 sigma_2 ... sigma_{p-1})^q in B_p (Section 13).
 
 ---
 
@@ -1020,6 +1272,8 @@ Wind a cord around a donut-shaped ring. If you go through the hole twice and aro
 
 A **Fox 3-coloring** of a knot diagram assigns one of three colors to each arc (strand between consecutive undercrossings) such that at every crossing, the three meeting arcs are either all the same color or all different colors.
 
+![A valid tricoloring of the trefoil, and a failed two-color attempt](../diagrams/theory/topology-primer/tricoloring-trefoil.svg)
+
 A knot is **tricolorable** if it admits a non-trivial Fox 3-coloring (one using more than one color). Tricolorability is a topological invariant — it is preserved under Reidemeister moves.
 
 Key facts:
@@ -1028,6 +1282,67 @@ Key facts:
 - The figure-eight IS NOT tricolorable
 - Since the unknot and trefoil differ in tricolorability, they are distinct knots
 
+### Worked example: checking the trefoil crossing by crossing
+
+Label the trefoil's three arcs a1, a2, a3 — an arc runs from one
+undercrossing to the next — and color them red, blue, and yellow, as in
+the left panel of the figure. In the standard diagram, each crossing
+brings together all three arcs: one passes over, and the other two are
+the under-strand's incoming and outgoing segments. Check the Fox rule
+at every crossing:
+
+| Crossing | Over-arc | Under-arcs | Colors meeting | Valid? |
+|----------|----------|------------|----------------|--------|
+| 1 | a1 (red) | a2 (blue), a3 (yellow) | all different | yes |
+| 2 | a2 (blue) | a3 (yellow), a1 (red) | all different | yes |
+| 3 | a3 (yellow) | a1 (red), a2 (blue) | all different | yes |
+
+Every crossing passes, and the coloring uses more than one color, so
+the trefoil is tricolorable. The right panel of the figure shows why
+two colors cannot work: with only two colors in play, some crossing
+must see two arcs of one color and one arc of the other — neither "all
+same" nor "all different." That two-and-one configuration is exactly
+the forbidden one.
+
+### The arithmetic form of the rule
+
+Number the colors 0, 1, 2 and work mod 3. The Fox condition at a
+crossing with over-arc color o and under-arc colors u1, u2 becomes one
+linear equation:
+
+**2·o ≡ u1 + u2 (mod 3)**
+
+If all three colors are equal, both sides agree. If all three are
+different, then u1 + u2 is the sum of the two colors other than o, and
+since 0 + 1 + 2 ≡ 0 (mod 3), that sum is -o ≡ 2o (mod 3) — valid
+again. But two-same-one-different always fails. The whimsical-looking
+coloring rule is secretly a system of linear equations in mod-3
+arithmetic: one equation per crossing, one unknown per arc.
+
+### Counting colorings
+
+Solve that system for the trefoil: there are exactly **9** colorings —
+3 trivial ones (all arcs red, all arcs blue, all arcs yellow) plus 6
+nontrivial ones, the 3! = 6 ways to give the three arcs three distinct
+colors. For the unknot — a diagram with a single arc and no crossings —
+only the 3 trivial colorings exist. The total count of 3-colorings is a
+knot invariant and is always a power of 3. Nine is bigger than three:
+the trefoil admits colorings the unknot cannot, so **the trefoil is not
+the unknot**. This is the simplest complete proof that a genuinely
+knotted curve exists.
+
+### Why Reidemeister moves preserve the count
+
+Sketch for a Type I move (adding a kink): the kink creates one new
+crossing at which the over-arc and one under-arc are the same strand,
+carrying some color x. The equation 2x ≡ x + u2 (mod 3) forces u2 ≡ x —
+the arc on the far side of the kink must wear the same color as the
+old one. So colorings of the kinked diagram correspond one-to-one with
+colorings of the plain diagram, and the count is unchanged. Type II and
+Type III moves yield to the same kind of bookkeeping, and together the
+three checks prove that the coloring count — in particular,
+tricolorability — is a topological invariant.
+
 ### Which puzzles use this
 
 - **Puzzle 15, The Tricolor Lock:** The solver must find the valid Fox 3-coloring of a trefoil frame. Valid coloring reveals a physical passage (aligned notches) that frees a trapped ring. Invalid coloring leaves the ring trapped.
@@ -1035,6 +1350,24 @@ Key facts:
 ### Physical intuition
 
 Color the three arcs of a trefoil with three distinct colors. At each crossing, check: are all three colors different? If yes at every crossing, the coloring is valid. This algebraic rule has a physical consequence in the puzzle: the colored sleeves have notches that align only under a valid coloring. The invariant is not just a number — it changes the puzzle's physical geometry.
+
+### Rigorous statement
+
+A **Fox 3-coloring** of a knot diagram D is a function c from the arcs
+of D to Z/3 satisfying 2c(o) - c(u1) - c(u2) ≡ 0 (mod 3) at every
+crossing, where o is the over-arc and u1, u2 the under-arcs. The
+solutions form a vector space over the field with three elements, so
+their number is 3^k with k >= 1 (the constant colorings always solve
+the system); this number is unchanged by all three Reidemeister moves
+and is therefore a knot invariant. K is **tricolorable** if and only if
+the solution space has dimension at least 2 — equivalently, a
+non-constant solution exists. Colorings correspond bijectively to
+homomorphisms from the knot group pi_1(S^3 \ K) to the symmetric group
+S_3 sending every meridian to a transposition: label the transpositions
+(12), (13), (23) with the three colors, and the Wirtinger relation at
+each crossing becomes exactly the Fox condition. Nontrivial colorings
+correspond to the surjective homomorphisms. The trefoil has 9
+colorings; the unknot and the figure-eight have 3.
 
 ---
 
@@ -1052,6 +1385,41 @@ The **Seifert algorithm** constructs the surface explicitly:
 
 The **genus** of the minimal Seifert surface is a knot invariant: genus = (crossings - Seifert circles + 1) / 2.
 
+### Worked example: the algorithm on the trefoil, end to end
+
+Run the algorithm on the standard 3-crossing trefoil diagram — exactly
+what Puzzle 16, The Seifert Sail, has you do with physical panels:
+
+![Seifert's algorithm on the trefoil: smooth, cap, band](../diagrams/theory/topology-primer/seifert-circles-trefoil.svg)
+
+1. **Orient.** Draw a travel arrow along the knot.
+2. **Smooth all 3 crossings.** At each crossing, delete the crossing
+   and reconnect the four loose ends in the only way that respects the
+   arrows: incoming strands join outgoing strands without crossing.
+3. **Count the circles.** The smoothed diagram falls apart into s = 2
+   Seifert circles — a small circle nested inside a larger one.
+4. **Cap with disks.** Fill each circle with a disk; picture the two
+   disks stacked at slightly different heights.
+5. **Reattach c = 3 bands.** At each former crossing, join the two
+   disks with a narrow band given a half-twist. The twist direction
+   records the sign of the crossing it replaced.
+
+The result is one connected surface whose boundary is precisely the
+original trefoil, and it is orientable: because the smoothing respected
+the travel arrows, the two disks can be given compatible rotation
+senses, and the half-twist bands join them consistently — the surface
+has a genuine front and back.
+
+Now compute the genus from the counts. The Euler characteristic is
+chi = s - c = 2 - 3 = -1, and for a connected orientable surface with
+one boundary circle, chi = 1 - 2g, so g = 1. Equivalently, by the
+formula above: genus = (c - s + 1)/2 = (3 - 2 + 1)/2 = 1. The trefoil's
+spanning membrane is a torus with one puncture — one genuine handle,
+visible in the assembled Sail as the gap between the twisted bands.
+And since a knot of genus 0 would bound a disk and be the unknot, while
+Section 15 proved the trefoil is knotted, genus 1 is not just what this
+particular surface happens to have — it is the trefoil's true genus.
+
 ### Which puzzles use this
 
 - **Puzzle 16, The Seifert Sail:** Three shaped panels are assembled inside a trefoil frame to physically construct a Seifert surface. Once built, a cord loop can be pushed across the surface and freed. The surface makes visible the theorem that every knot bounds an orientable surface.
@@ -1059,6 +1427,20 @@ The **genus** of the minimal Seifert surface is a knot invariant: genus = (cross
 ### Physical intuition
 
 The Seifert surface is a membrane spanning the interior of a knot. Imagine stretching a soap film inside a wire trefoil — the film would form a surface whose edge is the trefoil wire. This surface has a half-twist at each crossing (which is why soap films on trefoils look twisted). A cord linked with the wire can be pushed across this surface and freed, because the surface provides a continuous path from one side to the other.
+
+### Rigorous statement
+
+**Seifert's theorem** (1934): every oriented knot or link in S^3 bounds
+a compact, connected, orientable surface embedded in S^3 — a **Seifert
+surface** — and Seifert's algorithm constructs one from any diagram.
+For a knot diagram with c crossings whose smoothing produces s Seifert
+circles, the resulting surface has Euler characteristic chi = s - c and
+genus (c - s + 1)/2. The **genus** g(K) of a knot K is the minimum
+genus over all Seifert surfaces for K. It satisfies g(K) = 0 if and
+only if K is the unknot — a knot bounding an embedded disk is trivial —
+and it is additive under connected sum: g(K1 # K2) = g(K1) + g(K2).
+For torus knots, Seifert's algorithm applied to the standard diagram
+realizes the minimum, giving g(T(p,q)) = (p-1)(q-1)/2 (Section 14).
 
 ---
 
@@ -1068,6 +1450,8 @@ The Seifert surface is a membrane spanning the interior of a knot. Imagine stret
 
 The **unknotting number** u(K) of a knot K is the minimum number of crossing changes needed to convert K into the unknot. A crossing change swaps which strand goes over and which goes under at a single crossing.
 
+![One crossing change unknots the figure-eight](../diagrams/theory/topology-primer/unknotting-crossing-change.svg)
+
 Key values:
 - Unknot: u = 0
 - Trefoil: u = 1
@@ -1076,13 +1460,80 @@ Key values:
 
 The unknotting number is a topological invariant that measures how far a knot is from being trivial.
 
+### Worked example: predict-then-flip on the minimal diagram
+
+Puzzle 9, The Crossing Number, makes u(figure-eight) = 1 physical —
+with a generosity the definition does not promise. The frame realizes
+the standard 4-crossing diagram, labeled A through D as in the figure,
+each crossing flippable by inverting its pin. On this diagram, **every
+one of the four flips produces the unknot.**
+
+Why: the minimal diagram has exactly two bigon faces — an outer shell
+whose corners are crossings A and C, and a central eye whose corners
+are B and D — and every crossing is a corner of exactly one bigon. In
+the alternating diagram each bigon is a locked clasp. Flip either of
+its corners and one arc of that bigon rides over at both ends: a
+Reidemeister II move slides it off, both crossings vanish, and the two
+surviving crossings degenerate into kinks that Reidemeister I untwists.
+Any pin you pick is a corner of some clasp, so any pin frees the ring.
+
+This over-delivery is itself instructive:
+
+- What u = 1 actually promises is that *some* single flip in *some*
+  diagram unknots the knot. This particular diagram happens to realize
+  the minimum at every crossing — a fact about the diagram, not a law
+  about crossing changes (on the cinquefoil, u = 2, so no single flip
+  of any diagram works at all).
+- No flip on this diagram produces a trefoil — all four land on the
+  unknot — and that is not a shortcoming of the diagram. A 2012
+  theorem of Kawauchi shows that no single crossing change in *any*
+  diagram of the figure-eight yields a trefoil: the Gordian distance
+  between the two knots is 2. Crossing-change distance between knots,
+  like unknotting number itself, is a question about the knots, not
+  about the picture you happen to be looking at. For a diagram where
+  the choice of crossing genuinely decides the destination, look one
+  knot up the table at 5_2: flip a clasp crossing of its minimal
+  diagram and the knot dissolves to the unknot, but flip a crossing
+  in its twist region and two twists cancel, leaving a trefoil.
+- Because the flip always succeeds, the puzzle's real test is
+  foresight: predict which clasp opens and trace the R-II-then-R-I
+  dissolution *before* touching the pin. Flip first and the frame
+  unknots anyway — teaching nothing.
+
+### Why unknotting number is hard
+
+The definition hides a quantifier over infinitely many diagrams: u(K)
+is the minimum over ALL diagrams of K and all choices of crossings.
+The optimal crossing change may not be visible in the diagram in front
+of you — you might have to deform the knot into a completely different
+diagram before the decisive crossing even exists. This is why no simple
+algorithm computes u, why lower bounds like the signature bound below
+are precious, and why some knots with only ten crossings still have
+unknown unknotting numbers.
+
 ### Which puzzles use this
 
-- **Puzzle 9, The Crossing Number:** A figure-eight knot frame with 4 flippable crossing pins. The solver must find the one crossing whose flip converts the knot to the unknot (u = 1). Three of the four crossings produce different non-trivial knots when flipped.
+- **Puzzle 9, The Crossing Number:** A figure-eight knot frame with 4 flippable crossing pins. Flipping any one of the four converts this minimal diagram to the unknot (u = 1 realized four ways); the solver's task is to predict, before flipping, which clasp opens and which Reidemeister moves dissolve the frame.
 
 ### Physical intuition
 
-Each crossing pin controls which strand is on top at that point. Flip a pin and test: does the ring slide freely now? If so, you found the unknotting crossing. If the ring still catches, restore the pin and try the next. The unknotting number tells you how many pins you need to flip — for the figure-eight, exactly one. But it does not tell you WHICH one.
+Each crossing pin controls which strand is on top at that point. Flip a pin and the knot type changes instantly, though the steel never moves; slide the ring and it glides past what used to be a catch point. On this frame any pin frees the ring, so the test is of foresight rather than luck: say which moves the flip will unlock before you pull the pin. The unknotting number tells you how many flips are needed — for the figure-eight, exactly one. In general it does not tell you which crossing, or even which diagram, realizes them.
+
+### Rigorous statement
+
+The **unknotting number** u(K) is the minimum, over all diagrams of K
+and all finite sequences of crossing changes and ambient isotopies
+transforming K into the unknot, of the number of crossing changes used.
+u(K) = 0 if and only if K is the unknot. The **signature bound**
+(Murasugi, 1965): |sigma(K)| / 2 <= u(K), where sigma(K) is the knot
+signature. The trefoil has |sigma| = 2, forcing u >= 1 and hence u = 1;
+the figure-eight has sigma = 0, so the bound says nothing — yet u = 1.
+Lower bounds can be blind. For torus knots the answer is complete:
+u(T(p,q)) = (p-1)(q-1)/2, conjectured by Milnor and proved by
+Kronheimer and Mrowka (1993) using gauge theory. Examples:
+u(T(2,3)) = 1 (trefoil) and u(T(2,5)) = 2 (cinquefoil), matching the
+table above — and for torus knots the unknotting number coincides with
+the genus (Sections 14 and 16).
 
 ---
 
@@ -1096,11 +1547,44 @@ A **satellite knot** is a knot that can be decomposed into two layers:
 
 The satellite knot is the result of replacing the companion's tubular neighborhood with the pattern's structure. It is more complex than either component alone.
 
+![Companion, pattern, satellite — and the JSJ wall between layers](../diagrams/theory/topology-primer/satellite-companion-pattern.svg)
+
 ### JSJ decomposition
 
 The **Jaco-Shalen-Johannson (JSJ) decomposition** theorem states that every compact, orientable, irreducible 3-manifold has a unique decomposition along incompressible tori into Seifert-fibered and hyperbolic pieces. For knot complements, this means satellite knots decompose uniquely into companion and pattern components.
 
 The practical consequence: a satellite knot's properties can be analyzed by studying each layer independently.
+
+### Worked example: decomposing the Satellite Trap
+
+Apply the two-layer analysis to Puzzle 17 itself:
+
+- **Companion: the trefoil tunnel.** The tunnel molded into the torus
+  shell follows a (2,3) torus-knot path. It is rigid, embedded in the
+  shell, and nothing a solver does can change it.
+- **Pattern: the cord.** The cord's route — through the tunnel, out a
+  port, across the surface, back in — is a curve inside the solid torus
+  that surrounds the tunnel. Pulling bights of cord through the ports
+  changes the pattern, and only the pattern.
+- **The JSJ wall: the shell itself.** Topologically, the boundary
+  between the layers is the incompressible torus around the companion;
+  physically, it is the acrylic wall your fingers stop at.
+
+Now place the two rings, one per layer:
+
+- The **outer ring** encircles an external arc of cord. Its linking is
+  entirely with the pattern — the layer on the accessible side of the
+  wall — so pattern moves (pull a bight through a port, pass it over
+  the ring, feed it back) can and do free it.
+- The **inner ring** rides a section of cord inside the tunnel. Its
+  linking is with the companion layer, on the far side of the wall.
+  The companion is a genuine trefoil that no surface manipulation can
+  alter, so the inner ring is trapped permanently.
+
+The decomposition is not just a description — it is the solving
+strategy. It tells you in advance which sub-problem is solvable (the
+pattern) and which is provably hopeless (the companion), so you stop
+wasting moves on the wrong ring.
 
 ### Which puzzles use this
 
@@ -1110,20 +1594,442 @@ The practical consequence: a satellite knot's properties can be analyzed by stud
 
 Think of a satellite knot as a knot within a knot, like Russian nesting dolls. The outer structure (pattern) can be manipulated without affecting the inner structure (companion). In the puzzle, you can reroute the cord where it exits the torus (changing the pattern) without being able to change the trefoil tunnel inside (the companion). One ring lives in the pattern layer and can be freed; the other lives in the companion layer and cannot.
 
+### Rigorous statement
+
+Let V = S^1 x D^2 be the standard solid torus and let P (the
+**pattern**) be a knot in V that is essential: P is not contained in
+any 3-ball inside V and is not isotopic to the core circle S^1 x {0}.
+Let e: V -> S^3 be an embedding carrying the core to a non-trivial knot
+C (the **companion**). Then K = e(P) is a **satellite knot**. The image
+torus e(dV) is essential (incompressible and not boundary-parallel) in
+the complement of K, and conversely a knot is a satellite if and only
+if its complement contains an essential torus. The **JSJ decomposition
+theorem** (Jaco-Shalen and Johannson, 1979): every compact, orientable,
+irreducible 3-manifold contains a minimal family of disjoint essential
+tori, unique up to isotopy, that cuts it into pieces each of which is
+Seifert-fibered or atoroidal (and the atoroidal pieces are hyperbolic,
+by Thurston's geometrization of Haken manifolds). For the Satellite
+Trap, the shell wall is the JSJ torus: the piece beyond it is the
+trefoil complement, which is Seifert-fibered — as befits a torus knot
+(Section 14) — while the piece containing the cord is the pattern
+space V minus P.
+
 ---
 
-## 19. Glossary
+## 19. The Whitehead Link and Higher-Order Linking
+
+### Plain-language definition
+
+Section 3 gave you the linking number and, with it, a promise: if two closed
+curves have linking number zero, some continuous motion pulls them apart.
+That promise came with a footnote. This section is the footnote made solid.
+
+The **Whitehead link** is a pair of closed loops whose linking number is
+exactly zero, and which nevertheless cannot be separated by any amount of
+sliding, stretching, or bending. The winding of one loop around the other
+genuinely cancels — count it and you get zero. What holds them together is a
+**clasp**: a place where the loops hook through each other in a pattern the
+linking number is blind to.
+
+So the inference "linking number zero, therefore separable" is *false in
+general*. Zero linking is **necessary** for two loops to come apart — a
+nonzero value proves they are stuck (Section 3) — but it is not
+**sufficient**. A zero says only that the door is not provably locked. It
+does not say the door opens.
+
+![The Whitehead link: linking number zero, yet inseparable](../diagrams/theory/topology-primer/whitehead-link.svg)
+
+### Worked example: recomputing lk = 0
+
+Take the standard diagram in the figure: a rigid ring and a cord loop woven
+through it twice — once front to back, once back to front — with the cord's
+two hanging lobes meeting in a clasp below. Orient both curves and sign each
+ring-cord crossing by the recipe of Section 3.
+
+The two passes through the ring's aperture contribute four crossings. The
+front-to-back pass pierces the ring's spanning disk one way and shows up as
+two crossings of the **same** sign, +1 and +1. The back-to-front pass pierces
+the other way: two crossings of sign -1 and -1. Summing,
+
+**(+1) + (+1) + (-1) + (-1) = 0,   so   lk = 1/2 x 0 = 0.**
+
+(The factor of 1/2 is the same one from Section 3: between two closed loops
+every threading registers as *two* crossings, so the signed crossing sum is
+always twice the linking number.) The clasp is a crossing of the cord with
+*itself*, not with the ring, so it never enters the linking-number sum at
+all. The count is honestly, provably zero.
+
+### What the count cannot see: the clasp
+
+Here is where the analysis of Section 3 runs out. The +1 pass and the -1 pass
+would, on their own, happily cancel — pull one back out through the aperture,
+then the other, and the cord lifts away. But the clasp ties the cord's two
+lobes together, and neither lobe can retract without first passing through
+the other. The cancellation that the arithmetic describes exists on paper and
+cannot be performed in space. The clasp remembers exactly what the linking
+number forgets.
+
+The linking number is a **first-order** invariant: it reports the *net*
+number of times one curve passes through the other. It says nothing about how
+those passes are arranged relative to one another — and that arrangement is
+the whole content of the Whitehead link.
+
+### Higher-order linking
+
+What, then, certifies that the Whitehead link is genuinely stuck? The answer
+is a **higher-order linking invariant**, and it is the two-component cousin of
+the invariant that rescued the Borromean rings in Section 7.
+
+Recall the pattern there: three rings, every pairwise linking number zero, yet
+inseparable as a trio — and the certificate was **Milnor's invariant**
+mu_bar(1,2,3), which measures a purely three-body linking that no pairwise
+count can detect. The Whitehead link distills that warning down to two
+components. Its ordinary (first-order) linking number vanishes, and its
+non-triviality is witnessed instead by a **second-order** Milnor invariant,
+mu_bar(1,1,2,2) — one with a *repeated* index, encoding how the two passes of
+one component clasp back through the other. Equivalently, this is the
+**Sato-Levine invariant**, defined precisely for two-component links of
+linking number zero, which evaluates to +/-1 on the Whitehead link.
+
+Both the Borromean rings (Section 7) and the Whitehead link are therefore
+members of the same family: links that are trivial to every lower-order test
+and are held together only by higher-order linking. Milnor's invariants form
+a graded ladder of such tests, and these links live one rung above the linking
+number.
+
+### Which puzzle uses this
+
+- **Puzzle 18, The Whitehead Waltz:** Two near-identical stations each present
+  a ring with a cord woven through it twice and clasped below. Both compute to
+  linking number zero. One is a genuine Whitehead link (the clasp hooks) and
+  can never be freed; the other has that single clasp crossing flipped, making
+  it an unlink in disguise, and its cord lifts off. The solver must resist the
+  reflex "lk = 0, therefore free," identify the true clasp, and prove the
+  point by freeing only the loop that can be freed.
+
+### Physical intuition
+
+Hold the trapped station and try to lift the cord. It always *feels* one
+clever move from freedom — there is slack everywhere, the count says zero, the
+loop swings loosely. But every attempt to retract one pass drags the other
+lobe into the clasp, and the hook cinches against the ring wire. You can slide
+the clasp anywhere along the cord, yet it is always *somewhere*, and it always
+arrives at the aperture exactly when the cord tries to leave. That inescapable
+catch, felt in the hands, is higher-order linking — the thing the arithmetic
+could not see.
+
+### Rigorous statement
+
+The **Whitehead link** W is a two-component link in S^3 with linking number
+lk(W) = 0 that is nonetheless **non-split**: no embedded 2-sphere in S^3
+separates its two components, so no ambient isotopy pulls them apart. Its
+non-triviality is detected by the first non-vanishing **Milnor mu-bar
+invariant** mu_bar(1,1,2,2) = +/-1 — a second-order invariant drawn from the
+lower central series of the link group — equivalently by the **Sato-Levine
+invariant**, defined for two-component links of linking number zero, which
+equals +/-1 on W. The Whitehead link also has **unlinking number 1** (a single
+crossing change at the clasp converts it to the two-component unlink), and its
+complement S^3 \ W is a **hyperbolic** 3-manifold of finite volume — one of
+the standard examples of low-dimensional topology, widely used in Dehn-surgery
+constructions. The Borromean rings (Section 7) are the three-component member
+of the same Brunnian/higher-order family: all lower-order linking data vanish,
+and a Milnor invariant supplies the certificate.
+
+---
+
+## 20. Rational Tangles and Continued Fractions
+
+### Plain-language definition
+
+A **tangle**, in John Conway's sense, is what you get by pinning the four
+ends of two arcs to the boundary of a disk (think: a square frame with a cord
+end fixed at each corner) and letting the arcs cross each other freely inside.
+The simplest tangle is two horizontal parallel strands with no crossings at
+all — the **0 tangle**.
+
+From the 0 tangle you can build endlessly with just two operations:
+
+- **TWIST (T):** grab the two right-hand ends and cross one over the other,
+  adding a single crossing.
+- **ROTATE (R):** turn the entire frame a quarter-turn.
+
+Any tangle you can reach from the 0 tangle using only these two moves is
+called **rational**. (Not every tangle is — but every tangle in Puzzle 19 is,
+because T and R are the only moves the frame allows.) Conway's discovery is
+that each rational tangle carries a single number, its **fraction**, an
+element of the rationals Q together with one extra value, infinity — and that
+this number is a *complete* record of the tangle.
+
+### The two moves are arithmetic
+
+Assign the 0 tangle the number 0. Then the two physical moves act on the
+fraction as pure arithmetic:
+
+- **T (twist):** x -> x + 1. A right-hand twist adds one positive crossing,
+  and adds 1 to the fraction.
+- **R (rotate):** x -> -1/x. The quarter-turn moves no strand relative to any
+  other; it only changes which pair of ends faces the twisting edge, and its
+  effect on the number is to send it to its negative reciprocal.
+
+![The twist and rotate moves and the fraction they compute](../diagrams/theory/topology-primer/rational-tangle-moves.svg)
+
+One caution about the extra value: the fraction infinity is the tangle of two
+*vertical* parallel strands. R swaps 0 and infinity, so of the two
+crossingless tangles only one — the horizontal one, fraction 0 — is the goal.
+
+### Conway's theorem: a complete invariant
+
+**Conway's theorem (1970):** two rational tangles are ambient-isotopic, with
+their four endpoints held fixed, **if and only if** their fractions are equal.
+
+This is the hinge of the entire arc, so it is worth stating against the
+backdrop of Section 19. The linking number is an **incomplete** invariant: it
+is lossy, collapsing many genuinely different configurations onto the same
+integer, which is exactly why lk = 0 could promise nothing about the Whitehead
+link. The tangle fraction is the opposite — a **complete** invariant. Equal
+fractions do not merely *fail to distinguish* two tangles; they *guarantee*
+the tangles are the same. An incomplete invariant can only ever prove
+impossibility ("these differ, so no motion connects them"); a complete one
+hands you an algorithm ("drive the fraction to the target and the tangles must
+coincide"). Half a meter of cord and any pile of crossings compress,
+losslessly, into one rational number.
+
+### The compass: continued fractions
+
+Where does the fraction come from? Write it as a **continued fraction**. For
+the puzzle's starting tangle,
+
+**3/2 = 1 + 1/2,**
+
+which reads directly off the diagram as one right twist stacked on top of two
+vertical twists. In general a twist/rotate word encodes, and its fraction
+equals, a continued fraction [a_n, ..., a_2, a_1] built from the counts of
+successive twist regions.
+
+Unwinding a continued fraction from the outside in is nothing but **Euclid's
+algorithm** on the numerator and denominator, and that is what dictates the
+solving rule. Read the fraction and obey a compass:
+
+- **Positive?** ROTATE.
+- **Negative?** TWIST.
+- **Zero?** Stop — solved.
+
+Each rotate-then-twist block performs one division step of Euclid's algorithm,
+and because Euclid's algorithm always terminates, the descent is guaranteed to
+reach 0 — walking up from the negative integers one unit at a time, never
+overshooting.
+
+### Worked example: the descent from 3/2 to 0
+
+Start at 3/2 and apply the compass, verifying each step against the two laws
+(T adds 1; R sends x to -1/x):
+
+1. **3/2** is positive -> **R**:  -1/(3/2) = **-2/3**.
+2. **-2/3** is negative -> **T**:  -2/3 + 1 = **1/3**.
+3. **1/3** is positive -> **R**:  -1/(1/3) = **-3**.
+4. **-3** is negative -> **T**:  -3 + 1 = **-2**.
+5. **-2** is negative -> **T**:  -2 + 1 = **-1**.
+6. **-1** is negative -> **T**:  -1 + 1 = **0**.  Solved.
+
+Six moves, R T R T T T, each one forced. Notice that the *picture* does not
+simplify monotonically — step 3 turns a tidy 1/3 into three stacked crossings
+(-3), which looks like a setback. But the *number* is marching toward zero,
+and distance-to-solved is measured by continued-fraction depth, not by crossing
+count or by absolute value. Judge the tangle by its fraction and the descent
+is a straight line down.
+
+### Which puzzle uses this
+
+- **Puzzle 19, The Tangle Dance:** Two cords span a square frame, with the two
+  legal moves — T and R — embossed on its edges. The frame is preset to
+  fraction 3/2, and the objective is to return it to 0. Because the fraction is
+  a complete invariant, solving is not a search but a computation: run the
+  compass, write down the ledger above, and execute six forced moves.
+
+### Physical intuition
+
+A twist is honest labor — the cords visibly wrap and the tangle thickens. A
+rotate is eerie: you turn the frame like a steering wheel and *nothing between
+your hands changes*, yet the number naming the state flips from 3/2 to -2/3,
+and a move that was making things worse a moment ago is suddenly the move that
+helps. The most important operation looks like doing nothing, because the thing
+it changes is not the cords but their relationship to the twisting edge. At the
+very end, the last twist lands a crossing against its mirror image, a
+Reidemeister II pair annihilates, and the cords fall parallel. You feel the
+zero.
+
+### Rigorous statement
+
+A **rational tangle** is a tangle obtained from the 0 tangle (two
+boundary-parallel arcs in a 3-ball with four marked boundary points) by a
+finite sequence of the generating operations twist and rotate; equivalently,
+it is a tangle whose double branched cover is a solid torus. To each rational
+tangle Conway assigns a **fraction** F in Q ∪ {infinity}, computed as the
+continued fraction determined by its twist/rotate word. **Conway's
+classification theorem** (1970): two rational tangles are ambient-isotopic rel
+their four endpoints if and only if they have the same fraction. The generators
+act on the fraction by T: x -> x + 1 and R: x -> -1/x, so the fraction of a
+word in T and R equals the continued fraction that word encodes; R is its own
+inverse (-1/(-1/x) = x), while T has infinite order. Because the compass rule
+realizes the Euclidean algorithm on (numerator, denominator), every rational
+tangle descends to the 0 tangle in finitely many moves. In contrast to the
+linking number of Section 19, which is a lossy (incomplete) invariant, the
+tangle fraction is a **complete** invariant of rational tangles: it determines
+the isotopy class exactly.
+
+---
+
+## 21. Connected Sums and Composite Knots
+
+### Plain-language definition
+
+Tie a knot in a closed loop of cord, then tie a second knot farther along the
+same loop, and you have formed the **connected sum** of the two, written
+K1 # K2. Each factor keeps its own stretch of cord; the two are joined by a
+short two-strand **neck**. Slice through that neck with an imaginary sphere —
+the **sum sphere** — and you separate the loop into two pieces, one factor
+sealed inside the sphere and the other outside, with the loop puncturing the
+sphere at exactly two points.
+
+This is the knot-theoretic echo of prime factorization. A knot is **prime** if
+it is not the connected sum of two nontrivial knots — it cannot be cut along
+any sum sphere into simpler pieces. A knot that *is* a nontrivial connected
+sum is **composite**. The trefoil, the figure-eight, and every torus knot are
+prime; the square and granny knots of Puzzle 20 are composite, each built from
+two trefoils.
+
+![Connected sum: two trefoils joined at a sum sphere — square vs granny](../diagrams/theory/topology-primer/connected-sum.svg)
+
+### Square versus granny
+
+Two composites, both made of two trefoils, can differ only in the *handedness*
+of their factors:
+
+- **Square knot** = left trefoil # right trefoil (a mirror-image pair).
+- **Granny knot** = left trefoil # left trefoil (two of the same hand).
+
+If your shoelaces keep slipping, you are tying the granny where you wanted the
+square. Topologically the two are genuinely different knots — but proving it
+takes the right invariant, because almost every invariant in this primer
+cannot tell them apart.
+
+### Additive and multiplicative invariants
+
+Connected sum interacts cleanly with the standard invariants, and *how* it
+interacts is the key:
+
+- **Genus is additive:** g(K1 # K2) = g(K1) + g(K2) (Section 16). Two genus-1
+  trefoils give genus 2, for both square and granny.
+- **Signature is additive:** sigma(K1 # K2) = sigma(K1) + sigma(K2). This is
+  the one that will separate them.
+- **Crossing number** is additive for **alternating** knots such as these
+  (3 + 3 = 6); additivity in general is a famous open problem.
+- **The Alexander polynomial is multiplicative:** the polynomial of a sum is
+  the product of the factors' polynomials. Each trefoil contributes
+  t - 1 + t^{-1}, so both composites have Alexander polynomial
+  (t - 1 + t^{-1})^2.
+- **The number of Fox 3-colorings is multiplicative** (up to the shared
+  trivial colorings): each trefoil has 9, and each composite has
+  9 x 9 / 3 = 27 (Section 15). Mirroring never changes a coloring count.
+
+### The invariant scoreboard
+
+Line up the series' whole toolkit against the two suspects:
+
+| Invariant | Square knot | Granny knot | Verdict |
+|-----------|-------------|-------------|---------|
+| Crossing number | 6 | 6 | same |
+| Genus | 1 + 1 = 2 | 1 + 1 = 2 | same |
+| Tricolorable | yes (27 colorings) | yes (27 colorings) | same |
+| Alexander polynomial | (t - 1 + t^{-1})^2 | (t - 1 + t^{-1})^2 | same |
+| **Signature** | **0** | **+4** | **different** |
+
+Four of the five tests are stone silent. The **signature** sigma is the one
+that speaks. It is an integer read off a knot's Seifert surface (Section 16);
+it *adds* under connected sum and, crucially, *flips sign* under mirroring.
+Fix the convention that the right-handed trefoil (all-positive crossings) has
+sigma = -2, so its mirror the left-handed trefoil has sigma = +2. Then:
+
+- **sigma(square) = sigma(L) + sigma(R) = (+2) + (-2) = 0.** The mirror
+  factors cancel. (Any amphichiral knot must have signature 0.)
+- **sigma(granny) = sigma(L) + sigma(L) = (+2) + (+2) = +4.** Same hands add
+  up.
+
+Since 0 does not equal +4, the square and granny knots are provably distinct.
+The same sign-flip-under-mirroring settles each composite's relationship to its
+own reflection: mirror(square) = mirror(L # R) = R # L = square, so the
+**square knot is amphichiral** — equal to its own mirror image. But
+mirror(granny) = R # R is the *other* granny, so the **granny knot is chiral**,
+coming in mirror twins with signatures +4 and -4.
+
+### Worked example: reading the scoreboard
+
+The discipline the scoreboard teaches is that an **invariant is a question you
+ask a knot**, and the skill is choosing a question that separates your
+suspects. Ask "how many crossings?" and square and granny answer identically.
+Ask "what is your genus? your Alexander polynomial? are you tricolorable?" —
+identical, identical, identical. Every one of those questions is blind to
+handedness, and the difference between square and granny is *entirely* a matter
+of handedness. Only the signature is built to see a mirror, and it is built to
+survive connected sum (it adds), so it survives to deliver the verdict: 0
+versus +4.
+
+### Which puzzle uses this
+
+- **Puzzle 20, The Granny's Downfall:** Two closed six-crossing loops — one a
+  square knot, one a granny — must be matched against a mold carved with the
+  square knot's diagram. Only the square loop seats fully, because a seated
+  loop physically *realizes* that diagram and therefore *is* that knot. The
+  granny cannot seat: its wrong-handed second clump would have to be re-handed,
+  which would drop its signature from +4 to 0 and turn it into a square knot —
+  and no manipulation of a closed loop changes its knot type.
+
+### Physical intuition
+
+Pull either loop from opposite sides and the two knotted clumps slide apart
+until a clean two-strand neck connects them — your hands are holding the sum
+sphere's equator. Seating the square loop feels like slotting a key. The granny
+starts identically, then its second clump refuses: all three of its crossings
+insist on lying the wrong way over the mold's bridges. Flip that clump to fix
+it and nothing improves — the flip is a symmetry of the trefoil, so the same
+three crossings refuse in the same way. What you keep failing to seat is not
+one stray crossing but a whole wrong-handed clump, a conserved lump of three
+crossings. You are pushing, with your hands, on the +4 that the signature
+measured.
+
+### Rigorous statement
+
+The **connected sum** K1 # K2 of two oriented knots is formed by removing a
+small arc from each and splicing the four ends together respecting
+orientation; the operation is well-defined and, on oriented knots, commutative
+and associative, with the unknot as unit. A knot is **prime** if it is not the
+connected sum of two nontrivial knots. **Schubert's theorem** (1949): every
+knot factors as a connected sum of prime knots, uniquely up to order — the
+oriented knots form a **free commutative monoid** on the set of prime knots,
+the exact analogue of the fundamental theorem of arithmetic. Under connected
+sum the **genus is additive**, g(K1 # K2) = g(K1) + g(K2) (Section 16); the
+**signature is additive**, sigma(K1 # K2) = sigma(K1) + sigma(K2); and the
+**Alexander polynomial is multiplicative**,
+Delta_{K1 # K2}(t) = Delta_{K1}(t) Delta_{K2}(t). The signature also negates
+under mirroring, sigma(mK) = -sigma(K). With sigma(right trefoil) = -2 and
+sigma(left trefoil) = +2, these rules give sigma(square) = 0 and
+sigma(granny) = +4, so the square and granny knots are distinct; and since the
+square knot equals its own mirror it is amphichiral, while the granny is chiral.
+
+---
+
+## 22. Glossary
 
 Concise definitions of every technical term used across the EXKNOTS puzzle
 files, listed alphabetically.
 
 **Arc** — An open curve with two distinct endpoints. Unlike a loop, an arc
 can always be unknotted in free space. In the EXKNOTS puzzles, arcs arise
-when a cord has two separate attachment points (Puzzles 1, 7).
+when a cord has two separate attachment points (Puzzles 1, 8).
 
 **Bight** — A U-shaped fold or loop of cord, created by doubling the cord
 back on itself without crossing the ends. Used as a manipulation technique
-in Puzzles 2, 3, 7, and 9 to thread cord through holes or over obstacles.
+in Puzzles 2, 3, 7, 11, and 17 to thread cord through holes or over obstacles.
 
 **Borromean rings** — A specific 3-component link in which the three
 components are mutually linked but no two are linked to each other. The
@@ -1134,9 +2040,18 @@ this structure.
 component makes the remaining components completely unlinked. Borromean
 rings are the case n = 3. Named after Hermann Brunn (1892).
 
+**Composite knot** — A nontrivial connected sum of two or more prime knots,
+the knot-theoretic analogue of a composite number. The square and granny knots
+(Puzzle 20) are composite: each is a sum of two trefoils.
+
 **Configuration space** — The space of all possible states of a mechanical
 system. Each point represents one arrangement of all parts. The topology of
 this space governs which transitions between states are possible (Puzzle 7).
+
+**Connected sum** — The knot formed by splicing two knots into one loop along
+a sum sphere, written K1 # K2. Genus and signature add under connected sum, the
+Alexander polynomial multiplies, and factorization into primes is unique
+(Schubert). The basis of Puzzle 20.
 
 **Crossing number** — The minimum number of crossings in any planar diagram
 of a knot or link. The unknot has crossing number 0; the trefoil has
@@ -1153,7 +2068,7 @@ F(a, b) on two generators is the fundamental group of a genus-2 handlebody
 
 **Fundamental group** — The group of homotopy classes of loops at a
 basepoint in a topological space. Captures the distinct ways to walk in a
-closed path. Denoted pi_1(X). Used in Puzzles 7 and 9.
+closed path. Denoted pi_1(X). Used in Puzzles 7 and 11.
 
 **Generator** — A basic element of a group from which all other elements
 can be built by composition and inversion. In the fundamental group of a
@@ -1161,7 +2076,7 @@ genus-g handlebody, there are g generators, one for each tunnel/handle.
 
 **Genus** — The number of handles on a surface. A sphere has genus 0, a
 torus has genus 1, a two-holed torus has genus 2. For a handlebody, the
-genus equals the number of through-tunnels (Puzzles 2, 9).
+genus equals the number of through-tunnels (Puzzles 2, 11).
 
 **Gray code** — A binary numbering system in which consecutive values
 differ by exactly one bit. Also called reflected binary code. Governs the
@@ -1195,9 +2110,10 @@ and dividing by 2. A linking number of 0 is necessary (though not always
 sufficient) for the curves to be separable (Puzzles 1, 3).
 
 **Milnor invariant** — A higher-order linking invariant that detects
-collective linking among three or more components when pairwise linking
-numbers are all zero. Specifically, the Milnor mu-bar invariant. Detects
-the non-triviality of Borromean rings (Puzzle 6).
+collective linking when the pairwise linking numbers all vanish. The triple
+invariant mu-bar(1,2,3) certifies the Borromean rings (Puzzle 6); a
+repeated-index form mu-bar(1,1,2,2), equivalently the Sato-Levine invariant,
+certifies the Whitehead link (Puzzle 18).
 
 **Mobius band** — A non-orientable surface with one edge and one side,
 formed by joining a rectangular strip with a single half-twist. The single
@@ -1207,10 +2123,18 @@ boundary component is the key to Puzzle 4 (Mobius Snare).
 (a consistent notion of "clockwise" at every point). Non-orientable
 surfaces, like the Mobius band, have only one side.
 
+**Prime knot** — A nontrivial knot that is not the connected sum of two
+nontrivial knots, the analogue of a prime number. Trefoils, the figure-eight,
+and torus knots are prime; every knot factors uniquely into primes (Schubert).
+
+**Rational tangle** — A tangle of two arcs in a disk, built from the trivial
+tangle by twisting adjacent ends and rotating the disk, and classified
+completely by its Conway fraction in Q ∪ {infinity} (Puzzle 19).
+
 **Reidemeister moves** — Three types of local diagram changes (twist,
 poke, slide) that generate all equivalences between knot diagrams. Any
 continuous deformation of a knot in 3D can be decomposed into a sequence
-of these three moves (Puzzles 1, 3, 7).
+of these three moves (Puzzles 1, 3, 5, and 8).
 
 **S^1** — The 1-sphere; the circle. The set of points at unit distance
 from the origin in the plane. The fiber in the Hopf fibration.
@@ -1221,6 +2145,14 @@ unit distance from the origin in 3D. The base space in the Hopf fibration.
 **S^3** — The 3-sphere; a three-dimensional manifold living in 4D space.
 The set of points at unit distance from the origin in R^4. The total space
 of the Hopf fibration. Locally looks like R^3 but is compact and closed.
+
+**Signature** — An integer knot invariant sigma(K) computed from a Seifert
+surface; it adds under connected sum and negates under mirroring. It separates
+the square knot (sigma = 0) from the granny knot (sigma = +4) in Puzzle 20.
+
+**Tangle fraction** — The rational number (in Q ∪ {infinity}) that Conway
+assigns to a rational tangle. A complete invariant: two rational tangles are
+isotopic if and only if their fractions are equal (Puzzle 19).
 
 **Topological invariant** — Any property of a topological space that is
 preserved under homeomorphism (or, for knots and links, under ambient
@@ -1237,6 +2169,11 @@ tangles. A closed curve that can be deformed into a round circle. Crossing
 number 0. The cord in Puzzle 1 (The Gatekeeper) is topologically an unknot
 (or rather, an unknotted arc).
 
+**Whitehead link** — A two-component link with linking number zero that is
+nonetheless non-split, held together by a clasp. Its non-triviality is
+certified by a higher-order (Milnor / Sato-Levine) invariant, not by the
+linking number. The trap in Puzzle 18.
+
 **Word** — In group theory, a finite sequence of generators and their
 inverses. For example, aba^{-1} is a word in the free group F(a, b). The
 word represents an element of the group. In EXKNOTS, a cord's path through
@@ -1245,6 +2182,6 @@ when the word reduces to the identity (Puzzle 11).
 
 ---
 
-*This primer covers every topological concept used in the seventeen EXKNOTS
+*This primer covers every topological concept used in the twenty EXKNOTS
 puzzles. For construction details, solution walkthroughs, and physical
 specifications, see the individual puzzle files in the `puzzles/` directory.*

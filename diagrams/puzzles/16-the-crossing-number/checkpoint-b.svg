@@ -1,0 +1,110 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <title>The Crossing Number - Checkpoint B: Execute</title>
+  <desc>Three panels showing the post-flip simplification, exactly as predicted. Panel 1: the figure-eight diagram with crossing C flipped (marked with a dashed green circle) - the right shell arc now rides over at both of the outer bigon's corners, so a Reidemeister II move slides the shell off, removing crossings A and C. Panel 2: the two surviving crossings B and D are now bare single twists, a loop with one small kink on each side, each undone by a Reidemeister I untwist. Panel 3: a plain unknotted loop; the ring is free beside it. Arrows labeled R-II and R-I x2 connect the panels. Caption: any pin ends the same way; flipping B or D opens the central eye first instead.</desc>
+
+  <!--
+    Panel 1 geometry: same figure-eight parametrization as setup.svg
+    (x = (2 + cos 2t) cos 3t, y = (2 + cos 2t) sin 3t, z = sin 4t) at scale 12,
+    center (72,142). Crossing senses: A, B, D as in the alternating diagram
+    (over at t = pi/6, 2pi/3, 5pi/3); C flipped (over at t = 11pi/6 instead of
+    7pi/6). All crossings use the occlusion idiom (see crossingGap in
+    lib/svg.js): continuous base curve, surface-colored stroke along the over
+    strand's tangent, over-segment redrawn on top.
+    Panel 2: hand-built bezier loop with one R-I kink bulging east (where B
+    was) and one bulging west (where D was), transversal self-crossings at
+    (224,142) and (176,142).
+  -->
+
+  <defs>
+    <marker id="cbArrow" markerWidth="6" markerHeight="4" refX="3" refY="2"
+            orient="auto" markerUnits="strokeWidth">
+      <path d="M 0,0 L 6,2 L 0,4 Z" fill="var(--dia-pos, #2f8f43)"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="200" y="22" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">The Crossing Number &#x2014; Execute</text>
+  <text x="200" y="38" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="var(--dia-rigid, #8a8275)">the flip unlocks the moves you predicted</text>
+
+  <!-- Panel 1: figure-eight with C flipped -->
+  <path d="M 108.0,142.0 L 107.7,137.8 L 106.9,133.6 L 105.5,129.7 L 103.6,125.9 L 101.2,122.5 L 98.4,119.5 L 95.2,116.9 L 91.8,114.7 L 88.2,113.1 L 84.4,112.0 L 80.6,111.4 L 76.9,111.3 L 73.2,111.8 L 69.7,112.6 L 66.4,114.0 L 63.4,115.6 L 60.8,117.7 L 58.5,119.9 L 56.6,122.4 L 55.0,125.0 L 53.9,127.7 L 53.1,130.4 L 52.7,133.1 L 52.7,135.7 L 53.0,138.2 L 53.5,140.5 L 54.3,142.7 L 55.3,144.7 L 56.4,146.4 L 57.7,147.9 L 59.0,149.3 L 60.4,150.4 L 61.9,151.3 L 63.4,152.1 L 64.8,152.7 L 66.3,153.2 L 67.7,153.6 L 69.2,153.8 L 70.6,154.0 L 72.0,154.0 L 73.4,154.0 L 74.8,153.8 L 76.3,153.6 L 77.7,153.2 L 79.2,152.7 L 80.6,152.1 L 82.1,151.3 L 83.6,150.4 L 85.0,149.3 L 86.3,147.9 L 87.6,146.4 L 88.7,144.7 L 89.7,142.7 L 90.5,140.5 L 91.0,138.2 L 91.3,135.7 L 91.3,133.1 L 90.9,130.4 L 90.1,127.7 L 89.0,125.0 L 87.4,122.4 L 85.5,119.9 L 83.2,117.7 L 80.6,115.6 L 77.6,114.0 L 74.3,112.6 L 70.8,111.8 L 67.1,111.3 L 63.4,111.4 L 59.6,112.0 L 55.8,113.1 L 52.2,114.7 L 48.8,116.9 L 45.6,119.5 L 42.8,122.5 L 40.4,125.9 L 38.5,129.7 L 37.1,133.6 L 36.3,137.8 L 36.0,142.0 L 36.3,146.2 L 37.1,150.4 L 38.5,154.3 L 40.4,158.1 L 42.8,161.5 L 45.6,164.5 L 48.8,167.1 L 52.2,169.3 L 55.8,170.9 L 59.6,172.0 L 63.4,172.6 L 67.1,172.7 L 70.8,172.2 L 74.3,171.4 L 77.6,170.0 L 80.6,168.4 L 83.2,166.3 L 85.5,164.1 L 87.4,161.6 L 89.0,159.0 L 90.1,156.3 L 90.9,153.6 L 91.3,150.9 L 91.3,148.3 L 91.0,145.8 L 90.5,143.5 L 89.7,141.3 L 88.7,139.3 L 87.6,137.6 L 86.3,136.1 L 85.0,134.7 L 83.6,133.6 L 82.1,132.7 L 80.6,131.9 L 79.2,131.3 L 77.7,130.8 L 76.3,130.4 L 74.8,130.2 L 73.4,130.0 L 72.0,130.0 L 70.6,130.0 L 69.2,130.2 L 67.7,130.4 L 66.3,130.8 L 64.8,131.3 L 63.4,131.9 L 61.9,132.7 L 60.4,133.6 L 59.0,134.7 L 57.7,136.1 L 56.4,137.6 L 55.3,139.3 L 54.3,141.3 L 53.5,143.5 L 53.0,145.8 L 52.7,148.3 L 52.7,150.9 L 53.1,153.6 L 53.9,156.3 L 55.0,159.0 L 56.6,161.6 L 58.5,164.1 L 60.8,166.3 L 63.4,168.4 L 66.4,170.0 L 69.7,171.4 L 73.2,172.2 L 76.9,172.7 L 80.6,172.6 L 84.4,172.0 L 88.2,170.9 L 91.8,169.3 L 95.2,167.1 L 98.4,164.5 L 101.2,161.5 L 103.6,158.1 L 105.5,154.3 L 106.9,150.4 L 107.7,146.2 L 108.0,142.0 Z"
+        fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Crossing A (over at t = pi/6) -->
+  <line x1="76.5" y1="111.0" x2="67.5" y2="113.0"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 80.7,111.4 L 78.9,111.3 L 77.1,111.3 L 75.4,111.4 L 73.7,111.7 L 72.0,112.0 L 70.4,112.4 L 68.8,113.0 L 67.2,113.6 L 65.8,114.3 L 64.4,115.1"
+        fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Crossing B (over at t = 2pi/3) -->
+  <line x1="88.3" y1="146.3" x2="91.7" y2="137.7"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 85.8,148.5 L 86.8,147.4 L 87.7,146.3 L 88.6,145.0 L 89.3,143.5 L 90.0,142.0 L 90.5,140.4 L 91.0,138.6 L 91.2,136.8 L 91.3,134.9 L 91.2,132.9"
+        fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Crossing D (over at t = 5pi/3) -->
+  <line x1="55.7" y1="137.7" x2="52.3" y2="146.3"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 58.2,135.5 L 57.2,136.6 L 56.3,137.7 L 55.4,139.0 L 54.7,140.5 L 54.0,142.0 L 53.5,143.6 L 53.0,145.4 L 52.8,147.2 L 52.7,149.1 L 52.8,151.1"
+        fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Crossing C, FLIPPED (over at t = 11pi/6, drawn green) -->
+  <line x1="67.5" y1="171.0" x2="76.5" y2="173.0"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 64.4,168.9 L 65.8,169.7 L 67.2,170.4 L 68.8,171.0 L 70.4,171.6 L 72.0,172.0 L 73.7,172.3 L 75.4,172.6 L 77.1,172.7 L 78.9,172.7 L 80.7,172.6"
+        fill="none" stroke="var(--dia-pos, #2f8f43)" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="72" cy="172" r="8" fill="none"
+          stroke="var(--dia-pos, #2f8f43)" stroke-width="1.25" stroke-dasharray="3,2.5"/>
+  <text x="104" y="184" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="7.5" fill="var(--dia-pos, #2f8f43)">C flipped</text>
+  <line x1="90" y1="181" x2="79" y2="175"
+        stroke="var(--dia-pos, #2f8f43)" stroke-width="0.75" stroke-dasharray="2.5,2"/>
+
+  <!-- Arrow panel 1 -> 2 -->
+  <line x1="116" y1="142" x2="142" y2="142" stroke="var(--dia-pos, #2f8f43)"
+        stroke-width="1.5" marker-end="url(#cbArrow)"/>
+  <text x="129" y="132" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8.5" fill="var(--dia-pos, #2f8f43)" font-weight="bold">R-II</text>
+
+  <!-- Panel 2: shell gone; B and D are now bare kinks (one each side) -->
+  <path d="M 200,122 C 214,122 214,132 224,142 C 240,158 250,152 250,142 C 250,132 240,126 224,142 C 214,152 214,162 200,162 C 186,162 186,152 176,142 C 160,126 150,132 150,142 C 150,152 160,158 176,142 C 186,132 186,122 200,122 Z"
+        fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- East kink crossing (former B) -->
+  <line x1="227.3" y1="138.7" x2="220.7" y2="145.3"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 232.8,134.9 L 228.6,137.8 L 224,142 L 221.3,145.0 L 219.0,147.9"
+        fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- West kink crossing (former D) -->
+  <line x1="172.7" y1="145.3" x2="179.3" y2="138.7"
+        stroke="var(--dia-surface, #fbf7ee)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 167.2,149.1 L 171.4,146.2 L 176,142 L 178.7,139.0 L 181.0,136.1"
+        fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Arrow panel 2 -> 3 -->
+  <line x1="258" y1="142" x2="284" y2="142" stroke="var(--dia-pos, #2f8f43)"
+        stroke-width="1.5" marker-end="url(#cbArrow)"/>
+  <text x="271" y="132" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8.5" fill="var(--dia-pos, #2f8f43)" font-weight="bold">R-I &#xD7; 2</text>
+
+  <!-- Panel 3: bare loop, ring free -->
+  <circle cx="322" cy="142" r="24" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.2"/>
+  <circle cx="366" cy="114" r="8" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"/>
+  <text x="366" y="99" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8" fill="var(--dia-ring, #b97d12)">ring (free)</text>
+
+  <!-- Panel labels -->
+  <text x="72" y="203" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8.5" fill="var(--dia-inksoft, #6a6151)">1. flip C: clasp opens</text>
+  <text x="200" y="203" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8.5" fill="var(--dia-inksoft, #6a6151)">2. B, D are bare twists</text>
+  <text x="322" y="203" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8.5" fill="var(--dia-inksoft, #6a6151)">3. nothing catches</text>
+
+  <!-- Caption -->
+  <rect x="30" y="222" width="340" height="40" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
+  <text x="200" y="238" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">Execute the predicted route &#x2014; each move was visible before the flip</text>
+  <text x="200" y="253" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="9" fill="var(--dia-inksoft, #6a6151)">R-II slides the shell off, the two leftover kinks untwist, the ring falls free</text>
+
+  <text x="200" y="281" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="8.5" fill="var(--dia-rigid, #8a8275)">any pin ends the same way &#x2014; flipping B or D opens the central eye first instead</text>
+</svg>

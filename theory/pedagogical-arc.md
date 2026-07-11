@@ -1,8 +1,8 @@
 # Pedagogical Arc: A Teacher's Guide to the EXKNOTS Series
 
-This document explains the deliberate ordering of the 17 EXKNOTS puzzles, why each puzzle appears where it does, and how the series functions as a coherent curriculum in topological thinking.
+This document explains the deliberate ordering of the 20 EXKNOTS puzzles, why each puzzle appears where it does, and how the series functions as a coherent curriculum in topological thinking.
 
-> **Note on numbering.** Puzzle position numbers (1–17) reflect the recommended learning order. Markdown filenames in `puzzles/` keep their original creation IDs and don't always match — for example, position 5 (The Mirror Gate) lives in `11-the-mirror-gate.md`. See the README for the full mapping.
+> **Note on numbering.** Puzzle position numbers (1–20) reflect the recommended learning order. Markdown filenames in `puzzles/` keep their original creation IDs and don't always match — for example, position 5 (The Mirror Gate) lives in `11-the-mirror-gate.md`. See the README for the full mapping.
 
 ---
 
@@ -150,12 +150,12 @@ The ordering follows three principles:
 
 **Prior concepts assumed:** From Puzzle 1 — the unknot is the "zero" of knot theory. From Puzzle 5 — knot types are well-defined invariants. From Puzzle 8 — crossings and Reidemeister moves on closed curves.
 
-**What the solver should understand afterward:** Knots have a well-defined distance from the unknot, measured in crossing changes. This distance is itself a topological invariant. The figure-eight knot has unknotting number 1 — but only one specific crossing flip works. Different crossings play different structural roles.
+**What the solver should understand afterward:** Knots have a well-defined distance from the unknot, measured in crossing changes. This distance is itself a topological invariant. The figure-eight knot has unknotting number 1 — and on the minimal diagram every one of the four flips realizes it, because the four crossings pair into two clasps ({A, C} and {B, D}) and any flip opens its own clasp. The skill is not hunting for a magic crossing but predicting, before flipping, which bigon the flip opens and the R-II-then-R-I route that dissolves the frame.
 
 **Why position 9?** Puzzle 9 is conceptually light (Beginner-Intermediate) but builds directly on Puzzle 8's trefoil/figure-eight knowledge. Placing it here gives the solver a "palate cleanser" between the cognitive demands of Puzzles 7–8 and the heavy algebra of Puzzles 10–12. It also keeps related concepts adjacent: crossing changes are the operation, unknotting number is its measure, and both depend on the closed-knot framework just established.
 
 **Common misconceptions at this stage:**
-- "All crossings are equivalent, so any flip should work." (Different crossings play different structural roles.)
+- "Four pins, one ring — one of them must be the magic crossing." (On this diagram every flip works; the crossings pair into two clasps, and any flip opens its own. The hunt-for-the-magic-pin framing is itself the trap.)
 - "Flipping a crossing always simplifies the knot." (It can make the knot more complex.)
 - "If the figure-eight has unknotting number 1, the trefoil should too." (No — the trefoil also has unknotting number 1, but the same logic doesn't extend to all knots.)
 
@@ -277,9 +277,54 @@ The ordering follows three principles:
 
 ---
 
-## 3. Four Learning Arcs
+### Puzzle 18: The Whitehead Waltz (Advanced)
 
-The 17 puzzles form four thematic arcs. Each arc has its own narrative, its own type of "aha" moment, and its own relationship between the solver and the mathematics.
+**New concept introduced:** Linking number is *necessary but not sufficient* for separability. The Whitehead link has linking number zero yet cannot be pulled apart — the first-order count is blind to *how* the two passes clasp. Certifying the trap honestly needs higher-order linking (Milnor's invariants), the same family that governs Puzzle 6's Borromean rings.
+
+**Prior concepts assumed:** From Puzzle 3 — linking number as a signed crossing count, and the tempting inference "lk = 0, therefore separable." From Puzzle 6 — pairwise invariants can all vanish while a link stays non-trivial (the Borromean rings are the three-component cousin of this warning). Puzzle 18 turns the Puzzle 3 tool against itself: the same computation, the same zero, but now the conclusion fails.
+
+**What the solver should understand afterward:** An invariant computing to the "free" value proves nothing on its own. lk = 0 is a one-way test — nonzero proves you are stuck, zero proves nothing. The clasp encodes information the linking number cannot see, and on Station A that information is a theorem of inseparability, not a difficulty rating.
+
+**Common misconceptions at this stage:**
+- "lk = 0 on both stations, so both cords come free." (The reflex from Puzzle 3, and exactly the trap. Zero is where the analysis begins, not where it ends.)
+- "The four ring-cord crossings are where the puzzle lives." (They are where the *computation* lives; the decisive crossing is the clasp, the one the formula ignores.)
+- "Station A just needs a cleverer move." (No manipulation frees it. Force only proves the solver has not yet accepted the theorem.)
+
+---
+
+### Puzzle 19: The Tangle Dance (Intermediate-Advanced)
+
+**New concept introduced:** A *complete* invariant — Conway's fraction for rational tangles. Where the linking number forgets, the fraction remembers everything: two rational tangles are equivalent if and only if their fractions are equal. The two legal moves act on the fraction as arithmetic (twist: x → x + 1; rotate: x → −1/x), so solving becomes a computation — Euclid's algorithm — rather than a search.
+
+**Prior concepts assumed:** From Puzzle 18 — the distinction between a lossy invariant, which can only prove impossibility, and what a complete one would buy you. From Puzzle 8 — Reidemeister II cancellation (the final twist annihilates a crossing pair). From Puzzle 10 — a solution can be a deterministic algorithm rather than a flash of insight. Puzzle 19 delivers the complete invariant that Puzzle 18 revealed to be missing.
+
+**What the solver should understand afterward:** A complete invariant hands you an algorithm. The fraction is not a grade on the tangle — it *is* the tangle. The continued-fraction descent (positive → rotate, negative → twist, zero → done) always terminates because it is Euclid's algorithm. Distance to solved is continued-fraction depth, not crossing count or absolute value.
+
+**Common misconceptions at this stage:**
+- "Rotation does nothing — it doesn't touch a single crossing." (It changes which ends face the twist edge, flipping x to −1/x. It is the decisive move precisely because it looks like nothing.)
+- "The picture got more complicated, so I am going backward." (The *number* is what descends; the picture catches up only at the integers. −3 is closer to solved than 3/2.)
+- "A twist is a twist." (A wrong-handed or left-side twist computes x − 1 or worse — silently. The ledger then describes a tangle the solver is not holding.)
+
+---
+
+### Puzzle 20: The Granny's Downfall (Advanced)
+
+**New concept introduced:** Connected sums, and choosing the right invariant. Knots compose (K₁ # K₂) with unique prime factorization (Schubert, 1949). The square knot (L # R) and the granny knot (L # L) share crossing number, genus, tricolorability, and Alexander polynomial — every invariant the series has taught agrees — yet they are different knots. The signature σ, which *adds* under connected sum and *flips sign* under mirroring, is the one question that separates them (σ = 0 versus +4).
+
+**Prior concepts assumed:** From Puzzle 5 — chirality, the trefoil's handedness, inherited by each factor under composition. From Puzzle 17 — decomposition, one level down: cut along a *sphere* to separate prime factors rather than along a *torus* to separate companion from pattern. From Puzzles 9, 11, 15, and 16 — the invariants on the scoreboard (crossing number, genus, tricolorability, and the Seifert-surface signature). Puzzle 20 is the arc's synthesis: it stages the series' whole toolkit and asks which tool discriminates.
+
+**What the solver should understand afterward:** An invariant is a question you ask a knot, and every question has blind spots. Most invariants cannot see handedness; the signature is built to, and it survives composition. When two objects stubbornly look identical, the failure may lie in the question, not the objects — the skill is picking the invariant that separates your suspects.
+
+**Common misconceptions at this stage:**
+- "Same crossing number, genus, and Alexander polynomial, so they are the same knot." (Agreement on lossy invariants proves nothing; you have simply not yet asked a question that distinguishes them.)
+- "Flip the wrong-handed clump and it will seat." (A 180° flip is a *symmetry* of the trefoil — it re-lays the same weave and leaves only a removable half-twist in the neck. No rotation can re-hand a clump.)
+- "It is one stray crossing I can chase around the board." (The obstruction is the whole wrong-handed clump — three crossings at once. Seating even one would drop σ from +4 to 0, turning the granny into a square knot.)
+
+---
+
+## 3. Five Learning Arcs
+
+The 20 puzzles form five thematic arcs. Each arc has its own narrative, its own type of "aha" moment, and its own relationship between the solver and the mathematics.
 
 ### Arc 1 — "Things Are Not What They Seem" (Puzzles 1–5)
 
@@ -308,11 +353,11 @@ The 17 puzzles form four thematic arcs. Each arc has its own narrative, its own 
 - Puzzle 6: The linking is collective — it exists only as a three-body property (Borromean rings).
 - Puzzle 7: The ring's freedom depends on the cord's configuration — solve the constraints before the puzzle (configuration space topology).
 - Puzzle 8: A trefoil-like pattern is trivially unknottable because the cord is an open arc, not a closed knot (open vs. closed).
-- Puzzle 9: The figure-eight is one crossing flip from the unknot — but only at the right crossing (unknotting number, individual crossings have structural roles).
+- Puzzle 9: The figure-eight is one crossing flip from the unknot — and on the minimal diagram every flip works, each by opening one of the two clasps the crossings pair into (unknotting number, crossings organized into structural pairs).
 
-**What unifies these puzzles:** Each puzzle reveals a structural property that cannot be perceived by examining individual components — it arises from how the components relate to each other and to the mathematical framework. Puzzle 6's linking is invisible in any pair. Puzzle 7's constraint is invisible until the cord is reconfigured. Puzzle 8's unknottability is invisible if you think in terms of closed knots. Puzzle 9's one-flip-only solution is invisible if you treat all crossings as equivalent.
+**What unifies these puzzles:** Each puzzle reveals a structural property that cannot be perceived by examining individual components — it arises from how the components relate to each other and to the mathematical framework. Puzzle 6's linking is invisible in any pair. Puzzle 7's constraint is invisible until the cord is reconfigured. Puzzle 8's unknottability is invisible if you think in terms of closed knots. Puzzle 9's two-clasp structure is invisible if you treat the four crossings as independent — which flip you make doesn't decide success, but it decides which bigon opens and which Reidemeister route follows.
 
-**Emotional arc:** Frustration (Puzzle 6 — "these don't link!") gives way to a meta-cognitive shift (Puzzle 7 — "I need to solve a different problem first"), then to a confrontation with one's own expertise (Puzzle 8 — "my knot theory knowledge is misleading me"), and finally to careful analysis (Puzzle 9 — "I have to look at *which* crossing, not just *how many*").
+**Emotional arc:** Frustration (Puzzle 6 — "these don't link!") gives way to a meta-cognitive shift (Puzzle 7 — "I need to solve a different problem first"), then to a confrontation with one's own expertise (Puzzle 8 — "my knot theory knowledge is misleading me"), and finally to disciplined foresight (Puzzle 9 — "every flip unknots it, so the real work is calling the *route* before I touch the pin").
 
 **Transition to Arc 3:** Arc 2 teaches that structure determines what is possible. Arc 3 reveals that deep mathematical structures — recursion, algebra, higher-dimensional geometry — are not abstractions but physical realities that can be felt in the hands.
 
@@ -350,7 +395,26 @@ The 17 puzzles form four thematic arcs. Each arc has its own narrative, its own 
 
 **Emotional arc:** Algebraic engagement (Puzzle 13 — "swap order matters") expands into constructive exploration (Puzzles 14–15 — "I'm building knots and computing their fingerprints"), then into surface construction (Puzzle 16 — "the surface actually spans the knot"), before culminating in analytical decomposition (Puzzle 17 — "I can take this apart into solvable pieces").
 
-**The series conclusion:** Puzzle 17 brings the full arc to a close by asking the solver to apply *every* skill the series has taught: chirality detection (5), ring/cord untangling (1, 3), winding-number recognition (14), and multi-layer reasoning (11, 12). It is the only puzzle that genuinely requires the rest of the series as prerequisite, and solving it is the most concrete demonstration of having internalized topological thinking.
+**The classification capstone:** Puzzle 17 brings the *classification* arc to a close by asking the solver to apply every skill Arcs 1–4 have taught: chirality detection (5), ring/cord untangling (1, 3), winding-number recognition (14), and multi-layer reasoning (11, 12). It is the puzzle that most fully synthesizes the series' construction-and-classification toolkit into a single decomposition problem. It is no longer the terminus of the series, however — Arc 5 follows, stepping back from *using* invariants to interrogating them.
+
+**Transition to Arc 5:** Arcs 1–4 built and wielded a toolkit of invariants. Arc 5 turns that toolkit on itself. Having learned to compute linking numbers, colorings, genera, and signatures, the solver now confronts the *limits and the language* of invariants: one that reads "free" yet lies (Puzzle 18), one that forgets nothing and hands you an algorithm (Puzzle 19), and a family of look-alike knots that only the *right* invariant can tell apart (Puzzle 20).
+
+---
+
+### Arc 5 — "The Limits and Language of Invariants" (Puzzles 18–20)
+
+**Theme:** Invariants as fallible, expressive instruments — where they fail, when they are complete, and how to choose the one that answers your question.
+
+**Narrative progression:**
+- Puzzle 18: The linking number reads zero — the value that meant "free" in Puzzle 3 — yet the Whitehead link cannot be separated (a *necessary* condition mistaken for a *sufficient* one).
+- Puzzle 19: Conway's fraction is a *complete* invariant — equal fractions mean the same tangle — so the two legal moves become arithmetic and solving becomes Euclid's algorithm (an invariant that hands you an algorithm).
+- Puzzle 20: The square and granny knots agree on every invariant the series has taught except one — the signature — so identification becomes a matter of asking the *right* question (choosing a discriminating invariant).
+
+**What unifies these puzzles:** Each puzzle is *about* invariants rather than about a new configuration to untangle. Arc 5 completes the solver's relationship with the mathematics: they move from recognizing invariants (Arc 1), to reasoning structurally (Arc 2), to feeling deep structure physically (Arc 3), to computing and constructing (Arc 4), and finally to critiquing the tools themselves — knowing what an invariant can and cannot certify, and choosing accordingly.
+
+**Emotional arc:** Betrayal (Puzzle 18 — "the count I trusted was lying") gives way to a rare gift of certainty (Puzzle 19 — "this number tells me exactly what to do"), and settles into discernment (Puzzle 20 — "the objects are identical to every question but one; I just have to ask that one"). The arc closes the series not with the hardest tangle but with the most mature stance toward the mathematics: an invariant is a question, and the art is knowing which to ask.
+
+**The series conclusion:** Arc 5 is the true close of the series. Where Puzzle 17 demonstrated mastery of the *toolkit*, Puzzles 18–20 demonstrate mastery *over* it — the judgment to know when a tool proves nothing (18), when it proves everything (19), and which tool to reach for when several stay silent (20). The solver who finishes Arc 5 no longer merely computes invariants; they reason about the invariants' reach, which is what a topologist actually does.
 
 ---
 
@@ -402,6 +466,9 @@ The 17 puzzles form four thematic arcs. Each arc has its own narrative, its own 
 | 15 | "Can you 3-color the unknot? Why or why not? What does that tell you about the trefoil?" |
 | 16 | "Before you built the surface, did you believe it was possible? What changed your mind?" |
 | 17 | "Why can you free one ring but not the other? What is the difference between their topological situations?" |
+| 18 | "You computed zero on both stations. Does zero *prove* the cord comes free? What would a genuine proof of separability have to establish?" |
+| 19 | "One move changes no crossing yet changes everything. How can 'doing nothing' be the key move? What does that tell you about what the state really is?" |
+| 20 | "Every invariant you know says these two knots are the same, yet they aren't. When your tools can't tell two things apart, do you trust the tools or find a better question?" |
 
 ---
 
@@ -464,7 +531,7 @@ For solvers working through the series alone, the following structure maximizes 
 6. **Trinity Lock:** "Remove one oval and observe the other two. Put it back and remove a different one. What does 'irreducibly collective' mean to you now?"
 7. **Devil's Pitchfork:** "Describe the state of the cord before and after the critical reconfiguration. What changed? Why did that change unlock the ring's movement?"
 8. **The Ferryman's Knot:** "If the cord were a closed loop (no endpoints), would this be solvable? Why or why not? What does this tell you about the importance of boundary conditions?"
-9. **The Crossing Number:** "Try flipping each crossing in turn. What knot do you get from each? Why is exactly one of them the unknot?"
+9. **The Crossing Number:** "Before flipping, find the diagram's two clasps. Which one does your pin open? Predict the moves, then check. Why does *every* pin on this diagram free the ring?"
 10. **Ouroboros Chain:** "Track the state (which loops are on/off) for at least the first 15 moves. Where does the pattern repeat? How does it feel to 'go backward' as part of going forward?"
 11. **Genus Trap:** "Write the cord's path as a word in generators a and b. Describe the physical manipulation that corresponds to each algebraic step in the simplification."
 12. **The Hopf Paradox:** "Describe the motion that works. Now try to break it into two sequential moves. Why can't you? What does 'coupled' mean in your body, not just in your mind?"
@@ -473,6 +540,9 @@ For solvers working through the series alone, the following structure maximizes 
 15. **The Tricolor Lock:** "Color the unknot. What goes wrong? Now color the trefoil. Why does one work and not the other? Construct a fourth crossing and check whether the coloring still satisfies the rule."
 16. **The Seifert Sail:** "Trace the boundary of the surface you assembled. Does it match the trefoil exactly? What is the genus of this surface? What would the Seifert surface for the figure-eight look like?"
 17. **The Satellite Trap:** "Identify the companion knot and the pattern. Which ring is trapped by which? What would happen if the companion were the unknot instead of the trefoil?"
+18. **The Whitehead Waltz:** "Compute the linking number on both stations and confirm both are zero. Then explain, in your own words, why zero does not guarantee the cord comes free. What is the clasp doing that the count cannot see?"
+19. **The Tangle Dance:** "Write the fraction at every step of your solve. Which moves added 1, which flipped to −1/x? Where did the picture grow more complicated while the number got simpler? Relate your descent to Euclid's algorithm."
+20. **The Granny's Downfall:** "Fill in the invariant scoreboard for both loops. Which invariants agree, and which one separates them? Why can the signature see handedness when tricolorability and the Alexander polynomial cannot?"
 
 **Suggested reading between puzzles:**
 
@@ -494,6 +564,9 @@ For solvers working through the series alone, the following structure maximizes 
 | 15 | Adams, *The Knot Book*, Chapter 3 (tricolorability and Fox coloring) |
 | 16 | Cromwell, *Knots and Links*, Chapter 6 (Seifert surfaces and genus) |
 | 17 | Burde & Zieschang, *Knots*, Chapter 4 (satellite knots) — or Thurston's geometrization for the JSJ decomposition |
+| 18 | Adams, *The Knot Book*, Chapter 5 (linking number revisited) — or Milnor, *Link Groups* (1954) for higher-order linking invariants |
+| 19 | Conway, "An Enumeration of Knots and Links" (1970) — or Kauffman & Lambropoulou, *On the Classification of Rational Tangles* |
+| 20 | Adams, *The Knot Book*, Chapter 2 (composition of knots) — or Schubert (1949) on unique prime decomposition; Cromwell, *Knots and Links*, Chapter 8 (signature) |
 
 ---
 
@@ -513,7 +586,7 @@ The following table gives estimated times for two solver profiles: a **novice** 
 | 6 | Trinity Lock | 30–90 min | 15–30 min | "No two are linked. They all have to go together, simultaneously." |
 | 7 | Devil's Pitchfork | 45–120 min | 20–45 min | "The short center prong — I can loop the cord over it. *That* changes what the ring can do." |
 | 8 | The Ferryman's Knot | 30–120 min | 15–60 min | "It's not a trefoil. It has endpoints. I can just lift each wrap over the top." |
-| 9 | The Crossing Number | 15–45 min | 5–20 min | "Only ONE crossing flip unknots it — and it's crossing C." |
+| 9 | The Crossing Number | 15–45 min | 5–20 min | "Every flip unknots it — the real puzzle is calling the route before I touch the pin." |
 | 10 | Ouroboros Chain | 60–180 min | 30–90 min | "There is no shortcut. I have to trust the recursive pattern and go backward to go forward." |
 | 11 | Genus Trap | 90–300 min | 45–120 min | "The cord path is a *word*. If I reroute to cancel the b, the word becomes trivial." |
 | 12 | The Hopf Paradox | 120–600 min | 60–240 min | "I can't rotate then push. I have to rotate *and* push at the same time — a corkscrew." |
@@ -522,6 +595,9 @@ The following table gives estimated times for two solver profiles: a **novice** 
 | 15 | The Tricolor Lock | 20–60 min | 10–25 min | "Three colors, all different at each crossing — and the notches align!" |
 | 16 | The Seifert Sail | 45–150 min | 20–60 min | "The surface actually SPANS the knot. I can push the cord across it." |
 | 17 | The Satellite Trap | 90–300 min | 45–150 min | "The two rings are trapped by DIFFERENT mechanisms. I can change the pattern without touching the companion." |
+| 18 | The Whitehead Waltz | 60–180 min | 20–45 min | "Zero doesn't mean free — the clasp holds what the count can't count." |
+| 19 | The Tangle Dance | 45–120 min | 15–40 min | "Rotating changes nothing I can see, yet flips the number — the twist that hurt me a moment ago now helps." |
+| 20 | The Granny's Downfall | 60–180 min | 20–50 min | "Every test says they're the same knot except one. The signature is the question that tells them apart." |
 
 **Notes on time estimates:**
 
@@ -553,8 +629,11 @@ flowchart TD
     P15["15: Fox tricolorability"]
     P16["16: Seifert surfaces (genus)"]
     P17["17: Satellite knots (JSJ)"]
+    P18["18: Linking number incomplete (Whitehead)"]
+    P19["19: Rational tangles, Conway fraction"]
+    P20["20: Connected sums, signature"]
 
-    P1 --> P2 --> P3 --> P4 --> P5 --> P6 --> P7 --> P8 --> P9 --> P10 --> P11 --> P12 --> P13 --> P14 --> P15 --> P16 --> P17
+    P1 --> P2 --> P3 --> P4 --> P5 --> P6 --> P7 --> P8 --> P9 --> P10 --> P11 --> P12 --> P13 --> P14 --> P15 --> P16 --> P17 --> P18 --> P19 --> P20
 
     P1 -.-> P5
     P3 -.-> P7
@@ -590,6 +669,14 @@ flowchart TD
     P11 -.-> P17
     P12 -.-> P17
     P14 -.-> P17
+    P3 -.-> P18
+    P6 -.-> P18
+    P18 -.-> P19
+    P8 -.-> P19
+    P10 -.-> P19
+    P5 -.-> P20
+    P16 -.-> P20
+    P17 -.-> P20
 ```
 
 Each solid arrow represents the linear narrative; dotted arrows represent direct conceptual dependencies. The solver who works through the series in order arrives at each puzzle with exactly the preparation they need — and none of the preparation they do not.

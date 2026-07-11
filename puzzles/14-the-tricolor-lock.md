@@ -47,6 +47,20 @@ This is NOT the same as graph coloring. The three "meeting arcs" at a crossing a
 
 ![Fox coloring rule with examples](../diagrams/puzzles/14-the-tricolor-lock/coloring-rule.svg)
 
+### Worked Example: verifying the Fox rule
+
+Label the trefoil's three arcs as in the tricolored trefoil at the bottom of the figure: **a₁ (Red)** passes over the left crossing, **a₂ (Blue)** passes over the bottom crossing, and **a₃ (Yellow)** passes over the right crossing. Each arc runs from one undercrossing to the next, so each arc goes under exactly twice — once at each end. Checking the rule is then a matter of reading off, at each crossing, which arc is on top and which two arcs meet it from below:
+
+| Crossing | Over-strand | Under-arc | Under-arc | Fox rule |
+|----------|-------------|-----------|-----------|----------|
+| 1 (left) | a₁ (Red) | a₂ (Blue) | a₃ (Yellow) | all three different ✓ |
+| 2 (bottom) | a₂ (Blue) | a₃ (Yellow) | a₁ (Red) | all three different ✓ |
+| 3 (right) | a₃ (Yellow) | a₁ (Red) | a₂ (Blue) | all three different ✓ |
+
+Every crossing lands in the all-different case, so the coloring is valid — and because it uses more than one color, it is **nontrivial**.
+
+It is worth counting how special this is. Three arcs and three colors give 3 × 3 × 3 = 27 raw assignments, but only **9** of them satisfy the Fox rule at all three crossings: the 3 trivial colorings (all Red, all Blue, or all Yellow) plus 6 nontrivial ones — the 3! = 6 ways of distributing the three distinct colors over the three arcs, each a recoloring of the table above. No assignment using exactly two colors survives. The puzzle's notches are cut to select one of the 6 nontrivial colorings.
+
 ### Tricolorability as a Knot Invariant
 
 A knot is **tricolorable** if it admits a non-trivial Fox 3-coloring (one that uses more than one color). Tricolorability is a **topological invariant**: it depends on the knot type, not on the particular diagram.
@@ -60,9 +74,11 @@ Since the unknot is not tricolorable and the trefoil is, tricolorability **disti
 
 ### The Physical Mechanism
 
-In this puzzle, the colored sleeves have notched profiles. When the correct Fox coloring is applied, the notches on the three sleeves at the critical crossing align, creating a gap wide enough for the ring to pass through. When an incorrect coloring is applied, the notches misalign, and the ring remains trapped.
+The lock works like a pin-tumbler mechanism. Each color of sleeve carries a notch cut to a fixed depth: every Red sleeve is cut shallow, every Blue sleeve medium, every Yellow sleeve deep. The color is just a visible name for the depth. At one designated crossing — the escape gate — the three sleeves that meet there stack their notch profiles, and the gate opens only when the three depths are **pairwise distinct**. Shallow, medium, and deep together form a staggered profile that clears a ring-width channel, the same way a pin-tumbler lock turns only when every pin sits at its own shear height. If any two sleeves at the gate share a depth, their matched notches stack into a ledge and the ring stays trapped.
 
-**Physical Intuition:** What you feel in your hands: with the wrong coloring, the ring bumps against the sleeves at every crossing — no gap is large enough. With the correct coloring, one crossing opens up: you slide the ring toward it and feel it catch momentarily on the sleeve edges, then pop through. The valid coloring changes the physical geometry at the crossing. The algebraic rule (all same or all different) has become a physical constraint (aligned vs. misaligned notches).
+Note that the mechanism is deliberately **stricter** than the Fox rule. The Fox rule accepts a crossing whose three arcs are all the same color *or* all different; the gate opens only in the all-different case. That asymmetry is the point. All-same colorings exist for every knot — including the unknot — so finding one proves nothing. It is the existence of a *nontrivial* coloring that makes tricolorability an invariant, and the pairwise-distinct gate is a physical filter that admits exactly those colorings.
+
+**Physical Intuition:** What you feel in your hands: with a wrong coloring, the ring bumps against a ledge at every crossing — somewhere at the gate, two sleeves of the same depth sit together and their notches stack into a step instead of a channel. With the correct coloring, the gate crossing opens up: you slide the ring toward it and feel it catch momentarily on the sleeve edges, then pop through the staggered gap. The valid coloring changes the physical geometry at the crossing. The algebraic condition (all three colors different at the gate) has become a mechanical one (three pin depths, no two alike).
 
 *For a deeper treatment of knot coloring invariants, see [Topology Primer: Knot Coloring and Tricolorability](../theory/topology-primer.md#knot-coloring-and-tricolorability).*
 
@@ -75,8 +91,8 @@ In this puzzle, the colored sleeves have notched profiles. When the correct Fox 
 ![Solved: correctly colored trefoil with freed ring](../diagrams/puzzles/14-the-tricolor-lock/solved.svg)
 
 4. Verify at each crossing: all three colors are different (Red, Blue, Yellow at each)
-5. Slide the ring to the crossing where the notches align
-6. Pass the ring through the aligned gap
+5. Slide the ring to the escape-gate crossing, where the three distinct notch depths stack into a channel
+6. Pass the ring through the open gate
 
 ## Why It's Tricky
 
@@ -99,7 +115,7 @@ The puzzle has two layers of difficulty. First, the solver must understand the F
 - Bend the trefoil frame from 4mm rod, ensuring 10mm vertical separation at each crossing
 - Weld the frame closed and grind the join smooth
 - The crossing gaps must be consistent — use a 10mm spacer during welding
-- Colored sleeves: cut 30mm sections of colored heat-shrink tubing and file a 2mm notch in each
-- The notch positions must be calibrated so that three correctly-colored sleeves at a crossing create a ring-width gap when aligned
+- Colored sleeves: cut 30mm sections of colored heat-shrink tubing and file a notch in each, one depth per color (e.g. 1mm for red, 2mm for blue, 3mm for yellow — consistent within each color)
+- The three notch depths must be calibrated so that three pairwise-distinct depths at the gate crossing stack into a ring-width channel
 - Mount the frame on a short post (15mm) press-fit into the base for stability
-- The ring (30mm OD) must fit through the aligned notch gap but not through misaligned configurations
+- The ring (30mm OD) must fit through the shallow/medium/deep stack at the gate but not through any configuration where two sleeves share a depth

@@ -1,0 +1,86 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 310">
+  <title>Physical Space vs Configuration Space</title>
+  <desc>Left panel: a simplified Devil's Pitchfork with a ring on the left prong and a short cord to the center prong base; right panel: the corresponding configuration space with ring-position and cord-position axes, a shaded forbidden region where the cord is taut, a straight dashed route from start to goal crossing the forbidden region and marked with a cross, and a curved solid path that winds around the obstacle, marked with a check: reconfigure first, then move.</desc>
+
+  <!-- ===== Panel titles ===== -->
+  <text x="140" y="26" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-ink, #24211a)" font-weight="bold">physical space</text>
+  <text x="461" y="26" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-ink, #24211a)" font-weight="bold">configuration space</text>
+
+  <!-- Panel divider -->
+  <line x1="275" y1="44" x2="275" y2="296" stroke="var(--dia-faint, #c9bda7)" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- ===== LEFT PANEL: simplified Devil's Pitchfork ===== -->
+
+  <!-- Base bar -->
+  <line x1="55" y1="255" x2="225" y2="255" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"/>
+
+  <!-- Left prong (long) with ball-stop -->
+  <line x1="85" y1="255" x2="85" y2="105" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"/>
+  <circle cx="85" cy="98" r="6" fill="var(--dia-rigid, #8a8275)"/>
+
+  <!-- Center prong (short) with ball-stop -->
+  <line x1="140" y1="255" x2="140" y2="135" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"/>
+  <circle cx="140" cy="129" r="5" fill="var(--dia-rigid, #8a8275)"/>
+
+  <!-- Right prong (long) with ball-stop -->
+  <line x1="195" y1="255" x2="195" y2="105" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"/>
+  <circle cx="195" cy="98" r="6" fill="var(--dia-rigid, #8a8275)"/>
+
+  <!-- Ghost ring on right prong: the goal position -->
+  <circle cx="195" cy="185" r="11" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5" stroke-dasharray="4,3" opacity="0.7"/>
+
+  <!-- Ring on left prong: the start position -->
+  <circle cx="85" cy="185" r="11" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="2.5"/>
+
+  <!-- Short cord from ring to the center prong base -->
+  <path d="M96,188 Q115,228 140,255" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <!-- Cord attachment point at the center prong base -->
+  <circle cx="140" cy="255" r="3" fill="var(--dia-cord, #1f57c4)"/>
+
+  <!-- Left panel labels -->
+  <text x="74" y="172" text-anchor="end" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">start</text>
+  <text x="206" y="172" text-anchor="start" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">goal</text>
+  <text x="103" y="247" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-cord, #1f57c4)">cord</text>
+
+  <!-- Left panel captions -->
+  <text x="140" y="284" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">Devil's Pitchfork (simplified)</text>
+  <text x="140" y="301" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-rigid, #8a8275)">move the ring to the right prong</text>
+
+  <!-- ===== RIGHT PANEL: the state plane ===== -->
+
+  <!-- Axes -->
+  <line x1="330" y1="265" x2="582" y2="265" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <polygon points="592,265 582,261 582,269" fill="var(--dia-rigid, #8a8275)"/>
+  <line x1="330" y1="265" x2="330" y2="58" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <polygon points="330,48 326,58 334,58" fill="var(--dia-rigid, #8a8275)"/>
+
+  <!-- Axis labels -->
+  <text x="461" y="284" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">ring position</text>
+  <text x="314" y="162" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)" transform="rotate(-90,314,162)">cord position</text>
+
+  <!-- Forbidden region: states where the cord would have to be taut -->
+  <ellipse cx="450" cy="162" rx="60" ry="38" transform="rotate(-20,450,162)" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-neg, #cf3a26)" stroke-width="2"/>
+  <text x="438" y="151" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-neg, #cf3a26)">cord taut &#x2014;</text>
+  <text x="438" y="165" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-neg, #cf3a26)">impossible states</text>
+
+  <!-- Straight route (impossible): dashed line start-to-goal with a gap for the cross mark -->
+  <line x1="365" y1="235" x2="456.9" y2="172" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="499.3" y1="143" x2="555.4" y2="104.5" stroke="var(--dia-neg, #cf3a26)" stroke-width="2" stroke-dasharray="5,4"/>
+  <text x="489" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" fill="var(--dia-neg, #cf3a26)">&#x2717;</text>
+
+  <!-- Actual solution: solid curved path winding around the obstacle -->
+  <path d="M 365,235 C 351,196 349,148 366,114 C 384,79 465,62 512,70 C 532,73.5 547,80 553,88" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="557.2,93.6 554.6,84.3 549,88.5" fill="var(--dia-cord, #1f57c4)"/>
+
+  <!-- Check mark and gloss for the winding path -->
+  <text x="455" y="57" text-anchor="middle" font-family="system-ui, sans-serif"><tspan font-size="13" font-weight="bold" fill="var(--dia-pos, #2f8f43)">&#x2713;</tspan><tspan font-size="10.5" fill="var(--dia-inksoft, #6a6151)">&#160;reconfigure first, then move</tspan></text>
+
+  <!-- Start and goal states -->
+  <circle cx="365" cy="235" r="5.5" fill="var(--dia-pos, #2f8f43)"/>
+  <circle cx="562" cy="100" r="5.5" fill="var(--dia-ring, #b97d12)"/>
+  <text x="365" y="253" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">start</text>
+  <text x="572" y="104" text-anchor="start" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">goal</text>
+
+  <!-- Footer tying the dots back to the physical panel -->
+  <text x="461" y="301" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-rigid, #8a8275)">start = ring on left prong &#xB7; goal = ring on right prong</text>
+</svg>

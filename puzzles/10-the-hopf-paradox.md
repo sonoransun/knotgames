@@ -83,7 +83,7 @@ In this puzzle, the solution path traces one of these Hopf fibers. Moving along 
 
 Hold a belt by the buckle. Rotate the buckle 360° around the vertical axis. The belt is now twisted — one full twist. You cannot undo this twist by moving the buckle without rotating it.
 
-But here's the surprising part: if you rotate the buckle 360° around the vertical axis AND simultaneously let the belt loop OVER your hand (a second rotation in a perpendicular plane), the belt untwists. This coupled double rotation is related to the Hopf fibration — it's the same principle that governs the corkscrew move in this puzzle.
+But here's the surprising part: if you rotate the buckle 360° around the vertical axis AND simultaneously let the belt loop OVER your hand (a second rotation in a perpendicular plane), the belt untwists. This coupled double rotation demonstrates the double cover S^3 -> SO(3) of the rotation group — which lives on the same 3-sphere as the Hopf fibration S^3 -> S^2 but is a different map (two-point fibers rather than circle fibers) — so the belt trick is an analogy for the puzzle's coupled corkscrew motion, not an instance of the Hopf map.
 
 An even closer analogy: **the plate trick** (or Dirac's string trick). Hold a plate on your palm. Rotate it 360° — your arm is twisted. But continue rotating in the same direction (another 360°, for 720° total) while letting your arm pass under the plate, and your arm untwists. The rotation and the arm movement are coupled — neither alone works, but together they do. The puzzle's crux move is this same kind of coupled motion.
 
@@ -93,6 +93,8 @@ An even closer analogy: **the plate trick** (or Dirac's string trick). Hold a pl
 
 ### Step 1: Disengage from equatorial hoop
 The ring starts sitting around the equatorial hoop. Rotate the ring 90 degrees so it is perpendicular to the equatorial hoop and no longer encircles it. The ring now sits inside the cage, oriented vertically.
+
+![Checkpoint A: the ring rotated 90 degrees to vertical — no longer encircling the equatorial hoop but still inside the cage, with a dashed ghost marking its starting position around the equator](../diagrams/puzzles/10-the-hopf-paradox/checkpoint-a.svg)
 
 ### Step 2: Move to the pole
 Slide the ring toward the north pole (N), where the two hoops intersect. The ring must navigate between the hoop wires to reach the pole junction.
@@ -106,6 +108,8 @@ At the pole, the two hoops cross, creating a tight junction. The ring must pass 
 - Think of it as threading a nut onto a bolt — the rotation and forward motion happen simultaneously
 
 ![The Hopf move: the ring must rotate about the polar hoop and translate along it simultaneously — the motion cannot be decomposed into rotate-then-slide](../diagrams/puzzles/10-the-hopf-paradox/key-move.svg)
+
+![Checkpoint B: mid-extraction at the north pole — the ring halfway through the junction, rotating about the hoop axis while advancing along the pole as one coupled corkscrew; neither motion alone clears the wires](../diagrams/puzzles/10-the-hopf-paradox/checkpoint-b.svg)
 
 ### Step 4: Exit through window
 After passing through the pole junction, the ring is in a new quadrant. Orient it to fit through the adjacent window opening and slide it out of the cage.

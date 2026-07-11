@@ -1,9 +1,10 @@
 import * as THREE from 'three';
-import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
+import { createMaterials } from '../lib/materials.js';
 import { createStraightRod, createRing, createBall } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
 import { enableShadowsOnGroup } from '../lib/scene.js';
 import { StepArrowManager } from '../lib/arrow-helpers.js';
+import { resolveStep, applyStepTransforms, HighlightCache } from '../lib/puzzle-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -60,6 +61,11 @@ function createPitchfork(mats) {
   return group;
 }
 
+// Every cord keyframe must have exactly 5 control points — CordPath
+// .interpolatePoints silently truncates to the shorter array. All keyframes
+// end at the anchor hole at the center prong's base, [0, 5, 5].
+
+// Step 0: ring at rest on the left prong, cord straight down to the anchor.
 function initialCordPath() {
   return [
     [-PRONG_SPACING, 70, 5],   // from ring on left prong
@@ -70,22 +76,87 @@ function initialCordPath() {
   ];
 }
 
-function midCordPath1() {
+// Step 1: ring slid down to the left-prong base — slack droops in the
+// left channel (md Phase 1, move 1).
+function ringAtBaseCordPath() {
   return [
-    [-PRONG_SPACING, 15, 5],   // ring slid down
-    [-PRONG_SPACING + 10, 30, 10],
-    [-5, 60, 12],              // cord going up toward center prong tip
-    [0, CENTER_H + 5, 8],     // cord looping over center ball-stop
-    [5, 60, 5],                // coming back down
+    [-PRONG_SPACING, 15, 5],   // ring at the base of the left prong
+    [-28, 22, 10],             // slack bellying out in the left channel
+    [-14, 26, 12],
+    [-4, 14, 8],
+    [0, 5, 5],
   ];
 }
 
+// Step 2: the slack is gathered into a bight and pulled up toward the
+// center prong tip — not over the ball-stop yet (md Phase 1, moves 2-3).
+function slackRaisedCordPath() {
+  return [
+    [-PRONG_SPACING, 15, 5],
+    [-26, 42, 10],
+    [-8, CENTER_H - 8, 12],    // bight hovering just below the ball-stop
+    [-2, 45, 8],
+    [0, 5, 5],
+  ];
+}
+
+// Steps 3-4: the bight is looped over the center ball-stop — one strand
+// rises on the left, crosses the tip, and descends to the anchor
+// (md Phase 1, moves 4-5; formerly midCordPath1).
+function midCordPath1() {
+  return [
+    [-PRONG_SPACING, 15, 5],   // ring still at the left-prong base
+    [-20, 45, 10],             // cord going up toward center prong tip
+    [0, CENTER_H + 6, 8],      // cord looped over center ball-stop
+    [4, 40, 5],                // coming back down the right side
+    [0, 5, 5],
+  ];
+}
+
+// Step 4 checkpoint: the loop settles snug against the ball-stop — same
+// topology as midCordPath1, subtly tightened.
+function settledLoopCordPath() {
+  return [
+    [-PRONG_SPACING, 15, 5],
+    [-18, 48, 8],
+    [0, CENTER_H + 5, 6],
+    [3, 38, 4],
+    [0, 5, 5],
+  ];
+}
+
+// Step 5: the ring slides under the cord into the right channel; both cord
+// runs now live on the right side of the center prong (md Phase 2, move 7).
+function rightChannelCordPath() {
+  return [
+    [PRONG_SPACING, 15, 5],    // ring at the base of the right prong
+    [22, 48, 10],              // strand rising to the re-anchored tip
+    [0, CENTER_H + 5, 8],      // loop still over the ball-stop
+    [3, 38, 4],
+    [0, 5, 5],
+  ];
+}
+
+// Step 6: the ring is worked partway up the right prong — the tip loop acts
+// as a pulley, so the reach is a short diagonal (md "Why the loop creates reach").
+function ringRisingCordPath() {
+  return [
+    [PRONG_SPACING, 55, 5],
+    [24, 70, 8],
+    [0, CENTER_H + 5, 6],
+    [3, 38, 4],
+    [0, 5, 5],
+  ];
+}
+
+// Step 7: solved. The cord STAYS looped over the center prong (per the md's
+// solved diagram) — only the ring's position changes in this final beat.
 function solvedCordPath() {
   return [
-    [PRONG_SPACING, 70, 5],   // ring now on right prong
-    [PRONG_SPACING - 5, 50, 8],
-    [10, 20, 10],
-    [0, 8, 8],
+    [PRONG_SPACING, 70, 5],    // ring resting at the right ball-stop
+    [22, 80, 8],
+    [0, CENTER_H + 5, 6],
+    [3, 38, 4],
     [0, 5, 5],
   ];
 }
@@ -134,74 +205,101 @@ export function createAnimScene() {
   return { group, objects: { ring, cord, arrowManager } };
 }
 
+// Yellow = move the ring; blue = work the cord; green = the key loop-over.
 const arrowConfigs = {
   1: { arrows: [
-    { from: [-PRONG_SPACING, 70, 0], to: [-PRONG_SPACING, 15, 0], opts: { color: 0xffcc44 } },
-    { from: [-10, 20, 10], to: [0, CENTER_H + 5, 8], opts: { color: 0x4488ff } },
+    { from: [-PRONG_SPACING, 65, 0], to: [-PRONG_SPACING, 20, 0], opts: { color: 0xffcc44 } },
   ] },
-  2: { arrows: [{ from: [-PRONG_SPACING, 15, 0], to: [PRONG_SPACING, 70, 0], opts: { color: 0xffcc44 } }] },
+  2: { arrows: [
+    { from: [-18, 28, 10], to: [-6, CENTER_H - 10, 11], opts: { color: 0x4488ff } },
+  ] },
+  3: { arrows: [
+    { type: 'curved', points: [[-10, CENTER_H - 2, 10], [0, CENTER_H + 16, 8], [10, CENTER_H - 4, 5]], opts: { color: 0x44cc44 } },
+  ] },
+  5: { arrows: [
+    { from: [-30, 12, 8], to: [30, 12, 8], opts: { color: 0xffcc44 } },
+  ] },
+  6: { arrows: [
+    { from: [PRONG_SPACING, 22, 0], to: [PRONG_SPACING, 60, 0], opts: { color: 0xffcc44 } },
+  ] },
 };
-let highlightMat = null;
 
+// Eight beats following the md's two phases. Phase 1 (reconfigure the cord):
+// steps 1-3, with step 4 the checkpoint where the configuration space has
+// changed topology. Phase 2 (transfer the ring): steps 5-7.
 export const animationSteps = [
   {
-    label: 'Look: the ring sits on the left prong, cord is too short to reach across',
-    duration: 2.0,
+    label: 'Look: the ring sits on the left prong — the cord is too short to reach across',
+    duration: 2.5,
     cord: initialCordPath(),
     ring: { position: [-PRONG_SPACING, 70, 0] },
   },
   {
-    label: 'Slide the ring down and loop the cord over the shorter center prong',
-    duration: 3.0,
+    label: 'Slide the ring down to the base of the left prong',
+    duration: 2.0,
     easing: 'easeInOut',
+    cord: ringAtBaseCordPath(),
+    ring: { position: [-PRONG_SPACING, 15, 0] },
+  },
+  {
+    label: 'Pull the cord slack up toward the center prong tip',
+    duration: 2.0,
+    easing: 'easeInOut',
+    cord: slackRaisedCordPath(),
+    ring: { position: [-PRONG_SPACING, 15, 0] },
+  },
+  {
+    label: 'Loop a bight of cord over the center ball-stop — it just barely reaches',
+    duration: 2.5,
+    easing: 'easeOut',
     cord: midCordPath1(),
     ring: { position: [-PRONG_SPACING, 15, 0] },
   },
   {
-    label: 'Now swing the ring across to the right prong — the cord reaches!',
-    duration: 3.0,
+    label: 'Checkpoint: the cord is looped over the short prong — the geometry has changed',
+    duration: 1.5,
+    easing: 'easeInOut',
+    cord: settledLoopCordPath(),
+    ring: { position: [-PRONG_SPACING, 15, 0] },
+  },
+  {
+    label: 'Slide the ring under the cord into the right channel',
+    duration: 2.5,
+    easing: 'easeInOut',
+    cord: rightChannelCordPath(),
+    ring: { position: [PRONG_SPACING, 15, 0] },
+  },
+  {
+    label: 'Work the ring up the right prong — the tip loop pays out just enough cord',
+    duration: 2.0,
+    easing: 'easeInOut',
+    cord: ringRisingCordPath(),
+    ring: { position: [PRONG_SPACING, 55, 0] },
+  },
+  {
+    label: 'The ring rests at the right ball-stop — solved!',
+    duration: 2.5,
     easing: 'easeOut',
     cord: solvedCordPath(),
     ring: { position: [PRONG_SPACING, 70, 0] },
   },
 ];
 
+const highlights = new HighlightCache();
+
 export function updateAnimation(objects, state) {
-  const { stepIndex, stepProgress } = state;
+  const { step, prevStep, t, stepIndex } = resolveStep(animationSteps, state, {
+    arrowManager: objects.arrowManager,
+    arrowConfigs,
+  });
 
-  // Direction arrows
-  if (objects.arrowManager) {
-    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
-    objects.arrowManager.updateOpacity(stepProgress);
-  }
+  // Highlight the ring while it is being worked (every step after the look)
+  highlights.set(objects.ring, stepIndex >= 1, 0xffcc44, 0.3);
 
-  // Highlight active ring
-  if (stepIndex >= 1) {
-    if (!highlightMat) {
-      highlightMat = createHighlightMaterial(objects.ring.material, 0xffcc44, 0.3);
-    }
-    applyHighlight(objects.ring, highlightMat);
-  } else {
-    removeHighlight(objects.ring);
-  }
-
-  const step = animationSteps[stepIndex];
-  const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
-
-  if (step.cord && prevStep.cord) {
-    const interpolated = CordPath.interpolatePoints(prevStep.cord, step.cord, stepProgress);
-    objects.cord.update(interpolated);
-  }
-
-  if (step.ring && prevStep.ring) {
-    const f = prevStep.ring.position;
-    const t = step.ring.position;
-    objects.ring.position.set(
-      f[0] + (t[0] - f[0]) * stepProgress,
-      f[1] + (t[1] - f[1]) * stepProgress,
-      f[2] + (t[2] - f[2]) * stepProgress,
-    );
-  }
+  applyStepTransforms(objects, prevStep, step, t, {
+    cord: { target: 'cord', kind: 'cordPoints' },
+    ring: { target: 'ring', kind: 'position' },
+  });
 }
 
 export function createSVGDiagram(container) {
@@ -267,7 +365,7 @@ export function createSVGDiagram(container) {
   // Hand icon near the ring
   svg.handIcon(s, lx + 30, lTop + 30, { scale: 0.6, rotation: -15 });
 
-  // Step badges (highlighted per phase by the updater)
+  // Phase badges (highlighted per phase by the updater)
   const badge1 = svg.stepBadge(s, lx - 55, lTop + 80, 1, 3);
   svg.actionLabel(s, lx - 55, lTop + 93, 'Slide ring down');
   const badge2 = svg.stepBadge(s, cx, cTop - 25, 2, 3);
@@ -277,57 +375,43 @@ export function createSVGDiagram(container) {
   const badges = [badge1, badge2, badge3];
 
   // Key insight
-  const calloutRect = svg.rect(s, 20, 360, 460, 30, {
-    fill: 'var(--dia-wash, #ece3d0)', stroke: 'var(--dia-ring, #b97d12)', strokeWidth: 1, rx: 4,
-  });
-  svg.text(s, 250, 380, 'Key: The short center prong lets you loop the cord over it to gain slack', {
-    fontSize: 10, anchor: 'middle', fill: 'var(--dia-ring, #b97d12)',
-  });
-
-  // Inject pulse animation for the callout
-  let styleEl = s.querySelector('style[data-anim]');
-  if (!styleEl) {
-    styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
-    styleEl.setAttribute('data-anim', '1');
-    s.insertBefore(styleEl, s.firstChild);
-  }
-  styleEl.textContent += `
-    @keyframes calloutPulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
-    .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
-  `;
-  calloutRect.classList.add('callout-box');
+  svg.calloutBox(s, 20, 360, 460, 30,
+    'Key: The short center prong lets you loop the cord over it to gain slack');
 
   // ---- Timeline updater: sync the 2D ring + badges + arrows to the solution.
-  // Keyframes mirror the 3D motion: ring rests on the left prong (step 0),
-  // slides down the left prong (step 1), then transfers across to the right
-  // prong (step 2). One target [cx, cy] per animation step.
-  const restPos = [lx, lTop + 40];
+  // One [cx, cy] target per animation step (END-of-step pose; frame 0 doubles
+  // as the rest pose). The ring parks at the left-prong base through the cord
+  // work of steps 2-4, crosses to the right channel in step 5, then climbs
+  // the right prong (steps 6-7) — mirrors the 3D ring keyframes.
   const endPos = [
-    [lx, lTop + 40],   // 0: look — ring at rest on left prong
-    [lx, baseY - 35],  // 1: slide ring down the left prong
-    [rx, rTop + 40],   // 2: transfer ring to the right prong
+    [lx, lTop + 40],   // 0: look — ring at rest on the left prong
+    [lx, baseY - 35],  // 1: slide ring down to the left-prong base
+    [lx, baseY - 35],  // 2: pull slack toward the center tip (ring parked)
+    [lx, baseY - 35],  // 3: loop the bight over the ball-stop (ring parked)
+    [lx, baseY - 35],  // 4: checkpoint — geometry changed (ring parked)
+    [rx, baseY - 35],  // 5: slide ring under the cord into the right channel
+    [rx, rTop + 90],   // 6: work the ring up the right prong
+    [rx, rTop + 40],   // 7: rest at the right ball-stop — solved
   ];
+  const LAST_STEP = endPos.length - 1;
   return function update(state) {
     if (!state) return;
-    const last = endPos.length - 1;
-    const i = Math.max(0, Math.min(state.stepIndex ?? 0, last));
+    const i = Math.max(0, Math.min(state.stepIndex ?? 0, LAST_STEP));
     const p = Math.max(0, Math.min(state.stepProgress ?? 0, 1));
-    const from = i === 0 ? restPos : endPos[i - 1];
-    const to = endPos[i];
-    if (ring && from && to) {
-      ring.setAttribute('cx', from[0] + (to[0] - from[0]) * p);
-      ring.setAttribute('cy', from[1] + (to[1] - from[1]) * p);
-    }
-    // Highlight the active step badge; dim the rest.
-    badges.forEach((b, k) => svg.highlight(b, k === i, { dim: 0.3, color: CORD }));
+    const [ringX, ringY] = svg.lerpFrames(endPos, i, p);
+    ring.setAttribute('cx', ringX);
+    ring.setAttribute('cy', ringY);
+    // Phase badges: 0 = slide ring down (step 1), 1 = loop over center
+    // (steps 2-4), 2 = move ring right (steps 5-7); none during the look.
+    const phase = i >= 5 ? 2 : i >= 2 ? 1 : i >= 1 ? 0 : -1;
+    badges.forEach((b, k) => svg.highlight(b, k === phase, { dim: 0.3, color: CORD }));
     // Show only the arrows relevant to the current step.
     svg.highlight(arrowDown, i === 1, { glow: false, dim: 0 });
-    svg.highlight(arrowLoop, i === 1, { glow: false, dim: 0 });
-    svg.highlight(arrowTransfer, i === 2, { glow: false, dim: 0 });
+    svg.highlight(arrowLoop, i === 2 || i === 3, { glow: false, dim: 0 });
+    svg.highlight(arrowTransfer, i === 5 || i === 6, { glow: false, dim: 0 });
   };
 }
 
-export function dispose() {}
+export function dispose() {
+  highlights.dispose();
+}

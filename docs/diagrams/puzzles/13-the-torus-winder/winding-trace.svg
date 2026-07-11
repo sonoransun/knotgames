@@ -1,0 +1,151 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 352">
+  <title>The Torus Winder - (2,3) Winding Trace</title>
+  <desc>Top-down torus with all six guide notches numbered and the complete (2,3) cord path, whose three same-handed self-crossings are drawn with over/under gaps, beside a step table tracking hole passes and tube wraps at each notch and concluding that one traversal closes into a single strand with three crossings — the trefoil.</desc>
+
+  <!-- Title -->
+  <text x="320" y="24" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="13" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">The (2,3) Winding, Notch by Notch</text>
+  <text x="320" y="41" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10" fill="var(--dia-rigid, #8a8275)">one traversal: notch 1 → 2 → 3 → 4 → 5 → 6 → back to 1</text>
+
+  <!-- ===== Torus with the full winding (left) ===== -->
+
+  <!-- Torus: outer and inner (hole) rims -->
+  <ellipse cx="170" cy="185" rx="110" ry="70" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
+  <ellipse cx="170" cy="185" rx="40" ry="25" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
+
+  <!-- Cord: the complete (2,3) winding. Solid = on top of the tube,
+       dashed = hidden on the underside. Six legs alternate: over the top
+       from an outer-rim notch, down through the hole at an inner-rim notch,
+       back under to the outer rim, three times around the tube while
+       circling the axis twice. -->
+  <path d="M 280,185 C 278.9,187.9 277.6,197.4 273.7,202.7 C 269.7,208 263.2,213 256.4,216.7 C 249.5,220.4 240.7,223.1 232.5,224.7 C 224.4,226.2 215.3,226.5 207.5,226.1 C 199.7,225.8 192.2,224.2 185.9,222.6 C 179.7,221 174.5,218.6 170,216.6 C 165.5,214.6 162.3,212.5 159,210.8 C 155.6,209.1 151.5,207.3 150,206.7"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+  <path d="M 150,206.7 C 148.3,206.2 143.8,204.9 139.8,203.9 C 135.9,202.9 131.4,202.3 126.5,200.8 C 121.6,199.3 115.7,197.7 110.5,195.1 C 105.2,192.4 99.3,189.1 95,185 C 90.7,180.9 86.5,175.8 84.6,170.5 C 82.7,165.2 82,158.9 83.6,153.3 C 85.2,147.7 88.9,141.5 94.1,136.7 C 99.3,131.9 111.5,126.4 115,124.4"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <path d="M 115,124.4 C 119.5,123.5 133.1,119.5 142.2,119 C 151.4,118.6 161.6,119.6 170,121.6 C 178.4,123.6 186.6,127.1 192.9,130.8 C 199.1,134.5 204.1,139.4 207.5,143.9 C 210.9,148.3 212.6,153.3 213.6,157.5 C 214.6,161.7 213.9,165.8 213.5,169.2 C 213.1,172.6 211.8,175.5 211.2,178.1 C 210.6,180.7 210.2,183.8 210,185"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+  <path d="M 210,185 C 210.2,186.2 210.6,189.3 211.2,191.9 C 211.8,194.5 213.1,197.4 213.5,200.8 C 213.9,204.2 214.6,208.3 213.6,212.5 C 212.6,216.7 210.9,221.7 207.5,226.1 C 204.1,230.6 199.1,235.5 192.9,239.2 C 186.6,242.9 178.4,246.4 170,248.4 C 161.6,250.4 151.4,251.4 142.2,251 C 133.1,250.5 119.5,246.5 115,245.6"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <path d="M 115,245.6 C 111.5,243.6 99.3,238.1 94.1,233.3 C 88.9,228.5 85.2,222.3 83.6,216.7 C 82,211.1 82.7,204.8 84.6,199.5 C 86.5,194.2 90.7,189.1 95,185 C 99.3,180.9 105.2,177.6 110.5,174.9 C 115.7,172.3 121.6,170.7 126.5,169.2 C 131.4,167.7 135.9,167.1 139.8,166.1 C 143.8,165.1 148.3,163.8 150,163.3"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+  <path d="M 150,163.3 C 151.5,162.7 155.6,160.9 159,159.2 C 162.3,157.5 165.5,155.4 170,153.4 C 174.5,151.4 179.7,149 185.9,147.4 C 192.2,145.8 199.7,144.2 207.5,143.9 C 215.3,143.5 224.4,143.8 232.5,145.3 C 240.7,146.9 249.5,149.6 256.4,153.3 C 263.2,157 269.7,162 273.7,167.3 C 277.6,172.6 278.9,182.1 280,185"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"/>
+
+  <!-- Crossing c1 (lower right): top strand of wrap 1 over underside of
+       wrap 2. Occlusion gap along the over strand's tangent, then the over
+       segment redrawn on top. All three crossings have the same handedness. -->
+  <line x1="214.5" y1="226.6" x2="200.5" y2="225.7" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+  <path d="M 237.5,223.6 C 235.9,223.9 230.8,225 227.4,225.5 C 224,225.9 220.6,226.2 217.3,226.3 C 214,226.4 210.7,226.3 207.5,226.1 C 204.3,226 201.2,225.6 198.3,225.2 C 195.3,224.7 192.5,224.2 189.8,223.6 C 187.2,222.9 183.5,221.8 182.3,221.5"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+
+  <!-- Crossing c2 (left): top strand of wrap 3 over underside of wrap 1 -->
+  <line x1="89.8" y1="189.7" x2="100.2" y2="180.3" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+  <path d="M 83.6,202.8 C 84,201.7 85,198.4 86.1,196.3 C 87.1,194.2 88.5,192.2 90,190.3 C 91.5,188.4 93.2,186.7 95,185 C 96.8,183.3 98.8,181.8 100.9,180.4 C 102.9,179 105.1,177.7 107.2,176.6 C 109.4,175.4 112.7,174 113.8,173.5"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+
+  <!-- Crossing c3 (upper right): top strand of wrap 2 over underside of wrap 3 -->
+  <line x1="203.4" y1="138.2" x2="211.6" y2="149.5" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8.5" stroke-linecap="round"/>
+  <path d="M 188.9,128.5 C 190.2,129.3 194.2,131.6 196.5,133.2 C 198.8,134.9 200.9,136.6 202.7,138.4 C 204.6,140.2 206.1,142 207.5,143.9 C 208.9,145.7 210,147.6 210.9,149.4 C 211.8,151.3 212.4,153.1 212.9,154.9 C 213.5,156.6 213.8,159.2 213.9,160.1"
+        fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+
+  <!-- Winding direction arrow (on the top strand, just past notch 1) -->
+  <polygon points="243,222.5 251.7,214.6 254.7,222" fill="var(--dia-cord, #1f57c4)"/>
+
+  <!-- Guide notches (all engaged) -->
+  <circle cx="280" cy="185" r="4" fill="var(--dia-gold, #c79a22)" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
+  <circle cx="150" cy="206.7" r="4" fill="var(--dia-gold, #c79a22)" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
+  <circle cx="115" cy="124.4" r="4" fill="var(--dia-gold, #c79a22)" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
+  <circle cx="210" cy="185" r="4" fill="var(--dia-gold, #c79a22)" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
+  <circle cx="115" cy="245.6" r="4" fill="var(--dia-gold, #c79a22)" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
+  <circle cx="150" cy="163.3" r="4" fill="var(--dia-gold, #c79a22)" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
+
+  <!-- Notch numbers -->
+  <text x="290" y="188" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-gold, #c79a22)" font-weight="bold">1</text>
+  <text x="290" y="200" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-rigid, #8a8275)">start</text>
+  <text x="157" y="201" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-gold, #c79a22)" font-weight="bold">2</text>
+  <text x="107" y="114" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-gold, #c79a22)" font-weight="bold">3</text>
+  <text x="198" y="188" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-gold, #c79a22)" font-weight="bold">4</text>
+  <text x="107" y="257" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-gold, #c79a22)" font-weight="bold">5</text>
+  <text x="157" y="174" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-gold, #c79a22)" font-weight="bold">6</text>
+
+  <!-- Crossing callouts -->
+  <line x1="207.5" y1="258" x2="208" y2="232" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5" stroke-dasharray="3,2"/>
+  <text x="207" y="268" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-inksoft, #6a6151)">c1</text>
+  <line x1="52" y1="186" x2="87" y2="185" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5" stroke-dasharray="3,2"/>
+  <text x="44" y="188" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-inksoft, #6a6151)">c2</text>
+  <line x1="228" y1="127" x2="212" y2="140" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5" stroke-dasharray="3,2"/>
+  <text x="234" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="var(--dia-inksoft, #6a6151)">c3</text>
+
+  <!-- ===== Trace table (right) ===== -->
+
+  <!-- Header -->
+  <rect x="322" y="52" width="306" height="18" fill="var(--dia-faint, #c9bda7)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
+  <text x="343" y="64" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">notch</text>
+  <text x="384" y="64" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">rim</text>
+  <text x="408" y="64" font-family="system-ui, sans-serif" font-size="8.5" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">event</text>
+  <text x="590" y="64" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8.5" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">passes · wraps</text>
+
+  <!-- Row 1: notch 1 -->
+  <rect x="322" y="70" width="306" height="27" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
+  <text x="343" y="87.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-gold, #c79a22)" font-weight="bold">1</text>
+  <text x="384" y="87.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">outer</text>
+  <text x="408" y="87.5" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">start — tie off the cord</text>
+  <text x="590" y="87.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-ink, #24211a)">0/2 · 0/3</text>
+
+  <!-- Row 2: notch 2 -->
+  <rect x="322" y="97" width="306" height="27" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
+  <text x="343" y="114.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-gold, #c79a22)" font-weight="bold">2</text>
+  <text x="384" y="114.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">inner</text>
+  <text x="408" y="114.5" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">down through the hole — 1st pass</text>
+  <text x="590" y="114.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-ink, #24211a)">1/2 · 0/3</text>
+
+  <!-- Row 3: notch 3 (wrap milestone, shaded) -->
+  <rect x="322" y="124" width="306" height="27" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
+  <text x="343" y="141.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-gold, #c79a22)" font-weight="bold">3</text>
+  <text x="384" y="141.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">outer</text>
+  <text x="408" y="141.5" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">up over the rim — 1st wrap done</text>
+  <text x="590" y="141.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-ink, #24211a)">1/2 · 1/3</text>
+
+  <!-- Row 4: notch 4 -->
+  <rect x="322" y="151" width="306" height="27" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
+  <text x="343" y="168.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-gold, #c79a22)" font-weight="bold">4</text>
+  <text x="384" y="168.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">inner</text>
+  <text x="408" y="168.5" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">down through the hole — 2nd pass</text>
+  <text x="590" y="168.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-ink, #24211a)">2/2 · 1/3</text>
+
+  <!-- Row 5: notch 5 (wrap milestone, shaded) -->
+  <rect x="322" y="178" width="306" height="27" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
+  <text x="343" y="195.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-gold, #c79a22)" font-weight="bold">5</text>
+  <text x="384" y="195.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">outer</text>
+  <text x="408" y="195.5" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">up over the rim — 2nd wrap done</text>
+  <text x="590" y="195.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-ink, #24211a)">2/2 · 2/3</text>
+
+  <!-- Row 6: notch 6 -->
+  <rect x="322" y="205" width="306" height="27" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
+  <text x="343" y="222.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-gold, #c79a22)" font-weight="bold">6</text>
+  <text x="384" y="222.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">inner</text>
+  <text x="408" y="222.5" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">final dive under — 3rd wrap</text>
+  <text x="590" y="222.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-ink, #24211a)">2/2 · 2/3</text>
+
+  <!-- Row 7: back to notch 1 (closure, shaded) -->
+  <rect x="322" y="232" width="306" height="27" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
+  <text x="343" y="249.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-gold, #c79a22)" font-weight="bold">→ 1</text>
+  <text x="384" y="249.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-rigid, #8a8275)">outer</text>
+  <text x="408" y="249.5" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">closes where it began</text>
+  <text x="590" y="249.5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-pos, #2f8f43)" font-weight="bold">2/2 · 3/3</text>
+
+  <!-- ===== Legend ===== -->
+  <line x1="30" y1="284" x2="56" y2="284" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+  <text x="62" y="287" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">cord on top of the tube</text>
+  <line x1="30" y1="300" x2="56" y2="300" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <text x="62" y="303" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">cord on the underside</text>
+  <circle cx="199" cy="284" r="4" fill="var(--dia-gold, #c79a22)" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
+  <text x="209" y="287" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">guide notch (1–6)</text>
+  <text x="195" y="303" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">c1–c3: 3 crossings, all the same handedness</text>
+
+  <!-- ===== Conclusion ===== -->
+  <rect x="70" y="318" width="500" height="26" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="0.5"/>
+  <text x="320" y="335" text-anchor="middle" font-family="system-ui, sans-serif"
+        font-size="10.5" fill="var(--dia-ink, #24211a)" font-weight="bold">returns to start after one traversal → ONE closed strand, 3 crossings — the trefoil</text>
+</svg>

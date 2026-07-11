@@ -5,6 +5,8 @@
 //   2. map ~56 fragmented hex/named colors onto 12 semantic --dia-* tokens,
 //      written as `var(--dia-x, <light-fallback>)` so the file still renders
 //      standalone (e.g. on GitHub) while inheriting page tokens when inlined
+//      (applies to presentation attributes, style="" attributes, AND CSS
+//      declarations inside <style> elements, e.g. @keyframes blocks)
 //   3. ensure the root <svg> has role="img" (the existing <title> names it)
 // Idempotent: re-running on already-tokenized files is a no-op.
 //
@@ -79,6 +81,17 @@ function tokenize(svg) {
       return token ? `${prop}:${tokenVal(token)}` : m;
     });
     return `style="${nb}"`;
+  });
+  // and inside <style> element CSS (keyframes, class rules) — attribute passes
+  // above can't reach these
+  svg = svg.replace(/(<style\b[^>]*>)([\s\S]*?)(<\/style>)/g, (full, open, css, close) => {
+    const nb = css.replace(/\b(fill|stroke|stop-color|flood-color)\s*:\s*([^;{}]+)/g, (m, prop, val) => {
+      const key = val.trim().toLowerCase();
+      if (key === 'none') return m;
+      const token = COLOR[key];
+      return token ? `${prop}: ${tokenVal(token)}` : m;
+    });
+    return open + nb + close;
   });
 
   // 3. ensure role="img" on the root svg

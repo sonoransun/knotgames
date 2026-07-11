@@ -1,6 +1,6 @@
 <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250">
   <title>Crossing Sign Convention</title>
-  <desc>Diagram showing positive and negative crossing signs used in linking number calculation. The left crossing (sign = +1) has the cord going upper-left to lower-right over the crossbar. The right crossing (sign = −1) has the cord going upper-right to lower-left over the crossbar. The cord is shown in blue and the crossbar in steel gray.</desc>
+  <desc>Diagram showing positive and negative crossing signs used in linking number calculation. The left crossing (sign = +1) has the cord going upper-left to lower-right over the crossbar, whose arrow points right. The right crossing (sign = −1) has the cord going upper-right to lower-left over the crossbar, whose arrow points left. The cord is shown in blue and the crossbar in steel gray.</desc>
 
   
 
@@ -40,8 +40,8 @@
     <line x1="-60" y1="0" x2="-10" y2="0" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"/>
     <!-- Crossbar right segment -->
     <line x1="10" y1="0" x2="60" y2="0" stroke="var(--dia-rigid, #8a8275)" stroke-width="2.5"/>
-    <!-- Crossbar arrowhead (steel gray) -->
-    <polygon points="60,0 50,-5 50,5" fill="var(--dia-rigid, #8a8275)"/>
+    <!-- Crossbar arrowhead (steel gray), pointing left for the negative crossing -->
+    <polygon points="-60,0 -50,-5 -50,5" fill="var(--dia-rigid, #8a8275)"/>
 
     <!-- Cord (over strand): diagonal upper-right to lower-left in blue -->
     <line x1="50" y1="-50" x2="-50" y2="50" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>

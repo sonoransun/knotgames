@@ -1,9 +1,10 @@
 import * as THREE from 'three';
-import { createMaterials, createHighlightMaterial, applyHighlight, removeHighlight } from '../lib/materials.js';
+import { createMaterials } from '../lib/materials.js';
 import { createStraightRod } from '../lib/components.js';
 import { CordPath } from '../lib/cord.js';
 import { enableShadowsOnGroup } from '../lib/scene.js';
 import { StepArrowManager } from '../lib/arrow-helpers.js';
+import { resolveStep, HighlightCache } from '../lib/puzzle-helpers.js';
 import * as svg from '../lib/svg.js';
 
 export const metadata = {
@@ -139,116 +140,137 @@ export function createAnimScene() {
   return { group, objects: { cords, arrowManager } };
 }
 
-// Generate first 8 moves of the Gray code sequence for animation
-function generateFirstMoves() {
-  // Simplified: show the pattern with the first few moves
-  const states = [
-    [true, true, true, true, true, true],     // initial
-    [true, true, true, true, true, false],     // remove loop 6
-    [true, true, true, true, false, false],    // remove loop 5
-    [true, true, true, true, false, true],     // replace loop 6
-    [true, true, true, false, false, true],    // remove loop 4
-    [true, true, true, false, false, false],   // remove loop 6
-    [true, true, false, false, false, false],  // remove loop 3
-    [true, true, false, false, false, true],   // replace loop 6
-    [false, false, false, false, false, false], // final: all off
-  ];
-  return states;
+// ---------------------------------------------------------------------------
+// The complete 42-move Gray-code (Baguenaudier) state sequence.
+//
+// Loop numbering matches the md and the 3D layout: loop 1 is the leftmost
+// (anchor) post, loop 6 the rightmost; array index i holds loop i+1.
+// The legal moves (md, "The Topology"):
+//   Rule 1 — loop 6 (the end loop) may always slide on/off the bar.
+//   Rule 2 — loop k may slide on/off only when loop k+1 is ON the bar and
+//            every loop right of k+1 is OFF (i.e. k+1 is the rightmost ON
+//            loop).
+// Reading the on/off pattern as a Gray-code word (loop 1 = most significant
+// bit) and converting Gray -> binary ranks every state 0..63. Each legal move
+// changes the rank by exactly ±1; all-off ranks 0 and all-on ranks
+// (2^7 - 2) / 3 = 42. Walking the rank down one legal move at a time is
+// therefore the unique minimal solution: 42 moves, 43 states, no teleports.
+// (The md's illustrative tables start with "remove loop 6", but that move
+// violates the md's own Rule 2 at its next step; the legal minimal sequence
+// starts with loop 5 — the well-known even-ring-count opening.)
+
+function grayRank(state) {
+  let bit = 0;
+  let rank = 0;
+  for (const on of state) {
+    bit ^= on ? 1 : 0; // Gray -> binary: b_i = g_1 xor ... xor g_i
+    rank = rank * 2 + bit;
+  }
+  return rank;
 }
 
-const states = generateFirstMoves();
+function legalToggles(state) {
+  const moves = [state.length - 1];  // Rule 1: the end loop, always
+  const j = state.lastIndexOf(true); // rightmost ON loop
+  if (j >= 1) moves.push(j - 1);     // Rule 2: its immediate left neighbor
+  return moves;
+}
+
+export function generateGrayStates(n = NUM_LOOPS) {
+  let cur = new Array(n).fill(true);
+  const sequence = [cur];
+  while (grayRank(cur) > 0) {
+    const want = grayRank(cur) - 1;
+    const next = legalToggles(cur)
+      .map((k) => {
+        const s = cur.slice();
+        s[k] = !s[k];
+        return s;
+      })
+      .find((s) => grayRank(s) === want);
+    if (!next) throw new Error('Baguenaudier walk stuck — no legal descending move');
+    sequence.push(next);
+    cur = next;
+  }
+  return sequence;
+}
+
+const states = generateGrayStates();
+const MOVES = states.length - 1; // 42
+
+// moves[i] is the one-loop diff going INTO states[i]: which loop toggled and
+// whether it slid off the bar. moves[0] is null (the intro step).
+const moves = states.map((state, i) => {
+  if (i === 0) return null;
+  const loop = state.findIndex((on, k) => on !== states[i - 1][k]);
+  return { loop, off: !state[loop] };
+});
+
+// Pedagogical waypoints, derived (not hardcoded) from the sequence.
+const firstReplace = moves.findIndex((m) => m && !m.off);
+const anchorOff = moves.findIndex((m) => m && m.loop === 0 && m.off);
+
+export const animationSteps = states.map((state, i) => {
+  if (i === 0) {
+    return {
+      label: 'Look: six loops sit on the shuttle bar, each linked to its neighbor',
+      duration: 2.0,
+      loopStates: state,
+    };
+  }
+  const move = moves[i];
+  let label = `Move ${i}: slide loop #${move.loop + 1} ${move.off ? 'off the bar' : 'back onto the bar'}`;
+  if (i === firstReplace) label += ' — you must go backward!';
+  else if (i === anchorOff) label += ` — the anchor is free, yet ${MOVES - i} moves remain`;
+  else if (i === MOVES) label += ' — every loop is off. Bar is free!';
+  return {
+    label,
+    // Mid-sequence moves are brisk; the final slide gets room to land.
+    duration: i === MOVES ? 3.0 : 0.9,
+    // Sliding a loop off/onto the bar settles into place — ease out the motion.
+    easing: 'easeOut',
+    loopStates: state,
+    move,
+  };
+});
 
 // Post x positions for arrow targets (loop index 0..5)
 const _postX = (i) => (i - (NUM_LOOPS - 1) / 2) * POST_SPACING;
 
-const arrowConfigs = {
-  1: { arrows: [
-    { from: [_postX(5), 15, BASE_D / 2 - 5], to: [_postX(5), -10, 18], opts: { color: 0x44cc44 } },
-  ]},
-  2: { arrows: [
-    { from: [_postX(4), 15, BASE_D / 2 - 5], to: [_postX(4), -10, 18], opts: { color: 0x44cc44 } },
-  ]},
-  3: { arrows: [
-    { from: [_postX(5), -10, 18], to: [_postX(5), 15, BASE_D / 2 - 5], opts: { color: 0xcc4444 } },
-  ]},
-  4: { arrows: [
-    { from: [_postX(3), 15, BASE_D / 2 - 5], to: [_postX(3), -10, 18], opts: { color: 0x44cc44 } },
-  ]},
-  5: { arrows: [
-    { from: [_postX(5), 15, BASE_D / 2 - 5], to: [_postX(5), -10, 18], opts: { color: 0x44cc44 } },
-  ]},
-  6: { arrows: [
-    { from: [_postX(2), 15, BASE_D / 2 - 5], to: [_postX(2), -10, 18], opts: { color: 0x44cc44 } },
-  ]},
-  7: { arrows: [
-    { from: [_postX(5), -10, 18], to: [_postX(5), 15, BASE_D / 2 - 5], opts: { color: 0xcc4444 } },
-  ]},
-};
-
-let highlightMat = null;
-
-export const animationSteps = states.map((state, i) => {
-  const labels = [
-    'Look: six loops sit on the shuttle bar, each linked to its neighbor',
-    'Slide the rightmost loop (#6) off the bar',
-    'Slide loop #5 off the bar',
-    'Put loop #6 back on the bar — you must go backward!',
-    'Slide loop #4 off the bar',
-    'Slide loop #6 off the bar again',
-    'Slide loop #3 off the bar',
-    'Put loop #6 back on — the pattern keeps repeating',
-    'After 42 moves in this sequence, every loop is off. Bar is free!',
-  ];
-  // Sliding a loop off/onto the bar settles into place — ease out the motion.
-  // The opening "Look" step and the final "all off" landing also settle.
-  const easing = i === 0 ? undefined : 'easeOut';
-  return {
-    label: labels[i] || `State ${i}`,
-    duration: i === 0 ? 2.0 : (i === states.length - 1 ? 3.0 : 1.8),
-    easing,
-    loopStates: state,
+// One direction arrow per move, generated from the same state diffs:
+// green bar->free for a removal, red free->bar for a replacement.
+const arrowConfigs = {};
+moves.forEach((move, i) => {
+  if (!move) return;
+  const x = _postX(move.loop);
+  const barPoint = [x, 15, BASE_D / 2 - 5];
+  const freePoint = [x, -10, 18];
+  arrowConfigs[i] = {
+    arrows: [
+      move.off
+        ? { from: barPoint, to: freePoint, opts: { color: 0x44cc44 } }
+        : { from: freePoint, to: barPoint, opts: { color: 0xcc4444 } },
+    ],
   };
 });
 
-// Map step index to which cord index is active
-const _activeLoop = { 1: 5, 2: 4, 3: 5, 4: 3, 5: 5, 6: 2, 7: 5 };
+const highlights = new HighlightCache();
 
 export function updateAnimation(objects, state) {
-  const { stepIndex, stepProgress } = state;
+  const { step, prevStep, t } = resolveStep(animationSteps, state, {
+    arrowManager: objects.arrowManager,
+    arrowConfigs,
+  });
 
-  // Direction arrows
-  if (objects.arrowManager) {
-    objects.arrowManager.showForStep(stepIndex, arrowConfigs);
-    objects.arrowManager.updateOpacity(stepProgress);
-  }
-
-  // Highlight the active loop cord
-  const activeIdx = _activeLoop[stepIndex];
-  if (activeIdx !== undefined && objects.cords[activeIdx]) {
-    if (!highlightMat) {
-      highlightMat = createHighlightMaterial(objects.cords[activeIdx].mesh.material, 0x4488ff, 0.3);
-    }
-    for (let i = 0; i < NUM_LOOPS; i++) {
-      if (i === activeIdx) {
-        applyHighlight(objects.cords[i].mesh, highlightMat);
-      } else {
-        removeHighlight(objects.cords[i].mesh);
-      }
-    }
-  } else {
-    for (let i = 0; i < NUM_LOOPS; i++) {
-      removeHighlight(objects.cords[i].mesh);
-    }
-  }
-
-  const step = animationSteps[stepIndex];
-  const prevStep = stepIndex > 0 ? animationSteps[stepIndex - 1] : animationSteps[0];
+  // Spotlight the one cord that moves this step (none during the intro).
+  const activeIdx = step.move ? step.move.loop : -1;
+  highlights.applyOnly(objects.cords.map((c) => c.mesh), activeIdx, 0x4488ff, 0.3);
 
   const fromPaths = createLoopPaths(prevStep.loopStates);
   const toPaths = createLoopPaths(step.loopStates);
 
   for (let i = 0; i < NUM_LOOPS; i++) {
-    const interpolated = CordPath.interpolatePoints(fromPaths[i], toPaths[i], stepProgress);
+    const interpolated = CordPath.interpolatePoints(fromPaths[i], toPaths[i], t);
     objects.cords[i].update(interpolated);
   }
 }
@@ -262,6 +284,8 @@ export function createSVGDiagram(container) {
 
   const CORD = 'var(--dia-cord, #1f57c4)';
   const NEG = 'var(--dia-neg, #cf3a26)';
+  const POS = 'var(--dia-pos, #2f8f43)';
+  const INK = 'var(--dia-ink, #24211a)';
 
   // Base (top-down view)
   svg.rect(s, 70, 80, 360, 80, { fill: 'var(--dia-wood, #b07d52)', stroke: 'var(--dia-wood, #b07d52)', strokeWidth: 2, rx: 4 });
@@ -269,9 +293,9 @@ export function createSVGDiagram(container) {
   // Posts (circles from top)
   const postY = 120;
   const postX = (i) => 110 + i * 56;
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < NUM_LOOPS; i++) {
     const x = postX(i);
-    svg.circle(s, x, postY, 8, { fill: 'var(--dia-wood, #b07d52)', stroke: 'var(--dia-ink, #24211a)', strokeWidth: 1.5 });
+    svg.circle(s, x, postY, 8, { fill: 'var(--dia-wood, #b07d52)', stroke: INK, strokeWidth: 1.5 });
     svg.text(s, x, postY + 3, String(i + 1), { fontSize: 9, anchor: 'middle', fill: 'var(--dia-surface, #fbf7ee)', fontWeight: 'bold' });
   }
 
@@ -282,7 +306,7 @@ export function createSVGDiagram(container) {
   // Loops (arcs from post to bar) — captured so the updater can move them
   const loopColors = [CORD, NEG, CORD, NEG, CORD, NEG];
   const loops = [];
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < NUM_LOOPS; i++) {
     const x = postX(i);
     const loop = svg.path(s, `M ${x - 6} ${postY + 8} Q ${x - 15} ${postY + 25} ${x} ${postY + 30} Q ${x + 15} ${postY + 25} ${x + 6} ${postY + 8}`, {
       stroke: loopColors[i], strokeWidth: 2, fill: 'none',
@@ -291,90 +315,75 @@ export function createSVGDiagram(container) {
     loops.push(loop);
   }
 
+  // Per-loop motion arrows, both directions, pre-built once; the updater
+  // reveals only the arrow matching the current step's state diff (green
+  // down = slide off, red up = back on — same semantics as the 3D arrows).
+  const arrowsOff = [];
+  const arrowsOn = [];
+  for (let i = 0; i < NUM_LOOPS; i++) {
+    const x = postX(i);
+    const off = svg.motionArrow(s, x, 118, x, 158, { curvature: 0.3, color: POS });
+    const on = svg.motionArrow(s, x, 158, x, 118, { curvature: 0.3, color: NEG });
+    svg.highlight(off, false, { glow: false, dim: 0 });
+    svg.highlight(on, false, { glow: false, dim: 0 });
+    arrowsOff.push(off);
+    arrowsOn.push(on);
+  }
+
   // Chain dependency arrows
   svg.text(s, 250, 195, 'Each loop threads through its left neighbor:', {
-    fontSize: 11, anchor: 'middle', fill: 'var(--dia-ink, #24211a)',
+    fontSize: 11, anchor: 'middle', fill: INK,
   });
 
-  for (let i = 1; i < 6; i++) {
+  for (let i = 1; i < NUM_LOOPS; i++) {
     const x1 = postX(i);
     const x0 = postX(i - 1);
     svg.path(s, `M ${x1} 210 L ${x0 + 10} 210`, {
       stroke: 'var(--dia-rigid, #8a8275)', strokeWidth: 1,
     });
-    svg.text(s, (x0 + x1) / 2, 208, '\u2192', { fontSize: 14, anchor: 'middle', fill: 'var(--dia-rigid, #8a8275)' });
+    svg.text(s, (x0 + x1) / 2, 208, '→', { fontSize: 14, anchor: 'middle', fill: 'var(--dia-rigid, #8a8275)' });
   }
 
-  // State table
+  // Live Gray-code readout: move counter, action, binary state, progress bar.
   svg.rect(s, 50, 235, 400, 90, { fill: 'var(--dia-wash, #ece3d0)', stroke: 'var(--dia-faint, #c9bda7)', strokeWidth: 1, rx: 4 });
-  svg.text(s, 250, 255, 'Gray Code Sequence (first 4 of 42 moves):', {
+  svg.text(s, 250, 254, `Gray-code sequence — exactly one loop moves per step (${MOVES} moves):`, {
     fontSize: 11, anchor: 'middle', fontWeight: 'bold',
   });
-
-  const rows = [
-    ['Start:', '1 1 1 1 1 1'],
-    ['Move 1:', '1 1 1 1 1 0  (remove #6)'],
-    ['Move 2:', '1 1 1 1 0 0  (remove #5)'],
-    ['Move 3:', '1 1 1 1 0 1  (replace #6!)'],
-  ];
-  rows.forEach((row, i) => {
-    svg.text(s, 120, 275 + i * 14, row[0], { fontSize: 9, fill: 'var(--dia-inksoft, #6a6151)' });
-    svg.text(s, 180, 275 + i * 14, row[1], { fontSize: 9, fill: 'var(--dia-ink, #24211a)', fontFamily: 'monospace' });
+  const actionText = svg.text(s, 250, 276, 'Start: all six loops on the shuttle bar', {
+    fontSize: 11, anchor: 'middle', fill: INK,
   });
+  svg.text(s, 172, 302, 'state:', { fontSize: 10, anchor: 'end', fill: 'var(--dia-inksoft, #6a6151)' });
+  const digits = [];
+  for (let i = 0; i < NUM_LOOPS; i++) {
+    digits.push(svg.text(s, 190 + i * 24, 302, '1', {
+      fontSize: 15, anchor: 'middle', fontWeight: 'bold',
+      fontFamily: 'ui-monospace, SFMono-Regular, monospace', fill: INK,
+    }));
+  }
+  svg.rect(s, 100, 310, 300, 6, { fill: 'var(--dia-faint, #c9bda7)', stroke: 'none', rx: 3 });
+  const progressFill = svg.rect(s, 100, 310, 0.01, 6, { fill: CORD, stroke: 'none', rx: 3 });
 
-  // Motion arrows showing removal/replacement direction (toggled per step)
-  const arrowRemove6 = svg.motionArrow(s, 390, 120, 390, 155, { label: 'Remove #6', curvature: 0.3 });
-  const arrowRemove5 = svg.motionArrow(s, 334, 120, 334, 155, { label: 'Then #5', curvature: 0.3 });
-  const arrowReplace6 = svg.motionArrow(s, 390, 155, 390, 120, { label: 'Replace #6', curvature: 0.3 });
-
-  // Hand icon near rightmost loop
+  // Move-counter badge + hand icon near the working end
+  const badge = svg.stepBadge(s, 435, 92, 0, MOVES, { radius: 12 });
+  const badgeNum = badge.querySelector('text');
   svg.handIcon(s, 405, 110, { scale: 0.6, rotation: 0 });
 
-  // Step badges (highlighted per phase by the updater)
-  const badge1 = svg.stepBadge(s, 435, 85, 1, 3, { radius: 11 });
-  svg.actionLabel(s, 455, 85, 'Remove #6');
-  const badge2 = svg.stepBadge(s, 435, 108, 2, 3, { radius: 11 });
-  svg.actionLabel(s, 455, 108, 'Remove #5');
-  const badge3 = svg.stepBadge(s, 435, 131, 3, 3, { radius: 11 });
-  svg.actionLabel(s, 455, 131, 'Replace #6!');
-  const badges = [badge1, badge2, badge3];
-
   // Key insight
-  const calloutRect = svg.rect(s, 50, 340, 400, 30, { fill: 'var(--dia-wash, #ece3d0)', stroke: 'var(--dia-ring, #b97d12)', strokeWidth: 1, rx: 4 });
-  svg.text(s, 250, 360, 'You must remove and replace loops in a strict order — no shortcuts!', {
-    fontSize: 10, anchor: 'middle', fill: 'var(--dia-ring, #b97d12)',
-  });
+  svg.calloutBox(s, 50, 340, 400, 30, 'You must remove and replace loops in a strict order — no shortcuts!');
 
-  // Inject pulse animation for the callout
-  let styleEl = s.querySelector('style[data-anim]');
-  if (!styleEl) {
-    styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
-    styleEl.setAttribute('data-anim', '1');
-    s.insertBefore(styleEl, s.firstChild);
-  }
-  styleEl.textContent += `
-    @keyframes calloutPulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
-    .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
-  `;
-  calloutRect.classList.add('callout-box');
-
-  // ---- Timeline updater: sync the 2D loops + badges + arrows to the Gray-code solution.
-  // states[i] is the on/off pattern after step i (index 0 = all on). A loop that is
-  // "off" is slid downward off the bar; "on" sits at rest. We mirror the 3D motion by
-  // sliding the active loop's arc down (remove) or back up (replace).
+  // ---- Timeline updater: everything below derives from the same generated
+  // states/moves arrays as the 3D animation, so the 2D stays in lockstep for
+  // all 43 steps. A loop that is "off" slides down away from the bar.
   const OFF_DY = 22; // px the loop slides down when removed from the bar
   return function update(state) {
     const i = Math.max(0, Math.min(state.stepIndex | 0, states.length - 1));
-    const p = state.stepProgress ?? 0;
+    const p = Math.max(0, Math.min(state.stepProgress ?? 0, 1));
     const prev = states[Math.max(0, i - 1)];
     const cur = states[i];
+    const move = moves[i]; // null on the intro step
 
-    // Move each loop between its previous and current off/on offset.
-    for (let k = 0; k < loops.length && k < cur.length; k++) {
-      if (!loops[k]) continue;
+    // Slide each loop between its previous and current on/off pose.
+    for (let k = 0; k < loops.length; k++) {
       const fromOff = prev[k] ? 0 : OFF_DY;
       const toOff = cur[k] ? 0 : OFF_DY;
       const dy = fromOff + (toOff - fromOff) * p;
@@ -383,16 +392,26 @@ export function createSVGDiagram(container) {
       loops[k].style.opacity = String(1 - 0.45 * (dy / OFF_DY));
     }
 
-    // Highlight the badge for the current phase (steps 1-3 map to badges 1-3).
-    const phase = i <= 1 ? 0 : i === 2 ? 1 : 2;
-    badges.forEach((b, k) => svg.highlight(b, k === phase, { dim: 0.3, color: CORD }));
+    // Reveal only the moving loop's directional arrow.
+    for (let k = 0; k < NUM_LOOPS; k++) {
+      svg.highlight(arrowsOff[k], !!move && move.loop === k && move.off, { glow: false, dim: 0 });
+      svg.highlight(arrowsOn[k], !!move && move.loop === k && !move.off, { glow: false, dim: 0 });
+    }
 
-    // Show only the arrow relevant to the current step.
-    // Step 1 removes #6, step 2 removes #5, step 3 replaces #6.
-    svg.highlight(arrowRemove6, i === 1 || i === 5, { glow: false, dim: 0 });
-    svg.highlight(arrowRemove5, i === 2, { glow: false, dim: 0 });
-    svg.highlight(arrowReplace6, i === 3 || i === 7, { glow: false, dim: 0 });
+    // Move counter, action line, binary state readout, progress bar.
+    badgeNum.textContent = String(i);
+    actionText.textContent = move
+      ? `Move ${i} of ${MOVES}: slide loop #${move.loop + 1} ${move.off ? 'off the bar' : 'back onto the bar'}`
+      : 'Start: all six loops on the shuttle bar';
+    const shown = p < 0.5 ? prev : cur; // the flipped digit switches mid-slide
+    for (let k = 0; k < NUM_LOOPS; k++) {
+      digits[k].textContent = shown[k] ? '1' : '0';
+      digits[k].setAttribute('fill', move && move.loop === k ? NEG : INK);
+    }
+    progressFill.setAttribute('width', String(Math.max(0.01, 300 * (i === 0 ? 0 : (i - 1 + p) / MOVES))));
   };
 }
 
-export function dispose() {}
+export function dispose() {
+  highlights.dispose();
+}

@@ -86,23 +86,23 @@
 </head>
 <body>
   <h1>EXKNOTS — Visual Diagram Gallery</h1>
-  <p class="subtitle">All 10 puzzle SVG diagrams rendered side by side for visual verification.</p>
+  <p class="subtitle" id="subtitle">Puzzle SVG diagrams rendered side by side for visual verification.</p>
   <div class="stats" id="stats">Loading puzzles...</div>
   <div class="grid" id="gallery"></div>
 
   <script type="module">
-    const puzzles = [
-      { id: 1,  path: '../puzzles/puzzle-01.js' },
-      { id: 2,  path: '../puzzles/puzzle-02.js' },
-      { id: 3,  path: '../puzzles/puzzle-03.js' },
-      { id: 4,  path: '../puzzles/puzzle-04.js' },
-      { id: 5,  path: '../puzzles/puzzle-05.js' },
-      { id: 6,  path: '../puzzles/puzzle-06.js' },
-      { id: 7,  path: '../puzzles/puzzle-07.js' },
-      { id: 8,  path: '../puzzles/puzzle-08.js' },
-      { id: 9,  path: '../puzzles/puzzle-09.js' },
-      { id: 10, path: '../puzzles/puzzle-10.js' },
-    ];
+    import { puzzleRegistry } from '../puzzles/registry.js';
+
+    // Registry module paths are root-relative ('./puzzles/…'); this page lives
+    // one level down in test/, so rewrite them to '../puzzles/…'.
+    const puzzles = puzzleRegistry.map(({ id, module, name }) => ({
+      id,
+      name,
+      path: '../' + module.replace(/^\.\//, ''),
+    }));
+
+    document.getElementById('subtitle').textContent =
+      `All ${puzzles.length} puzzle SVG diagrams rendered side by side for visual verification.`;
 
     const gallery = document.getElementById('gallery');
     const statsEl = document.getElementById('stats');
@@ -150,7 +150,7 @@
       gallery.appendChild(card);
     }
 
-    statsEl.textContent = `Loaded: ${loaded}/10 | Failed: ${failed}/10 | ${new Date().toLocaleString()}`;
+    statsEl.textContent = `Loaded: ${loaded}/${puzzles.length} | Failed: ${failed}/${puzzles.length} | ${new Date().toLocaleString()}`;
   </script>
 </body>
 </html>

@@ -1,0 +1,93 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 285">
+  <title>Puzzle 19: The Tangle Dance — The Two Legal Moves</title>
+  <desc>Two panels. Left, TWIST (T): before-frame shows two parallel strands (fraction 0); after-frame shows the top-right strand crossed over the bottom-right strand and re-seated swapped (fraction 1); law x → x + 1. Right, ROTATE (R): before-frame shows a single positive crossing (fraction 1); after-frame shows the same frame turned a quarter-turn clockwise, giving a single negative crossing (fraction −1); law x → −1/x.</desc>
+
+  <!-- ===== Left half: TWIST ===== -->
+  <text x="175" y="32" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="var(--dia-ink, #24211a)">T — TWIST</text>
+  <text x="175" y="52" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-pos, #2f8f43)">x → x + 1</text>
+
+  <!-- T before: the 0 tangle -->
+  <rect x="45" y="75" width="100" height="100" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="61" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="129" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="61" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="129" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <line x1="61" y1="91" x2="129" y2="91" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="61" y1="159" x2="129" y2="159" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="61" cy="91" r="3.5" fill="var(--dia-cord, #1f57c4)"/>
+  <circle cx="129" cy="91" r="3.5" fill="var(--dia-cord, #1f57c4)"/>
+  <circle cx="61" cy="159" r="3.5" fill="var(--dia-neg, #cf3a26)"/>
+  <circle cx="129" cy="159" r="3.5" fill="var(--dia-neg, #cf3a26)"/>
+
+  <!-- action arrow -->
+  <line x1="152" y1="125" x2="192" y2="125" stroke="var(--dia-ink, #24211a)" stroke-width="1.8"/>
+  <polygon points="192,120 202,125 192,130" fill="var(--dia-ink, #24211a)"/>
+  <text x="177" y="113" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-ink, #24211a)">T</text>
+
+  <!-- T after: the +1 tangle (blue crossed OVER red at the right side, ends re-seated swapped) -->
+  <rect x="205" y="75" width="100" height="100" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="221" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="289" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="221" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="289" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <!-- under strand (red), continuous -->
+  <line x1="221" y1="159" x2="289" y2="91" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- occlusion along the over tangent at crossing (255,125), then over strand (blue) -->
+  <line x1="251.46" y1="121.46" x2="258.54" y2="128.54" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8" stroke-linecap="round"/>
+  <line x1="221" y1="91" x2="289" y2="159" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="221" cy="91" r="3.5" fill="var(--dia-cord, #1f57c4)"/>
+  <circle cx="289" cy="159" r="3.5" fill="var(--dia-cord, #1f57c4)"/>
+  <circle cx="221" cy="159" r="3.5" fill="var(--dia-neg, #cf3a26)"/>
+  <circle cx="289" cy="91" r="3.5" fill="var(--dia-neg, #cf3a26)"/>
+
+  <text x="175" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">lift the two right handles, cross top-right OVER</text>
+  <text x="175" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">bottom-right, re-seat swapped</text>
+  <text x="175" y="242" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)">shown: 0 → 0 + 1 = 1</text>
+
+  <!-- divider -->
+  <line x1="330" y1="22" x2="330" y2="260" stroke="var(--dia-faint, #c9bda7)" stroke-width="1"/>
+
+  <!-- ===== Right half: ROTATE ===== -->
+  <text x="485" y="32" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="var(--dia-ink, #24211a)">R — ROTATE</text>
+  <text x="485" y="52" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-gold, #c79a22)">x → −1/x</text>
+
+  <!-- R before: the +1 tangle -->
+  <rect x="375" y="75" width="100" height="100" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="391" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="459" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="391" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="459" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <line x1="391" y1="159" x2="459" y2="91" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="421.46" y1="121.46" x2="428.54" y2="128.54" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8" stroke-linecap="round"/>
+  <line x1="391" y1="91" x2="459" y2="159" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="391" cy="91" r="3.5" fill="var(--dia-cord, #1f57c4)"/>
+  <circle cx="459" cy="159" r="3.5" fill="var(--dia-cord, #1f57c4)"/>
+  <circle cx="391" cy="159" r="3.5" fill="var(--dia-neg, #cf3a26)"/>
+  <circle cx="459" cy="91" r="3.5" fill="var(--dia-neg, #cf3a26)"/>
+
+  <!-- action arrow -->
+  <line x1="482" y1="125" x2="522" y2="125" stroke="var(--dia-ink, #24211a)" stroke-width="1.8"/>
+  <polygon points="522,120 532,125 522,130" fill="var(--dia-ink, #24211a)"/>
+  <text x="507" y="113" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-ink, #24211a)">R</text>
+
+  <!-- R after: the whole frame turned 90° clockwise — same crossing, now negative (−1) -->
+  <rect x="535" y="75" width="100" height="100" rx="4" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <!-- quarter-turn cue above the frame -->
+  <path d="M597,64 Q625,64 625,90" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1.5"/>
+  <polygon points="620,86 630,86 625,96" fill="var(--dia-inksoft, #6a6151)"/>
+  <circle cx="551" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="619" cy="91" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="551" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <circle cx="619" cy="159" r="5.5" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"/>
+  <line x1="551" y1="91" x2="619" y2="159" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="588.54" y1="121.46" x2="581.46" y2="128.54" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8" stroke-linecap="round"/>
+  <line x1="619" y1="91" x2="551" y2="159" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="619" cy="91" r="3.5" fill="var(--dia-cord, #1f57c4)"/>
+  <circle cx="551" cy="159" r="3.5" fill="var(--dia-cord, #1f57c4)"/>
+  <circle cx="551" cy="91" r="3.5" fill="var(--dia-neg, #cf3a26)"/>
+  <circle cx="619" cy="159" r="3.5" fill="var(--dia-neg, #cf3a26)"/>
+
+  <text x="485" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">turn the whole frame a quarter-turn clockwise</text>
+  <text x="485" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">the cords do not move — the fraction inverts</text>
+  <text x="485" y="242" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)">shown: 1 → −1/1 = −1</text>
+</svg>

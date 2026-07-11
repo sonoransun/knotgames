@@ -83,6 +83,8 @@ The permutation needed is a 3-cycle: the ring at post 1 ends at post 2, post 2's
 | 1 | **σ₂** | Swap the rings at posts 2 and 3: lift Yellow over the center finial onto post 3, then lift Red over the right finial onto post 2. | Blue · Red · Yellow |
 | 2 | **σ₁** | Swap the rings at posts 1 and 2: lift Blue over the left finial onto post 2, then lift Red over the center finial onto post 1. | **Red · Blue · Yellow** ✓ |
 
+![Checkpoint A: after σ₂ — one strand crossing so far](../diagrams/puzzles/12-the-braid-cage/checkpoint-a.svg)
+
 The cords end with the topological signature of a 3-cycle braid: cord 1 (anchored between posts 1 and 2) and cord 2 (anchored between posts 2 and 3) cross once — that's the unavoidable braid generator pattern σ₂σ₁ produces. They are *not* tangled around each other; they hang in a clean two-strand crossing.
 
 **The Yang-Baxter test.** Try the alternative sequence **σ₁ · σ₂** instead:
@@ -93,6 +95,8 @@ The cords end with the topological signature of a 3-cycle braid: cord 1 (anchore
 Different final permutation! σ₁σ₂ ≠ σ₂σ₁ — the order matters. This is non-commutativity made physical.
 
 **Why the longer Yang-Baxter sequences (σ₁σ₂σ₁ or σ₂σ₁σ₂) don't appear here.** Those three-letter words give the same permutation as σ₂σ₁ followed by an extra swap that lands one ring back in its original spot — *not* this 3-cycle target. They are useful when you need to demonstrate that two seemingly-different moves are equivalent, not when you're solving a specific permutation. For this puzzle, σ₂σ₁ is both correct and minimal.
+
+![Solved: target order reached — the ring paths record the braid word σ₂·σ₁](../diagrams/puzzles/12-the-braid-cage/solved.svg)
 
 ## Why It's Tricky
 

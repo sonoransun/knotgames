@@ -9,7 +9,7 @@
     </marker>
   </defs>
 
-  
+
 
   <!-- Title -->
   <text x="200" y="25" text-anchor="middle" font-family="system-ui, sans-serif"
@@ -25,22 +25,14 @@
   <text x="70" y="70" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="8" fill="var(--dia-rigid, #8a8275)">swap strands 1,2</text>
 
-  <!-- Three strands entering at top -->
-  <!-- Strand 1 (blue) crosses over strand 2 (yellow) -->
-  <line x1="40" y1="85" x2="40" y2="130" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
-  <line x1="40" y1="130" x2="100" y2="200" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
-  <!-- Gap in strand 2 at crossing -->
-  <line x1="70" y1="85" x2="70" y2="130" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
-  <line x1="70" y1="130" x2="58" y2="148" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
-  <!-- crossing gap -->
-  <line x1="48" y1="160" x2="40" y2="200" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
   <!-- Strand 3 (red) goes straight -->
-  <line x1="100" y1="85" x2="100" y2="200" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
-
-  <!-- Continue to bottom -->
-  <line x1="100" y1="200" x2="100" y2="260" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
-  <line x1="40" y1="200" x2="40" y2="260" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
-  <line x1="100" y1="200" x2="100" y2="260" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
+  <line x1="100" y1="85" x2="100" y2="260" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
+  <!-- Strand 2 (yellow) passes under: one continuous path -->
+  <path d="M 70,85 L 70,130 L 40,200 L 40,260" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
+  <!-- Occlusion stroke along the over strand's tangent at the crossing (55,165) -->
+  <line x1="52" y1="158" x2="58" y2="172" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8" stroke-linecap="round"/>
+  <!-- Strand 1 (blue) crosses over strand 2 (yellow), drawn last -->
+  <path d="M 40,85 L 40,130 L 70,200 L 70,260" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
 
   <!-- Swap arrow -->
   <path d="M 42,110 Q 55,100 68,110" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1" marker-end="url(#swapArrow)"/>
@@ -51,18 +43,14 @@
   <text x="205" y="70" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="8" fill="var(--dia-rigid, #8a8275)">swap strands 2,3</text>
 
-  <!-- Strand 1 goes straight -->
+  <!-- Strand 1 (yellow, now at pos 1) goes straight -->
   <line x1="175" y1="85" x2="175" y2="260" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
-  <!-- Strand 2 (blue now at pos 2) crosses over strand 3 (red) -->
-  <line x1="205" y1="85" x2="205" y2="130" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
-  <line x1="205" y1="130" x2="235" y2="200" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
-  <!-- Gap in strand 3 -->
-  <line x1="235" y1="85" x2="235" y2="130" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
-  <line x1="235" y1="130" x2="223" y2="148" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
-  <line x1="213" y1="160" x2="205" y2="200" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
-
-  <line x1="235" y1="200" x2="235" y2="260" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
-  <line x1="205" y1="200" x2="205" y2="260" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
+  <!-- Strand 3 (red) passes under: one continuous path -->
+  <path d="M 235,85 L 235,130 L 205,200 L 205,260" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
+  <!-- Occlusion stroke along the over strand's tangent at the crossing (220,165) -->
+  <line x1="217" y1="158" x2="223" y2="172" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8" stroke-linecap="round"/>
+  <!-- Strand 2 (blue, now at pos 2) crosses over strand 3 (red), drawn last -->
+  <path d="M 205,85 L 205,130 L 235,200 L 235,260" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
 
   <!-- Swap arrow -->
   <path d="M 207,110 Q 220,100 233,110" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1" marker-end="url(#swapArrow)"/>
@@ -73,18 +61,14 @@
   <text x="335" y="70" text-anchor="middle" font-family="system-ui, sans-serif"
         font-size="8" fill="var(--dia-rigid, #8a8275)">swap strands 1,2</text>
 
-  <!-- Strand 1 (yellow at pos 1) crosses over strand 2 (red now at pos 2) -->
-  <line x1="305" y1="85" x2="305" y2="130" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
-  <line x1="305" y1="130" x2="335" y2="200" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
-  <!-- Gap in strand 2 -->
-  <line x1="335" y1="85" x2="335" y2="130" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
-  <line x1="335" y1="130" x2="323" y2="148" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
-  <line x1="313" y1="160" x2="305" y2="200" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
-  <!-- Strand 3 (blue at pos 3) goes straight -->
+  <!-- Strand 3 (blue, now at pos 3) goes straight -->
   <line x1="365" y1="85" x2="365" y2="260" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
-
-  <line x1="335" y1="200" x2="335" y2="260" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
-  <line x1="305" y1="200" x2="305" y2="260" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
+  <!-- Strand 2 (red, now at pos 2) passes under: one continuous path -->
+  <path d="M 335,85 L 335,130 L 305,200 L 305,260" fill="none" stroke="var(--dia-neg, #cf3a26)" stroke-width="2.5"/>
+  <!-- Occlusion stroke along the over strand's tangent at the crossing (320,165) -->
+  <line x1="317" y1="158" x2="323" y2="172" stroke="var(--dia-surface, #fbf7ee)" stroke-width="8" stroke-linecap="round"/>
+  <!-- Strand 1 (yellow, at pos 1) crosses over strand 2 (red), drawn last -->
+  <path d="M 305,85 L 305,130 L 335,200 L 335,260" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="2.5"/>
 
   <!-- Swap arrow -->
   <path d="M 307,110 Q 320,100 333,110" fill="none" stroke="var(--dia-inksoft, #6a6151)" stroke-width="1" marker-end="url(#swapArrow)"/>

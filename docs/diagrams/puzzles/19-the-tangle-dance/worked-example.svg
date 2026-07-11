@@ -1,0 +1,122 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 720">
+  <title>Puzzle 19: The Tangle Dance — The Descent from 3/2 to 0</title>
+  <desc>A vertical ladder of seven tangle states with the move taken between each pair. From the top: 3/2 (rotate), −2/3 (twist), 1/3 (rotate), −3 (twist), −2 (twist), −1 (twist), 0. Each rung shows a small tangle diagram, its fraction, and the rule applied: positive means rotate, negative means twist. The arithmetic on each arrow is written out, for example −1/(3/2) = −2/3. Strand colors are omitted in the small diagrams; over and under crossings are drawn exactly.</desc>
+
+  <text x="230" y="26" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="var(--dia-ink, #24211a)">The descent from 3/2: positive → rotate, negative → twist</text>
+
+  <!-- ===== Rung 1: 3/2 ===== -->
+  <rect x="58" y="48" width="64" height="64" rx="6" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.2"/>
+  <path d="M63,53 L81,63.5 L90,80 L81,96.5 L63,107" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M117,53 L90,96.5 L81,80 L90,63.5 L117,107" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="83.34" y1="67.79" x2="87.66" y2="75.71" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M81,63.5 L90,80" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="83.34" y1="84.29" x2="87.66" y2="92.21" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M81,80 L90,96.5" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="97.83" y1="76.18" x2="102.57" y2="83.82" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M90,63.5 L117,107" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <text x="170" y="86" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="var(--dia-ink, #24211a)">3/2</text>
+  <text x="240" y="85" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">positive → rotate</text>
+
+  <line x1="90" y1="116" x2="90" y2="133" stroke="var(--dia-ink, #24211a)" stroke-width="1.6"/>
+  <polygon points="85,131 95,131 90,140" fill="var(--dia-ink, #24211a)"/>
+  <circle cx="60" cy="127" r="10" fill="var(--dia-gold, #c79a22)"/>
+  <text x="60" y="131" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">R</text>
+  <text x="112" y="131" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">−1/(3/2) = −2/3</text>
+
+  <!-- ===== Rung 2: −2/3 (rung 1 turned a quarter-turn clockwise) ===== -->
+  <rect x="58" y="143" width="64" height="64" rx="6" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.2"/>
+  <path d="M117,148 L106.5,166 L90,175 L73.5,166 L63,148" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M117,202 L73.5,175 L90,166 L106.5,175 L63,202" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="94.29" y1="172.66" x2="102.21" y2="168.34" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M106.5,166 L90,175" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="77.79" y1="172.66" x2="85.71" y2="168.34" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M90,166 L73.5,175" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="86.18" y1="187.57" x2="93.82" y2="182.83" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M106.5,175 L63,202" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <text x="170" y="181" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="var(--dia-ink, #24211a)">−2/3</text>
+  <text x="240" y="180" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">negative → twist</text>
+
+  <line x1="90" y1="211" x2="90" y2="228" stroke="var(--dia-ink, #24211a)" stroke-width="1.6"/>
+  <polygon points="85,226 95,226 90,235" fill="var(--dia-ink, #24211a)"/>
+  <circle cx="60" cy="222" r="10" fill="var(--dia-pos, #2f8f43)"/>
+  <text x="60" y="226" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">T</text>
+  <text x="112" y="226" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">−2/3 + 1 = 1/3</text>
+
+  <!-- ===== Rung 3: 1/3 (three vertical twists) ===== -->
+  <rect x="58" y="238" width="64" height="64" rx="6" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.2"/>
+  <path d="M79,246 L101,262 L79,278 L101,294" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M101,246 L79,262 L101,278 L79,294" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="86.36" y1="251.35" x2="93.64" y2="256.65" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M79,246 L101,262" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="86.36" y1="267.35" x2="93.64" y2="272.65" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M79,262 L101,278" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="86.36" y1="283.35" x2="93.64" y2="288.65" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M79,278 L101,294" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <text x="170" y="276" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="var(--dia-ink, #24211a)">1/3</text>
+  <text x="240" y="275" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">positive → rotate</text>
+
+  <line x1="90" y1="306" x2="90" y2="323" stroke="var(--dia-ink, #24211a)" stroke-width="1.6"/>
+  <polygon points="85,321 95,321 90,330" fill="var(--dia-ink, #24211a)"/>
+  <circle cx="60" cy="317" r="10" fill="var(--dia-gold, #c79a22)"/>
+  <text x="60" y="321" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">R</text>
+  <text x="112" y="321" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">−1/(1/3) = −3</text>
+
+  <!-- ===== Rung 4: −3 (rung 3 turned a quarter-turn clockwise) ===== -->
+  <rect x="58" y="333" width="64" height="64" rx="6" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.2"/>
+  <path d="M114,354 L98,376 L82,354 L66,376" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M114,376 L98,354 L82,376 L66,354" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="108.65" y1="361.36" x2="103.35" y2="368.64" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M114,354 L98,376" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="92.65" y1="361.36" x2="87.35" y2="368.64" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M98,354 L82,376" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="76.65" y1="361.36" x2="71.35" y2="368.64" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M82,354 L66,376" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <text x="170" y="371" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="var(--dia-ink, #24211a)">−3</text>
+  <text x="240" y="370" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">negative → twist</text>
+
+  <line x1="90" y1="401" x2="90" y2="418" stroke="var(--dia-ink, #24211a)" stroke-width="1.6"/>
+  <polygon points="85,416 95,416 90,425" fill="var(--dia-ink, #24211a)"/>
+  <circle cx="60" cy="412" r="10" fill="var(--dia-pos, #2f8f43)"/>
+  <text x="60" y="416" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">T</text>
+  <text x="112" y="416" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">−3 + 1 = −2</text>
+
+  <!-- ===== Rung 5: −2 (two negative twists) ===== -->
+  <rect x="58" y="428" width="64" height="64" rx="6" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.2"/>
+  <path d="M62,446 L90,474 L118,446" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M62,474 L90,446 L118,474" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="72.82" y1="463.18" x2="79.18" y2="456.82" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M62,474 L90,446" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="100.82" y1="463.18" x2="107.18" y2="456.82" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M90,474 L118,446" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <text x="170" y="466" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="var(--dia-ink, #24211a)">−2</text>
+  <text x="240" y="465" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">negative → twist</text>
+
+  <line x1="90" y1="496" x2="90" y2="513" stroke="var(--dia-ink, #24211a)" stroke-width="1.6"/>
+  <polygon points="85,511 95,511 90,520" fill="var(--dia-ink, #24211a)"/>
+  <circle cx="60" cy="507" r="10" fill="var(--dia-pos, #2f8f43)"/>
+  <text x="60" y="511" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">T</text>
+  <text x="112" y="511" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">−2 + 1 = −1</text>
+
+  <!-- ===== Rung 6: −1 (one negative crossing) ===== -->
+  <rect x="58" y="523" width="64" height="64" rx="6" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.2"/>
+  <path d="M66,537 L114,573" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="86" y1="558" x2="94" y2="552" stroke="var(--dia-surface, #fbf7ee)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M66,573 L114,537" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <text x="170" y="561" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="var(--dia-ink, #24211a)">−1</text>
+  <text x="240" y="560" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">negative → twist</text>
+
+  <line x1="90" y1="591" x2="90" y2="608" stroke="var(--dia-ink, #24211a)" stroke-width="1.6"/>
+  <polygon points="85,606 95,606 90,615" fill="var(--dia-ink, #24211a)"/>
+  <circle cx="60" cy="602" r="10" fill="var(--dia-pos, #2f8f43)"/>
+  <text x="60" y="606" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-surface, #fbf7ee)">T</text>
+  <text x="112" y="606" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">−1 + 1 = 0</text>
+
+  <!-- ===== Rung 7: 0 (two parallel strands) ===== -->
+  <rect x="58" y="618" width="64" height="64" rx="6" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1.2"/>
+  <line x1="64" y1="640" x2="116" y2="640" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="64" y1="660" x2="116" y2="660" stroke="var(--dia-cord, #1f57c4)" stroke-width="2" stroke-linecap="round"/>
+  <text x="170" y="656" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="var(--dia-ink, #24211a)">0</text>
+  <text x="240" y="655" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">solved — two parallel strands</text>
+
+  <text x="230" y="704" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">each rotate–twist block runs one division step of Euclid's algorithm — the descent must reach 0</text>
+</svg>

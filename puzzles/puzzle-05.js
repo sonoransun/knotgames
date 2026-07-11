@@ -34,46 +34,47 @@ function createOval(material) {
   return new THREE.Mesh(geometry, material);
 }
 
-// Borromean configuration offsets
+// Standard Borromean ("golden rectangle") configuration: three mutually
+// orthogonal ellipses, one per coordinate plane, with the long/short axes
+// cyclically permuted so each ring's short opening is threaded by the next
+// ring's long axis:
+//   red    — XY plane: long semi-axis along x, short along y (base pose)
+//   blue   — YZ plane: long along y, short along z
+//   yellow — ZX plane: long along z, short along x
+// The Euler triples below map the base oval (long x, short y, in XY) onto
+// those planes. With OVAL_LONG/OVAL_SHORT = 40/20 the three center-curves
+// stay ~16.3 units apart (verified numerically), far beyond the 2*ROD_R = 4
+// contact distance, so the tubes interlock without touching.
+const RING_ROT = {
+  red: [0, 0, 0],
+  blue: [Math.PI / 2, Math.PI / 2, 0],
+  yellow: [Math.PI / 2, 0, Math.PI / 2],
+};
+
 function borromeanPositions() {
-  // Three ovals in orthogonal planes with over/under weaving
   return {
-    red: { rotation: [0, 0, 0], position: [0, 0, 0] },           // XY plane
-    blue: { rotation: [Math.PI / 2, 0, Math.PI / 2], position: [0, 0, 0] },   // XZ plane
-    yellow: { rotation: [Math.PI / 2, Math.PI / 2, 0], position: [0, 0, 0] }, // YZ plane
+    red: { rotation: RING_ROT.red, position: [0, 0, 0] },
+    blue: { rotation: RING_ROT.blue, position: [0, 0, 0] },
+    yellow: { rotation: RING_ROT.yellow, position: [0, 0, 0] },
   };
 }
 
 function createBorromeanGroup(mats, separated = false) {
   const group = new THREE.Group();
+  const pos = borromeanPositions();
+  const ovals = {};
 
-  const redOval = createOval(mats.red);
-  const blueOval = createOval(mats.blue);
-  const yellowOval = createOval(mats.yellow);
-
-  if (separated) {
-    // Separated positions (for animation start)
-    redOval.position.set(-80, 0, 0);
-    blueOval.position.set(80, 0, 0);
-    blueOval.rotation.set(Math.PI / 2, 0, Math.PI / 2);
-    yellowOval.position.set(0, 80, 0);
-    yellowOval.rotation.set(Math.PI / 2, Math.PI / 2, 0);
-  } else {
-    // Borromean configuration
-    const pos = borromeanPositions();
-    redOval.rotation.set(...pos.red.rotation);
-    redOval.position.set(...pos.red.position);
-    blueOval.rotation.set(...pos.blue.rotation);
-    blueOval.position.set(...pos.blue.position);
-    yellowOval.rotation.set(...pos.yellow.rotation);
-    yellowOval.position.set(...pos.yellow.position);
+  // Rings keep their locked orientation even when separated, so assembly is a
+  // pure translation of each ring along its own approach axis.
+  for (const name of ['red', 'blue', 'yellow']) {
+    const oval = createOval(mats[name]);
+    oval.rotation.set(...pos[name].rotation);
+    oval.position.set(...(separated ? SEP[name] : pos[name].position));
+    group.add(oval);
+    ovals[name] = oval;
   }
 
-  group.add(redOval);
-  group.add(blueOval);
-  group.add(yellowOval);
-
-  return { group, ovals: { red: redOval, blue: blueOval, yellow: yellowOval } };
+  return { group, ovals };
 }
 
 export function create3DScene() {
@@ -91,15 +92,12 @@ export function createAnimScene() {
   return { group, objects: { ...ovals, arrowManager } };
 }
 
+// Approach axes: red slides in along -x (in its own XY plane), blue along +x
+// (perpendicular to its YZ plane), yellow along +y (perpendicular to its ZX
+// plane). All three converge on the shared center where the weave locks.
 const SEP = { red: [-80, 0, 0], blue: [80, 0, 0], yellow: [0, 80, 0] };
 const MID = { red: [-30, 0, 0], blue: [30, 0, 0], yellow: [0, 30, 0] };
 const LOCK = { red: [0, 0, 0], blue: [0, 0, 0], yellow: [0, 0, 0] };
-
-const SEP_R = {
-  red: [0, 0, 0],
-  blue: [Math.PI / 2, 0, Math.PI / 2],
-  yellow: [Math.PI / 2, Math.PI / 2, 0],
-};
 
 const arrowConfigs = {
   1: { arrows: [
@@ -120,27 +118,27 @@ export const animationSteps = [
     label: 'Start: hold three separate ovals — no two are linked together',
     duration: 2.0,
     positions: SEP,
-    rotations: SEP_R,
+    rotations: RING_ROT,
   },
   {
     label: 'Slide the ovals closer, overlapping but not yet interlocked',
     duration: 2.5,
     easing: 'easeOut',
     positions: MID,
-    rotations: SEP_R,
+    rotations: RING_ROT,
   },
   {
     label: 'Weave all three ovals together at the same time',
     duration: 3.0,
     easing: 'easeOut',
     positions: LOCK,
-    rotations: SEP_R,
+    rotations: RING_ROT,
   },
   {
     label: 'Hold and check: remove any one oval and the others fall apart',
     duration: 2.5,
     positions: LOCK,
-    rotations: SEP_R,
+    rotations: RING_ROT,
   },
 ];
 
@@ -199,65 +197,188 @@ export function createSVGDiagram(container) {
     fontSize: 14, anchor: 'middle', fontWeight: 'bold',
   });
 
-  // Classic Borromean rings diagram (triangular arrangement)
+  // Venn-style three-ellipse Borromean cluster: long axes at 0/240/120
+  // degrees (3-fold symmetric), each ellipse pushed out from the shared
+  // centroid perpendicular to its long axis — but only SPREAD px, so all
+  // three overlap in a central triple region like a Venn diagram. Each pair
+  // of locked ellipses then crosses at exactly 2 points (6 crossings total,
+  // >= ~40px apart, so the crossing dressings never collide), and along
+  // every ring its four crossings alternate partners (1-2-1-2) and senses
+  // (over, under, over, under). That interleaving is what makes the flat
+  // diagram genuinely Borromean — verified numerically: the diagram's link
+  // determinant is 16 (the Borromean rings' value; a layout whose pairwise
+  // lenses reduce away by Reidemeister-II moves would give 0, the unlink).
   const cx = 250;
   const cy = 180;
-  const R = 55;
-  const r = 35;
+  const RX = 56;              // ring semi-axes — rounder than the physical
+  const RY = 34;              //   2:1 ovals so the central weave stays open
+  const SPREAD = 20;          // centroid -> ring-center distance
+  const ROTS = [0, 240, 120]; // long-axis angle of each ring (deg)
 
-  // Compute three ring centers
+  // Locked ring centers: red top, blue bottom-left, yellow bottom-right
   const positions = [
-    [cx, cy - R * 0.7],                          // top
-    [cx - R * 0.8, cy + R * 0.5],                // bottom-left
-    [cx + R * 0.8, cy + R * 0.5],                // bottom-right
+    [cx, cy - SPREAD],
+    [cx - 0.866 * SPREAD, cy + 0.5 * SPREAD],
+    [cx + 0.866 * SPREAD, cy + 0.5 * SPREAD],
   ];
   const colors = [RED, BLUE, GOLD];
   const names = ['Red (A)', 'Blue (B)', 'Yellow (C)'];
 
-  // Draw rings with over/under crossings
-  // First pass: draw all rings (kept as references so the updater can move them)
+  // Draw the base rings (kept as references so the updater can move them)
   const ovalEls = [];
   for (let i = 0; i < 3; i++) {
-    const el = svg.ellipse(s, positions[i][0], positions[i][1], r, r * 0.65, {
+    const el = svg.ellipse(s, positions[i][0], positions[i][1], RX, RY, {
       stroke: colors[i],
       strokeWidth: 4,
       fill: 'none',
-      transform: `rotate(${i * 120 + 30}, ${positions[i][0]}, ${positions[i][1]})`,
+      transform: `rotate(${ROTS[i]}, ${positions[i][0]}, ${positions[i][1]})`,
     });
     el.style.transition = 'cx .12s linear, cy .12s linear';
     ovalEls.push(el);
   }
 
-  // Over-under indicators (arrows showing the weaving pattern)
-  svg.text(s, cx - 18, cy - 15, 'Red over Blue', { fontSize: 7, fill: RED });
-  svg.text(s, cx + 2, cy + 20, 'Blue over Yellow', { fontSize: 7, fill: BLUE });
-  svg.text(s, cx - 45, cy + 20, 'Yellow over Red', { fontSize: 7, fill: GOLD });
+  // 2D keyframes per animation step mirror the 3D SEP -> MID -> LOCK moves:
+  // each oval retreats from its locked center along its own approach axis
+  // (the centroid -> ring-center direction), far enough at SEP that the
+  // three rings are fully disjoint on screen.
+  const finalC = positions.map((p) => [p[0], p[1]]);
+  const APPROACH = [[0, -1], [-0.866, 0.5], [0.866, 0.5]];
+  const alongApproach = (k, d) => [
+    finalC[k][0] + APPROACH[k][0] * d,
+    finalC[k][1] + APPROACH[k][1] * d,
+  ];
+  const sepC = [0, 1, 2].map((k) => alongApproach(k, 65));
+  const midC = [0, 1, 2].map((k) => alongApproach(k, 30));
+  const centerKeys = [sepC, midC, finalC, finalC];
 
-  // Labels
+  // Ring name labels sit inside the separated rings' openings; the updater
+  // fades them out as the weave overlay (with its own labels) fades in.
+  const nameGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  s.appendChild(nameGroup);
+  const nameSpots = [
+    [sepC[0][0], sepC[0][1] + 3],
+    [sepC[1][0], sepC[1][1] + 4],
+    [sepC[2][0], sepC[2][1] + 4],
+  ];
   for (let i = 0; i < 3; i++) {
-    const lx = positions[i][0] + (positions[i][0] > cx ? 50 : -50);
-    const ly = positions[i][1] + (positions[i][1] < cy ? -30 : 30);
-    svg.text(s, lx, ly, names[i], {
+    nameGroup.appendChild(svg.text(s, nameSpots[i][0], nameSpots[i][1], names[i], {
       fontSize: 11, fill: colors[i], anchor: 'middle', fontWeight: 'bold',
-    });
+    }));
   }
 
-  // Motion arrows showing assembly direction (toggled per step by the updater)
-  const arrowRed = svg.motionArrow(s, positions[0][0] - 30, positions[0][1], positions[0][0], positions[0][1], { label: 'Red', curvature: 0.3 });
-  const arrowBlue = svg.motionArrow(s, positions[1][0], positions[1][1] + 30, positions[1][0], positions[1][1], { label: 'Blue', curvature: 0.3 });
-  const arrowYellow = svg.motionArrow(s, positions[2][0] + 30, positions[2][1], positions[2][0], positions[2][1], { label: 'Yellow', curvature: 0.3 });
+  // Motion arrows along each ring's approach axis (toggled by the updater):
+  // tail well outside the locked ring, head just short of its outer edge
+  // (the extent along the approach axis is RY — it is perpendicular to the
+  // ring's long axis).
+  const approachArrow = (k, color) => {
+    const [tx, ty] = alongApproach(k, RY + 22);
+    const [hx, hy] = alongApproach(k, RY + 4);
+    return svg.motionArrow(s, tx, ty, hx, hy, { color, curvature: 0.25 });
+  };
+  const arrowRed = approachArrow(0, RED);
+  const arrowBlue = approachArrow(1, BLUE);
+  const arrowYellow = approachArrow(2, GOLD);
 
-  // Hand icon near center
-  svg.handIcon(s, cx + 50, cy - 10, { scale: 0.6, rotation: 0 });
+  // Hand icon beside the cluster
+  svg.handIcon(s, cx + 135, cy - 10, { scale: 0.6, rotation: 0 });
 
-  // Step badges (highlighted per phase by the updater)
-  const badge1 = svg.stepBadge(s, cx - 80, cy - 60, 1, 3);
-  svg.actionLabel(s, cx - 80, cy - 47, 'Lay ovals flat');
-  const badge2 = svg.stepBadge(s, cx + 60, cy - 60, 2, 3);
-  svg.actionLabel(s, cx + 60, cy - 47, 'Overlap loosely');
-  const badge3 = svg.stepBadge(s, cx, cy + 65, 3, 3);
-  svg.actionLabel(s, cx, cy + 78, 'Weave all three');
+  // Step badges in the left margin (highlighted per phase by the updater)
+  const badge1 = svg.stepBadge(s, 55, 115, 1, 3);
+  svg.actionLabel(s, 55, 128, 'Lay ovals flat');
+  const badge2 = svg.stepBadge(s, 55, 175, 2, 3);
+  svg.actionLabel(s, 55, 188, 'Overlap loosely');
+  const badge3 = svg.stepBadge(s, 55, 235, 3, 3);
+  svg.actionLabel(s, 55, 248, 'Weave all three');
   const badges = [badge1, badge2, badge3];
+
+  // ---- Weave overlay: the six over/under crossings of the locked Borromean
+  // diagram. Crossing senses are copied from
+  // diagrams/puzzles/05-trinity-lock/target.svg — the cyclic pattern
+  // A over B, B over C, C over A (Red over Blue, Blue over Yellow, Yellow
+  // over Red), so no pair is linked yet all three hold together. Each
+  // crossing follows the lib/svg.js idiom: a surface-stroke gap laid along
+  // the over ring's tangent, then a short over-arc in the over ring's color.
+  const TAU = Math.PI * 2;
+  // Point on locked ring k at parameter t, and inside/outside test for it.
+  const ringPoint = (k, t) => {
+    const a = (ROTS[k] * Math.PI) / 180;
+    const px = RX * Math.cos(t);
+    const py = RY * Math.sin(t);
+    return [
+      finalC[k][0] + px * Math.cos(a) - py * Math.sin(a),
+      finalC[k][1] + px * Math.sin(a) + py * Math.cos(a),
+    ];
+  };
+  const ringSide = (k, p) => {
+    const a = (ROTS[k] * Math.PI) / 180;
+    const dx = p[0] - finalC[k][0];
+    const dy = p[1] - finalC[k][1];
+    const u = (dx * Math.cos(a) + dy * Math.sin(a)) / RX;
+    const v = (-dx * Math.sin(a) + dy * Math.cos(a)) / RY;
+    return u * u + v * v - 1; // <0 inside, >0 outside
+  };
+  // Parameters where ring `over` crosses ring `under` (sign-change bisection).
+  const crossingParams = (over, under) => {
+    const N = 360;
+    const out = [];
+    let prev = ringSide(under, ringPoint(over, 0));
+    for (let i = 1; i <= N; i++) {
+      const cur = ringSide(under, ringPoint(over, (TAU * i) / N));
+      if ((prev < 0) !== (cur < 0)) {
+        let lo = (TAU * (i - 1)) / N;
+        let hi = (TAU * i) / N;
+        for (let b = 0; b < 32; b++) {
+          const mid = (lo + hi) / 2;
+          if ((ringSide(under, ringPoint(over, mid)) < 0) === (prev < 0)) lo = mid;
+          else hi = mid;
+        }
+        out.push((lo + hi) / 2);
+      }
+      prev = cur;
+    }
+    return out;
+  };
+
+  const weave = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  s.appendChild(weave);
+  weave.style.opacity = '0';
+  const weavePairs = [
+    { over: 0, under: 1, caption: 'Red over Blue' },
+    { over: 1, under: 2, caption: 'Blue over Yellow' },
+    { over: 2, under: 0, caption: 'Yellow over Red' },
+  ];
+  for (const { over, under, caption } of weavePairs) {
+    let far = null;
+    let farD = -1;
+    for (const t of crossingParams(over, under)) {
+      const [x, y] = ringPoint(over, t);
+      // Local tangent of the over ring: rotate the parametric derivative.
+      const a = (ROTS[over] * Math.PI) / 180;
+      const dx = -RX * Math.sin(t);
+      const dy = RY * Math.cos(t);
+      const tangent = Math.atan2(dx * Math.sin(a) + dy * Math.cos(a), dx * Math.cos(a) - dy * Math.sin(a));
+      weave.appendChild(svg.crossingGap(s, x, y, tangent, 12));
+      // Short over-arc (±11px along the ring) covering the gap.
+      const dt = 11 / Math.hypot(dx, dy);
+      let d = '';
+      for (let j = 0; j <= 8; j++) {
+        const [ax, ay] = ringPoint(over, t - dt + (j * dt) / 4);
+        d += (j ? ' L' : 'M') + ax.toFixed(1) + ' ' + ay.toFixed(1);
+      }
+      weave.appendChild(svg.path(s, d, { stroke: colors[over], strokeWidth: 4, strokeLinecap: 'round' }));
+      const dist = Math.hypot(x - cx, y - cy);
+      if (dist > farD) {
+        farD = dist;
+        far = [x, y];
+      }
+    }
+    // Caption the pair beside its outermost crossing, pushed away from the
+    // cluster centroid so it sits in clear space.
+    weave.appendChild(svg.text(s,
+      far[0] + ((far[0] - cx) / farD) * 30,
+      far[1] + ((far[1] - cy) / farD) * 30,
+      caption, { fontSize: 9, fill: colors[over], anchor: 'middle', fontWeight: '600' }));
+  }
 
   // Properties box
   const calloutRect = svg.rect(s, 30, 290, 440, 75, { fill: 'var(--dia-wash, #ece3d0)', stroke: RING, strokeWidth: 1, rx: 4 });
@@ -290,31 +411,19 @@ export function createSVGDiagram(container) {
     .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
   `;
 
-  // ---- Timeline updater: sync the 2D ovals + badges + arrows to the solution.
-  // Each oval starts spread outward (separated) and converges to its woven
-  // Borromean center, mirroring the 3D position keyframes (SEP -> MID -> LOCK).
-  // 2D keyframes per animation step: [separated, overlapping, locked, locked].
-  const finalC = positions.map((p) => [p[0], p[1]]);
-  const sepC = [
-    [finalC[0][0], finalC[0][1] - 55],          // top oval pulled up
-    [finalC[1][0] - 55, finalC[1][1] + 30],     // bottom-left pulled out-left
-    [finalC[2][0] + 55, finalC[2][1] + 30],     // bottom-right pulled out-right
-  ];
-  const midC = [
-    [finalC[0][0], finalC[0][1] - 25],
-    [finalC[1][0] - 25, finalC[1][1] + 14],
-    [finalC[2][0] + 25, finalC[2][1] + 14],
-  ];
-  // Per-step center keyframes for the three ovals (4 steps).
-  const centerKeys = [sepC, midC, finalC, finalC];
-
+  // ---- Timeline updater: sync the 2D ovals + badges + arrows + weave to the
+  // solution. Each oval starts spread outward (separated, per sepC above) and
+  // converges to its locked Borromean center, mirroring the 3D position
+  // keyframes (SEP -> MID -> LOCK). The weave overlay is drawn at the LOCKED
+  // positions only, so it stays hidden until the weaving step and fades in
+  // with it — gaps never float over the still-moving ovals.
   function setOval(i, c) {
     const el = ovalEls[i];
     if (!el) return;
     el.setAttribute('cx', c[0]);
     el.setAttribute('cy', c[1]);
     // keep the per-oval rotation pinned to the moving center
-    el.setAttribute('transform', `rotate(${i * 120 + 30}, ${c[0]}, ${c[1]})`);
+    el.setAttribute('transform', `rotate(${ROTS[i]}, ${c[0]}, ${c[1]})`);
   }
 
   return function update(state) {
@@ -337,6 +446,12 @@ export function createSVGDiagram(container) {
     svg.highlight(arrowRed, arrowsActive, { glow: false, dim: 0 });
     svg.highlight(arrowBlue, arrowsActive, { glow: false, dim: 0 });
     svg.highlight(arrowYellow, arrowsActive, { glow: false, dim: 0 });
+    // Weave overlay: 0 before the weaving step, fades in with its (already
+    // eased) progress, then stays fully on. Ring name labels trade places
+    // with it so the locked cluster is captioned by the crossing labels.
+    const w = i < 2 ? 0 : i === 2 ? p : 1;
+    weave.style.opacity = String(w);
+    nameGroup.style.opacity = String(1 - w);
   };
 }
 

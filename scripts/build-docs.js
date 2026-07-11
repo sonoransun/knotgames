@@ -81,10 +81,11 @@ export function loadPuzzles() {
       metaDifficulty: meta.metaDifficulty, type: meta.type, principle: meta.principle,
     };
   });
-  if (list.length !== 17) throw new Error(`expected 17 puzzles, got ${list.length}`);
+  const expected = puzzleRegistry.length;
+  if (list.length !== expected) throw new Error(`expected ${expected} puzzles, got ${list.length}`);
   const ids = list.map((x) => x.id).sort((a, b) => a - b);
-  if (ids.join(',') !== Array.from({ length: 17 }, (_, i) => i + 1).join(','))
-    throw new Error('puzzle ids are not 1..17 contiguous');
+  if (ids.join(',') !== Array.from({ length: expected }, (_, i) => i + 1).join(','))
+    throw new Error(`puzzle ids are not 1..${expected} contiguous`);
   return list;
 }
 
@@ -280,7 +281,7 @@ function makeOgImage() {
 </radialGradient></defs>
 <g opacity="0.9">${inner}</g>
 <text class="wm" x="458" y="298" font-size="118">E<tspan class="x">X</tspan>KNOTS</text>
-<text class="tg" x="462" y="362" font-size="29">17 TOPOLOGICAL HAND PUZZLES</text>
+<text class="tg" x="462" y="362" font-size="29">${puzzleRegistry.length} TOPOLOGICAL HAND PUZZLES</text>
 <text class="tg" x="462" y="404" font-size="21" fill="#8a8475">solve it · rotate it · build it</text>
 </svg>`;
   const tmp = path.join(DOCS, 'assets/brand/_og.svg');
@@ -363,7 +364,7 @@ export function build() {
   renderDoc('theory/topology-primer.md', 'theory/topology-primer.html', 'theory', 'Theory',
     'Every concept used in the series — read it once, refer back often.', 'A self-contained topology primer: linking number, genus, chirality, braid groups, Seifert surfaces, the Hopf fibration, and more.');
   renderDoc('theory/pedagogical-arc.md', 'theory/pedagogical-arc.html', 'theory', 'Pedagogy',
-    'Why the puzzles are ordered the way they are.', 'The learning sequence behind the 17 puzzles, with time estimates and a concept map.');
+    'Why the puzzles are ordered the way they are.', `The learning sequence behind the ${puzzleRegistry.length} puzzles, with time estimates and a concept map.`);
   renderDoc('construction/materials.md', 'construction/materials.html', 'build', 'Workshop',
     'Shared materials and construction techniques for building the puzzles.', 'Bill of materials, bending/welding notes, ring sizing, and prototyping advice for the EXKNOTS series.');
 

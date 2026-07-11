@@ -5,8 +5,8 @@
 
   <style>
     @keyframes highlight {
-      0%, 12% { stroke: #2255aa; stroke-width: 3; }
-      20%, 100% { stroke: #333; stroke-width: 2; }
+      0%, 12% { stroke: var(--dia-cord, #1f57c4); stroke-width: 3; }
+      20%, 100% { stroke: var(--dia-ink, #24211a); stroke-width: 2; }
     }
     .shape1 { animation: highlight 7.5s ease infinite; }
     .shape2 { animation: highlight 7.5s ease 1.5s infinite; }

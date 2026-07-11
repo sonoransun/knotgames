@@ -178,7 +178,16 @@ export function label(svg, x, y, targetX, targetY, content) {
   return g;
 }
 
-// Draw a white gap on a path at a crossing point (for under-crossings in knot diagrams)
+// Canonical over/under crossing idiom. Both JS diagrams and the hand-authored
+// SVGs in diagrams/ encode crossings the same way:
+//   1. draw the UNDER strand as one continuous path;
+//   2. lay a short occlusion stroke in var(--dia-surface) (round linecap,
+//      width ≈ strand width + 6) along the OVER strand's tangent at the
+//      crossing point — that is what crossingGap() draws;
+//   3. draw the over strand (or a local over-segment) last, on top.
+// Never mask a crossing with a dot/circle: that erases both strands and
+// encodes no over/under information. crossingWithColor() below bundles all
+// three layers for a single two-color crossing.
 export function crossingGap(svg, cx, cy, angle, gapWidth = 12) {
   const dx = Math.cos(angle) * gapWidth / 2;
   const dy = Math.sin(angle) * gapWidth / 2;
@@ -415,6 +424,53 @@ export function handIcon(svg, x, y, opts = {}) {
 
   svg.appendChild(g);
   return g;
+}
+
+// Interpolate per-step 2D keyframes. frames[k] is the numeric array (e.g.
+// [x, y]) the diagram should show at the END of step k; frames[0] doubles as
+// the rest pose. stepIndex is clamped; stepProgress arrives already eased.
+export function lerpFrames(frames, stepIndex, stepProgress) {
+  const last = frames.length - 1;
+  const i = Math.max(0, Math.min(stepIndex ?? 0, last));
+  const p = Math.max(0, Math.min(stepProgress ?? 0, 1));
+  const from = i === 0 ? frames[0] : frames[i - 1];
+  const to = frames[i];
+  return from.map((v, k) => v + (to[k] - v) * p);
+}
+
+// "Key insight" callout box with a gentle pulse — replaces the per-module
+// rect + text + injected-@keyframes chrome. The pulse keyframes are installed
+// once per SVG (deduped via the shared style[data-anim] element).
+export function calloutBox(svg, x, y, w, h, message, opts = {}) {
+  const fontSize = opts.fontSize || 10;
+  const box = rect(svg, x, y, w, h, {
+    fill: opts.fill || 'var(--dia-wash, #ece3d0)',
+    stroke: opts.stroke || 'var(--dia-ring, #b97d12)',
+    strokeWidth: 1,
+    rx: 4,
+  });
+  text(svg, x + w / 2, y + h / 2 + fontSize * 0.35, message, {
+    fontSize,
+    anchor: 'middle',
+    fill: opts.textColor || 'var(--dia-ring, #b97d12)',
+  });
+  let styleEl = svg.querySelector('style[data-anim]');
+  if (!styleEl) {
+    styleEl = document.createElementNS(SVG_NS, 'style');
+    styleEl.setAttribute('data-anim', '1');
+    svg.insertBefore(styleEl, svg.firstChild);
+  }
+  if (!styleEl.textContent.includes('@keyframes calloutPulse')) {
+    styleEl.textContent += `
+      @keyframes calloutPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+      .callout-box { animation: calloutPulse 3s ease-in-out 2s 2; }
+    `;
+  }
+  box.classList.add('callout-box');
+  return box;
 }
 
 // Toggle an emphasis state on an SVG element/group — used by timeline-synced

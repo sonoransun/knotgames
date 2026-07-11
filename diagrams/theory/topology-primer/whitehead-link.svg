@@ -1,0 +1,86 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 360">
+  <title>The Whitehead Link</title>
+  <desc>The Whitehead link drawn as a rigid ring (gold) and a cord loop (blue) woven through the ring twice, with the two cord lobes meeting in a clasp below. The four ring-cord crossings are signed +1, +1, -1, -1 reading around the diagram, so their sum is zero and the linking number is one half of zero, which is zero. The clasp is a self-crossing of the cord and is not counted in the linking number. Despite linking number zero, the two loops cannot be pulled apart: zero linking is necessary but not sufficient for separating two curves.</desc>
+
+  <!-- figure title -->
+  <text x="270" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13"
+        font-weight="bold" fill="var(--dia-ink, #24211a)">The Whitehead link</text>
+  <text x="270" y="39" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10"
+        fill="var(--dia-inksoft, #6a6151)">linking number 0 &#8212; yet the two loops never come apart</text>
+
+  <!-- ================= LEFT: the link diagram ================= -->
+  <!-- Geometry: ring at local (150,140), r=45; cord woven through twice with a clasp.
+       House occlusion idiom throughout: continuous under-strand, surface-colored
+       stroke along the over tangent, over-segment drawn last. -->
+  <g transform="translate(20,30)">
+    <!-- Ring (under-strand at the two cord-over crossings) -->
+    <circle cx="150" cy="140" r="45" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"/>
+
+    <!-- Occlusions where the cord passes over the ring (c2, c4) -->
+    <line x1="139" y1="193" x2="137" y2="173" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"/>
+    <line x1="185" y1="159" x2="185" y2="178" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"/>
+
+    <!-- Cord loop: two passes through the aperture, lobes hanging below -->
+    <path d="M 120 248
+             C 130 252 141 228 150 215
+             C 156 206 160 195 162 183.4
+             C 164 160 167 136 168 118
+             C 169 106 180 106 181 118
+             C 182 134 185 150 185 168.3
+             C 186 195 190 225 180 246
+             C 168 250 158 232 150 215
+             C 143 204 139 194 138 183.4
+             C 136 160 133 136 132 118
+             C 131 106 120 106 119 118
+             C 118 134 115 150 115 168.3
+             C 112 192 108 228 120 248 Z"
+          fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+
+    <!-- Ring over cord at c1 and c3: occlusion along ring tangent + ring arc on top -->
+    <line x1="111.2" y1="163.3" x2="118.8" y2="172.7" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 106 149.4 A 45 45 0 0 0 126 178.1" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"/>
+    <line x1="156.2" y1="185" x2="167.8" y2="181.8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 150 185 A 45 45 0 0 0 176 176.7" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"/>
+
+    <!-- Orientation arrows: ring clockwise, cord downward on the outer-left strand -->
+    <polygon points="144,90 156,95 144,100" fill="var(--dia-ring, #b97d12)"/>
+    <polygon points="105,203 113,203 109,212" fill="var(--dia-cord, #1f57c4)"/>
+
+    <!-- Signed ring-cord crossings -->
+    <circle cx="115" cy="168.3" r="8" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="138" cy="183.4" r="8" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="162" cy="183.4" r="8" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="185" cy="168.3" r="8" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="92" y="163" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-pos, #2f8f43)">+1</text>
+    <text x="130" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-pos, #2f8f43)">+1</text>
+    <text x="171" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-neg, #cf3a26)">&#8722;1</text>
+    <text x="210" y="163" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-neg, #cf3a26)">&#8722;1</text>
+
+    <!-- Clasp: highlighted, unsigned; over-strand drawn last so it sits on top -->
+    <circle cx="150" cy="215" r="11" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <line x1="144.6" y1="222.2" x2="155.4" y2="207.8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 142 226 C 146 220 148 218 150 215 C 153 210 155 206 158 200"
+          fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+    <text x="150" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">clasp</text>
+  </g>
+
+  <!-- ================= RIGHT: linking-number tally + legend ================= -->
+  <rect x="305" y="118" width="215" height="72" rx="6"
+        fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="1"/>
+  <text x="412" y="138" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">sum of the four ring&#8211;cord signs</text>
+  <text x="412" y="159" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" fill="var(--dia-ink, #24211a)">(+1) + (+1) + (&#8722;1) + (&#8722;1) = 0</text>
+  <text x="412" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-ink, #24211a)">lk = &#189; &#215; 0 = 0</text>
+
+  <text x="412" y="212" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" fill="var(--dia-ink, #24211a)">lk = 0 is <tspan font-style="italic">necessary</tspan> for splitting,</text>
+  <text x="412" y="227" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" fill="var(--dia-ink, #24211a)">never <tspan font-style="italic">sufficient</tspan>: this link is non-split.</text>
+
+  <!-- legend -->
+  <line x1="318" y1="256" x2="344" y2="256" stroke="var(--dia-ring, #b97d12)" stroke-width="3"/>
+  <text x="352" y="260" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">ring</text>
+  <line x1="318" y1="276" x2="344" y2="276" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"/>
+  <text x="352" y="280" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">cord</text>
+  <circle cx="331" cy="296" r="6.5" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="352" y="300" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">clasp &#8212; a cord self-crossing, not in lk</text>
+
+  <text x="412" y="330" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-rigid, #8a8275)">non-triviality certified by Milnor's higher-order invariant</text>
+</svg>

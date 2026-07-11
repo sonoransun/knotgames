@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Whitehead Waltz · EXKNOTS</title>
+<meta name="description" content="The Whitehead Waltz — Whitehead link — linking number zero without splittability. Setup, solution, topology, and construction.">
+<link rel="canonical" href="https://sonoransun.github.io/knotgames/puzzles/18-the-whitehead-waltz.html">
+<meta name="theme-color" content="#0f1320">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EXKNOTS">
+<meta property="og:title" content="The Whitehead Waltz">
+<meta property="og:description" content="The Whitehead Waltz — Whitehead link — linking number zero without splittability. Setup, solution, topology, and construction.">
+<meta property="og:url" content="https://sonoransun.github.io/knotgames/puzzles/18-the-whitehead-waltz.html">
+<meta property="og:image" content="https://sonoransun.github.io/knotgames/assets/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sonoransun.github.io/knotgames/assets/brand/og-image.png">
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/brand/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&display=swap">
+<link rel="stylesheet" href="../assets/css/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Primary">
+  <a class="brand" href="../index.html" aria-label="EXKNOTS home"><svg class="logomark" viewBox="0 0 100 100" role="img" aria-label="EXKNOTS" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
+  <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
+</svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
+  <button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="../explore/">Explore</a></li>
+    <li><a href="../puzzles/" aria-current="page">Puzzles</a></li>
+    <li><a href="../theory/">Theory</a></li>
+    <li><a href="../construction/materials.html">Build</a></li>
+    <li><a href="https://github.com/sonoransun/knotgames">GitHub ↗</a></li>
+    <li><a href="../explore/" class="cta">Open Explorer</a></li>
+  </ul>
+  <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle theme"><span class="sun">☀</span><span class="moon">☾</span></button>
+</nav>
+<div class="progress" role="presentation"></div>
+<main id="main">
+<header class="doc-header" style="--ac:var(--arc5)"><div class="wrap">
+  <span class="doc-num">18</span>
+  <h1 class="doc-title">The Whitehead Waltz</h1>
+  <div class="doc-meta">
+    <span class="pill advanced">Advanced</span>
+    <span class="pc-type">Identification / Disentanglement</span>
+    <span class="pc-principle">Whitehead link — linking number zero without splittability</span>
+  </div>
+  <div class="doc-actions"><a class="btn btn--primary" href="../explore/#18">▶ Open in Interactive Explorer</a></div>
+</div></header>
+<div class="wrap band" style="padding-top:1.4rem"><div class="doc-layout"><div class="prose"><h2 id="overview">Overview <a href="#overview" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>Two stations stand side by side, and they appear to be the same puzzle twice. Each is a rigid ring resting upright in a printed stand, with a closed cord loop woven through the ring twice — once from each side — its two hanging lobes meeting in a small clasp below. Compute the linking number: both stations give exactly zero, the number that meant "free" in Puzzle 3. Yet only one cord can be removed; the other is a genuine Whitehead link, and no manipulation will ever free it. Determine which is which — and prove it by freeing the free one.</p>
+<h2 id="components">Components <a href="#components" class="anchor-link" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Rings (x2)</td>
+<td>Welded steel O-ring, 80mm OD, 6mm wire (68mm aperture)</td>
+<td>The rigid component each cord is woven through</td>
+</tr>
+<tr>
+<td>Cord loops (x2)</td>
+<td>4mm braided nylon, spliced closed, ~450mm circumference</td>
+<td>The flexible component; one is trapped, one is not</td>
+</tr>
+<tr>
+<td>Stands (x2)</td>
+<td>3D-printed PETG, saddle-top pedestal on a base</td>
+<td>Holds each ring upright, open air below the aperture</td>
+</tr>
+<tr>
+<td>Crossing-pattern card</td>
+<td>Both weaves printed strand by strand</td>
+<td>Reset reference — re-tangling from memory changes the puzzle</td>
+</tr>
+<tr>
+<td>Station marks</td>
+<td>"A" and "B" engraved on the bases</td>
+<td>Lets solvers commit to an answer before touching anything</td>
+</tr>
+</tbody></table></div>
+<h2 id="setup">Setup <a href="#setup" class="anchor-link" aria-hidden="true">#</a></h2>
+<p><figure class="dia-figure dia-wide"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 392" class="dia">
+  <title>Puzzle 18: The Whitehead Waltz — Setup</title>
+  <desc>Two near-identical stations side by side. Each has a rigid ring standing upright in a printed stand saddle, with a closed cord loop woven through the ring twice — four ring-cord crossings — and the loop's two lobes meeting in a single clasp crossing below the ring. Station A's clasp hooks (Whitehead link); Station B's clasp crossing is flipped so the lobes merely overlap (unlink).</desc>
+
+  <defs>
+    <!-- One station, minus the clasp patch (the clasp over/under differs per station).
+         Ring center (150,140), r=45. Ring-cord crossings on the lower arc:
+         c1 (115,168.3) ring over cord;  c2 (138,183.4) cord over ring;
+         c3 (162,183.4) ring over cord;  c4 (185,168.3) cord over ring.
+         Cord self-crossing (clasp) at W (150,215), drawn per station. -->
+    <g id="d0-ww-setup-station">
+      <!-- Printed stand: base and saddle pedestal (outline, cord hangs in front) -->
+      <rect x="95" y="300" width="110" height="16" rx="3" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></rect>
+      <path d="M141,300 L141,196 Q141,190 146,191 L150,187 L154,191 Q159,190 159,196 L159,300" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></path>
+
+      <!-- Ring (under-strand at c2/c4, drawn first, continuous) -->
+      <circle cx="150" cy="140" r="45" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"></circle>
+
+      <!-- Occlusion strokes along the cord's tangent where the cord passes OVER the ring (c2, c4) -->
+      <line x1="139" y1="193" x2="137" y2="173" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+      <line x1="185" y1="159" x2="185" y2="178" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+
+      <!-- Cord: one closed loop. Route: lobe-1 bottom, up through clasp point W to c3,
+           rise inside aperture, cap, down through c4, lobe-2 bottom, back through W to c2,
+           rise, cap, down through c1, close. -->
+      <path d="M 120 248
+               C 130 252 141 228 150 215
+               C 156 206 160 195 162 183.4
+               C 164 160 167 136 168 118
+               C 169 106 180 106 181 118
+               C 182 134 185 150 185 168.3
+               C 186 195 190 225 180 246
+               C 168 250 158 232 150 215
+               C 143 204 139 194 138 183.4
+               C 136 160 133 136 132 118
+               C 131 106 120 106 119 118
+               C 118 134 115 150 115 168.3
+               C 112 192 108 228 120 248 Z" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+
+      <!-- Where the ring passes OVER the cord (c1, c3): occlusion along the ring's tangent,
+           then a short ring arc redrawn on top -->
+      <line x1="111.2" y1="163.3" x2="118.8" y2="172.7" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+      <path d="M 106 149.4 A 45 45 0 0 0 126 178.1" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"></path>
+      <line x1="156.2" y1="185" x2="167.8" y2="181.8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+      <path d="M 150 185 A 45 45 0 0 0 176 176.7" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"></path>
+    </g>
+  </defs>
+
+  <!-- Title -->
+  <text x="280" y="18" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-ink, #24211a)" font-weight="bold">The Whitehead Waltz — two stations, one prisoner</text>
+
+  <!-- ================= STATION A (true Whitehead: the clasp hooks) ================= -->
+  <g transform="translate(10,26)">
+    <use href="#d0-ww-setup-station"></use>
+    <!-- Clasp at W (150,215): back lobe's connector passes OVER (lower-left to upper-right on top) -->
+    <line x1="144.6" y1="222.2" x2="155.4" y2="207.8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+    <path d="M 142 226 C 146 220 148 218 150 215 C 153 210 155 206 158 200" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+
+    <!-- Annotations -->
+    <line x1="107" y1="128" x2="74" y2="106" stroke="var(--dia-faint, #c9bda7)" stroke-width="1"></line>
+    <text x="72" y="98" text-anchor="end" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">80 mm ring</text>
+    <text x="72" y="110" text-anchor="end" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">68 mm aperture</text>
+    <line x1="188" y1="212" x2="224" y2="192" stroke="var(--dia-faint, #c9bda7)" stroke-width="1"></line>
+    <text x="228" y="188" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">4 mm cord loop,</text>
+    <text x="228" y="200" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">spliced closed</text>
+    <text x="150" y="336" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">STATION A</text>
+  </g>
+
+  <!-- ================= STATION B (decoy: the clasp crossing is flipped) ================= -->
+  <g transform="translate(300,26)">
+    <use href="#d0-ww-setup-station"></use>
+    <!-- Clasp at W (150,215): front lobe's connector passes OVER (lower-right to upper-left on top) -->
+    <line x1="153.9" y1="223.1" x2="146.1" y2="206.9" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+    <path d="M 158 228 C 154 222 152 219 150 215 C 148 211 145 207 142 202" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+
+    <text x="150" y="336" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="var(--dia-inksoft, #6a6151)" font-weight="bold">STATION B</text>
+  </g>
+
+  <!-- Footer note -->
+  <text x="280" y="384" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">Five crossings each: four on the ring, one clasp below. Compare the clasps.</text>
+</svg><figcaption>Two near-identical stations: rings in stands, cord loops woven through twice with clasped lobes below</figcaption></figure></p>
+<ol>
+<li>Seat each ring upright in its stand's saddle, aperture facing the solver.</li>
+<li>Weave each cord loop through its ring twice: one pass through the aperture front to back, the other back to front. Each pass crosses the ring wire twice in the flat view: <strong>four ring-cord crossings</strong> per station.</li>
+<li>Let the loop's two lobes hang below the ring and bring them together in a <strong>single self-crossing</strong> — the clasp — centered under the aperture. Five crossings per station in all.</li>
+<li>On <strong>Station A</strong>, set the clasp so the lobes hook: the lobe hanging behind the ring's plane reaches <em>in front of</em> the other lobe at the clasp. This is the Whitehead link.</li>
+<li>On <strong>Station B</strong>, set the same weave with that one clasp crossing <strong>flipped</strong>: the back lobe stays behind everywhere, so the lobes merely overlap. This is the decoy.</li>
+<li>Side by side, the stations are indistinguishable at arm's length.</li>
+</ol>
+<h2 id="objective">Objective <a href="#objective" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>Determine which station's cord can be freed from its ring, then free it — nothing cut, unspliced, or forced. The other cord must be recognized for what it is: permanently inseparable.</p>
+<h2 id="the-topology">The Topology <a href="#the-topology" class="anchor-link" aria-hidden="true">#</a></h2>
+<p>The <strong>Whitehead link</strong> is two closed curves — here, the ring and the cord — with linking number zero that nevertheless cannot be pulled apart. It is the standard counterexample to the most tempting inference in this series: <em>lk = 0, therefore separable.</em></p>
+<h3 id="the-count-that-lies">The count that lies <a href="#the-count-that-lies" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>Orient the ring and the cord, then sign each ring-cord crossing exactly as in Puzzle 3:</p>
+<p><figure class="dia-figure dia-wide"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 440" class="dia">
+  <title>Puzzle 18: Linking Number Zero on Both Stations</title>
+  <desc>Both stations' link diagrams with orientations marked. The four ring-cord crossings are signed +1, +1, −1, −1 reading left to right, so the sum is 0 and the linking number is half of 0, which is 0 — on Station A and Station B alike. The clasp is a self-crossing of the cord and is not counted. The only difference between the diagrams is which strand is on top at the clasp.</desc>
+
+  <defs>
+    <!-- Link diagram (ring center (150,140), r=45) with orientation arrows and signed
+         crossings; everything except the clasp patch, which differs per station. -->
+    <g id="d1-ww-lk-station">
+      <!-- Ring (under-strand at c2/c4) -->
+      <circle cx="150" cy="140" r="45" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"></circle>
+
+      <!-- Occlusions along the cord tangent where the cord is over (c2, c4) -->
+      <line x1="139" y1="193" x2="137" y2="173" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+      <line x1="185" y1="159" x2="185" y2="178" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+
+      <!-- Cord loop (same weave as the physical setup) -->
+      <path d="M 120 248
+               C 130 252 141 228 150 215
+               C 156 206 160 195 162 183.4
+               C 164 160 167 136 168 118
+               C 169 106 180 106 181 118
+               C 182 134 185 150 185 168.3
+               C 186 195 190 225 180 246
+               C 168 250 158 232 150 215
+               C 143 204 139 194 138 183.4
+               C 136 160 133 136 132 118
+               C 131 106 120 106 119 118
+               C 118 134 115 150 115 168.3
+               C 112 192 108 228 120 248 Z" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+
+      <!-- Ring over cord at c1 and c3: occlusion along ring tangent + ring arc on top -->
+      <line x1="111.2" y1="163.3" x2="118.8" y2="172.7" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+      <path d="M 106 149.4 A 45 45 0 0 0 126 178.1" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"></path>
+      <line x1="156.2" y1="185" x2="167.8" y2="181.8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+      <path d="M 150 185 A 45 45 0 0 0 176 176.7" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"></path>
+
+      <!-- Orientation arrows: ring clockwise (arrow at top points right);
+           cord traversed downward on the outer-left strand -->
+      <polygon points="144,90 156,95 144,100" fill="var(--dia-ring, #b97d12)"></polygon>
+      <polygon points="105,203 113,203 109,212" fill="var(--dia-cord, #1f57c4)"></polygon>
+
+      <!-- Signed crossings -->
+      <circle cx="115" cy="168.3" r="8" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1" stroke-dasharray="3,2"></circle>
+      <circle cx="138" cy="183.4" r="8" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1" stroke-dasharray="3,2"></circle>
+      <circle cx="162" cy="183.4" r="8" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1" stroke-dasharray="3,2"></circle>
+      <circle cx="185" cy="168.3" r="8" fill="none" stroke="var(--dia-faint, #c9bda7)" stroke-width="1" stroke-dasharray="3,2"></circle>
+      <text x="92" y="163" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-pos, #2f8f43)">+1</text>
+      <text x="130" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-pos, #2f8f43)">+1</text>
+      <text x="171" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-neg, #cf3a26)">−1</text>
+      <text x="210" y="163" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-neg, #cf3a26)">−1</text>
+
+      <!-- Clasp: highlighted but unsigned -->
+      <circle cx="150" cy="215" r="11" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5" stroke-dasharray="4,3"></circle>
+      <text x="150" y="266" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">the clasp is a self-crossing of the cord — not counted in lk</text>
+
+      <!-- Sum box -->
+      <rect x="55" y="278" width="190" height="46" rx="6" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-faint, #c9bda7)" stroke-width="1"></rect>
+      <text x="150" y="296" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--dia-ink, #24211a)">(+1) + (+1) + (−1) + (−1) = 0</text>
+      <text x="150" y="314" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="var(--dia-ink, #24211a)">lk = ½ × 0 = 0</text>
+    </g>
+  </defs>
+
+  <!-- Title -->
+  <text x="310" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-ink, #24211a)" font-weight="bold">The same arithmetic, twice</text>
+
+  <!-- Station A -->
+  <g transform="translate(10,40)">
+    <text x="150" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">STATION A — clasp hooks</text>
+    <use href="#d1-ww-lk-station"></use>
+    <!-- Clasp: lower-left-to-upper-right strand on top -->
+    <line x1="144.6" y1="222.2" x2="155.4" y2="207.8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+    <path d="M 142 226 C 146 220 148 218 150 215 C 153 210 155 206 158 200" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+  </g>
+
+  <!-- Station B -->
+  <g transform="translate(320,40)">
+    <text x="150" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">STATION B — clasp flipped</text>
+    <use href="#d1-ww-lk-station"></use>
+    <!-- Clasp: lower-right-to-upper-left strand on top -->
+    <line x1="153.9" y1="223.1" x2="146.1" y2="206.9" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+    <path d="M 158 228 C 154 222 152 219 150 215 C 148 211 145 207 142 202" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+  </g>
+
+  <!-- Footer -->
+  <text x="310" y="404" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">Each pass through the aperture contributes two crossings of one sign: +1 +1 for the front-to-back pass,</text>
+  <text x="310" y="420" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">−1 −1 for the back-to-front pass. lk = 0 on both stations — yet only one cord comes free.</text>
+</svg><figcaption>Both stations' diagrams with the four ring-cord crossings signed and summed to zero</figcaption></figure></p>
+<p>The front-to-back pass contributes two positive crossings; the back-to-front pass contributes two negative ones:</p>
+<p><strong>Sum of signs</strong> = (+1) + (+1) + (−1) + (−1) = <strong>0</strong>, so <strong>lk = ½ × 0 = 0</strong>.</p>
+<p>(The ½ appears because, between two closed loops, every threading shows up as <em>two</em> crossings — Puzzle 3's open crossbar let us count piercings directly.) Equivalently: span a disk across the aperture; one pass pierces it toward you (+1), the other away (−1) — net zero. The clasp is a self-crossing of the cord alone and never enters the linking number. Both stations give this identical arithmetic; on Station B it tells the truth, on Station A it does not.</p>
+<h3 id="what-the-count-cannot-see">What the count cannot see <a href="#what-the-count-cannot-see" class="anchor-link" aria-hidden="true">#</a></h3>
+<p>Linking number is a <em>first-order</em> count: how many net times does one curve pass through the other? It is blind to <em>how</em> the two passes relate to each other — and that is where Station A hides its trap. The +1 and −1 passes would happily cancel — pull one back through the aperture, then the other — but the clasp ties the cord's two lobes together, and each lobe can only retract by first passing through the other. The cancellation exists on paper and cannot be executed in space. <strong>The clasp remembers what the count forgets.</strong></p>
+<p>Certifying this honestly takes machinery beyond this series — the link's Alexander polynomial, or Milnor's <em>higher-order</em> linking invariants, the family that also certifies Puzzle 5's Borromean rings (pairwise lk = 0, yet inseparable as a trio; the Whitehead link is the two-component distillation of that warning). We cite those invariants as a certificate, not a proof. What matters is that the conclusion is a theorem, not a difficulty rating: <strong>Station A's cord cannot be freed by any manipulation whatsoever.</strong> And one more theorem: the Whitehead link has <strong>unlinking number 1</strong> — flip one well-chosen crossing, the clasp, and it becomes the unlink. Station B <em>is</em> that crossing change, built in cord.</p>
+<p>The arc's lesson, stated plainly: <strong>lk = 0 is necessary for separability, never sufficient.</strong> Puzzle 3 taught you the tool; this puzzle shows you its limit. A zero means the door isn't provably locked. It does not mean the door opens.</p>
+<div class="callout callout--intuition"><span class="callout-label">Physical Intuition</span><p>What you feel in your hands: on Station B, fold a bight of the lobe that lies <em>underneath</em> at the clasp and push it up through the aperture — it rises without resistance, the clasp goes slack, and the loop suddenly has nothing holding it. On Station A the identical motion loads up at once: the bight drags the other lobe with it, and the clasp cinches down against the ring wire. You can feel the hook — a distinct catch. You can slide the clasp anywhere along the cord, but it is always <em>somewhere</em>, and it always arrives at the aperture exactly when the cord tries to leave.</p></div>
+<p><em>For the complete treatment of the Whitehead link and higher-order linking invariants, see <a href="../theory/topology-primer.html#the-whitehead-link-and-higher-order-linking">Topology Primer: The Whitehead Link and Higher-Order Linking</a>.</em></p>
+<h2 id="solution">Solution <a href="#solution" class="anchor-link" aria-hidden="true">#</a></h2>
+<ol>
+<li><p><strong>Compute the linking number on both stations.</strong> Orient, sign the four ring-cord crossings, sum, halve. Both give lk = 0 — the real point of the step: the answer is not in these four crossings.</p>
+</li>
+<li><p><strong>Inspect the clasps.</strong> Sight each station from the front at ring height and ask one question: does the lobe hanging <em>behind</em> the ring's plane cross <em>in front of</em> the other at the clasp (a hook), or stay behind (an overlap)? Hooked = Station A, trapped. Overlapping = Station B, free.</p>
+</li>
+</ol>
+<p><figure class="dia-figure dia-wide"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 372" class="dia">
+  <title>Puzzle 18: True Clasp vs. False Clasp</title>
+  <desc>Two magnified views of the clasp below the ring. On Station A the strand rising from lobe 1 passes over the strand rising from lobe 2 — the lobes hook, forming the Whitehead link. On Station B the same crossing is flipped — the lobes merely overlap, and the assembly is the unlink. The single differing crossing is circled in each panel.</desc>
+
+  <!-- Title -->
+  <text x="290" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-ink, #24211a)" font-weight="bold">The clasp, magnified</text>
+
+  <!-- ============ PANEL A: TRUE CLASP ============ -->
+  <g transform="translate(15,46)">
+    <text x="140" y="10" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">STATION A — TRUE CLASP</text>
+    <text x="140" y="26" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">the back lobe reaches in front: the lobes hook</text>
+
+    <!-- Strand end labels -->
+    <text x="60" y="54" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">up to the ring</text>
+    <text x="220" y="54" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">up to the ring</text>
+    <text x="60" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">from lobe 1</text>
+    <text x="220" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">from lobe 2</text>
+
+    <!-- Under strand (lobe 2 → up-left), continuous -->
+    <path d="M 220 235 C 185 205 160 180 140 150 C 120 120 95 95 60 65" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="3.5"></path>
+    <!-- Occlusion along the OVER strand's tangent at the crossing (140,150) -->
+    <line x1="133.9" y1="159.1" x2="146.1" y2="140.9" stroke="var(--dia-surface, #fbf7ee)" stroke-width="12" stroke-linecap="round"></line>
+    <!-- Over strand (lobe 1 → up-right), drawn last -->
+    <path d="M 60 235 C 95 205 120 180 140 150 C 160 120 185 95 220 65" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="3.5"></path>
+    <text x="168" y="124" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">over</text>
+
+    <!-- The differing crossing, circled -->
+    <circle cx="140" cy="150" r="30" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5" stroke-dasharray="5,4"></circle>
+
+    <text x="140" y="290" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">hooked — pulling either lobe out drags the other</text>
+  </g>
+
+  <!-- ============ PANEL B: FALSE CLASP ============ -->
+  <g transform="translate(305,46)">
+    <text x="140" y="10" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">STATION B — FALSE CLASP</text>
+    <text x="140" y="26" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">the back lobe stays behind: the lobes merely overlap</text>
+
+    <!-- Strand end labels -->
+    <text x="60" y="54" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">up to the ring</text>
+    <text x="220" y="54" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">up to the ring</text>
+    <text x="60" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">from lobe 1</text>
+    <text x="220" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">from lobe 2</text>
+
+    <!-- Under strand (lobe 1 → up-right), continuous -->
+    <path d="M 60 235 C 95 205 120 180 140 150 C 160 120 185 95 220 65" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="3.5"></path>
+    <!-- Occlusion along the OVER strand's tangent at the crossing (140,150) -->
+    <line x1="146.1" y1="159.1" x2="133.9" y2="140.9" stroke="var(--dia-surface, #fbf7ee)" stroke-width="12" stroke-linecap="round"></line>
+    <!-- Over strand (lobe 2 → up-left), drawn last -->
+    <path d="M 220 235 C 185 205 160 180 140 150 C 120 120 95 95 60 65" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="3.5"></path>
+    <text x="112" y="124" text-anchor="end" font-family="system-ui, sans-serif" font-size="9" fill="var(--dia-inksoft, #6a6151)">over</text>
+
+    <!-- The differing crossing, circled -->
+    <circle cx="140" cy="150" r="30" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5" stroke-dasharray="5,4"></circle>
+
+    <text x="140" y="290" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-inksoft, #6a6151)">overlapping — the lobes part with a Reidemeister II move</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="290" y="364" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">The circled crossing is the only difference between the two stations — one over-under, flipped.</text>
+</svg><figcaption>Magnified true clasp beside false clasp — one crossing, flipped, is the entire difference</figcaption></figure></p>
+<ol start="3">
+<li><p><strong>Turn Station B so the clasp faces you</strong> and grip the lobe that lies underneath at the clasp — the back lobe — at its lowest point.</p>
+</li>
+<li><p><strong>Fold that lobe into a bight and push it up through the aperture, toward yourself.</strong> Clearance is not the fight: with both woven passes resident, the bight adds two thicknesses — four strands of 4mm cord using about 16mm of the 68mm opening. (That generosity is geometry, not topology — a tighter ring would make this move annoying, not impossible.)</p>
+</li>
+<li><p><strong>Watch the clasp dissolve.</strong> As the bight comes through, the lobes' overlap peels apart — a Reidemeister II move: two crossings vanish as a pair. The loop now threads the ring in two plain passes with no self-crossing.</p>
+</li>
+<li><p><strong>Retract each pass in turn.</strong> Pull the front-to-back pass out of the aperture (its two crossings cancel — another Reidemeister II), then the back-to-front pass. The cord slides free: a plain, unknotted loop in your hand.</p>
+</li>
+<li><p><strong>Now attempt step 4 on Station A.</strong> The bight rises, hooks the other lobe, and jams the clasp against the ring wire. That catch is the higher-order linking the arithmetic couldn't see. Stop there: it is not a harder version of the same move; it is a move that does not exist.</p>
+</li>
+</ol>
+<p><figure class="dia-figure dia-wide"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 418" class="dia">
+  <title>Puzzle 18: The Whitehead Waltz — Solved State</title>
+  <desc>Station B's cord loop lies free beside its ring, which still stands in its saddle — marked with a check. Station A is unchanged: its cord is still woven through the ring with the hooked clasp below, marked with a cross, because the true Whitehead link cannot be separated.</desc>
+
+  <!-- Title -->
+  <text x="310" y="18" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="var(--dia-ink, #24211a)" font-weight="bold">After the solve</text>
+
+  <!-- ================= STATION A: still bound ================= -->
+  <g transform="translate(10,30)">
+    <!-- Stand -->
+    <rect x="95" y="300" width="110" height="16" rx="3" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></rect>
+    <path d="M141,300 L141,196 Q141,190 146,191 L150,187 L154,191 Q159,190 159,196 L159,300" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></path>
+
+    <!-- Ring -->
+    <circle cx="150" cy="140" r="45" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"></circle>
+
+    <!-- Cord over ring at c2, c4: occlusions along the cord tangent -->
+    <line x1="139" y1="193" x2="137" y2="173" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+    <line x1="185" y1="159" x2="185" y2="178" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+
+    <!-- Cord loop, unchanged from setup -->
+    <path d="M 120 248
+             C 130 252 141 228 150 215
+             C 156 206 160 195 162 183.4
+             C 164 160 167 136 168 118
+             C 169 106 180 106 181 118
+             C 182 134 185 150 185 168.3
+             C 186 195 190 225 180 246
+             C 168 250 158 232 150 215
+             C 143 204 139 194 138 183.4
+             C 136 160 133 136 132 118
+             C 131 106 120 106 119 118
+             C 118 134 115 150 115 168.3
+             C 112 192 108 228 120 248 Z" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+
+    <!-- Ring over cord at c1, c3 -->
+    <line x1="111.2" y1="163.3" x2="118.8" y2="172.7" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+    <path d="M 106 149.4 A 45 45 0 0 0 126 178.1" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"></path>
+    <line x1="156.2" y1="185" x2="167.8" y2="181.8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+    <path d="M 150 185 A 45 45 0 0 0 176 176.7" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"></path>
+
+    <!-- True clasp: hooked (lower-left-to-upper-right strand on top) -->
+    <line x1="144.6" y1="222.2" x2="155.4" y2="207.8" stroke="var(--dia-surface, #fbf7ee)" stroke-width="9" stroke-linecap="round"></line>
+    <path d="M 142 226 C 146 220 148 218 150 215 C 153 210 155 206 158 200" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></path>
+
+    <!-- Verdict -->
+    <text x="232" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="40" font-weight="bold" fill="var(--dia-neg, #cf3a26)">✗</text>
+    <text x="150" y="338" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">STATION A — still bound</text>
+    <text x="150" y="354" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">the clasp holds; no manipulation frees it</text>
+  </g>
+
+  <!-- ================= STATION B: cord free ================= -->
+  <g transform="translate(310,30)">
+    <!-- Stand -->
+    <rect x="95" y="300" width="110" height="16" rx="3" fill="var(--dia-wash, #ece3d0)" stroke="var(--dia-rigid, #8a8275)" stroke-width="1.5"></rect>
+    <path d="M141,300 L141,196 Q141,190 146,191 L150,187 L154,191 Q159,190 159,196 L159,300" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"></path>
+
+    <!-- Ring, empty -->
+    <circle cx="150" cy="140" r="45" fill="none" stroke="var(--dia-ring, #b97d12)" stroke-width="3"></circle>
+
+    <!-- Freed cord loop lying beside the stand -->
+    <ellipse cx="232" cy="298" rx="46" ry="14" transform="rotate(-12 232 298)" fill="none" stroke="var(--dia-cord, #1f57c4)" stroke-width="2.5"></ellipse>
+    <line x1="238" y1="276" x2="252" y2="250" stroke="var(--dia-faint, #c9bda7)" stroke-width="1"></line>
+    <text x="254" y="244" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">a plain loop again</text>
+
+    <!-- Verdict -->
+    <text x="232" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="42" font-weight="bold" fill="var(--dia-pos, #2f8f43)">✓</text>
+    <text x="150" y="338" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="var(--dia-inksoft, #6a6151)">STATION B — cord free</text>
+    <text x="150" y="354" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="var(--dia-inksoft, #6a6151)">the unlink, exactly as the count allowed</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="310" y="410" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="var(--dia-rigid, #8a8275)">Same linking number, opposite fates: lk = 0 was necessary for B's escape — and powerless to grant A one.</text>
+</svg><figcaption>Station B's cord lying free beside its ring; Station A unchanged and unfree</figcaption></figure></p>
+<p>Identification takes as long as the inspection is careful; the extraction itself is under a minute.</p>
+<h2 id="why-its-tricky">Why It's Tricky <a href="#why-its-tricky" class="anchor-link" aria-hidden="true">#</a></h2>
+<p><strong>Both stations compute identical on every count the solver knows.</strong> Same components, same five crossings, same four signs, same lk = 0, same silhouette. The distinguishing information lives in a single over-under at a single crossing, and no arithmetic on the other four will reveal it.</p>
+<p><strong>Puzzle 3 works against you.</strong> There, lk = 0 was the whole story: the count said free, and the cord came free. The reflex "zero means out" is exactly the trap. Station A is the counterexample given mass and texture.</p>
+<p><strong>The clasp doesn't look load-bearing.</strong> Four crossings sit dramatically on the ring; the decisive one hides below, between the cord and itself — the one crossing the formula ignores.</p>
+<div class="callout callout--lesson"><span class="callout-label">Lesson</span><p>an invariant computing to the "free" value proves nothing by itself. Zero is where the analysis starts, not where it ends.</p></div>
+<h2 id="common-mistakes">Common Mistakes <a href="#common-mistakes" class="anchor-link" aria-hidden="true">#</a></h2>
+<ol>
+<li><p><strong>Trusting lk = 0 to mean separable.</strong> It is a one-way test: nonzero proves you're stuck; zero proves nothing. Solvers who compute zero on both stations and conclude "both come free" spend a long time on Station A.</p>
+</li>
+<li><p><strong>Attacking the ring-cord crossings instead of the clasp.</strong> Rearranging the passes through the aperture shuffles crossings without changing either link. The four signed crossings are where the <em>computation</em> happens; the clasp is where the <em>topology</em> happens.</p>
+</li>
+<li><p><strong>Brute-forcing Station A.</strong> The trapped cord has 450mm of slack, so it always <em>feels</em> one clever move from freedom. It is not. Force proves only that the solver hasn't accepted the theorem.</p>
+</li>
+<li><p><strong>Re-tangling without the pattern card.</strong> From memory it is easy to build two decoys, two Whiteheads, or (by botching a pass) a ±1-linked cord trapped for a duller reason. Rebuild from the card, then verify the four signs and the clasp before presenting.</p>
+</li>
+</ol>
+<h2 id="construction-notes">Construction Notes <a href="#construction-notes" class="anchor-link" aria-hidden="true">#</a></h2>
+<ul>
+<li><strong>Weave first, splice second.</strong> Thread the cord through the ring along the card's path with both ends free, form the clasp, <em>then</em> splice the loop closed. Bury the splice in a lobe, away from the clasp.</li>
+<li><strong>The crossing-pattern card is essential equipment, not packaging.</strong> One flipped crossing is the difference between the two stations — and between this puzzle and no puzzle. Print both weaves at full scale with the clasp crossing circled.</li>
+<li><strong>The ring must be rigid.</strong> A flexible or split ring changes the problem: the trap assumes the ring stays a fixed closed curve. Welded steel at 6mm wire, no seams the cord could catch.</li>
+<li><strong>Match the stations obsessively.</strong> Same cord color and length, same stand print, same lobe droop — a scuffed cord on the demonstration station leaks the answer.</li>
+<li><strong>Stand geometry:</strong> a shallow V-notch saddle with a 6.4mm groove grips the lower 15–20mm of the ring without clamping it, leaving the aperture and ~120mm of air below clear for the clasp and the bight move.</li>
+<li><strong>Sizing arithmetic:</strong> at 68mm aperture and 4mm cord, the working move uses under a quarter of the opening; below roughly 10 cord diameters, identification turns into fiddling. Scale ring and cord together.</li>
+</ul>
+<nav class="prevnext" aria-label="Puzzle navigation"><a class="pn-prev" href="../puzzles/17-the-satellite-trap.html"><span class="pn-k">← Previous</span><span class="pn-name">17. The Satellite Trap</span></a><a class="pn-next" href="../puzzles/19-the-tangle-dance.html"><span class="pn-k">Next →</span><span class="pn-name">19. The Tangle Dance</span></a></nav></div><aside class="toc" aria-label="On this page"><span class="eyebrow">On this page</span><ol><li><a class="lvl-2" href="#overview">Overview</a></li><li><a class="lvl-2" href="#components">Components</a></li><li><a class="lvl-2" href="#setup">Setup</a></li><li><a class="lvl-2" href="#objective">Objective</a></li><li><a class="lvl-2" href="#the-topology">The Topology</a></li><li><a class="lvl-2" href="#solution">Solution</a></li><li><a class="lvl-2" href="#why-its-tricky">Why It's Tricky</a></li><li><a class="lvl-2" href="#common-mistakes">Common Mistakes</a></li><li><a class="lvl-2" href="#construction-notes">Construction Notes</a></li></ol></aside></div></div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../index.html" style="color:#ece5d6"><svg class="logomark" viewBox="0 0 100 100" role="img" aria-label="EXKNOTS" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path class="lm-strand" stroke-width="7" d="M 50 43 C 51.0 43.0 51.9 43.0 52.9 43.1 C 53.9 43.2 54.8 43.3 55.7 43.4 C 56.6 43.5 57.6 43.6 58.5 43.8 C 59.4 44.0 60.4 44.2 61.3 44.4 C 62.2 44.6 63.1 44.9 64 45.2 C 64.9 45.5 65.8 45.8 66.6 46.1 C 67.4 46.4 68.3 46.8 69.1 47.2 C 69.9 47.6 70.7 48.0 71.4 48.4 C 72.2 48.8 72.9 49.2 73.6 49.7 C 74.3 50.2 75.0 50.7 75.7 51.2 C 76.4 51.7 77.0 52.2 77.6 52.7 C 78.2 53.2 78.9 53.8 79.4 54.4 C 80.0 55.0 80.4 55.5 80.9 56.1 C 81.4 56.7 81.9 57.3 82.3 57.9 C 82.7 58.5 83.1 59.2 83.4 59.8 C 83.8 60.4 84.1 61.1 84.4 61.7 C 84.7 62.3 84.9 63.0 85.1 63.6 C 85.3 64.2 85.5 64.9 85.6 65.5 C 85.7 66.1 85.8 66.8 85.9 67.4 C 86.0 68.0 86.0 68.6 86 69.2 C 86.0 69.8 86.0 70.4 85.9 71 C 85.8 71.6 85.7 72.1 85.5 72.7 C 85.3 73.3 85.2 73.9 85 74.4 C 84.8 74.9 84.5 75.4 84.2 75.9 C 83.9 76.4 83.6 76.8 83.2 77.3 C 82.8 77.8 82.5 78.2 82.1 78.6 C 81.7 79.0 81.3 79.4 80.8 79.8 C 80.3 80.2 79.8 80.5 79.3 80.8 C 78.8 81.1 78.2 81.4 77.6 81.7 C 77.0 82.0 76.5 82.2 75.9 82.4 C 75.3 82.6 74.7 82.8 74 82.9 C 73.3 83.0 72.7 83.1 72 83.2 C 71.3 83.3 70.6 83.3 69.9 83.3 C 69.2 83.3 68.5 83.3 67.7 83.2 C 67.0 83.2 66.2 83.1 65.4 83 C 64.7 82.9 64.0 82.7 63.2 82.5 C 62.5 82.3 61.7 82.1 60.9 81.8 C 60.1 81.5 59.3 81.2 58.5 80.9 C 57.7 80.6 57.0 80.3 56.2 79.9 C 55.5 79.5 54.8 79.0 54 78.6 C 53.3 78.1 52.4 77.7 51.7 77.2 C 51.0 76.7 50.3 76.2 49.6 75.6 C 48.9 75.0 48.2 74.4 47.5 73.8 C 46.8 73.2 46.1 72.5 45.4 71.8 C 44.7 71.1 44.1 70.4 43.5 69.7 C 42.9 69.0 42.4 68.3 41.8 67.5 C 41.2 66.8 40.6 66.0 40.1 65.2 C 39.6 64.4 39.1 63.5 38.6 62.7 C 38.1 61.9 37.6 61.1 37.2 60.2 C 36.8 59.4 36.4 58.5 36 57.6 C 35.6 56.7 35.3 55.9 35 55 C 34.7 54.1 34.5 53.2 34.2 52.3 C 34.0 51.4 33.7 50.5 33.5 49.6 C 33.3 48.7 33.1 47.8 33 46.9 C 32.9 46.0 32.8 45.1 32.7 44.2 C 32.6 43.3 32.5 42.4 32.5 41.5 C 32.5 40.6 32.6 39.8 32.6 38.9 C 32.6 38.0 32.7 37.2 32.8 36.4 C 32.9 35.6 33.0 34.7 33.2 33.9 C 33.4 33.1 33.6 32.4 33.8 31.6 C 34.0 30.9 34.2 30.1 34.5 29.4 C 34.8 28.7 35.1 28.0 35.4 27.3 C 35.7 26.6 36.0 26.0 36.4 25.4 C 36.8 24.8 37.2 24.2 37.6 23.6 C 38.0 23.1 38.5 22.6 38.9 22.1 C 39.3 21.6 39.7 21.1 40.2 20.7 C 40.7 20.3 41.2 19.9 41.7 19.5 C 42.2 19.1 42.8 18.8 43.3 18.5 C 43.8 18.2 44.3 17.9 44.9 17.7 C 45.5 17.5 46.0 17.3 46.6 17.1 C 47.2 17.0 47.7 16.9 48.3 16.8 C 48.9 16.7 49.4 16.7 50 16.7 C 50.6 16.7 51.1 16.7 51.7 16.8 C 52.3 16.9 52.8 17.0 53.4 17.1 C 54.0 17.3 54.5 17.5 55.1 17.7 C 55.7 17.9 56.2 18.2 56.7 18.5 C 57.2 18.8 57.8 19.1 58.3 19.5 C 58.8 19.9 59.3 20.3 59.8 20.7 C 60.3 21.1 60.7 21.6 61.1 22.1 C 61.5 22.6 62.0 23.1 62.4 23.6 C 62.8 24.2 63.2 24.8 63.6 25.4 C 64.0 26.0 64.3 26.6 64.6 27.3 C 64.9 28.0 65.2 28.7 65.5 29.4 C 65.8 30.1 66.0 30.9 66.2 31.6 C 66.4 32.4 66.6 33.1 66.8 33.9 C 67.0 34.7 67.1 35.6 67.2 36.4 C 67.3 37.2 67.4 38.0 67.4 38.9 C 67.5 39.8 67.5 40.6 67.5 41.5 C 67.5 42.4 67.4 43.3 67.3 44.2 C 67.2 45.1 67.1 46.0 67 46.9 C 66.9 47.8 66.7 48.7 66.5 49.6 C 66.3 50.5 66.0 51.4 65.8 52.3 C 65.5 53.2 65.3 54.1 65 55 C 64.7 55.9 64.4 56.7 64 57.6 C 63.6 58.5 63.2 59.4 62.8 60.2 C 62.4 61.1 61.9 61.9 61.4 62.7 C 60.9 63.5 60.4 64.4 59.9 65.2 C 59.4 66.0 58.8 66.8 58.2 67.5 C 57.6 68.3 57.1 69.0 56.5 69.7 C 55.9 70.4 55.3 71.1 54.6 71.8 C 53.9 72.5 53.2 73.2 52.5 73.8 C 51.8 74.4 51.1 75.0 50.4 75.6 C 49.7 76.2 49.0 76.7 48.3 77.2 C 47.6 77.7 46.8 78.1 46 78.6 C 45.3 79.0 44.5 79.5 43.8 79.9 C 43.0 80.3 42.3 80.6 41.5 80.9 C 40.7 81.2 39.9 81.5 39.1 81.8 C 38.3 82.1 37.5 82.3 36.8 82.5 C 36.0 82.7 35.4 82.9 34.6 83 C 33.9 83.1 33.0 83.2 32.3 83.2 C 31.5 83.3 30.8 83.3 30.1 83.3 C 29.4 83.3 28.7 83.3 28 83.2 C 27.3 83.1 26.6 83.0 26 82.9 C 25.4 82.8 24.7 82.6 24.1 82.4 C 23.5 82.2 23.0 82.0 22.4 81.7 C 21.8 81.4 21.2 81.1 20.7 80.8 C 20.2 80.5 19.7 80.2 19.2 79.8 C 18.7 79.4 18.3 79.0 17.9 78.6 C 17.5 78.2 17.1 77.8 16.8 77.3 C 16.5 76.8 16.1 76.4 15.8 75.9 C 15.5 75.4 15.2 74.9 15 74.4 C 14.8 73.9 14.7 73.3 14.5 72.7 C 14.3 72.1 14.2 71.6 14.1 71 C 14.0 70.4 14.0 69.8 14 69.2 C 14.0 68.6 14.0 68.0 14.1 67.4 C 14.2 66.8 14.3 66.1 14.4 65.5 C 14.5 64.9 14.7 64.2 14.9 63.6 C 15.1 63.0 15.3 62.3 15.6 61.7 C 15.9 61.1 16.3 60.4 16.6 59.8 C 17.0 59.2 17.3 58.5 17.7 57.9 C 18.1 57.3 18.6 56.7 19.1 56.1 C 19.6 55.5 20.1 55.0 20.6 54.4 C 21.2 53.8 21.8 53.2 22.4 52.7 C 23.0 52.2 23.6 51.7 24.3 51.2 C 25.0 50.7 25.7 50.2 26.4 49.7 C 27.1 49.2 27.9 48.8 28.6 48.4 C 29.4 48.0 30.1 47.6 30.9 47.2 C 31.7 46.8 32.5 46.4 33.4 46.1 C 34.3 45.8 35.1 45.5 36 45.2 C 36.9 44.9 37.8 44.6 38.7 44.4 C 39.6 44.2 40.6 44.0 41.5 43.8 C 42.4 43.6 43.4 43.5 44.3 43.4 C 45.2 43.3 46.1 43.2 47.1 43.1 C 48.1 43.0 49.0 43.0 50 43 Z"/>
+  <g class="lm-gap" stroke-width="12"><line x1="67.4" y1="42.3" x2="66.2" y2="50.7"/><line x1="53.3" y1="78.2" x2="46.7" y2="73"/><line x1="29.3" y1="48" x2="37.1" y2="45"/></g>
+</svg><span class="brand-word">E<span class="x">X</span>KNOTS</span></a>
+        <p style="margin:.8rem 0 0;max-width:30ch;font-size:.92rem">Topology you solve with your hands — 20 puzzles, their solutions, and the mathematics behind them.</p>
+      </div>
+      <div><h4>Arc 1</h4><ul><li><a href="../puzzles/01-the-gatekeeper.html">1. The Gatekeeper</a></li><li><a href="../puzzles/02-shepherds-yoke.html">2. Shepherd's Yoke</a></li><li><a href="../puzzles/03-the-prisoners-ring.html">3. The Prisoner's Ring</a></li><li><a href="../puzzles/04-mobius-snare.html">4. Mobius Snare</a></li><li><a href="../puzzles/11-the-mirror-gate.html">5. The Mirror Gate</a></li></ul></div><div><h4>Arc 2</h4><ul><li><a href="../puzzles/05-trinity-lock.html">6. Trinity Lock</a></li><li><a href="../puzzles/06-devils-pitchfork.html">7. Devil's Pitchfork</a></li><li><a href="../puzzles/07-the-ferrymans-knot.html">8. The Ferryman's Knot</a></li><li><a href="../puzzles/16-the-crossing-number.html">9. The Crossing Number</a></li></ul></div><div><h4>Arc 3</h4><ul><li><a href="../puzzles/08-ouroboros-chain.html">10. Ouroboros Chain</a></li><li><a href="../puzzles/09-genus-trap.html">11. Genus Trap</a></li><li><a href="../puzzles/10-the-hopf-paradox.html">12. The Hopf Paradox</a></li></ul></div><div><h4>Arc 4</h4><ul><li><a href="../puzzles/12-the-braid-cage.html">13. The Braid Cage</a></li><li><a href="../puzzles/13-the-torus-winder.html">14. The Torus Winder</a></li><li><a href="../puzzles/14-the-tricolor-lock.html">15. The Tricolor Lock</a></li><li><a href="../puzzles/15-the-seifert-sail.html">16. The Seifert Sail</a></li><li><a href="../puzzles/17-the-satellite-trap.html">17. The Satellite Trap</a></li></ul></div><div><h4>Arc 5</h4><ul><li><a href="../puzzles/18-the-whitehead-waltz.html">18. The Whitehead Waltz</a></li><li><a href="../puzzles/19-the-tangle-dance.html">19. The Tangle Dance</a></li><li><a href="../puzzles/20-the-grannys-downfall.html">20. The Granny's Downfall</a></li></ul></div>
+    </div>
+    <div class="foot-fine">
+      <span>EXKNOTS · MIT License</span>
+      <span><a href="../theory/topology-primer.html">Topology Primer</a> · <a href="../construction/materials.html">Build Guide</a> · <a href="https://github.com/sonoransun/knotgames">Source ↗</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/docs.js" defer></script>
+</body>
+</html>

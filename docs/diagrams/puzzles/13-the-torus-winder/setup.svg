@@ -1,6 +1,6 @@
 <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350">
   <title>The Torus Winder - Setup</title>
-  <desc>Top-down view of torus (two concentric ellipses) with guide notch markers. Cord not yet wound. Small ring and ball-stops visible nearby.</desc>
+  <desc>Top-down view of torus (two concentric ellipses) with the six numbered guide notches at the (2,3) rim-transition points - n1, n3, n5 on the outer rim and n2, n4, n6 on the inner rim. Cord not yet wound. Small ring and ball-stops visible nearby.</desc>
 
   
 
@@ -16,23 +16,23 @@
   <!-- Torus: inner ellipse (hole) -->
   <ellipse cx="150" cy="160" rx="40" ry="25" fill="none" stroke="var(--dia-rigid, #8a8275)" stroke-width="2"/>
 
-  <!-- Guide notch markers around outer edge (yellow circles) -->
+  <!-- Guide notch markers at the six (2,3) rim-transition points:
+       n1/n3/n5 on the outer rim (axis angles 0°, 240°, 120°),
+       n2/n4/n6 on the inner rim (axis angles 120°, 0°, 240°) -->
   <circle cx="260" cy="160" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
-  <circle cx="230" cy="105" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
-  <circle cx="150" cy="90" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
-  <circle cx="70" cy="105" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
-  <circle cx="40" cy="160" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
-  <circle cx="70" cy="215" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
-  <circle cx="150" cy="230" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
-  <circle cx="230" cy="215" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
+  <circle cx="130" cy="181.7" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
+  <circle cx="95" cy="99.4" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
+  <circle cx="190" cy="160" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
+  <circle cx="95" cy="220.6" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
+  <circle cx="130" cy="138.3" r="4" fill="none" stroke="var(--dia-gold, #c79a22)" stroke-width="1.5"/>
 
   <!-- Guide notch labels -->
-  <text x="268" y="164" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">n1</text>
-  <text x="238" y="102" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">n2</text>
-  <text x="155" y="87" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">n3</text>
-  <text x="50" y="102" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">n4</text>
-  <text x="20" y="164" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">n5</text>
-  <text x="50" y="222" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">n6</text>
+  <text x="272" y="164" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">n1</text>
+  <text x="137" y="176" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">n2</text>
+  <text x="89" y="89" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">n3</text>
+  <text x="199" y="171" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">n4</text>
+  <text x="82" y="232" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">n5</text>
+  <text x="137" y="149" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" fill="var(--dia-gold, #c79a22)">n6</text>
 
   <!-- Cord (not yet wound, lying flat beside the torus) -->
   <path d="M 140,260 Q 160,255 180,260 Q 200,265 220,260 Q 240,255 260,262"
