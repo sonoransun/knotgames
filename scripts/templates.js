@@ -233,9 +233,10 @@ export function theoryIndexPage({ rel, logomark, puzzles }) {
 <div class="wrap band" style="padding-top:1rem"><div class="cat-grid">
   ${card(`${rel}/theory/topology-primer.html`, 'Primer', 'Topology Primer', 'Every concept used in the series — linking number, genus, chirality, braid groups, Seifert surfaces, the Hopf fibration, and more.')}
   ${card(`${rel}/theory/pedagogical-arc.html`, 'Pedagogy', 'The Pedagogical Arc', 'Why the puzzles are ordered as they are, with time estimates and a concept map across the five arcs.')}
+  ${card(`${rel}/theory/interdisciplinary-connections.html`, 'Connections', 'Interdisciplinary Connections', "Where each puzzle's concept shows up in DNA, quantum matter, plasmas, computing, and everyday craft — the sciences behind the series.")}
   ${card(`${rel}/construction/materials.html`, 'Workshop', 'Build Guide', 'Shared materials, construction techniques, ring sizing, and prototyping advice.')}
 </div></div>`;
-  return pageShell({ rel, current: 'theory', logomark, puzzles, canonical: 'theory/', title: 'Reference', desc: 'Theory primer, pedagogical arc, and the construction guide for the EXKNOTS series.', content });
+  return pageShell({ rel, current: 'theory', logomark, puzzles, canonical: 'theory/', title: 'Reference', desc: 'Theory primer, pedagogical arc, interdisciplinary connections, and the construction guide for the EXKNOTS series.', content });
 }
 
 // Article (puzzle or theory). `tocHtml`, `prevNext` optional.

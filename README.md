@@ -150,6 +150,8 @@ The primer is designed for readers with no formal topology background. Each conc
 
 **Think topologically.** The core skill this series develops is the ability to distinguish topological properties (invariants — things that don't change under continuous deformation) from geometric properties (things that look complicated but can be smoothed away). By the end of Arc 3, you'll have internalized this distinction. Arc 4 then puts that skill to work: you'll compute invariants, construct mathematical objects, and decompose complex structures with your hands.
 
+For the wider scientific context: **[Interdisciplinary Connections](theory/interdisciplinary-connections.md)** maps where each puzzle's concept shows up in everyday life and across the sciences — DNA topoisomerases, topological quantum computation, plasma helicity, Gray-coded encoders, and more.
+
 For educators: see the **[Pedagogical Arc](theory/pedagogical-arc.md)** for guidance on using the series in classrooms, workshops, or self-study, including discussion prompts and common misconceptions at each stage.
 
 ## Difficulty & Time Estimates

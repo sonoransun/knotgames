@@ -292,8 +292,9 @@ function makeOgImage() {
 
 function writeMisc() {
   writeFile('.nojekyll', '');
+  writeFile('CNAME', 'knotgames.org'); // GitHub Pages custom domain — must survive the clean rebuild
   const pages = ['', 'puzzles/', 'theory/', 'construction/materials.html', 'explore/',
-    'theory/topology-primer.html', 'theory/pedagogical-arc.html',
+    'theory/topology-primer.html', 'theory/pedagogical-arc.html', 'theory/interdisciplinary-connections.html',
     ...puzzles.map((x) => `puzzles/${x.htmlName}`)];
   const urls = pages.map((u) => {
     const loc = `${T.SITE}/${u}`.replace(/\/$/, u ? '/' : '/');
@@ -365,12 +366,14 @@ export function build() {
     'Every concept used in the series — read it once, refer back often.', 'A self-contained topology primer: linking number, genus, chirality, braid groups, Seifert surfaces, the Hopf fibration, and more.');
   renderDoc('theory/pedagogical-arc.md', 'theory/pedagogical-arc.html', 'theory', 'Pedagogy',
     'Why the puzzles are ordered the way they are.', `The learning sequence behind the ${puzzleRegistry.length} puzzles, with time estimates and a concept map.`);
+  renderDoc('theory/interdisciplinary-connections.md', 'theory/interdisciplinary-connections.html', 'theory', 'Connections',
+    "Where each puzzle's concept surfaces in everyday life and across the sciences.", 'An interdisciplinary companion to the series: DNA topology, topological phases of matter, plasmas and flows, computing, and everyday craft — mapped to all 20 puzzles.');
   renderDoc('construction/materials.md', 'construction/materials.html', 'build', 'Workshop',
     'Shared materials and construction techniques for building the puzzles.', 'Bill of materials, bending/welding notes, ring sizing, and prototyping advice for the EXKNOTS series.');
 
   writeMisc();
 
-  console.log(`✓ Built docs/ — ${puzzles.length} puzzles, 3 reference pages, landing + 2 indexes.`);
+  console.log(`✓ Built docs/ — ${puzzles.length} puzzles, 4 reference pages, landing + 2 indexes.`);
   if (warnings.length) console.log(`  ${warnings.length} warning(s).`);
   return warnings;
 }
